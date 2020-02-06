@@ -1,0 +1,34 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <div class="card card-w-title">
+      <h1>Escolha o Tipo de Relatório</h1>
+
+        <br>
+        <br>
+        <div Style="padding-left: 10px !important;">
+          <h2>Data</h2>
+          <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+            yearRange="2000:2030" 
+            [readonlyInput]="true"
+            (onSelect)="onChangeTime($event)">
+          </p-calendar>
+
+          <br>
+          <br>
+        </div>
+        
+
+        <div Style="padding-top: 10px !important;">
+          <p-button *ngFor="let item of items"  label="{{item['label']}}" class="ui-button-danger" (click)="novoRelatorio(item['gerenciaId'])"
+          [disabled]="valor"
+           Style="
+              padding-left: 10px !important; 
+              padding-top: 10px !important;
+              padding-right: 10px !important;">
+          <i class="material-icons">{{ item['icon'] }}</i>
+           {{item['label']}}
+        </p-button>
+       </div>
+    </div>
+  </div>
+</div>

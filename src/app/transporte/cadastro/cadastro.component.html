@@ -1,0 +1,343 @@
+<p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
+
+<!--SCROOOL DE CARROS-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==0">
+  <p-dataView #dv [value]="cars" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="placa"
+      [sortField]="sortField" [sortOrder]="sortOrder">
+      <p-header>
+        <div class="ui-helper-clearfix">
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 filter-container">
+              <div style="position:relative">
+                  <input type="search" pInputText placeholder="Pesquisar pelo Placa" (input)="dv.filter($event.target.value)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-header>
+      <ng-template let-car pTemplate="listItem">
+        <div class="ui-g-12">
+          <div class="car-details">
+            <img class="ui-g-1" src="assets/layout/images/transporte/{{car.modelo}}.png">
+            <div class="ui-g-10" >
+              <div style="margin-left:90px;" >
+                <div class="ui-g-12">Placa: <b>{{car.placa}}</b></div>
+                <div class="ui-g-6">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>
+                <div class="ui-g-6">Condutor: <b>{{car.responsavel}}</b></div>
+                <div class="ui-g-6">Gerencia: <b>{{car.gerencia}}</b></div>
+                <div class="ui-g-6">Supervisao: <b>{{car.supervisao}}</b></div>
+              </div>
+            </div>
+            <div class="ui-g-1" >
+              <button pButton type="button" icon="pi pi-search" (click)="selectCar(car)"></button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+       
+  </p-dataView>
+
+  <p-dialog header="Detalhes do Veículo" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
+    <div class="ui-g" *ngIf="selectedCar" style="height:50%">
+      <div class="ui-g-12" style="text-align:center">
+          <img src="assets/layout/images/transporte/{{selectedCar.modelo}}.png" width="400px">
+      </div>
+
+      <div class="ui-g-4">Placa: </div>
+      <div class="ui-g-8">{{selectedCar.placa}}</div>
+
+      <div class="ui-g-4">Condutor: </div>
+      <div class="ui-g-8">{{selectedCar.responsavel}}</div>
+
+      <div class="ui-g-4">Modelo: </div>
+      <div class="ui-g-8">{{selectedCar.modelo}}</div>
+
+      <div class="ui-g-4">Adicional: </div>
+      <div class="ui-g-8">{{selectedCar.cadcapacidadem3}}</div>
+
+      <div class="ui-g-4">Odometro: </div>
+      <div class="ui-g-8">{{selectedCar.odometro}}</div>
+
+      <div class="ui-g-4">Data do Cadastro: </div>
+      <div class="ui-g-8">{{selectedCar.datcad}}</div>
+
+      <div class="ui-g-4">Ano: </div>
+      <div class="ui-g-8">{{selectedCar.ano}}</div>
+
+      <div class="ui-g-4">Cor: </div>
+      <div class="ui-g-8">{{selectedCar.cor}}</div>
+      
+      <div class="ui-g-4">Gerencia: </div>
+      <div class="ui-g-8">{{selectedCar.gerencia}}</div>
+      
+      <div class="ui-g-4">Supervisao: </div>
+      <div class="ui-g-8">{{selectedCar.supervisao}}</div>
+      
+      <div class="ui-g-4">Chassi: </div>
+      <div class="ui-g-8">{{selectedCar.chassi}}</div>
+      <div class="ui-g-12" style="text-align:center;" >
+        <button pButton type="button" label="Editar" (click)="editCar(selectedCar)"></button>
+      </div>
+  </div>
+  </p-dialog>
+
+
+  <p-dialog header="Editar Veículo" [(visible)]="displayEdit" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
+    <div class="ui-g" *ngIf="editedCar" style="height:100%">
+      <div class='ui-g-12'>
+        <div class="ui-g-12" style="margin-top: 20px;">
+          <div class="ui-g-6 item">
+            <span class="md-inputfield">
+              <input id="input" type="text" [(ngModel)]="cadplaca"  class="ui-g-12" pInputText/>
+              <label>Placa</label>
+            </span>
+          </div>
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <input id="input" type="text" [(ngModel)]="cadchassi" class="ui-g-12" pInputText/>
+              <label >Chassi</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ui-g-12" >
+          <div class="ui-g-12">
+            <div class="ui-g-3 item" >
+              <div class="ui-g-12 item" >
+                <p-inputSwitch [(ngModel)]="cadgps"></p-inputSwitch>
+              </div>
+              <div class="ui-g-12 item" >
+                <label >GPS</label>
+              </div>
+            </div>
+    
+            <div class="ui-g-3 item" >
+              <div class="ui-g-12 item" >
+                <p-inputSwitch [(ngModel)]="cadoficina"></p-inputSwitch>
+              </div>
+              <div class="ui-g-12" >
+                  <label >Oficina</label>
+              </div>
+            </div>
+    
+            <div class="ui-g-3 item" >
+              <div class="ui-g-12 item" >
+                <p-inputSwitch [(ngModel)]="cadpool"></p-inputSwitch>
+              </div>
+              <div class="ui-g-12" >
+                  <label >Pool</label>
+              </div>
+            </div>
+
+            <div class="ui-g-3 item" >
+              <div class="ui-g-12 item" >
+                <p-inputSwitch [(ngModel)]="caddevolvido"></p-inputSwitch>
+              </div>
+              <div class="ui-g-12" >
+                  <label >Devolvido</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-g-12" style="margin-top: 40px;">
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <p-dropdown  [options]="modelos" [autoWidth]="true" [(ngModel)]="cadmodelo" styleClass = "drop95" >
+                <ng-template let-item pTemplate="selectedItem">
+                 <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                </ng-template>
+              </p-dropdown>
+              <label >Modelos</label>
+            </span>
+          </div>
+          
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" [(ngModel)]="cadcapacidadem3" styleClass = "drop95" [options]="adicionais"></p-dropdown>
+              <label >Adicional</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ui-g-12" style="margin-top: 40px;">
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" [(ngModel)]="cadsupervisao" styleClass = "drop95" [options]="Supervisoes"></p-dropdown>
+              <label >Supervisão</label>
+            </span>
+          </div>
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" [(ngModel)]="cadresponsavel" styleClass = "drop95" [options]="condutores"></p-dropdown>
+              <label >Responsável</label>
+            </span>
+          </div>
+        </div>
+        
+        <div class="ui-g-12" style="margin-top: 40px;">
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" [(ngModel)]="cadtipoVeiculo" styleClass = "drop95" [options]="tipoVeiculo"></p-dropdown>
+              <label >Tipo do Veículo</label>
+            </span>
+          </div>
+          
+          <div class="ui-g-6 item" >
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" [(ngModel)]="cadlocadora" styleClass = "drop95" [options]="locadoras"></p-dropdown>
+              <label >Locadoras</label>
+            </span>
+          </div>
+        </div>
+        
+      </div>
+
+      
+      
+      <div class="ui-g-12" style="text-align:center; margin-top: 40px;" >
+        <button pButton type="button" label="Editar" (click)="EditarVeiculo(editedCar)"></button>
+      </div>
+    </div>
+    </p-dialog>
+</div>
+
+
+
+
+<!--CADASTRO DE NOVO VEICULO-->
+<div class="card card-w-title"  *ngIf="activeItemIndex==1">
+  <h4>CADASTRAR NOVO VEÍCULO</h4>
+  <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+
+    <div class='ui-g-8'>
+      <div class="ui-g-12" style="margin-top: 20px;">
+        <div class="ui-g-6 item">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="cadplaca" class="ui-g-12" pInputText/>
+            <label>Placa</label>
+          </span>
+        </div>
+        <div class="ui-g-6 item" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="cadchassi" class="ui-g-12" pInputText/>
+            <label >Chassi</label>
+          </span>
+        </div>
+      </div>
+
+      <div class="ui-g-12" style="margin-top: 40px;">
+        <div class="ui-g-6 item" >
+          <span class="md-inputfield">
+            <p-dropdown [autoWidth]="true" [(ngModel)]="cadmodelo" styleClass = "drop95" [options]="modelos"></p-dropdown>
+            <label >Modelos</label>
+          </span>
+        </div>
+        
+        <div class="ui-g-6 item" >
+          <span class="md-inputfield">
+            <p-dropdown [autoWidth]="true" [(ngModel)]="cadcapacidadem3" styleClass = "drop95" [options]="adicionais"></p-dropdown>
+            <label >Adicional</label>
+          </span>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="ui-g-3" >
+      <div class="ui-g-12">
+        <div class="ui-g-3 item" >
+          <p-inputSwitch [(ngModel)]="cadgps"></p-inputSwitch>
+        </div>
+        <div class="ui-g-9" >
+            <label >GPS</label>
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-3 item" >
+          <p-inputSwitch [(ngModel)]="cadoficina"></p-inputSwitch>
+        </div>
+        <div class="ui-g-9" >
+            <label >Oficina</label>
+        </div>
+      </div>
+
+        
+      <div class="ui-g-12">
+        <div class="ui-g-3 item" >
+          <p-inputSwitch [(ngModel)]="cadpool"></p-inputSwitch>
+        </div>
+        <div class="ui-g-9" >
+            <label >Pool</label>
+        </div>
+      </div>
+      
+      <div class="ui-g-12">
+        <div class="ui-g-3 item" >;
+          <p-inputSwitch [(ngModel)]="caddevolvido"></p-inputSwitch>
+        </div>
+        <div class="ui-g-9" >
+            <label >Devolvido</label>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="ui-g-12" style="margin-top: 40px;">
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" [(ngModel)]="cadtipoVeiculo" styleClass = "drop95" [options]="tipoVeiculo"></p-dropdown>
+          <label >Tipo do Veículo</label>
+        </span>
+      </div>
+      
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" [(ngModel)]="cadlocadora" styleClass = "drop95" [options]="locadoras"></p-dropdown>
+          <label >Locadoras</label>
+        </span>
+      </div>
+      
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" [(ngModel)]="cadgerencia" styleClass = "drop95" [options]="Gerencias"></p-dropdown>
+          <label >Gerência</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 40px;">
+      <!-- <div class="ui-g-8 item">
+        <span class="md-inputfield">
+          <input id="input" type="text" class="ui-g-12 item" value="PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto" pInputText/>
+          <label>Unidade</label>
+        </span>
+      </div> -->
+
+      
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" [(ngModel)]="cadsupervisao" styleClass = "drop95" [options]="Supervisoes"></p-dropdown>
+          <label >Supervisão</label>
+        </span>
+      </div>
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" [(ngModel)]="cadresponsavel" styleClass = "drop95" [options]="condutores"></p-dropdown>
+          <label >Responsável</label>
+        </span>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="ui-g-12" style="text-align: center;">
+      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="SalvarVeiculo()"></button>
+    </div>
+  </div>
+</div>
+

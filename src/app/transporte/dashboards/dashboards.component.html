@@ -1,0 +1,254 @@
+<!--SCROOOL DE CARROS-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
+    <div class="ui-g">
+        <h4>DASHBOARDS</h4>
+        <div class="ui-g-12">
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" [(ngModel)]="gerencSelect" (onChange)="onChange($event)" styleClass = "drop95" [options]="Gerencias"></p-dropdown>
+                    <label >Gerencias</label>
+                  </span>
+            </div>
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" [(ngModel)]="supervSelect" (onChange)="onChange($event)" styleClass = "drop95" [options]="Supervisoes"></p-dropdown>
+                    <label >Departamentos</label>
+                  </span>
+            </div>
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" [(ngModel)]="placSelect" (onChange)="onChange($event)" styleClass = "drop95" [options]="placas"></p-dropdown>
+                    <label >Placas</label>
+                  </span>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" [(ngModel)]="gerencSelect" (onChange)="onChange($event)" styleClass = "drop95" [options]="Gerencias"></p-dropdown>
+                    <label >Tipo de Veículo</label>
+                  </span>
+            </div>
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" [(ngModel)]="supervSelect" (onChange)="onChange($event)" styleClass = "drop95" [options]="Supervisoes"></p-dropdown>
+                    <label >Modelo do Veículo</label>
+                  </span>
+            </div>
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" [(ngModel)]="placSelect" (onChange)="onChange($event)" styleClass = "drop95" [options]="placas"></p-dropdown>
+                    <label >Natureza do Cadastro</label>
+                  </span>
+            </div>
+        </div>
+       
+     </div>
+</div>
+
+
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
+    <p-fieldset legend="Combustível" [toggleable]="true" [collapsed]="true"> 
+        <div class="ui-g">
+            <div class="ui-g-6"> 
+                <div class="ui-g-12">       
+                    <h2>Consumo de Combustível: Mensal</h2>
+                </div>
+                <div class="ui-g-12">   
+                    <app-graficos-transporte [tipoGraf]='"bar"' [tipoEixo]='"mes"'></app-graficos-transporte>
+                </div>
+            </div>
+            <div class="ui-g-6">
+                <div class="ui-g-9">       
+                    <h2>Consumo de Combustível: Diário</h2>
+                </div>
+                <div class="ui-g-3" style="text-align: right; height: 30px;">       
+                    <button type="button" pButton icon="ui-icon-receipt" iconPos="left" label="Exportar Dados" (click)="exportCSV()" style="float:right;background:#207347;"></button>
+                </div>
+                <div class="ui-g-12">   
+                    <app-graficos-transporte [tipoGraf]='"bar"' [tipoEixo]='"dia"'></app-graficos-transporte>
+                </div>
+            </div>
+        </div>
+        <div  style="margin-top: 100px !important;"  class="ui-g">
+            <h2>Ranking:</h2>
+            <p-table [columns]="cols1" [value]="ranking1" dataKey="placa" editMode="row">
+                <ng-template pTemplate="caption">
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr> 
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input" *ngFor="let col of columns">
+                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData[col.field]}}
+                            </ng-template>
+                        </p-cellEditor>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-fieldset>
+        
+
+    <p-fieldset legend="Manutenção" [toggleable]="true" [collapsed]="true"> 
+        <div class="ui-g">
+            <div class="ui-g-6"> 
+                <h2>Quantidade</h2>
+                <app-graficos-transporte [tipoGraf]='"bar"' [tipoEixo]='"mes"'></app-graficos-transporte>
+            </div>
+            <div class="ui-g-6">
+                <div class="ui-g-9">       
+                    <h2>Valor Utilizado</h2>
+                </div>
+                <div class="ui-g-3" style="text-align: right; height: 30px;">       
+                    <button type="button" pButton icon="ui-icon-receipt" iconPos="left" label="Exportar Dados" (click)="exportCSV()" style="float:right;background:#207347;"></button>
+                </div>
+                <div class="ui-g-12">   
+                    <app-graficos-transporte [tipoGraf]='"bar"' [tipoEixo]='"mes"'></app-graficos-transporte>
+                </div>
+            </div>
+        </div>
+        <div  style="margin-top: 100px !important;" class="ui-g">
+            <h2>Ranking:</h2>
+            <p-table [columns]="cols1" [value]="ranking1" dataKey="placa" editMode="row">
+                <ng-template pTemplate="caption">
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr> 
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input" *ngFor="let col of columns">
+                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                            </ng-template>
+                        <ng-template pTemplate="output">
+                                {{rowData[col.field]}}
+                        </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-fieldset>
+        
+
+    <p-fieldset legend="Distância Percorrida" [toggleable]="true" [collapsed]="true"> 
+        <div class="ui-g">
+            <div class="ui-g-5">
+                <div class="ui-g-12">       
+                    <h2>Distancia Percorrida: Mensal</h2>
+                </div>
+                <div class="ui-g-12">  
+                    <app-graficos-transporte [tipoGraf]='"bar"' [tipoEixo]='"mes"'></app-graficos-transporte>
+                </div>
+            </div>
+            <div class="ui-g-7">
+                <div class="ui-g-9">       
+                    <h2>Distancia Percorrida: Diário</h2>
+                </div>
+                <div class="ui-g-3" style="text-align: right; height: 30px;">       
+                    <button type="button" pButton icon="ui-icon-receipt" iconPos="left" label="Exportar Dados" (click)="exportCSV()" style="float:right;background:#207347;"></button>
+                </div>
+                <div class="ui-g-12">    
+                    <app-graficos-transporte [tipoGraf]='"bar"' [tipoEixo]='"dia"'></app-graficos-transporte>
+                </div>
+            </div>
+        </div>
+        <div  style="margin-top: 100px !important;" class="ui-g">
+            <h2>Ranking:</h2>
+            <p-table [columns]="cols1" [value]="ranking1" dataKey="placa" editMode="row">
+                <ng-template pTemplate="caption">
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr> 
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input" *ngFor="let col of columns">
+                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData[col.field]}}
+                            </ng-template>
+                        </p-cellEditor>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-fieldset>
+
+
+    <p-fieldset legend="Velocidade" [toggleable]="true" [collapsed]="true"> 
+        <div class="ui-g">
+            <div class="ui-g-5">
+                <h2>Velocidade Máxima Atingida: Acumulado</h2>
+                <app-graficos-transporte [tipoGraf]='"line"' [tipoEixo]='"mes"'></app-graficos-transporte>
+            </div>
+            <div class="ui-g-7">
+                <div class="ui-g-9">     
+                    <h2>Velocidade Máxima Atingida: Diário</h2>
+                </div>
+                <div class="ui-g-3" style="text-align: right; height: 30px;">       
+                    <button type="button" pButton icon="ui-icon-receipt" iconPos="left" label="Exportar Dados" (click)="exportCSV()" style="float:right;background:#207347;"></button>
+                </div>
+                <div class="ui-g-12">   
+                    <app-graficos-transporte [tipoGraf]='"line"' [tipoEixo]='"dia"'></app-graficos-transporte>
+                </div>
+            </div>
+        </div>
+        <div  style="margin-top: 100px !important;" class="ui-g">
+            <h2>Ranking:</h2>
+            <p-table [columns]="cols1" [value]="ranking1" dataKey="placa" editMode="row">
+                <ng-template pTemplate="caption">
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr> 
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input" *ngFor="let col of columns">
+                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData[col.field]}}
+                            </ng-template>
+                        </p-cellEditor>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-fieldset>
+        
+</div>

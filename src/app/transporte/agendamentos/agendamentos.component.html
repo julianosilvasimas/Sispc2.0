@@ -1,0 +1,21 @@
+<p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
+
+<!--Agendar-->
+<div class="card card-w-title"  *ngIf="activeItemIndex==0">
+    <app-agendar-veiculo></app-agendar-veiculo>
+</div>
+
+
+<!--Aprovação de Agendamentos-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==1">
+    <app-aprovar-agendamento></app-aprovar-agendamento>
+
+</div>
+
+<!--Lista de Agendamentos-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==2">
+    <app-lista-agendamentos></app-lista-agendamentos>
+
+</div>
+  
+  

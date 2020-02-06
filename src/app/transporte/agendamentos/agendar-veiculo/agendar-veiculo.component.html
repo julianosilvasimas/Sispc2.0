@@ -1,0 +1,59 @@
+<!--AGENDAMENTO DE VEICULO-->
+<div class="card card-w-title" >
+  <h4>AGENDAR VEÍCULO</h4>
+  <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+
+    <div class="ui-g-12" style="margin-top: 20px;">
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" styleClass = "drop95" [options]="condutores"></p-dropdown>
+          <label >Condutor</label>
+        </span>
+      </div>
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <input id="input" type="text" class="ui-g-12" pInputText/>
+          <label >Quantidade de Pessoas</label>
+        </span>
+      </div>
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" styleClass = "drop95" [options]="tipoVeiculo"></p-dropdown>
+          <label >Tipo do Veículo</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 40px;">
+      
+      <div class="ui-g-4 item" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true" styleClass = "drop95" [options]="destinos"></p-dropdown>
+          <label >Destino</label>
+        </span>
+      </div>
+
+      <div class="ui-g-2 item" >
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12" [(ngModel)]="date7" [showTime]="true"></p-calendar>
+          <label >De</label>
+        </span>
+      </div>
+      <div class="ui-g-2 item" >
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12" [(ngModel)]="date8" [showTime]="true"></p-calendar>
+          <label >Até</label>
+        </span>
+      </div>
+      
+      
+    </div>
+
+
+
+
+    <div class="ui-g-12 item" style="margin-top: 40px; text-align: center;">
+      <button type="button" pButton icon="pi pi-save" label="Agendar"></button>
+    </div>
+  </div>
+</div>

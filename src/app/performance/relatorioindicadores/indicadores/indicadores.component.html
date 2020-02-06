@@ -1,0 +1,28 @@
+
+<div style=" margin-top: 101%;"   *ngFor="let indic of ind; let i = index">
+    <!-- Indicador1 -->
+    <br>
+    
+
+    <div class="subtitulos" style="position: relative;">
+        <div class="ui-g-10">
+            {{ indic.indicador }}
+        </div>
+        <div class="ui-g-2" style="text-align:right; margin-top:10px; font-size:11px;">
+            Página {{ (i+2) }} de {{this.totalpaginas }}
+        </div>
+    </div>
+    <br>
+    
+    <div class="separador"></div>
+  
+    <app-graficos [element]="indic" [refer]="refer">
+        <div class="splash-screen">
+            <div class="splash-loader">
+                <img src="../../assets/layout/images/SISPCpng.png">
+            </div>
+        </div>
+    </app-graficos>
+    
+    
+</div>

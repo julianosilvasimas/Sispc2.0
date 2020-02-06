@@ -1,0 +1,14 @@
+
+
+#imagem {
+    float:center;
+    width: 280px;
+    height: 300px;
+    /*opacity: 0.0;
+    filter: alpha(opacity=0);*/
+}
+    
+#texto {
+    position: absolute;
+    margin-top: -130px;
+}

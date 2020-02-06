@@ -1,0 +1,186 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+      <div class="card card-w-title">
+          <h1>Performance {{setor}}</h1>
+          <p-accordion  (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
+                <div class="card">
+              <p-accordionTab  *ngFor="let classificao of classificacoes" header="{{classificao}}" >
+
+                    <p-table [columns]="cols" [value]="resumo">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns">
+                                        {{col.header}}
+                                    </th>
+                                    <th style="width:4em"></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                <tr> <!-- *ngIf="resumo.classificacao === classificao"-->
+                                    <td  *ngFor="let col of columns">
+                                        {{ rowData[col.field] }}
+                                    </td>
+                                    <td>
+                                        <button pButton icon="pi pi-search" (click)=" selectIndicador(rowData)"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <br>
+              </p-accordionTab>
+
+              <div class="card" *ngIf="barraAtiva">
+
+                    <div class ="ui-g-6"><h1 class="centerText">{{indi}}</h1></div>
+                    <button type="button" icon="ui-icon-add" pButton (click)="op2.toggle($event); abreInput()"></button>
+                    <span style="position: absolute;margin-top: 30px;margin-left: -40px;">Atualizar</span>
+                    <button style="position: absolute;margin-left: 30%;"type="button" icon="ui-icon-clear" pButton (click)="desativaBarra()"></button>
+                    
+                      <p-overlayPanel #op2 [showCloseIcon]="true" [dismissable]="false" >
+                            <span class="ui-overlaypanel-close-icon pi pi-times"></span>
+
+                            
+                          
+                            <div class="card"  style="padding-bottom: 20px;"> 
+                                <div class="ui-g">
+                                    <div class ="ui-g-6"><b>{{indi}}</b></div>
+                                    <div class="ui-g-6" style="text-align: center">
+                                        <p-calendar id="calendar" [(ngModel)]="date" (onSelect)="pesquisarIndicador(date)" [monthNavigator]="true" [yearNavigator]="true"
+                                        yearRange="2008:2041" [showIcon]="true"  [locale]="pt" dateFormat="dd/mm/yy" placeholder="Data" ></p-calendar>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card"  style="padding-bottom: 20px;"> 
+                                <div class="ui-g">
+                                   <!--<div class="ui-g-6" *ngFor="let dados of dadosIndicador" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="dados.valor" type="text" size="37" pInputText/>
+                                            <label>{{dados.label}}</label>
+                                        </span>
+                                    </div>-->
+
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="orcado" type="text" size="37" pInputText [disabled]='true'/>
+                                            <label>Orçado</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="realizado" type="text" size="37" pInputText/>
+                                            <label>Realizado</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="pecld" type="text" size="37" pInputText/>
+                                            <label>Pecld</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="forecast" type="text" size="37" pInputText/>
+                                            <label>Forecast Diário</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="minimo" type="text" size="37" pInputText [disabled]='true'/>
+                                            <label>Minimo</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="maximo" type="text" size="37" pInputText [disabled]='true'/>
+                                            <label>Maximo</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="meta" type="text" size="37" pInputText [disabled]='true'/>
+                                            <label>Meta</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="previsao" type="text" size="37" pInputText/>
+                                            <label>Forecast Mensal</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="dentroprazo" type="text" size="37" pInputText/>
+                                            <label>DP</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="foraprazo" type="text" size="37" pInputText/>
+                                            <label>FP</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="dentroprazoreg" type="text" size="37" pInputText/>
+                                            <label>DP Reguladas</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="foraprazoreg" type="text" size="37" pInputText/>
+                                            <label>FP Reguladas</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="atendente" type="text" size="37" pInputText/>
+                                            <label>Atendente</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="atendimento" type="text" size="37" pInputText/>
+                                            <label>Atendimento</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                              <div class="card" >
+                                  <p-tabView >
+                                      <p-tabPanel header="Comentários"  leftIcon="ui-icon-check">
+                                           <textarea [rows]="3" [cols]="105" pInputTextarea [(ngModel)]="comentario"   autoResize="autoResize"></textarea>
+                                      </p-tabPanel>
+                                      <p-tabPanel header="Análise"  leftIcon="ui-icon-edit">
+                                            <textarea [rows]="3" [cols]="105" pInputTextarea [(ngModel)]="analise"  autoResize="autoResize"></textarea>
+                                      </p-tabPanel>
+                                      <p-tabPanel header="Ações"  leftIcon="ui-icon-refresh">
+                                            <textarea [rows]="3" [cols]="105" pInputTextarea [(ngModel)]="acao"  autoResize="autoResize"></textarea>
+                                      </p-tabPanel>
+                                  </p-tabView>
+                              </div>
+                          
+                          <div class="centerText" style="text-align: center;">
+                          <p-button label="Salvar" icon="ui-icon-save" (click)="atualizaDados()"></p-button>
+                          </div>
+                      
+                      </p-overlayPanel>
+
+            <!--############################# Chamada do Gráfico #############################################-->
+                            <app-graficos [element]= "ind" [refer]= "refer" >
+                                <div class="splash-screen">
+                                    <div class="splash-loader">
+                                        <img src="../../assets/layout/images/SISPCpng.png">
+                                    </div>
+                                </div>
+                            </app-graficos>
+                </div> 
+            </div>
+            <!--######################################################################################################################-->
+              
+          </p-accordion>
+      </div>
+    
+  </div>
+  </div>

@@ -1,0 +1,91 @@
+<!-- DIV DA CAPA -->
+<div class="div1" style="height: 60px;">
+    <div class="ui-g-2"> <img class="logo" src="../../../../assets/layout/images/img.png" /></div>
+    <div class="ui-g-10" class="titulo" style="margin-top:auto;">Relatório de Performance {{ NomeGerencia }}</div>
+</div>
+<div>
+    
+    <br>
+    <br>
+    <!-- Escopo do Relatório -->
+    <div class="subtitulos">
+    <div class="ui-g-5">INFORMAÇÕES GERENCIAIS</div>
+    </div>
+    <br>
+    <div class="separador"></div>
+    <div class="inf">
+    <div class="ui-g-12 info">
+        <div class="ui-g-2 info titl">Unidade: </div>
+        <div class="ui-g-10 info dado">Prolagos</div>
+    </div>
+    <div class="ui-g-12 info">
+        <div class="ui-g-2 info titl">Regional: </div>
+        <div class="ui-g-10 info dado">R2</div>
+    </div>
+    <div class="ui-g-12 info">
+        <div class="ui-g-2 info titl">Gerência: </div>
+        <div class="ui-g-10 info dado"><span>{{ NomeGerencia }}</span></div>
+    </div>
+
+    <div class="ui-g-12 info">
+        <div class="ui-g-2 info titl">Elaborador:</div>
+        <div class="ui-g-10 info dado">{{ nome }} - ({{ email}})</div>
+    </div>
+
+    <div class="ui-g-12 info">
+        <div class="ui-g-2 info titl">Data da Geração:</div>
+        <div class="ui-g-10 info dado">{{date}}</div>
+    </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <!-- Escopo do Relatório -->
+    <div class="subtitulos" style="margin-top:150px;">
+    <div class="ui-g-5">ESCOPO DO RELATÓRIO</div>
+    </div>
+    <br>
+    <div class="separador"></div>
+    <div class ="textos" >
+        Esse relatório tem como objetivo apresentar os indicadores de performance da Prolagos para dar suporte a liderança na tomada de decisão e contribuir para a melhoria
+        contínua dos resultados de cada área.<br><br>
+        Os gestores terão à disposição dados atualizados para análise, identificação e correção de desvios, percepção de pontos a serem aprimorados ou implantados e de
+        oportunidades de inovação.
+
+    </div>
+
+
+
+
+
+
+    <!-- Relação dos Indicadores -->
+    <br>
+    <div class="subtitulos" style="margin-top:100px;">
+    <div class="ui-g-5">RELAÇÃO DOS INDICADORES</div>
+    </div>
+    <br>
+    <div class="separador"></div>
+    <br>
+    <!-- Tabela de quais são os indicadores -->
+    <div>
+        <div class="ui-g" style="background-color:rgb(0,103,154) !important;">
+            <div class="ui-g-2 gridRel Titulos">Categoria</div>
+            <div class="ui-g-4 gridRel Titulos">Descrição</div>
+            <div class="ui-g-1 gridRel Titulos">Orçado</div>
+            <div class="ui-g-1 gridRel Titulos">Realizado</div>
+            <div class="ui-g-1 gridRel Titulos">Δ %</div>
+            <div class="ui-g-1 gridRel Titulos">Δ valor</div>
+            <div class="ui-g-1 gridRel Titulos">Forecast</div>
+            <div class="ui-g-1 gridRel Titulos">Mensal</div>
+        </div>
+        
+        <div *ngFor="let indic of ind">
+            <app-resumo-indicadores [element]="indic" [refer]='refer'>
+            </app-resumo-indicadores>
+        </div>
+    </div>
+</div>
+<!-- FIM DA DIV DA CAPA -->

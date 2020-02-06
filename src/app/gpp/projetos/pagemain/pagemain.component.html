@@ -1,0 +1,1138 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <div class="card card-w-title" style="text-align: center; height: 70px; background:#303C89; color:white;">
+            <h1>Projeto PRJ-xxxx - Xxxxxxxxxxxxxx Xxxxxxxxxxxxx</h1>
+        </div>
+       </div> 
+
+        
+            <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
+                <div class="ui-g">
+                <div class="ui-g-4">
+                    <h4>Linha do tempo</h4>
+                    </div>
+                    <div class="ui-g-4" style="text-align: right !important;">
+                    <!--<label style="background:teal; color: white; font-size:18px; padding: 5px;">Status: Concluido</label>-->
+                    </div>  
+                    
+                    <div class="ui-g-4" style="text-align: right">
+                        <div class="ui-g-4"></div>
+                        <div class="ui-g-4" style="text-align: right !important;">
+                            <div style=" width:130px; position:relative !important;text-align: right! important;">
+                              <div class="ui-g card overview-box overview-box-4" style="background:teal; ">
+                                <label style=" color: white; font-size:12px;"><b>Status: Concluido</b></label>
+                              </div>
+                            </div>
+                          </div>  
+                          
+                            <div class="ui-g-4" style="text-align: right">
+                                <div style=" width:130px; position:relative !important;text-align: right! important;">
+                                    <div class="ui-g card overview-box overview-box-4" style="background:#C3002F; ">
+                                      <label style=" color: white; font-size:12px;"><b>Prioridade: Alta</b></label>
+                                    </div>
+                                  </div>
+                            </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <p-steps [model]="stepsItems"></p-steps>
+                      </div>
+            </div>
+            </div>
+            <!--Aqui trato dos blocos do projeto-->
+
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+        <div class="card" >
+            <p-accordion [multiple]="true" (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
+                <p-accordionTab header="Informações do Projeto" [selected]="true"><br>
+                    
+                <!--Aqui trato das Informações básicas-->
+
+                  <div class="ui-g">
+                      <div class="ui-g-8 ui-g-nopad">
+                      <div  div class="ui-g-12">
+                        <div class="card card-w-title" >
+                            <div  style="margin-top: 20px; margin-bottom: 50px;">
+                                <span class="md-inputfield">
+                                    <input id="input" type="text" size="60" pInputText/>
+                                    <label>Nome do Projeto</label>
+                                </span>
+                         </div>
+                        <section class="grid grid-auto-flow-1">
+                          
+                          <div class="item" >
+                            <span class="md-inputfield">
+                            <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                            <label >Localidade</label>
+                            </span>
+                          </div>
+                          <div class="item" >
+                              <span class="md-inputfield">
+                              <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                              <label >Área Responsável</label>
+                              </span>
+                          </div>
+                          <div class="item" >
+                              <span class="md-inputfield">
+                              <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                              <label >Responsável</label>
+                              </span>
+                            </div>
+                        </section>
+                      </div>
+
+                      <div class="card card-w-title" >
+
+                          <section class="grid grid-auto-flow-1">
+                          <div class="item" style="margin-top: 20px" >
+                              <span class="md-inputfield">
+                              <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                              <label >Status Global</label>
+                              </span>
+                            </div>
+                            <div class="item" style="margin-top: 20px" >
+                                <span class="md-inputfield">
+                                <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                <label >Radar</label>
+                                </span>
+                            </div>
+                          </section>
+
+                          <section class="grid grid-auto-flow-1">
+                              <div class="item" style="margin-top: 40px" >
+                                  <span class="md-inputfield">
+                                  <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                  <label >Gravidade</label>
+                                  </span>
+                                </div>
+                                <div class="item" style="margin-top: 40px" >
+                                    <span class="md-inputfield">
+                                    <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                    <label >Urgência</label>
+                                    </span>
+                                </div>
+                                <div class="item" style="margin-top: 40px" >
+                                    <span class="md-inputfield">
+                                    <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                    <label >Tendência</label>
+                                    </span>
+                                </div>
+                              </section>
+
+                          <br>
+                          <hr>
+                          <div class="card card-w-title">
+                              <h2>Objetivo</h2>
+                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                          </div>
+                          <div class="card card-w-title">
+                              <h2>Descrição</h2>
+                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                          </div>
+                          <div class="card card-w-title">
+                              <h2>Premissas</h2>
+                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                          </div>
+                          <div class="card card-w-title">
+                              <h2>Restrições</h2>
+                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                          </div>
+                          <div class="card card-w-title">
+                              <h2>Riscos</h2>
+                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                          </div>
+
+
+                      </div>
+
+                      </div>
+
+                  
+                    </div>
+                      <div class="ui-g-4" style="padding-left: 10px;">
+
+                          <div class="card card-w-title" >
+                            <h2>Início</h2>
+                            <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
+                                <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <label >Previsto</label>
+                                </span>
+                            </div>
+                            <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
+                                <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <label >Replanejado</label>
+                                </span>
+                            </div>
+                            <div class="item" style="padding-top: 10px;">
+                                <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <label >Realizado</label>
+                                </span>
+                            </div>
+                          
+
+                          <h2>Término</h2>
+                            <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
+                                <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <label >Previsto</label>
+                                </span>
+                            </div>
+                            <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
+                                <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <label >Replanejado</label>
+                                </span>
+                            </div>
+                            <div class="item" style="padding-top: 10px;">
+                                <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <label >Realizado</label>
+                                </span>
+                            </div>
+                          
+                            </div>
+
+
+                          <div class="card card-w-title" >
+                              <h2>Segmento</h2>
+  
+                              <p-accordion [multiple]="true">
+                                  <p-accordionTab header="Água">
+                                      
+                                      <p-tree [value]="files2" selectionMode="checkbox" [(selection)]="selectedNodes" [style]="{width: '100%'}"></p-tree>
+                                         
+                                      
+                                  </p-accordionTab>
+                                  <p-accordionTab header="Esgoto">
+                                    <div class="card"></div>
+                                    <div></div>
+                                  </p-accordionTab>
+                                  <p-accordionTab header="Demais Investimentos">
+                                      <div class="card"></div>
+                                  </p-accordionTab>
+                              </p-accordion>
+                            
+      
+                        </div>
+
+                        <div class="card card-w-title" >
+                          <h2>Partes Interessadas</h2>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Agenersa</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Poder Concedente</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  MPF</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  MPE</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Decisão Judicial</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  ICMBio</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  INEA</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Comitê de Bacias</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  CILSJ</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Poder Local</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Sociedade Civil</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  ALERJ</div>
+                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  CREA</div>
+                        <div><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Defesa Civil</div>
+                      </div>
+                      
+                      
+                      </div>
+                  
+                  </div>
+                  
+                  
+                </p-accordionTab>
+
+                <!--Aqui trato das Informações SESuite-->
+                <p-accordionTab header="Informações SESuite"><br>
+                <app-sesuiteproject></app-sesuiteproject>
+                </p-accordionTab>
+
+                <!--Aqui trato do Regulatório-->
+                <p-accordionTab header="Regulatório"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                  <div class="ui-g">
+                      
+                      <div div class="ui-g-6">
+                        <div class="card card-w-title">
+                            <span class="md-inputfield" style="margin-top: 20px;">
+                                <input id="input" type="text" size="60" pInputText/>
+                                <label>Fluxo de investimento</label>
+                            </span>
+                            <h2>Descrição</h2>
+                            <textarea  style="width: 100%; padding-bottom: 18px" pInputTextarea  autoResize="autoResize"></textarea>
+                         </div>
+                      </div>
+
+                      <div div class="ui-g-6">
+                          <div class="card card-w-title" style="width:100%">
+                                  <h2>Marco Contratual</h2>
+                                  <div class="ui-g">
+                                  <div class="ui-g-6" style="border-style: outset;padding-right:10px; background: #F5F6F7; width:46%;margin-left: 20px;">
+                                      <div class="ui-g-12"><b>Início</b></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                  </div>
+                                  <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
+                                      <div class="ui-g-12"><b>Término</b></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-12">
+                        <div class="card card-w-title" style="width:100%">
+                        <div class="ui-g">
+                            <div  div class="ui-g-12" style="margin-top: 20px;">
+                                <span class="md-inputfield">
+                                    <input id="input" type="text" size="60" pInputText/>
+                                    <label>Valor do Projeto</label>
+                                </span>
+                            </div>
+                            <div  div class="ui-g-12">
+                                
+                                <br>
+                                <p-table [columns]="cols2" [value]="processos" dataKey="nProcesso" editMode="row">
+                                    <ng-template pTemplate="caption">
+                                    </ng-template>
+                                    <ng-template pTemplate="header" let-columns>
+                                        <tr> 
+                                            <th *ngFor="let col of columns">
+                                                {{col.header}}
+                                            </th>
+                                            <th style="width:8em; text-align: center;">
+                                                <button type="button" icon="ui-icon-add" pButton></button>
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                                        <tr [pEditableRow]="rowData">
+                                            <td *ngFor="let col of columns">
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input" *ngFor="let col of columns">
+                                                    <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                                                </ng-template>
+                                              <ng-template pTemplate="output">
+                                                    {{rowData[col.field]}}
+                                              </ng-template>
+                                            </p-cellEditor>
+                                          </td>
+      
+                                            <td style="text-align:center;">
+                                                <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInit(rowData)"><i class="material-icons">mode_edit</i></button>
+                                                <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                                                <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                                
+                            </div>
+                        </div>
+                      </div> 
+
+                      </div> 
+
+                    
+
+                    </div>
+                    <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui da Engenharia(Projeto)-->
+                <p-accordionTab header="Engenharia(Projeto)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ; color:white;">Status da fase: Em Andamento</div><br>
+                  <div class="ui-g">
+                    <div class="card card-w-title" style="width:100%">
+                      <div  div class="ui-g-12">
+                          <div class="ui-g-3" style="margin-top: 20px;">
+                              <span class="md-inputfield">
+                                  <input id="input" type="text" size="40" pInputText/>
+                                  <label>PEP do Projeto</label>
+                              </span>
+                          </div>
+                          
+                          <div class="ui-g-3"></div>
+                          <div class="ui-g-3"> </div>
+
+                          <div class="ui-g-3">
+                              <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                                  <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                      <b><span class="overview-box-name">Andamento:</span>
+                                      <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                  </div>
+                              </div>
+                            </div>
+                      </div>
+
+                      <div  div class="ui-g-12">
+                            <br>
+                            <p-table [columns]="cols" [value]="cars" dataKey="vin" editMode="row">
+                                <ng-template pTemplate="caption">
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr> 
+                                        <th *ngFor="let col of columns">
+                                            {{col.header}}
+                                        </th>
+                                        <th style="width:8em; text-align: center;">
+                                            <button type="button" icon="ui-icon-add" pButton></button>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                                    <tr [pEditableRow]="rowData">
+                                        <td *ngFor="let col of columns">
+                                        <p-cellEditor>
+                                            <ng-template pTemplate="input" *ngFor="let col of columns">
+                                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                                            </ng-template>
+                                          <ng-template pTemplate="output">
+                                                {{rowData[col.field]}}
+                                          </ng-template>
+                                        </p-cellEditor>
+                                      </td>
+
+                                        <td style="text-align:center;">
+                                            <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInit(rowData)"><i class="material-icons">mode_edit</i></button>
+                                            <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                                            <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+
+                      </div>
+
+                  </div>
+                </div>
+
+                  <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato do Capex-->
+                <p-accordionTab header="Financeiro(Capex)" ><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Aprovado</div><br>
+                  <div class="ui-g">
+                    <div class="card card-w-title" style="width:100%">
+                        <div  div class="ui-g-12">
+                            <div class="ui-g-3" style="margin-top: 20px;">
+                                <span class="md-inputfield">
+                                    <input id="input" type="text" size="35" pInputText/>
+                                    <label>Número do Projeto Cognos</label>
+                                </span>
+                            </div>
+                            
+                            <div class="ui-g-3">
+                                <span class="md-inputfield" style="margin-top: 20px;margin-left: 10%;">
+                                    <input id="input" type="text" size="30" pInputText/>
+                                    <label>Valor Total do Projeto</label>
+                                </span>
+                            </div>
+                            <div class="ui-g-3" style="margin-top: 5px;">
+                                <span class="md-inputfield">
+                                    <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
+                                    <label >Status</label>
+                                </span>
+                            </div>
+                            <div class="ui-g-3">
+                                <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                                    <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                        <b><span class="overview-box-name">Andamento:</span>
+                                        <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                      
+                    <div class="card card-w-title" style="width:100%">
+                          <div class="ui-g-12">
+                            <h2>Descrição</h2>
+                            <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                          </div>
+                          <div style="text-align: right; margin-top: 5px" *ngIf="selected">
+                            <button type="button" icon="ui-icon-add" pButton ></button>
+                            <span style="position: absolute;margin-top: 5px;margin-left: -135px;">Incluir + 1 ano</span>
+                          </div>  
+                          <div class="ui-g-12">
+                            <p-tabView>
+                                <p-tabPanel header="Capex 2019" leftIcon="ui-icon-check">
+                                  <div class="ui-g">
+                                      <div class="ui-g-4">
+                                          <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                  <span class="md-inputfield">
+                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <label>Valor Aprovado</label>
+                                                  </span>
+                                           </div>
+                                      </div>
+                                      <div class="ui-g-4">
+                                           <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                  <span class="md-inputfield">
+                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <label>Valor Realizado</label>
+                                                  </span>
+                                           </div>
+                                      </div>
+                                      <div class="ui-g-4">
+                                          <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                  <span class="md-inputfield">
+                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <label>Avanço Financeiro</label>
+                                                  </span>
+                                           </div>
+                                      </div>
+                                      <div class="ui-g-4">
+                                          <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                  <span class="md-inputfield">
+                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <label>1° Rolling-Forecast</label>
+                                                  </span>
+                                           </div>
+                                      </div>
+                                      <div class="ui-g-4">
+                                          <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                  <span class="md-inputfield">
+                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <label>2° Rolling-Forecast</label>
+                                                  </span>
+                                           </div>
+                                      </div>
+                                      <div class="ui-g-4">
+                                          <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                  <span class="md-inputfield">
+                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <label>3° Rolling-Forecast</label>
+                                                  </span>
+                                           </div>
+                                      </div>
+                                  </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Capex 2020" leftIcon="ui-icon-edit">
+                                    <div class="ui-g">
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>Valor Aprovado</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>Valor Realizado</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>Avanço Financeiro</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>1° Rolling-Forecast</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>2° Rolling-Forecast</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>3° Rolling-Forecast</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Capex 2021" leftIcon="ui-icon-refresh">
+                                    <div class="ui-g">
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>Valor Aprovado</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>Valor Realizado</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>Avanço Financeiro</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>1° Rolling-Forecast</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>2° Rolling-Forecast</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                        <div class="ui-g-4">
+                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
+                                                    <span class="md-inputfield">
+                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <label>3° Rolling-Forecast</label>
+                                                    </span>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </p-tabPanel>
+                            </p-tabView>
+                          </div>
+                    </div>
+
+                  </div>
+                  <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato do Licenciamento-->
+                <p-accordionTab header="Licenciamentos"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                    
+                    <div class="ui-g">
+                            <div class="card card-w-title" style="width:100%">
+                              <div  div class="ui-g-12">
+                                  <div class="ui-g-3" style="margin-top: 20px;">
+                                      <span class="md-inputfield">
+                                          <input id="input" type="text" size="40" pInputText/>
+                                          <label>Status Geral</label>
+                                      </span>
+                                  </div>
+                                  
+                                  <div class="ui-g-3"></div>
+                                  <div class="ui-g-3"> </div>
+        
+                                  <div class="ui-g-3">
+                                      <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                                          <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                              <b><span class="overview-box-name">Andamento:</span>
+                                              <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                          </div>
+                                      </div>
+                                    </div>
+                              </div>
+        
+                              <div  div class="ui-g-12">
+                                    <br>
+                                    <p-table [columns]="cols3" [value]="licencas" dataKey="numeroLicenca" editMode="row">
+                                        <ng-template pTemplate="caption">
+                                        </ng-template>
+                                        <ng-template pTemplate="header" let-columns>
+                                            <tr> 
+                                                <th *ngFor="let col of columns">
+                                                    {{col.header}}
+                                                </th>
+                                                <th style="width:8em; text-align: center;">
+                                                    <button type="button" icon="ui-icon-add" pButton></button>
+                                                </th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                                            <tr [pEditableRow]="rowData">
+                                                <td *ngFor="let col of columns">
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input" *ngFor="let col of columns">
+                                                        <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                                                    </ng-template>
+                                                  <ng-template pTemplate="output">
+                                                        {{rowData[col.field]}}
+                                                  </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+        
+                                                <td style="text-align:center;">
+                                                    <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInit(rowData)"><i class="material-icons">mode_edit</i></button>
+                                                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                                                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+        
+                              </div>
+        
+                          </div>
+                        </div>
+
+                    <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato do Contratação-->
+                <p-accordionTab header="Contratação"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+
+                    <div class="ui-g">
+
+                            <div class="ui-g-12">
+                                    <div class="card card-w-title" style="width:100%">
+                                        <div class="ui-g">
+                                                <div class="ui-g-6" style="margin-top: 10px;">
+                                                        <span class="md-inputfield" style="margin-top: 10px;">
+                                                            <input id="input" type="text" size="60" pInputText/>
+                                                            <label>Número do Pedido</label>
+                                                        </span>
+                                                      </div>
+                                                      <div class="ui-g-6" style="margin-top: 10px;">
+                                                          <span class="md-inputfield" style="margin-top: 10px;">
+                                                              <input id="input" type="text" size="60" pInputText/>
+                                                              <label>Requisição</label>
+                                                          </span>
+                                                      </div>
+                                    
+                                    <div class="ui-g-3" style="margin-top: 20px;">
+                                        <span class="md-inputfield" style="margin-top: 20px;">
+                                            <input id="input" type="text" size="30" pInputText/>
+                                            <label>Contrato Sistêmico</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3" style="margin-top: 20px;">
+                                        <span class="md-inputfield" style="margin-top: 20px;">
+                                            <input id="input" type="text" size="30" pInputText/>
+                                            <label>Contrato Físico</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3" style="margin-top: 20px;">
+                                        <span class="md-inputfield" style="margin-top: 20px;">
+                                            <input id="input" type="text" size="30" pInputText/>
+                                            <label>Nome da Empresa</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3" style="margin-top: 20px;">
+                                        <span class="md-inputfield" style="margin-top: 20px;">
+                                            <input id="input" type="text" size="30" pInputText/>
+                                            <label>Nome do Responsável</label>
+                                        </span>
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                      
+                        <div div class="ui-g-6">
+                        <div class="card card-w-title">
+                          <div class="ui-g">
+                            
+                            <div class="ui-g-12" style="margin-top: -15px">
+                                <h2>Datas</h2>
+                                <div class="ui-g">
+                                <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;">
+                                    <div class="ui-g-12"><b>Início</b></div>
+                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
+                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
+                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                </div>
+                                <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
+                                    <div class="ui-g-12"><b>Término</b></div>
+                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
+                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
+                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                </div>
+                                <div class="ui-g-6" style="margin-top: 15px;">
+                                        <span class="md-inputfield" style="margin-top: 15px;">
+                                            <input id="input" type="text" size="30" pInputText/>
+                                            <label>Valor Contratado</label>
+                                        </span>
+                                    </div>
+                                <div class="ui-g-6" style="margin-top: 15px;">
+                                    <span class="md-inputfield">
+                                        <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                        <label >Status</label>
+                                    </span>
+                                </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+
+                        </div>
+
+                        <div div class="ui-g-6">
+                          <div class="card card-w-title" style="width:100%">
+                                  <h2>Aditivo</h2>
+                                  <div class="ui-g">
+                                  <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;">
+                                      <div class="ui-g-12"><b>Início</b></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                  </div>
+                                  <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
+                                      <div class="ui-g-12"><b>Término</b></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                  </div>
+                                  <div class="ui-g-12" style="margin-top: 15px;">
+                                    <span class="md-inputfield" style="margin-top: 15px;">
+                                        <input id="input" type="text" size="60" pInputText/>
+                                        <label>Valor Contratado</label>
+                                    </span>
+                                  </div>
+                                </div>
+                          </div>
+                        </div>
+
+                        <div  div class="ui-g-12" >
+                                <div class="card card-w-title" style="width:100%">
+                                    <h2>Escopo</h2>
+                                    <textarea  style="width: 100%; padding-bottom: 18px" pInputTextarea  autoResize="autoResize"></textarea>
+                                </div>
+                             </div>
+                        
+                    </div>
+
+                    <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato da Obra-->
+                <p-accordionTab header="Engenharia(Obra)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                    <div class="ui-g">
+                        <div class="card card-w-title" style="width:100%">
+                            <div  div class="ui-g-12">
+                                    <div class="ui-g-3" style="margin-top: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" type="text" size="35" pInputText/>
+                                            <label>Avanço Físico</label>
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="ui-g-3"></div>
+
+                                    <div class="ui-g-3" style="margin-top: 5px;">
+                                        <span class="md-inputfield">
+                                            <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
+                                            <label >Status</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3">
+                                        <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                                            <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                                <b><span class="overview-box-name">Andamento:</span>
+                                                <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-4">
+                            <div class="card card-w-title" style="width:100%">
+                                <h2>Previsto</h2>
+                                <div class="ui-g">
+                                    <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                        <span class="md-inputfield">
+                                            <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                            <label >Início</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Término</label>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="ui-g-4">
+                            <div class="card card-w-title" style="width:100%">
+                                <h2>Replanejado</h2>
+                                <div class="ui-g">
+                                    <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                        <span class="md-inputfield">
+                                            <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                            <label >Início</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Término</label>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="ui-g-4">
+                            <div class="card card-w-title" style="width:100%">
+                                <h2>Realizado</h2>
+                                <div class="ui-g">
+                                    <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                        <span class="md-inputfield">
+                                            <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                            <label >Início</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Término</label>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato do Comissionamento-->
+                <p-accordionTab header="Comissionamento"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                    <div class="ui-g">
+                            <div class="card card-w-title" style="width:100%">
+                                <div  div class="ui-g-12">
+                                        <div class="ui-g-3" style="margin-top: 20px;">
+                                            <span class="md-inputfield">
+                                                <input id="input" type="text" size="35" pInputText/>
+                                                <label>Avanço Físico</label>
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="ui-g-3"></div>
+    
+                                        <div class="ui-g-3" style="margin-top: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
+                                                <label >Status</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-3">
+                                            <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                                                <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                                    <b><span class="overview-box-name">Andamento:</span>
+                                                    <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+    
+                            <div class="ui-g-4">
+                                <div class="card card-w-title" style="width:100%">
+                                    <h2>Previsto</h2>
+                                    <div class="ui-g">
+                                        <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Início</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                                <span class="md-inputfield">
+                                                    <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                    <label >Término</label>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div class="ui-g-4">
+                                <div class="card card-w-title" style="width:100%">
+                                    <h2>Replanejado</h2>
+                                    <div class="ui-g">
+                                        <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Início</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                                <span class="md-inputfield">
+                                                    <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                    <label >Término</label>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="ui-g-4">
+                                <div class="card card-w-title" style="width:100%">
+                                    <h2>Realizado</h2>
+                                    <div class="ui-g">
+                                        <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Início</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
+                                                <span class="md-inputfield">
+                                                    <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                    <label >Término</label>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div><app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato da Comprovação-->
+                <p-accordionTab header="Comprovação"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                    <div class="ui-g">
+                            <div class="card card-w-title" style="width:100%">
+                                <div  div class="ui-g-12">
+                                        <div class="ui-g-8" style="margin-top: 20px;">
+                                            <span class="md-inputfield">
+                                                <input id="input" type="text" size="60" pInputText/>
+                                                <label>Número do Processo</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-4" style="margin-top: 5px;">
+                                            <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                                                <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                                    <b><span class="overview-box-name">Andamento:</span>
+                                                    <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ui-g-3" style="margin-top: 20px;">
+                                            <span class="md-inputfield">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Data Envio</label>
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="ui-g-3">
+                                            <span class="md-inputfield"  style="margin-top: 20px;">
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <label >Data Retorno</label>
+                                            </span>
+                                        </div>
+    
+                                        <div class="ui-g-3" style="margin-top: 5px;">
+                                            <span class="md-inputfield">
+                                                <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
+                                                <label >Status</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-3">
+                                            <span class="md-inputfield" style="margin-top: 20px;">
+                                                <input id="input" type="text" size="30" pInputText/>
+                                                <label>Valor Comprovado</label>
+                                            </span>
+                                        </div>
+                                </div>
+                            </div>
+                            
+                             
+                            <div class="card"  style="width:100%">
+                                <div class="ui-g-12">
+                                    <h2>Arquivos de Comprovação</h2>
+                                    <p-growl [value]="msgs"></p-growl>
+                                                
+                                    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" 
+                                        multiple="multiple" accept="image/*" maxFileSize="1000000"
+                                        chooseLabel="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar"> 
+                                        <ng-template pTemplate="content">
+                                            <ul *ngIf="uploadedFiles.length">
+                                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                            </ul>
+                                        </ng-template>    
+                                    </p-fileUpload>
+                                </div>
+                            </div>
+                            </div>
+                            <app-pagestories></app-pagestories>
+                </p-accordionTab>
+
+                <!--Aqui trato das Lições Aprendidas-->
+                <p-accordionTab header="Lições Aprendidas">
+                    <div class="ui-g">
+                        <div class="card card-w-title" style="width:100%">
+                            <div  div class="ui-g-12">
+                                <h2>Planejado x Realizado</h2>
+                                <div style="font-size: 10px; margin-top: -25px">[Responda as questões e comente os pontos mais relevantes]</div>
+                                <div class="ui-g" style="margin-top: 15px;">
+                                    <div class="ui-g-3">
+                                        <span class="md-inputfield">
+                                            <input id="input" type="text" size="35" pInputText/>
+                                            <label>Os objetivos foram atingidos?</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3">
+                                        <span class="md-inputfield">
+                                            <input id="input" type="text" size="35" pInputText/>
+                                            <label>Projeto foi entregue no prazo?</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3">
+                                        <span class="md-inputfield">
+                                            <input id="input" type="text" size="35" pInputText/>
+                                            <label>No orçamento?</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-3">
+                                        <span class="md-inputfield">
+                                            <input id="input" type="text" size="35" pInputText/>
+                                            <label>Atendeu o escopo?</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h2>Processos de gerenciamento de projeto</h2>
+                                <div style="font-size: 10px; margin-top: -25px">[Comente os pontos mais relevantes]</div>
+
+                                
+                                <h4>Pontos fortes</h4>
+                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+                                <h4>Pontos fracos</h4>
+                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+
+                                <h2>Questões do projeto</h2>
+                                <div style="font-size: 10px; margin-top: -25px">[Comente os pontos mais relevantes]</div>
+                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+
+                                <h2>Recomendações a serem adotadas para os próximos projetos</h2>
+                                <div style="font-size: 10px; margin-top: -25px">[Indique as recomendações e as lições serem aprendidas mais relevantes]</div>
+                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+                                
+                            </div>
+                        </div>
+                    </div>
+                <app-pagestories></app-pagestories>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+
+    </div>
+</div>      

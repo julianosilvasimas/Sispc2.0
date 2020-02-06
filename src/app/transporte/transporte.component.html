@@ -1,0 +1,15 @@
+
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
+    <div *ngIf="activeItemIndex==0">
+      <app-dashboards></app-dashboards>
+    </div>
+    <div *ngIf="activeItemIndex==1">
+      <app-agendamentos></app-agendamentos>
+    </div>
+    <div *ngIf="activeItemIndex==2">
+      <app-cadastro></app-cadastro>
+    </div>
+  </div>
+</div>

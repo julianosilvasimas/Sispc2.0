@@ -1,0 +1,32 @@
+export interface Veiculo{
+    veiculoId: string,
+    datCad: string,
+    placa: string,
+    chassi:string,
+    modelo: string,
+    capacidadem3: string,
+    responsavel: string,
+    tipoVeiculo: string,
+    gerencia: string,
+    gps: boolean,
+    devolvido: boolean,
+    supervisao: string,
+    locadora: string,
+    pool: boolean,
+    oficina: boolean
+}
+export interface Agendamento{
+    agendamentoId: number,
+    solicitante: string,
+    qtdPessoas: number,
+    agendadoate: string,
+    tipoVeiculo: string,
+    agendadode:string,
+    placa:string,
+    aprovador: string,
+    aprovacao: number,
+    justificativa: string,
+    destino: string,
+    condutor: string,
+    dataAgendamento: string,
+}

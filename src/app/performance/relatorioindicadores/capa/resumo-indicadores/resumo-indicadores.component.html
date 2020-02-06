@@ -1,0 +1,26 @@
+<div class="ui-g" >
+  <div class="ui-g-2 gridRel">
+    {{ this.element.classificacao }}
+  </div>
+  <div class="ui-g-4 gridRel">
+    {{ this.element.indicador }}
+  </div>
+  <div class="ui-g-1 gridRel">
+    {{ this.RotuloOrcadoAcum }}
+  </div>
+  <div class="ui-g-1 gridRel" [style.color]="this.Cora" >
+    {{ this.RotuloRealizAcum }}
+  </div>
+  <div class="ui-g-1 gridRel" [style.color]="this.Cora">
+    {{ this.RotuloDiferencaPerc }}
+  </div>
+  <div class="ui-g-1 gridRel" [style.color]="this.Cora" >
+    {{ this.RotuloDiferencaAcum }}
+  </div>
+  <div class="ui-g-1 gridRel">
+    {{ this.RotuloPrevisaoMensal}}
+  </div>
+  <div class="ui-g-1 gridRel">
+    {{ this.RotuloOrcadoMensal}}
+  </div>
+</div>

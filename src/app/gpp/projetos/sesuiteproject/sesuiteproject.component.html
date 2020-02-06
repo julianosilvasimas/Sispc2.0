@@ -1,0 +1,968 @@
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
+    <h4>Descrição</h4>
+  <div class="ui-g">
+      <div class="ui-g-4">
+          <div  style="margin-top: 20px; margin-bottom: 50px;">
+              <span class="md-inputfield">
+                  <input id="input" type="text" size="40px" pInputText/>
+                  <label>ID do Projeto(Cognos)</label>
+              </span>
+       </div>
+      </div>
+      <div class="ui-g-8">
+          <div  style="margin-top: 20px; margin-bottom: 50px;">
+              <span class="md-inputfield">
+                  <input id="input" type="text" size="100%" pInputText/>
+                  <label>Nome do Projeto</label>
+              </span>
+       </div>
+      </div>
+      <div class="ui-g-12">
+          <div  style="margin-top: 20px; margin-bottom: 50px; width:100%;">
+              <span class="md-inputfield">
+                  <input id="input" type="text" size="100%" value="PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto" pInputText/>
+                  <label>Unidade</label>
+              </span>
+       </div>
+      </div>
+      <div class="ui-g-12">
+          <div  style="margin-top: 20px; margin-bottom: 50px; width:100%;">
+              <span class="md-inputfield">
+                  <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                  <label>Descrição do Escopo</label>
+              </span>
+       </div>
+      </div>
+      <div class="ui-g-12">
+          <div  style="margin-top: 20px; margin-bottom: 50px; width:100%;">
+              <span class="md-inputfield">
+                  <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                  <label>Justificativa para execução do projeto</label>
+              </span>
+       </div>
+      </div>
+      <div class="ui-g-12">
+          <div  style="margin-top: 20px; margin-bottom: 50px; width:100%;">
+              <span class="md-inputfield">
+                  <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                  <label>Premissas</label>
+              </span>
+       </div>
+      </div>
+      <div class="ui-g-12">
+      <div class="ui-g-4">
+          <p-dropdown [options]="[
+              {label:'Nível do Projeto de engenharia', value:null},
+              {label:'Projeto executivo em andamento', value:{id:1, name: 'New York', code: 'NY'}},
+              {label:'Projeto executivo finalizado', value:{id:2, name: 'Rome', code: 'RM'}},
+              {label:'Projeto não se faz necessário', value:{id:3, name: 'London', code: 'LDN'}},
+              {label:'Projeto necessário, ainda não iniciado', value:{id:4, name: 'Istanbul', code: 'IST'}}
+            ]"  
+            [(ngModel)]="selectedCity1">
+          </p-dropdown>
+       </div>
+       <div class="ui-g-4">
+          <p-dropdown [options]="[
+              {label:'Responsável pela execução do Projeto', value:null},
+              {label:'EficiÊncia e Tecnologia (G)', value:{id:1, name: 'New York', code: 'G'}},
+              {label:'Engenharia (O)', value:{id:2, name: 'Rome', code: 'O'}},
+              {label:'Holding (H)', value:{id:3, name: 'London', code: 'H'}},
+              {label:'Projetos de Engenharia (P)', value:{id:4, name: 'Istanbul', code: 'P'}},
+              {label:'Unidade (U)', value:{id:5, name: 'Istanbul', code: 'U'}}
+            ]" 
+            [(ngModel)]="selectedCity2">
+          </p-dropdown>
+       </div>
+       <div class="ui-g-4">
+          <div  style="margin-top: 5px; margin-bottom: 50px;">
+              <span class="md-inputfield">
+                  <input id="input" type="text" size="40px" pInputText  value="Vitor Heser Rosa"/>
+                  <label>Responsável pelo preenchimento</label>
+              </span>
+       </div>
+       </div>
+      </div>
+       
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <div  style="margin-top: 5px; margin-bottom: 50px;">
+                  <span class="md-inputfield">
+                      <input id="input" type="text" size="30px" pInputText  value="PRO.ENG"/>
+                      <label>Área</label>
+                  </span>
+           </div>
+          </div>
+           <div class="ui-g-4">
+              <div  style="margin-top: 5px; margin-bottom: 50px;">
+                  <span class="md-inputfield">
+                      <input id="input" type="text" size="30px" pInputText  value="vitor.heser@prolagos.com.br"/>
+                      <label>E-mail</label>
+                  </span>
+           </div>
+           </div>
+           <div class="ui-g-4">
+              <div  style="margin-top: 5px; margin-bottom: 50px;">
+                  <span class="md-inputfield">
+                      <input id="input" type="text" size="30px" pInputText  value="(22)26215539"/>
+                      <label>Telefone de contato</label>
+                  </span>
+           </div>
+           </div>
+          </div>
+
+          <div class="card card-w-title" style="width:100%">
+              <h5>O objetivo desse projeto pode ser atingido independentemente da realização de outro(s) projeto(s) ainda não aprovado(s)? (Requerido)</h5>
+              <div class="ui-g">
+                  <div class="ui-g-12 ui-md-2"><p-radioButton name="rg" value=true label="Sim" [(ngModel)]="radioValue2"></p-radioButton></div>
+                  <div class="ui-g-12 ui-md-2"><p-radioButton name="rg" value= false label="Não" [(ngModel)]="radioValue2"></p-radioButton></div>
+                  <div class="ui-g-12 ui-md-8"  *ngIf="radioValue2" >
+                      <div  style="margin-bottom: 10px;">     
+                          <span class="md-inputfield">
+                              <input id="input" type="text" size="70px" pInputText  />
+                              <label>Qual é o projeto do qual esse depende? (Projeto Cognos)</label>
+                          </span>
+                   </div>
+                  </div>
+              </div>
+          </div>
+          <div class="ui-g-6">
+              <div class="card card-w-title" style="width:100%">
+                  <h5>Esse projeto já teve algum investimento realizado? (Requerido)</h5>
+                  <div class="ui-g">
+                      <div class="ui-g-12 ui-md-2"><p-radioButton name="rgi" value=true label="Sim" [(ngModel)]="radioValue"></p-radioButton></div>
+                      <div class="ui-g-12 ui-md-2"><p-radioButton name="rgi" value= false label="Não" [(ngModel)]="radioValue"></p-radioButton></div>
+                      <div class="ui-g-12 ui-md-8"  *ngIf="radioValue2" >
+                          <div>     
+                              <span class="md-inputfield">
+                                  <input id="input" type="text" size="30px" pInputText  />
+                                  <label>R$</label>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="ui-g-6">
+              <div class="card card-w-title" style="width:100%">
+                  <h5>Para os serviços que o projeto envolve diretamente:</h5>
+                  <div class="ui-g">
+                      <div class="ui-g-12 ui-md-4"><p-radioButton name="rgc" value=1 label="Água" [(ngModel)]="radioValue3"></p-radioButton></div>
+                      <div class="ui-g-12 ui-md-4"><p-radioButton name="rgc" value= 2 label="Esgoto" [(ngModel)]="radioValue3"></p-radioButton></div>
+                      <div class="ui-g-12 ui-md-4"><p-radioButton name="rgc" value= 3 label="Outros" [(ngModel)]="radioValue3"></p-radioButton></div>
+                      
+                  </div>
+              </div>
+          </div>
+          <!--Seleção de Cesta-->
+          <div class="card card-w-title" style="width:100%">
+              <h2>Seleção de Cesta</h2>
+              <div class="ui-g">
+                  <div class="ui-g-8" >
+                      <div class="item" >
+                          <span class="md-inputfield">
+                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                {label:'', value:null},
+                                {label:'Estudo (ex: estudo preliminar PMI, MIP, Due Dilligence para M&A, etc.)', value:{id:1, name: 'New York', code: 't'}},
+                                {label:'Novo negócio maduro (pagamento de outorga, licitação, pagamento de M&A, etc.)', value:{id:2, name: 'Rome', code: 'v'}},
+                                {label:'Outro tipo de projeto (PGVs, Contratual, Risco Operacional, GSS, LVE, etc.)', value:{id:3, name: 'London', code: 'a'}}
+                              ]" 
+                           [(ngModel)]="selectedCity3"></p-dropdown>
+                          <label >Tipo de Projeto</label>
+                          </span>
+                        </div>
+                   </div>
+                <div class="ui-g-4"style="margin-top:-50px; position:relative">
+                    <h5>O projeto está diretamente associado ao "core business" da empresa?</h5>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value=1 label="Sim" [(ngModel)]="radioValue4"></p-radioButton></div>
+                        <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value= 2 label="Não" [(ngModel)]="radioValue4"></p-radioButton></div>
+                        
+                    </div>
+                </div>
+              </div>
+          </div>
+          </div>
+
+          <div class="card card-w-title" style="width:100%">
+              <div class="ui-g" style="margin-top:20px">
+                  <div class="ui-g-4"style="margin-top:-38px;margin-bottom:20px; position:relative">
+                      <h5>O projeto é associado a um negócio existente da AEGEA?</h5>
+                      <div class="ui-g">
+                          <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value=1 label="Sim" [(ngModel)]="radioValue4"></p-radioButton></div>
+                          <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value= 2 label="Não" [(ngModel)]="radioValue4"></p-radioButton></div>
+                          
+                      </div>
+                  </div>
+                  <div class="ui-g-8" >
+                      <div class="item" >
+                          <span class="md-inputfield">
+                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                              {label:'', value:null},
+                              {label:'Continuidade operacional', value:{id:4, name: 'New York', code: 't'}},
+                              {label:'Incremento de retorno existente (não contratual)', value:{id:5, name: 'Rome', code: 'v'}},
+                              {label:'Institucional regulatório/contratual e compliance', value:{id:6, name: 'London', code: 'a'}}
+                            ]" 
+                            [(ngModel)]="selectedCity3"></p-dropdown>
+                          <label >Qual é a principal motivação (quando existir mais de uma) para se solicitar o projeto?</label>
+                          </span>
+                        </div>
+                  </div>
+                  
+                  <div class="ui-g-4"style="margin-top:-38px; position:relative">
+                      <h5>O projeto ajuda, contribui, facilita, habilita ou melhora as operações atuais da empresa?</h5>
+                      <div class="ui-g">
+                          <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value=1 label="Sim" [(ngModel)]="radioValue4"></p-radioButton></div>
+                          <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value= 2 label="Não" [(ngModel)]="radioValue4"></p-radioButton></div>
+                          
+                      </div>
+                  </div>
+                  <div class="ui-g-8" >
+                      <div class="item" >
+                          <span class="md-inputfield">
+                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                              {label:'', value:null},
+                              {label:'Oportunidades em desenvolvimento', value:{id:4, name: 'New York', code: 't'}},
+                              {label:'Oportunidades maduras', value:{id:5, name: 'Rome', code: 'v'}}
+                            ]" 
+                            [(ngModel)]="selectedCity4"></p-dropdown>
+                          <label style="padding-bottom: 20px">Existe um "projeto" claramente delineado, com maturidade suficiente para se realizar uma análise financeira e de impactos para a empresa?</label>
+                          </span>
+                        </div>
+                  </div>
+                 </div>
+
+                  <div class="card" style="width:100%">
+                      <p-accordion [multiple]="false" (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
+                        <!--Direcionamento Estratégico-->
+                          <p-accordionTab header="Direcionamento Estratégico" [selected]="false"><br>
+                            <p-fieldset legend="Água" [toggleable]="true">
+                                <div class="ui-g">
+                                    <div class="ui-g-6" >
+                                        <div class="item" >
+                                            <span class="md-inputfield">
+                                                <input id="input" type="text" size="60px" pInputText  />
+                                            <label >3. Número de economias de água impactadas pelo projeto</label>
+                                            </span>
+                                          </div>
+                                    </div>
+                                    
+                                    <div class="ui-g-6"style="margin-top:-38px; position:relative">
+                                        <h5>4. O projeto impacta todas as economias de água da AEGEA?</h5>
+                                        <div class="ui-g">
+                                            <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value=1 label="Sim" [(ngModel)]="radioValue4"></p-radioButton></div>
+                                            <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value= 2 label="Não" [(ngModel)]="radioValue4"></p-radioButton></div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="position:relative;margin-top: -20px;">
+                                <h6>(OBS: A depender do seu escopo, um projeto pode impactar indiretamente todas as economias de água da AEGEA - ex: SAP - ou apenas parte delas - ex: troca de maquinário em uma unidade operacional específica)</h6>
+                                </div>
+                              </p-fieldset>
+                            <p-fieldset legend="Esgoto" [toggleable]="true">
+                                <div class="ui-g">
+                                    <div class="ui-g-6" >
+                                        <div class="item" >
+                                            <span class="md-inputfield">
+                                                <input id="input" type="text" size="60px" pInputText  />
+                                            <label >5. Número de economias de esgoto impactadas pelo projeto</label>
+                                            </span>
+                                          </div>
+                                    </div>
+                                    
+                                    <div class="ui-g-6"style="margin-top:-38px; position:relative">
+                                        <h5>6. O projeto impacta todas as economias de esgoto da AEGEA?</h5>
+                                        <div class="ui-g">
+                                            <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value=1 label="Sim" [(ngModel)]="radioValue4"></p-radioButton></div>
+                                            <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value= 2 label="Não" [(ngModel)]="radioValue4"></p-radioButton></div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="position:relative;margin-top: -20px;">
+                                  <h6>(OBS: A depender do seu escopo, um projeto pode impactar indiretamente todas as economias de água da AEGEA - ex: SAP - ou apenas parte delas - ex: troca de maquinário em uma unidade operacional específica)</h6>
+                                </div>
+                                
+                              </p-fieldset>
+                              <div class="ui-g" style= "margin-top:20px;">
+                              <div  class="ui-g-6">
+                                  <div class="item" >
+                                      <span class="md-inputfield">
+                                          <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                          {label:'', value:null},
+                                          {label:'1.Baixa - sociedade/governo pouco acostumados com qualquer atuação da iniciativa privada em serviços públicos', value:{id:6, name: 'New York', code: 'a'}},
+                                          {label:'2.Média - Sociedade/governo aceitam iniciativa privada em saneamento com alguns debates/discussões', value:{id:7, name: 'Rome', code: 'b'}},
+                                          {label:'3.Alta -  sociedade/governo acostumados com iniciativa privada em saneamento - solução conhecida/aceita', value:{id:8, name: 'Rome', code: 'c'}},
+                                          {label:'4.Projeto da matriz, LVE ou GSS [a maturidade do ambiente de negócios não interfere]', value:{id:9, name: 'Rome', code: 'd'}}
+                                        ]" 
+                                        [(ngModel)]="selectedCity5"></p-dropdown>
+                                      <label style="padding-bottom: 20px">7. Classifique a maturidade do ambiente de negócios na localidade aplicável para o projeto</label>
+                                      </span>
+                                    </div>
+                              </div>
+                              <div  class="ui-g-6">
+                                  <div class="item" >
+                                      <span class="md-inputfield">
+                                          <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                          {label:'', value:null},
+                                          {label:'1.O projeto envolve mais de uma unidade, com diferentes mercados de atuação', value:{id:10, name: 'New York', code: 'e'}},
+                                          {label:'2.Estadual público', value:{id:11, name: 'Rome', code: 'f'}},
+                                          {label:'3.Municipal público', value:{id:12, name: 'Rome', code: 'g'}},
+                                          {label:'4.Privado (qualquer instância)', value:{id:13, name: 'Rome', code: 'h'}},
+                                          {label:'5.O projeto não é de nenhuma das SPEs (projeto é da matriz, LVE, GSS, etc.)', value:{id:14, name: 'Rome', code: 'i'}},
+                                          {label:'6.O projeto refere-se a um novo negócio cujo modelo de atuação ainda não está definido', value:{id:15, name: 'Rome', code: 'j'}}
+                                        ]" 
+                                        [(ngModel)]="selectedCity6"></p-dropdown>
+                                      <label style="padding-bottom: 20px">8. Qual é o modelo do mercado de atuação do contexto do projeto?</label>
+                                      </span>
+                                    </div>
+                              </div>
+
+                              <div  class="ui-g-6" style= "margin-top:20px;">
+                                  <div class="item" >
+                                      <span class="md-inputfield">
+                                          <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                          {label:'', value:null},
+                                          {label:'1.Não promove diferencial competitivo (replicação de práticas existentes)', value:{id:16, name: 'New York', code: 'k'}},
+                                          {label:'2.Gera diferencial competitivo para uma operação', value:{id:17, name: 'Rome', code: 'l'}},
+                                          {label:'3.Gera diferencial competitivo para mais de uma operação', value:{id:18, name: 'Rome', code: 'm'}},
+                                          {label:'4.Gera diferencial competitivo para toda a AEGEA', value:{id:19, name: 'Rome', code: 'n'}}
+                                        ]" 
+                                        [(ngModel)]="selectedCity7"></p-dropdown>
+                                      <label style="padding-bottom: 20px">9. Qual é o diferencial competitivo aportado pelo projeto?</label>
+                                      </span>
+                                    </div>
+                              </div>
+                              <div  class="ui-g-6"style= "margin-top:20px;">
+                                  <div class="item" >
+                                      <span class="md-inputfield">
+                                          <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                          {label:'', value:null},
+                                          {label:'1.O projeto envolve mais de uma unidade, com diferentes modelos de concessão', value:{id:20, name: 'New York', code: 'o'}},
+                                          {label:'2.Modelo asset light ou de locação de ativos', value:{id:21, name: 'Rome', code: 'p'}},
+                                          {label:'3.PPP', value:{id:22, name: 'Rome', code: 'q'}},
+                                          {label:'4.Concessão/Subconcessão', value:{id:23, name: 'Rome', code: 'r'}},
+                                          {label:'5.O projeto não é de nenhuma das SPEs (projeto é da matriz, LVE, GSS, etc.)', value:{id:24, name: 'Rome', code: 's'}}
+                                        ]" 
+                                        [(ngModel)]="selectedCity8"></p-dropdown>
+                                      <label style="padding-bottom: 20px">10. Qual é o modelo de concessão do contexto do projeto?</label>
+                                      </span>
+                                    </div>
+                              </div>
+
+                              <div  class="ui-g-6" style= "margin-top:20px;">
+                                  <div class="item" >
+                                      <span class="md-inputfield">
+                                          <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                          {label:'', value:null},
+                                          {label:'2.Tem efeito nulo sobre sinergias', value:{id:25, name: 'New York', code: 'k'}},
+                                          {label:'4.Traz ganhos de sinergia entre algumas unidades operacionais', value:{id:26, name: 'Rome', code: 'l'}},
+                                          {label:'5.Traz ganhos de sinergia para toda a AEGEA', value:{id:27, name: 'Rome', code: 'm'}}
+                                        ]" 
+                                        [(ngModel)]="selectedCity9"></p-dropdown>
+                                      <label style="padding-bottom: 20px">11. O projeto tem sinergia com os demais negócios da AEGEA?</label>
+                                      </span>
+                                    </div>
+                              </div>
+                              <div  class="ui-g-6"style= "margin-top:20px;">
+                                  <div class="item" >
+                                      <span class="md-inputfield">
+                                          <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                          {label:'', value:null},
+                                          {label:'1.O projeto é de uma SPE mas não tem impacto em ticket', value:{id:20, name: 'New York', code: 'o'}},
+                                          {label:'2.Projeto tem potencial de aumentar ticket médio em até 10% do valor atual', value:{id:21, name: 'Rome', code: 'p'}},
+                                          {label:'3.Projeto tem potencial de aumentar ticket médio de 10% a 25% do valor atual', value:{id:22, name: 'Rome', code: 'q'}},
+                                          {label:'4.Projeto tem potencial de aumentar ticket médio acima de 25% do valor atual', value:{id:23, name: 'Rome', code: 'r'}},
+                                          {label:'5.O projeto não é de nenhuma das SPEs (projeto é da matriz, LVE, GSS, etc.)', value:{id:24, name: 'Rome', code: 's'}}
+                                        ]" 
+                                        [(ngModel)]="selectedCity10"></p-dropdown>
+                                      <label style="padding-bottom: 20px">12. Qual o potencial de amadurecimento da região?</label>
+                                      </span>
+                                    </div>
+                              </div>
+                              
+                            </div>
+
+                          </p-accordionTab>
+
+                          <!--Risco Contratual-->
+                          <p-accordionTab header="Risco Contratual" [selected]="false"><br>
+                            <div class="ui-g">
+                                <div  class="ui-g-6" style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Não', value:{id:16, name: 'New York', code: 'k'}},
+                                            {label:'2.Sim, mas há anos que não ocorre fiscalização do aspecto endereçado pelo projeto', value:{id:17, name: 'Rome', code: 'l'}},
+                                            {label:'3.Sim, mas a fiscalização do aspecto endereçado pelo projeto pode não ocorrer em 12 meses', value:{id:18, name: 'Rome', code: 'm'}},
+                                            {label:'4.Sim, e é praticamente certo que eventual descumprimento seria constatado em até 12 meses', value:{id:19, name: 'Rome', code: 'n'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity7"></p-dropdown>
+                                        <label style="padding-bottom: 20px">
+                                            1. O projeto visa cumprimento de cláusula contratual ou determinação de ACP, ação popular, ação administrativa, regulamentação ou norma?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-6"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'% de Cobertura', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'% de Perdas', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'Ação pública (TAC, Notificação ou Atuação)', value:{id:22, name: 'Rome', code: 'q'}},
+                                            {label:'Não se Aplica (Resposta [Não] da Pergunta 1)', value:{id:23, name: 'Rome', code: 'r'}},
+                                            {label:'Outras Metas', value:{id:24, name: 'Rome', code: 's'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity8"></p-dropdown>
+                                        <label style="padding-bottom: 20px">2 . Selecionar o tipo de meta atendida</label>
+                                        </span>
+                                      </div>
+                                </div>
+  
+                                <div  class="ui-g-6" style= "margin-top:20px;">
+                                    <div>     
+                                        <span class="md-inputfield">
+                                            <input id="input" type="text" size="68px" pInputText  />
+                                            <label>3. Especificar meta atingida:</label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div  class="ui-g-6"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Nenhuma (ou o projeto não está no âmbito de uma operação específica)', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'2.Um relevante ou algumas pouco relevantes', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'3.Mais de um relevante ou várias muito frequentes', value:{id:22, name: 'Rome', code: 'q'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity10"></p-dropdown>
+                                        <label style="padding-bottom: 20px">4. Houve alguma penalidade ou notificação para o objeto deste projeto nos últimos 12 meses?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div class="ui-g-12">
+                                <p-fieldset legend="5. Qual é a penalidade/advertência aplicável para a não realização do projeto?" [toggleable]="true">
+                                  <div  class="ui-g-6" style= "margin-top:20px;">
+                                      <div class="item" >
+                                          <span class="md-inputfield">
+                                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                              {label:'', value:null},
+                                              {label:'1.Inexiste qualquer penalidade/advertência', value:{id:16, name: 'New York', code: 'k'}},
+                                              {label: '2.Advertência', value:{id:17, name: 'Rome', code: 'l'}},
+                                              {label:'3.Possibilidade de multa (até 2% do EBITDA da operação)', value:{id:18, name: 'Rome', code: 'm'}},
+                                              {label:'4.Possibilidade de multa (2% a 5% do EBITDA da operação)', value:{id:19, name: 'Rome', code: 'n'}},
+                                              {label:'5.Possibilidade de multa (acima de 5% do EBITDA da operação)', value:{id:19, name: 'Rome', code: 'n'}},
+                                              {label:'6.Possibilidade de intervenção da operação', value:{id:19, name: 'Rome', code: 'n'}},
+                                              {label:'7.Potencial caducidade do contrato', value:{id:19, name: 'Rome', code: 'n'}}
+                                            ]" 
+                                            [(ngModel)]="selectedCity14"></p-dropdown>
+                                          <label style="padding-bottom: 20px">
+                                            Penalidade</label>
+                                          </span>
+                                        </div>
+                                  </div>
+                                  <div  class="ui-g-6"style= "margin-top:20px;">
+                                      <div class="item" >
+                                          <span class="md-inputfield">
+                                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                              {label:'', value:null},
+                                              {label:'1.Inexiste qualquer penalidade/advertência', value:{id:20, name: 'New York', code: 'o'}},
+                                              {label:'2.Chance baixa de que o evento ocorra em 12 meses', value:{id:21, name: 'Rome', code: 'p'}},
+                                              {label:'3.É mais provável que o evento ocorra do que não ocorra em 12 meses', value:{id:22, name: 'Rome', code: 'q'}}
+                                            ]" 
+                                            [(ngModel)]="selectedCity15"></p-dropdown>
+                                          <label style="padding-bottom: 20px">Probabilidade</label>
+                                          </span>
+                                        </div>
+                                  </div>
+
+                                  </p-fieldset>
+                                  <div  class="ui-g-6" style= "margin-top:20px;">
+                                      <div class="item" >
+                                          <span class="md-inputfield">
+                                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                              {label:'', value:null},
+                                              {label:'1.Postergável por mais de 12 meses, sem atritos', value:{id:16, name: 'New York', code: 'k'}},
+                                              {label:'2.Postergável por, no máximo, 12 meses', value:{id:17, name: 'Rome', code: 'l'}},
+                                              {label:'3.Sem margem para postergação', value:{id:18, name: 'Rome', code: 'm'}}
+                                            ]" 
+                                            [(ngModel)]="selectedCity16"></p-dropdown>
+                                          <label style="padding-bottom: 20px">
+                                              7. O projeto pode ser postergado (sob o aspecto contratual)?</label>
+                                          </span>
+                                        </div>
+                                  </div>
+                                  <div  class="ui-g-6"style= "margin-top:20px;">
+                                      <div class="item" >
+                                          <span class="md-inputfield">
+                                              <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                              {label:'', value:null},
+                                              {label:'1.Nenhum, pois o projeto não é de nenhuma das SPEs (projeto é da matriz, LVE, GSS, etc.)', value:{id:20, name: 'New York', code: 'o'}},
+                                              {label:'2.O poder concedente está no 2o. ou 3o. ano de mandato em todas as localidades afetadas', value:{id:21, name: 'Rome', code: 'p'}},
+                                              {label:'3.O poder concedente está no 1o. ou 4o. ano de mandato em ao menos uma das localidades afetadas', value:{id:22, name: 'Rome', code: 'q'}}
+                                            ]" 
+                                            [(ngModel)]="selectedCity17"></p-dropdown>
+                                          <label style="padding-bottom: 20px">8. Qual o impacto do calendário politico da região sobre o projeto?</label>
+                                          </span>
+                                        </div>
+                                  </div>
+                                </div>
+
+                            </div>
+                          </p-accordionTab>
+
+                          <!--Licença Social-->
+                          <p-accordionTab header="Licença Social" [selected]="false"><br>
+                            <div class="ui-g">
+                                <div  class="ui-g-6" style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Impacto social negativo/prejudica [goodwill]', value:{id:16, name: 'New York', code: 'k'}},
+                                            {label:'2.Impacto social nulo', value:{id:17, name: 'Rome', code: 'l'}},
+                                            {label:'3.Impacto social positivo, com repercussão local', value:{id:18, name: 'Rome', code: 'm'}},
+                                            {label:'4.Impacto social positivo, com repercussão nacional', value:{id:19, name: 'Rome', code: 'n'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity18"></p-dropdown>
+                                        <label style="padding-bottom: 20px">
+                                            1. O projeto tem algum tipo de impacto social ("goodwill")?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-6"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.O projeto não é de nenhuma das SPEs (projeto é da matriz, LVE, GSS, etc.)', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'2.Bom relacionamento (bom acesso, reclamações não relevantes, etc.)', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'3.Relacionamento médio, sem desgaste (algum diálogo, reclamações de baixa relevância, etc.) ', value:{id:22, name: 'Rome', code: 'q'}},
+                                            {label:'4.Relacionamento ruim, com desgaste (pouco diálogo, reclamações, etc.)', value:{id:23, name: 'Rome', code: 'r'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity19"></p-dropdown>
+                                        <label style="padding-bottom: 20px">2. Nível de relacionamento com poder político pertinente ao projeto</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-12"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.O projeto não é de nenhuma das SPEs (projeto é da matriz, LVE, GSS, etc.)', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'2.Sociedade tem demonstrado percepção positiva do serviço prestado', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'3.A população se mostra indiferente ao serviço prestado', value:{id:22, name: 'Rome', code: 'q'}},
+                                            {label:'4.A sociedade se mostra insatisfeita com o serviço prestado', value:{id:23, name: 'Rome', code: 'r'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity20"></p-dropdown>
+                                        <label style="padding-bottom: 20px">3.Nível de relacionamento com sociedade nos últimos 2 anos</label>
+                                        </span>
+                                      </div>
+                                </div>
+
+                                <div class="ui-g-12">
+                                <p-fieldset legend="4. Existe algum risco com impacto em imagem, reputação etc. em não realizar o projeto?" [toggleable]="true">
+                                    <div  class="ui-g-6" style= "margin-top:20px;">
+                                        <div class="item" >
+                                            <span class="md-inputfield">
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'1.Não projeto não endereça riscos de reputação', value:{id:16, name: 'New York', code: 'k'}},
+                                                {label: '2.Não realizar o projeto pode gerar risco com impactos e/ou repercussão local', value:{id:17, name: 'Rome', code: 'l'}},
+                                                {label:'3.Não realizar o projeto pode gerar risco com impactos e/ou repercussão ampla/nacional', value:{id:18, name: 'Rome', code: 'm'}}
+                                              ]" 
+                                              [(ngModel)]="selectedCity21"></p-dropdown>
+                                            <label style="padding-bottom: 20px">
+                                              Impacta</label>
+                                            </span>
+                                          </div>
+                                    </div>
+                                    <div  class="ui-g-6"style= "margin-top:20px;">
+                                        <div class="item" >
+                                            <span class="md-inputfield">
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'1.O projeto não endereça questões de risco de reputação', value:{id:20, name: 'New York', code: 'o'}},
+                                                {label:'2.O projeto endereça um risco de imagem / reputação pouco provável de acontecer nos próximos 12 meses', value:{id:21, name: 'Rome', code: 'p'}},
+                                                {label:'3.O projeto endereça um risco de imagem / reputação que provavelmente ocorrerá dentro de 12 meses sem o projeto', value:{id:22, name: 'Rome', code: 'q'}}
+                                              ]" 
+                                              [(ngModel)]="selectedCity22"></p-dropdown>
+                                            <label style="padding-bottom: 20px">Probabilidade</label>
+                                            </span>
+                                          </div>
+                                    </div>
+  
+                                    </p-fieldset>
+                                  </div>
+                             
+                                    <div  class="ui-g-12"style= "margin-top:20px;">
+                                        <div class="item" >
+                                            <span class="md-inputfield">
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'1.O projeto gera algum risco reputacional', value:{id:20, name: 'New York', code: 'o'}},
+                                                {label:'2.O projeto não tem qualquer efeito sobre a imagem da AEGEA ou SPEs', value:{id:21, name: 'Rome', code: 'p'}},
+                                                {label:'3.O projeto tem efeito positivo local sobre a imagem da AEGEA ou SPEs', value:{id:22, name: 'Rome', code: 'q'}},
+                                                {label:'4.O projeto tem efeito positivo amplo/regional/nacional sobre a imagem da AEGEA ou SPEs', value:{id:23, name: 'Rome', code: 'r'}}
+                                              ]" 
+                                              [(ngModel)]="selectedCity23"></p-dropdown>
+                                            <label style="padding-bottom: 20px">5. Qual é o impacto reputacional/de imagem ao realizar o projeto?</label>
+                                            </span>
+                                          </div>
+                                    </div>
+
+                                    
+
+                              </div>
+                          </p-accordionTab>
+
+                          <!--Riscos Operacionais-->
+                          <p-accordionTab header="Riscos Operacionais" [selected]="false"><br>
+                            <div class="ui-g">
+                              <div class="ui-g-12">
+                                  <p-fieldset legend="1. Qual é o impacto do projeto sobre a interrupção de serviço ?" [toggleable]="true">
+                                      <div  class="ui-g-6" style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'1.O projeto pode aumentar a interrupção de serviço', value:{id:16, name: 'New York', code: 'k'}},
+                                                  {label:'2.O projeto tem impacto nulo/desconhecido sobre a interrupção de serviço', value:{id:17, name: 'Rome', code: 'l'}},
+                                                  {label:'3.O projeto reduz interrupções de serviço pontuais (localizadas e/ou de algumas horas até 1 dia)', value:{id:18, name: 'Rome', code: 'm'}},
+                                                  {label:'4.O projeto reduz interrupções de serviço severas (generalizadas e/ou por dias)', value:{id:16, name: 'New York', code: 'k'}}
+                                                ]" 
+                                                [(ngModel)]="selectedCity30"></p-dropdown>
+                                              <label style="padding-bottom: 20px">
+                                                Impacto</label>
+                                              </span>
+                                            </div>
+                                      </div>
+                                      <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'1.O projeto tem impacto nulo/desconhecido sobre o risco de interrupção de serviço', value:{id:20, name: 'New York', code: 'o'}},
+                                                  {label:'3.É mais provável que as interrupções ocorram do que não ocorram em 12 meses', value:{id:21, name: 'Rome', code: 'p'}},
+                                                  {label:'4. É pouco provável que as interrupções ocorram em  3 meses', value:{id:22, name: 'Rome', code: 'q'}},
+                                                  {label:'5. É mais provável que as interrupções ocorram em um prazo superior a 3 meses', value:{id:16, name: 'New York', code: 'k'}}
+                                                ]" 
+                                                [(ngModel)]="selectedCity31"></p-dropdown>
+                                              <label style="padding-bottom: 20px">Probabilidade</label>
+                                              </span>
+                                            </div>
+                                      </div>
+    
+                                      </p-fieldset>
+                                </div>
+
+                                <div  class="ui-g-6" style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Não implica custo/despesa ou redução de receita', value:{id:16, name: 'New York', code: 'k'}},
+                                            {label: '2.Implica custo/despesa gerada (ou receita não obtida) de até 2% do Ebitda da unidade', value:{id:17, name: 'Rome', code: 'l'}},
+                                            {label:'3.Implica custo/despesa gerada (ou receita não obtida) entre 2% e 5% do Ebitda da unidade', value:{id:18, name: 'Rome', code: 'm'}},
+                                            {label:'4.Implica custo/despesa gerada (ou receita não obtida) superior a 5% do Ebitda da unidade', value:{id:16, name: 'New York', code: 'k'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity32"></p-dropdown>
+                                        <label style="padding-bottom: 20px">
+                                            2. Qual o custo/despesa gerado ou receita não obtida no caso de não execução do projeto em 12 meses (excluindo multas)?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-6"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Alta (Ex: Solução/metodologia pioneira ou não testada; abordagem inovadora; etc.)', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'2.Média (Ex: existe alguma incerteza quanto à solução; abordagem existente, porém com baixa maturidade; etc.)', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'3.Baixa (Ex: certeza de viabilidade devido a evidências de sucesso; abordagem com metodologia/tecnologia dominada e conhecida, etc.)', value:{id:22, name: 'Rome', code: 'q'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity33"></p-dropdown>
+                                        <label style="padding-bottom: 20px">3. Qual é a complexidade de execução do projeto?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div class="ui-g-12">
+                                    <p-fieldset legend="4. Qual é o impacto do projeto sobre a substituição do serviço da AEGEA?" [toggleable]="true">
+                                        <div  class="ui-g-6" style= "margin-top:20px;">
+                                            <div class="item" >
+                                                <span class="md-inputfield">
+                                                    <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                    {label:'', value:null},
+                                                    {label:'1.O projeto pode incentivar alguma substituição de serviço', value:{id:16, name: 'New York', code: 'k'}},
+                                                    {label: '2.O projeto não tem impacto conhecido sobre o risco de substituição do serviço', value:{id:17, name: 'Rome', code: 'l'}},
+                                                    {label:'3.O projeto combate ações incipientes de substituição do serviço', value:{id:18, name: 'Rome', code: 'm'}},
+                                                    {label:'4.O projeto combate alternativas substanciais já existentes de substituição do serviço', value:{id:16, name: 'New York', code: 'k'}}
+                                                  ]" 
+                                                  [(ngModel)]="selectedCity34"></p-dropdown>
+                                                <label style="padding-bottom: 20px">
+                                                  Impacto</label>
+                                                </span>
+                                              </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                            <div class="item" >
+                                                <span class="md-inputfield">
+                                                    <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                    {label:'', value:null},
+                                                    {label:'1.A chance de substituição é menor, pois o projeto favorece a substituição', value:{id:20, name: 'New York', code: 'o'}},
+                                                    {label:'2.O projeto não tem impacto conhecido sobre o risco de substituição do serviço', value:{id:21, name: 'Rome', code: 'p'}},
+                                                    {label:'3.Chance baixa de que a substituição combatida pelo projeto se concretize dentro de 12 meses', value:{id:22, name: 'Rome', code: 'q'}},
+                                                    {label:'4.É mais provável que a substituição do serviço combatida pelo projeto ocorra do que não ocorra em 12 meses', value:{id:20, name: 'New York', code: 'o'}}
+                                                  ]" 
+                                                  [(ngModel)]="selectedCity35"></p-dropdown>
+                                                <label style="padding-bottom: 20px">Probabilidade</label>
+                                                </span>
+                                              </div>
+                                        </div>
+      
+                                        </p-fieldset>
+                                  </div>
+                                  <div class="ui-g-12">
+                                      <p-fieldset legend="5. Existe algum risco ambiental relacionado ao projeto?" [toggleable]="true">
+                                          <div  class="ui-g-6" style= "margin-top:20px;">
+                                              <div class="item" >
+                                                  <span class="md-inputfield">
+                                                      <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                      {label:'', value:null},
+                                                      {label:'1.O projeto não endereça questões de risco ambiental', value:{id:16, name: 'New York', code: 'k'}},
+                                                      {label: '2.Não realizar o projeto pode gerar risco ambiental com impactos e/ou repercussão local', value:{id:17, name: 'Rome', code: 'l'}},
+                                                      {label:'3.Não realizar o projeto pode gerar risco ambiental com impactos e/ou repercussão ampla/nacional', value:{id:18, name: 'Rome', code: 'm'}}
+                                                    ]" 
+                                                    [(ngModel)]="selectedCity36"></p-dropdown>
+                                                  <label style="padding-bottom: 20px">
+                                                    Impacto</label>
+                                                  </span>
+                                                </div>
+                                          </div>
+                                          <div  class="ui-g-6"style= "margin-top:20px;">
+                                              <div class="item" >
+                                                  <span class="md-inputfield">
+                                                      <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                      {label:'', value:null},
+                                                      {label:'1.O projeto não endereça questões de risco ambiental', value:{id:20, name: 'New York', code: 'o'}},
+                                                      {label:'2.O projeto endereça um risco ambiental pouco provável de acontecer nos próximos 12 meses', value:{id:21, name: 'Rome', code: 'p'}},
+                                                      {label:'3.O projeto endereça um risco ambiental que provavelmente ocorrerá dentro de 12 meses sem o projeto', value:{id:22, name: 'Rome', code: 'q'}}
+                                                    ]" 
+                                                    [(ngModel)]="selectedCity37"></p-dropdown>
+                                                  <label style="padding-bottom: 20px">Probabilidade</label>
+                                                  </span>
+                                                </div>
+                                          </div>
+        
+                                          </p-fieldset>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <p-fieldset legend="6. Qual é o impacto do projeto sobre a segurança/integridade das pessoas?" [toggleable]="true">
+                                            <div  class="ui-g-6" style= "margin-top:20px;">
+                                                <div class="item" >
+                                                    <span class="md-inputfield">
+                                                        <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                        {label:'', value:null},
+                                                        {label:'1.Pode causar algum impacto negativo sobre a segurança/integridade das pessoas (ex: hospitalização)', value:{id:16, name: 'New York', code: 'k'}},
+                                                        {label: '2.Não tem qualquer impacto sobre integridade/segurança de pessoas', value:{id:17, name: 'Rome', code: 'l'}},
+                                                        {label:'3.Aumenta a segurança/ integridade das pessoas reduzindo riscos reversíveis ou não fatais', value:{id:18, name: 'Rome', code: 'm'}},
+                                                        {label: '4.Aumenta a segurança/ integridade das pessoas reduzindo riscos irreversíveis ou fatalidades', value:{id:17, name: 'Rome', code: 'l'}}
+                                                      ]" 
+                                                      [(ngModel)]="selectedCity38"></p-dropdown>
+                                                    <label style="padding-bottom: 20px">
+                                                      Impacto</label>
+                                                    </span>
+                                                  </div>
+                                            </div>
+                                            <div  class="ui-g-6"style= "margin-top:20px;">
+                                                <div class="item" >
+                                                    <span class="md-inputfield">
+                                                        <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                        {label:'', value:null},
+                                                        {label:'1.O projeto não tem qualquer impacto sobre integridade/segurança de pessoas', value:{id:20, name: 'New York', code: 'o'}},
+                                                        {label:'2.A chance de que um incidente ocorra sem o projeto em 12 meses é baixa', value:{id:21, name: 'Rome', code: 'p'}},
+                                                        {label:'3.A chance de que um incidente ocorra sem o projeto é alta em 12 meses (é mais provável que ocorra do que o contrário)', value:{id:22, name: 'Rome', code: 'q'}}
+                                                      ]" 
+                                                      [(ngModel)]="selectedCity39"></p-dropdown>
+                                                    <label style="padding-bottom: 20px">Probabilidade</label>
+                                                    </span>
+                                                  </div>
+                                            </div>
+          
+                                            </p-fieldset>
+                                      </div>
+                                      <div  class="ui-g-12"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'1.Esse tipo de atraso não ocorre com esse tipo de projeto', value:{id:20, name: 'New York', code: 'o'}},
+                                                  {label:'2.Esse problema é pouco frequente (menos da metade dos projetos desse tipo atrasam por essas razões)', value:{id:21, name: 'Rome', code: 'p'}},
+                                                  {label:'3.Esse problema é frequente (mais da metade dos projetos desse tipo atrasam por essas razões)', value:{id:22, name: 'Rome', code: 'q'}}
+                                                ]" 
+                                                [(ngModel)]="selectedCity40"></p-dropdown>
+                                              <label style="padding-bottom: 20px">7. Existe algum risco do projeto sofrer atrasos / intercorrências</label>
+                                              </span>
+                                            </div>
+                                            <h6>(Ex: por conta clima, interferência de agentes públicos, autorizações / licenças a serem providenciadas ou demora do poder concedente em lançar um edital/responder questionamentos?)</h6>
+                                      </div>
+                                      <div  class="ui-g-12"style= "margin-top:20px;">
+                                        <div class="ui-g-6">
+                                            <div class="item" >
+                                                <span class="md-inputfield">
+                                                    <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                    {label:'', value:null},
+                                                    {label:'Não. Em processo de Requerimento e/ou esclarecimen', value:{id:20, name: 'New York', code: 'o'}},
+                                                    {label:'Não. Sequer foi solicitada', value:{id:21, name: 'Rome', code: 'p'}},
+                                                    {label:'O projeto não requer licença ambiental', value:{id:22, name: 'Rome', code: 'q'}},
+                                                    {label:'Sim. Licença de Instalação (LI)', value:{id:21, name: 'Rome', code: 'p'}},
+                                                    {label:'Sim. Licença Prévia (LP)', value:{id:21, name: 'Rome', code: 'p'}},
+                                                    {label:'Sim. Lincença de Operação (LO)', value:{id:21, name: 'Rome', code: 'p'}}
+                                                  ]" 
+                                                  [(ngModel)]="selectedCity41"></p-dropdown>
+                                                <label style="padding-bottom: 20px">O projeto possui Licença Ambiental?</label>
+                                                </span>
+                                              </div>
+                                        </div>
+                                        <div class="ui-g-2">
+                                            <span class="md-inputfield">
+                                                <input id="input" type="text" size="20px" pInputText  /><!--Aqui tem que trocar por uma text Area-->
+                                                <label>Número da Licença</label>
+                                            </span>
+                                        </div>
+                                        <div class="ui-g-2">
+                                            <p-calendar placeholder="Data Emissão" [showButtonBar]="true"></p-calendar>
+                                        </div>
+                                        <div class="ui-g-2">
+                                            <p-calendar placeholder="Data Validade" [showButtonBar]="true"></p-calendar>
+                                        </div>
+                                      
+                                      </div>
+                                      <div class="ui-g-12">
+                                          <div class="ui-g-8" >
+                                              <div class="item" >
+                                                  <span class="md-inputfield">
+                                                      <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                        {label:'', value:null},
+                                                        {label:'3 a 6 meses', value:{id:1, name: 'New York', code: 't'}},
+                                                        {label:'3 Meses', value:{id:2, name: 'Rome', code: 'v'}},
+                                                        {label:'6 a 12 meses', value:{id:3, name: 'London', code: 'a'}},
+                                                        {label:'O projeto não requer licença ambiental', value:{id:2, name: 'Rome', code: 'v'}},
+                                                        {label:'Superior a 12 meses', value:{id:2, name: 'Rome', code: 'v'}}
+                                                      ]" 
+                                                   [(ngModel)]="selectedCity3"></p-dropdown>
+                                                  <label >Qual o prazo previsto para obtenção da Licença</label>
+                                                  </span>
+                                                </div>
+                                           </div>
+                                        <div class="ui-g-4"style="margin-top:-50px; position:relative">
+                                            <h5>Existe condicionante na licença ambiental?</h5>
+                                            <div class="ui-g">
+                                                <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value=1 label="Sim" [(ngModel)]="radioValue4"></p-radioButton></div>
+                                                <div class="ui-g-12 ui-md-6"><p-radioButton name="rgc1" value= 2 label="Não" [(ngModel)]="radioValue4"></p-radioButton></div>
+                                                
+                                            </div>
+                                        </div>
+                                        <h5>Especificar Condicionante:</h5>
+                                      <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                                      </div>
+                                      
+
+                              </div>
+                          </p-accordionTab>
+                          
+                          <!--Benefícios-->
+                          <p-accordionTab header="Benefícios" [selected]="false"><br>
+                            <div class="ui-g">
+                                <div  class="ui-g-6" style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.O projeto agrega complexidade à gestão ', value:{id:16, name: 'New York', code: 'k'}},
+                                            {label:'2.O projeto não impacta a gestão do negócio', value:{id:17, name: 'Rome', code: 'l'}},
+                                            {label:'3.O projeto melhora a gestão do negócio localmente (para 1 ou algumas operações)', value:{id:18, name: 'Rome', code: 'm'}},
+                                            {label:'4.O projeto melhora a gestão do negócio amplamente (impacto sobre todas as unidades)', value:{id:19, name: 'Rome', code: 'n'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity24"></p-dropdown>
+                                        <label style="padding-bottom: 20px">
+                                            1. Qual é o impacto do projeto sobre a gestão/planejamento do negócio?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-6"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Pode reduzir a motivação organizacional', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'2.Não impacta a motivação organizacional', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'3.Tem impacto positivo localizado sobre a motivação organizacional (em 1 ou algumas unidades)', value:{id:22, name: 'Rome', code: 'q'}},
+                                            {label:'4.Tem impacto positivo amplo sobre a motivação organizacional (impacto sobre todas as unidades)', value:{id:23, name: 'Rome', code: 'r'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity25"></p-dropdown>
+                                        <label style="padding-bottom: 20px">2. Qual é o impacto do projeto sobre a motivação organizacional?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-6" style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Reduz condições de segurança corporativa/integridade de informação', value:{id:16, name: 'New York', code: 'k'}},
+                                            {label:'2.Sem impacto sobre condições de segurança corporativa/integridade de informação', value:{id:17, name: 'Rome', code: 'l'}},
+                                            {label:'3.Promove melhora localizada (1 ou algumas unidades) nas condições de segurança corporativa/integridade de informação', value:{id:18, name: 'Rome', code: 'm'}},
+                                            {label:'4.Promove melhora generalizada (sobre todas as unidades) nas condições de segurança corporativa/integridade de informação', value:{id:19, name: 'Rome', code: 'n'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity26"></p-dropdown>
+                                        <label style="padding-bottom: 20px">
+                                            3. Qual é o impacto do projeto sobre segurança corporativa/integridade de informação?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div  class="ui-g-6"style= "margin-top:20px;">
+                                    <div class="item" >
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'1.Reduz continuidade/sustentabilidade', value:{id:20, name: 'New York', code: 'o'}},
+                                            {label:'2.Não impacta continuidade/sustentabilidade', value:{id:21, name: 'Rome', code: 'p'}},
+                                            {label:'3.Impacto positivo localizado (1 ou algumas unidades) na continuidade/sustentabilidade', value:{id:22, name: 'Rome', code: 'q'}},
+                                            {label:'4.Impacto positivo amplo (sobre todas as unidades) na continuidade/sustentabilidade', value:{id:23, name: 'Rome', code: 'r'}}
+                                          ]" 
+                                          [(ngModel)]="selectedCity27"></p-dropdown>
+                                        <label style="padding-bottom: 20px">4. Qual é o impacto do projeto sobre continuidade/sustentabilidade do negócio?</label>
+                                        </span>
+                                      </div>
+                                </div>
+                                <div class="card card-w-title" style="width:100%">
+                                    <h5>5. O projeto proporciona algum outro tipo de melhoria não contemplada pelas perguntas?</h5>
+                                    <div class="ui-g">
+                                        <div class="ui-g-12 ui-md-2"><p-radioButton name="rgi" value=true label="Sim" [(ngModel)]="radioValue"></p-radioButton></div>
+                                        <div class="ui-g-12 ui-md-2"><p-radioButton name="rgi" value= false label="Não" [(ngModel)]="radioValue"></p-radioButton></div>
+                                        <div class="ui-g-12 ui-md-8"  >
+                                            <div>     
+                                                <span class="md-inputfield">
+                                                    <input id="input" type="text" size="80%" pInputText  /><!--Aqui tem que trocar por uma text Area-->
+                                                    <label>Favor Especificar:</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                          </p-accordionTab>
+                      </p-accordion>
+                  </div>
+
+             
+          
+
+  </div>
+</div>

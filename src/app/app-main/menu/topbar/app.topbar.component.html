@@ -1,0 +1,173 @@
+<div class="topbar clearfix" Style = "background: whitesmoke !important;">
+    <!--<div class="logo">
+        <a href="#">
+            <img src="assets/layout/images/sisp.png">
+        </a>
+    </div>-->
+
+    <img src="assets/layout/images/SISPC 2.0.png" class="app-name"/>
+
+    <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
+        <i class="material-icons">menu</i>
+    </a>
+
+    <ul class="topbar-menu fadeInDown" [ngClass]="{'topbar-menu-visible': app.topbarMenuActive}">
+        <li #profile class="profile-item" [ngClass]="{'active-topmenuitem':app.activeTopbarItem === profile}" style="width:180px">
+            <a href="#" (click)="app.onTopbarItemClick($event,profile)">
+                <div class="profile-image">
+                    <img src= {{imgPerfil}}>
+                </div>
+                <div class="profile-info">
+                    <span class="topbar-item-name profile-name" style="width:180px">{{nome}}</span>
+                    <span class="topbar-item-name profile-role" style="width:180px">{{cargo}}</span>
+                </div>
+            </a>
+
+            <ul class="fadeInDown">
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">person</i>
+                        <span>Perfil</span>
+                        <span class="topbar-submenuitem-badge"></span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">security</i>
+                        <span>Privacidade</span>
+                        <span class="topbar-submenuitem-badge"></span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">settings_applications</i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">power_settings_new</i>
+                        <span>Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li #settings [ngClass]="{'active-topmenuitem':app.activeTopbarItem === settings}">
+            <a href="#" (click)="app.onTopbarItemClick($event,settings)">
+                <i class="topbar-icon material-icons">settings</i>
+                <span class="topbar-item-name">Settings</span>
+            </a>
+            <ul class="fadeInDown">
+                <!--
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">palette</i>
+                        <span>Change Theme</span>
+                    </a>
+                </li>
+            -->
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">favorite_border</i>
+                        <span>Favoritos</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">lock</i>
+                        <span>Alterar Senha</span>
+                    </a>
+                </li>
+                <!--
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">wallpaper</i>
+                        <span>Wallpaper</span>
+                    </a>
+                </li>
+            -->
+            </ul>
+        </li>
+        <li #messages [ngClass]="{'active-topmenuitem':app.activeTopbarItem === messages}">
+            <a href="#" (click)="app.onTopbarItemClick($event,messages)">
+                <i class="topbar-icon material-icons">message</i>
+                <!--<span class="topbar-badge">5</span>-->
+                <span class="topbar-item-name">Messages</span>
+            </a>
+           <!-- <ul class="fadeInDown">
+                <li role="menuitem">
+                    <a href="#" class="topbar-message" (click)="app.onTopbarSubItemClick($event)">
+                        <img src="assets/layout/images/avatar1.png" width="35"/>
+                        <span>Preciso de um relatório</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" class="topbar-message" (click)="app.onTopbarSubItemClick($event)">
+                        <img src="assets/layout/images/avatar2.png" width="35"/>
+                        <span>Poderia me ajudar com uma planilha?</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" class="topbar-message" (click)="app.onTopbarSubItemClick($event)">
+                        <img src="assets/layout/images/avatar3.png" width="35"/>
+                        <span>Podemos marcar uma reunião</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" class="topbar-message" (click)="app.onTopbarSubItemClick($event)">
+                        <img src="assets/layout/images/avatar2.png" width="35"/>
+                        <span>Reunião às 10pm</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" class="topbar-message" (click)="app.onTopbarSubItemClick($event)">
+                        <img src="assets/layout/images/avatar4.png" width="35"/>
+                        <span>Favor atualizar os dados dos indicadores</span>
+                    </a>
+                </li>
+            </ul>-->
+        </li>
+        <li #notifications [ngClass]="{'active-topmenuitem':app.activeTopbarItem === notifications}">
+            <a href="#" (click)="app.onTopbarItemClick($event,notifications)">
+                <i class="topbar-icon material-icons">timer</i>
+                <!--<span class="topbar-badge">4</span>-->
+                <span class="topbar-item-name">Notifications</span>
+            </a>
+            <ul class="fadeInDown">
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">bug_report</i>
+                        <span>Tarefas pendentes</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">event</i>
+                        <span>Reunião às 3pm</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">file_download</i>
+                        <span>Baixar Relatórios</span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a href="#" (click)="app.onTopbarSubItemClick($event)">
+                        <i class="material-icons">flight</i>
+                        <span>Plano de vôo</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li #search class="search-item" [ngClass]="{'active-topmenuitem':app.activeTopbarItem === search}"
+            (click)="app.onTopbarItemClick($event,search)">
+            <span class="md-inputfield">
+                <input type="text" pInputText>
+                <label>Search</label>
+                <i class="topbar-icon material-icons">search</i>
+            </span>
+        </li>
+    </ul>
+</div>

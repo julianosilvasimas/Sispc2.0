@@ -1,0 +1,54 @@
+<p-chart class="chart" type="bar" [data]="data" [options]="options" height="400px" width="100%"></p-chart>
+<!-- Parâmetros -->
+<br>
+<div class="subtitulos">
+    <div class="ui-g-5">PARÂMETROS</div>
+</div>
+<br>
+<div class="separador"></div>
+<br>
+<div>
+<div class="divParametros Titulos">Orçado Mensal</div>
+<div class="divParametros Dados">{{ this.RotuloOrcadoMensal }}</div>
+<div class="divParametros Titulos">Forecast</div>
+<div class="divParametros Dados">{{ this.RotuloPrevisaoMensal }}</div>
+<br>
+<div class = "divParametros rectangle" >
+    <span>{{ this.RotuloOrcadoAcum }}</span>
+</div>
+<div [style.color]="this.Cor2" class = "divParametros rectangle" style="margin-left: 360px !important;">
+    <span>{{ this.RotuloRealizAcum }}</span>
+</div>
+<div [style.color]="this.Cor3" class = "divParametros rectangle" style="margin-left: 520px !important;">
+        <span> {{ this.RotuloDiferencaAcum }}</span>
+</div>
+<div [style.color]="this.Cor4" class = "divParametros rectangle" style="margin-left: 680px !important;">
+    <span>{{ this.RotuloDiferencaPerc }}</span>
+</div>
+
+<div class = "divParametros titles">{{ this.campo2 }}</div>
+<div class = "divParametros titles" style="margin-left: 360px !important;">{{ this.campo1 }}</div>
+<div class = "divParametros titles" style="margin-left: 520px !important;">{{ this.campo3 }}</div>
+<div class = "divParametros titles" style="margin-left: 680px !important;">{{ this.campo4 }}</div>
+<div class="alertarelatorio">*Indicadores em vermelho significam que estão com desvio.</div>
+<!-- Comentários -->
+<br>
+<div class="subtitulos">
+    <div class="ui-g-5">COMENTÁRIOS</div>
+</div>
+<br>
+<div class="separador"></div>
+<br>
+<div  *ngFor="let coment of datasCom, let i=index">
+    <div>
+        <div class="comentarios data">{{ datasCom[i] }}</div>
+        <div class="comentarios responsavel">{{ responsaveisCom[i] }}</div>
+        <div class="comentarios texto"> | {{ comentarCom[i] }}</div>
+        <hr size="1" style="border:1px dashed gray;">
+    </div> 
+</div>       
+
+
+    
+
+</div>

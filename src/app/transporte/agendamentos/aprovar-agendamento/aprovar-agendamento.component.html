@@ -1,0 +1,135 @@
+<p-dataView #dv [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="solicitante"
+    [sortField]="sortField" [sortOrder]="sortOrder">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-4 filter-container">
+            <input class="ui-g-12" type="search" pInputText placeholder="Pesquisar pelo Solicitante" (input)="dv.filter($event.target.value)">
+            
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <ng-template let-car pTemplate="listItem">
+      <div class="ui-g-12">
+        <div class="car-details">
+          <img class="ui-g-1" src="assets/layout/images/transporte/{{car.tipoVeiculo}}.png">
+          <div class="ui-g-10" >
+            <div style="margin-left:90px; vertical-align: middle; " >
+
+              <div class="ui-g-2">Solicitante: <b>{{car.solicitante}}</b></div>
+
+              <div class="ui-g-2">
+                <div class="ui-g-12">Condutor: <b>{{car.condutor}}</b></div>
+                <div class="ui-g-12">Passageiros: <b>{{car.qtdPessoas}}</b></div>
+              </div>
+
+              <div class="ui-g-2">Destino: <b>{{car.destino}}</b></div>
+
+              <div class="ui-g-3">de: <b>{{car.dataAgendamento}}</b></div>
+
+              <div class="ui-g-3">
+                <div class="ui-g-12">de: <b>{{car.agendadode}}</b></div>
+                <div class="ui-g-12">até: <b>{{car.agendadoate}}</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-g-1" >
+            <div class="ui-g-6" >
+              <button pButton type="button" icon="pi pi-times" (click)="Reprovar(car)" style="background:#b62727;"></button>
+            </div>
+            <div class="ui-g-6" >
+              <button pButton type="button" icon="pi pi-check" (click)="Aprovar(car)" style="background:#3cb627;"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    
+</p-dataView>
+
+<p-dialog header="Aprovar Solicitação" [(visible)]="displayAprove" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="AgendamentoSelecionado" >
+
+    <div class="ui-g-12">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>
+
+    <div class="ui-g-12">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>
+    
+    <div class="ui-g-12" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>
+
+    <div class="ui-g-12" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>
+
+    <div class="ui-g-12" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>
+
+    <div class="ui-g-6">Modelo Solicitado: </div>
+    <div class="ui-g-6"><img src="assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculo}}.png" width="150px"></div>
+  
+    <div class="ui-g-12" style="text-align: center;">
+      <button type="button" (click)="VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)" pButton icon="pi pi-search" label="Ver Carros Disponíveis"></button>
+    </div>
+
+    <div class="ui-g-12">
+      <button type="button" (click)="Aprovando()" pButton icon="pi pi-thumbs-up" label="Aprovar" style="float:right;background:#3cb627;"></button>
+    </div>
+  </div>
+  
+</p-dialog>
+
+
+<p-dialog header="Veículos Disponíveis" [(visible)]="displaySelect" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onSelectHide()">
+  <div class="ui-g">
+    <p-dataView #dv [value]="veiculosDisponiveis" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="placa"
+      [sortField]="sortField" [sortOrder]="sortOrder">
+      <p-header>
+        <div class="ui-helper-clearfix">
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 filter-container">
+              <div style="position:relative">
+                <div class="ui-g-12">
+                  <input class="ui-g-12" type="search" pInputText placeholder="Pesquisar por Placa" (input)="dv.filter($event.target.value)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-header>
+      <ng-template let-car2 pTemplate="listItem">
+        <div class="ui-g-12">
+          <div class="ui-g-4">Placa: <b>{{car2.placa}}</b></div>
+          <div class="ui-g-4">Tipo: <b>{{car2.tipoVeiculo}}</b></div>
+          <div class="ui-g-3">Pool: <b>{{car2.pool}}</b></div>
+          <div class="ui-g-1" >
+            <button pButton type="button" icon="pi pi-plus" (click)="Escolher(car2)" style="background:#b62727;"></button>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</p-dialog>
+
+
+
+<p-dialog header="Reprovar Solicitação Solicitação" [(visible)]="displayRecuse" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="selectedSchreduling">
+
+    <div class="ui-g-12">Solicitante:    {{selectedSchreduling.solicitante}}</div>
+
+    <div class="ui-g-12">De - Até:       {{selectedSchreduling.agendadode}} - {{selectedSchreduling.agendadoate}}</div>
+    
+    <div class="ui-g-4" >Condutor:       {{selectedSchreduling.condutor}}</div>
+
+    <div class="ui-g-12">Modelo Solicitado: </div>
+    <div class="ui-g-12"><img src="assets/layout/images/transporte/{{selectedSchreduling.tipoVeiculo}}.png" width="150px"></div>
+    
+
+    <div class="ui-g-12">
+      <textarea style="width: 100%; height: 120px !important;"  pInputText rows="10" cols="35" placeholder="Justificativa"></textarea>
+    </div>
+
+    <div class="ui-g-12">
+      <button type="button" (click)="show()" pButton icon="pi pi-thumbs-down" label="Reprovar" style="float:right;background:#b62727;"></button>
+    </div>
+  </div>
+  
+</p-dialog>
