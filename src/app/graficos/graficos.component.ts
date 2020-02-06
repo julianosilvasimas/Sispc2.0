@@ -198,35 +198,35 @@ export class GraficosComponent implements OnInit {
   //   }
   //   indice =indice+1
   // }
-  while(indice <34){     
-    let soma =  (realiz[indice]+orcado[indice]+realizDiaAc[indice]+orcadoDiaAc[indice])
-    if(soma==0){   
-      Meta.splice(indice, 1)
-      orcado.splice(indice, 1)
-      Minimo.splice(indice, 1)
-      Maximo.splice(indice, 1)
-      indice=0
-    }
-    indice =indice+1
-  }
+  // while(indice <34){     
+  //   let soma =  (realiz[indice]+orcado[indice]+realizDiaAc[indice]+orcadoDiaAc[indice])
+  //   if(soma==0){   
+  //     Meta.splice(indice, 1)
+  //     orcado.splice(indice, 1)
+  //     Minimo.splice(indice, 1)
+  //     Maximo.splice(indice, 1)
+  //     indice=0
+  //   }
+  //   indice =indice+1
+  // }
 
   //CORTAR REALIZADOS ZERADOS ATÉ A ULTIMA ATUALIZAÇÃO
   //========================================================================================
-  indice = 0
-  let soma = 0 
-  while(indice <33){  
-    soma =0
-    for(var i=indice; i<33;i++){
-      var real = realiz[i]
-      if(real=="-"){
-      }
-      soma = (real + soma)
-    }
-    if(soma==0){ 
-      realizDiaAc.splice(indice, 1)
-    }
-    indice =indice+1
-  }
+  // indice = 0
+  // let soma = 0 
+  // while(indice <33){  
+  //   soma =0
+  //   for(var i=indice; i<33;i++){
+  //     var real = realiz[i]
+  //     if(real=="-"){
+  //     }
+  //     soma = (real + soma)
+  //   }
+  //   if(soma==0){ 
+  //     realizDiaAc.splice(indice, 1)
+  //   }
+  //   indice =indice+1
+  // }
 
   //SEPARAR TIPOS DE GRAFICO
   //========================================================================================

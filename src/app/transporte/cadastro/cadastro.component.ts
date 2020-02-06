@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem, SelectItem} from 'primeng/api';
+import {MenuItem, SelectItem, MessageService} from 'primeng/api';
 
 import { TransporteService } from '../transporte.service';
 import { Veiculo } from '../transporte.model';
@@ -57,7 +57,7 @@ export class CadastroComponent implements OnInit {
    cadastroCarro: Veiculo;
    cadplaca: any;
    cadchassi:any;
-   cadmodelo: number = 4;
+   cadmodelo: any;
    cadcapacidadem3: any;
    cadresponsavel: any;
    cadtipoVeiculo: any;
@@ -69,7 +69,29 @@ export class CadastroComponent implements OnInit {
    cadoficina: boolean;
    caddevolvido: boolean;
 
-   constructor(private transporteService: TransporteService) { }
+   editveiculoId:any;
+   editdatCad:any;
+   editplaca: any;
+   editchassi:any;
+   editmodelo: any;
+   editcapacidadem3: any;
+   editresponsavel: any;
+   edittipoVeiculo: any;
+   editgerencia: any;
+   editlocadora: any;
+   editsupervisao: any;
+   editpool: boolean;
+   editgps: boolean;
+   editoficina: boolean;
+   editdevolvido: boolean;
+
+
+   
+
+   constructor(private transporteService: TransporteService,
+    private messageService: MessageService) {
+      this.atualizarListagem();
+    }
 
    
 
@@ -84,38 +106,33 @@ export class CadastroComponent implements OnInit {
         {label: 'Cadastrar Novo'}
       ];
       
-      this.transporteService.veiculos()
-      .subscribe(
-        Veiculos  =>  {
-          this.cars0 = Veiculos
-          this.cars= this.cars0
-        });
 
       
       
 
       this.Gerencias = [
         {label: ''},
-        {label: 'Comercial'},
-        {label: 'Operacional'}
+        {label: 'Comercial', value: 'Comercial'},
+        {label: 'Operacional', value: 'Operacional'}
       ];
       this.Supervisoes = [
         {label: ''},
-        {label: 'Fiscalizacao'},
-        {label: 'Eletromecanica'}
+        {label: 'Fiscalizacao',value: 'Fiscalizacao'},
+        {label: 'Eletromecanica', value: 'Eletromecanica'}
       ];
       this.condutores = [
         {label: ''},
-        {label: 'Albert Einstein'},
-        {label: 'Fred Mercury'},
-        {label: 'José Vicente'}
+        {label: 'Albert Einstein', value: 'Albert Einstein'},
+        {label: 'Fred Mercury', value: 'Fred Mercury'},
+        {label: 'José Vicente', value: 'José Vicente'},
+        {label: 'Hermes e Renato', value: 'Hermes e Renato'}
       ];
       
       this.tipoVeiculo = [
         {label: ''},
-        {label: 'Moto'},
-        {label: 'Carro'},
-        {label: 'Veículo Pesado'}
+        {label: 'MOTO',value: 'MOTO'},
+        {label: 'CARRO',value: 'CARRO'},
+        {label: 'VEÍCULO PESADO',value: 'VEÍCULO PESADO'}
       ];
       this.GPS = [
         {label: ''},
@@ -124,26 +141,26 @@ export class CadastroComponent implements OnInit {
       ];
       this.modelos = [
         {label: ''},
-        {label: 'Onix'},
-        {label: 'Prisma'},
-        {label: 'Corolla'},
-        {label: 'Montana'},
-        {label: 'Strada'},
-        {label: 'Saveiro'},
-        {label: 'AMAROK'},
-        {label: 'S10'},
-        {label: 'Retro CAT'},
-        {label: 'CAMINHAO'}
+        {label: 'AMAROK', value: 'AMAROK'},
+        {label: 'COROLLA', value: 'COROLLA'},
+        {label: 'COROLLA GLI', value: 'COROLLA GLI'},
+        {label: 'CAMINHAO', value: 'CAMINHAO'},
+        {label: 'MONTANA LS - MT', value: 'MONTANA LS - MT'},
+        {label: 'ONIX 1.0 LS - MT', value:'ONIX 1.0 LS - MT'},
+        {label: 'PRISMA LT - AT', value: 'PRISMA LT - AT'},
+        {label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR'},
+        {label: 'STRADA', value: 'STRADA'},
+        {label: 'S-10 LS - MT', value: 'S-10 LS - MT'}
       ];
       this.locadoras = [
         {label: ''},
-        {label: 'LVE'},
-        {label: 'Ouro Verde'}
+        {label: 'LVE', value: 'LVE'},
+        {label: 'OURO VERDE', value: 'OURO VERDE'}
       ];
       this.adicionais = [
-        {label: ''},
-        {label: 'munck'},
-        {label: 'pipa 10m/³'}
+        {label: '', value: ''},
+        {label: 'MUNCK', value: 'MUNCK'},
+        {label: 'PIPA 10m/³', value: 'PIPA 10m/³'}
       ];
       this.trocadeitemIndex(0);
     }
@@ -159,7 +176,6 @@ export class CadastroComponent implements OnInit {
           var modelo:string=this.cars0[i].brand ;
           var modelocomp:string=this.modelos[(this.sortKey-1)].label ;
           
-
           if(modelo == modelocomp){
             this.cars.push(
               {
@@ -174,9 +190,6 @@ export class CadastroComponent implements OnInit {
         }
       }
     }
-
-
-
     
     trocadeitem(activeItem: MenuItem){
       this.activeItem = activeItem['activeItem']
@@ -186,24 +199,29 @@ export class CadastroComponent implements OnInit {
       this.activeItem = this.items[index]
       this.activeItemIndex = index
     }
-
-
-
-
-
+    atualizarListagem(){
+      this.cars0 = [];
+      this.cars = [];
+      this.transporteService.veiculos()
+      .subscribe(
+        Veiculos  =>  {
+          this.cars0 = Veiculos
+          this.cars= Veiculos
+        });
+        this.limpar();
+    }
     //==========================================================================================================================
     //SALVAR CADASTRO DE VEICULO================================================================================================
     selectCar(car: Veiculo) {
       this.selectedCar = car;
-      this.cadplaca = this.selectedCar.placa
-      this.cadchassi = this.selectedCar.chassi
-      // this.cadmodelo = this.selectedCar.modelo
       this.displayDialog = true;
       event.preventDefault();
     }
+    
     onDialogHide() {
       this.selectedCar = null;
     }
+    
     SalvarVeiculo(){
       var placa = this.cadplaca;
       var chassi = this.cadchassi;
@@ -223,14 +241,29 @@ export class CadastroComponent implements OnInit {
         response => {
           console.log(response);
         });
-
         this.limpar();
     }
+    
     //==========================================================================================================================
-
-
     editCar(car: Veiculo) {
       this.editedCar = car;
+
+      this.editveiculoId = car.veiculoId
+      this.editdatCad = car.datCad
+      this.editplaca = car.placa
+      this.editchassi = car.chassi
+      this.editmodelo = car.modelo
+      this.editcapacidadem3 = car.capacidadem3
+      this.editresponsavel = car.responsavel
+      this.edittipoVeiculo = car.tipoVeiculo
+      this.editgerencia = car.gerencia
+      this.editlocadora = car.locadora;
+      this.editsupervisao = car.supervisao;
+      this.editpool = car.pool;
+      this.editgps = car.gps;
+      this.editoficina = car.oficina;
+      this.editdevolvido = car.devolvido;
+
       this.displayEdit = true;
       event.preventDefault();
     }
@@ -239,18 +272,40 @@ export class CadastroComponent implements OnInit {
       this.limpar();
     }
 
-    EditarVeiculo(carro: Veiculo){
-      console.log(carro)
+    async EditarVeiculo(){
+      this.editedCar = {
+        veiculoId: this.editveiculoId,
+        datCad: this.editdatCad,
+        placa:  this.editplaca,
+        chassi: this.editchassi,
+        modelo: this.editmodelo,
+        capacidadem3: this.editcapacidadem3,
+        responsavel: this.editresponsavel,
+        tipoVeiculo: this.edittipoVeiculo,
+        gerencia:  this.editgerencia,
+        gps: this.editgps,
+        devolvido: this.editdevolvido,
+        supervisao: this.editsupervisao,
+        locadora: this.editlocadora,
+        pool: this.editpool,
+        oficina: this.editoficina
+      }
+      this.transporteService.UpdateVeiculo(this.editedCar).subscribe(response => {
+        console.log(response);
+      });
+      await new Promise(r => setTimeout(r, 500));
+      this.atualizarListagem();
+      this.displayDialog = false;
+      this.displayEdit = false;
+      this.cars0 = [];
+      this.cars = [];
+      
     }
-
-    
-
 
     find(Arrays: any[], attribute:any){
       for(var i = 0; i < Arrays.length; i++)
       {
-        if(Arrays[i].label == attribute)
-        {
+        if(Arrays[i].label == attribute){
           return i;
         }
       }
@@ -259,7 +314,7 @@ export class CadastroComponent implements OnInit {
     limpar(){
       this.cadplaca = null;
       this.cadchassi = null;
-      // this.cadmodelo =null;
+      this.cadmodelo =null;
       this.cadcapacidadem3 = null;
       this.cadresponsavel = null;
       this.cadtipoVeiculo = null;

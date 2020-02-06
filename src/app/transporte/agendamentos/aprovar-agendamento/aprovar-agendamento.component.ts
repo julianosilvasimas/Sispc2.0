@@ -73,9 +73,11 @@ export class AprovarAgendamentoComponent implements OnInit {
     this.onSelectHide();
   }
 
-  Aprovando(){
+  async Aprovando(){
     this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe();
     this.onDialogHide();
+    await new Promise(r => setTimeout(r, 500));
+    this.AtualizarLista();
   }
 
 
@@ -102,43 +104,35 @@ export class AprovarAgendamentoComponent implements OnInit {
   //==========================================================================================
   VerificarDisponibilidade(de, ate){
     this.transporteService.Disponiveis(de,ate).subscribe( Agendados  =>  {
-      this.veiculosNaoDisponiveis = Agendados;
-      this.PreencherDisponiveis();
+      this.PreencherDisponiveis(Agendados);
     });
   }
 
-  PreencherDisponiveis(){
-    this.veiculosDisponiveis = [];
+  PreencherDisponiveis(Agendados: any[]){
+    console.log(Agendados)
     var todos = this.veiculos;
+    this.veiculosDisponiveis = [];
+    this.veiculosNaoDisponiveis = Agendados;
 
-    console.log(this.veiculosNaoDisponiveis)
+
     if(this.veiculosNaoDisponiveis.length<1){
       this.veiculosDisponiveis = todos
 
     }else{
-      
-      for(var j=0; j<todos.length; j++){
-        var placaVeiculo = todos[j].placa
-
-        this.veiculosNaoDisponiveis.indexOf(
-          {
-            veiculoId: todos[j].veiculoId,
-            datCad: todos[j].datCad,
-            placa: todos[j].placa,
-            chassi: todos[j].chassi,
-            modelo: todos[j].modelo,
-            capacidadem3:todos[j].capacidadem3,
-            responsavel: todos[j].responsavel,
-            tipoVeiculo:todos[j].tipoVeiculo,
-            gps:todos[j].gps,
-            locadora: todos[j].locadora,
-            gerencia: todos[j].gerencia,
-            supervisao:todos[j].supervisao,
-            pool: todos[j].pool,
-            oficina: todos[j].oficina,
-            devolvido: todos[j].devolvido,
+      for(var i=0; i<todos.length;i++){
+        var placaVeiculo= todos[i].placa
+        var placaAgendado = null;
+        
+        for(var j=0; j<this.veiculosNaoDisponiveis.length; j++){
+          placaAgendado = this.veiculosNaoDisponiveis[j].placa
+          if(placaVeiculo==placaAgendado){
+            break;
           }
-        );
+        }
+
+        if(placaAgendado != placaVeiculo){
+          this.veiculosDisponiveis.push(todos[i])
+        }
       }
     }
     this.displaySelect = true;

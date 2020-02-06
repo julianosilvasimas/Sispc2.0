@@ -6,19 +6,19 @@
     <div class="ui-g-12" style="margin-top: 20px;">
       <div class="ui-g-4 item" >
         <span class="md-inputfield">
-          <p-dropdown [autoWidth]="true" styleClass = "drop95" [options]="condutores"></p-dropdown>
+          <p-dropdown [autoWidth]="true"  [(ngModel)]="OpcCondutores" styleClass = "drop95" [options]="ArrCondutores"></p-dropdown>
           <label >Condutor</label>
         </span>
       </div>
       <div class="ui-g-4 item" >
         <span class="md-inputfield">
-          <input id="input" type="text" class="ui-g-12" pInputText/>
+          <input id="input" type="text" [(ngModel)]="OpcQtd" class="ui-g-12" pInputText/>
           <label >Quantidade de Pessoas</label>
         </span>
       </div>
       <div class="ui-g-4 item" >
         <span class="md-inputfield">
-          <p-dropdown [autoWidth]="true" styleClass = "drop95" [options]="tipoVeiculo"></p-dropdown>
+          <p-dropdown [autoWidth]="true" [(ngModel)]="OpcTipoVeiculo" styleClass = "drop95" [options]="ArrTipoVeiculo"></p-dropdown>
           <label >Tipo do Veículo</label>
         </span>
       </div>
@@ -28,20 +28,20 @@
       
       <div class="ui-g-4 item" >
         <span class="md-inputfield">
-          <p-dropdown [autoWidth]="true" styleClass = "drop95" [options]="destinos"></p-dropdown>
+          <p-dropdown [autoWidth]="true"  [(ngModel)]="OpcDestinos" styleClass = "drop95" [options]="ArrDestinos"></p-dropdown>
           <label >Destino</label>
         </span>
       </div>
 
       <div class="ui-g-2 item" >
         <span class="md-inputfield">
-          <p-calendar class="ui-g-12" [(ngModel)]="date7" [showTime]="true"></p-calendar>
+          <p-calendar class="ui-g-12" [(ngModel)]="OpcDe" [showTime]="true"></p-calendar>
           <label >De</label>
         </span>
       </div>
       <div class="ui-g-2 item" >
         <span class="md-inputfield">
-          <p-calendar class="ui-g-12" [(ngModel)]="date8" [showTime]="true"></p-calendar>
+          <p-calendar class="ui-g-12" [(ngModel)]="OpcAte" [showTime]="true"></p-calendar>
           <label >Até</label>
         </span>
       </div>
@@ -53,7 +53,7 @@
 
 
     <div class="ui-g-12 item" style="margin-top: 40px; text-align: center;">
-      <button type="button" pButton icon="pi pi-save" label="Agendar"></button>
+      <button type="button" (click)="SalvarAgendamento()" pButton icon="pi pi-save" label="Agendar"></button>
     </div>
   </div>
 </div>

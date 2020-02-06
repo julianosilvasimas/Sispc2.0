@@ -88,13 +88,13 @@
         <div class="ui-g-12" style="margin-top: 20px;">
           <div class="ui-g-6 item">
             <span class="md-inputfield">
-              <input id="input" type="text" [(ngModel)]="cadplaca"  class="ui-g-12" pInputText/>
+              <input id="input" type="text" [(ngModel)]="editplaca"  class="ui-g-12" [disabled]="disabled" pInputText/>
               <label>Placa</label>
             </span>
           </div>
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <input id="input" type="text" [(ngModel)]="cadchassi" class="ui-g-12" pInputText/>
+              <input id="input" type="text" [(ngModel)]="editchassi" class="ui-g-12"  [disabled]="disabled" pInputText/>
               <label >Chassi</label>
             </span>
           </div>
@@ -104,7 +104,7 @@
           <div class="ui-g-12">
             <div class="ui-g-3 item" >
               <div class="ui-g-12 item" >
-                <p-inputSwitch [(ngModel)]="cadgps"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="editgps"></p-inputSwitch>
               </div>
               <div class="ui-g-12 item" >
                 <label >GPS</label>
@@ -113,7 +113,7 @@
     
             <div class="ui-g-3 item" >
               <div class="ui-g-12 item" >
-                <p-inputSwitch [(ngModel)]="cadoficina"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="editoficina"></p-inputSwitch>
               </div>
               <div class="ui-g-12" >
                   <label >Oficina</label>
@@ -122,7 +122,7 @@
     
             <div class="ui-g-3 item" >
               <div class="ui-g-12 item" >
-                <p-inputSwitch [(ngModel)]="cadpool"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="editpool"></p-inputSwitch>
               </div>
               <div class="ui-g-12" >
                   <label >Pool</label>
@@ -131,7 +131,7 @@
 
             <div class="ui-g-3 item" >
               <div class="ui-g-12 item" >
-                <p-inputSwitch [(ngModel)]="caddevolvido"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="editdevolvido"></p-inputSwitch>
               </div>
               <div class="ui-g-12" >
                   <label >Devolvido</label>
@@ -142,18 +142,14 @@
         <div class="ui-g-12" style="margin-top: 40px;">
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <p-dropdown  [options]="modelos" [autoWidth]="true" [(ngModel)]="cadmodelo" styleClass = "drop95" >
-                <ng-template let-item pTemplate="selectedItem">
-                 <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
-                </ng-template>
-              </p-dropdown>
+              <p-dropdown  [options]="modelos" [autoWidth]="true" [(ngModel)]="editmodelo" styleClass = "drop95"  filter="true"></p-dropdown>
               <label >Modelos</label>
             </span>
           </div>
           
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <p-dropdown [autoWidth]="true" [(ngModel)]="cadcapacidadem3" styleClass = "drop95" [options]="adicionais"></p-dropdown>
+              <p-dropdown [options]="adicionais" [autoWidth]="true" [(ngModel)]="editcapacidadem3" styleClass = "drop95" filter="true"></p-dropdown>
               <label >Adicional</label>
             </span>
           </div>
@@ -162,13 +158,13 @@
         <div class="ui-g-12" style="margin-top: 40px;">
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <p-dropdown [autoWidth]="true" [(ngModel)]="cadsupervisao" styleClass = "drop95" [options]="Supervisoes"></p-dropdown>
+              <p-dropdown [autoWidth]="true" [(ngModel)]="editsupervisao" styleClass = "drop95" [options]="Supervisoes" filter="true"></p-dropdown>
               <label >Supervisão</label>
             </span>
           </div>
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <p-dropdown [autoWidth]="true" [(ngModel)]="cadresponsavel" styleClass = "drop95" [options]="condutores"></p-dropdown>
+              <p-dropdown [autoWidth]="true" [(ngModel)]="editresponsavel" styleClass = "drop95" [options]="condutores" filter="true"></p-dropdown>
               <label >Responsável</label>
             </span>
           </div>
@@ -177,14 +173,14 @@
         <div class="ui-g-12" style="margin-top: 40px;">
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <p-dropdown [autoWidth]="true" [(ngModel)]="cadtipoVeiculo" styleClass = "drop95" [options]="tipoVeiculo"></p-dropdown>
+              <p-dropdown [autoWidth]="true" [(ngModel)]="edittipoVeiculo" styleClass = "drop95" [options]="tipoVeiculo" filter="true"></p-dropdown>
               <label >Tipo do Veículo</label>
             </span>
           </div>
           
           <div class="ui-g-6 item" >
             <span class="md-inputfield">
-              <p-dropdown [autoWidth]="true" [(ngModel)]="cadlocadora" styleClass = "drop95" [options]="locadoras"></p-dropdown>
+              <p-dropdown [autoWidth]="true" [(ngModel)]="editlocadora" styleClass = "drop95" [options]="locadoras" filter="true"></p-dropdown>
               <label >Locadoras</label>
             </span>
           </div>
@@ -195,7 +191,7 @@
       
       
       <div class="ui-g-12" style="text-align:center; margin-top: 40px;" >
-        <button pButton type="button" label="Editar" (click)="EditarVeiculo(editedCar)"></button>
+        <button pButton type="button" label="Editar" (click)="EditarVeiculo()"></button>
       </div>
     </div>
     </p-dialog>

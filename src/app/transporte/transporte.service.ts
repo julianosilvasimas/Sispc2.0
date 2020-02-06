@@ -40,15 +40,12 @@ export class TransporteService {
       );
   }
 
-  UpdateVeiculo( veiculoId: number, datCad: Date,
-    placa: string,chassi:string,modelo: string,capacidadem3: string,responsavel: string,tipoVeiculo: string,gerencia: string,
-    gps: boolean,devolvido: boolean,supervisao: string,locadora: string,pool: boolean,oficina: boolean): Observable<any>{
+  UpdateVeiculo(veiculo: Veiculo): Observable<any>{
       const headers = new HttpHeaders()
       .set("Content-Type", "application/json",
       );
-      let bodyObj = {veiculoId: veiculoId, datCad:datCad, placa: placa, chassi: chassi,modelo: modelo, capacidadem3: capacidadem3, responsavel: responsavel, tipoVeiculo: tipoVeiculo, gerencia:gerencia, gps:gps, devolvido:devolvido, supervisao:supervisao, locadora:locadora, pool:pool,oficina:oficina};
-       
-    return this.http.put(`${API_CONFIG}/veiculos/${veiculoId}`,JSON.stringify(bodyObj) , {headers})
+      
+    return this.http.put(`${API_CONFIG}/veiculos/${veiculo.veiculoId}`,JSON.stringify(veiculo) , {headers})
                         .pipe(map(this.extractData),
                         catchError(ErrorHandler.handleError))
   }
@@ -68,18 +65,40 @@ export class TransporteService {
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
   Disponiveis(datainicio: string, datafim: string): Observable<any[]>{
-    return  this.http.get(`${API_CONFIG}/veiculos/disponiveis/${datainicio}/${datafim}/`) 
+    return  this.http.get(`${API_CONFIG}/agendamento/disponiveis/${datainicio}/${datafim}/`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
 
-  UpdateAgendamento(agendamento: Agendamento): Observable<any>{
-      const headers = new HttpHeaders()
-      .set("Content-Type", "application/json",
+
+  InputAgendamento(agendamento: Agendamento): Observable<any>{
+
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Methods', 'POST');
+    return this.http.post<Veiculo>(`${API_CONFIG}/agendamento`,agendamento,{ observe: 'response'})
+      .pipe(
+        map((response) => ({data: response.headers, 
+                            status: response.status,
+                            statusTexto: response.statusText,
+                            })) 
       );
+  }
+
+  UpdateAgendamento(agendamento: Agendamento): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Methods', 'POST');
       
-    return this.http.put(`${API_CONFIG}/agendamento/${agendamento.agendamentoId}`,JSON.stringify(agendamento) , {headers})
-                        .pipe(map(this.extractData),
-                        catchError(ErrorHandler.handleError))
+    return this.http.put(`${API_CONFIG}/agendamento/${agendamento.agendamentoId}`, agendamento, { observe: 'response'})
+    .pipe(
+      map((response) => (
+        {
+          data: response.headers, 
+          status: response.status,
+          statusTexto: response.statusText,
+        }
+      )) 
+    );
   } 
 }
 
