@@ -35,6 +35,7 @@ import { TelaImpressaoRelatorioComponent } from './performance/tela-impressao-re
 import { PrintdeliberacaoComponent } from './gestaodedeliberacao/printdeliberacao/printdeliberacao.component';
 import { PainelprocessoComponent } from './gestaodedeliberacao/painelprocesso/painelprocesso.component';
 import { TransporteComponent } from './transporte/transporte.component';
+import { AgendarVeiculoComponent } from './transporte/agendamentos/agendar-veiculo/agendar-veiculo.component';
 import { RpaComponent } from './rpa/rpa.component'
 
 
@@ -71,6 +72,7 @@ export const routes: Routes = [
             { path: 'relatorio', component: TelaImpressaoRelatorioComponent, canActivate: [AuthGuard]  },
             { path: 'painelprocess',   component: PainelprocessoComponent, canActivate: [AuthGuard] },
             { path: 'transporte', component: TransporteComponent},
+            { path: 'agendamento', component: AgendarVeiculoComponent},
             { path: 'rpa', component: RpaComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
         ]

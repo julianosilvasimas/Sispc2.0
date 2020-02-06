@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TransporteService } from '../../transporte.service';
+import { Veiculo, Agendamento } from '../../transporte.model';
 
 @Component({
   selector: 'app-lista-agendamentos',
@@ -7,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaAgendamentosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private transporteService: TransporteService) { }
 
+  Agendamentos;
+  aprovacao;
+  displayAgendamento:boolean;
+  AgendamentoSelecionado;
   ngOnInit() {
+    this.AtualizarLista();
+
+    
+
+  }
+  AtualizarLista(){
+    this.Agendamentos=[];
+    this.transporteService.Aprovados()
+    .subscribe(
+      agendamentos  =>  {
+        this.Agendamentos=agendamentos;
+      });
+
+  }
+
+  showAgendamento(agendamento: Agendamento){
+    this.displayAgendamento =true;
+    this.AgendamentoSelecionado = agendamento;
+  }
+  onDialogHide() {
+    this.Agendamentos = null;
+    this.displayAgendamento = false;
+    this.AtualizarLista();
   }
 
 }

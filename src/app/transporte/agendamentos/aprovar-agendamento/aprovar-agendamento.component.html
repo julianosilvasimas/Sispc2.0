@@ -13,7 +13,7 @@
     <ng-template let-car pTemplate="listItem">
       <div class="ui-g-12">
         <div class="car-details">
-          <img class="ui-g-1" src="assets/layout/images/transporte/{{car.tipoVeiculo}}.png">
+          <img class="ui-g-1" src="assets/layout/images/transporte/{{car.tipoVeiculoSolicitado}}.png">
           <div class="ui-g-10" >
             <div style="margin-left:90px; vertical-align: middle; " >
 
@@ -24,9 +24,11 @@
                 <div class="ui-g-12">Passageiros: <b>{{car.qtdPessoas}}</b></div>
               </div>
 
-              <div class="ui-g-2">Destino: <b>{{car.destino}}</b></div>
+              <div class="ui-g-3">
+                <div class="ui-g-12">Data Agendamento: <b>{{car.dataAgendamento}}</b></div>
+                <div class="ui-g-12">Destino: <b>{{car.destino}}</b></div>
+              </div>
 
-              <div class="ui-g-3">de: <b>{{car.dataAgendamento}}</b></div>
 
               <div class="ui-g-3">
                 <div class="ui-g-12">de: <b>{{car.agendadode}}</b></div>
@@ -57,13 +59,15 @@
     <div class="ui-g-12">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>
     
     <div class="ui-g-12" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>
+    
+    <div class="ui-g-12" >Veiculo Solicitado:       {{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>
 
     <div class="ui-g-12" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>
 
     <div class="ui-g-12" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>
 
     <div class="ui-g-6">Modelo Solicitado: </div>
-    <div class="ui-g-6"><img src="assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculo}}.png" width="150px"></div>
+    <div class="ui-g-6"><img src="assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png" width="150px"></div>
   
     <div class="ui-g-12" style="text-align: center;">
       <button type="button" (click)="VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)" pButton icon="pi pi-search" label="Ver Carros Disponíveis"></button>
@@ -111,24 +115,24 @@
 
 
 <p-dialog header="Reprovar Solicitação Solicitação" [(visible)]="displayRecuse" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}"  (onAfterHide)="onDialogHide()">
-  <div class="ui-g" *ngIf="selectedSchreduling">
+  <div class="ui-g" *ngIf="AgendamentoSelecionado">
 
-    <div class="ui-g-12">Solicitante:    {{selectedSchreduling.solicitante}}</div>
+    <div class="ui-g-12">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>
 
-    <div class="ui-g-12">De - Até:       {{selectedSchreduling.agendadode}} - {{selectedSchreduling.agendadoate}}</div>
+    <div class="ui-g-12">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>
     
-    <div class="ui-g-4" >Condutor:       {{selectedSchreduling.condutor}}</div>
+    <div class="ui-g-4" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>
 
     <div class="ui-g-12">Modelo Solicitado: </div>
-    <div class="ui-g-12"><img src="assets/layout/images/transporte/{{selectedSchreduling.tipoVeiculo}}.png" width="150px"></div>
+    <div class="ui-g-12"><img src="assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png" width="150px"></div>
     
 
     <div class="ui-g-12">
-      <textarea style="width: 100%; height: 120px !important;"  pInputText rows="10" cols="35" placeholder="Justificativa"></textarea>
+      <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="Justificativa"  pInputText rows="10" cols="35" placeholder="Justificativa"></textarea>
     </div>
 
     <div class="ui-g-12">
-      <button type="button" (click)="show()" pButton icon="pi pi-thumbs-down" label="Reprovar" style="float:right;background:#b62727;"></button>
+      <button type="button" (click)="Reprovando()" pButton icon="pi pi-thumbs-down" label="Reprovar" style="float:right;background:#b62727;"></button>
     </div>
   </div>
   

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem, SelectItem, MessageService} from 'primeng/api';
 
 import { TransporteService } from '../../transporte.service';
-import { Veiculo, Agendamento } from '../../transporte.model';
+import { Veiculo, Agendamento, labels } from '../../transporte.model';
 
 @Component({
   selector: 'app-agendar-veiculo',
@@ -12,7 +12,7 @@ import { Veiculo, Agendamento } from '../../transporte.model';
 })
 export class AgendarVeiculoComponent implements OnInit {
 
-  private ArrCondutores: any[];
+  private ArrCondutores: labels[]= [];
   private ArrTipoVeiculo: any[];
   private ArrDestinos:any[];
 
@@ -32,13 +32,15 @@ export class AgendarVeiculoComponent implements OnInit {
 
   ngOnInit() {
     this.OpcSolicitante = sessionStorage.getItem('nome');
-    this.ArrCondutores= [
-      {label: ''},
-      {label: 'Albert Einstein', value: 'Albert Einstein'},
-      {label: 'Fred Mercury', value: 'Fred Mercury'},
-      {label: 'José Vicente', value: 'José Vicente'},
-      {label: 'Hermes e Renato', value: 'Hermes e Renato'}
-    ];
+    this.ArrCondutores= [];
+    this.transporteService.Condutores().subscribe(
+      response => {
+        for(var i=0; i<response.length;i++){
+          var array={label: response[i].nome, value: response[i].nome};
+          this.ArrCondutores.push(array)
+        }
+      }
+    );
     this.ArrTipoVeiculo = [
       {label: ''},
       {label: 'AMAROK', value: 'AMAROK'},
@@ -64,14 +66,14 @@ export class AgendarVeiculoComponent implements OnInit {
   }
   SalvarAgendamento(){
     var agendamento : Agendamento;
-
     agendamento={
       agendamentoId: null,
       solicitante: this.OpcSolicitante,
       qtdPessoas: this.OpcQtd,
-      agendadoate: this.OpcAte,
-      tipoVeiculo: this.OpcTipoVeiculo,
-      agendadode:this.OpcDe,
+      agendadoate: dataAtualFormatada(this.OpcAte),
+      tipoVeiculoSolicitado: this.OpcTipoVeiculo,
+      tipoVeiculoDisponibilizado: null,
+      agendadode:dataAtualFormatada(this.OpcDe),
       placa:null,
       aprovador: null,
       aprovacao: null,
@@ -80,9 +82,37 @@ export class AgendarVeiculoComponent implements OnInit {
       condutor: this.OpcCondutores,
       dataAgendamento: null,
     }
+    console.log(agendamento)
     this.transporteService.InputAgendamento(agendamento).subscribe(
       response => {
-        console.log(response);
+        if(response.status === 201){
+          this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
+          detail:'Dados enviados com sucesso!'});
+          console.log('Dados enviados com sucesso!')
+        }
+      },
+      error =>  { 
+        this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
+        detail:error.message, life: 5000});
+        console.log(error)
       });
+
+      this.OpcSolicitante= null;
+      this.OpcQtd = null;
+      this.OpcTipoVeiculo=null;
+      this.OpcAte=null;
+      this.OpcDe=null;
+      this.OpcDestinos=null;
+      this.OpcCondutores=null;
+      
+    function dataAtualFormatada(datareceb){
+      var data = datareceb,
+          dia  = data.getDate().toString().padStart(2, '0'),
+          mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+          ano  = data.getFullYear(),
+          hora  = data.getHours(),
+          minuto  = data.getMinutes();
+      return ano+"-"+mes+"-"+dia+" "+hora+":"+minuto+":00";
+    }
   }
 }

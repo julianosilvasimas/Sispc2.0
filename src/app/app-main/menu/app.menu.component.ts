@@ -92,12 +92,12 @@ export class AppMenuComponent implements OnInit {
                 {label: 'Cadastro', icon: 'subject'}*/
                 ]
             },
-            // {label: 'Transporte', icon: 'directions_car',
-            //  items: [
-            //      {label: 'Gestão de Frotas', icon: 'subject' , routerLink: '/transporte'},
-            //      {label: 'Agendamento', icon: 'subject' , routerLink: '#'}
-            //     ]
-            // }
+            {label: 'Transporte', icon: 'directions_car',
+             items: [
+                 {label: 'Gestão de Frotas', icon: 'subject' , routerLink: '/transporte'},
+                 {label: 'Agendamento', icon: 'subject' , routerLink: '/agendamento'}
+                ]
+            }
             
             
             

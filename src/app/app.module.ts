@@ -300,8 +300,7 @@ import { ListaAgendamentosComponent } from './transporte/agendamentos/lista-agen
         AuthService,
         AuthGuard,
         PerformanceService,
-        TransporteService,
-        RpaComponent
+        TransporteService
     ],
     bootstrap: [AppComponent]
 })
