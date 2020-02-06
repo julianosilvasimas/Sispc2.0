@@ -60,6 +60,10 @@ export class TransporteService {
     return  this.http.get(`${API_CONFIG}/agendamento/aprovar`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
+  Condutores(): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/condutores`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
   Aprovados(): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/agendamento/aprovados`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -71,7 +75,6 @@ export class TransporteService {
 
 
   InputAgendamento(agendamento: Agendamento): Observable<any>{
-
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Methods', 'POST');

@@ -1,39 +1,71 @@
 <p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
 
 <!--SCROOOL DE CARROS-->
-<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==0">
-  <p-dataView #dv [value]="cars" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="placa"
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
+  <p-dataView #dv [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="solicitante"
       [sortField]="sortField" [sortOrder]="sortOrder">
       <p-header>
         <div class="ui-helper-clearfix">
           <div class="ui-g">
             <div class="ui-g-12 ui-md-4 filter-container">
               <div style="position:relative">
-                  <input type="search" pInputText placeholder="Pesquisar pelo Placa" (input)="dv.filter($event.target.value)">
+                  <input type="search" pInputText placeholder="Pesquisar pelo Solicitante" (input)="dv.filter($event.target.value)">
               </div>
             </div>
           </div>
         </div>
       </p-header>
       <ng-template let-car pTemplate="listItem">
-        <div class="ui-g-12">
-          <div class="car-details">
-            <img class="ui-g-1" src="assets/layout/images/transporte/{{car.modelo}}.png">
-            <div class="ui-g-10" >
-              <div style="margin-left:90px;" >
-                <div class="ui-g-12">Placa: <b>{{car.placa}}</b></div>
-                <div class="ui-g-6">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>
-                <div class="ui-g-6">Condutor: <b>{{car.responsavel}}</b></div>
-                <div class="ui-g-6">Gerencia: <b>{{car.gerencia}}</b></div>
-                <div class="ui-g-6">Supervisao: <b>{{car.supervisao}}</b></div>
-              </div>
-            </div>
-            <div class="ui-g-1" >
-              <button pButton type="button" icon="pi pi-search" (click)="selectCar(car)"></button>
-            </div>
+        
+        <div class="car-details">
+          <div class="ui-g-1" style="text-align: center !important; vertical-align: middle;">
+            <button *ngIf="car.aprovacao==0" pButton type="button"  label="Reprovado" class="ui-button-danger"></button>
+            <button *ngIf="car.aprovacao==1" pButton type="button"  label="Aprovado" class="ui-button-success"></button>
+          </div>
+          <div class="ui-g-3">
+            <div class="ui-g-12">Inicio: <b>{{car.agendadode}}</b></div>
+            <div class="ui-g-12">Término: <b>{{car.agendadoate}}</b></div>
+          </div>
+          <div class="ui-g-3">
+            <div class="ui-g-12">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>
+            <div class="ui-g-12">Aprovador: <b>{{car.aprovador}}</b></div>
+          </div>
+          <div class="ui-g-2">
+            <div class="ui-g-12">Placa: <b>{{car.placa}}</b></div>
+            <div class="ui-g-12">Destino: <b>{{car.destino}}</b></div>
+          </div>
+          <div class="ui-g-2">
+            <div class="ui-g-12">Passageiros: <b>{{car.qtdPessoas}}</b></div>
+            <div class="ui-g-12">Condutor: <b>{{car.condutor}}</b></div>
+          </div>
+          <div class="ui-g-1" >
+            <button pButton type="button" icon="pi pi-search" (click)="showAgendamento(car)"></button>
           </div>
         </div>
       </ng-template>
        
   </p-dataView>
 </div>
+<p-dialog header="Lista de Agendamentos" [(visible)]="displayAgendamento" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="AgendamentoSelecionado" >
+
+    <div class="ui-g-12">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>
+
+    <div class="ui-g-12">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>
+
+    <div class="ui-g-12">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>
+    
+    <div class="ui-g-12" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>
+
+    <div class="ui-g-12" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>
+
+    <div class="ui-g-12" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>
+
+    <div class="ui-g-12" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>
+
+    <div class="ui-g-12" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>
+
+
+  </div>
+  
+</p-dialog>

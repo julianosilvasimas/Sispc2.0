@@ -20,7 +20,8 @@ export interface Agendamento{
     solicitante: string,
     qtdPessoas: number,
     agendadoate: string,
-    tipoVeiculo: string,
+    tipoVeiculoSolicitado: string,
+    tipoVeiculoDisponibilizado: string,
     agendadode:string,
     placa:string,
     aprovador: string,
@@ -29,4 +30,8 @@ export interface Agendamento{
     destino: string,
     condutor: string,
     dataAgendamento: string,
+}
+export interface labels{
+    label: string,
+    value: string
 }

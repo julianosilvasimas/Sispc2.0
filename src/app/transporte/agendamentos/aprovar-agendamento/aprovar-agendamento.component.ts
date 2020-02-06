@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransporteService } from '../../transporte.service';
 import { Veiculo, Agendamento } from '../../transporte.model';
+import { MessageService, SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-aprovar-agendamento',
@@ -10,6 +11,7 @@ import { Veiculo, Agendamento } from '../../transporte.model';
 export class AprovarAgendamentoComponent implements OnInit {
 
   public Agendamentos;
+  public Justificativa;
 
   public displayAprove; 
   public displayRecuse; 
@@ -22,7 +24,8 @@ export class AprovarAgendamentoComponent implements OnInit {
   public AgendamentoAlterado: Agendamento;
 
 
-  constructor(private transporteService: TransporteService) { }
+  constructor(private transporteService: TransporteService,
+    private messageService: MessageService) { }
 
 
   ngOnInit() {
@@ -41,6 +44,7 @@ export class AprovarAgendamentoComponent implements OnInit {
       .subscribe(
       Agendamento  =>  {
         this.Agendamentos = Agendamento
+        console.log(Agendamento)
       });
   }
 
@@ -59,8 +63,9 @@ export class AprovarAgendamentoComponent implements OnInit {
       solicitante: this.AgendamentoSelecionado.solicitante,
       qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
       agendadoate: this.AgendamentoSelecionado.agendadoate,
-      tipoVeiculo: this.AgendamentoSelecionado.tipoVeiculo,
+      tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
       agendadode: this.AgendamentoSelecionado.agendadode,
+      tipoVeiculoDisponibilizado: car.modelo,
       placa: car.placa,
       justificativa: "",
       aprovador: sessionStorage.getItem('nome'),
@@ -74,7 +79,20 @@ export class AprovarAgendamentoComponent implements OnInit {
   }
 
   async Aprovando(){
-    this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe();
+    this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(
+      response => {
+        if(response.status === 201){
+          this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
+          detail:'Dados enviados com sucesso!'});
+          console.log('Dados enviados com sucesso!')
+        }
+      },
+      error =>  { 
+        this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
+        detail:error.message, life: 5000});
+        console.log(error)
+      }
+    );
     this.onDialogHide();
     await new Promise(r => setTimeout(r, 500));
     this.AtualizarLista();
@@ -100,6 +118,46 @@ export class AprovarAgendamentoComponent implements OnInit {
     this.veiculosDisponiveis = null;
     this.displaySelect = false;
     this.AtualizarLista();
+  }
+
+  async Reprovando(){
+
+    this.AgendamentoAlterado = 
+    {
+      agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+      solicitante: this.AgendamentoSelecionado.solicitante,
+      qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+      agendadoate: this.AgendamentoSelecionado.agendadoate,
+      tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+      agendadode: this.AgendamentoSelecionado.agendadode,
+      tipoVeiculoDisponibilizado: this.AgendamentoSelecionado.tipoVeiculoDisponibilizado,
+      placa: this.AgendamentoSelecionado.placa,
+      justificativa:this.Justificativa,
+      aprovador: sessionStorage.getItem('nome'),
+      aprovacao: 0,
+      destino: this.AgendamentoSelecionado.destino,
+      condutor: this.AgendamentoSelecionado.condutor,
+      dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+    }
+    this.displayRecuse = true;
+    this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(
+      response => {
+        if(response.status === 201){
+          this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
+          detail:'Reprovado!'});
+          console.log('Reprovado!')
+        }
+      },
+      error =>  { 
+        this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
+        detail:error.message, life: 5000});
+        console.log(error)
+      }
+    );
+    this.onDialogHide();
+    await new Promise(r => setTimeout(r, 500));
+    this.AtualizarLista();
+    this.Justificativa=null;
   }
   //==========================================================================================
   VerificarDisponibilidade(de, ate){
