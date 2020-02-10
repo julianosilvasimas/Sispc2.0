@@ -808,7 +808,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-title\" >\r\n  <h4>AGENDAR VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Condutor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" size=\"60%\" pInputText/>\r\n          <label >Quantidade de Pessoas</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" styleClass = \"drop95\" [options]=\"destinos\"></p-dropdown>\r\n          <label >Destino</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"date7\" [showTime]=\"true\"></p-calendar>\r\n          <label >De</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"date8\" [showTime]=\"true\"></p-calendar>\r\n          <label >Até</label>\r\n        </span>\r\n      </div>\r\n      \r\n      \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12 item\" style=\"margin-top: 40px; text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Agendar\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-title\" >\r\n  <h4>AGENDAR VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcCondutores\" styleClass = \"drop95\" [options]=\"ArrCondutores\"></p-dropdown>\r\n          <label >Condutor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcQtd\" class=\"ui-g-12\" pInputText/>\r\n          <label >Quantidade de Pessoas</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcTipoVeiculo\" styleClass = \"drop95\" [options]=\"ArrTipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"OpcDestinos\" styleClass = \"drop95\" [options]=\"ArrDestinos\"></p-dropdown>\r\n          <label >Destino</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcDe\" [showTime]=\"true\"></p-calendar>\r\n          <label >De</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcAte\" [showTime]=\"true\"></p-calendar>\r\n          <label >Até</label>\r\n        </span>\r\n      </div>\r\n      \r\n      \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12 item\" style=\"margin-top: 40px; text-align: center;\">\r\n      <button type=\"button\" (click)=\"SalvarAgendamento()\" pButton icon=\"pi pi-save\" label=\"Agendar\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -819,7 +819,7 @@ module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-titl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h4>Aprovar Agendamentos</h4>\r\n<p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n    [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n            <div style=\"position:relative\">\r\n              <div class=\"ui-g-6\">\r\n                <input style=\"width: 200px\" type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n              <div class=\"ui-g-6\">\r\n                <input style=\"width: 200px\" type=\"search\" pInputText placeholder=\"Pesquisar pelo destino\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n    <ng-template let-car pTemplate=\"listItem\">\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"car-details\">\r\n          <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.modelo}}.png\">\r\n          <div class=\"ui-g-10\" >\r\n            <div style=\"margin-left:90px;\" >\r\n              <div class=\"ui-g-2\">Solicitante: <b>{{car.solicitante}}</b></div>\r\n              <div class=\"ui-g-2\">Condutor: <b>{{car.condutor}}</b></div>\r\n              <div class=\"ui-g-2\">Destino: <b>{{car.destino}}</b></div>\r\n              <div class=\"ui-g-2\">Passageiros: <b>{{car.pessoas}}</b></div>\r\n              <div class=\"ui-g-2\">de: <b>{{car.solicitacao[0].de}}</b></div>\r\n              <div class=\"ui-g-2\">até: <b>{{car.solicitacao[0].ate}}</b></div>\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-times\" (click)=\"Reprovar(car)\" style=\"background:#b62727;\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"Aprovar(car)\" style=\"background:#3cb627;\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n    \r\n</p-dataView>\r\n\r\n<p-dialog header=\"Aprovar Solicitação\" [(visible)]=\"displayAprove\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"selectedSchreduling\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{selectedSchreduling.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{selectedSchreduling.solicitacao[0].de}} - {{selectedSchreduling.solicitacao[0].ate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:       {{selectedSchreduling.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:       {{selectedSchreduling.pessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:       {{selectedSchreduling.setor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/{{selectedSchreduling.modelo}}.png\" width=\"150px\"></div>\r\n  \r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" (click)=\"show()\" pButton icon=\"pi pi-search\" label=\"Ver Carros Disponíveis\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"show()\" pButton icon=\"pi pi-thumbs-up\" label=\"Aprovar\" style=\"float:right;background:#3cb627;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>\r\n<p-dialog header=\"Reprovar Solicitação Solicitação\" [(visible)]=\"displayRecuse\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"selectedSchreduling\">\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{selectedSchreduling.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{selectedSchreduling.solicitacao[0].de}} - {{selectedSchreduling.solicitacao[0].ate}}</div>\r\n    \r\n    <div class=\"ui-g-4\" >Condutor:       {{selectedSchreduling.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/{{selectedSchreduling.modelo}}.png\" width=\"150px\"></div>\r\n    \r\n\r\n    <div class=\"ui-g-12\">\r\n      <textarea style=\"width: 100%; height: 120px !important;\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Justificativa\"></textarea>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"show()\" pButton icon=\"pi pi-thumbs-down\" label=\"Reprovar\" style=\"float:right;background:#b62727;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n    [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n            <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n            \r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n    <ng-template let-car pTemplate=\"listItem\">\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"car-details\">\r\n          <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.tipoVeiculoSolicitado}}.png\">\r\n          <div class=\"ui-g-10\" >\r\n            <div style=\"margin-left:90px; vertical-align: middle; \" >\r\n\r\n              <div class=\"ui-g-2\">Solicitante: <b>{{car.solicitante}}</b></div>\r\n\r\n              <div class=\"ui-g-2\">\r\n                <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n                <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n              </div>\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">Data Agendamento: <b>{{car.dataAgendamento}}</b></div>\r\n                <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n              </div>\r\n\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">de: <b>{{car.agendadode}}</b></div>\r\n                <div class=\"ui-g-12\">até: <b>{{car.agendadoate}}</b></div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"ui-g-1\" >\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-times\" (click)=\"Reprovar(car)\" style=\"background:#b62727;\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"Aprovar(car)\" style=\"background:#3cb627;\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n    \r\n</p-dataView>\r\n\r\n<p-dialog header=\"Aprovar Solicitação\" [(visible)]=\"displayAprove\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Veiculo Solicitado:       {{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-6\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-6\"><img src=\"assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n  \r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" (click)=\"VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)\" pButton icon=\"pi pi-search\" label=\"Ver Carros Disponíveis\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Aprovando()\" pButton icon=\"pi pi-thumbs-up\" label=\"Aprovar\" style=\"float:right;background:#3cb627;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Veículos Disponíveis\" [(visible)]=\"displaySelect\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onSelectHide()\">\r\n  <div class=\"ui-g\">\r\n    <p-dataView class=\"ui-g-12\" #dv [value]=\"veiculosDisponiveis\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                <div class=\"ui-g-12\">\r\n                  <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar por Placa\" (input)=\"dv.filter($event.target.value)\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car2 pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">Placa: <b>{{car2.placa}}</b></div>\r\n          <div class=\"ui-g-4\">Tipo: <b>{{car2.tipoVeiculo}}</b></div>\r\n          <div class=\"ui-g-3\">Pool: <b>{{car2.pool}}</b></div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"Escolher(car2)\" style=\"background:#b62727;\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-dataView>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Reprovar Solicitação Solicitação\" [(visible)]=\"displayRecuse\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\">\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-4\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n    \r\n\r\n    <div class=\"ui-g-12\">\r\n      <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"Justificativa\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Justificativa\"></textarea>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Reprovando()\" pButton icon=\"pi pi-thumbs-down\" label=\"Reprovar\" style=\"float:right;background:#b62727;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -841,7 +841,7 @@ module.exports = "<h4>Calendário de Agendamentos</h4>\r\n<p-fullCalendar [event
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Placa\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        \r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -852,7 +852,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Placa\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n\r\n  <p-dialog header=\"Detalhes do Veículo\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"selectedCar\" style=\"height:50%\">\r\n      <div class=\"ui-g-12\" style=\"text-align:center\">\r\n          <img src=\"assets/layout/images/transporte/{{selectedCar.modelo}}.png\" width=\"400px\">\r\n      </div>\r\n\r\n      <div class=\"ui-g-4\">Placa: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.placa}}</div>\r\n\r\n      <div class=\"ui-g-4\">Condutor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.responsavel}}</div>\r\n\r\n      <div class=\"ui-g-4\">Modelo: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.modelo}}</div>\r\n\r\n      <div class=\"ui-g-4\">Adicional: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cadcapacidadem3}}</div>\r\n\r\n      <div class=\"ui-g-4\">Odometro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.odometro}}</div>\r\n\r\n      <div class=\"ui-g-4\">Data do Cadastro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.datcad}}</div>\r\n\r\n      <div class=\"ui-g-4\">Ano: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.ano}}</div>\r\n\r\n      <div class=\"ui-g-4\">Cor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cor}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Gerencia: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.gerencia}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Supervisao: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.supervisao}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Chassi: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.chassi}}</div>\r\n      <div class=\"ui-g-12\" style=\"text-align:center;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"editCar(selectedCar)\"></button>\r\n      </div>\r\n  </div>\r\n  </p-dialog>\r\n\r\n\r\n  <p-dialog header=\"Editar Veículo\" [(visible)]=\"displayEdit\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"editedCar\" style=\"height:100%\">\r\n      <div class='ui-g-12'>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n          <div class=\"ui-g-6 item\">\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\"  class=\"ui-g-12\" pInputText/>\r\n              <label>Placa</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n              <label >Chassi</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12 item\" >\r\n                <label >GPS</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Oficina</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Pool</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Devolvido</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\"  [options]=\"modelos\"></p-dropdown>\r\n              <label >Modelos</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n              <label >Adicional</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n              <label >Supervisão</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n              <label >Responsável</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n              <label >Tipo do Veículo</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n              <label >Locadoras</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n      \r\n      <div class=\"ui-g-12\" style=\"text-align:center; margin-top: 40px;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"EditarVeiculo(editedCar)\"></button>\r\n      </div>\r\n    </div>\r\n    </p-dialog>\r\n</div>\r\n\r\n\r\n\r\n\r\n<!--CADASTRO DE NOVO VEICULO-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==1\">\r\n  <h4>CADASTRAR NOVO VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class='ui-g-8'>\r\n      <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6 item\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\" class=\"ui-g-12\" pInputText/>\r\n            <label>Placa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n            <label >Chassi</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\" [options]=\"modelos\"></p-dropdown>\r\n            <label >Modelos</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n            <label >Adicional</label>\r\n          </span>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-3\" >\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >GPS</label>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Oficina</label>\r\n        </div>\r\n      </div>\r\n\r\n        \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Pool</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >;\r\n          <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Devolvido</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n          <label >Locadoras</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadgerencia\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <!-- <div class=\"ui-g-8 item\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" class=\"ui-g-12 item\" value=\"PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto\" pInputText/>\r\n          <label>Unidade</label>\r\n        </span>\r\n      </div> -->\r\n\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n          <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Responsável</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarVeiculo()\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Placa\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n\r\n  <p-dialog header=\"Detalhes do Veículo\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"selectedCar\" style=\"height:50%\">\r\n      <div class=\"ui-g-12\" style=\"text-align:center\">\r\n          <img src=\"assets/layout/images/transporte/{{selectedCar.modelo}}.png\" width=\"400px\">\r\n      </div>\r\n\r\n      <div class=\"ui-g-4\">Placa: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.placa}}</div>\r\n\r\n      <div class=\"ui-g-4\">Condutor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.responsavel}}</div>\r\n\r\n      <div class=\"ui-g-4\">Modelo: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.modelo}}</div>\r\n\r\n      <div class=\"ui-g-4\">Adicional: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cadcapacidadem3}}</div>\r\n\r\n      <div class=\"ui-g-4\">Odometro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.odometro}}</div>\r\n\r\n      <div class=\"ui-g-4\">Data do Cadastro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.datcad}}</div>\r\n\r\n      <div class=\"ui-g-4\">Ano: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.ano}}</div>\r\n\r\n      <div class=\"ui-g-4\">Cor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cor}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Gerencia: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.gerencia}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Supervisao: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.supervisao}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Chassi: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.chassi}}</div>\r\n      <div class=\"ui-g-12\" style=\"text-align:center;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"editCar(selectedCar)\"></button>\r\n      </div>\r\n  </div>\r\n  </p-dialog>\r\n\r\n\r\n  <p-dialog header=\"Editar Veículo\" [(visible)]=\"displayEdit\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"editedCar\" style=\"height:100%\">\r\n      <div class='ui-g-12'>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n          <div class=\"ui-g-6 item\">\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editplaca\"  class=\"ui-g-12\" [disabled]=\"disabled\" pInputText/>\r\n              <label>Placa</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editchassi\" class=\"ui-g-12\"  [disabled]=\"disabled\" pInputText/>\r\n              <label >Chassi</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editgps\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12 item\" >\r\n                <label >GPS</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editoficina\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Oficina</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editpool\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Pool</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editdevolvido\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Devolvido</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown  [options]=\"modelos\" [autoWidth]=\"true\" [(ngModel)]=\"editmodelo\" styleClass = \"drop95\"  filter=\"true\"></p-dropdown>\r\n              <label >Modelos</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [options]=\"adicionais\" [autoWidth]=\"true\" [(ngModel)]=\"editcapacidadem3\" styleClass = \"drop95\" filter=\"true\"></p-dropdown>\r\n              <label >Adicional</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\" filter=\"true\"></p-dropdown>\r\n              <label >Supervisão</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editresponsavel\" styleClass = \"drop95\" [options]=\"condutores\" filter=\"true\"></p-dropdown>\r\n              <label >Responsável</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"edittipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\" filter=\"true\"></p-dropdown>\r\n              <label >Tipo do Veículo</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editlocadora\" styleClass = \"drop95\" [options]=\"locadoras\" filter=\"true\"></p-dropdown>\r\n              <label >Locadoras</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n      \r\n      <div class=\"ui-g-12\" style=\"text-align:center; margin-top: 40px;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"EditarVeiculo()\"></button>\r\n      </div>\r\n    </div>\r\n    </p-dialog>\r\n</div>\r\n\r\n\r\n\r\n\r\n<!--CADASTRO DE NOVO VEICULO-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==1\">\r\n  <h4>CADASTRAR NOVO VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class='ui-g-8'>\r\n      <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6 item\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\" class=\"ui-g-12\" pInputText/>\r\n            <label>Placa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n            <label >Chassi</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\" [options]=\"modelos\"></p-dropdown>\r\n            <label >Modelos</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n            <label >Adicional</label>\r\n          </span>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-3\" >\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >GPS</label>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Oficina</label>\r\n        </div>\r\n      </div>\r\n\r\n        \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Pool</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >;\r\n          <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Devolvido</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n          <label >Locadoras</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadgerencia\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <!-- <div class=\"ui-g-8 item\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" class=\"ui-g-12 item\" value=\"PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto\" pInputText/>\r\n          <label>Unidade</label>\r\n        </span>\r\n      </div> -->\r\n\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n          <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Responsável</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarVeiculo()\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -1259,6 +1259,58 @@ var AppMenuComponent = /** @class */ (function () {
                        {label: 'Cadastro', icon: 'subject'}*/
                     ]
                 },
+                { label: 'Transporte', icon: 'directions_car',
+                    items: [
+                        { label: 'Gestão de Frotas', icon: 'subject', routerLink: '/transporte' },
+                        { label: 'Agendamento', icon: 'subject', routerLink: '/agendamento' }
+                    ]
+                }
+                /*,{label: 'Operacional', icon: 'invert_colors',
+                 items: [
+                    {label: 'Operação Água', icon: 'subject'},
+                    {label: 'Operação Esgoto', icon: 'subject'},
+                    {label: 'Eletromecânica', icon: 'settings_input_component',
+                        items: [
+                            {label: 'Preventivas/Corretivas', icon: 'subject'},
+                            {label: 'Inventário', icon: 'subject'}
+                        ]
+                    },
+                 ]
+                },
+                {label: 'Administrativo', icon: 'domain',
+                 items: [
+                     {label: 'Contratos', icon: 'subject'},
+                     {label: 'Facilities', icon: 'subject'},
+                     {label: 'Compras', icon: 'subject'}
+                    ]
+                },
+                {label: 'Serviços', icon: 'build',
+                 items: [
+    
+                 ]
+                },
+                {label: 'Comunicação', icon: 'videocam',
+                 items: [
+    
+                 ]
+                },
+                {label: 'Jurídico', icon: 'gavel',
+                 items: [
+                    {label: 'Processos', icon: 'subject'},
+                    {label: 'Regulatório', icon: 'subject'}
+                 ]
+                },
+                {label: 'Recursos Humanos', icon: 'people',
+                 items: [
+    
+                 ]
+                },
+                {label: 'EHS', icon: 'local_florist',
+                 items: [
+                    {label: 'Planejamento', icon: 'subject'},
+                    {label: 'Gestão', icon: 'subject'}
+                 ]
+                },*/
             ];
         });
     };
@@ -2429,8 +2481,7 @@ var AppModule = /** @class */ (function () {
                 _login_auth_service__WEBPACK_IMPORTED_MODULE_120__["AuthService"],
                 _guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_121__["AuthGuard"],
                 _performance_performance_service__WEBPACK_IMPORTED_MODULE_122__["PerformanceService"],
-                _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"],
-                _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_141__["RpaComponent"]
+                _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
         })
@@ -2488,7 +2539,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./gestaodedeliberacao/printdeliberacao/printdeliberacao.component */ "./src/app/gestaodedeliberacao/printdeliberacao/printdeliberacao.component.ts");
 /* harmony import */ var _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./gestaodedeliberacao/painelprocesso/painelprocesso.component */ "./src/app/gestaodedeliberacao/painelprocesso/painelprocesso.component.ts");
 /* harmony import */ var _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./transporte/transporte.component */ "./src/app/transporte/transporte.component.ts");
-/* harmony import */ var _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./rpa/rpa.component */ "./src/app/rpa/rpa.component.ts");
+/* harmony import */ var _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./transporte/agendamentos/agendar-veiculo/agendar-veiculo.component */ "./src/app/transporte/agendamentos/agendar-veiculo/agendar-veiculo.component.ts");
+/* harmony import */ var _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./rpa/rpa.component */ "./src/app/rpa/rpa.component.ts");
+
 
 
 
@@ -2555,7 +2608,8 @@ var routes = [
             { path: 'relatorio', component: _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_30__["TelaImpressaoRelatorioComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'painelprocess', component: _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_32__["PainelprocessoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'transporte', component: _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__["TransporteComponent"] },
-            { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_34__["RpaComponent"] },
+            { path: 'agendamento', component: _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_34__["AgendarVeiculoComponent"] },
+            { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
             { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
         ]
     },
@@ -4294,7 +4348,7 @@ var GestaoDeliberacaoService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#imagem {\r\n    margin-top: -700px;\r\n    margin-left: 400px;\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#assinatura {\r\n    margin-top: -400px;\r\n    float:center;\r\n    width: 50px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2dlc3Rhb2RlZGVsaWJlcmFjYW8vcGFpbmVscHJvY2Vzc28vcGFpbmVscHJvY2Vzc28uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLFlBQVk7SUFDWixhQUFhO0dBQ2Q7OEJBQzJCO0FBQzlCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixXQUFXO0dBQ1o7OEJBQzJCO0FBQzlCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGtCQUFrQjtBQUN0QiIsImZpbGUiOiIuLi8uLi9nZXN0YW9kZWRlbGliZXJhY2FvL3BhaW5lbHByb2Nlc3NvL3BhaW5lbHByb2Nlc3NvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjaW1hZ2VtIHtcclxuICAgIG1hcmdpbi10b3A6IC03MDBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiA0MDBweDtcclxuICAgIGZsb2F0OmNlbnRlcjtcclxuICAgIHdpZHRoOiAyODBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgIC8qIG9wYWNpdHk6IDAuMDtcclxuICAgIGZpbHRlcjogYWxwaGEob3BhY2l0eT0wKTsqL1xyXG59XHJcblxyXG4jYXNzaW5hdHVyYSB7XHJcbiAgICBtYXJnaW4tdG9wOiAtNDAwcHg7XHJcbiAgICBmbG9hdDpjZW50ZXI7XHJcbiAgICB3aWR0aDogNTBweDtcclxuICAgLyogb3BhY2l0eTogMC4wO1xyXG4gICAgZmlsdGVyOiBhbHBoYShvcGFjaXR5PTApOyovXHJcbn1cclxuICAgIFxyXG4jdGV4dG8ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEzMHB4O1xyXG59Il19 */"
+module.exports = "#imagem {\r\n    margin-top: -700px;\r\n    margin-left: 400px;\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#assinatura {\r\n    margin-top: -400px;\r\n    float:center;\r\n    width: 50px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2VzdGFvZGVkZWxpYmVyYWNhby9wYWluZWxwcm9jZXNzby9wYWluZWxwcm9jZXNzby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osWUFBWTtJQUNaLGFBQWE7R0FDZDs4QkFDMkI7QUFDOUI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLFdBQVc7R0FDWjs4QkFDMkI7QUFDOUI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvZ2VzdGFvZGVkZWxpYmVyYWNhby9wYWluZWxwcm9jZXNzby9wYWluZWxwcm9jZXNzby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2ltYWdlbSB7XHJcbiAgICBtYXJnaW4tdG9wOiAtNzAwcHg7XHJcbiAgICBtYXJnaW4tbGVmdDogNDAwcHg7XHJcbiAgICBmbG9hdDpjZW50ZXI7XHJcbiAgICB3aWR0aDogMjgwcHg7XHJcbiAgICBoZWlnaHQ6IDMwMHB4O1xyXG4gICAvKiBvcGFjaXR5OiAwLjA7XHJcbiAgICBmaWx0ZXI6IGFscGhhKG9wYWNpdHk9MCk7Ki9cclxufVxyXG5cclxuI2Fzc2luYXR1cmEge1xyXG4gICAgbWFyZ2luLXRvcDogLTQwMHB4O1xyXG4gICAgZmxvYXQ6Y2VudGVyO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgIC8qIG9wYWNpdHk6IDAuMDtcclxuICAgIGZpbHRlcjogYWxwaGEob3BhY2l0eT0wKTsqL1xyXG59XHJcbiAgICBcclxuI3RleHRvIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIG1hcmdpbi10b3A6IC0xMzBweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -4766,7 +4820,7 @@ var PainelprocessoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n#imagem {\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n    /*opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n    \r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2dlc3Rhb2RlZGVsaWJlcmFjYW8vcHJpbnRkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFFQTtJQUNJLFlBQVk7SUFDWixZQUFZO0lBQ1osYUFBYTtJQUNiOzhCQUMwQjtBQUM5Qjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7QUFDdEIiLCJmaWxlIjoiLi4vLi4vZ2VzdGFvZGVkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvL3ByaW50ZGVsaWJlcmFjYW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuI2ltYWdlbSB7XHJcbiAgICBmbG9hdDpjZW50ZXI7XHJcbiAgICB3aWR0aDogMjgwcHg7XHJcbiAgICBoZWlnaHQ6IDMwMHB4O1xyXG4gICAgLypvcGFjaXR5OiAwLjA7XHJcbiAgICBmaWx0ZXI6IGFscGhhKG9wYWNpdHk9MCk7Ki9cclxufVxyXG4gICAgXHJcbiN0ZXh0byB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBtYXJnaW4tdG9wOiAtMTMwcHg7XHJcbn1cclxuIl19 */"
+module.exports = "\r\n\r\n#imagem {\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n    /*opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n    \r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2VzdGFvZGVkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvL3ByaW50ZGVsaWJlcmFjYW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7SUFDWixhQUFhO0lBQ2I7OEJBQzBCO0FBQzlCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGtCQUFrQjtBQUN0QiIsImZpbGUiOiJzcmMvYXBwL2dlc3Rhb2RlZGVsaWJlcmFjYW8vcHJpbnRkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuXHJcbiNpbWFnZW0ge1xyXG4gICAgZmxvYXQ6Y2VudGVyO1xyXG4gICAgd2lkdGg6IDI4MHB4O1xyXG4gICAgaGVpZ2h0OiAzMDBweDtcclxuICAgIC8qb3BhY2l0eTogMC4wO1xyXG4gICAgZmlsdGVyOiBhbHBoYShvcGFjaXR5PTApOyovXHJcbn1cclxuICAgIFxyXG4jdGV4dG8ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEzMHB4O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -5279,7 +5333,7 @@ var PrintdeliberacaoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9ncHAvcHJvamV0b3MvcGFnZW1haW4vcGFnZW1haW4uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dwcC9wcm9qZXRvcy9wYWdlbWFpbi9wYWdlbWFpbi5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -5474,7 +5528,7 @@ var PagemainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9ncHAvcHJvamV0b3MvcGFnZXN0b3JpZXMvcGFnZXN0b3JpZXMuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dwcC9wcm9qZXRvcy9wYWdlc3Rvcmllcy9wYWdlc3Rvcmllcy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -5662,7 +5716,7 @@ var SesuiteprojectComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9ncmFmaWNvcy9ncmFmaWNvcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dyYWZpY29zL2dyYWZpY29zLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -5791,34 +5845,34 @@ var GraficosComponent = /** @class */ (function () {
         //   }
         //   indice =indice+1
         // }
-        while (indice < 34) {
-            var soma_1 = (realiz[indice] + orcado[indice] + realizDiaAc[indice] + orcadoDiaAc[indice]);
-            if (soma_1 == 0) {
-                Meta.splice(indice, 1);
-                orcado.splice(indice, 1);
-                Minimo.splice(indice, 1);
-                Maximo.splice(indice, 1);
-                indice = 0;
-            }
-            indice = indice + 1;
-        }
+        // while(indice <34){     
+        //   let soma =  (realiz[indice]+orcado[indice]+realizDiaAc[indice]+orcadoDiaAc[indice])
+        //   if(soma==0){   
+        //     Meta.splice(indice, 1)
+        //     orcado.splice(indice, 1)
+        //     Minimo.splice(indice, 1)
+        //     Maximo.splice(indice, 1)
+        //     indice=0
+        //   }
+        //   indice =indice+1
+        // }
         //CORTAR REALIZADOS ZERADOS ATÉ A ULTIMA ATUALIZAÇÃO
         //========================================================================================
-        indice = 0;
-        var soma = 0;
-        while (indice < 33) {
-            soma = 0;
-            for (var i = indice; i < 33; i++) {
-                var real = realiz[i];
-                if (real == "-") {
-                }
-                soma = (real + soma);
-            }
-            if (soma == 0) {
-                realizDiaAc.splice(indice, 1);
-            }
-            indice = indice + 1;
-        }
+        // indice = 0
+        // let soma = 0 
+        // while(indice <33){  
+        //   soma =0
+        //   for(var i=indice; i<33;i++){
+        //     var real = realiz[i]
+        //     if(real=="-"){
+        //     }
+        //     soma = (real + soma)
+        //   }
+        //   if(soma==0){ 
+        //     realizDiaAc.splice(indice, 1)
+        //   }
+        //   indice =indice+1
+        // }
         //SEPARAR TIPOS DE GRAFICO
         //========================================================================================
         //ORCADO - REALIZADO - SUM ORCADO - SUM REALIZADO 
@@ -6621,7 +6675,7 @@ var AuthGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/*--\r\nAuthor: W3layouts\r\nAuthor URL: http://w3layouts.com\r\nLicense: Creative Commons Attribution 3.0 Unported\r\nLicense URL: http://creativecommons.org/licenses/by/3.0/\r\n--*/\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\na{text-decoration:none;}\r\n.txt-rt{text-align:right;}\r\n/* text align right */\r\n.txt-lt{text-align:left;}\r\n/* text align left */\r\n.txt-center{text-align:center;}\r\n/* text align center */\r\n.float-rt{float:right;}\r\n/* float right */\r\n.float-lt{float:left;}\r\n/* float left */\r\n.clear{clear:both;}\r\n/* clear float */\r\n.pos-relative{position:relative;}\r\n/* Position Relative */\r\n.pos-absolute{position:absolute;}\r\n/* Position Absolute */\r\n.vertical-base{\tvertical-align:baseline;}\r\n/* vertical align baseline */\r\n.vertical-top{\tvertical-align:top;}\r\n/* vertical align top */\r\nnav.vertical ul li{\tdisplay:block;}\r\n/* vertical menu */\r\nnav.horizontal ul li{\tdisplay: inline-block;}\r\n/* horizontal menu */\r\nimg{max-width:100%;}\r\n/*end reset*/\r\nbody{\r\n    padding: 0px;\r\n    margin: 0px;\r\n    background: url('2.jpg') no-repeat;\r\n    background-size: cover;\r\n    font-family: 'Gudea', sans-serif;\r\n}\r\nh1,h2,h3,h4,h5,h6{\r\n    margin: 0;\r\n}\r\np{\r\n    margin: 0;\r\n}\r\nul{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nlabel{\r\n    margin: 0;\r\n}\r\na{\r\n    -webkit-transition: 0.5s;\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\na:hover{\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\n.wrap{\r\n    width: 100%;\r\n    float: right;\r\n\r\n}\r\n/*widget start here*/\r\n.widget-main{\r\n    background: url('s2.jpg'); \r\n    min-height: 700px;\r\n    background-size: cover;\r\n    width: 100%;\r\n    box-shadow: 0 0 10px #3C3B3B;     \r\n    float: right !important;\r\n}\r\n.widget-left{\r\n    float: left;\r\n    width: 40%;\r\n    background: rgba(255, 255, 255, 0.65);\r\n    padding: 1.5em 2em;\r\n    min-height: 302px;\r\n}\r\n.date{\r\n    float: right;\r\n    width: 100%;\r\n    text-align: right;\r\n    margin-top: -90px;\r\n}\r\n.date h6{\r\n    font-size: 0.9em;\r\n    color: #000;\r\n}\r\n.degree{\r\n    float: left;\r\n    width: 100%;\r\n    padding-bottom: 20px;\r\n}\r\n.degree h4{\r\n    font-size: 1em;\r\n    color: #000;\r\n    margin-bottom: 0.2em;\r\n}\r\n.degree h3{\r\n    font-size: 1.8em;\r\n    color: #000;\r\n}\r\n.widget-right{\r\n    float: right;\r\n    width: 49%;\r\n    text-align: right;\r\n    padding: 2em 1em 1em 1em;\r\n    position: relative;\r\n}\r\n.widget-right p{\r\n    font-size: 1em;\r\n    color: #fff;\r\n    line-height: 1.5em;\r\n}\r\n.widget-right h2{\r\n    font-size: 4em;\r\n    color:#fff;\r\n    position: absolute;\r\n    bottom: -200px;\r\n    right: 22px;\r\n}\r\n.widget-right h5{\r\n    font-size: 1.7em;\r\n    color: #fff;\r\n    margin: 0.8em 0em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTs7Ozs7R0FLRztBQUNILFVBQVU7QUFDViw0WkFBNFosUUFBUSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLFlBQVksQ0FBQyx1QkFBdUIsQ0FBQztBQUM1ZSx3RkFBd0YsY0FBYyxDQUFDO0FBQ3ZHLE1BQU0sZUFBZSxDQUFDLFVBQVUsQ0FBQyxXQUFXLENBQUM7QUFDN0MsYUFBYSxXQUFXLENBQUM7QUFDekIsb0RBQW9ELFVBQVUsQ0FBQyxZQUFZLENBQUM7QUFDNUUsTUFBTSx3QkFBd0IsQ0FBQyxnQkFBZ0IsQ0FBQztBQUNoRCw0QkFBNEI7QUFDNUIsVUFBVTtBQUNWLDRaQUE0WixRQUFRLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsWUFBWSxDQUFDLHVCQUF1QixDQUFDO0FBQzVlLHdGQUF3RixjQUFjLENBQUM7QUFDdkcsTUFBTSxlQUFlLENBQUMsVUFBVSxDQUFDLFdBQVcsQ0FBQztBQUM3QyxhQUFhLFdBQVcsQ0FBQztBQUN6QixvREFBb0QsVUFBVSxDQUFDLFlBQVksQ0FBQztBQUM1RSxNQUFNLHdCQUF3QixDQUFDLGdCQUFnQixDQUFDO0FBQ2hELDRCQUE0QjtBQUM1QixFQUFFLG9CQUFvQixDQUFDO0FBQ3ZCLFFBQVEsZ0JBQWdCLENBQUM7QUFBQyxxQkFBcUI7QUFDL0MsUUFBUSxlQUFlLENBQUM7QUFBQyxvQkFBb0I7QUFDN0MsWUFBWSxpQkFBaUIsQ0FBQztBQUFDLHNCQUFzQjtBQUNyRCxVQUFVLFdBQVcsQ0FBQztBQUFDLGdCQUFnQjtBQUN2QyxVQUFVLFVBQVUsQ0FBQztBQUFDLGVBQWU7QUFDckMsT0FBTyxVQUFVLENBQUM7QUFBQyxnQkFBZ0I7QUFDbkMsY0FBYyxpQkFBaUIsQ0FBQztBQUFDLHNCQUFzQjtBQUN2RCxjQUFjLGlCQUFpQixDQUFDO0FBQUMsc0JBQXNCO0FBQ3ZELGdCQUFnQix1QkFBdUIsQ0FBQztBQUFDLDRCQUE0QjtBQUNyRSxlQUFlLGtCQUFrQixDQUFDO0FBQUMsdUJBQXVCO0FBQzFELG9CQUFvQixhQUFhLENBQUM7QUFBQyxrQkFBa0I7QUFDckQsc0JBQXNCLHFCQUFxQixDQUFDO0FBQUMsb0JBQW9CO0FBQ2pFLElBQUksY0FBYyxDQUFDO0FBQ25CLFlBQVk7QUFDWjtJQUNJLFlBQVk7SUFDWixXQUFXO0lBQ1gsa0NBQXVDO0lBQ3ZDLHNCQUFzQjtJQUN0QixnQ0FBZ0M7QUFDcEM7QUFDQTtJQUNJLFNBQVM7QUFDYjtBQUNBO0lBQ0ksU0FBUztBQUNiO0FBQ0E7SUFDSSxTQUFTO0lBQ1QsVUFBVTtBQUNkO0FBQ0E7SUFDSSxTQUFTO0FBQ2I7QUFDQTtJQUNJLHdCQUF3QjtJQUV4Qiw0QkFBb0I7SUFBcEIsb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSw0QkFBNEI7SUFFNUIsb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsWUFBWTs7QUFFaEI7QUFDQSxvQkFBb0I7QUFDcEI7SUFDSSx5QkFBOEI7SUFDOUIsaUJBQWlCO0lBQ2pCLHNCQUFzQjtJQUN0QixXQUFXO0lBQ1gsNEJBQTRCO0lBQzVCLHVCQUF1QjtBQUMzQjtBQUNBO0lBQ0ksV0FBVztJQUNYLFVBQVU7SUFDVixxQ0FBcUM7SUFDckMsa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFdBQVc7SUFDWCxpQkFBaUI7SUFDakIsaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsV0FBVztBQUNmO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsV0FBVztJQUNYLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksY0FBYztJQUNkLFdBQVc7SUFDWCxvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0FBQ2Y7QUFDQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsaUJBQWlCO0lBQ2pCLHdCQUF3QjtJQUN4QixrQkFBa0I7QUFDdEI7QUFDQTtJQUNJLGNBQWM7SUFDZCxXQUFXO0lBQ1gsa0JBQWtCO0FBQ3RCO0FBQ0E7SUFDSSxjQUFjO0lBQ2QsVUFBVTtJQUNWLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2QsV0FBVztBQUNmO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsV0FBVztJQUNYLGlCQUFpQjtBQUNyQiIsImZpbGUiOiIuLi8uLi9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4vKi0tXHJcbkF1dGhvcjogVzNsYXlvdXRzXHJcbkF1dGhvciBVUkw6IGh0dHA6Ly93M2xheW91dHMuY29tXHJcbkxpY2Vuc2U6IENyZWF0aXZlIENvbW1vbnMgQXR0cmlidXRpb24gMy4wIFVucG9ydGVkXHJcbkxpY2Vuc2UgVVJMOiBodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS8zLjAvXHJcbi0tKi9cclxuLyogcmVzZXQgKi9cclxuaHRtbCxib2R5LGRpdixzcGFuLGFwcGxldCxvYmplY3QsaWZyYW1lLGgxLGgyLGgzLGg0LGg1LGg2LHAsYmxvY2txdW90ZSxwcmUsYSxhYmJyLGFjcm9ueW0sYWRkcmVzcyxiaWcsY2l0ZSxjb2RlLGRlbCxkZm4sZW0saW1nLGlucyxrYmQscSxzLHNhbXAsc21hbGwsc3RyaWtlLHN0cm9uZyxzdWIsc3VwLHR0LHZhcixiLHUsaSxkbCxkdCxkZCxvbCxuYXYgdWwsbmF2IGxpLGZpZWxkc2V0LGZvcm0sbGFiZWwsbGVnZW5kLHRhYmxlLGNhcHRpb24sdGJvZHksdGZvb3QsdGhlYWQsdHIsdGgsdGQsYXJ0aWNsZSxhc2lkZSxjYW52YXMsZGV0YWlscyxlbWJlZCxmaWd1cmUsZmlnY2FwdGlvbixmb290ZXIsaGVhZGVyLGhncm91cCxtZW51LG5hdixvdXRwdXQscnVieSxzZWN0aW9uLHN1bW1hcnksdGltZSxtYXJrLGF1ZGlvLHZpZGVve21hcmdpbjowO3BhZGRpbmc6MDtib3JkZXI6MDtmb250LXNpemU6MTAwJTtmb250OmluaGVyaXQ7dmVydGljYWwtYWxpZ246YmFzZWxpbmU7fVxyXG5hcnRpY2xlLCBhc2lkZSwgZGV0YWlscywgZmlnY2FwdGlvbiwgZmlndXJlLGZvb3RlciwgaGVhZGVyLCBoZ3JvdXAsIG1lbnUsIG5hdiwgc2VjdGlvbiB7ZGlzcGxheTogYmxvY2s7fVxyXG5vbCx1bHtsaXN0LXN0eWxlOm5vbmU7bWFyZ2luOjBweDtwYWRkaW5nOjBweDt9XHJcbmJsb2NrcXVvdGUscXtxdW90ZXM6bm9uZTt9XHJcbmJsb2NrcXVvdGU6YmVmb3JlLGJsb2NrcXVvdGU6YWZ0ZXIscTpiZWZvcmUscTphZnRlcntjb250ZW50OicnO2NvbnRlbnQ6bm9uZTt9XHJcbnRhYmxle2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtib3JkZXItc3BhY2luZzowO31cclxuLyogc3RhcnQgZWRpdGluZyBmcm9tIGhlcmUgKi9cclxuLyogcmVzZXQgKi9cclxuaHRtbCxib2R5LGRpdixzcGFuLGFwcGxldCxvYmplY3QsaWZyYW1lLGgxLGgyLGgzLGg0LGg1LGg2LHAsYmxvY2txdW90ZSxwcmUsYSxhYmJyLGFjcm9ueW0sYWRkcmVzcyxiaWcsY2l0ZSxjb2RlLGRlbCxkZm4sZW0saW1nLGlucyxrYmQscSxzLHNhbXAsc21hbGwsc3RyaWtlLHN0cm9uZyxzdWIsc3VwLHR0LHZhcixiLHUsaSxkbCxkdCxkZCxvbCxuYXYgdWwsbmF2IGxpLGZpZWxkc2V0LGZvcm0sbGFiZWwsbGVnZW5kLHRhYmxlLGNhcHRpb24sdGJvZHksdGZvb3QsdGhlYWQsdHIsdGgsdGQsYXJ0aWNsZSxhc2lkZSxjYW52YXMsZGV0YWlscyxlbWJlZCxmaWd1cmUsZmlnY2FwdGlvbixmb290ZXIsaGVhZGVyLGhncm91cCxtZW51LG5hdixvdXRwdXQscnVieSxzZWN0aW9uLHN1bW1hcnksdGltZSxtYXJrLGF1ZGlvLHZpZGVve21hcmdpbjowO3BhZGRpbmc6MDtib3JkZXI6MDtmb250LXNpemU6MTAwJTtmb250OmluaGVyaXQ7dmVydGljYWwtYWxpZ246YmFzZWxpbmU7fVxyXG5hcnRpY2xlLCBhc2lkZSwgZGV0YWlscywgZmlnY2FwdGlvbiwgZmlndXJlLGZvb3RlciwgaGVhZGVyLCBoZ3JvdXAsIG1lbnUsIG5hdiwgc2VjdGlvbiB7ZGlzcGxheTogYmxvY2s7fVxyXG5vbCx1bHtsaXN0LXN0eWxlOm5vbmU7bWFyZ2luOjBweDtwYWRkaW5nOjBweDt9XHJcbmJsb2NrcXVvdGUscXtxdW90ZXM6bm9uZTt9XHJcbmJsb2NrcXVvdGU6YmVmb3JlLGJsb2NrcXVvdGU6YWZ0ZXIscTpiZWZvcmUscTphZnRlcntjb250ZW50OicnO2NvbnRlbnQ6bm9uZTt9XHJcbnRhYmxle2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtib3JkZXItc3BhY2luZzowO31cclxuLyogc3RhcnQgZWRpdGluZyBmcm9tIGhlcmUgKi9cclxuYXt0ZXh0LWRlY29yYXRpb246bm9uZTt9XHJcbi50eHQtcnR7dGV4dC1hbGlnbjpyaWdodDt9LyogdGV4dCBhbGlnbiByaWdodCAqL1xyXG4udHh0LWx0e3RleHQtYWxpZ246bGVmdDt9LyogdGV4dCBhbGlnbiBsZWZ0ICovXHJcbi50eHQtY2VudGVye3RleHQtYWxpZ246Y2VudGVyO30vKiB0ZXh0IGFsaWduIGNlbnRlciAqL1xyXG4uZmxvYXQtcnR7ZmxvYXQ6cmlnaHQ7fS8qIGZsb2F0IHJpZ2h0ICovXHJcbi5mbG9hdC1sdHtmbG9hdDpsZWZ0O30vKiBmbG9hdCBsZWZ0ICovXHJcbi5jbGVhcntjbGVhcjpib3RoO30vKiBjbGVhciBmbG9hdCAqL1xyXG4ucG9zLXJlbGF0aXZle3Bvc2l0aW9uOnJlbGF0aXZlO30vKiBQb3NpdGlvbiBSZWxhdGl2ZSAqL1xyXG4ucG9zLWFic29sdXRle3Bvc2l0aW9uOmFic29sdXRlO30vKiBQb3NpdGlvbiBBYnNvbHV0ZSAqL1xyXG4udmVydGljYWwtYmFzZXtcdHZlcnRpY2FsLWFsaWduOmJhc2VsaW5lO30vKiB2ZXJ0aWNhbCBhbGlnbiBiYXNlbGluZSAqL1xyXG4udmVydGljYWwtdG9we1x0dmVydGljYWwtYWxpZ246dG9wO30vKiB2ZXJ0aWNhbCBhbGlnbiB0b3AgKi9cclxubmF2LnZlcnRpY2FsIHVsIGxpe1x0ZGlzcGxheTpibG9jazt9LyogdmVydGljYWwgbWVudSAqL1xyXG5uYXYuaG9yaXpvbnRhbCB1bCBsaXtcdGRpc3BsYXk6IGlubGluZS1ibG9jazt9LyogaG9yaXpvbnRhbCBtZW51ICovXHJcbmltZ3ttYXgtd2lkdGg6MTAwJTt9XHJcbi8qZW5kIHJlc2V0Ki9cclxuYm9keXtcclxuICAgIHBhZGRpbmc6IDBweDtcclxuICAgIG1hcmdpbjogMHB4O1xyXG4gICAgYmFja2dyb3VuZDogdXJsKGltYWdlcy8yLmpwZykgbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGZvbnQtZmFtaWx5OiAnR3VkZWEnLCBzYW5zLXNlcmlmO1xyXG59XHJcbmgxLGgyLGgzLGg0LGg1LGg2e1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcbnB7XHJcbiAgICBtYXJnaW46IDA7XHJcbn1cclxudWx7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG59XHJcbmxhYmVse1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcbmF7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IDAuNXM7XHJcbiAgICAtbW96LXRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG4gICAgdHJhbnNpdGlvbjogMC41cyBhbGw7XHJcbn1cclxuYTpob3ZlcntcclxuICAgIC13ZWJraXQtdHJhbnNpdGlvbjogMC41cyBhbGw7XHJcbiAgICAtbW96LXRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG4gICAgdHJhbnNpdGlvbjogMC41cyBhbGw7XHJcbn1cclxuLndyYXB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGZsb2F0OiByaWdodDtcclxuXHJcbn1cclxuLyp3aWRnZXQgc3RhcnQgaGVyZSovXHJcbi53aWRnZXQtbWFpbntcclxuICAgIGJhY2tncm91bmQ6IHVybChpbWFnZXMvczIuanBnKTsgXHJcbiAgICBtaW4taGVpZ2h0OiA3MDBweDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAxMHB4ICMzQzNCM0I7ICAgICBcclxuICAgIGZsb2F0OiByaWdodCAhaW1wb3J0YW50O1xyXG59XHJcbi53aWRnZXQtbGVmdHtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42NSk7XHJcbiAgICBwYWRkaW5nOiAxLjVlbSAyZW07XHJcbiAgICBtaW4taGVpZ2h0OiAzMDJweDtcclxufVxyXG4uZGF0ZXtcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbiAgICBtYXJnaW4tdG9wOiAtOTBweDtcclxufVxyXG4uZGF0ZSBoNntcclxuICAgIGZvbnQtc2l6ZTogMC45ZW07XHJcbiAgICBjb2xvcjogIzAwMDtcclxufVxyXG4uZGVncmVle1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xyXG59XHJcbi5kZWdyZWUgaDR7XHJcbiAgICBmb250LXNpemU6IDFlbTtcclxuICAgIGNvbG9yOiAjMDAwO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMC4yZW07XHJcbn1cclxuLmRlZ3JlZSBoM3tcclxuICAgIGZvbnQtc2l6ZTogMS44ZW07XHJcbiAgICBjb2xvcjogIzAwMDtcclxufVxyXG4ud2lkZ2V0LXJpZ2h0e1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgd2lkdGg6IDQ5JTtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gICAgcGFkZGluZzogMmVtIDFlbSAxZW0gMWVtO1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcbi53aWRnZXQtcmlnaHQgcHtcclxuICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBsaW5lLWhlaWdodDogMS41ZW07XHJcbn1cclxuLndpZGdldC1yaWdodCBoMntcclxuICAgIGZvbnQtc2l6ZTogNGVtO1xyXG4gICAgY29sb3I6I2ZmZjtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGJvdHRvbTogLTIwMHB4O1xyXG4gICAgcmlnaHQ6IDIycHg7XHJcbn1cclxuLndpZGdldC1yaWdodCBoNXtcclxuICAgIGZvbnQtc2l6ZTogMS43ZW07XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIG1hcmdpbjogMC44ZW0gMGVtO1xyXG59Il19 */"
+module.exports = "\r\n/*--\r\nAuthor: W3layouts\r\nAuthor URL: http://w3layouts.com\r\nLicense: Creative Commons Attribution 3.0 Unported\r\nLicense URL: http://creativecommons.org/licenses/by/3.0/\r\n--*/\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\na{text-decoration:none;}\r\n.txt-rt{text-align:right;}\r\n/* text align right */\r\n.txt-lt{text-align:left;}\r\n/* text align left */\r\n.txt-center{text-align:center;}\r\n/* text align center */\r\n.float-rt{float:right;}\r\n/* float right */\r\n.float-lt{float:left;}\r\n/* float left */\r\n.clear{clear:both;}\r\n/* clear float */\r\n.pos-relative{position:relative;}\r\n/* Position Relative */\r\n.pos-absolute{position:absolute;}\r\n/* Position Absolute */\r\n.vertical-base{\tvertical-align:baseline;}\r\n/* vertical align baseline */\r\n.vertical-top{\tvertical-align:top;}\r\n/* vertical align top */\r\nnav.vertical ul li{\tdisplay:block;}\r\n/* vertical menu */\r\nnav.horizontal ul li{\tdisplay: inline-block;}\r\n/* horizontal menu */\r\nimg{max-width:100%;}\r\n/*end reset*/\r\nbody{\r\n    padding: 0px;\r\n    margin: 0px;\r\n    background: url('2.jpg') no-repeat;\r\n    background-size: cover;\r\n    font-family: 'Gudea', sans-serif;\r\n}\r\nh1,h2,h3,h4,h5,h6{\r\n    margin: 0;\r\n}\r\np{\r\n    margin: 0;\r\n}\r\nul{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nlabel{\r\n    margin: 0;\r\n}\r\na{\r\n    -webkit-transition: 0.5s;\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\na:hover{\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\n.wrap{\r\n    width: 100%;\r\n    float: right;\r\n\r\n}\r\n/*widget start here*/\r\n.widget-main{\r\n    background: url('s2.jpg'); \r\n    min-height: 700px;\r\n    background-size: cover;\r\n    width: 100%;\r\n    box-shadow: 0 0 10px #3C3B3B;     \r\n    float: right !important;\r\n}\r\n.widget-left{\r\n    float: left;\r\n    width: 40%;\r\n    background: rgba(255, 255, 255, 0.65);\r\n    padding: 1.5em 2em;\r\n    min-height: 302px;\r\n}\r\n.date{\r\n    float: right;\r\n    width: 100%;\r\n    text-align: right;\r\n    margin-top: -90px;\r\n}\r\n.date h6{\r\n    font-size: 0.9em;\r\n    color: #000;\r\n}\r\n.degree{\r\n    float: left;\r\n    width: 100%;\r\n    padding-bottom: 20px;\r\n}\r\n.degree h4{\r\n    font-size: 1em;\r\n    color: #000;\r\n    margin-bottom: 0.2em;\r\n}\r\n.degree h3{\r\n    font-size: 1.8em;\r\n    color: #000;\r\n}\r\n.widget-right{\r\n    float: right;\r\n    width: 49%;\r\n    text-align: right;\r\n    padding: 2em 1em 1em 1em;\r\n    position: relative;\r\n}\r\n.widget-right p{\r\n    font-size: 1em;\r\n    color: #fff;\r\n    line-height: 1.5em;\r\n}\r\n.widget-right h2{\r\n    font-size: 4em;\r\n    color:#fff;\r\n    position: absolute;\r\n    bottom: -200px;\r\n    right: 22px;\r\n}\r\n.widget-right h5{\r\n    font-size: 1.7em;\r\n    color: #fff;\r\n    margin: 0.8em 0em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBOzs7OztHQUtHO0FBQ0gsVUFBVTtBQUNWLDRaQUE0WixRQUFRLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsWUFBWSxDQUFDLHVCQUF1QixDQUFDO0FBQzVlLHdGQUF3RixjQUFjLENBQUM7QUFDdkcsTUFBTSxlQUFlLENBQUMsVUFBVSxDQUFDLFdBQVcsQ0FBQztBQUM3QyxhQUFhLFdBQVcsQ0FBQztBQUN6QixvREFBb0QsVUFBVSxDQUFDLFlBQVksQ0FBQztBQUM1RSxNQUFNLHdCQUF3QixDQUFDLGdCQUFnQixDQUFDO0FBQ2hELDRCQUE0QjtBQUM1QixVQUFVO0FBQ1YsNFpBQTRaLFFBQVEsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLGNBQWMsQ0FBQyxZQUFZLENBQUMsdUJBQXVCLENBQUM7QUFDNWUsd0ZBQXdGLGNBQWMsQ0FBQztBQUN2RyxNQUFNLGVBQWUsQ0FBQyxVQUFVLENBQUMsV0FBVyxDQUFDO0FBQzdDLGFBQWEsV0FBVyxDQUFDO0FBQ3pCLG9EQUFvRCxVQUFVLENBQUMsWUFBWSxDQUFDO0FBQzVFLE1BQU0sd0JBQXdCLENBQUMsZ0JBQWdCLENBQUM7QUFDaEQsNEJBQTRCO0FBQzVCLEVBQUUsb0JBQW9CLENBQUM7QUFDdkIsUUFBUSxnQkFBZ0IsQ0FBQztBQUFDLHFCQUFxQjtBQUMvQyxRQUFRLGVBQWUsQ0FBQztBQUFDLG9CQUFvQjtBQUM3QyxZQUFZLGlCQUFpQixDQUFDO0FBQUMsc0JBQXNCO0FBQ3JELFVBQVUsV0FBVyxDQUFDO0FBQUMsZ0JBQWdCO0FBQ3ZDLFVBQVUsVUFBVSxDQUFDO0FBQUMsZUFBZTtBQUNyQyxPQUFPLFVBQVUsQ0FBQztBQUFDLGdCQUFnQjtBQUNuQyxjQUFjLGlCQUFpQixDQUFDO0FBQUMsc0JBQXNCO0FBQ3ZELGNBQWMsaUJBQWlCLENBQUM7QUFBQyxzQkFBc0I7QUFDdkQsZ0JBQWdCLHVCQUF1QixDQUFDO0FBQUMsNEJBQTRCO0FBQ3JFLGVBQWUsa0JBQWtCLENBQUM7QUFBQyx1QkFBdUI7QUFDMUQsb0JBQW9CLGFBQWEsQ0FBQztBQUFDLGtCQUFrQjtBQUNyRCxzQkFBc0IscUJBQXFCLENBQUM7QUFBQyxvQkFBb0I7QUFDakUsSUFBSSxjQUFjLENBQUM7QUFDbkIsWUFBWTtBQUNaO0lBQ0ksWUFBWTtJQUNaLFdBQVc7SUFDWCxrQ0FBdUM7SUFDdkMsc0JBQXNCO0lBQ3RCLGdDQUFnQztBQUNwQztBQUNBO0lBQ0ksU0FBUztBQUNiO0FBQ0E7SUFDSSxTQUFTO0FBQ2I7QUFDQTtJQUNJLFNBQVM7SUFDVCxVQUFVO0FBQ2Q7QUFDQTtJQUNJLFNBQVM7QUFDYjtBQUNBO0lBQ0ksd0JBQXdCO0lBRXhCLDRCQUFvQjtJQUFwQixvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLDRCQUE0QjtJQUU1QixvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLFdBQVc7SUFDWCxZQUFZOztBQUVoQjtBQUNBLG9CQUFvQjtBQUNwQjtJQUNJLHlCQUE4QjtJQUM5QixpQkFBaUI7SUFDakIsc0JBQXNCO0lBQ3RCLFdBQVc7SUFDWCw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsVUFBVTtJQUNWLHFDQUFxQztJQUNyQyxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSSxZQUFZO0lBQ1osV0FBVztJQUNYLGlCQUFpQjtJQUNqQixpQkFBaUI7QUFDckI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0FBQ2Y7QUFDQTtJQUNJLFdBQVc7SUFDWCxXQUFXO0lBQ1gsb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSxjQUFjO0lBQ2QsV0FBVztJQUNYLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksZ0JBQWdCO0lBQ2hCLFdBQVc7QUFDZjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7SUFDVixpQkFBaUI7SUFDakIsd0JBQXdCO0lBQ3hCLGtCQUFrQjtBQUN0QjtBQUNBO0lBQ0ksY0FBYztJQUNkLFdBQVc7SUFDWCxrQkFBa0I7QUFDdEI7QUFDQTtJQUNJLGNBQWM7SUFDZCxVQUFVO0lBQ1Ysa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0lBQ1gsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLyotLVxyXG5BdXRob3I6IFczbGF5b3V0c1xyXG5BdXRob3IgVVJMOiBodHRwOi8vdzNsYXlvdXRzLmNvbVxyXG5MaWNlbnNlOiBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDMuMCBVbnBvcnRlZFxyXG5MaWNlbnNlIFVSTDogaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvMy4wL1xyXG4tLSovXHJcbi8qIHJlc2V0ICovXHJcbmh0bWwsYm9keSxkaXYsc3BhbixhcHBsZXQsb2JqZWN0LGlmcmFtZSxoMSxoMixoMyxoNCxoNSxoNixwLGJsb2NrcXVvdGUscHJlLGEsYWJicixhY3JvbnltLGFkZHJlc3MsYmlnLGNpdGUsY29kZSxkZWwsZGZuLGVtLGltZyxpbnMsa2JkLHEscyxzYW1wLHNtYWxsLHN0cmlrZSxzdHJvbmcsc3ViLHN1cCx0dCx2YXIsYix1LGksZGwsZHQsZGQsb2wsbmF2IHVsLG5hdiBsaSxmaWVsZHNldCxmb3JtLGxhYmVsLGxlZ2VuZCx0YWJsZSxjYXB0aW9uLHRib2R5LHRmb290LHRoZWFkLHRyLHRoLHRkLGFydGljbGUsYXNpZGUsY2FudmFzLGRldGFpbHMsZW1iZWQsZmlndXJlLGZpZ2NhcHRpb24sZm9vdGVyLGhlYWRlcixoZ3JvdXAsbWVudSxuYXYsb3V0cHV0LHJ1Ynksc2VjdGlvbixzdW1tYXJ5LHRpbWUsbWFyayxhdWRpbyx2aWRlb3ttYXJnaW46MDtwYWRkaW5nOjA7Ym9yZGVyOjA7Zm9udC1zaXplOjEwMCU7Zm9udDppbmhlcml0O3ZlcnRpY2FsLWFsaWduOmJhc2VsaW5lO31cclxuYXJ0aWNsZSwgYXNpZGUsIGRldGFpbHMsIGZpZ2NhcHRpb24sIGZpZ3VyZSxmb290ZXIsIGhlYWRlciwgaGdyb3VwLCBtZW51LCBuYXYsIHNlY3Rpb24ge2Rpc3BsYXk6IGJsb2NrO31cclxub2wsdWx7bGlzdC1zdHlsZTpub25lO21hcmdpbjowcHg7cGFkZGluZzowcHg7fVxyXG5ibG9ja3F1b3RlLHF7cXVvdGVzOm5vbmU7fVxyXG5ibG9ja3F1b3RlOmJlZm9yZSxibG9ja3F1b3RlOmFmdGVyLHE6YmVmb3JlLHE6YWZ0ZXJ7Y29udGVudDonJztjb250ZW50Om5vbmU7fVxyXG50YWJsZXtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Ym9yZGVyLXNwYWNpbmc6MDt9XHJcbi8qIHN0YXJ0IGVkaXRpbmcgZnJvbSBoZXJlICovXHJcbi8qIHJlc2V0ICovXHJcbmh0bWwsYm9keSxkaXYsc3BhbixhcHBsZXQsb2JqZWN0LGlmcmFtZSxoMSxoMixoMyxoNCxoNSxoNixwLGJsb2NrcXVvdGUscHJlLGEsYWJicixhY3JvbnltLGFkZHJlc3MsYmlnLGNpdGUsY29kZSxkZWwsZGZuLGVtLGltZyxpbnMsa2JkLHEscyxzYW1wLHNtYWxsLHN0cmlrZSxzdHJvbmcsc3ViLHN1cCx0dCx2YXIsYix1LGksZGwsZHQsZGQsb2wsbmF2IHVsLG5hdiBsaSxmaWVsZHNldCxmb3JtLGxhYmVsLGxlZ2VuZCx0YWJsZSxjYXB0aW9uLHRib2R5LHRmb290LHRoZWFkLHRyLHRoLHRkLGFydGljbGUsYXNpZGUsY2FudmFzLGRldGFpbHMsZW1iZWQsZmlndXJlLGZpZ2NhcHRpb24sZm9vdGVyLGhlYWRlcixoZ3JvdXAsbWVudSxuYXYsb3V0cHV0LHJ1Ynksc2VjdGlvbixzdW1tYXJ5LHRpbWUsbWFyayxhdWRpbyx2aWRlb3ttYXJnaW46MDtwYWRkaW5nOjA7Ym9yZGVyOjA7Zm9udC1zaXplOjEwMCU7Zm9udDppbmhlcml0O3ZlcnRpY2FsLWFsaWduOmJhc2VsaW5lO31cclxuYXJ0aWNsZSwgYXNpZGUsIGRldGFpbHMsIGZpZ2NhcHRpb24sIGZpZ3VyZSxmb290ZXIsIGhlYWRlciwgaGdyb3VwLCBtZW51LCBuYXYsIHNlY3Rpb24ge2Rpc3BsYXk6IGJsb2NrO31cclxub2wsdWx7bGlzdC1zdHlsZTpub25lO21hcmdpbjowcHg7cGFkZGluZzowcHg7fVxyXG5ibG9ja3F1b3RlLHF7cXVvdGVzOm5vbmU7fVxyXG5ibG9ja3F1b3RlOmJlZm9yZSxibG9ja3F1b3RlOmFmdGVyLHE6YmVmb3JlLHE6YWZ0ZXJ7Y29udGVudDonJztjb250ZW50Om5vbmU7fVxyXG50YWJsZXtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Ym9yZGVyLXNwYWNpbmc6MDt9XHJcbi8qIHN0YXJ0IGVkaXRpbmcgZnJvbSBoZXJlICovXHJcbmF7dGV4dC1kZWNvcmF0aW9uOm5vbmU7fVxyXG4udHh0LXJ0e3RleHQtYWxpZ246cmlnaHQ7fS8qIHRleHQgYWxpZ24gcmlnaHQgKi9cclxuLnR4dC1sdHt0ZXh0LWFsaWduOmxlZnQ7fS8qIHRleHQgYWxpZ24gbGVmdCAqL1xyXG4udHh0LWNlbnRlcnt0ZXh0LWFsaWduOmNlbnRlcjt9LyogdGV4dCBhbGlnbiBjZW50ZXIgKi9cclxuLmZsb2F0LXJ0e2Zsb2F0OnJpZ2h0O30vKiBmbG9hdCByaWdodCAqL1xyXG4uZmxvYXQtbHR7ZmxvYXQ6bGVmdDt9LyogZmxvYXQgbGVmdCAqL1xyXG4uY2xlYXJ7Y2xlYXI6Ym90aDt9LyogY2xlYXIgZmxvYXQgKi9cclxuLnBvcy1yZWxhdGl2ZXtwb3NpdGlvbjpyZWxhdGl2ZTt9LyogUG9zaXRpb24gUmVsYXRpdmUgKi9cclxuLnBvcy1hYnNvbHV0ZXtwb3NpdGlvbjphYnNvbHV0ZTt9LyogUG9zaXRpb24gQWJzb2x1dGUgKi9cclxuLnZlcnRpY2FsLWJhc2V7XHR2ZXJ0aWNhbC1hbGlnbjpiYXNlbGluZTt9LyogdmVydGljYWwgYWxpZ24gYmFzZWxpbmUgKi9cclxuLnZlcnRpY2FsLXRvcHtcdHZlcnRpY2FsLWFsaWduOnRvcDt9LyogdmVydGljYWwgYWxpZ24gdG9wICovXHJcbm5hdi52ZXJ0aWNhbCB1bCBsaXtcdGRpc3BsYXk6YmxvY2s7fS8qIHZlcnRpY2FsIG1lbnUgKi9cclxubmF2Lmhvcml6b250YWwgdWwgbGl7XHRkaXNwbGF5OiBpbmxpbmUtYmxvY2s7fS8qIGhvcml6b250YWwgbWVudSAqL1xyXG5pbWd7bWF4LXdpZHRoOjEwMCU7fVxyXG4vKmVuZCByZXNldCovXHJcbmJvZHl7XHJcbiAgICBwYWRkaW5nOiAwcHg7XHJcbiAgICBtYXJnaW46IDBweDtcclxuICAgIGJhY2tncm91bmQ6IHVybChpbWFnZXMvMi5qcGcpIG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgICBmb250LWZhbWlseTogJ0d1ZGVhJywgc2Fucy1zZXJpZjtcclxufVxyXG5oMSxoMixoMyxoNCxoNSxoNntcclxuICAgIG1hcmdpbjogMDtcclxufVxyXG5we1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcbnVse1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgcGFkZGluZzogMDtcclxufVxyXG5sYWJlbHtcclxuICAgIG1hcmdpbjogMDtcclxufVxyXG5he1xyXG4gICAgLXdlYmtpdC10cmFuc2l0aW9uOiAwLjVzO1xyXG4gICAgLW1vei10cmFuc2l0aW9uOiAwLjVzIGFsbDtcclxuICAgIHRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG59XHJcbmE6aG92ZXJ7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG4gICAgLW1vei10cmFuc2l0aW9uOiAwLjVzIGFsbDtcclxuICAgIHRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG59XHJcbi53cmFwe1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcblxyXG59XHJcbi8qd2lkZ2V0IHN0YXJ0IGhlcmUqL1xyXG4ud2lkZ2V0LW1haW57XHJcbiAgICBiYWNrZ3JvdW5kOiB1cmwoaW1hZ2VzL3MyLmpwZyk7IFxyXG4gICAgbWluLWhlaWdodDogNzAwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMTBweCAjM0MzQjNCOyAgICAgXHJcbiAgICBmbG9hdDogcmlnaHQgIWltcG9ydGFudDtcclxufVxyXG4ud2lkZ2V0LWxlZnR7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICAgIHdpZHRoOiA0MCU7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNjUpO1xyXG4gICAgcGFkZGluZzogMS41ZW0gMmVtO1xyXG4gICAgbWluLWhlaWdodDogMzAycHg7XHJcbn1cclxuLmRhdGV7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gICAgbWFyZ2luLXRvcDogLTkwcHg7XHJcbn1cclxuLmRhdGUgaDZ7XHJcbiAgICBmb250LXNpemU6IDAuOWVtO1xyXG4gICAgY29sb3I6ICMwMDA7XHJcbn1cclxuLmRlZ3JlZXtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMjBweDtcclxufVxyXG4uZGVncmVlIGg0e1xyXG4gICAgZm9udC1zaXplOiAxZW07XHJcbiAgICBjb2xvcjogIzAwMDtcclxuICAgIG1hcmdpbi1ib3R0b206IDAuMmVtO1xyXG59XHJcbi5kZWdyZWUgaDN7XHJcbiAgICBmb250LXNpemU6IDEuOGVtO1xyXG4gICAgY29sb3I6ICMwMDA7XHJcbn1cclxuLndpZGdldC1yaWdodHtcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIHdpZHRoOiA0OSU7XHJcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcclxuICAgIHBhZGRpbmc6IDJlbSAxZW0gMWVtIDFlbTtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG4ud2lkZ2V0LXJpZ2h0IHB7XHJcbiAgICBmb250LXNpemU6IDFlbTtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgbGluZS1oZWlnaHQ6IDEuNWVtO1xyXG59XHJcbi53aWRnZXQtcmlnaHQgaDJ7XHJcbiAgICBmb250LXNpemU6IDRlbTtcclxuICAgIGNvbG9yOiNmZmY7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBib3R0b206IC0yMDBweDtcclxuICAgIHJpZ2h0OiAyMnB4O1xyXG59XHJcbi53aWRnZXQtcmlnaHQgaDV7XHJcbiAgICBmb250LXNpemU6IDEuN2VtO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBtYXJnaW46IDAuOGVtIDBlbTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -6880,7 +6934,7 @@ var AuthService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -7550,7 +7604,7 @@ var PerformanceService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvY2FwYS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksK0NBQStDO0lBQy9DLDhCQUE4QjtJQUM5Qix1QkFBdUI7SUFDdkIseUJBQXlCO0lBQ3pCLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3QiwyQkFBMkI7SUFDM0IsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLCtDQUErQztJQUMvQywwQ0FBMEM7SUFDMUMsMEJBQTBCO0lBQzFCLHNCQUFzQjtJQUN0Qiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCOztBQUNBO0lBQ0ksK0NBQStDO0lBQy9DLHVCQUF1QjtJQUN2Qiw2QkFBNkI7SUFDN0IsOENBQThDO0lBQzlDLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCIiwiZmlsZSI6Ii4uLy4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvY2FwYS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRleHRvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWwgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOmJsYWNrICFpbXBvcnRhbnQgOyBcclxuICAgIGZvbnQtc2l6ZToxMnB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgbWFyZ2luLXRvcDogNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1yaWdodDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICB0ZXh0LWFsaWduOmp1c3RpZnkgIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6ICA1cHggIWltcG9ydGFudDsgXHJcbiAgICB3aWR0aDogOTUwcHggIWltcG9ydGFudDsgXHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmdyaWQuVGl0dWxvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDM3LDYzLDE0NykgIWltcG9ydGFudDsgXHJcbiAgICBmb250LXNpemU6IDEwcHggIWltcG9ydGFudDsgXHJcbiAgICBjb2xvcjp3aGl0ZSAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyN3B4ICFpbXBvcnRhbnQ7IFxyXG59XHJcbi5ncmlkIHtcclxuICAgIGZvbnQtZmFtaWx5OlRyZWJ1Y2hldCBNUywgc2Fucy1zZXJpZiAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50IDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDIyOSwgMjM0LCAyMzgpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxOXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci13aWR0aDogMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBoZWlnaHQ6IDI1cHggIWltcG9ydGFudDsgXHJcbn0iXX0= */"
+module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGVyZm9ybWFuY2UvcmVsYXRvcmlvaW5kaWNhZG9yZXMvY2FwYS9jYXBhLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwrQ0FBK0M7SUFDL0MsOEJBQThCO0lBQzlCLHVCQUF1QjtJQUN2Qix5QkFBeUI7SUFDekIsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw2QkFBNkI7SUFDN0IsNkJBQTZCO0lBQzdCLDJCQUEyQjtJQUMzQix1QkFBdUI7SUFDdkIsNkJBQTZCO0FBQ2pDOztBQUVBO0lBQ0ksK0NBQStDO0lBQy9DLDBDQUEwQztJQUMxQywwQkFBMEI7SUFDMUIsc0JBQXNCO0lBQ3RCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0I7O0FBQ0E7SUFDSSwrQ0FBK0M7SUFDL0MsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtJQUM3Qiw4Q0FBOEM7SUFDOUMsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9jYXBhL2NhcGEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50ZXh0b3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogbm9ybWFsICFpbXBvcnRhbnQ7XHJcbiAgICBjb2xvcjpibGFjayAhaW1wb3J0YW50IDsgXHJcbiAgICBmb250LXNpemU6MTJweCAhaW1wb3J0YW50OyBcclxuICAgIG1hcmdpbi10b3A6IDVweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgdGV4dC1hbGlnbjpqdXN0aWZ5ICFpbXBvcnRhbnQ7XHJcbiAgICBtYXJnaW4tdG9wOiAgNXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgd2lkdGg6IDk1MHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5ncmlkLlRpdHVsb3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigzNyw2MywxNDcpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxMHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgY29sb3I6d2hpdGUgIWltcG9ydGFudDsgXHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAycHggIWltcG9ydGFudDtcclxuICAgIGhlaWdodDogMjdweCAhaW1wb3J0YW50OyBcclxufVxyXG4uZ3JpZCB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQgIWltcG9ydGFudCA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigyMjksIDIzNCwgMjM4KSAhaW1wb3J0YW50OyBcclxuICAgIGZvbnQtc2l6ZTogMTlweCAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyNXB4ICFpbXBvcnRhbnQ7IFxyXG59Il19 */"
 
 /***/ }),
 
@@ -7635,7 +7689,7 @@ var CapaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvcmVzdW1vLWluZGljYWRvcmVzL3Jlc3Vtby1pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksK0NBQStDO0lBQy9DLDhCQUE4QjtJQUM5Qix1QkFBdUI7SUFDdkIseUJBQXlCO0lBQ3pCLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3QiwyQkFBMkI7SUFDM0IsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLCtDQUErQztJQUMvQywwQ0FBMEM7SUFDMUMsMEJBQTBCO0lBQzFCLHNCQUFzQjtJQUN0Qiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCOztBQUNBO0lBQ0ksK0NBQStDO0lBQy9DLHVCQUF1QjtJQUN2Qiw2QkFBNkI7SUFDN0IsOENBQThDO0lBQzlDLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCIiwiZmlsZSI6Ii4uLy4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvcmVzdW1vLWluZGljYWRvcmVzL3Jlc3Vtby1pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRleHRvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWwgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOmJsYWNrICFpbXBvcnRhbnQgOyBcclxuICAgIGZvbnQtc2l6ZToxMnB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgbWFyZ2luLXRvcDogNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1yaWdodDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICB0ZXh0LWFsaWduOmp1c3RpZnkgIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6ICA1cHggIWltcG9ydGFudDsgXHJcbiAgICB3aWR0aDogOTUwcHggIWltcG9ydGFudDsgXHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmdyaWQuVGl0dWxvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDM3LDYzLDE0NykgIWltcG9ydGFudDsgXHJcbiAgICBmb250LXNpemU6IDEwcHggIWltcG9ydGFudDsgXHJcbiAgICBjb2xvcjp3aGl0ZSAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyN3B4ICFpbXBvcnRhbnQ7IFxyXG59XHJcbi5ncmlkIHtcclxuICAgIGZvbnQtZmFtaWx5OlRyZWJ1Y2hldCBNUywgc2Fucy1zZXJpZiAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50IDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDIyOSwgMjM0LCAyMzgpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxOXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci13aWR0aDogMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBoZWlnaHQ6IDI1cHggIWltcG9ydGFudDsgXHJcbn0iXX0= */"
+module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGVyZm9ybWFuY2UvcmVsYXRvcmlvaW5kaWNhZG9yZXMvY2FwYS9yZXN1bW8taW5kaWNhZG9yZXMvcmVzdW1vLWluZGljYWRvcmVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwrQ0FBK0M7SUFDL0MsOEJBQThCO0lBQzlCLHVCQUF1QjtJQUN2Qix5QkFBeUI7SUFDekIsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw2QkFBNkI7SUFDN0IsNkJBQTZCO0lBQzdCLDJCQUEyQjtJQUMzQix1QkFBdUI7SUFDdkIsNkJBQTZCO0FBQ2pDOztBQUVBO0lBQ0ksK0NBQStDO0lBQy9DLDBDQUEwQztJQUMxQywwQkFBMEI7SUFDMUIsc0JBQXNCO0lBQ3RCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0I7O0FBQ0E7SUFDSSwrQ0FBK0M7SUFDL0MsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtJQUM3Qiw4Q0FBOEM7SUFDOUMsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9jYXBhL3Jlc3Vtby1pbmRpY2Fkb3Jlcy9yZXN1bW8taW5kaWNhZG9yZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50ZXh0b3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogbm9ybWFsICFpbXBvcnRhbnQ7XHJcbiAgICBjb2xvcjpibGFjayAhaW1wb3J0YW50IDsgXHJcbiAgICBmb250LXNpemU6MTJweCAhaW1wb3J0YW50OyBcclxuICAgIG1hcmdpbi10b3A6IDVweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgdGV4dC1hbGlnbjpqdXN0aWZ5ICFpbXBvcnRhbnQ7XHJcbiAgICBtYXJnaW4tdG9wOiAgNXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgd2lkdGg6IDk1MHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5ncmlkLlRpdHVsb3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigzNyw2MywxNDcpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxMHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgY29sb3I6d2hpdGUgIWltcG9ydGFudDsgXHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAycHggIWltcG9ydGFudDtcclxuICAgIGhlaWdodDogMjdweCAhaW1wb3J0YW50OyBcclxufVxyXG4uZ3JpZCB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQgIWltcG9ydGFudCA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigyMjksIDIzNCwgMjM4KSAhaW1wb3J0YW50OyBcclxuICAgIGZvbnQtc2l6ZTogMTlweCAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyNXB4ICFpbXBvcnRhbnQ7IFxyXG59Il19 */"
 
 /***/ }),
 
@@ -7872,7 +7926,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9pbmRpY2Fkb3Jlcy9pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2luZGljYWRvcmVzL2luZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -7945,7 +7999,7 @@ var IndicadoresComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL3JlbGF0b3Jpb2luZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -8007,7 +8061,7 @@ var RelatorioindicadoresComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9wZXJmb3JtYW5jZS90ZWxhLWltcHJlc3Nhby1yZWxhdG9yaW8vdGVsYS1pbXByZXNzYW8tcmVsYXRvcmlvLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL3RlbGEtaW1wcmVzc2FvLXJlbGF0b3Jpby90ZWxhLWltcHJlc3Nhby1yZWxhdG9yaW8uY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -8097,7 +8151,7 @@ var TelaImpressaoRelatorioComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9ycGEvcnBhLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JwYS9ycGEuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -8292,7 +8346,7 @@ var RpaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi90YXJlZmFzL2NhZGFzdHJhci9jYWRhc3RyYXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhcmVmYXMvY2FkYXN0cmFyL2NhZGFzdHJhci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -8362,7 +8416,7 @@ var CadastrarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi90YXJlZmFzL2VkaXRhci9lZGl0YXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhcmVmYXMvZWRpdGFyL2VkaXRhci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -8436,7 +8490,7 @@ var EditarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi90YXJlZmFzL2xpc3Rhci9saXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhcmVmYXMvbGlzdGFyL2xpc3Rhci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -8789,7 +8843,7 @@ var TarefasComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VuZGFtZW50b3MuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2FnZW5kYW1lbnRvcy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -8848,7 +8902,7 @@ var AgendamentosComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VuZGFyLXZlaWN1bG8vYWdlbmRhci12ZWljdWxvLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2FnZW5kYXItdmVpY3Vsby9hZ2VuZGFyLXZlaWN1bG8uY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -8864,12 +8918,95 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgendarVeiculoComponent", function() { return AgendarVeiculoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../transporte.service */ "./src/app/transporte/transporte.service.ts");
+
+
 
 
 var AgendarVeiculoComponent = /** @class */ (function () {
-    function AgendarVeiculoComponent() {
+    function AgendarVeiculoComponent(transporteService, messageService) {
+        this.transporteService = transporteService;
+        this.messageService = messageService;
+        this.ArrCondutores = [];
     }
     AgendarVeiculoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.OpcSolicitante = sessionStorage.getItem('nome');
+        this.ArrCondutores = [];
+        this.transporteService.Condutores().subscribe(function (response) {
+            for (var i = 0; i < response.length; i++) {
+                var array = { label: response[i].nome, value: response[i].nome };
+                _this.ArrCondutores.push(array);
+            }
+        });
+        this.ArrTipoVeiculo = [
+            { label: '' },
+            { label: 'AMAROK', value: 'AMAROK' },
+            { label: 'COROLLA', value: 'COROLLA' },
+            { label: 'COROLLA GLI', value: 'COROLLA GLI' },
+            { label: 'CAMINHAO', value: 'CAMINHAO' },
+            { label: 'MONTANA LS - MT', value: 'MONTANA LS - MT' },
+            { label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT' },
+            { label: 'PRISMA LT - AT', value: 'PRISMA LT - AT' },
+            { label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR' },
+            { label: 'STRADA', value: 'STRADA' },
+            { label: 'S-10 LS - MT', value: 'S-10 LS - MT' }
+        ];
+        this.ArrDestinos = [
+            { label: '', value: '' },
+            { label: 'ARMAÇÃO DOS BÚZIOS', value: 'ARMAÇÃO DOS BÚZIOS' },
+            { label: 'ARRAIAL DO CABO', value: 'ARRAIAL DO CABO' },
+            { label: 'CABO FRIO', value: 'CABO FRIO' },
+            { label: 'CABO FRIO TAMOIOS', value: 'CABO FRIO TAMOIOS' },
+            { label: 'SÃO PEDRO DA ALDEIA', value: 'SÃO PEDRO DA ALDEIA' },
+            { label: 'IGUABA GRANDE', value: 'IGUABA GRANDE' }
+        ];
+    };
+    AgendarVeiculoComponent.prototype.SalvarAgendamento = function () {
+        var _this = this;
+        var agendamento;
+        agendamento = {
+            agendamentoId: null,
+            solicitante: this.OpcSolicitante,
+            qtdPessoas: this.OpcQtd,
+            agendadoate: dataAtualFormatada(this.OpcAte),
+            tipoVeiculoSolicitado: this.OpcTipoVeiculo,
+            tipoVeiculoDisponibilizado: null,
+            agendadode: dataAtualFormatada(this.OpcDe),
+            placa: null,
+            aprovador: null,
+            aprovacao: null,
+            justificativa: null,
+            destino: this.OpcDestinos,
+            condutor: this.OpcCondutores,
+            dataAgendamento: null,
+        };
+        console.log(agendamento);
+        this.transporteService.InputAgendamento(agendamento).subscribe(function (response) {
+            if (response.status === 201) {
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+        this.OpcSolicitante = null;
+        this.OpcQtd = null;
+        this.OpcTipoVeiculo = null;
+        this.OpcAte = null;
+        this.OpcDe = null;
+        this.OpcDestinos = null;
+        this.OpcCondutores = null;
+        function dataAtualFormatada(datareceb) {
+            var data = datareceb, dia = data.getDate().toString().padStart(2, '0'), mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano = data.getFullYear(), hora = data.getHours(), minuto = data.getMinutes();
+            return ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":00";
+        }
     };
     AgendarVeiculoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -8877,7 +9014,8 @@ var AgendarVeiculoComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./agendar-veiculo.component.html */ "./node_modules/raw-loader/index.js!./src/app/transporte/agendamentos/agendar-veiculo/agendar-veiculo.component.html"),
             styles: [__webpack_require__(/*! ./agendar-veiculo.component.css */ "./src/app/transporte/agendamentos/agendar-veiculo/agendar-veiculo.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_3__["TransporteService"],
+            primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
     ], AgendarVeiculoComponent);
     return AgendarVeiculoComponent;
 }());
@@ -8893,7 +9031,7 @@ var AgendarVeiculoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHJvdmFyLWFnZW5kYW1lbnRvL2Fwcm92YXItYWdlbmRhbWVudG8uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2Fwcm92YXItYWdlbmRhbWVudG8vYXByb3Zhci1hZ2VuZGFtZW50by5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -8909,97 +9047,184 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AprovarAgendamentoComponent", function() { return AprovarAgendamentoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../transporte.service */ "./src/app/transporte/transporte.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 var AprovarAgendamentoComponent = /** @class */ (function () {
-    function AprovarAgendamentoComponent() {
+    function AprovarAgendamentoComponent(transporteService, messageService) {
+        this.transporteService = transporteService;
+        this.messageService = messageService;
+        this.veiculos = [];
+        this.veiculosNaoDisponiveis = [];
+        this.veiculosDisponiveis = [];
     }
     AprovarAgendamentoComponent.prototype.ngOnInit = function () {
-        this.Agendamentos = [
-            { solicitante: "Vitor Heser",
-                modelo: 'Montana',
-                setor: 'Eletromecanica',
-                condutor: 'Vitor Heser',
-                pessoas: 4,
-                datasolicitacao: '24/01/2020 08:10:00',
-                solicitacao: [
-                    {
-                        de: '24/01/2020 08:00:00',
-                        ate: '24/01/2020 12:00:00'
-                    }
-                ],
-                destino: 'Arraial do Cabo'
-            },
-            { solicitante: "Juliano Simas",
-                modelo: 'Onix',
-                setor: 'Eletromecanica',
-                condutor: 'Alexandre Andrade',
-                pessoas: 2,
-                datasolicitacao: '24/01/2019 09:33:00',
-                solicitacao: [
-                    {
-                        de: '24/01/2020 08:00:00',
-                        ate: '24/01/2020 17:00:00'
-                    }
-                ],
-                destino: 'Cabo Frio'
-            },
-            { solicitante: "Weslley Pereira",
-                modelo: 'Onix',
-                setor: 'Eletromecanica',
-                condutor: 'Weslley Pereira',
-                pessoas: 1,
-                datasolicitacao: '24/01/2019 10:33:00',
-                solicitacao: [
-                    {
-                        de: '24/01/2020 14:00:00',
-                        ate: '24/01/2020 19:00:00'
-                    }
-                ],
-                destino: 'Iguaba Grande'
-            },
-            { solicitante: "Marcos Pereira",
-                modelo: 'Onix',
-                setor: 'Eletromecanica',
-                condutor: 'Marcos Pereira',
-                pessoas: 1,
-                datasolicitacao: '24/01/2019 09:33:00',
-                solicitacao: [
-                    {
-                        de: '24/01/2020 08:00:00',
-                        ate: '24/01/2020 17:00:00'
-                    }
-                ],
-                destino: 'São Pedro da Aldeia'
-            },
-            { solicitante: "Alexandre Andrade",
-                modelo: 'Onix',
-                setor: 'Eletromecanica',
-                condutor: 'Tamirys Santos',
-                pessoas: 3,
-                datasolicitacao: '24/01/2019 09:33:00',
-                solicitacao: [
-                    {
-                        de: '24/01/2020 13:00:00',
-                        ate: '24/01/2020 17:00:00'
-                    }
-                ],
-                destino: 'Cabo Frio'
-            }
-        ];
+        this.AtualizarLista();
     };
+    AprovarAgendamentoComponent.prototype.AtualizarLista = function () {
+        var _this = this;
+        this.veiculos = [];
+        this.Agendamentos = [];
+        this.transporteService.veiculos()
+            .subscribe(function (Veiculos) {
+            _this.veiculos = Veiculos;
+        });
+        this.transporteService.ParaAprovar()
+            .subscribe(function (Agendamento) {
+            _this.Agendamentos = Agendamento;
+            console.log(Agendamento);
+        });
+    };
+    //==========================================================================================
     AprovarAgendamentoComponent.prototype.Aprovar = function (Agendamento) {
-        this.selectedSchreduling = Agendamento;
+        this.AgendamentoSelecionado = Agendamento;
         this.displayAprove = true;
         event.preventDefault();
     };
+    AprovarAgendamentoComponent.prototype.Escolher = function (car) {
+        this.AgendamentoAlterado =
+            {
+                agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+                solicitante: this.AgendamentoSelecionado.solicitante,
+                qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+                agendadoate: this.AgendamentoSelecionado.agendadoate,
+                tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+                agendadode: this.AgendamentoSelecionado.agendadode,
+                tipoVeiculoDisponibilizado: car.modelo,
+                placa: car.placa,
+                justificativa: "",
+                aprovador: sessionStorage.getItem('nome'),
+                aprovacao: 1,
+                destino: this.AgendamentoSelecionado.destino,
+                condutor: this.AgendamentoSelecionado.condutor,
+                dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+            };
+        this.onSelectHide();
+    };
+    AprovarAgendamentoComponent.prototype.Aprovando = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(function (response) {
+                            if (response.status === 201) {
+                                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                                    detail: 'Dados enviados com sucesso!' });
+                                console.log('Dados enviados com sucesso!');
+                            }
+                        }, function (error) {
+                            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                                detail: error.message, life: 5000 });
+                            console.log(error);
+                        });
+                        this.onDialogHide();
+                        return [4 /*yield*/, new Promise(function (r) { return setTimeout(r, 500); })];
+                    case 1:
+                        _a.sent();
+                        this.AtualizarLista();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    //==========================================================================================
     AprovarAgendamentoComponent.prototype.Reprovar = function (Agendamento) {
-        this.selectedSchreduling = Agendamento;
+        this.AgendamentoSelecionado = Agendamento;
         this.displayRecuse = true;
         event.preventDefault();
     };
     AprovarAgendamentoComponent.prototype.onDialogHide = function () {
-        this.selectedSchreduling = null;
+        this.Agendamentos = null;
+        this.displayAprove = false;
+        this.AtualizarLista();
+    };
+    AprovarAgendamentoComponent.prototype.onSelectHide = function () {
+        this.veiculosDisponiveis = null;
+        this.displaySelect = false;
+        this.AtualizarLista();
+    };
+    AprovarAgendamentoComponent.prototype.Reprovando = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.AgendamentoAlterado =
+                            {
+                                agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+                                solicitante: this.AgendamentoSelecionado.solicitante,
+                                qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+                                agendadoate: this.AgendamentoSelecionado.agendadoate,
+                                tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+                                agendadode: this.AgendamentoSelecionado.agendadode,
+                                tipoVeiculoDisponibilizado: this.AgendamentoSelecionado.tipoVeiculoDisponibilizado,
+                                placa: this.AgendamentoSelecionado.placa,
+                                justificativa: this.Justificativa,
+                                aprovador: sessionStorage.getItem('nome'),
+                                aprovacao: 0,
+                                destino: this.AgendamentoSelecionado.destino,
+                                condutor: this.AgendamentoSelecionado.condutor,
+                                dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+                            };
+                        this.displayRecuse = true;
+                        this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(function (response) {
+                            if (response.status === 201) {
+                                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                                    detail: 'Reprovado!' });
+                                console.log('Reprovado!');
+                            }
+                        }, function (error) {
+                            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                                detail: error.message, life: 5000 });
+                            console.log(error);
+                        });
+                        this.onDialogHide();
+                        return [4 /*yield*/, new Promise(function (r) { return setTimeout(r, 500); })];
+                    case 1:
+                        _a.sent();
+                        this.AtualizarLista();
+                        this.Justificativa = null;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    //==========================================================================================
+    AprovarAgendamentoComponent.prototype.VerificarDisponibilidade = function (de, ate) {
+        var _this = this;
+        this.transporteService.Disponiveis(de, ate).subscribe(function (Agendados) {
+            _this.PreencherDisponiveis(Agendados);
+        });
+    };
+    AprovarAgendamentoComponent.prototype.PreencherDisponiveis = function (Agendados) {
+        console.log(Agendados);
+        var todos = this.veiculos;
+        this.veiculosDisponiveis = [];
+        this.veiculosNaoDisponiveis = Agendados;
+        if (this.veiculosNaoDisponiveis.length < 1) {
+            this.veiculosDisponiveis = todos;
+        }
+        else {
+            for (var i = 0; i < todos.length; i++) {
+                var placaVeiculo = todos[i].placa;
+                var placaAgendado = null;
+                for (var j = 0; j < this.veiculosNaoDisponiveis.length; j++) {
+                    placaAgendado = this.veiculosNaoDisponiveis[j].placa;
+                    if (placaVeiculo == placaAgendado) {
+                        break;
+                    }
+                }
+                if (placaAgendado != placaVeiculo) {
+                    this.veiculosDisponiveis.push(todos[i]);
+                }
+            }
+        }
+        this.displaySelect = true;
     };
     AprovarAgendamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -9007,7 +9232,8 @@ var AprovarAgendamentoComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./aprovar-agendamento.component.html */ "./node_modules/raw-loader/index.js!./src/app/transporte/agendamentos/aprovar-agendamento/aprovar-agendamento.component.html"),
             styles: [__webpack_require__(/*! ./aprovar-agendamento.component.css */ "./src/app/transporte/agendamentos/aprovar-agendamento/aprovar-agendamento.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_2__["TransporteService"],
+            primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
     ], AprovarAgendamentoComponent);
     return AprovarAgendamentoComponent;
 }());
@@ -9023,7 +9249,7 @@ var AprovarAgendamentoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjYWxlbmRhcmlvLWFnZW5kYW1lbnRvcy9jYWxlbmRhcmlvLWFnZW5kYW1lbnRvcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2NhbGVuZGFyaW8tYWdlbmRhbWVudG9zL2NhbGVuZGFyaW8tYWdlbmRhbWVudG9zLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -9139,7 +9365,7 @@ var CalendarioAgendamentosComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsaXN0YS1hZ2VuZGFtZW50b3MvbGlzdGEtYWdlbmRhbWVudG9zLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2xpc3RhLWFnZW5kYW1lbnRvcy9saXN0YS1hZ2VuZGFtZW50b3MuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -9155,12 +9381,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListaAgendamentosComponent", function() { return ListaAgendamentosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../transporte.service */ "./src/app/transporte/transporte.service.ts");
+
 
 
 var ListaAgendamentosComponent = /** @class */ (function () {
-    function ListaAgendamentosComponent() {
+    function ListaAgendamentosComponent(transporteService) {
+        this.transporteService = transporteService;
     }
     ListaAgendamentosComponent.prototype.ngOnInit = function () {
+        this.AtualizarLista();
+    };
+    ListaAgendamentosComponent.prototype.AtualizarLista = function () {
+        var _this = this;
+        this.Agendamentos = [];
+        this.transporteService.Aprovados()
+            .subscribe(function (agendamentos) {
+            _this.Agendamentos = agendamentos;
+        });
+    };
+    ListaAgendamentosComponent.prototype.showAgendamento = function (agendamento) {
+        this.displayAgendamento = true;
+        this.AgendamentoSelecionado = agendamento;
+    };
+    ListaAgendamentosComponent.prototype.onDialogHide = function () {
+        this.Agendamentos = null;
+        this.displayAgendamento = false;
+        this.AtualizarLista();
     };
     ListaAgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -9168,7 +9415,7 @@ var ListaAgendamentosComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./lista-agendamentos.component.html */ "./node_modules/raw-loader/index.js!./src/app/transporte/agendamentos/lista-agendamentos/lista-agendamentos.component.html"),
             styles: [__webpack_require__(/*! ./lista-agendamentos.component.css */ "./src/app/transporte/agendamentos/lista-agendamentos/lista-agendamentos.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_2__["TransporteService"]])
     ], ListaAgendamentosComponent);
     return ListaAgendamentosComponent;
 }());
@@ -9184,7 +9431,7 @@ var ListaAgendamentosComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".car-item .ui-md-3 {\r\n    text-align: center;\r\n}\r\n\r\n.car-item .ui-g-10 {\r\n    font-weight: bold;\r\n}\r\n\r\n.empty-car-item-index {\r\n    background-color: #f1f1f1;\r\n    width: 60px;\r\n    height: 60px;\r\n    margin: 36px auto 0 auto;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-image {\r\n    background-color: #f1f1f1;\r\n    width: 120px;\r\n    height: 120px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-text {\r\n    background-color: #f1f1f1;\r\n    height: 18px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.title-container {\r\n    padding: 1em;\r\n    text-align: right;\r\n}\r\n\r\n.sort-container {\r\n    text-align: left;\r\n}\r\n\r\n@media (max-width: 40em) {\r\n    .car-item {\r\n        text-align: center;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NhZGFzdHJvL2NhZGFzdHJvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckI7O0FBQ0E7SUFDSSx5QkFBeUI7SUFDekIsV0FBVztJQUNYLFlBQVk7SUFDWix3QkFBd0I7SUFDeEIsZ0RBQXdDO1lBQXhDLHdDQUF3QztBQUM1Qzs7QUFDQTtJQUNJLHlCQUF5QjtJQUN6QixZQUFZO0lBQ1osYUFBYTtJQUNiLGdEQUF3QztZQUF4Qyx3Q0FBd0M7QUFDNUM7O0FBQ0E7SUFDSSx5QkFBeUI7SUFDekIsWUFBWTtJQUNaLGdEQUF3QztZQUF4Qyx3Q0FBd0M7QUFDNUM7O0FBQ0E7SUFDSSxZQUFZO0lBQ1osaUJBQWlCO0FBQ3JCOztBQUNBO0lBQ0ksZ0JBQWdCO0FBQ3BCOztBQUNBO0lBQ0k7UUFDSSxrQkFBa0I7SUFDdEI7QUFDSiIsImZpbGUiOiIuLi9jYWRhc3Ryby9jYWRhc3Ryby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhci1pdGVtIC51aS1tZC0zIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLmNhci1pdGVtIC51aS1nLTEwIHtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcbi5lbXB0eS1jYXItaXRlbS1pbmRleCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBoZWlnaHQ6IDYwcHg7XHJcbiAgICBtYXJnaW46IDM2cHggYXV0byAwIGF1dG87XHJcbiAgICBhbmltYXRpb246IHB1bHNlIDFzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xyXG59XHJcbi5lbXB0eS1jYXItaXRlbS1pbWFnZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xyXG4gICAgd2lkdGg6IDEyMHB4O1xyXG4gICAgaGVpZ2h0OiAxMjBweDtcclxuICAgIGFuaW1hdGlvbjogcHVsc2UgMXMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XHJcbn1cclxuLmVtcHR5LWNhci1pdGVtLXRleHQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTtcclxuICAgIGhlaWdodDogMThweDtcclxuICAgIGFuaW1hdGlvbjogcHVsc2UgMXMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XHJcbn1cclxuLnRpdGxlLWNvbnRhaW5lciB7XHJcbiAgICBwYWRkaW5nOiAxZW07XHJcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcclxufVxyXG4uc29ydC1jb250YWluZXIge1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxufVxyXG5AbWVkaWEgKG1heC13aWR0aDogNDBlbSkge1xyXG4gICAgLmNhci1pdGVtIHtcclxuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICB9XHJcbn0iXX0= */"
+module.exports = ".car-item .ui-md-3 {\r\n    text-align: center;\r\n}\r\n\r\n.car-item .ui-g-10 {\r\n    font-weight: bold;\r\n}\r\n\r\n.empty-car-item-index {\r\n    background-color: #f1f1f1;\r\n    width: 60px;\r\n    height: 60px;\r\n    margin: 36px auto 0 auto;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-image {\r\n    background-color: #f1f1f1;\r\n    width: 120px;\r\n    height: 120px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-text {\r\n    background-color: #f1f1f1;\r\n    height: 18px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.title-container {\r\n    padding: 1em;\r\n    text-align: right;\r\n}\r\n\r\n.sort-container {\r\n    text-align: left;\r\n}\r\n\r\n@media (max-width: 40em) {\r\n    .car-item {\r\n        text-align: center;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdHJhbnNwb3J0ZS9jYWRhc3Ryby9jYWRhc3Ryby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUNBO0lBQ0kseUJBQXlCO0lBQ3pCLFdBQVc7SUFDWCxZQUFZO0lBQ1osd0JBQXdCO0lBQ3hCLGdEQUF3QztZQUF4Qyx3Q0FBd0M7QUFDNUM7O0FBQ0E7SUFDSSx5QkFBeUI7SUFDekIsWUFBWTtJQUNaLGFBQWE7SUFDYixnREFBd0M7WUFBeEMsd0NBQXdDO0FBQzVDOztBQUNBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixnREFBd0M7WUFBeEMsd0NBQXdDO0FBQzVDOztBQUNBO0lBQ0ksWUFBWTtJQUNaLGlCQUFpQjtBQUNyQjs7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFDQTtJQUNJO1FBQ0ksa0JBQWtCO0lBQ3RCO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC90cmFuc3BvcnRlL2NhZGFzdHJvL2NhZGFzdHJvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyLWl0ZW0gLnVpLW1kLTMge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4uY2FyLWl0ZW0gLnVpLWctMTAge1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuLmVtcHR5LWNhci1pdGVtLWluZGV4IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICB3aWR0aDogNjBweDtcclxuICAgIGhlaWdodDogNjBweDtcclxuICAgIG1hcmdpbjogMzZweCBhdXRvIDAgYXV0bztcclxuICAgIGFuaW1hdGlvbjogcHVsc2UgMXMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XHJcbn1cclxuLmVtcHR5LWNhci1pdGVtLWltYWdlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICB3aWR0aDogMTIwcHg7XHJcbiAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgYW5pbWF0aW9uOiBwdWxzZSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxufVxyXG4uZW1wdHktY2FyLWl0ZW0tdGV4dCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xyXG4gICAgaGVpZ2h0OiAxOHB4O1xyXG4gICAgYW5pbWF0aW9uOiBwdWxzZSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxufVxyXG4udGl0bGUtY29udGFpbmVyIHtcclxuICAgIHBhZGRpbmc6IDFlbTtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG59XHJcbi5zb3J0LWNvbnRhaW5lciB7XHJcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG59XHJcbkBtZWRpYSAobWF4LXdpZHRoOiA0MGVtKSB7XHJcbiAgICAuY2FyLWl0ZW0ge1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIH1cclxufSJdfQ== */"
 
 /***/ }),
 
@@ -9200,16 +9447,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CadastroComponent", function() { return CadastroComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../transporte.service */ "./src/app/transporte/transporte.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../transporte.service */ "./src/app/transporte/transporte.service.ts");
+
 
 
 
 var CadastroComponent = /** @class */ (function () {
-    function CadastroComponent(transporteService) {
+    function CadastroComponent(transporteService, messageService) {
         this.transporteService = transporteService;
+        this.messageService = messageService;
+        this.atualizarListagem();
     }
     CadastroComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.cadpool = false;
         this.caddevolvido = false;
         this.cadgps = false;
@@ -9218,32 +9469,28 @@ var CadastroComponent = /** @class */ (function () {
             { label: 'Lista de veículos' },
             { label: 'Cadastrar Novo' }
         ];
-        this.transporteService.veiculos()
-            .subscribe(function (Veiculos) {
-            _this.cars0 = Veiculos;
-            _this.cars = _this.cars0;
-        });
         this.Gerencias = [
             { label: '' },
-            { label: 'Comercial' },
-            { label: 'Operacional' }
+            { label: 'Comercial', value: 'Comercial' },
+            { label: 'Operacional', value: 'Operacional' }
         ];
         this.Supervisoes = [
             { label: '' },
-            { label: 'Fiscalizacao' },
-            { label: 'Eletromecanica' }
+            { label: 'Fiscalizacao', value: 'Fiscalizacao' },
+            { label: 'Eletromecanica', value: 'Eletromecanica' }
         ];
         this.condutores = [
             { label: '' },
-            { label: 'Albert Einstein' },
-            { label: 'Fred Mercury' },
-            { label: 'José Vicente' }
+            { label: 'Albert Einstein', value: 'Albert Einstein' },
+            { label: 'Fred Mercury', value: 'Fred Mercury' },
+            { label: 'José Vicente', value: 'José Vicente' },
+            { label: 'Hermes e Renato', value: 'Hermes e Renato' }
         ];
         this.tipoVeiculo = [
             { label: '' },
-            { label: 'Moto' },
-            { label: 'Carro' },
-            { label: 'Veículo Pesado' }
+            { label: 'MOTO', value: 'MOTO' },
+            { label: 'CARRO', value: 'CARRO' },
+            { label: 'VEÍCULO PESADO', value: 'VEÍCULO PESADO' }
         ];
         this.GPS = [
             { label: '' },
@@ -9252,26 +9499,26 @@ var CadastroComponent = /** @class */ (function () {
         ];
         this.modelos = [
             { label: '' },
-            { label: 'Onix' },
-            { label: 'Prisma' },
-            { label: 'Corolla' },
-            { label: 'Montana' },
-            { label: 'Strada' },
-            { label: 'Saveiro' },
-            { label: 'AMAROK' },
-            { label: 'S10' },
-            { label: 'Retro CAT' },
-            { label: 'CAMINHAO' }
+            { label: 'AMAROK', value: 'AMAROK' },
+            { label: 'COROLLA', value: 'COROLLA' },
+            { label: 'COROLLA GLI', value: 'COROLLA GLI' },
+            { label: 'CAMINHAO', value: 'CAMINHAO' },
+            { label: 'MONTANA LS - MT', value: 'MONTANA LS - MT' },
+            { label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT' },
+            { label: 'PRISMA LT - AT', value: 'PRISMA LT - AT' },
+            { label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR' },
+            { label: 'STRADA', value: 'STRADA' },
+            { label: 'S-10 LS - MT', value: 'S-10 LS - MT' }
         ];
         this.locadoras = [
             { label: '' },
-            { label: 'LVE' },
-            { label: 'Ouro Verde' }
+            { label: 'LVE', value: 'LVE' },
+            { label: 'OURO VERDE', value: 'OURO VERDE' }
         ];
         this.adicionais = [
-            { label: '' },
-            { label: 'munck' },
-            { label: 'pipa 10m/³' }
+            { label: '', value: '' },
+            { label: 'MUNCK', value: 'MUNCK' },
+            { label: 'PIPA 10m/³', value: 'PIPA 10m/³' }
         ];
         this.trocadeitemIndex(0);
     };
@@ -9306,13 +9553,21 @@ var CadastroComponent = /** @class */ (function () {
         this.activeItem = this.items[index];
         this.activeItemIndex = index;
     };
+    CadastroComponent.prototype.atualizarListagem = function () {
+        var _this = this;
+        this.cars0 = [];
+        this.cars = [];
+        this.transporteService.veiculos()
+            .subscribe(function (Veiculos) {
+            _this.cars0 = Veiculos;
+            _this.cars = Veiculos;
+        });
+        this.limpar();
+    };
     //==========================================================================================================================
     //SALVAR CADASTRO DE VEICULO================================================================================================
     CadastroComponent.prototype.selectCar = function (car) {
         this.selectedCar = car;
-        this.cadplaca = this.selectedCar.placa;
-        this.cadchassi = this.selectedCar.chassi;
-        this.cadmodelo = this.selectedCar.modelo;
         this.displayDialog = true;
         event.preventDefault();
     };
@@ -9341,6 +9596,21 @@ var CadastroComponent = /** @class */ (function () {
     //==========================================================================================================================
     CadastroComponent.prototype.editCar = function (car) {
         this.editedCar = car;
+        this.editveiculoId = car.veiculoId;
+        this.editdatCad = car.datCad;
+        this.editplaca = car.placa;
+        this.editchassi = car.chassi;
+        this.editmodelo = car.modelo;
+        this.editcapacidadem3 = car.capacidadem3;
+        this.editresponsavel = car.responsavel;
+        this.edittipoVeiculo = car.tipoVeiculo;
+        this.editgerencia = car.gerencia;
+        this.editlocadora = car.locadora;
+        this.editsupervisao = car.supervisao;
+        this.editpool = car.pool;
+        this.editgps = car.gps;
+        this.editoficina = car.oficina;
+        this.editdevolvido = car.devolvido;
         this.displayEdit = true;
         event.preventDefault();
     };
@@ -9348,8 +9618,43 @@ var CadastroComponent = /** @class */ (function () {
         this.editedCar = null;
         this.limpar();
     };
-    CadastroComponent.prototype.EditarVeiculo = function (carro) {
-        console.log(carro);
+    CadastroComponent.prototype.EditarVeiculo = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.editedCar = {
+                            veiculoId: this.editveiculoId,
+                            datCad: this.editdatCad,
+                            placa: this.editplaca,
+                            chassi: this.editchassi,
+                            modelo: this.editmodelo,
+                            capacidadem3: this.editcapacidadem3,
+                            responsavel: this.editresponsavel,
+                            tipoVeiculo: this.edittipoVeiculo,
+                            gerencia: this.editgerencia,
+                            gps: this.editgps,
+                            devolvido: this.editdevolvido,
+                            supervisao: this.editsupervisao,
+                            locadora: this.editlocadora,
+                            pool: this.editpool,
+                            oficina: this.editoficina
+                        };
+                        this.transporteService.UpdateVeiculo(this.editedCar).subscribe(function (response) {
+                            console.log(response);
+                        });
+                        return [4 /*yield*/, new Promise(function (r) { return setTimeout(r, 500); })];
+                    case 1:
+                        _a.sent();
+                        this.atualizarListagem();
+                        this.displayDialog = false;
+                        this.displayEdit = false;
+                        this.cars0 = [];
+                        this.cars = [];
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     CadastroComponent.prototype.find = function (Arrays, attribute) {
         for (var i = 0; i < Arrays.length; i++) {
@@ -9379,7 +9684,8 @@ var CadastroComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./cadastro.component.html */ "./node_modules/raw-loader/index.js!./src/app/transporte/cadastro/cadastro.component.html"),
             styles: [__webpack_require__(/*! ./cadastro.component.css */ "./src/app/transporte/cadastro/cadastro.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_2__["TransporteService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_3__["TransporteService"],
+            primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
     ], CadastroComponent);
     return CadastroComponent;
 }());
@@ -9395,7 +9701,7 @@ var CadastroComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\r\n    margin: auto;\r\n    width: 50%;\r\n    padding: 10px;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2Rhc2hib2FyZHMvZGFzaGJvYXJkcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7SUFDVixhQUFhO0VBQ2YiLCJmaWxlIjoiLi4vZGFzaGJvYXJkcy9kYXNoYm9hcmRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyIHtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gIH0iXX0= */"
+module.exports = ".center {\r\n    margin: auto;\r\n    width: 50%;\r\n    padding: 10px;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdHJhbnNwb3J0ZS9kYXNoYm9hcmRzL2Rhc2hib2FyZHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsYUFBYTtFQUNmIiwiZmlsZSI6InNyYy9hcHAvdHJhbnNwb3J0ZS9kYXNoYm9hcmRzL2Rhc2hib2FyZHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXIge1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgfSJdfQ== */"
 
 /***/ }),
 
@@ -9541,7 +9847,7 @@ var DashboardsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ncmFmaWNvcy10cmFuc3BvcnRlL2dyYWZpY29zLXRyYW5zcG9ydGUuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvZ3JhZmljb3MtdHJhbnNwb3J0ZS9ncmFmaWNvcy10cmFuc3BvcnRlLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -9714,7 +10020,7 @@ var GraficosTransporteComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvdHJhbnNwb3J0ZS5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -9793,11 +10099,11 @@ var TransporteService = /** @class */ (function () {
     function TransporteService(http) {
         this.http = http;
     }
+    //CADASTRO
+    //=============================================================================================
     TransporteService.prototype.veiculos = function () {
-        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/veiculos")
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/veiculos").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
-    //Inputar os dados de Deliberação
     TransporteService.prototype.InputVeiculo = function (placa, chassi, modelo, capacidadem3, responsavel, tipoVeiculo, gerencia, gps, devolvido, supervisao, locadora, pool, oficina) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
         headers = headers.set('Content-Type', 'application/json');
@@ -9808,16 +10114,54 @@ var TransporteService = /** @class */ (function () {
             statusTexto: response.statusText,
         }); }));
     };
-    TransporteService.prototype.UpdateVeiculo = function (veiculoId, datCad, placa, chassi, modelo, capacidadem3, responsavel, tipoVeiculo, gerencia, gps, devolvido, supervisao, locadora, pool, oficina) {
+    TransporteService.prototype.UpdateVeiculo = function (veiculo) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
             .set("Content-Type", "application/json");
-        var bodyObj = { veiculoId: veiculoId, datCad: datCad, placa: placa, chassi: chassi, modelo: modelo, capacidadem3: capacidadem3, responsavel: responsavel, tipoVeiculo: tipoVeiculo, gerencia: gerencia, gps: gps, devolvido: devolvido, supervisao: supervisao, locadora: locadora, pool: pool, oficina: oficina };
-        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/veiculos/" + veiculoId, JSON.stringify(bodyObj), { headers: headers })
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/veiculos/" + veiculo.veiculoId, JSON.stringify(veiculo), { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
     };
     TransporteService.prototype.extractData = function (res) {
         var body = res;
         return body;
+    };
+    //AGENDAMENTO
+    //=============================================================================================
+    TransporteService.prototype.ParaAprovar = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/agendamento/aprovar")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    TransporteService.prototype.Condutores = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/condutores")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    TransporteService.prototype.Aprovados = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/agendamento/aprovados")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    TransporteService.prototype.Disponiveis = function (datainicio, datafim) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/agendamento/disponiveis/" + datainicio + "/" + datafim + "/")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    TransporteService.prototype.InputAgendamento = function (agendamento) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/agendamento", agendamento, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        }); }));
+    };
+    TransporteService.prototype.UpdateAgendamento = function (agendamento) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/agendamento/" + agendamento.agendamentoId, agendamento, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({
+            data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        }); }));
     };
     TransporteService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -9884,7 +10228,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc2.0\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc\Sispc2.0\src\main.ts */"./src/main.ts");
 
 
 /***/ })

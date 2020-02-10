@@ -16,6 +16,10 @@ export class TransporteService {
 
   constructor(private http: HttpClient){}
 
+  Gerencias(): Observable<any[]>{
+      return  this.http.get(`${API_CONFIG}/gerencias`) 
+      .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
   //CADASTRO
   //=============================================================================================
   veiculos(): Observable<any[]>{
