@@ -2,24 +2,38 @@
 <div class="card card-w-title" >
   <h4>AGENDAR VEÍCULO</h4>
   <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
-
+    <button *ngIf="OpcEmergencial" pButton type="button"  label="Emergencial" class="ui-button-danger"></button>
+      
     <div class="ui-g-12" style="margin-top: 20px;">
-      <div class="ui-g-4 item" >
+     <div class="ui-g-4 item" >
         <span class="md-inputfield">
           <p-dropdown [autoWidth]="true"  filter="true" [(ngModel)]="OpcCondutores" styleClass = "drop95" [options]="ArrCondutores"></p-dropdown>
           <label >Condutor</label>
         </span>
       </div>
-      <div class="ui-g-4 item" >
+      <div class="ui-g-2 item" >
         <span class="md-inputfield">
           <input id="input" type="text"  [(ngModel)]="OpcQtd" class="ui-g-12" pInputText/>
-          <label >Quantidade de Pessoas</label>
+          <label >Qtd. de Pessoas</label>
         </span>
       </div>
-      <div class="ui-g-4 item" >
+      
+      <div class="ui-g-2 item" >
         <span class="md-inputfield">
-          <p-dropdown [autoWidth]="true"  filter="true" [(ngModel)]="OpcTipoVeiculo" styleClass = "drop95" [options]="ArrTipoVeiculo"></p-dropdown>
-          <label >Tipo do Veículo</label>
+          <p-calendar class="ui-g-12" (click)="verificarEmergencial()" [minDate]="minDate" [(ngModel)]="OpcData" dateFormat="yy-mm-dd"></p-calendar>
+          <label >Data</label>
+        </span>
+      </div>
+      <div class="ui-g-2 item" >
+        <span class="md-inputfield" >
+          <p-calendar class="ui-g-12" [(ngModel)]="OpcDe" [timeOnly]="true"></p-calendar>
+          <label >De</label>
+        </span>
+      </div>
+      <div class="ui-g-2 item" >
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12" [(ngModel)]="OpcAte" [timeOnly]="true"></p-calendar>
+          <label >Até</label>
         </span>
       </div>
     </div>
@@ -35,17 +49,17 @@
 
       <div class="ui-g-2 item" >
         <span class="md-inputfield">
-          <p-calendar class="ui-g-12" [(ngModel)]="OpcDe" [showTime]="true"></p-calendar>
-          <label >De</label>
+          <p-dropdown [autoWidth]="true"  filter="true" [(ngModel)]="OpcTipoVeiculo" styleClass = "drop95" [options]="ArrTipoVeiculo"></p-dropdown>
+          <label >Tipo do Veículo</label>
         </span>
       </div>
-      <div class="ui-g-2 item" >
+
+      <div class="ui-g-6 item" >
         <span class="md-inputfield">
-          <p-calendar class="ui-g-12" [(ngModel)]="OpcAte" [showTime]="true"></p-calendar>
-          <label >Até</label>
+          <input id="input" type="text"  [(ngModel)]="OpcJustificativa" class="ui-g-12" pInputText/>
+          <label >Justificativa</label>
         </span>
       </div>
-      
       
     </div>
 

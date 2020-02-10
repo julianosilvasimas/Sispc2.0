@@ -61,6 +61,7 @@ export class AprovarAgendamentoComponent implements OnInit {
     {
       agendamentoId: this.AgendamentoSelecionado.agendamentoId,
       solicitante: this.AgendamentoSelecionado.solicitante,
+      fksolicitante: this.AgendamentoSelecionado.fksolicitante,
       qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
       agendadoate: this.AgendamentoSelecionado.agendadoate,
       tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
@@ -73,6 +74,8 @@ export class AprovarAgendamentoComponent implements OnInit {
       destino: this.AgendamentoSelecionado.destino,
       condutor: this.AgendamentoSelecionado.condutor,
       dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+      justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+      emergencial: this.AgendamentoSelecionado.emergencial,
 
     }
     this.onSelectHide();
@@ -126,6 +129,7 @@ export class AprovarAgendamentoComponent implements OnInit {
     {
       agendamentoId: this.AgendamentoSelecionado.agendamentoId,
       solicitante: this.AgendamentoSelecionado.solicitante,
+      fksolicitante: this.AgendamentoSelecionado.fksolicitante,
       qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
       agendadoate: this.AgendamentoSelecionado.agendadoate,
       tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
@@ -138,6 +142,8 @@ export class AprovarAgendamentoComponent implements OnInit {
       destino: this.AgendamentoSelecionado.destino,
       condutor: this.AgendamentoSelecionado.condutor,
       dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+      justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+      emergencial: this.AgendamentoSelecionado.emergencial,
     }
     this.displayRecuse = true;
     this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(

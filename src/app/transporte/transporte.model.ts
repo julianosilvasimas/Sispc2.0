@@ -18,6 +18,7 @@ export interface Veiculo{
 export interface Agendamento{
     agendamentoId: number,
     solicitante: string,
+    fksolicitante: number,
     qtdPessoas: number,
     agendadoate: string,
     tipoVeiculoSolicitado: string,
@@ -27,9 +28,11 @@ export interface Agendamento{
     aprovador: string,
     aprovacao: number,
     justificativa: string,
+    justificativaSolicitacao: string,
     destino: string,
     condutor: string,
     dataAgendamento: string,
+    emergencial: boolean,
 }
 export interface labels{
     label: string,

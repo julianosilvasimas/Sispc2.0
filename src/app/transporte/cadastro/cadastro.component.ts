@@ -25,6 +25,8 @@ export class CadastroComponent implements OnInit {
   public adicionais;
   public GPS;
 
+  invalidDates: Array<Date>
+
 
   displayDialog: boolean;
   selectedCar: any;
@@ -106,15 +108,14 @@ export class CadastroComponent implements OnInit {
         {label: 'Cadastrar Novo'}
       ];
       
-
+      let today = new Date();
+      let invalidDate = new Date();
+      invalidDate.setDate(today.getDate() - 1);
+      this.invalidDates = [today,invalidDate];
       
       
 
-      this.Gerencias = [
-        {label: ''},
-        {label: 'Comercial', value: 'Comercial'},
-        {label: 'Operacional', value: 'Operacional'}
-      ];
+      
       this.Supervisoes = [
         {label: ''},
         {label: 'Fiscalizacao',value: 'Fiscalizacao'},
@@ -140,17 +141,22 @@ export class CadastroComponent implements OnInit {
         {label: 'Sem GPS'}
       ];
       this.modelos = [
-        {label: ''},
+        {label: '', value: ''},
         {label: 'AMAROK', value: 'AMAROK'},
+        {label: 'VW EXPRESS DRC 4X2', value: 'VW EXPRESS DRC 4X2'},
+        {label: 'STRADA', value: 'STRADA'},
+        {label: 'S-10 LS - MT', value: 'S-10 LS - MT'},
+        {label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR'},
+        {label: 'PRISMA LT - AT', value: 'PRISMA LT - AT'},
+        {label: 'ONIX LT - AT', value: 'ONIX LT - AT'},
+        {label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT'},
+        {label: 'MONTANA LS - MT', value: 'MONTANA LS - MT'},
+        {label: 'HONDA 150', value: 'HONDA 150'},
+        {label: 'HONDA 125', value: 'HONDA 125'},
         {label: 'COROLLA', value: 'COROLLA'},
         {label: 'COROLLA GLI', value: 'COROLLA GLI'},
         {label: 'CAMINHAO', value: 'CAMINHAO'},
-        {label: 'MONTANA LS - MT', value: 'MONTANA LS - MT'},
-        {label: 'ONIX 1.0 LS - MT', value:'ONIX 1.0 LS - MT'},
-        {label: 'PRISMA LT - AT', value: 'PRISMA LT - AT'},
-        {label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR'},
-        {label: 'STRADA', value: 'STRADA'},
-        {label: 'S-10 LS - MT', value: 'S-10 LS - MT'}
+        {label: 'AMAROK', value: 'AMAROK'}
       ];
       this.locadoras = [
         {label: ''},
@@ -208,6 +214,13 @@ export class CadastroComponent implements OnInit {
           this.cars0 = Veiculos
           this.cars= Veiculos
         });
+
+      this.transporteService.Gerencias()
+      .subscribe(
+        Gerencias  =>  {
+          this.Gerencias = Gerencias
+        });
+        
         this.limpar();
     }
     //==========================================================================================================================
