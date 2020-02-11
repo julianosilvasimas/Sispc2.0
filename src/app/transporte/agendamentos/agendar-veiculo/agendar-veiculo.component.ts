@@ -116,18 +116,18 @@ export class AgendarVeiculoComponent implements OnInit {
     this.checagem();
     var agendamento : Agendamento;
 
-    var data1 = new Date(Number(this.OpcData.getFullYear),Number(this.OpcData.getMonth), Number(this.OpcData.getDate),
-    Number(this.OpcDe.getHours),Number(this.OpcDe.getMinutes), Number(this.OpcDe.getSeconds))
-    var data2 = new Date(Number(this.OpcData.getFullYear),Number(this.OpcData.getMonth), Number(this.OpcData.getDate),
-    Number(this.OpcAte.getHours),Number(this.OpcAte.getMinutes), Number(this.OpcAte.getSeconds))
+    var data1 = this.OpcData.getFullYear + "-"+this.OpcData.getMonth+ "-"+this.OpcData.getDate+ " "+this.OpcDe.getHours+ ":"+this.OpcDe.getMinutes+ ":"+this.OpcDe.getSeconds;
+    var data2 = this.OpcData.getFullYear+ "-"+this.OpcData.getMonth+ "-"+this.OpcData.getDate+ " "+this.OpcAte.getHours+ ":"+this.OpcAte.getMinutes+ ":"+this.OpcAte.getSeconds
 
+    console.log(data1)
+    console.log(data2)
     agendamento={
       agendamentoId: null,
       solicitante: this.OpcSolicitante,
       fksolicitante: this.IdSolicitante,
       qtdPessoas: this.OpcQtd,
-      agendadoate: dataAtualFormatada(data2),
-      agendadode: dataAtualFormatada(data1),
+      agendadoate: data2,
+      agendadode: data1,
       tipoVeiculoSolicitado: this.OpcTipoVeiculo,
       tipoVeiculoDisponibilizado: null,
       placa:null,
@@ -140,6 +140,7 @@ export class AgendarVeiculoComponent implements OnInit {
       dataAgendamento: null,
       emergencial: this.OpcEmergencial
     }
+    console.log(agendamento)
     this.transporteService.InputAgendamento(agendamento).subscribe(
       response => {
         if(response.status === 201){
@@ -162,15 +163,15 @@ export class AgendarVeiculoComponent implements OnInit {
       this.OpcDestinos=null;
       this.OpcCondutores=null;
       
-    function dataAtualFormatada(datareceb){
-      var data = datareceb,
-          dia  = data.getDate().toString().padStart(2, '0'),
-          mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-          ano  = data.getFullYear(),
-          hora  = data.getHours(),
-          minuto  = data.getMinutes();
-      return ano+"-"+mes+"-"+dia+" "+hora+":"+minuto+":00";
-    }
+    // function dataAtualFormatada(datareceb){
+    //   var data = datareceb,
+    //       dia  = data.getDate().toString().padStart(2, '0'),
+    //       mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+    //       ano  = data.getFullYear(),
+    //       hora  = data.getHours(),
+    //       minuto  = data.getMinutes();
+    //   return ano+"-"+mes+"-"+dia+" "+hora+":"+minuto+":00";
+    // }
   }
   menorData(){
     let today = new Date();

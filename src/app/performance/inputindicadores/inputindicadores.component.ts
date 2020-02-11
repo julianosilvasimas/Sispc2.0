@@ -7,6 +7,7 @@ import { PerformanceService } from './../performance.service';
 import { Indicadores, Indicador } from '../performance.model';
 import { element } from 'protractor';
 import { AuthService } from '../../login/auth.service';
+import { GraficosComponent } from 'src/app/graficos/graficos.component';
 
 @Component({
   selector: 'app-inputindicadores',
@@ -218,13 +219,13 @@ export class InputindicadoresComponent implements OnInit {
                 if (classe === res['classificacao']){
                   //console.log(res)
                   this.resumo=[]
-                  this.performanceService.indicadores(this.refer, res['indicadorId'])
+                  this.performanceService.indicadoresResumo(this.refer, res['indicadorId'])
                     .subscribe(
                       Indicadores  =>  {
                 
-                        this.realacum = parseFloat(Indicadores[3][3]).toLocaleString(),     //'pt-BR', { style: 'currency', currency: 'BRL' }),
-                        this.orcadoacum = parseFloat(Indicadores[3][2]).toLocaleString(),
-                        this.previsao = parseFloat(Indicadores[3][4]).toLocaleString(),
+                        this.realacum = parseFloat(Indicadores[0][3]).toLocaleString(),     //'pt-BR', { style: 'currency', currency: 'BRL' }),
+                        this.orcadoacum = parseFloat(Indicadores[0][2]).toLocaleString(),
+                        this.previsao = parseFloat(Indicadores[0][4]).toLocaleString(),
                         
                         this.resumo.push({
                           'vin': res['indicador'],
@@ -247,6 +248,7 @@ export class InputindicadoresComponent implements OnInit {
 
 
   selectIndicador(indicador: any) {
+    console.log(indicador)
     if(this.barraAtiva){
       alert('Feche o Gráfico para passar para o próximo indicador!!!')
     }else{
@@ -254,25 +256,26 @@ export class InputindicadoresComponent implements OnInit {
       this.performanceService.classindicadores(this.idgerenciasretornado)
         .subscribe(
           Indicadores  =>  {
+            this.indicatore = []
             this.indicatore = Indicadores.filter(item => item.indicadorId === parseInt(indicador.id))
             //console.log(this.ind)
             
           });
-      this.indicatore.forEach(
-        res =>{ 
-          if(this.indicatore[0]){
-            this.ind = res
-            //console.log(res.classificacao)
-            this.classs = res.classificacao
-          }
-      })
-
-      //console.log(this.refer)
+          this.idgerenciasretornado = null;
+          this.indicatore.forEach(
+            res =>{ 
+              if(this.indicatore[0]){
+                this.ind = []
+                this.ind = res
+                // console.log(res)
+                this.classs = res.classificacao
+              }
+          })
+      
+      console.log(this.ind)
       this.selectedIndicador = indicador;
       this.indi = indicador.vin
-      //console.log(this.indi)
       this.nind = indicador.id
-      //console.log(this.nind)
       this.barraAtiva = true;
     this.messageService.add({severity:'info', summary:'Indicador Selecionado', detail:'Indicador: ' + indicador.vin});
   }
@@ -283,7 +286,26 @@ export class InputindicadoresComponent implements OnInit {
   }
 
   pesquisarIndicador(data){
-    
+    this.orcado = 0;
+    this.realizado = 0;
+    this.pecld = 0;
+    this.forecast = 0;
+    this.minimo = 0;
+    this.maximo = 0;
+    this.meta = 0;
+    this.dentroprazo = 0;
+    this.foraprazo = 0;
+    this.dentroprazoreg = 0;
+    this.foraprazoreg = 0;
+    this.atendente = 0;
+    this.atendimento = 0;
+    this.comentario = "";
+    this.acao = "";
+    this.analise = "";
+    this.colaborador = "";
+    this.indicadorId = 0;
+    this.undcodigo = 0;
+
     this.performanceService.indicadoresByDay( this.nind , data.toISOString().substr(0,10))
   .subscribe(
     indicadores  => {
@@ -311,6 +333,7 @@ export class InputindicadoresComponent implements OnInit {
     this.foraprazo = indicadores['foraprazo'] === null ? indicadores['foraprazo'] :indicadores['foraprazo'].toLocaleString(),
     this.dentroprazoreg = indicadores['dentroprazoreg'] === null ? indicadores['dentroprazoreg'] :indicadores['dentroprazoreg'].toLocaleString(),
     this.foraprazoreg = indicadores['foraprazoreg'] === null ? indicadores['foraprazoreg'] :indicadores['foraprazoreg'].toLocaleString(),
+    this.previsao = indicadores['previsao'] === null ? indicadores['previsao'] :indicadores['previsao'].toLocaleString(),
     this.atendente = indicadores['atendente'],
     this.atendimento = indicadores['atendimento'],
     this.comentario = indicadores['comentario'],

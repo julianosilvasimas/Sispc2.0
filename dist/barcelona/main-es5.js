@@ -599,7 +599,7 @@ module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.RotuloOrcadoAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.RotuloRealizAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.RotuloDiferencaAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.RotuloDiferencaPerc }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
+module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.RotuloOrcadoAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.RotuloRealizAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.RotuloDiferencaAcum2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.RotuloDiferencaPerc }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
 
 /***/ }),
 
@@ -676,7 +676,7 @@ module.exports = "<div class=\"exception-body pagenotfound-body\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n      <div class=\"card card-w-title\">\r\n          <h1>Performance {{setor}}</h1>\r\n          <p-accordion  (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <div class=\"card\">\r\n              <p-accordionTab  *ngFor=\"let classificao of classificacoes\" header=\"{{classificao}}\" >\r\n\r\n                    <p-table [columns]=\"cols\" [value]=\"resumo\">\r\n                            <ng-template pTemplate=\"header\" let-columns>\r\n                                <tr>\r\n                                    <th *ngFor=\"let col of columns\">\r\n                                        {{col.header}}\r\n                                    </th>\r\n                                    <th style=\"width:4em\"></th>\r\n                                </tr>\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n                                <tr> <!-- *ngIf=\"resumo.classificacao === classificao\"-->\r\n                                    <td  *ngFor=\"let col of columns\">\r\n                                        {{ rowData[col.field] }}\r\n                                    </td>\r\n                                    <td>\r\n                                        <button pButton icon=\"pi pi-search\" (click)=\" selectIndicador(rowData)\"></button>\r\n                                    </td>\r\n                                </tr>\r\n                            </ng-template>\r\n                        </p-table>\r\n                        <br>\r\n              </p-accordionTab>\r\n\r\n              <div class=\"card\" *ngIf=\"barraAtiva\">\r\n\r\n                    <div class =\"ui-g-6\"><h1 class=\"centerText\">{{indi}}</h1></div>\r\n                    <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"op2.toggle($event); abreInput()\"></button>\r\n                    <span style=\"position: absolute;margin-top: 30px;margin-left: -40px;\">Atualizar</span>\r\n                    <button style=\"position: absolute;margin-left: 30%;\"type=\"button\" icon=\"ui-icon-clear\" pButton (click)=\"desativaBarra()\"></button>\r\n                    \r\n                      <p-overlayPanel #op2 [showCloseIcon]=\"true\" [dismissable]=\"false\" >\r\n                            <span class=\"ui-overlaypanel-close-icon pi pi-times\"></span>\r\n\r\n                            \r\n                          \r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                    <div class =\"ui-g-6\"><b>{{indi}}</b></div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center\">\r\n                                        <p-calendar id=\"calendar\" [(ngModel)]=\"date\" (onSelect)=\"pesquisarIndicador(date)\" [monthNavigator]=\"true\" [yearNavigator]=\"true\"\r\n                                        yearRange=\"2008:2041\" [showIcon]=\"true\"  [locale]=\"pt\" dateFormat=\"dd/mm/yy\" placeholder=\"Data\" ></p-calendar>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                   <!--<div class=\"ui-g-6\" *ngFor=\"let dados of dadosIndicador\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dados.valor\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>{{dados.label}}</label>\r\n                                        </span>\r\n                                    </div>-->\r\n\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"orcado\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Orçado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"realizado\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Realizado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"pecld\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Pecld</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"minimo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Minimo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"maximo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Maximo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"meta\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Meta</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"previsao\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Mensal</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendente\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendente</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendimento\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendimento</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                            \r\n                              <div class=\"card\" >\r\n                                  <p-tabView >\r\n                                      <p-tabPanel header=\"Comentários\"  leftIcon=\"ui-icon-check\">\r\n                                           <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"comentario\"   autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Análise\"  leftIcon=\"ui-icon-edit\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"analise\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Ações\"  leftIcon=\"ui-icon-refresh\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"acao\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                  </p-tabView>\r\n                              </div>\r\n                          \r\n                          <div class=\"centerText\" style=\"text-align: center;\">\r\n                          <p-button label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"atualizaDados()\"></p-button>\r\n                          </div>\r\n                      \r\n                      </p-overlayPanel>\r\n\r\n            <!--############################# Chamada do Gráfico #############################################-->\r\n                            <app-graficos [element]= \"ind\" [refer]= \"refer\" >\r\n                                <div class=\"splash-screen\">\r\n                                    <div class=\"splash-loader\">\r\n                                        <img src=\"../../assets/layout/images/SISPCpng.png\">\r\n                                    </div>\r\n                                </div>\r\n                            </app-graficos>\r\n                </div> \r\n            </div>\r\n            <!--######################################################################################################################-->\r\n              \r\n          </p-accordion>\r\n      </div>\r\n    \r\n  </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n      <div class=\"card card-w-title\">\r\n          <h1>Performance {{setor}}</h1>\r\n          <p-accordion  (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <div class=\"card\">\r\n              <p-accordionTab  *ngFor=\"let classificao of classificacoes\" header=\"{{classificao}}\" >\r\n\r\n                    <p-table [columns]=\"cols\" [value]=\"resumo\">\r\n                            <ng-template pTemplate=\"header\" let-columns>\r\n                                <tr>\r\n                                    <th *ngFor=\"let col of columns\">\r\n                                        {{col.header}}\r\n                                    </th>\r\n                                    <th style=\"width:4em\"></th>\r\n                                </tr>\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n                                <tr> <!-- *ngIf=\"resumo.classificacao === classificao\"-->\r\n                                    <td  *ngFor=\"let col of columns\">\r\n                                        {{ rowData[col.field] }}\r\n                                    </td>\r\n                                    <td>\r\n                                        <button pButton icon=\"pi pi-search\" (click)=\" selectIndicador(rowData)\"></button>\r\n                                    </td>\r\n                                </tr>\r\n                            </ng-template>\r\n                        </p-table>\r\n                        <br>\r\n              </p-accordionTab>\r\n\r\n              <div class=\"card\" *ngIf=\"barraAtiva\">\r\n\r\n                    <div class =\"ui-g-6\"><h1 class=\"centerText\">{{indi}}</h1></div>\r\n                    <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"op2.toggle($event); pesquisarIndicador(ontem)\"></button>\r\n                    <span style=\"position: absolute;margin-top: 30px;margin-left: -40px;\">Atualizar</span>\r\n                    <button style=\"position: absolute;margin-left: 30%;\"type=\"button\" icon=\"ui-icon-clear\" pButton (click)=\"desativaBarra()\"></button>\r\n                    \r\n                      <p-overlayPanel #op2 [showCloseIcon]=\"true\" [dismissable]=\"false\" >\r\n                            <span class=\"ui-overlaypanel-close-icon pi pi-times\"></span>\r\n\r\n                            \r\n                          \r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                    <div class =\"ui-g-6\"><b>{{indi}}</b></div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center\">\r\n                                        <p-calendar id=\"calendar\" [(ngModel)]=\"date\" (onSelect)=\"pesquisarIndicador(date)\" [monthNavigator]=\"true\" [yearNavigator]=\"true\"\r\n                                        yearRange=\"2008:2041\" [showIcon]=\"true\"  [locale]=\"pt\" dateFormat=\"dd/mm/yy\" placeholder=\"Data\" ></p-calendar>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                   <!--<div class=\"ui-g-6\" *ngFor=\"let dados of dadosIndicador\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dados.valor\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>{{dados.label}}</label>\r\n                                        </span>\r\n                                    </div>-->\r\n\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"orcado\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Orçado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"realizado\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Realizado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"pecld\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Pecld</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"minimo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Minimo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"maximo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Maximo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"meta\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Meta</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"previsao\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Mensal</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendente\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendente</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendimento\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendimento</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                            \r\n                              <div class=\"card\" >\r\n                                  <p-tabView >\r\n                                      <p-tabPanel header=\"Comentários\"  leftIcon=\"ui-icon-check\">\r\n                                           <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"comentario\"   autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Análise\"  leftIcon=\"ui-icon-edit\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"analise\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Ações\"  leftIcon=\"ui-icon-refresh\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"acao\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                  </p-tabView>\r\n                              </div>\r\n                          \r\n                          <div class=\"centerText\" style=\"text-align: center;\">\r\n                          <p-button label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"atualizaDados()\"></p-button>\r\n                          </div>\r\n                      \r\n                      </p-overlayPanel>\r\n\r\n            <!--############################# Chamada do Gráfico #############################################-->\r\n                    <app-graficos [element]= \"ind\" [refer]= \"refer\" ></app-graficos>\r\n                </div> \r\n            </div>\r\n            <!--######################################################################################################################-->\r\n              \r\n          </p-accordion>\r\n      </div>\r\n    \r\n  </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -698,7 +698,7 @@ module.exports = "<!-- DIV DA CAPA -->\r\n<div class=\"div1\" style=\"height: 60
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n    {{ this.element.classificacao }}\r\n  </div>\r\n  <div class=\"ui-g-4 gridRel\">\r\n    {{ this.element.indicador }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloRealizAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\">\r\n    {{ this.RotuloDiferencaPerc }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloDiferencaAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloPrevisaoMensal}}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoMensal}}\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n    {{ this.element.classificacao }}\r\n  </div>\r\n  <div class=\"ui-g-4 gridRel\">\r\n    {{ this.element.indicador }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloRealizAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\">\r\n    {{ this.RotuloDiferencaPerc }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloDiferencaAcum2 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloPrevisaoMensal}}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoMensal}}\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -808,7 +808,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-title\" >\r\n  <h4>AGENDAR VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcCondutores\" styleClass = \"drop95\" [options]=\"ArrCondutores\"></p-dropdown>\r\n          <label >Condutor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcQtd\" class=\"ui-g-12\" pInputText/>\r\n          <label >Quantidade de Pessoas</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcTipoVeiculo\" styleClass = \"drop95\" [options]=\"ArrTipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"OpcDestinos\" styleClass = \"drop95\" [options]=\"ArrDestinos\"></p-dropdown>\r\n          <label >Destino</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcDe\" [showTime]=\"true\"></p-calendar>\r\n          <label >De</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcAte\" [showTime]=\"true\"></p-calendar>\r\n          <label >Até</label>\r\n        </span>\r\n      </div>\r\n      \r\n      \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12 item\" style=\"margin-top: 40px; text-align: center;\">\r\n      <button type=\"button\" (click)=\"SalvarAgendamento()\" pButton icon=\"pi pi-save\" label=\"Agendar\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-title\" >\r\n  <h4>AGENDAR VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n    <button *ngIf=\"OpcEmergencial\" pButton type=\"button\"  label=\"Emergencial\" class=\"ui-button-danger\"></button>\r\n      \r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n     <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcCondutores\" styleClass = \"drop95\" [options]=\"ArrCondutores\"></p-dropdown>\r\n          <label >Condutor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcQtd\" class=\"ui-g-12\" pInputText/>\r\n          <label >Qtd. de Pessoas</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" (click)=\"verificarEmergencial()\" [minDate]=\"minDate\" [(ngModel)]=\"OpcData\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n          <label >Data</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\" >\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcDe\" [timeOnly]=\"true\"></p-calendar>\r\n          <label >De</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcAte\" [timeOnly]=\"true\"></p-calendar>\r\n          <label >Até</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"OpcDestinos\" styleClass = \"drop95\" [options]=\"ArrDestinos\"></p-dropdown>\r\n          <label >Destino</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcTipoVeiculo\" styleClass = \"drop95\" [options]=\"ArrTipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-6 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcJustificativa\" class=\"ui-g-12\" pInputText/>\r\n          <label >Justificativa</label>\r\n        </span>\r\n      </div>\r\n      \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12 item\" style=\"margin-top: 40px; text-align: center;\">\r\n      <button type=\"button\" (click)=\"SalvarAgendamento()\" pButton icon=\"pi pi-save\" label=\"Agendar\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -5739,6 +5739,13 @@ __webpack_require__.r(__webpack_exports__);
 var GraficosComponent = /** @class */ (function () {
     function GraficosComponent(performanceService) {
         this.performanceService = performanceService;
+        //GRAFICOS
+        this.eixo = [];
+        this.orcado = [];
+        this.realiz = [];
+        this.orcadoDiaAc = [];
+        this.realizDiaAc = [];
+        this.tipoGrafico = [];
         //ROTULO DOS DADOS
         this.campo1 = "Realizado Acumulado";
         this.campo2 = "Orçado Acumulado";
@@ -5767,55 +5774,58 @@ var GraficosComponent = /** @class */ (function () {
             _this.Tendencia = indic.tendencia;
             //Consulta do EIXO
             //=======================================================================================
+            _this.eixo = [];
             _this.eixo = indicador[0];
             _this.eixo = _this.eixo.splice(1, Number.MAX_VALUE);
             _this.eixo = _this.eixo.filter(function (item) { return item !== null; });
             //ROTULOS DE COMENTARIOS
             //========================================================================================
+            _this.temp1 = [];
             _this.temp1 = indicador[1];
             _this.temp1 = _this.temp1.splice(1, Number.MAX_VALUE);
-            var responsaveis;
+            var responsaveis = [];
             responsaveis = indicador[2];
             responsaveis = responsaveis.splice(1, Number.MAX_VALUE);
             _this.PreencherComentarios(_this.temp1, responsaveis, _this.eixo);
             //ROTULOS DE ACUMULADOS
             //========================================================================================
+            _this.temp1 = [];
             _this.temp1 = indicador[3];
             _this.RotulosAcumulados(_this.tipoGraph, _this.temp1);
-            var orcado;
+            var orcado = [];
             orcado = indicador[4];
             orcado = orcado.splice(1, Number.MAX_VALUE);
-            var realiz;
+            var realiz = [];
             realiz = indicador[5];
             realiz = realiz.splice(1, Number.MAX_VALUE);
-            var orcadoDiaAc;
+            var orcadoDiaAc = [];
             orcadoDiaAc = indicador[6];
             orcadoDiaAc = orcadoDiaAc.splice(1, Number.MAX_VALUE);
-            var realizDiaAc;
+            var realizDiaAc = [];
             realizDiaAc = indicador[7];
             realizDiaAc = realizDiaAc.splice(1, Number.MAX_VALUE);
-            var orcadoDiaMed;
+            var orcadoDiaMed = [];
             orcadoDiaMed = indicador[8];
             orcadoDiaMed = orcadoDiaMed.splice(1, Number.MAX_VALUE);
-            var realizDiaMed;
+            var realizDiaMed = [];
             realizDiaMed = indicador[9];
             realizDiaMed = realizDiaMed.splice(1, Number.MAX_VALUE);
-            var Minimo;
+            var Minimo = [];
             Minimo = indicador[10];
             Minimo = Minimo.splice(1, Number.MAX_VALUE);
-            var Maximo;
+            var Maximo = [];
             Maximo = indicador[11];
             Maximo = Maximo.splice(1, Number.MAX_VALUE);
-            var Meta;
+            var Meta = [];
             Meta = indicador[12];
             Meta = Meta.splice(1, Number.MAX_VALUE);
-            var MetaAcumulada;
+            var MetaAcumulada = [];
             MetaAcumulada = indicador[13];
             MetaAcumulada = MetaAcumulada.splice(1, Number.MAX_VALUE);
-            var DentroPrazoReg;
+            var DentroPrazoReg = [];
             DentroPrazoReg = indicador[14];
             DentroPrazoReg = DentroPrazoReg.splice(1, Number.MAX_VALUE);
-            var DentroPrazo;
+            var DentroPrazo = [];
             DentroPrazo = indicador[15];
             DentroPrazo = DentroPrazo.splice(1, Number.MAX_VALUE);
             _this.EscolherTipoGrafico(_this.tipoGraph, _this.eixo, orcado, realiz, orcadoDiaAc, realizDiaAc, orcadoDiaMed, realizDiaMed, Minimo, Maximo, Meta, MetaAcumulada, DentroPrazoReg, DentroPrazo);
@@ -5858,21 +5868,35 @@ var GraficosComponent = /** @class */ (function () {
         // }
         //CORTAR REALIZADOS ZERADOS ATÉ A ULTIMA ATUALIZAÇÃO
         //========================================================================================
-        // indice = 0
-        // let soma = 0 
-        // while(indice <33){  
-        //   soma =0
-        //   for(var i=indice; i<33;i++){
-        //     var real = realiz[i]
-        //     if(real=="-"){
-        //     }
-        //     soma = (real + soma)
-        //   }
-        //   if(soma==0){ 
-        //     realizDiaAc.splice(indice, 1)
-        //   }
-        //   indice =indice+1
-        // }
+        var arr;
+        arr = eixo;
+        // console.log(eixo)
+        indice = 0;
+        var maximo = 0;
+        for (var i = indice; i < 34; i++) {
+            if (i > 10) {
+                var real = arr[i];
+                if (real == "01/01") {
+                    maximo = i;
+                    break;
+                }
+                else {
+                    maximo = Number.MAX_VALUE;
+                }
+            }
+        }
+        eixo.splice(maximo, Number.MAX_VALUE);
+        orcado.splice(maximo, Number.MAX_VALUE);
+        realiz.splice(maximo, Number.MAX_VALUE);
+        orcadoDiaAc.splice(maximo, Number.MAX_VALUE);
+        realizDiaAc.splice(maximo, Number.MAX_VALUE);
+        Meta.splice(maximo, Number.MAX_VALUE);
+        MetaAcumulada.splice(maximo, Number.MAX_VALUE);
+        Minimo.splice(maximo, Number.MAX_VALUE);
+        Maximo.splice(maximo, Number.MAX_VALUE);
+        DentroPrazo.splice(maximo, Number.MAX_VALUE);
+        DentroPrazoReg.splice(maximo, Number.MAX_VALUE);
+        // console.log(eixo)
         //SEPARAR TIPOS DE GRAFICO
         //========================================================================================
         //ORCADO - REALIZADO - SUM ORCADO - SUM REALIZADO 
@@ -6437,7 +6461,7 @@ var GraficosComponent = /** @class */ (function () {
         }
         else {
             this.RotuloDiferencaPerc = "Δ% " + this.RotuloDiferencaPerc;
-            this.RotuloDiferencaAcum = "Δ " + this.RotuloDiferencaAcum;
+            this.RotuloDiferencaAcum2 = "Δ " + this.RotuloDiferencaAcum2;
         }
     };
     //SUPRIMIR COMENTÁRIOS VAZIOS E PREENCHER COM DATA
@@ -6496,6 +6520,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad);
             this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad);
             this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
+            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
             this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
         }
@@ -6506,6 +6531,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
             this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
             this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
+            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
             this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
             //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
@@ -6518,6 +6544,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = this.ConverterParaHora(OrcadoMedia);
             this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
             this.RotuloDiferencaAcum = this.ConverterParaHora((val2 - val1));
+            this.RotuloDiferencaAcum2 = this.ConverterParaHora(val2 - val1);
             this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
             this.RotuloPrevisaoMensal = this.ConverterParaHora(this.RotuloPrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
@@ -6531,6 +6558,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloRealizAcum = RealMedia;
             var val3 = RealMedia > Minimo ? RealMedia < Maximo ? 0 : RealMedia - Maximo : RealMedia - Minimo;
             this.RotuloDiferencaAcum = val3.toFixed(2);
+            this.RotuloDiferencaAcum2 = val3 == 0 ? 0 : val3.toFixed(2);
             val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
             this.RotuloPrevisaoMensal = PrevisaoMensal;
             this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal)) ? 0 : PrevisaoMensal;
@@ -6542,6 +6570,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = (Meta * 100);
             this.RotuloRealizAcum = ((NaoReguladoDp + ReguladoDp) / 2) * 100;
             this.RotuloDiferencaAcum = "-";
+            this.RotuloDiferencaAcum2 = "-";
             this.RotuloDiferencaPerc = "-";
         }
         else if (tipoGraph == 7 || tipoGraph == 9) {
@@ -6551,6 +6580,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = converterComDecimal(OrcadoMedia);
             this.RotuloRealizAcum = converterComDecimal(RealMedia);
             this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
+            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
             this.RotuloPrevisaoMensal = converterComDecimal(PrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
         }
@@ -6596,10 +6626,6 @@ var GraficosComponent = /** @class */ (function () {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], GraficosComponent.prototype, "indicador", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], GraficosComponent.prototype, "refer", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -6609,6 +6635,10 @@ var GraficosComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], GraficosComponent.prototype, "gerencia", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], GraficosComponent, "indicador", void 0);
     GraficosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-graficos',
@@ -7328,11 +7358,11 @@ var InputindicadoresComponent = /** @class */ (function () {
                         if (classe === res['classificacao']) {
                             //console.log(res)
                             _this.resumo = [];
-                            _this.performanceService.indicadores(_this.refer, res['indicadorId'])
+                            _this.performanceService.indicadoresResumo(_this.refer, res['indicadorId'])
                                 .subscribe(function (Indicadores) {
-                                _this.realacum = parseFloat(Indicadores[3][3]).toLocaleString(), //'pt-BR', { style: 'currency', currency: 'BRL' }),
-                                    _this.orcadoacum = parseFloat(Indicadores[3][2]).toLocaleString(),
-                                    _this.previsao = parseFloat(Indicadores[3][4]).toLocaleString(),
+                                _this.realacum = parseFloat(Indicadores[0][3]).toLocaleString(), //'pt-BR', { style: 'currency', currency: 'BRL' }),
+                                    _this.orcadoacum = parseFloat(Indicadores[0][2]).toLocaleString(),
+                                    _this.previsao = parseFloat(Indicadores[0][4]).toLocaleString(),
                                     _this.resumo.push({
                                         'vin': res['indicador'],
                                         'year': _this.realacum,
@@ -7350,6 +7380,7 @@ var InputindicadoresComponent = /** @class */ (function () {
     };
     InputindicadoresComponent.prototype.selectIndicador = function (indicador) {
         var _this = this;
+        console.log(indicador);
         if (this.barraAtiva) {
             alert('Feche o Gráfico para passar para o próximo indicador!!!');
         }
@@ -7357,22 +7388,23 @@ var InputindicadoresComponent = /** @class */ (function () {
             // bug no primeiro clique dá undefined por tempo de execução
             this.performanceService.classindicadores(this.idgerenciasretornado)
                 .subscribe(function (Indicadores) {
+                _this.indicatore = [];
                 _this.indicatore = Indicadores.filter(function (item) { return item.indicadorId === parseInt(indicador.id); });
                 //console.log(this.ind)
             });
+            this.idgerenciasretornado = null;
             this.indicatore.forEach(function (res) {
                 if (_this.indicatore[0]) {
+                    _this.ind = [];
                     _this.ind = res;
-                    //console.log(res.classificacao)
+                    // console.log(res)
                     _this.classs = res.classificacao;
                 }
             });
-            //console.log(this.refer)
+            console.log(this.ind);
             this.selectedIndicador = indicador;
             this.indi = indicador.vin;
-            //console.log(this.indi)
             this.nind = indicador.id;
-            //console.log(this.nind)
             this.barraAtiva = true;
             this.messageService.add({ severity: 'info', summary: 'Indicador Selecionado', detail: 'Indicador: ' + indicador.vin });
         }
@@ -7382,6 +7414,25 @@ var InputindicadoresComponent = /** @class */ (function () {
     };
     InputindicadoresComponent.prototype.pesquisarIndicador = function (data) {
         var _this = this;
+        this.orcado = 0;
+        this.realizado = 0;
+        this.pecld = 0;
+        this.forecast = 0;
+        this.minimo = 0;
+        this.maximo = 0;
+        this.meta = 0;
+        this.dentroprazo = 0;
+        this.foraprazo = 0;
+        this.dentroprazoreg = 0;
+        this.foraprazoreg = 0;
+        this.atendente = 0;
+        this.atendimento = 0;
+        this.comentario = "";
+        this.acao = "";
+        this.analise = "";
+        this.colaborador = "";
+        this.indicadorId = 0;
+        this.undcodigo = 0;
         this.performanceService.indicadoresByDay(this.nind, data.toISOString().substr(0, 10))
             .subscribe(function (indicadores) {
             _this.indica = indicadores;
@@ -7408,6 +7459,7 @@ var InputindicadoresComponent = /** @class */ (function () {
                 _this.foraprazo = indicadores['foraprazo'] === null ? indicadores['foraprazo'] : indicadores['foraprazo'].toLocaleString(),
                 _this.dentroprazoreg = indicadores['dentroprazoreg'] === null ? indicadores['dentroprazoreg'] : indicadores['dentroprazoreg'].toLocaleString(),
                 _this.foraprazoreg = indicadores['foraprazoreg'] === null ? indicadores['foraprazoreg'] : indicadores['foraprazoreg'].toLocaleString(),
+                _this.previsao = indicadores['previsao'] === null ? indicadores['previsao'] : indicadores['previsao'].toLocaleString(),
                 _this.atendente = indicadores['atendente'],
                 _this.atendimento = indicadores['atendimento'],
                 _this.comentario = indicadores['comentario'],
@@ -7538,6 +7590,10 @@ var PerformanceService = /** @class */ (function () {
     };
     PerformanceService.prototype.indicadores = function (referencia, indicadorId) {
         return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/indicadores/grafico/" + referencia + "/" + indicadorId)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    PerformanceService.prototype.indicadoresResumo = function (referencia, indicadorId) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/indicadores/graficoResumo/" + referencia + "/" + indicadorId)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
     PerformanceService.prototype.indicadoresByDay = function (indicador, referencia) {
@@ -7719,10 +7775,10 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
     };
     ResumoIndicadoresComponent.prototype.Validador = function (indic, referencia) {
         var _this = this;
-        this.indicadoresService.indicadores(referencia, indic.indicadorId)
+        this.indicadoresService.indicadoresResumo(referencia, indic.indicadorId)
             .subscribe(function (indicador) {
             var var1;
-            _this.temp1 = indicador[3];
+            _this.temp1 = indicador[0];
             _this.tipoGraph = indic.tipoGrafico;
             _this.Tendencia = indic.tendencia;
             _this.RotulosAcumulados(_this.tipoGraph, _this.temp1);
@@ -7764,7 +7820,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
         }
         else {
             this.RotuloDiferencaPerc = "Δ% " + this.RotuloDiferencaPerc;
-            this.RotuloDiferencaAcum = "Δ " + this.RotuloDiferencaAcum;
+            this.RotuloDiferencaAcum2 = "Δ " + this.RotuloDiferencaAcum2;
         }
     };
     //MESMA CLASSE DO QUE O graficos.component.ts
@@ -7795,6 +7851,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad);
             this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad);
             this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
+            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
             this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
         }
@@ -7805,6 +7862,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
             this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
             this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
+            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
             this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
             //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
@@ -7817,6 +7875,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = this.ConverterParaHora(OrcadoMedia);
             this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
             this.RotuloDiferencaAcum = this.ConverterParaHora((val2 - val1));
+            this.RotuloDiferencaAcum2 = this.ConverterParaHora(val2 - val1);
             this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
             this.RotuloPrevisaoMensal = this.ConverterParaHora(this.RotuloPrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
@@ -7830,6 +7889,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             this.RotuloRealizAcum = RealMedia;
             var val3 = RealMedia > Minimo ? RealMedia < Maximo ? 0 : RealMedia - Maximo : RealMedia - Minimo;
             this.RotuloDiferencaAcum = val3.toFixed(2);
+            this.RotuloDiferencaAcum2 = val3 == 0 ? 0 : val3.toFixed(2);
             val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
             this.RotuloPrevisaoMensal = PrevisaoMensal;
             this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal)) ? 0 : PrevisaoMensal;
@@ -7841,6 +7901,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = (Meta * 100);
             this.RotuloRealizAcum = ((NaoReguladoDp + ReguladoDp) / 2) * 100;
             this.RotuloDiferencaAcum = "-";
+            this.RotuloDiferencaAcum2 = "-";
             this.RotuloDiferencaPerc = "-";
         }
         else if (tipoGraph == 7 || tipoGraph == 9) {
@@ -7850,6 +7911,7 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             this.RotuloOrcadoAcum = converterComDecimal(OrcadoMedia);
             this.RotuloRealizAcum = converterComDecimal(RealMedia);
             this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
+            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
             this.RotuloPrevisaoMensal = converterComDecimal(PrevisaoMensal);
             this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
         }
@@ -8930,11 +8992,15 @@ var AgendarVeiculoComponent = /** @class */ (function () {
         this.transporteService = transporteService;
         this.messageService = messageService;
         this.ArrCondutores = [];
+        this.OpcEmergencial = false;
     }
     AgendarVeiculoComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.IdSolicitante = sessionStorage.getItem('usuarioId');
         this.OpcSolicitante = sessionStorage.getItem('nome');
         this.ArrCondutores = [];
+        this.ArrTipoVeiculo = [];
+        this.ArrDestinos = [];
         this.transporteService.Condutores().subscribe(function (response) {
             for (var i = 0; i < response.length; i++) {
                 var array = { label: response[i].nome, value: response[i].nome };
@@ -8942,17 +9008,21 @@ var AgendarVeiculoComponent = /** @class */ (function () {
             }
         });
         this.ArrTipoVeiculo = [
-            { label: '' },
             { label: 'AMAROK', value: 'AMAROK' },
+            { label: 'VW EXPRESS DRC 4X2', value: 'VW EXPRESS DRC 4X2' },
+            { label: 'STRADA', value: 'STRADA' },
+            { label: 'S-10 LS - MT', value: 'S-10 LS - MT' },
+            { label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR' },
+            { label: 'PRISMA LT - AT', value: 'PRISMA LT - AT' },
+            { label: 'ONIX LT - AT', value: 'ONIX LT - AT' },
+            { label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT' },
+            { label: 'MONTANA LS - MT', value: 'MONTANA LS - MT' },
+            { label: 'HONDA 150', value: 'HONDA 150' },
+            { label: 'HONDA 125', value: 'HONDA 125' },
             { label: 'COROLLA', value: 'COROLLA' },
             { label: 'COROLLA GLI', value: 'COROLLA GLI' },
             { label: 'CAMINHAO', value: 'CAMINHAO' },
-            { label: 'MONTANA LS - MT', value: 'MONTANA LS - MT' },
-            { label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT' },
-            { label: 'PRISMA LT - AT', value: 'PRISMA LT - AT' },
-            { label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR' },
-            { label: 'STRADA', value: 'STRADA' },
-            { label: 'S-10 LS - MT', value: 'S-10 LS - MT' }
+            { label: 'AMAROK', value: 'AMAROK' }
         ];
         this.ArrDestinos = [
             { label: '', value: '' },
@@ -8963,27 +9033,65 @@ var AgendarVeiculoComponent = /** @class */ (function () {
             { label: 'SÃO PEDRO DA ALDEIA', value: 'SÃO PEDRO DA ALDEIA' },
             { label: 'IGUABA GRANDE', value: 'IGUABA GRANDE' }
         ];
+        this.menorData();
+    };
+    AgendarVeiculoComponent.prototype.checagem = function () {
+        var campos = "Favor preencher os campos pendentes: ";
+        if (this.OpcSolicitante == null) {
+            campos = campos + "Solicitante | ";
+        }
+        if (this.OpcDe == null) {
+            campos = campos + "De | ";
+        }
+        if (this.OpcAte == null) {
+            campos = campos + "Até | ";
+        }
+        if (this.OpcQtd == null) {
+            campos = campos + "Qtd. Pessoas | ";
+        }
+        if (this.OpcJustificativa == null) {
+            campos = campos + "Justificativa | ";
+        }
+        if (this.OpcDestinos == null) {
+            campos = campos + "Destino | ";
+        }
+        if (this.OpcCondutores == null) {
+            campos = campos + "Condutor | ";
+        }
+        if (campos.length > 36) {
+            this.messageService.add({ sticky: true, severity: 'info', summary: 'Incompleto!',
+                detail: campos });
+        }
+        else {
+            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                detail: 'Dados enviados com sucesso!' });
+        }
     };
     AgendarVeiculoComponent.prototype.SalvarAgendamento = function () {
         var _this = this;
+        this.checagem();
         var agendamento;
+        var data1 = new Date(Number(this.OpcData.getFullYear), Number(this.OpcData.getMonth), Number(this.OpcData.getDate), Number(this.OpcDe.getHours), Number(this.OpcDe.getMinutes), Number(this.OpcDe.getSeconds));
+        var data2 = new Date(Number(this.OpcData.getFullYear), Number(this.OpcData.getMonth), Number(this.OpcData.getDate), Number(this.OpcAte.getHours), Number(this.OpcAte.getMinutes), Number(this.OpcAte.getSeconds));
         agendamento = {
             agendamentoId: null,
             solicitante: this.OpcSolicitante,
+            fksolicitante: this.IdSolicitante,
             qtdPessoas: this.OpcQtd,
-            agendadoate: dataAtualFormatada(this.OpcAte),
+            agendadoate: dataAtualFormatada(data2),
+            agendadode: dataAtualFormatada(data1),
             tipoVeiculoSolicitado: this.OpcTipoVeiculo,
             tipoVeiculoDisponibilizado: null,
-            agendadode: dataAtualFormatada(this.OpcDe),
             placa: null,
             aprovador: null,
             aprovacao: null,
             justificativa: null,
+            justificativaSolicitacao: this.OpcJustificativa,
             destino: this.OpcDestinos,
             condutor: this.OpcCondutores,
             dataAgendamento: null,
+            emergencial: this.OpcEmergencial
         };
-        console.log(agendamento);
         this.transporteService.InputAgendamento(agendamento).subscribe(function (response) {
             if (response.status === 201) {
                 _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -8991,8 +9099,7 @@ var AgendarVeiculoComponent = /** @class */ (function () {
                 console.log('Dados enviados com sucesso!');
             }
         }, function (error) {
-            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
-                detail: error.message, life: 5000 });
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 5000 });
             console.log(error);
         });
         this.OpcSolicitante = null;
@@ -9000,12 +9107,33 @@ var AgendarVeiculoComponent = /** @class */ (function () {
         this.OpcTipoVeiculo = null;
         this.OpcAte = null;
         this.OpcDe = null;
+        this.OpcData = null;
         this.OpcDestinos = null;
         this.OpcCondutores = null;
         function dataAtualFormatada(datareceb) {
             var data = datareceb, dia = data.getDate().toString().padStart(2, '0'), mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
             ano = data.getFullYear(), hora = data.getHours(), minuto = data.getMinutes();
             return ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":00";
+        }
+    };
+    AgendarVeiculoComponent.prototype.menorData = function () {
+        var today = new Date();
+        var day = today.getDate();
+        var month = today.getMonth();
+        var year = today.getFullYear();
+        this.minDate = new Date();
+        this.minDate.setDate(day);
+        this.minDate.setMonth(month);
+        this.minDate.setFullYear(year);
+    };
+    AgendarVeiculoComponent.prototype.verificarEmergencial = function () {
+        var today = String(Number(new Date())).substring(0, 6);
+        var data = String(Number(this.OpcData)).substring(0, 6);
+        if (today == data) {
+            this.OpcEmergencial = true;
+        }
+        else {
+            this.OpcEmergencial = false;
         }
     };
     AgendarVeiculoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9090,6 +9218,7 @@ var AprovarAgendamentoComponent = /** @class */ (function () {
             {
                 agendamentoId: this.AgendamentoSelecionado.agendamentoId,
                 solicitante: this.AgendamentoSelecionado.solicitante,
+                fksolicitante: this.AgendamentoSelecionado.fksolicitante,
                 qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
                 agendadoate: this.AgendamentoSelecionado.agendadoate,
                 tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
@@ -9102,6 +9231,8 @@ var AprovarAgendamentoComponent = /** @class */ (function () {
                 destino: this.AgendamentoSelecionado.destino,
                 condutor: this.AgendamentoSelecionado.condutor,
                 dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+                justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+                emergencial: this.AgendamentoSelecionado.emergencial,
             };
         this.onSelectHide();
     };
@@ -9158,6 +9289,7 @@ var AprovarAgendamentoComponent = /** @class */ (function () {
                             {
                                 agendamentoId: this.AgendamentoSelecionado.agendamentoId,
                                 solicitante: this.AgendamentoSelecionado.solicitante,
+                                fksolicitante: this.AgendamentoSelecionado.fksolicitante,
                                 qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
                                 agendadoate: this.AgendamentoSelecionado.agendadoate,
                                 tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
@@ -9170,6 +9302,8 @@ var AprovarAgendamentoComponent = /** @class */ (function () {
                                 destino: this.AgendamentoSelecionado.destino,
                                 condutor: this.AgendamentoSelecionado.condutor,
                                 dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+                                justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+                                emergencial: this.AgendamentoSelecionado.emergencial,
                             };
                         this.displayRecuse = true;
                         this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(function (response) {
@@ -9469,11 +9603,10 @@ var CadastroComponent = /** @class */ (function () {
             { label: 'Lista de veículos' },
             { label: 'Cadastrar Novo' }
         ];
-        this.Gerencias = [
-            { label: '' },
-            { label: 'Comercial', value: 'Comercial' },
-            { label: 'Operacional', value: 'Operacional' }
-        ];
+        var today = new Date();
+        var invalidDate = new Date();
+        invalidDate.setDate(today.getDate() - 1);
+        this.invalidDates = [today, invalidDate];
         this.Supervisoes = [
             { label: '' },
             { label: 'Fiscalizacao', value: 'Fiscalizacao' },
@@ -9498,17 +9631,22 @@ var CadastroComponent = /** @class */ (function () {
             { label: 'Sem GPS' }
         ];
         this.modelos = [
-            { label: '' },
+            { label: '', value: '' },
             { label: 'AMAROK', value: 'AMAROK' },
+            { label: 'VW EXPRESS DRC 4X2', value: 'VW EXPRESS DRC 4X2' },
+            { label: 'STRADA', value: 'STRADA' },
+            { label: 'S-10 LS - MT', value: 'S-10 LS - MT' },
+            { label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR' },
+            { label: 'PRISMA LT - AT', value: 'PRISMA LT - AT' },
+            { label: 'ONIX LT - AT', value: 'ONIX LT - AT' },
+            { label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT' },
+            { label: 'MONTANA LS - MT', value: 'MONTANA LS - MT' },
+            { label: 'HONDA 150', value: 'HONDA 150' },
+            { label: 'HONDA 125', value: 'HONDA 125' },
             { label: 'COROLLA', value: 'COROLLA' },
             { label: 'COROLLA GLI', value: 'COROLLA GLI' },
             { label: 'CAMINHAO', value: 'CAMINHAO' },
-            { label: 'MONTANA LS - MT', value: 'MONTANA LS - MT' },
-            { label: 'ONIX 1.0 LS - MT', value: 'ONIX 1.0 LS - MT' },
-            { label: 'PRISMA LT - AT', value: 'PRISMA LT - AT' },
-            { label: 'RETRO CATERPILLAR', value: 'RETRO CATERPILLAR' },
-            { label: 'STRADA', value: 'STRADA' },
-            { label: 'S-10 LS - MT', value: 'S-10 LS - MT' }
+            { label: 'AMAROK', value: 'AMAROK' }
         ];
         this.locadoras = [
             { label: '' },
@@ -9561,6 +9699,10 @@ var CadastroComponent = /** @class */ (function () {
             .subscribe(function (Veiculos) {
             _this.cars0 = Veiculos;
             _this.cars = Veiculos;
+        });
+        this.transporteService.Gerencias()
+            .subscribe(function (Gerencias) {
+            _this.Gerencias = Gerencias;
         });
         this.limpar();
     };
@@ -10099,6 +10241,10 @@ var TransporteService = /** @class */ (function () {
     function TransporteService(http) {
         this.http = http;
     }
+    TransporteService.prototype.Gerencias = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/gerencias")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
     //CADASTRO
     //=============================================================================================
     TransporteService.prototype.veiculos = function () {

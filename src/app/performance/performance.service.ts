@@ -29,6 +29,10 @@ export class PerformanceService{
         return  this.http.get(`${API_CONFIG}/indicadores/grafico/${referencia}/${indicadorId}`) 
         .pipe(map((res : Indicador[]) => res, catchError(ErrorHandler.handleError)))
      }
+     indicadoresResumo(referencia : string, indicadorId : number): Observable<Indicador[]>{
+        return  this.http.get(`${API_CONFIG}/indicadores/graficoResumo/${referencia}/${indicadorId}`) 
+        .pipe(map((res : Indicador[]) => res, catchError(ErrorHandler.handleError)))
+     }
 
      indicadoresByDay(indicador : number, referencia : string): Observable<Indicadores[]>{
         return  this.http.get(`${API_CONFIG}/indicadores/${indicador}/${referencia}`) 
