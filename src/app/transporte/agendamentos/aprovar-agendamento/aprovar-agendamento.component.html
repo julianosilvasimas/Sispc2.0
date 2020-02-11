@@ -13,7 +13,7 @@
     <ng-template let-car pTemplate="listItem">
       <div class="ui-g-12">
         <div class="car-details">
-          <img class="ui-g-1" src="assets/layout/images/transporte/{{car.tipoVeiculoSolicitado}}.png">
+          <img class="ui-g-1" src="assets/layout/images/transporte/car{{car.tipoVeiculoSolicitado}}.png">
           <div class="ui-g-10" >
             <div style="margin-left:90px; vertical-align: middle; " >
 
@@ -67,7 +67,7 @@
     <div class="ui-g-12" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>
 
     <div class="ui-g-6">Modelo Solicitado: </div>
-    <div class="ui-g-6"><img src="assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png" width="150px"></div>
+    <div class="ui-g-6"><img src="assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png" width="150px"></div>
   
     <div class="ui-g-12" style="text-align: center;">
       <button type="button" (click)="VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)" pButton icon="pi pi-search" label="Ver Carros Disponíveis"></button>
@@ -124,7 +124,7 @@
     <div class="ui-g-4" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>
 
     <div class="ui-g-12">Modelo Solicitado: </div>
-    <div class="ui-g-12"><img src="assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png" width="150px"></div>
+    <div class="ui-g-12"><img src="assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png" width="150px"></div>
     
 
     <div class="ui-g-12">

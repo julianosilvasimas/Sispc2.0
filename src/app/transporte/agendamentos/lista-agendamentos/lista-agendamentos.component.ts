@@ -40,5 +40,5 @@ export class ListaAgendamentosComponent implements OnInit {
     this.displayAgendamento = false;
     this.AtualizarLista();
   }
-
+  
 }

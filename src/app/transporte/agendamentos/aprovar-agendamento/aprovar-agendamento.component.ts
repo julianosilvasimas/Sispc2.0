@@ -17,7 +17,7 @@ export class AprovarAgendamentoComponent implements OnInit {
   public displayRecuse; 
   public displaySelect; 
   
-  public veiculos:any[] = [];
+  public veiculos:Veiculo[] = [];
   public veiculosNaoDisponiveis: any[] =[];
   public veiculosDisponiveis: any[]=[];
   public AgendamentoSelecionado: Agendamento;
@@ -60,22 +60,24 @@ export class AprovarAgendamentoComponent implements OnInit {
     this.AgendamentoAlterado = 
     {
       agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+      dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+      agendadode: this.AgendamentoSelecionado.agendadode,
+      agendadoate: this.AgendamentoSelecionado.agendadoate,
       solicitante: this.AgendamentoSelecionado.solicitante,
       fksolicitante: this.AgendamentoSelecionado.fksolicitante,
-      qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
-      agendadoate: this.AgendamentoSelecionado.agendadoate,
-      tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
-      agendadode: this.AgendamentoSelecionado.agendadode,
-      tipoVeiculoDisponibilizado: car.modelo,
-      placa: car.placa,
-      justificativa: "",
-      aprovador: sessionStorage.getItem('nome'),
-      aprovacao: 1,
-      destino: this.AgendamentoSelecionado.destino,
+      emailsolicitante: this.AgendamentoSelecionado.emailsolicitante,
       condutor: this.AgendamentoSelecionado.condutor,
-      dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
-      justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+      qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+      tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+      destino: this.AgendamentoSelecionado.destino,
+      placa: car.placa,
+      tipoVeiculoDisponibilizado: car.modelo,
+      aprovador: sessionStorage.getItem('nome'),
+      emailaprovador: sessionStorage.getItem('email'),
+      aprovacao: 1,
+      justificativa: "",
       emergencial: this.AgendamentoSelecionado.emergencial,
+      justificativasolicitacao: this.AgendamentoSelecionado.justificativasolicitacao,
 
     }
     this.onSelectHide();
@@ -86,13 +88,13 @@ export class AprovarAgendamentoComponent implements OnInit {
       response => {
         if(response.status === 201){
           this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
-          detail:'Dados enviados com sucesso!'});
-          console.log('Dados enviados com sucesso!')
+          detail:'Aprovado!'});
+          console.log('Aprovado!')
         }
       },
       error =>  { 
         this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
-        detail:error.message, life: 5000});
+        detail:error.message, life: 500});
         console.log(error)
       }
     );
@@ -128,22 +130,24 @@ export class AprovarAgendamentoComponent implements OnInit {
     this.AgendamentoAlterado = 
     {
       agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+      dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+      agendadode: this.AgendamentoSelecionado.agendadode,
+      agendadoate: this.AgendamentoSelecionado.agendadoate,
       solicitante: this.AgendamentoSelecionado.solicitante,
       fksolicitante: this.AgendamentoSelecionado.fksolicitante,
-      qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
-      agendadoate: this.AgendamentoSelecionado.agendadoate,
-      tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
-      agendadode: this.AgendamentoSelecionado.agendadode,
-      tipoVeiculoDisponibilizado: this.AgendamentoSelecionado.tipoVeiculoDisponibilizado,
-      placa: this.AgendamentoSelecionado.placa,
-      justificativa:this.Justificativa,
-      aprovador: sessionStorage.getItem('nome'),
-      aprovacao: 0,
-      destino: this.AgendamentoSelecionado.destino,
+      emailsolicitante: this.AgendamentoSelecionado.emailsolicitante,
       condutor: this.AgendamentoSelecionado.condutor,
-      dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
-      justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+      qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+      tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+      placa: this.AgendamentoSelecionado.placa,
+      destino: this.AgendamentoSelecionado.destino,
+      tipoVeiculoDisponibilizado: this.AgendamentoSelecionado.tipoVeiculoDisponibilizado,
+      aprovador: sessionStorage.getItem('nome'),
+      emailaprovador: sessionStorage.getItem('email'),
+      aprovacao: 0,
+      justificativa:this.Justificativa,
       emergencial: this.AgendamentoSelecionado.emergencial,
+      justificativasolicitacao: this.AgendamentoSelecionado.justificativasolicitacao,
     }
     this.displayRecuse = true;
     this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(
@@ -156,7 +160,7 @@ export class AprovarAgendamentoComponent implements OnInit {
       },
       error =>  { 
         this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
-        detail:error.message, life: 5000});
+        detail:error.message, life: 500});
         console.log(error)
       }
     );
@@ -185,6 +189,8 @@ export class AprovarAgendamentoComponent implements OnInit {
     }else{
       for(var i=0; i<todos.length;i++){
         var placaVeiculo= todos[i].placa
+        var pool= todos[i].pool
+
         var placaAgendado = null;
         
         for(var j=0; j<this.veiculosNaoDisponiveis.length; j++){
@@ -194,7 +200,7 @@ export class AprovarAgendamentoComponent implements OnInit {
           }
         }
 
-        if(placaAgendado != placaVeiculo){
+        if(placaAgendado != placaVeiculo && pool == true){
           this.veiculosDisponiveis.push(todos[i])
         }
       }

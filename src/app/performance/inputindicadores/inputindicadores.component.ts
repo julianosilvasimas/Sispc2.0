@@ -256,27 +256,25 @@ export class InputindicadoresComponent implements OnInit {
       this.performanceService.classindicadores(this.idgerenciasretornado)
         .subscribe(
           Indicadores  =>  {
-            this.indicatore = []
             this.indicatore = Indicadores.filter(item => item.indicadorId === parseInt(indicador.id))
             //console.log(this.ind)
-            
-          });
-          this.idgerenciasretornado = null;
+          
           this.indicatore.forEach(
             res =>{ 
               if(this.indicatore[0]){
-                this.ind = []
                 this.ind = res
                 // console.log(res)
                 this.classs = res.classificacao
               }
           })
+          
+          console.log(this.ind)
+          this.selectedIndicador = indicador;
+          this.indi = indicador.vin
+          this.nind = indicador.id
+          this.barraAtiva = true;
+        });
       
-      console.log(this.ind)
-      this.selectedIndicador = indicador;
-      this.indi = indicador.vin
-      this.nind = indicador.id
-      this.barraAtiva = true;
     this.messageService.add({severity:'info', summary:'Indicador Selecionado', detail:'Indicador: ' + indicador.vin});
   }
 }
@@ -305,8 +303,8 @@ export class InputindicadoresComponent implements OnInit {
     this.colaborador = "";
     this.indicadorId = 0;
     this.undcodigo = 0;
-
-    this.performanceService.indicadoresByDay( this.nind , data.toISOString().substr(0,10))
+    this.performanceService.indicadoresByDay( this.nind , data.toISOString().substr(0,10)
+  )
   .subscribe(
     indicadores  => {
     this.indica = indicadores

@@ -18,6 +18,7 @@ export class AgendarVeiculoComponent implements OnInit {
 
   private IdSolicitante: any;
   private OpcSolicitante: any;
+  private EmailSolicitante: any;
   private OpcCondutores: any;
   private OpcQtd: any;
   private OpcTipoVeiculo: any;
@@ -35,8 +36,9 @@ export class AgendarVeiculoComponent implements OnInit {
 
 
   ngOnInit() {
-    this.IdSolicitante = sessionStorage.getItem('usuarioId');
+    this.IdSolicitante = sessionStorage.getItem('id');
     this.OpcSolicitante = sessionStorage.getItem('nome');
+    this.EmailSolicitante = sessionStorage.getItem('email');
     this.ArrCondutores= [];
     this.ArrTipoVeiculo= [];
     this.ArrDestinos= [];
@@ -51,6 +53,7 @@ export class AgendarVeiculoComponent implements OnInit {
     );
 
     this.ArrTipoVeiculo = [
+      {label: '', value:''},
       {label: 'AMAROK', value: 'AMAROK'},
       {label: 'VW EXPRESS DRC 4X2', value: 'VW EXPRESS DRC 4X2'},
       {label: 'STRADA', value: 'STRADA'},
@@ -64,16 +67,20 @@ export class AgendarVeiculoComponent implements OnInit {
       {label: 'HONDA 125', value: 'HONDA 125'},
       {label: 'COROLLA', value: 'COROLLA'},
       {label: 'COROLLA GLI', value: 'COROLLA GLI'},
-      {label: 'CAMINHAO', value: 'CAMINHAO'},
-      {label: 'AMAROK', value: 'AMAROK'}
+      {label: 'CAMINHAO', value: 'CAMINHAO'}
     ];
     this.ArrDestinos = [
       {label: '', value:''},
+      {label: 'ARARUAMA', value:'ARARUAMA'},
       {label: 'ARMAÇÃO DOS BÚZIOS', value:'ARMAÇÃO DOS BÚZIOS'},
       {label: 'ARRAIAL DO CABO', value:'ARRAIAL DO CABO'},
       {label: 'CABO FRIO', value:'CABO FRIO'},
       {label: 'CABO FRIO TAMOIOS', value:'CABO FRIO TAMOIOS'},
       {label: 'SÃO PEDRO DA ALDEIA', value:'SÃO PEDRO DA ALDEIA'},
+      {label: 'SÃO VICENTE DE PAULO', value:'SÃO VICENTE DE PAULO'},
+      {label: 'NITERÓI', value:'NITERÓI'},
+      {label: 'RIO DE JANEIRO', value:'RIO DE JANEIRO'},
+      {label: 'RIO DAS OSTRAS', value:'RIO DAS OSTRAS'},
       {label: 'IGUABA GRANDE', value:'IGUABA GRANDE'}
     ]
     
@@ -81,8 +88,8 @@ export class AgendarVeiculoComponent implements OnInit {
   }
   checagem(){
     var campos = "Favor preencher os campos pendentes: ";
-    if(this.OpcSolicitante==null){
-      campos = campos + "Solicitante | "
+    if(this.OpcCondutores==null){
+      campos = campos + "Condutor | "
     }
     if(this.OpcDe==null){
       campos = campos + "De | "
@@ -102,43 +109,41 @@ export class AgendarVeiculoComponent implements OnInit {
     if(this.OpcCondutores==null){
       campos = campos + "Condutor | "
     }
-    if(campos.length>36){
+    if(campos.length>38){
       this.messageService.add({sticky: true, severity:'info', summary: 'Incompleto!', 
         detail: campos});
       
     }else{
-      this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
-        detail:'Dados enviados com sucesso!'});
+      this.SalvarAgendamento()
     }
     
   }
   SalvarAgendamento(){
-    this.checagem();
     var agendamento : Agendamento;
+    var data1 = this.OpcData;
+    var hora1 = this.OpcDe;
+    var hora2 = this.OpcAte;
 
-    var data1 = this.OpcData.getFullYear + "-"+this.OpcData.getMonth+ "-"+this.OpcData.getDate+ " "+this.OpcDe.getHours+ ":"+this.OpcDe.getMinutes+ ":"+this.OpcDe.getSeconds;
-    var data2 = this.OpcData.getFullYear+ "-"+this.OpcData.getMonth+ "-"+this.OpcData.getDate+ " "+this.OpcAte.getHours+ ":"+this.OpcAte.getMinutes+ ":"+this.OpcAte.getSeconds
-
-    console.log(data1)
-    console.log(data2)
     agendamento={
       agendamentoId: null,
-      solicitante: this.OpcSolicitante,
-      fksolicitante: this.IdSolicitante,
+      fksolicitante: null,
+      emailsolicitante: this.EmailSolicitante,
+      justificativasolicitacao: this.OpcJustificativa,
+      agendadode: this.dataAtualFormatada(data1,hora1),
+      agendadoate: this.dataAtualFormatada(data1,hora2),
+      condutor: this.OpcCondutores,
+      justificativa: null,
+      destino: this.OpcDestinos,
+      emergencial: this.OpcEmergencial,
+      placa:null,
+      aprovacao: null,
       qtdPessoas: this.OpcQtd,
-      agendadoate: data2,
-      agendadode: data1,
+      solicitante: this.OpcSolicitante,
+      aprovador: null,
+      emailaprovador: null,
+      dataAgendamento: null,
       tipoVeiculoSolicitado: this.OpcTipoVeiculo,
       tipoVeiculoDisponibilizado: null,
-      placa:null,
-      aprovador: null,
-      aprovacao: null,
-      justificativa: null,
-      justificativaSolicitacao: this.OpcJustificativa,
-      destino: this.OpcDestinos,
-      condutor: this.OpcCondutores,
-      dataAgendamento: null,
-      emergencial: this.OpcEmergencial
     }
     console.log(agendamento)
     this.transporteService.InputAgendamento(agendamento).subscribe(
@@ -150,11 +155,11 @@ export class AgendarVeiculoComponent implements OnInit {
         }
       },
       error =>  { 
-        this.messageService.add({severity:'error', summary: "Dados não Enviados!", detail: error.message, life: 5000});
+        this.messageService.add({severity:'error', summary: "Dados não Enviados!", detail: error.message, life: 500});
         console.log(error)
       });
 
-      this.OpcSolicitante= null;
+      this.OpcCondutores= null;
       this.OpcQtd = null;
       this.OpcTipoVeiculo=null;
       this.OpcAte=null;
@@ -162,16 +167,8 @@ export class AgendarVeiculoComponent implements OnInit {
       this.OpcData=null;
       this.OpcDestinos=null;
       this.OpcCondutores=null;
+      this.OpcJustificativa=null;
       
-    // function dataAtualFormatada(datareceb){
-    //   var data = datareceb,
-    //       dia  = data.getDate().toString().padStart(2, '0'),
-    //       mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-    //       ano  = data.getFullYear(),
-    //       hora  = data.getHours(),
-    //       minuto  = data.getMinutes();
-    //   return ano+"-"+mes+"-"+dia+" "+hora+":"+minuto+":00";
-    // }
   }
   menorData(){
     let today = new Date();
@@ -194,5 +191,21 @@ export class AgendarVeiculoComponent implements OnInit {
       this.OpcEmergencial = false
     }
     
+  }
+  dataAtualFormatada(datareceb, horareceb){
+    var hora = horareceb,
+    dia1  = hora.getDate().toString().padStart(2, '0'),
+    mes1  = (hora.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+    ano1  = hora.getFullYear(),
+    hora1  = hora.getHours(),
+    minuto1  = hora.getMinutes();
+
+    var data = datareceb,
+        dia2  = data.getDate().toString().padStart(2, '0'),
+        mes2  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2  = data.getFullYear(),
+        hora2  = data.getHours(),
+        minuto2  = data.getMinutes();
+    return ano2+"-"+mes2+"-"+dia2+" "+hora1+":"+minuto1+":00";
   }
 }

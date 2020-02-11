@@ -808,7 +808,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-title\" >\r\n  <h4>AGENDAR VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n    <button *ngIf=\"OpcEmergencial\" pButton type=\"button\"  label=\"Emergencial\" class=\"ui-button-danger\"></button>\r\n      \r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n     <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcCondutores\" styleClass = \"drop95\" [options]=\"ArrCondutores\"></p-dropdown>\r\n          <label >Condutor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcQtd\" class=\"ui-g-12\" pInputText/>\r\n          <label >Qtd. de Pessoas</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" (click)=\"verificarEmergencial()\" [minDate]=\"minDate\" [(ngModel)]=\"OpcData\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n          <label >Data</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\" >\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcDe\" [timeOnly]=\"true\"></p-calendar>\r\n          <label >De</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcAte\" [timeOnly]=\"true\"></p-calendar>\r\n          <label >Até</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"OpcDestinos\" styleClass = \"drop95\" [options]=\"ArrDestinos\"></p-dropdown>\r\n          <label >Destino</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcTipoVeiculo\" styleClass = \"drop95\" [options]=\"ArrTipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-6 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcJustificativa\" class=\"ui-g-12\" pInputText/>\r\n          <label >Justificativa</label>\r\n        </span>\r\n      </div>\r\n      \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12 item\" style=\"margin-top: 40px; text-align: center;\">\r\n      <button type=\"button\" (click)=\"SalvarAgendamento()\" pButton icon=\"pi pi-save\" label=\"Agendar\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-title\" >\r\n  <h4>AGENDAR VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n    <button *ngIf=\"OpcEmergencial\" pButton type=\"button\"  label=\"Emergencial\" class=\"ui-button-danger\"></button>\r\n      \r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n     <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcCondutores\" styleClass = \"drop95\" [options]=\"ArrCondutores\"></p-dropdown>\r\n          <label >Condutor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcQtd\" class=\"ui-g-12\" pInputText/>\r\n          <label >Qtd. de Pessoas</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" (click)=\"verificarEmergencial()\" [minDate]=\"minDate\" [(ngModel)]=\"OpcData\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n          <label >Data</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\" >\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcDe\" [timeOnly]=\"true\"></p-calendar>\r\n          <label >De</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [(ngModel)]=\"OpcAte\" [timeOnly]=\"true\"></p-calendar>\r\n          <label >Até</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"OpcDestinos\" styleClass = \"drop95\" [options]=\"ArrDestinos\"></p-dropdown>\r\n          <label >Destino</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-2 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\" [(ngModel)]=\"OpcTipoVeiculo\" styleClass = \"drop95\" [options]=\"ArrTipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n\r\n      <div class=\"ui-g-6 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\"  [(ngModel)]=\"OpcJustificativa\" class=\"ui-g-12\" pInputText/>\r\n          <label >Justificativa</label>\r\n        </span>\r\n      </div>\r\n      \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12 item\" style=\"margin-top: 40px; text-align: center;\">\r\n      <button type=\"button\" (click)=\"checagem()\" pButton icon=\"pi pi-save\" label=\"Agendar\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -819,7 +819,7 @@ module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-titl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n    [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n            <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n            \r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n    <ng-template let-car pTemplate=\"listItem\">\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"car-details\">\r\n          <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.tipoVeiculoSolicitado}}.png\">\r\n          <div class=\"ui-g-10\" >\r\n            <div style=\"margin-left:90px; vertical-align: middle; \" >\r\n\r\n              <div class=\"ui-g-2\">Solicitante: <b>{{car.solicitante}}</b></div>\r\n\r\n              <div class=\"ui-g-2\">\r\n                <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n                <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n              </div>\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">Data Agendamento: <b>{{car.dataAgendamento}}</b></div>\r\n                <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n              </div>\r\n\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">de: <b>{{car.agendadode}}</b></div>\r\n                <div class=\"ui-g-12\">até: <b>{{car.agendadoate}}</b></div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"ui-g-1\" >\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-times\" (click)=\"Reprovar(car)\" style=\"background:#b62727;\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"Aprovar(car)\" style=\"background:#3cb627;\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n    \r\n</p-dataView>\r\n\r\n<p-dialog header=\"Aprovar Solicitação\" [(visible)]=\"displayAprove\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Veiculo Solicitado:       {{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-6\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-6\"><img src=\"assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n  \r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" (click)=\"VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)\" pButton icon=\"pi pi-search\" label=\"Ver Carros Disponíveis\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Aprovando()\" pButton icon=\"pi pi-thumbs-up\" label=\"Aprovar\" style=\"float:right;background:#3cb627;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Veículos Disponíveis\" [(visible)]=\"displaySelect\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onSelectHide()\">\r\n  <div class=\"ui-g\">\r\n    <p-dataView class=\"ui-g-12\" #dv [value]=\"veiculosDisponiveis\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                <div class=\"ui-g-12\">\r\n                  <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar por Placa\" (input)=\"dv.filter($event.target.value)\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car2 pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">Placa: <b>{{car2.placa}}</b></div>\r\n          <div class=\"ui-g-4\">Tipo: <b>{{car2.tipoVeiculo}}</b></div>\r\n          <div class=\"ui-g-3\">Pool: <b>{{car2.pool}}</b></div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"Escolher(car2)\" style=\"background:#b62727;\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-dataView>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Reprovar Solicitação Solicitação\" [(visible)]=\"displayRecuse\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\">\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-4\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n    \r\n\r\n    <div class=\"ui-g-12\">\r\n      <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"Justificativa\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Justificativa\"></textarea>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Reprovando()\" pButton icon=\"pi pi-thumbs-down\" label=\"Reprovar\" style=\"float:right;background:#b62727;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n    [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n            <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n            \r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n    <ng-template let-car pTemplate=\"listItem\">\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"car-details\">\r\n          <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/car{{car.tipoVeiculoSolicitado}}.png\">\r\n          <div class=\"ui-g-10\" >\r\n            <div style=\"margin-left:90px; vertical-align: middle; \" >\r\n\r\n              <div class=\"ui-g-2\">Solicitante: <b>{{car.solicitante}}</b></div>\r\n\r\n              <div class=\"ui-g-2\">\r\n                <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n                <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n              </div>\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">Data Agendamento: <b>{{car.dataAgendamento}}</b></div>\r\n                <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n              </div>\r\n\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">de: <b>{{car.agendadode}}</b></div>\r\n                <div class=\"ui-g-12\">até: <b>{{car.agendadoate}}</b></div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"ui-g-1\" >\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-times\" (click)=\"Reprovar(car)\" style=\"background:#b62727;\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"Aprovar(car)\" style=\"background:#3cb627;\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n    \r\n</p-dataView>\r\n\r\n<p-dialog header=\"Aprovar Solicitação\" [(visible)]=\"displayAprove\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Veiculo Solicitado:       {{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-6\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-6\"><img src=\"assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n  \r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" (click)=\"VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)\" pButton icon=\"pi pi-search\" label=\"Ver Carros Disponíveis\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Aprovando()\" pButton icon=\"pi pi-thumbs-up\" label=\"Aprovar\" style=\"float:right;background:#3cb627;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Veículos Disponíveis\" [(visible)]=\"displaySelect\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onSelectHide()\">\r\n  <div class=\"ui-g\">\r\n    <p-dataView class=\"ui-g-12\" #dv [value]=\"veiculosDisponiveis\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                <div class=\"ui-g-12\">\r\n                  <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar por Placa\" (input)=\"dv.filter($event.target.value)\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car2 pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">Placa: <b>{{car2.placa}}</b></div>\r\n          <div class=\"ui-g-4\">Tipo: <b>{{car2.tipoVeiculo}}</b></div>\r\n          <div class=\"ui-g-3\">Pool: <b>{{car2.pool}}</b></div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"Escolher(car2)\" style=\"background:#b62727;\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-dataView>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Reprovar Solicitação Solicitação\" [(visible)]=\"displayRecuse\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\">\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-4\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n    \r\n\r\n    <div class=\"ui-g-12\">\r\n      <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"Justificativa\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Justificativa\"></textarea>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Reprovando()\" pButton icon=\"pi pi-thumbs-down\" label=\"Reprovar\" style=\"float:right;background:#b62727;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -841,7 +841,7 @@ module.exports = "<h4>Calendário de Agendamentos</h4>\r\n<p-fullCalendar [event
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        \r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        \r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -852,7 +852,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Placa\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n\r\n  <p-dialog header=\"Detalhes do Veículo\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"selectedCar\" style=\"height:50%\">\r\n      <div class=\"ui-g-12\" style=\"text-align:center\">\r\n          <img src=\"assets/layout/images/transporte/{{selectedCar.modelo}}.png\" width=\"400px\">\r\n      </div>\r\n\r\n      <div class=\"ui-g-4\">Placa: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.placa}}</div>\r\n\r\n      <div class=\"ui-g-4\">Condutor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.responsavel}}</div>\r\n\r\n      <div class=\"ui-g-4\">Modelo: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.modelo}}</div>\r\n\r\n      <div class=\"ui-g-4\">Adicional: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cadcapacidadem3}}</div>\r\n\r\n      <div class=\"ui-g-4\">Odometro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.odometro}}</div>\r\n\r\n      <div class=\"ui-g-4\">Data do Cadastro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.datcad}}</div>\r\n\r\n      <div class=\"ui-g-4\">Ano: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.ano}}</div>\r\n\r\n      <div class=\"ui-g-4\">Cor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cor}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Gerencia: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.gerencia}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Supervisao: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.supervisao}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Chassi: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.chassi}}</div>\r\n      <div class=\"ui-g-12\" style=\"text-align:center;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"editCar(selectedCar)\"></button>\r\n      </div>\r\n  </div>\r\n  </p-dialog>\r\n\r\n\r\n  <p-dialog header=\"Editar Veículo\" [(visible)]=\"displayEdit\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"editedCar\" style=\"height:100%\">\r\n      <div class='ui-g-12'>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n          <div class=\"ui-g-6 item\">\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editplaca\"  class=\"ui-g-12\" [disabled]=\"disabled\" pInputText/>\r\n              <label>Placa</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editchassi\" class=\"ui-g-12\"  [disabled]=\"disabled\" pInputText/>\r\n              <label >Chassi</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editgps\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12 item\" >\r\n                <label >GPS</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editoficina\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Oficina</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editpool\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Pool</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editdevolvido\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Devolvido</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown  [options]=\"modelos\" [autoWidth]=\"true\" [(ngModel)]=\"editmodelo\" styleClass = \"drop95\"  filter=\"true\"></p-dropdown>\r\n              <label >Modelos</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [options]=\"adicionais\" [autoWidth]=\"true\" [(ngModel)]=\"editcapacidadem3\" styleClass = \"drop95\" filter=\"true\"></p-dropdown>\r\n              <label >Adicional</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\" filter=\"true\"></p-dropdown>\r\n              <label >Supervisão</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editresponsavel\" styleClass = \"drop95\" [options]=\"condutores\" filter=\"true\"></p-dropdown>\r\n              <label >Responsável</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"edittipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\" filter=\"true\"></p-dropdown>\r\n              <label >Tipo do Veículo</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editlocadora\" styleClass = \"drop95\" [options]=\"locadoras\" filter=\"true\"></p-dropdown>\r\n              <label >Locadoras</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n      \r\n      <div class=\"ui-g-12\" style=\"text-align:center; margin-top: 40px;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"EditarVeiculo()\"></button>\r\n      </div>\r\n    </div>\r\n    </p-dialog>\r\n</div>\r\n\r\n\r\n\r\n\r\n<!--CADASTRO DE NOVO VEICULO-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==1\">\r\n  <h4>CADASTRAR NOVO VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class='ui-g-8'>\r\n      <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6 item\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\" class=\"ui-g-12\" pInputText/>\r\n            <label>Placa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n            <label >Chassi</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\" [options]=\"modelos\"></p-dropdown>\r\n            <label >Modelos</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n            <label >Adicional</label>\r\n          </span>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-3\" >\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >GPS</label>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Oficina</label>\r\n        </div>\r\n      </div>\r\n\r\n        \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Pool</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >;\r\n          <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Devolvido</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n          <label >Locadoras</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadgerencia\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <!-- <div class=\"ui-g-8 item\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" class=\"ui-g-12 item\" value=\"PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto\" pInputText/>\r\n          <label>Unidade</label>\r\n        </span>\r\n      </div> -->\r\n\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n          <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Responsável</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarVeiculo()\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Placa\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/car{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n\r\n  <p-dialog header=\"Detalhes do Veículo\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"selectedCar\" style=\"height:50%\">\r\n      <div class=\"ui-g-12\" style=\"text-align:center\">\r\n          <img src=\"assets/layout/images/transporte/car{{selectedCar.modelo}}.png\" width=\"400px\">\r\n      </div>\r\n\r\n      <div class=\"ui-g-4\">Placa: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.placa}}</div>\r\n\r\n      <div class=\"ui-g-4\">Condutor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.responsavel}}</div>\r\n\r\n      <div class=\"ui-g-4\">Modelo: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.modelo}}</div>\r\n\r\n      <div class=\"ui-g-4\">Adicional: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cadcapacidadem3}}</div>\r\n\r\n      <div class=\"ui-g-4\">Odometro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.odometro}}</div>\r\n\r\n      <div class=\"ui-g-4\">Data do Cadastro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.datcad}}</div>\r\n\r\n      <div class=\"ui-g-4\">Ano: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.ano}}</div>\r\n\r\n      <div class=\"ui-g-4\">Cor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cor}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Gerencia: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.gerencia}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Supervisao: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.supervisao}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Chassi: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.chassi}}</div>\r\n      <div class=\"ui-g-12\" style=\"text-align:center;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"editCar(selectedCar)\"></button>\r\n      </div>\r\n  </div>\r\n  </p-dialog>\r\n\r\n\r\n  <p-dialog header=\"Editar Veículo\" [(visible)]=\"displayEdit\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"editedCar\" style=\"height:100%\">\r\n      <div class='ui-g-12'>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n          <div class=\"ui-g-6 item\">\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editplaca\"  class=\"ui-g-12\" [disabled]=\"disabled\" pInputText/>\r\n              <label>Placa</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editchassi\" class=\"ui-g-12\"  [disabled]=\"disabled\" pInputText/>\r\n              <label >Chassi</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editgps\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12 item\" >\r\n                <label >GPS</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editoficina\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Oficina</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editpool\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Pool</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editdevolvido\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Devolvido</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown  [options]=\"modelos\" [autoWidth]=\"true\" [(ngModel)]=\"editmodelo\" styleClass = \"drop95\"  filter=\"true\"></p-dropdown>\r\n              <label >Modelos</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [options]=\"adicionais\" [autoWidth]=\"true\" [(ngModel)]=\"editcapacidadem3\" styleClass = \"drop95\" filter=\"true\"></p-dropdown>\r\n              <label >Adicional</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\" filter=\"true\"></p-dropdown>\r\n              <label >Supervisão</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editresponsavel\" styleClass = \"drop95\" [options]=\"condutores\" filter=\"true\"></p-dropdown>\r\n              <label >Responsável</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"edittipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\" filter=\"true\"></p-dropdown>\r\n              <label >Tipo do Veículo</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editlocadora\" styleClass = \"drop95\" [options]=\"locadoras\" filter=\"true\"></p-dropdown>\r\n              <label >Locadoras</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n      \r\n      <div class=\"ui-g-12\" style=\"text-align:center; margin-top: 40px;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"EditarVeiculo()\"></button>\r\n      </div>\r\n    </div>\r\n    </p-dialog>\r\n</div>\r\n\r\n\r\n\r\n\r\n<!--CADASTRO DE NOVO VEICULO-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==1\">\r\n  <h4>CADASTRAR NOVO VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class='ui-g-8'>\r\n      <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6 item\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\" class=\"ui-g-12\" pInputText/>\r\n            <label>Placa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n            <label >Chassi</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\" [options]=\"modelos\"></p-dropdown>\r\n            <label >Modelos</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n            <label >Adicional</label>\r\n          </span>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-3\" >\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >GPS</label>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Oficina</label>\r\n        </div>\r\n      </div>\r\n\r\n        \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Pool</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >;\r\n          <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Devolvido</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n          <label >Locadoras</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadgerencia\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <!-- <div class=\"ui-g-8 item\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" class=\"ui-g-12 item\" value=\"PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto\" pInputText/>\r\n          <label>Unidade</label>\r\n        </span>\r\n      </div> -->\r\n\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n          <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Responsável</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarVeiculo()\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -1937,7 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
 const API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
-//export const API_CONFIG =  'http://localhost:7777'
+// export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/sispc-backend-teste'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -7341,24 +7341,21 @@ let InputindicadoresComponent = class InputindicadoresComponent {
             // bug no primeiro clique dá undefined por tempo de execução
             this.performanceService.classindicadores(this.idgerenciasretornado)
                 .subscribe(Indicadores => {
-                this.indicatore = [];
                 this.indicatore = Indicadores.filter(item => item.indicadorId === parseInt(indicador.id));
                 //console.log(this.ind)
+                this.indicatore.forEach(res => {
+                    if (this.indicatore[0]) {
+                        this.ind = res;
+                        // console.log(res)
+                        this.classs = res.classificacao;
+                    }
+                });
+                console.log(this.ind);
+                this.selectedIndicador = indicador;
+                this.indi = indicador.vin;
+                this.nind = indicador.id;
+                this.barraAtiva = true;
             });
-            this.idgerenciasretornado = null;
-            this.indicatore.forEach(res => {
-                if (this.indicatore[0]) {
-                    this.ind = [];
-                    this.ind = res;
-                    // console.log(res)
-                    this.classs = res.classificacao;
-                }
-            });
-            console.log(this.ind);
-            this.selectedIndicador = indicador;
-            this.indi = indicador.vin;
-            this.nind = indicador.id;
-            this.barraAtiva = true;
             this.messageService.add({ severity: 'info', summary: 'Indicador Selecionado', detail: 'Indicador: ' + indicador.vin });
         }
     }
@@ -8920,8 +8917,9 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         this.OpcEmergencial = false;
     }
     ngOnInit() {
-        this.IdSolicitante = sessionStorage.getItem('usuarioId');
+        this.IdSolicitante = sessionStorage.getItem('id');
         this.OpcSolicitante = sessionStorage.getItem('nome');
+        this.EmailSolicitante = sessionStorage.getItem('email');
         this.ArrCondutores = [];
         this.ArrTipoVeiculo = [];
         this.ArrDestinos = [];
@@ -8932,6 +8930,7 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
             }
         });
         this.ArrTipoVeiculo = [
+            { label: '', value: '' },
             { label: 'AMAROK', value: 'AMAROK' },
             { label: 'VW EXPRESS DRC 4X2', value: 'VW EXPRESS DRC 4X2' },
             { label: 'STRADA', value: 'STRADA' },
@@ -8945,8 +8944,7 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
             { label: 'HONDA 125', value: 'HONDA 125' },
             { label: 'COROLLA', value: 'COROLLA' },
             { label: 'COROLLA GLI', value: 'COROLLA GLI' },
-            { label: 'CAMINHAO', value: 'CAMINHAO' },
-            { label: 'AMAROK', value: 'AMAROK' }
+            { label: 'CAMINHAO', value: 'CAMINHAO' }
         ];
         this.ArrDestinos = [
             { label: '', value: '' },
@@ -8961,8 +8959,8 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
     }
     checagem() {
         var campos = "Favor preencher os campos pendentes: ";
-        if (this.OpcSolicitante == null) {
-            campos = campos + "Solicitante | ";
+        if (this.OpcCondutores == null) {
+            campos = campos + "Condutor | ";
         }
         if (this.OpcDe == null) {
             campos = campos + "De | ";
@@ -8982,39 +8980,41 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         if (this.OpcCondutores == null) {
             campos = campos + "Condutor | ";
         }
-        if (campos.length > 36) {
+        if (campos.length > 38) {
             this.messageService.add({ sticky: true, severity: 'info', summary: 'Incompleto!',
                 detail: campos });
         }
         else {
-            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
-                detail: 'Dados enviados com sucesso!' });
+            this.SalvarAgendamento();
         }
     }
     SalvarAgendamento() {
-        this.checagem();
         var agendamento;
-        var data1 = new Date(Number(this.OpcData.getFullYear), Number(this.OpcData.getMonth), Number(this.OpcData.getDate), Number(this.OpcDe.getHours), Number(this.OpcDe.getMinutes), Number(this.OpcDe.getSeconds));
-        var data2 = new Date(Number(this.OpcData.getFullYear), Number(this.OpcData.getMonth), Number(this.OpcData.getDate), Number(this.OpcAte.getHours), Number(this.OpcAte.getMinutes), Number(this.OpcAte.getSeconds));
+        var data1 = this.OpcData;
+        var hora1 = this.OpcDe;
+        var hora2 = this.OpcAte;
         agendamento = {
             agendamentoId: null,
-            solicitante: this.OpcSolicitante,
-            fksolicitante: this.IdSolicitante,
+            fksolicitante: null,
+            emailsolicitante: this.EmailSolicitante,
+            justificativasolicitacao: this.OpcJustificativa,
+            agendadode: this.dataAtualFormatada(data1, hora1),
+            agendadoate: this.dataAtualFormatada(data1, hora2),
+            condutor: this.OpcCondutores,
+            justificativa: null,
+            destino: this.OpcDestinos,
+            emergencial: this.OpcEmergencial,
+            placa: null,
+            aprovacao: null,
             qtdPessoas: this.OpcQtd,
-            agendadoate: dataAtualFormatada(data2),
-            agendadode: dataAtualFormatada(data1),
+            solicitante: this.OpcSolicitante,
+            aprovador: null,
+            emailaprovador: null,
+            dataAgendamento: null,
             tipoVeiculoSolicitado: this.OpcTipoVeiculo,
             tipoVeiculoDisponibilizado: null,
-            placa: null,
-            aprovador: null,
-            aprovacao: null,
-            justificativa: null,
-            justificativaSolicitacao: this.OpcJustificativa,
-            destino: this.OpcDestinos,
-            condutor: this.OpcCondutores,
-            dataAgendamento: null,
-            emergencial: this.OpcEmergencial
         };
+        console.log(agendamento);
         this.transporteService.InputAgendamento(agendamento).subscribe(response => {
             if (response.status === 201) {
                 this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -9022,10 +9022,10 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
                 console.log('Dados enviados com sucesso!');
             }
         }, error => {
-            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 5000 });
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
             console.log(error);
         });
-        this.OpcSolicitante = null;
+        this.OpcCondutores = null;
         this.OpcQtd = null;
         this.OpcTipoVeiculo = null;
         this.OpcAte = null;
@@ -9033,11 +9033,7 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         this.OpcData = null;
         this.OpcDestinos = null;
         this.OpcCondutores = null;
-        function dataAtualFormatada(datareceb) {
-            var data = datareceb, dia = data.getDate().toString().padStart(2, '0'), mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-            ano = data.getFullYear(), hora = data.getHours(), minuto = data.getMinutes();
-            return ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":00";
-        }
+        this.OpcJustificativa = null;
     }
     menorData() {
         let today = new Date();
@@ -9058,6 +9054,13 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         else {
             this.OpcEmergencial = false;
         }
+    }
+    dataAtualFormatada(datareceb, horareceb) {
+        var hora = horareceb, dia1 = hora.getDate().toString().padStart(2, '0'), mes1 = (hora.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano1 = hora.getFullYear(), hora1 = hora.getHours(), minuto1 = hora.getMinutes();
+        var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
+        return ano2 + "-" + mes2 + "-" + dia2 + " " + hora1 + ":" + minuto1 + ":00";
     }
 };
 AgendarVeiculoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9138,22 +9141,24 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
         this.AgendamentoAlterado =
             {
                 agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+                dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+                agendadode: this.AgendamentoSelecionado.agendadode,
+                agendadoate: this.AgendamentoSelecionado.agendadoate,
                 solicitante: this.AgendamentoSelecionado.solicitante,
                 fksolicitante: this.AgendamentoSelecionado.fksolicitante,
-                qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
-                agendadoate: this.AgendamentoSelecionado.agendadoate,
-                tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
-                agendadode: this.AgendamentoSelecionado.agendadode,
-                tipoVeiculoDisponibilizado: car.modelo,
-                placa: car.placa,
-                justificativa: "",
-                aprovador: sessionStorage.getItem('nome'),
-                aprovacao: 1,
-                destino: this.AgendamentoSelecionado.destino,
+                emailsolicitante: this.AgendamentoSelecionado.emailsolicitante,
                 condutor: this.AgendamentoSelecionado.condutor,
-                dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
-                justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+                qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+                tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+                destino: this.AgendamentoSelecionado.destino,
+                placa: car.placa,
+                tipoVeiculoDisponibilizado: car.modelo,
+                aprovador: sessionStorage.getItem('nome'),
+                emailaprovador: sessionStorage.getItem('email'),
+                aprovacao: 1,
+                justificativa: "",
                 emergencial: this.AgendamentoSelecionado.emergencial,
+                justificativasolicitacao: this.AgendamentoSelecionado.justificativasolicitacao,
             };
         this.onSelectHide();
     }
@@ -9162,12 +9167,12 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
             this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(response => {
                 if (response.status === 201) {
                     this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
-                        detail: 'Dados enviados com sucesso!' });
-                    console.log('Dados enviados com sucesso!');
+                        detail: 'Aprovado!' });
+                    console.log('Aprovado!');
                 }
             }, error => {
                 this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
-                    detail: error.message, life: 5000 });
+                    detail: error.message, life: 500 });
                 console.log(error);
             });
             this.onDialogHide();
@@ -9196,22 +9201,24 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
             this.AgendamentoAlterado =
                 {
                     agendamentoId: this.AgendamentoSelecionado.agendamentoId,
+                    dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
+                    agendadode: this.AgendamentoSelecionado.agendadode,
+                    agendadoate: this.AgendamentoSelecionado.agendadoate,
                     solicitante: this.AgendamentoSelecionado.solicitante,
                     fksolicitante: this.AgendamentoSelecionado.fksolicitante,
-                    qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
-                    agendadoate: this.AgendamentoSelecionado.agendadoate,
-                    tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
-                    agendadode: this.AgendamentoSelecionado.agendadode,
-                    tipoVeiculoDisponibilizado: this.AgendamentoSelecionado.tipoVeiculoDisponibilizado,
-                    placa: this.AgendamentoSelecionado.placa,
-                    justificativa: this.Justificativa,
-                    aprovador: sessionStorage.getItem('nome'),
-                    aprovacao: 0,
-                    destino: this.AgendamentoSelecionado.destino,
+                    emailsolicitante: this.AgendamentoSelecionado.emailsolicitante,
                     condutor: this.AgendamentoSelecionado.condutor,
-                    dataAgendamento: this.AgendamentoSelecionado.dataAgendamento,
-                    justificativaSolicitacao: this.AgendamentoSelecionado.justificativaSolicitacao,
+                    qtdPessoas: this.AgendamentoSelecionado.qtdPessoas,
+                    tipoVeiculoSolicitado: this.AgendamentoSelecionado.tipoVeiculoSolicitado,
+                    placa: this.AgendamentoSelecionado.placa,
+                    destino: this.AgendamentoSelecionado.destino,
+                    tipoVeiculoDisponibilizado: this.AgendamentoSelecionado.tipoVeiculoDisponibilizado,
+                    aprovador: sessionStorage.getItem('nome'),
+                    emailaprovador: sessionStorage.getItem('email'),
+                    aprovacao: 0,
+                    justificativa: this.Justificativa,
                     emergencial: this.AgendamentoSelecionado.emergencial,
+                    justificativasolicitacao: this.AgendamentoSelecionado.justificativasolicitacao,
                 };
             this.displayRecuse = true;
             this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(response => {
@@ -9222,7 +9229,7 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
                 }
             }, error => {
                 this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
-                    detail: error.message, life: 5000 });
+                    detail: error.message, life: 500 });
                 console.log(error);
             });
             this.onDialogHide();
@@ -9248,6 +9255,7 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
         else {
             for (var i = 0; i < todos.length; i++) {
                 var placaVeiculo = todos[i].placa;
+                var pool = todos[i].pool;
                 var placaAgendado = null;
                 for (var j = 0; j < this.veiculosNaoDisponiveis.length; j++) {
                     placaAgendado = this.veiculosNaoDisponiveis[j].placa;
@@ -9255,7 +9263,7 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
                         break;
                     }
                 }
-                if (placaAgendado != placaVeiculo) {
+                if (placaAgendado != placaVeiculo && pool == true) {
                     this.veiculosDisponiveis.push(todos[i]);
                 }
             }
@@ -9615,18 +9623,36 @@ let CadastroComponent = class CadastroComponent {
     SalvarVeiculo() {
         var placa = this.cadplaca;
         var chassi = this.cadchassi;
-        var modelo = this.modelos[this.cadmodelo].label;
-        var capac = this.adicionais[this.cadcapacidadem3].label;
-        var resp = this.condutores[this.cadresponsavel].label;
-        var Tveic = this.tipoVeiculo[this.cadtipoVeiculo].label;
-        var ger = this.Gerencias[this.cadgerencia].label;
-        var loca = this.locadoras[this.cadlocadora].label;
-        var supe = this.Supervisoes[this.cadsupervisao].label;
+        var modelo = this.cadmodelo;
+        var capac = this.cadcapacidadem3;
+        var resp = this.cadresponsavel;
+        var Tveic = this.cadtipoVeiculo;
+        var ger = this.cadgerencia;
+        var loca = this.cadlocadora;
+        var supe = this.cadsupervisao;
         var pool = this.cadpool;
         var cgps = this.cadgps;
         var cofi = this.cadoficina;
         var cdev = this.caddevolvido;
-        this.transporteService.InputVeiculo(placa, chassi, modelo, capac, resp, Tveic, ger, cgps, cdev, supe, loca, pool, cofi).subscribe(response => {
+        var veiculo = {
+            veiculoId: null,
+            datCad: null,
+            placa: placa,
+            chassi: chassi,
+            modelo: modelo,
+            capacidadem3: capac,
+            responsavel: resp,
+            tipoVeiculo: Tveic,
+            gerencia: ger,
+            locadora: loca,
+            supervisao: supe,
+            pool: pool,
+            gps: cgps,
+            oficina: cofi,
+            devolvido: cdev,
+        };
+        console.log(veiculo);
+        this.transporteService.InputVeiculo(veiculo).subscribe(response => {
             console.log(response);
         });
         this.limpar();
@@ -10133,11 +10159,11 @@ let TransporteService = class TransporteService {
     veiculos() {
         return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/veiculos`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     }
-    InputVeiculo(placa, chassi, modelo, capacidadem3, responsavel, tipoVeiculo, gerencia, gps, devolvido, supervisao, locadora, pool, oficina) {
+    InputVeiculo(veiculo) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
         headers = headers.set('Content-Type', 'application/json');
         headers.append('Access-Control-Allow-Methods', 'POST');
-        return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/veiculos`, { veiculoId: null, datCad: null, placa: placa, chassi: chassi, modelo: modelo, capacidadem3: capacidadem3, responsavel: responsavel, tipoVeiculo: tipoVeiculo, gerencia: gerencia, gps: gps, devolvido: devolvido, supervisao: supervisao, locadora: locadora, pool: pool, oficina: oficina }, { observe: 'response' })
+        return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/veiculos`, veiculo, { observe: 'response' })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((response) => ({ data: response.headers,
             status: response.status,
             statusTexto: response.statusText,

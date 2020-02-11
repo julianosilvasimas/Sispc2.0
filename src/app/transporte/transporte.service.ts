@@ -23,19 +23,15 @@ export class TransporteService {
   //CADASTRO
   //=============================================================================================
   veiculos(): Observable<any[]>{
-    return  this.http.get(`${API_CONFIG}/veiculos`).pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+    return  this.http.get(`${API_CONFIG}/veiculos`).pipe(map((res : Veiculo[]) => res, catchError(ErrorHandler.handleError)))
   }
 
-  InputVeiculo(
-    placa: string,chassi:string,modelo: string,capacidadem3: string,responsavel: string,tipoVeiculo: string,gerencia: string,
-    gps: boolean,devolvido: boolean,supervisao: string,locadora: string,pool: boolean,oficina: boolean): Observable<any>{
+  InputVeiculo(veiculo: Veiculo): Observable<any>{
 
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Methods', 'POST');
-    return this.http.post<Veiculo>(`${API_CONFIG}/veiculos`,
-    {veiculoId: null, datCad:null, placa: placa, chassi: chassi,modelo: modelo, capacidadem3: capacidadem3, responsavel: responsavel, tipoVeiculo: tipoVeiculo, gerencia:gerencia, gps:gps, devolvido:devolvido, supervisao:supervisao, locadora:locadora, pool:pool,oficina:oficina},
-      { observe: 'response'})
+    return this.http.post<Veiculo>(`${API_CONFIG}/veiculos`,veiculo,{ observe: 'response'})
       .pipe(
         map((response) => ({data: response.headers, 
                             status: response.status,
@@ -82,7 +78,7 @@ export class TransporteService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Methods', 'POST');
-    return this.http.post<Veiculo>(`${API_CONFIG}/agendamento`,agendamento,{ observe: 'response'})
+    return this.http.post<Agendamento>(`${API_CONFIG}/agendamento`,agendamento,{ observe: 'response'})
       .pipe(
         map((response) => ({data: response.headers, 
                             status: response.status,

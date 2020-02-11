@@ -1,6 +1,5 @@
-
- //export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
-export const API_CONFIG =  'http://localhost:7777'
+//export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
+ export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/sispc-backend-teste'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
