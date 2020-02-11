@@ -32,7 +32,7 @@
               <div class="card" *ngIf="barraAtiva">
 
                     <div class ="ui-g-6"><h1 class="centerText">{{indi}}</h1></div>
-                    <button type="button" icon="ui-icon-add" pButton (click)="op2.toggle($event); abreInput()"></button>
+                    <button type="button" icon="ui-icon-add" pButton (click)="op2.toggle($event); pesquisarIndicador(ontem)"></button>
                     <span style="position: absolute;margin-top: 30px;margin-left: -40px;">Atualizar</span>
                     <button style="position: absolute;margin-left: 30%;"type="button" icon="ui-icon-clear" pButton (click)="desativaBarra()"></button>
                     
@@ -168,13 +168,7 @@
                       </p-overlayPanel>
 
             <!--############################# Chamada do Gráfico #############################################-->
-                            <app-graficos [element]= "ind" [refer]= "refer" >
-                                <div class="splash-screen">
-                                    <div class="splash-loader">
-                                        <img src="../../assets/layout/images/SISPCpng.png">
-                                    </div>
-                                </div>
-                            </app-graficos>
+                    <app-graficos [element]= "ind" [refer]= "refer" ></app-graficos>
                 </div> 
             </div>
             <!--######################################################################################################################-->

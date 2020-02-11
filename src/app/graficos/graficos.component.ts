@@ -10,12 +10,12 @@ import { Indicador } from '../performance/performance.model';
 export class GraficosComponent implements OnInit {
   
   //GRAFICOS
-  eixo: any;
-  orcado: any;
-  realiz: any;
-  orcadoDiaAc: any;
-  realizDiaAc: any;
-  tipoGrafico: any ;
+  eixo: any= [];
+  orcado: any= [];
+  realiz: any= [];
+  orcadoDiaAc: any= [];
+  realizDiaAc: any= [];
+  tipoGrafico: any = [];
   Tendencia: any ;
   Cor1: any ;
   Cor2: any ;
@@ -30,6 +30,7 @@ export class GraficosComponent implements OnInit {
   public RotuloOrcadoMedia: any;
   public RotuloRealMedia: any
   public RotuloDiferencaAcum: any;
+  public RotuloDiferencaAcum2: any;
   public RotuloDiferencaPerc: any;
   public RotuloOrcadoMensal: any;
   public RotuloPrevisaoMensal: any;
@@ -54,7 +55,7 @@ export class GraficosComponent implements OnInit {
   responsaveisCom: any[];
   datasCom: any[];
 
-  @Input() indicador : Indicador;
+  @Input() static indicador : Indicador;
   @Input() refer;
   @Input() element;
   @Input() gerencia;
@@ -94,6 +95,7 @@ export class GraficosComponent implements OnInit {
         //Consulta do EIXO
         //=======================================================================================
       
+        this.eixo  = []
         this.eixo =indicador[0]
         this.eixo = this.eixo.splice(1, Number.MAX_VALUE)
         this.eixo  = this.eixo.filter(item => item !== null)
@@ -102,10 +104,11 @@ export class GraficosComponent implements OnInit {
         //ROTULOS DE COMENTARIOS
         //========================================================================================
 
+        this.temp1  = []
         this.temp1 = indicador[1]
         this.temp1 = this.temp1.splice(1, Number.MAX_VALUE)
 
-        var responsaveis: any
+        var responsaveis: any = []
         responsaveis = indicador[2]
         responsaveis = responsaveis.splice(1, Number.MAX_VALUE)
         
@@ -116,57 +119,59 @@ export class GraficosComponent implements OnInit {
 
         //ROTULOS DE ACUMULADOS
         //========================================================================================
+        this.temp1  = []
         this.temp1  = indicador[3]
 
         this.RotulosAcumulados(this.tipoGraph, this.temp1)
 
-        var orcado: any; 
+        var orcado: any= []; 
         orcado = indicador[4]
         orcado = orcado.splice(1, Number.MAX_VALUE)
 
-        var realiz: any; 
+        var realiz: any= []; 
         realiz = indicador[5]
         realiz = realiz.splice(1, Number.MAX_VALUE)
 
-        var orcadoDiaAc: any; 
+        var orcadoDiaAc: any= []; 
         orcadoDiaAc = indicador[6]
         orcadoDiaAc = orcadoDiaAc.splice(1, Number.MAX_VALUE)
 
-        var realizDiaAc: any; 
+        var realizDiaAc: any= []; 
         realizDiaAc = indicador[7]
         realizDiaAc = realizDiaAc.splice(1, Number.MAX_VALUE)
 
-        var orcadoDiaMed: any; 
+        var orcadoDiaMed: any= []; 
         orcadoDiaMed = indicador[8]
         orcadoDiaMed = orcadoDiaMed.splice(1, Number.MAX_VALUE)
 
-        var realizDiaMed: any; 
+        var realizDiaMed: any= []; 
         realizDiaMed = indicador[9]
         realizDiaMed = realizDiaMed.splice(1, Number.MAX_VALUE)
 
-        var Minimo: any; 
+        var Minimo: any= []; 
         Minimo = indicador[10]
         Minimo = Minimo.splice(1, Number.MAX_VALUE)
 
-        var Maximo: any; 
+        var Maximo: any= []; 
         Maximo = indicador[11]
         Maximo = Maximo.splice(1, Number.MAX_VALUE)
 
-        var Meta: any; 
+        var Meta: any= []; 
         Meta = indicador[12]
         Meta = Meta.splice(1, Number.MAX_VALUE)
 
-        var MetaAcumulada: any; 
+        var MetaAcumulada: any= []; 
         MetaAcumulada = indicador[13]
         MetaAcumulada = MetaAcumulada.splice(1, Number.MAX_VALUE)
 
-        var DentroPrazoReg: any; 
+        var DentroPrazoReg: any= []; 
         DentroPrazoReg = indicador[14]
         DentroPrazoReg = DentroPrazoReg.splice(1, Number.MAX_VALUE)
 
-        var DentroPrazo: any; 
+        var DentroPrazo: any= []; 
         DentroPrazo = indicador[15]
         DentroPrazo = DentroPrazo.splice(1, Number.MAX_VALUE)
+
 
         this.EscolherTipoGrafico(this.tipoGraph,this.eixo,orcado,realiz,orcadoDiaAc,realizDiaAc,orcadoDiaMed,realizDiaMed, Minimo, Maximo,Meta,MetaAcumulada,DentroPrazoReg,DentroPrazo)
         });
@@ -212,22 +217,37 @@ export class GraficosComponent implements OnInit {
 
   //CORTAR REALIZADOS ZERADOS ATÉ A ULTIMA ATUALIZAÇÃO
   //========================================================================================
-  // indice = 0
-  // let soma = 0 
-  // while(indice <33){  
-  //   soma =0
-  //   for(var i=indice; i<33;i++){
-  //     var real = realiz[i]
-  //     if(real=="-"){
-  //     }
-  //     soma = (real + soma)
-  //   }
-  //   if(soma==0){ 
-  //     realizDiaAc.splice(indice, 1)
-  //   }
-  //   indice =indice+1
-  // }
+  var arr
+  arr=eixo
+  // console.log(eixo)
+  indice = 0
+  let maximo = 0 
+  for(var i=indice; i<34;i++){
+    if(i>10){
+      var real = arr[i]
+      
+      if(real=="01/01"){
+        maximo = i;
+        break;
+      }else{
+        maximo = Number.MAX_VALUE;
+      }
+    }
+  }
+  
+  eixo.splice(maximo, Number.MAX_VALUE)
+  orcado.splice(maximo, Number.MAX_VALUE)
+  realiz.splice(maximo, Number.MAX_VALUE)
+  orcadoDiaAc.splice(maximo, Number.MAX_VALUE)
+  realizDiaAc.splice(maximo, Number.MAX_VALUE)
+  Meta.splice(maximo, Number.MAX_VALUE)
+  MetaAcumulada.splice(maximo, Number.MAX_VALUE)
+  Minimo.splice(maximo, Number.MAX_VALUE)
+  Maximo.splice(maximo, Number.MAX_VALUE)
+  DentroPrazo.splice(maximo, Number.MAX_VALUE)
+  DentroPrazoReg.splice(maximo, Number.MAX_VALUE)
 
+  // console.log(eixo)
   //SEPARAR TIPOS DE GRAFICO
   //========================================================================================
   //ORCADO - REALIZADO - SUM ORCADO - SUM REALIZADO 
@@ -823,7 +843,6 @@ export class GraficosComponent implements OnInit {
       }
     }
     
-    
 
     if(tipoGraph==5){
       this.RotuloDiferencaPerc = this.RotuloDiferencaPerc+"%";
@@ -834,7 +853,7 @@ export class GraficosComponent implements OnInit {
       this.RotuloOrcadoAcum = this.RotuloOrcadoAcum+"%";
     }else{
       this.RotuloDiferencaPerc = "Δ% " +this.RotuloDiferencaPerc;
-      this.RotuloDiferencaAcum = "Δ " +this.RotuloDiferencaAcum;
+      this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
     }
   }
 
@@ -913,6 +932,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad)
         this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad)
         this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2)
+        this.RotuloDiferencaAcum2 =converterComDecimal(val2-val1)
         this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
 
@@ -923,6 +943,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad)
         this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad)
         this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2)
+        this.RotuloDiferencaAcum2 =converterSemDecimal(val2-val1)
         this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
 
@@ -935,6 +956,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloOrcadoAcum  = this.ConverterParaHora(OrcadoMedia);
         this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
         this.RotuloDiferencaAcum = this.ConverterParaHora((val2-val1));
+        this.RotuloDiferencaAcum2 =this.ConverterParaHora(val2-val1);
         this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
         this.RotuloPrevisaoMensal= this.ConverterParaHora(this.RotuloPrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
@@ -948,6 +970,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloRealizAcum = RealMedia;
         let val3 = RealMedia > Minimo ?  RealMedia < Maximo ? 0 :RealMedia-Maximo : RealMedia-Minimo ;
         this.RotuloDiferencaAcum = val3.toFixed(2);
+        this.RotuloDiferencaAcum2 = val3==0 ? 0 : val3.toFixed(2);
         val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
         this.RotuloPrevisaoMensal = PrevisaoMensal;
         this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal))  ? 0 : PrevisaoMensal;
@@ -959,6 +982,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloOrcadoAcum = (Meta*100);
         this.RotuloRealizAcum = ((NaoReguladoDp+ReguladoDp)/2)*100;
         this.RotuloDiferencaAcum  = "-";
+        this.RotuloDiferencaAcum2 = "-";
         this.RotuloDiferencaPerc = "-";
 
       }else if(tipoGraph==7 || tipoGraph==9){      
@@ -968,6 +992,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloOrcadoAcum  = converterComDecimal(OrcadoMedia);
         this.RotuloRealizAcum = converterComDecimal(RealMedia);
         this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2);
+        this.RotuloDiferencaAcum2 =converterComDecimal(val2-val1)
         this.RotuloPrevisaoMensal =  converterComDecimal(PrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
 

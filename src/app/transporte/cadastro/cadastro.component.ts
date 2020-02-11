@@ -238,19 +238,36 @@ export class CadastroComponent implements OnInit {
     SalvarVeiculo(){
       var placa = this.cadplaca;
       var chassi = this.cadchassi;
-      var modelo = this.modelos[this.cadmodelo].label;
-      var capac = this.adicionais[this.cadcapacidadem3].label;
-      var resp = this.condutores[this.cadresponsavel].label;
-      var Tveic = this.tipoVeiculo[this.cadtipoVeiculo].label;
-      var ger = this.Gerencias[this.cadgerencia].label;
-      var loca = this.locadoras[this.cadlocadora].label;
-      var supe = this.Supervisoes[this.cadsupervisao].label;
+      var modelo = this.cadmodelo;
+      var capac = this.cadcapacidadem3;
+      var resp = this.cadresponsavel;
+      var Tveic = this.cadtipoVeiculo;
+      var ger = this.cadgerencia;
+      var loca = this.cadlocadora;
+      var supe = this.cadsupervisao;
       var pool = this.cadpool;
       var cgps = this.cadgps;
       var cofi = this.cadoficina;
       var cdev = this.caddevolvido;
-
-      this.transporteService.InputVeiculo(placa,chassi,modelo,capac,resp,Tveic,ger,cgps,cdev,supe,loca,pool,cofi).subscribe(
+      var veiculo: Veiculo = {
+        veiculoId: null, 
+        datCad:null, 
+        placa: placa, 
+        chassi: chassi,
+        modelo: modelo, 
+        capacidadem3: capac,
+        responsavel: resp,
+        tipoVeiculo: Tveic,
+        gerencia:ger,
+        locadora:loca, 
+        supervisao:supe, 
+        pool:pool,
+        gps:cgps,
+        oficina:cofi,
+        devolvido:cdev, 
+      }
+    console.log(veiculo)
+      this.transporteService.InputVeiculo(veiculo).subscribe(
         response => {
           console.log(response);
         });

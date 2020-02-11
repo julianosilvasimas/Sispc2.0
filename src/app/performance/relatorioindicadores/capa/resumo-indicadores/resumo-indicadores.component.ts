@@ -25,6 +25,7 @@ export class ResumoIndicadoresComponent implements OnInit {
   RotuloOrcadoMedia: any;
   RotuloRealMedia: any
   RotuloDiferencaAcum: any;
+  RotuloDiferencaAcum2: any;
   RotuloDiferencaPerc: any;
   RotuloOrcadoMensal: any;
   RotuloPrevisaoMensal: any;
@@ -43,11 +44,11 @@ export class ResumoIndicadoresComponent implements OnInit {
 
 
   Validador(indic, referencia){
-    this.indicadoresService.indicadores(referencia,indic.indicadorId)
+    this.indicadoresService.indicadoresResumo(referencia,indic.indicadorId)
       .subscribe(
         indicador  =>  {
           let var1          
-          this.temp1  = indicador[3]
+          this.temp1  = indicador[0]
           this.tipoGraph = indic.tipoGrafico
           this.Tendencia = indic.tendencia
 
@@ -94,7 +95,7 @@ export class ResumoIndicadoresComponent implements OnInit {
           this.RotuloOrcadoAcum = this.RotuloOrcadoAcum+"%";
         }else{
           this.RotuloDiferencaPerc = "Δ% " +this.RotuloDiferencaPerc;
-          this.RotuloDiferencaAcum = "Δ " +this.RotuloDiferencaAcum;
+          this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
         }
       }
 
@@ -129,6 +130,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad)
         this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad)
         this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2)
+        this.RotuloDiferencaAcum2 =converterComDecimal(val2-val1)
         this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
 
@@ -139,6 +141,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad)
         this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad)
         this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2)
+        this.RotuloDiferencaAcum2 =converterSemDecimal(val2-val1)
         this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
 
@@ -151,6 +154,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloOrcadoAcum  = this.ConverterParaHora(OrcadoMedia);
         this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
         this.RotuloDiferencaAcum = this.ConverterParaHora((val2-val1));
+        this.RotuloDiferencaAcum2 =this.ConverterParaHora(val2-val1);
         this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
         this.RotuloPrevisaoMensal= this.ConverterParaHora(this.RotuloPrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
@@ -164,6 +168,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloRealizAcum = RealMedia;
         let val3 = RealMedia > Minimo ?  RealMedia < Maximo ? 0 :RealMedia-Maximo : RealMedia-Minimo ;
         this.RotuloDiferencaAcum = val3.toFixed(2);
+        this.RotuloDiferencaAcum2 = val3==0 ? 0 : val3.toFixed(2);
         val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
         this.RotuloPrevisaoMensal = PrevisaoMensal;
         this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal))  ? 0 : PrevisaoMensal;
@@ -175,6 +180,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloOrcadoAcum = (Meta*100);
         this.RotuloRealizAcum = ((NaoReguladoDp+ReguladoDp)/2)*100;
         this.RotuloDiferencaAcum  = "-";
+        this.RotuloDiferencaAcum2 = "-";
         this.RotuloDiferencaPerc = "-";
 
       }else if(tipoGraph==7 || tipoGraph==9){      
@@ -184,6 +190,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloOrcadoAcum  = converterComDecimal(OrcadoMedia);
         this.RotuloRealizAcum = converterComDecimal(RealMedia);
         this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2);
+        this.RotuloDiferencaAcum2 =converterComDecimal(val2-val1)
         this.RotuloPrevisaoMensal =  converterComDecimal(PrevisaoMensal);
         this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
 

@@ -20,7 +20,8 @@ export class AgendamentosComponent implements OnInit {
     this.items = [
       {label: 'Agendar Veículos'},
       {label: 'Aprovar Agendamentos'},
-      {label: 'Lista de Agendamentos'}
+      {label: 'Lista de Agendamentos'},
+      {label: 'Calendario'},
     ];
     this.trocadeitemIndex(0);
   }

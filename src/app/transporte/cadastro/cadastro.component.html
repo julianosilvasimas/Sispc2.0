@@ -18,7 +18,7 @@
       <ng-template let-car pTemplate="listItem">
         <div class="ui-g-12">
           <div class="car-details">
-            <img class="ui-g-1" src="assets/layout/images/transporte/{{car.modelo}}.png">
+            <img class="ui-g-1" src="assets/layout/images/transporte/car{{car.modelo}}.png">
             <div class="ui-g-10" >
               <div style="margin-left:90px;" >
                 <div class="ui-g-12">Placa: <b>{{car.placa}}</b></div>
@@ -40,7 +40,7 @@
   <p-dialog header="Detalhes do Veículo" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
     <div class="ui-g" *ngIf="selectedCar" style="height:50%">
       <div class="ui-g-12" style="text-align:center">
-          <img src="assets/layout/images/transporte/{{selectedCar.modelo}}.png" width="400px">
+          <img src="assets/layout/images/transporte/car{{selectedCar.modelo}}.png" width="400px">
       </div>
 
       <div class="ui-g-4">Placa: </div>
