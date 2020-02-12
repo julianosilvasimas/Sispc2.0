@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransporteService } from '../../transporte.service';
 import { Veiculo, Agendamento } from '../../transporte.model';
 import { MessageService, SelectItem } from 'primeng/api';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-aprovar-agendamento',
@@ -11,6 +12,7 @@ import { MessageService, SelectItem } from 'primeng/api';
 export class AprovarAgendamentoComponent implements OnInit {
 
   public Agendamentos;
+  public Agendamentos2;
   public Justificativa;
 
   public displayAprove; 
@@ -25,7 +27,8 @@ export class AprovarAgendamentoComponent implements OnInit {
 
 
   constructor(private transporteService: TransporteService,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {
+     }
 
 
   ngOnInit() {
@@ -43,13 +46,44 @@ export class AprovarAgendamentoComponent implements OnInit {
     this.transporteService.ParaAprovar()
       .subscribe(
       Agendamento  =>  {
+        this.Agendamentos2 = Agendamento
         this.Agendamentos = Agendamento
-        console.log(Agendamento)
+        this.Filter()
       });
+    this.Agendamentos2.array.forEach(element => {
+      element['agendamentode']
+    });
   }
 
 
   //==========================================================================================
+  VALOR1: string;
+  VALOR2: string;
+  VALOR3data: Date;
+  VALOR3: string;
+
+  Filter(){
+    this.VALOR1 = this.VALOR1==undefined ? null : this.VALOR1=="" ? null : this.VALOR1;
+    this.VALOR2 = this.VALOR2==undefined ? null : this.VALOR2=="" ? null : this.VALOR2;
+    this.VALOR3 = this.VALOR3data==undefined ? null : this.dataAtualFormatada(this.VALOR3data);
+
+
+    var agend = this.Agendamentos2;
+
+    if(this.VALOR1!==null){
+      console.log(this.VALOR1)
+      agend = agend.filter(item => item.solicitante.toUpperCase().includes(this.VALOR1.toUpperCase()))
+    }else if(this.VALOR2!==null){
+      console.log(this.VALOR2)
+      agend = agend.filter(item => item.condutor.toUpperCase().includes(this.VALOR2.toUpperCase()))
+    }else if(this.VALOR3!==null){
+      console.log(this.VALOR3)
+      agend = agend.filter(item => item.agendadode.includes(this.VALOR3))
+    }
+    this.Agendamentos = agend
+
+  }
+
   Aprovar(Agendamento){
     this.AgendamentoSelecionado = Agendamento;
     this.displayAprove = true;
@@ -176,8 +210,8 @@ export class AprovarAgendamentoComponent implements OnInit {
     });
   }
 
+
   PreencherDisponiveis(Agendados: any[]){
-    console.log(Agendados)
     var todos = this.veiculos;
     this.veiculosDisponiveis = [];
     this.veiculosNaoDisponiveis = Agendados;
@@ -210,4 +244,22 @@ export class AprovarAgendamentoComponent implements OnInit {
 
   
   //==========================================================================================
+  dataAtualFormatada(datareceb){
+    var data = datareceb,
+        dia2  = data.getDate().toString().padStart(2, '0'),
+        mes2  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2  = data.getFullYear(),
+        hora2  = data.getHours(),
+        minuto2  = data.getMinutes();
+    return ano2+"-"+mes2+"-"+dia2;
+  }
+  dataHoraFormatada(datareceb){
+    var data = datareceb,
+        dia2  = data.getDate().toString().padStart(2, '0'),
+        mes2  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2  = data.getFullYear(),
+        hora2  = data.getHours(),
+        minuto2  = data.getMinutes();
+    return dia2+"/"+mes2+"/"+ano2+" "+hora2+":"+minuto2+":00";
+  }
 }

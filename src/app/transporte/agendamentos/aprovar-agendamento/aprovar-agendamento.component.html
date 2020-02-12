@@ -1,11 +1,11 @@
-<p-dataView #dv [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="solicitante"
-    [sortField]="sortField" [sortOrder]="sortOrder">
+<p-dataView [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both" >
     <p-header>
       <div class="ui-helper-clearfix">
         <div class="ui-g">
-          <div class="ui-g-12 ui-md-4 filter-container">
-            <input class="ui-g-12" type="search" pInputText placeholder="Pesquisar pelo Solicitante" (input)="dv.filter($event.target.value)">
-            
+          <div class="ui-g-12 filter-container">
+            <input class="ui-g-4" type="search" pInputText placeholder="Solicitante" (keyup)="Filter()" [(ngModel)]="VALOR1" >
+            <input class="ui-g-4" type="search" pInputText placeholder="Condutor" (keyup)="Filter()" [(ngModel)]="VALOR2">
+            <p-calendar  class="ui-g-4" (onSelect)="Filter()" [(ngModel)]="VALOR3data" dateFormat="yy-mm-dd" placeholder="Agendamento" ></p-calendar>
           </div>
         </div>
       </div>
