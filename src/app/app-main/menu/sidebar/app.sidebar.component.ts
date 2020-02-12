@@ -7,7 +7,9 @@ import {AppMainComponent} from '../../app.main.component';
 })
 export class AppSideBarComponent {
 
-    constructor(public app: AppMainComponent) {}
+    constructor(public app: AppMainComponent) {
+        
+    }
     date12: any;
 
 }
