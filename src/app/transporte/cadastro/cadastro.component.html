@@ -2,16 +2,35 @@
 
 <!--SCROOOL DE CARROS-->
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==0">
-  <p-dataView #dv [value]="cars" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="placa"
-      [sortField]="sortField" [sortOrder]="sortOrder">
+  <p-dataView [value]="cars" [paginator]="true" [rows]="10" paginatorPosition="both">
       <p-header>
         <div class="ui-helper-clearfix">
           <div class="ui-g">
-            <div class="ui-g-12 ui-md-4 filter-container">
-              <div style="position:relative">
-                  <input type="search" pInputText placeholder="Pesquisar pelo Placa" (input)="dv.filter($event.target.value)">
-              </div>
+            <div class="ui-g-12 filter-container">
+                <input class="ui-g-4" type="search" pInputText placeholder="Placa" (keyup)="Filter()" [(ngModel)]="VALOR1" >
+                <input class="ui-g-4" type="search" pInputText placeholder="Gerencia" (keyup)="Filter()" [(ngModel)]="VALOR2">
+                <input class="ui-g-4" type="search" pInputText placeholder="Condutor" (keyup)="Filter()" [(ngModel)]="VALOR3">
             </div>
+            <!-- <div class="ui-g-12 filter-container">
+                <input class="ui-g-4" type="search" pInputText placeholder="Modelo" (keyup)="Filter()" [(ngModel)]="VALOR4" >
+                <div class="ui-g-4 item" >
+                  <div class="ui-g-6 item" >
+                    <label >Pool</label>
+                  </div>
+                  <div class="ui-g-6 item" >
+                    <p-inputSwitch [(ngModel)]="VALOR5" (onChange)="Filter()" ></p-inputSwitch>
+                  </div>
+                </div>
+                <div class="ui-g-4 item" >
+                  <div class="ui-g-6 item" >
+                    <label >Oficina</label>
+                  </div>
+                  <div class="ui-g-6 item" >
+                    <p-inputSwitch [(ngModel)]="VALOR6" (onChange)="Filter()" ></p-inputSwitch>
+                  </div>
+                </div>
+
+            </div> -->
           </div>
         </div>
       </p-header>

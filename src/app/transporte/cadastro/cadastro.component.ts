@@ -35,6 +35,7 @@ export class CadastroComponent implements OnInit {
 
    cars0:any[];
    cars:any[];
+   cars2:any[];
 
 
    lazyCars:[];
@@ -113,9 +114,6 @@ export class CadastroComponent implements OnInit {
       invalidDate.setDate(today.getDate() - 1);
       this.invalidDates = [today,invalidDate];
       
-      
-
-      
       this.Supervisoes = [
         {label: ''},
         {label: 'Fiscalizacao',value: 'Fiscalizacao'},
@@ -171,31 +169,73 @@ export class CadastroComponent implements OnInit {
       this.trocadeitemIndex(0);
     }
 
-    filter(){
-      console.log("============")
-      this.cars = this.cars0
-      if(this.sortKey == '0'){
-        this.cars = this.cars0
-      }else{
-        for(var i = 0; i<this.cars0.length; i++ ){
-          console.log("index = "+i+" de "+this.cars0.length)
-          var modelo:string=this.cars0[i].brand ;
-          var modelocomp:string=this.modelos[(this.sortKey-1)].label ;
-          
-          if(modelo == modelocomp){
-            this.cars.push(
-              {
-                vin: this.cars0[i].vin,
-                brand: this.cars0[i].brand,
-                color: this.cars0[i].color,
-                placa: this.cars0[i].placa,
-                year: this.cars0[i].year,
-              }
-            )
-          }
-        }
+    VALOR1: string;
+    VALOR2: string;
+    VALOR3: string;
+    VALOR4: string;
+    VALOR5: boolean;
+    VALOR6: boolean;
+
+    Filter(){
+      this.VALOR1 = this.VALOR1==undefined ? null : this.VALOR1=="" ? null : this.VALOR1;
+      this.VALOR2 = this.VALOR2==undefined ? null : this.VALOR2=="" ? null : this.VALOR2;
+      this.VALOR3 = this.VALOR3==undefined ? null : this.VALOR3=="" ? null : this.VALOR3;
+      this.VALOR4 = this.VALOR4==undefined ? null : this.VALOR4=="" ? null : this.VALOR4;
+  
+  
+      var agend = this.cars0;
+  
+      if(this.VALOR1!==null){
+        console.log(this.VALOR1)
+        agend = agend.filter(item => item.placa.toUpperCase().includes(this.VALOR1.toUpperCase()))
+      }else if(this.VALOR2!==null){
+        console.log(this.VALOR2)
+        agend = agend.filter(item => item.gerencia.toUpperCase().includes(this.VALOR2.toUpperCase()))
+      }else if(this.VALOR3!==null){
+        console.log(this.VALOR3)
+        agend = agend.filter(item => item.responsavel.toUpperCase().includes(this.VALOR3.toUpperCase()))
+      }else if(this.VALOR4!==null){
+        console.log(this.VALOR4)
+        agend = agend.filter(item => item.modelo.toUpperCase().includes(this.VALOR4.toUpperCase()))
+      
+      // }else if(this.VALOR5=false){
+      //   this.cars = agend
+      // }else if(this.VALOR6=false){
+      //   this.cars = agend
+      // }else if(this.VALOR6=true){
+      //     agend = agend.filter(item => item.oficina == this.VALOR6)
+      // }else if(this.VALOR5=true){
+      //   agend = agend.filter(item => item.pool == this.VALOR5)
       }
+      this.cars = agend
+  
     }
+
+    // filter(){
+    //   console.log("============")
+    //   this.cars = this.cars0
+    //   if(this.sortKey == '0'){
+    //     this.cars = this.cars0
+    //   }else{
+    //     for(var i = 0; i<this.cars0.length; i++ ){
+    //       console.log("index = "+i+" de "+this.cars0.length)
+    //       var modelo:string=this.cars0[i].brand ;
+    //       var modelocomp:string=this.modelos[(this.sortKey-1)].label ;
+          
+    //       if(modelo == modelocomp){
+    //         this.cars.push(
+    //           {
+    //             vin: this.cars0[i].vin,
+    //             brand: this.cars0[i].brand,
+    //             color: this.cars0[i].color,
+    //             placa: this.cars0[i].placa,
+    //             year: this.cars0[i].year,
+    //           }
+    //         )
+    //       }
+    //     }
+    //   }
+    // }
     
     trocadeitem(activeItem: MenuItem){
       this.activeItem = activeItem['activeItem']
@@ -213,6 +253,7 @@ export class CadastroComponent implements OnInit {
         Veiculos  =>  {
           this.cars0 = Veiculos
           this.cars= Veiculos
+          this.cars2= Veiculos
         });
 
       this.transporteService.Gerencias()
@@ -357,4 +398,13 @@ export class CadastroComponent implements OnInit {
       this.caddevolvido = null;
     }
 
+    dataAtualFormatada(datareceb){
+      var data = datareceb,
+          dia2  = data.getDate().toString().padStart(2, '0'),
+          mes2  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+          ano2  = data.getFullYear(),
+          hora2  = data.getHours(),
+          minuto2  = data.getMinutes();
+      return ano2+"-"+mes2+"-"+dia2;
+    }
 }

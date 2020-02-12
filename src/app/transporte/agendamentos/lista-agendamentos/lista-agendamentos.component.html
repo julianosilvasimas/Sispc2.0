@@ -2,21 +2,20 @@
 
 <!--SCROOOL DE CARROS-->
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
-  <p-dataView #dv [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="placa"
-      [sortField]="sortField" [sortOrder]="sortOrder">
+  <p-dataView #dv [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both">
       <p-header>
         <div class="ui-helper-clearfix">
           <div class="ui-g">
-            <div class="ui-g-12 ui-md-4 filter-container">
-              <div style="position:relative">
-                  <input type="search" pInputText placeholder="Pesquisar pelo Solicitante" (input)="dv.filter($event.target.value)">
-              </div>
+            <div class="ui-g-12 filter-container">
+                <input class="ui-g-4" type="search" pInputText placeholder="Solicitante" (keyup)="Filter()" [(ngModel)]="VALOR1" >
+                <input class="ui-g-4" type="search" pInputText placeholder="Condutor" (keyup)="Filter()" [(ngModel)]="VALOR2">
+                <p-calendar class="ui-g-4" type="search" (onSelect)="Filter()" [(ngModel)]="VALOR3data" dateFormat="yy-mm-dd" placeholder="Agendamento" ></p-calendar>
+                
             </div>
           </div>
         </div>
       </p-header>
       <ng-template let-car pTemplate="listItem">
-        
         <div class="car-details">
           <div class="ui-g-1" style="text-align: center !important; vertical-align: middle;">
             <button *ngIf="car.aprovacao==0" pButton type="button"  label="Reprovado" class="ui-button-danger"></button>
