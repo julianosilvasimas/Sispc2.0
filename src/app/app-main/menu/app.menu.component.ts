@@ -17,6 +17,7 @@ import { PerformanceService } from './../../performance/performance.service';
 export class AppMenuComponent implements OnInit {
 
     public model: any[];
+    public permissoes: any[] = []; 
 
     constructor(public app: AppMainComponent, private performanceService: PerformanceService) {
         
@@ -24,8 +25,37 @@ export class AppMenuComponent implements OnInit {
 
     indicadores: any[];
     gerencias: any[];
+    usuPerformance: boolean = false;
+    usuComissao: boolean = false;
+    usuTransporte: boolean = false;
 
     ngOnInit() {
+
+        //Preencehendo array de permissoes e liberando acessos
+        let i =0
+        while (sessionStorage.getItem("permissao "+ i) != null){
+            let permissao = sessionStorage.getItem("permissao "+ i)
+            this.permissoes.push(permissao)
+            //Liberando acessos
+            if(permissao === "ROLE_ADMIN"){
+                this.usuPerformance = true
+                this.usuComissao = true
+                this.usuTransporte = true
+            }else if(permissao === "ROLE_USER_COMISSAO"){
+                this.usuComissao = true
+            }else if(permissao === "ROLE_USER_FROTAS"){
+                this.usuTransporte = true
+            }else if(permissao === "ROLE_USER_INDICADOR"){
+                this.usuPerformance
+                 = true
+            }
+            
+            i++
+        }
+
+        console.log(this.usuPerformance)
+
+        console.log(this.permissoes)
         this.performanceService.classindicadores(6)
         .subscribe(response => {this.indicadores = response
             //console.log(response)
@@ -33,127 +63,157 @@ export class AppMenuComponent implements OnInit {
 
         this.performanceService.gerencias()
         .subscribe(response => {this.gerencias = response.splice(2, Number.MAX_VALUE)
-           
-        this.model = [
-            {
-                label: 'Performance', icon: 'timeline',
-                items: [
+            this.model=[]
+
+            //Começando a construção do Menu
+
+            //Performance
+            if(this.usuPerformance === true){
+                this.model.push( 
                     {
-                        label: 'Acompanhamento', icon: 'subject',
-                        items: this.gerencias
+                        label: 'Performance', icon: 'timeline',
                         
-                    }/*,
-                    {
-                        label: 'Fechamento', icon: 'subject',
-                        items: [
-                            {label: 'Relatórios por área', icon: 'subject'},
-                            {label: 'Arquivamento', icon: 'subject'}
+                        items: this.permissoes[1] === "ROLE_DESENVOLVIMENTO" ?  //DEntro do operador o que ainda será construído
+                        [
+                            {
+                                label: 'Acompanhamento', icon: 'subject',
+                                items: this.gerencias
+                                
+                            },
+                            {
+                                label: 'Fechamento', icon: 'subject',
+                                items: [
+                                    {label: 'Relatórios por área', icon: 'subject'},
+                                    {label: 'Arquivamento', icon: 'subject'}
+                                ]
+                            }
+                        ] :
+                        [
+                            {
+                                label: 'Acompanhamento', icon: 'subject',
+                                items: this.gerencias
+                                
+                            }  
                         ]
-                    }*/
-                ],
-            },
-            {label: 'Planejamento', icon: 'equalizer',
-             items: [
-                /*{label: 'Capex', icon: 'subject'},
-                {label: 'Opex', icon: 'subject'},
-                {label: 'DRE', icon: 'subject'},*/
-                {label: 'GPP', icon: 'view_list',
-                    items: [
-                        {label: 'Dashboard', icon: 'subject'},
-                        {label: 'Projetos', icon: 'subject', routerLink: '/projetos'},
-                        {label: 'Processos', icon: 'call_split'}
-                    ]
-                },
-                // {label: 'RPA', icon: 'pi-android',
-                //     items: [
-                //         {label: 'Robos', icon: 'pi-android', routerLink: '/rpa'}
-                //     ]
-                // },
-             ]
-            },/*
-            {label: 'Diretoria', icon: 'business_center',
-             items: [
-                {label: 'Indicadores', icon: 'subject'},
-                {label: 'Projetos', icon: 'subject'}
-             ]
-            },*/
-            {label: 'Comercial', icon: 'monetization_on',
-             items: [
-                 {
-                    label: 'Comissão de Fraudes', icon: 'subject',
-                    items: [
-                        {label: 'Gestão de deliberações', icon: 'subject' , routerLink: '/painelprocess'}/*,
-                        {label: 'Controle de fraudes', icon: 'subject'}   */
-                    ]
-                 }/*,
-                {label: 'Receita', icon: 'subject'},
-                {label: 'Cobrança', icon: 'subject'},
-                {label: 'Atendimento', icon: 'subject'},
-                {label: 'Cadastro', icon: 'subject'}*/
-                ]
-            },
-            {label: 'Transporte', icon: 'directions_car',
-             items: [
-                 {label: 'Gestão de Frotas', icon: 'subject' , routerLink: '/transporte'},
-                 {label: 'Agendamento', icon: 'subject' , routerLink: '/agendamento'}
-                ]
+                    });
+            }
+           
+            //Em Construção...
+            if(this.permissoes[1] === "ROLE_DESENVOLVIMENTO"){ // usado temporariamente esse perfil por estar ain
+                this.model.push( 
+                    {label: 'Planejamento', icon: 'equalizer',
+                        items: [
+                            {label: 'Capex', icon: 'subject'},
+                            {label: 'Opex', icon: 'subject'},
+                            {label: 'DRE', icon: 'subject'},
+                            {label: 'GPP', icon: 'view_list',
+                                items: [
+                                    {label: 'Dashboard', icon: 'subject'},
+                                    {label: 'Projetos', icon: 'subject', routerLink: '/projetos'},
+                                    {label: 'Processos', icon: 'call_split'}
+                                ]
+                            },
+                            {label: 'RPA', icon: 'pi-android',
+                            items: [
+                                    {label: 'Robos', icon: 'pi-android', routerLink: '/rpa'}
+                                   ]
+                            },
+                        ]
+                        },
+                        {label: 'Diretoria', icon: 'business_center',
+                        items: [
+                            {label: 'Indicadores', icon: 'subject'},
+                            {label: 'Projetos', icon: 'subject'}
+                        ]
+                        }
+                        ,{label: 'Operacional', icon: 'invert_colors',
+                        items: [
+                            {label: 'Operação Água', icon: 'subject'},
+                            {label: 'Operação Esgoto', icon: 'subject'},
+                            {label: 'Eletromecânica', icon: 'settings_input_component',
+                                items: [
+                                    {label: 'Preventivas/Corretivas', icon: 'subject'},
+                                    {label: 'Inventário', icon: 'subject'}
+                                ]
+                            },
+                        ]
+                        },
+                        {label: 'Administrativo', icon: 'domain',
+                        items: [
+                            {label: 'Contratos', icon: 'subject'},
+                            {label: 'Facilities', icon: 'subject'},
+                            {label: 'Compras', icon: 'subject'}
+                            ]
+                        },
+                        {label: 'Serviços', icon: 'build',
+                        items: [
+
+                        ]
+                        },
+                        {label: 'Comunicação', icon: 'videocam',
+                        items: [
+
+                        ]
+                        },
+                        {label: 'Jurídico', icon: 'gavel',
+                        items: [
+                            {label: 'Processos', icon: 'subject'},
+                            {label: 'Regulatório', icon: 'subject'}
+                        ]
+                        },
+                        {label: 'Recursos Humanos', icon: 'people',
+                        items: [
+
+                        ]
+                        },
+                        {label: 'EHS', icon: 'local_florist',
+                        items: [
+                            {label: 'Planejamento', icon: 'subject'},
+                            {label: 'Gestão', icon: 'subject'}
+                        ]
+                        })
             }
             
-            
-            
-            
-            
-            
-            
-            /*,{label: 'Operacional', icon: 'invert_colors',
-             items: [
-                {label: 'Operação Água', icon: 'subject'},
-                {label: 'Operação Esgoto', icon: 'subject'},
-                {label: 'Eletromecânica', icon: 'settings_input_component',
-                    items: [
-                        {label: 'Preventivas/Corretivas', icon: 'subject'},
-                        {label: 'Inventário', icon: 'subject'}
+            //Comissão
+            if(this.usuComissao === true){
+            this.model.push(
+                {label: 'Comercial', icon: 'monetization_on',
+                items: [
+                    {
+                        label: 'Comissão de Fraudes', icon: 'subject',
+                        items: [
+                            {label: 'Gestão de deliberações', icon: 'subject' , routerLink: '/painelprocess'}/*,
+                            {label: 'Controle de fraudes', icon: 'subject'}   */
+                        ]
+                    }/*,
+                    {label: 'Receita', icon: 'subject'},
+                    {label: 'Cobrança', icon: 'subject'},
+                    {label: 'Atendimento', icon: 'subject'},
+                    {label: 'Cadastro', icon: 'subject'}*/
                     ]
-                },
-             ]
-            },
-            {label: 'Administrativo', icon: 'domain',
-             items: [
-                 {label: 'Contratos', icon: 'subject'},
-                 {label: 'Facilities', icon: 'subject'},
-                 {label: 'Compras', icon: 'subject'}
-                ]
-            },
-            {label: 'Serviços', icon: 'build',
-             items: [
+                });
+            }
 
-             ]
-            },
-            {label: 'Comunicação', icon: 'videocam',
-             items: [
+            
+            // GLobal com pequena alteração para usuários transportes
+            this.model.push(
+                {label: 'Transporte', icon: 'directions_car',
+                    items: [
+                        //Operador ternário controle usuario
+                        this.usuTransporte === true ? 
+                        {label: 'Gestão de Frotas', icon: 'subject' , routerLink: '/transporte'}:
+                        {label: 'Agendamento', icon: 'subject' , routerLink: '/agendamento'}
+                    ]
+                }
+            );
+            
+            
+       
+        
+        }
+    );}//fechando subscribe de gerencia
 
-             ]
-            },
-            {label: 'Jurídico', icon: 'gavel',
-             items: [
-                {label: 'Processos', icon: 'subject'},
-                {label: 'Regulatório', icon: 'subject'}
-             ]
-            },
-            {label: 'Recursos Humanos', icon: 'people',
-             items: [
 
-             ]
-            },
-            {label: 'EHS', icon: 'local_florist',
-             items: [
-                {label: 'Planejamento', icon: 'subject'},
-                {label: 'Gestão', icon: 'subject'}
-             ]
-            },*/
-        ];
-    }
-);}
 }
 
 @Component({

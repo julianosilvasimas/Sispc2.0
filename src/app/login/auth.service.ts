@@ -163,8 +163,10 @@ export class AuthService {
 
   // Verificando permissões
   
-  tokenDecode.roles.forEach(element => {
+  tokenDecode.roles.forEach((element,index) => {
     this.auth.push(element['authority']);
+    sessionStorage.setItem("permissao "+ index ,element['authority'])
+    console.log(element)
   });
 
   return this.dados

@@ -50,13 +50,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    
+  // console.log(sessionStorage.getItem("permissao 2"))    traz permissão
 
 
     this.tempoagora()
         .subscribe(tempo =>{
           let d
-          //console.log(tempo['data']),
+          //console.log(tempo['data']), mostra o tempo completo
           this.temperatura = tempo['data'].temperature
           this.hoje = tempo['data'].date
           this.condicao = tempo['data'].condition
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
 
     this.temposemana()
         .subscribe(tempo => {
-          console.log(tempo['data']),
+         // console.log(tempo['data']),
           this.previsoes = tempo['data'],
           this.previsoes.forEach(element => {
             this.chuva.push(element['rain']['probability']),
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
           this.manha = this.previsoes[0]['text_icon']['text']['phrase']['morning']
           this.tarde = this.previsoes[0]['text_icon']['text']['phrase']['afternoon']
           this.noite = this.previsoes[0]['text_icon']['text']['phrase']['night']
-          console.log(this.manha)
+          //console.log(this.manha)
           }
         )
     }
