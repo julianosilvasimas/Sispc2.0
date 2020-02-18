@@ -86,6 +86,27 @@ export class AppMenuComponent implements OnInit {
                                     {label: 'Relatórios por área', icon: 'subject'},
                                     {label: 'Arquivamento', icon: 'subject'}
                                 ]
+                            },
+                            {
+                                label: 'Configurações', icon: '',
+                                items: [
+                                    {label: 'Indicadores', icon: '', routerLink: 'indicadoresAdmin'}
+                                ]
+                            }
+                        ] :
+                        this.permissoes[1] === "ROLE_ADMIN_INDICADOR" ?  //DEntro do operador o que ainda será construído
+                        [
+                            {
+                                label: 'Acompanhamento', icon: 'subject',
+                                items: this.gerencias
+                                
+                            },
+                            {
+                                label: 'Configurações', icon: 'pencil',
+                                items: [
+                                    {label: '', icon: 'pencil', routerLink: 'indicadoresAdmin'}
+                                ]
+                                
                             }
                         ] :
                         [
@@ -103,6 +124,7 @@ export class AppMenuComponent implements OnInit {
                 this.model.push( 
                     {label: 'Planejamento', icon: 'equalizer',
                         items: [
+                            {label: 'Informativos', icon: 'envelope', routerLink: '/email'},
                             {label: 'Capex', icon: 'subject'},
                             {label: 'Opex', icon: 'subject'},
                             {label: 'DRE', icon: 'subject'},
@@ -115,7 +137,7 @@ export class AppMenuComponent implements OnInit {
                             },
                             {label: 'RPA', icon: 'pi-android',
                             items: [
-                                    {label: 'Robos', icon: 'pi-android', routerLink: '/rpa'}
+                                    {label: 'Robos', icon: '', routerLink: '/rpa'}
                                    ]
                             },
                         ]

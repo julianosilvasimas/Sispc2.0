@@ -149,6 +149,13 @@ import { AgendarVeiculoComponent } from './transporte/agendamentos/agendar-veicu
 import { TransporteService } from './transporte/transporte.service';
 import { RpaComponent } from './rpa/rpa.component';
 import { ListaAgendamentosComponent } from './transporte/agendamentos/lista-agendamentos/lista-agendamentos.component';
+import { AdminIndicadoresComponent } from './performance/admin-indicadores/admin-indicadores.component';
+import { NotificacoessispcComponent } from './notificacoessispc/notificacoessispc.component';
+import { RpaService } from './rpa/rpa.service';
+import { controledepagamentosjuridicoComponent } from './controledepagamentosjuridico/controledepagamentosjuridico.component';
+import { CadastroPagamentoComponent } from './controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component';
+import { ListapendentesComponent } from './controledepagamentosjuridico/listapendentes/listapendentes.component';
+import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component';
 
 
 
@@ -288,7 +295,13 @@ import { ListaAgendamentosComponent } from './transporte/agendamentos/lista-agen
   	    CalendarioAgendamentosComponent,
         AgendarVeiculoComponent,
         RpaComponent,
-        ListaAgendamentosComponent
+        ListaAgendamentosComponent,
+        AdminIndicadoresComponent,
+        NotificacoessispcComponent,
+        controledepagamentosjuridicoComponent,
+        CadastroPagamentoComponent,
+        ListapendentesComponent,
+        AcompanharaprovacaoComponent
 
     ],
     providers: [
@@ -300,7 +313,8 @@ import { ListaAgendamentosComponent } from './transporte/agendamentos/lista-agen
         AuthService,
         AuthGuard,
         PerformanceService,
-        TransporteService
+        TransporteService,
+        RpaService
     ],
     bootstrap: [AppComponent]
 })

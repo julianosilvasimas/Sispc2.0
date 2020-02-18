@@ -1,0 +1,124 @@
+<!--SCROOOL DE CARROS-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
+  <p-dataView #dv [value]="sentencas" [paginator]="true" [rows]="10" paginatorPosition="both">
+      <div >
+        <div class="ui-g-2">Sentenças</div>
+      </div>
+      <ng-template let-sentencas pTemplate="listItem">
+        <div class="car-details">
+          <div class="ui-g-11">
+            <div class="ui-g-2"><b>{{sentencas.Processo}}</b></div>
+            <div class="ui-g-2"><b>{{sentencas.Autor}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.Empresa}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.NaturezaPagamento}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.DataPagamento}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.Valor}}</b></div>
+            <div class="ui-g-2"><b>{{sentencas.Escritorio}}</b></div>
+            <div class="ui-g-2"><b>{{sentencas.CentroDeCusto}}</b></div>
+          </div>
+          <div class="ui-g-1" >
+            <button pButton type="button" icon="pi pi-search" (click)="showsentenca(sentencas)"></button>
+          </div>
+        </div>
+      </ng-template>
+       
+  </p-dataView>
+</div>
+
+
+<p-dialog header="Editar\Aprovar" [(visible)]="displayEditSentenca" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="sentencaSelect" >
+    <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+
+      
+      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12 ui-md-3"   [(ngModel)]="sentencaSelect.DataPagamento" dateFormat="dd/mm/yy"></p-calendar>
+          <label>Data Programação</label>
+        </span>
+      </div>
+      
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.Empresa" class="ui-g-12" pInputText/>
+            <label>Empresa</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.Autor" class="ui-g-12" pInputText/>
+            <label >Autor</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.Processo" class="ui-g-12" pInputText/>
+            <label>Processo</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.NaturezaPagamento" class="ui-g-12" pInputText/>
+            <label >Natureza</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-md-12 ui-md-12" style="margin-top: 20px;">
+            
+        <div class="ui-g-12 ui-md-4" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.Valor" class="ui-g-12" pInputText/>
+            <label >Valor</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-4" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.ContaContabil" class="ui-g-12" pInputText/>
+            <label >Conta Contábil</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.CentroDeCusto" class="ui-g-12" pInputText/>
+            <label>Centro de Custo</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.Fornecedor" class="ui-g-12" pInputText/>
+            <label >Fornecedor</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.Escritorio" class="ui-g-12" pInputText/>
+            <label>Escritório</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12">
+          <label>Sentencas</label>
+          <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="sentencaSelect.Sentencas"  pInputText rows="10" cols="35"></textarea>
+        </div>
+        <div class="ui-g-12">
+          <label>Motivo do Pagamento</label>
+          <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="sentencaSelect.MotivoPagamento"  pInputText rows="10" cols="35" placeholder="Motivo do Pagamento"></textarea>
+        </div>
+      </div>
+
+      <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+        <div class="ui-g-6" style="text-align: center;">
+          <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="Salvar()"></button>
+        </div>
+        <div class="ui-g-6" style="text-align: center;">
+          <button type="button"  style="background:#3cb627;" pButton icon="pi pi-save" label="Aprovar"  (click)="Aprovar()"></button>
+       </div>
+      </div>
+    </div>
+  </div>

@@ -272,7 +272,7 @@ export class GraficosComponent implements OnInit {
   
   //META - DENTRO DO PRAZO - DENTRO DO PRAZO REGULADO
   }else if(TipoGraph==5){
-    this.Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo);
+    this.Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo,realiz);
 
   }else if(TipoGraph==6){
     this.Tipo679(eixo, orcadoDiaAc, realizDiaAc, MetaAcumulada);
@@ -662,10 +662,19 @@ export class GraficosComponent implements OnInit {
   }
 
   //tipo prazo serviços
-  Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo){
+  Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo, realizado){
     this.data = {
       labels: this.eixo,
       datasets: [
+        {
+          type: 'line',
+          fill: false,
+          label: 'Realizado',
+          borderWidth: 1,
+          backgroundColor: '#253F93',
+          borderColor: '#253F93',
+          data: realizado
+        },
         {
           type: 'line',
           fill: false,
@@ -696,7 +705,7 @@ export class GraficosComponent implements OnInit {
         backgroundColor: '#6C8CC7',
         borderColor: '#6C8CC7',
         data: DentroPrazo
-      }         
+      }    
       ]
         
     }
@@ -980,7 +989,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloPrevisaoMensal = (Meta*100) ;
         this.RotuloOrcadoMensal = (Meta*100);
         this.RotuloOrcadoAcum = (Meta*100);
-        this.RotuloRealizAcum = ((NaoReguladoDp+ReguladoDp)/2)*100;
+        this.RotuloRealizAcum = RealMedia;
         this.RotuloDiferencaAcum  = "-";
         this.RotuloDiferencaAcum2 = "-";
         this.RotuloDiferencaPerc = "-";

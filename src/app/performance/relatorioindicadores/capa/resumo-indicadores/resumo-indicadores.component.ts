@@ -178,7 +178,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         this.RotuloPrevisaoMensal = (Meta*100) ;
         this.RotuloOrcadoMensal = (Meta*100);
         this.RotuloOrcadoAcum = (Meta*100);
-        this.RotuloRealizAcum = ((NaoReguladoDp+ReguladoDp)/2)*100;
+        this.RotuloRealizAcum = RealMedia;
         this.RotuloDiferencaAcum  = "-";
         this.RotuloDiferencaAcum2 = "-";
         this.RotuloDiferencaPerc = "-";
