@@ -133,7 +133,6 @@ export class AprovarAgendamentoComponent implements OnInit {
       }
     );
     this.onDialogHide();
-    await new Promise(r => setTimeout(r, 500));
     this.AtualizarLista();
   }
 
@@ -185,23 +184,29 @@ export class AprovarAgendamentoComponent implements OnInit {
     }
     this.displayRecuse = true;
     this.transporteService.UpdateAgendamento(this.AgendamentoAlterado).subscribe(
-      response => {
+      async response => {
         if(response.status === 201){
           this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
           detail:'Reprovado!'});
           console.log('Reprovado!')
         }
-      },
-      error =>  { 
+        
+        await new Promise(r => setTimeout(r, 500));
+        this.onDialogHide();
+        this.AtualizarLista();
+        this.Justificativa=null;
+        },
+      async error =>  { 
         this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
         detail:error.message, life: 500});
         console.log(error)
+        
+        
+        this.onDialogHide();
+        this.AtualizarLista();
       }
+      
     );
-    this.onDialogHide();
-    await new Promise(r => setTimeout(r, 500));
-    this.AtualizarLista();
-    this.Justificativa=null;
   }
   //==========================================================================================
   VerificarDisponibilidade(de, ate){

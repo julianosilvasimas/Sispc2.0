@@ -2,11 +2,13 @@
 <div class="card card-title ui-g-12">
   <h1>Status de Bot's</h1>
   <div class="card ui-g-2" style="margin-left: 40px;margin-top: 5px;" *ngFor="let b of bot">
-    <img class="ui-g-6" src="assets/layout/images/rpa/{{b.status}}.png">
+    <div style="font-weight: bold;" class="ui-g-12">{{ b.nomebot }}</div>
+    <img class="ui-g-6" src="assets/layout/images/rpa/{{b.historico[0].status}}.png">
     <div class="ui-g-6">
-      <div style="font-weight: bold;" class="ui-g-12">{{ b.nomeBot }}</div>
       <div class="ui-g-12">{{ b.status }}</div>
-      <div class="ui-g-12">{{ b.gerencia }}</div>
+      <div class="ui-g-12">{{ b.historico[0].user }}</div>
+      <div class="ui-g-12">{{ b.historico[0].ultimostart }}</div>
+      <div class="ui-g-12">{{ b.historico[0].status }}</div>
       <div class="ui-g-12" >
         <button pButton type="button" icon="pi pi-search" (click)="selectCar(b)"></button>
       </div>
@@ -21,28 +23,25 @@
     <div class="ui-g-6" style="text-align:left">
     
       <div class="ui-g-4">Nome: </div>
-      <div class="ui-g-8">{{selectedBot.nomeBot}}</div>
+      <div class="ui-g-8">{{selectedBot.nomebot}}</div>
 
       <div class="ui-g-4">Status: </div>
       <div class="ui-g-8">{{selectedBot.status}}</div>
-
-      <div class="ui-g-4">Gerência: </div>
-      <div class="ui-g-8">{{selectedBot.gerencia}}</div>
 
       <div class="ui-g-4">Descricao: </div>
       <div class="ui-g-8">{{selectedBot.descricao}}</div>
       
     </div>
     <div class="ui-g-12">
-      <p-dataView #dv [value]="selectedBot.ultimoStatus" [paginator]="true" [rows]="5" paginatorPosition="both" filterBy="nome" [sortOrder]="sortOrder">
+      <p-dataView #dv [value]="selectedBot.historico" [paginator]="true" [rows]="5" paginatorPosition="both" filterBy="nome" [sortOrder]="sortOrder">
 
         <ng-template let-bot pTemplate="listItem">
           <div class="ui-g-12">
             <div class="car-details">
-              <div class="ui-g-2">Nome: <b>{{bot.nome}}</b></div>
-              <div class="ui-g-2">Hostname: <b>{{bot.hostname}}</b></div>
+              <div class="ui-g-2">Nome: <b>{{bot.user}}</b></div>
+              <div class="ui-g-2">Hostname: <b>{{bot.ultimostart}}</b></div>
               <div class="ui-g-2">Status: <b>{{bot.status}}</b></div>
-              <div class="ui-g-6">Datahora: <b>{{bot.horario}}</b></div>
+              <div class="ui-g-6">Datahora: <b>{{bot.timestamp}}</b></div>
             </div>
           </div>
         </ng-template>

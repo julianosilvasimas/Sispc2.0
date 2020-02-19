@@ -37,6 +37,9 @@ import { PainelprocessoComponent } from './gestaodedeliberacao/painelprocesso/pa
 import { TransporteComponent } from './transporte/transporte.component';
 import { AgendarVeiculoComponent } from './transporte/agendamentos/agendar-veiculo/agendar-veiculo.component';
 import { RpaComponent } from './rpa/rpa.component'
+import { AdminIndicadoresComponent } from './performance/admin-indicadores/admin-indicadores.component'
+import { NotificacoessispcComponent } from './notificacoessispc/notificacoessispc.component'
+import { controledepagamentosjuridicoComponent } from './controledepagamentosjuridico/controledepagamentosjuridico.component'
 
 
 
@@ -71,9 +74,12 @@ export const routes: Routes = [
             { path: 'cadastrar', component: CadastrarComponent, canActivate: [AuthGuard] },
             { path: 'relatorio', component: TelaImpressaoRelatorioComponent, canActivate: [AuthGuard]  },
             { path: 'painelprocess',   component: PainelprocessoComponent, canActivate: [AuthGuard] },
-            { path: 'transporte', component: TransporteComponent},
-            { path: 'agendamento', component: AgendarVeiculoComponent},
+            { path: 'transporte', component: TransporteComponent, canActivate: [AuthGuard]},
+            { path: 'agendamento', component: AgendarVeiculoComponent, canActivate: [AuthGuard]},
+            { path: 'indicadoresAdmin', component: AdminIndicadoresComponent},
+            { path: 'email', component: NotificacoessispcComponent},
             { path: 'rpa', component: RpaComponent},
+            { path: 'cpjuridico', component: controledepagamentosjuridicoComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
         ]
     },

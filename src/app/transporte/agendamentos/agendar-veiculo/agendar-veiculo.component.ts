@@ -168,8 +168,9 @@ export class AgendarVeiculoComponent implements OnInit {
       this.OpcDestinos=null;
       this.OpcCondutores=null;
       this.OpcJustificativa=null;
-      
   }
+
+
   menorData(){
     let today = new Date();
     let day = today.getDate();

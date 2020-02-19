@@ -116,17 +116,19 @@ export class CadastroComponent implements OnInit {
       
       this.Supervisoes = [
         {label: ''},
-        {label: 'Fiscalizacao',value: 'Fiscalizacao'},
-        {label: 'Eletromecanica', value: 'Eletromecanica'}
       ];
-      this.condutores = [
-        {label: ''},
-        {label: 'Albert Einstein', value: 'Albert Einstein'},
-        {label: 'Fred Mercury', value: 'Fred Mercury'},
-        {label: 'José Vicente', value: 'José Vicente'},
-        {label: 'Hermes e Renato', value: 'Hermes e Renato'}
-      ];
+
       
+
+    this.transporteService.Condutores().subscribe(
+      response => {
+        for(var i=0; i<response.length;i++){
+          var array={label: response[i].nome, value: response[i].nome};
+          this.condutores.push(array)
+        }
+      }
+    );
+    
       this.tipoVeiculo = [
         {label: ''},
         {label: 'MOTO',value: 'MOTO'},
@@ -164,7 +166,11 @@ export class CadastroComponent implements OnInit {
       this.adicionais = [
         {label: '', value: ''},
         {label: 'MUNCK', value: 'MUNCK'},
-        {label: 'PIPA 10m/³', value: 'PIPA 10m/³'}
+        {label: 'PIPA 2m/³', value: 'PIPA 2m/³'},
+        {label: 'PIPA 5m/³', value: 'PIPA 5m/³'},
+        {label: 'PIPA 10m/³', value: 'PIPA 10m/³'},
+        {label: 'PIPA 20m/³', value: 'PIPA 20m/³'},
+        {label: 'PIPA 35m/³', value: 'PIPA 35m/³'}
       ];
       this.trocadeitemIndex(0);
     }
