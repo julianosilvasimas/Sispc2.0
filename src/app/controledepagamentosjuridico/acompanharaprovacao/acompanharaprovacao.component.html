@@ -1,28 +1,27 @@
 <!--SCROOOL DE CARROS-->
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
   <p-dataView #dv [value]="sentencas" [paginator]="true" [rows]="10" paginatorPosition="both">
-      <div >
-        <div class="ui-g-2">Informeção</div>
-      </div>
-      <ng-template let-sentencas pTemplate="listItem">
-        <div class="car-details">
-          <div class="ui-g-10">
-            <div class="ui-g-2"><b>{{sentencas.Processo}}</b></div>
-            <div class="ui-g-2"><b>{{sentencas.Autor}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.Empresa}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.NaturezaPagamento}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.DataPagamento}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.Valor}}</b></div>
-            <div class="ui-g-2"><b>{{sentencas.Escritorio}}</b></div>
-            <div class="ui-g-2"><b>{{sentencas.CentroDeCusto}}</b></div>
-          </div>
-          <div class="ui-g-2" >
-            <p-checkbox [(ngModel)]="sentencas.aprovJuridico" binary="true" value="Jurídico" label="Jurídico" ></p-checkbox>
-            <p-checkbox [(ngModel)]="sentencas.aprovGestao" binary="true" value="Gerstão" label="Gestão"  *ngIf="sentencas.Valor >= 1000"></p-checkbox>
-            <p-checkbox [(ngModel)]="sentencas.aprovDiretoria" binary="true" value="Diretoria" label="Diretoria"  *ngIf="sentencas.Valor >= 5000"></p-checkbox>
-          </div>
+    <div >
+      <div class="ui-g-2">Informeção</div>
+    </div>
+    <ng-template let-sentencas pTemplate="listItem">
+      <div class="car-details">
+        <div class="ui-g-10">
+          <div class="ui-g-2"><b>{{sentencas.Processo}}</b></div>
+          <div class="ui-g-2"><b>{{sentencas.Autor}}</b></div>
+          <div class="ui-g-1"><b>{{sentencas.Empresa}}</b></div>
+          <div class="ui-g-1"><b>{{sentencas.NaturezaPagamento}}</b></div>
+          <div class="ui-g-1"><b>{{sentencas.DataPagamento}}</b></div>
+          <div class="ui-g-1"><b>{{sentencas.Valor}}</b></div>
+          <div class="ui-g-2"><b>{{sentencas.Escritorio}}</b></div>
+          <div class="ui-g-2"><b>{{sentencas.CentroDeCusto}}</b></div>
         </div>
-      </ng-template>
-       
+        <div class="ui-g-2" >
+          <p-checkbox [(ngModel)]="sentencas.aprovJuridico" disabled="true" binary="true" value="Jurídico" label="Jurídico" ></p-checkbox>
+          <p-checkbox [(ngModel)]="sentencas.aprovGestao" disabled="true" binary="true" value="Gerstão" label="Gestão"  *ngIf="sentencas.Valor >= 1000"></p-checkbox>
+          <p-checkbox [(ngModel)]="sentencas.aprovDiretoria" disabled="true" binary="true" value="Diretoria" label="Diretoria"  *ngIf="sentencas.Valor >= 5000"></p-checkbox>
+        </div>
+      </div>
+    </ng-template>
   </p-dataView>
 </div>

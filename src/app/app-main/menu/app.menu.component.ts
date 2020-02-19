@@ -179,6 +179,7 @@ export class AppMenuComponent implements OnInit {
                         },
                         {label: 'Jurídico', icon: 'gavel',
                         items: [
+                            {label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject'},
                             {label: 'Processos', icon: 'subject'},
                             {label: 'Regulatório', icon: 'subject'}
                         ]

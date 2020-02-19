@@ -372,6 +372,50 @@ module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmok
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.html":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.html ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"sentencas\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n    <div >\r\n      <div class=\"ui-g-2\">Informeção</div>\r\n    </div>\r\n    <ng-template let-sentencas pTemplate=\"listItem\">\r\n      <div class=\"car-details\">\r\n        <div class=\"ui-g-10\">\r\n          <div class=\"ui-g-2\"><b>{{sentencas.Processo}}</b></div>\r\n          <div class=\"ui-g-2\"><b>{{sentencas.Autor}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.Empresa}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.NaturezaPagamento}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.DataPagamento}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.Valor}}</b></div>\r\n          <div class=\"ui-g-2\"><b>{{sentencas.Escritorio}}</b></div>\r\n          <div class=\"ui-g-2\"><b>{{sentencas.CentroDeCusto}}</b></div>\r\n        </div>\r\n        <div class=\"ui-g-2\" >\r\n          <p-checkbox [(ngModel)]=\"sentencas.aprovJuridico\" disabled=\"true\" binary=\"true\" value=\"Jurídico\" label=\"Jurídico\" ></p-checkbox>\r\n          <p-checkbox [(ngModel)]=\"sentencas.aprovGestao\" disabled=\"true\" binary=\"true\" value=\"Gerstão\" label=\"Gestão\"  *ngIf=\"sentencas.Valor >= 1000\"></p-checkbox>\r\n          <p-checkbox [(ngModel)]=\"sentencas.aprovDiretoria\" disabled=\"true\" binary=\"true\" value=\"Diretoria\" label=\"Diretoria\"  *ngIf=\"sentencas.Valor >= 5000\"></p-checkbox>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n  </p-dataView>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.html":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.html ***!
+  \*****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO PAGAMENTO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-12\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12 ui-md-3\"   [(ngModel)]=\"CadDataProgramada\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n          <label>Data Programação</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\">\r\n        <p-toggleButton [(ngModel)]=\"CadFalhaConcessao\" onLabel=\"FalhaConcessao\" offLabel=\"FalhaConcessao\" onIcon=\"pi pi-check\" offIcon=\"pi pi-times\" [style]=\"{'width':'150px'}\"></p-toggleButton>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmpresa\" class=\"ui-g-12\" pInputText/>\r\n          <label>Empresa</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadAutor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Autor</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadProcesso\" class=\"ui-g-12\" pInputText/>\r\n          <label>Processo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNatureza\" class=\"ui-g-12\" pInputText/>\r\n          <label >Natureza</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n          \r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadValor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Valor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"CadContaContabil\" styleClass = \"drop95\" [options]=\"ListaCentroDeCusto\"></p-dropdown>\r\n          <label >Conta Contábil</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadCentroDeCusto\" class=\"ui-g-12\" pInputText/>\r\n          <label>Centro de Custo</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadFornecedor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Fornecedor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEscritorio\" class=\"ui-g-12\" pInputText/>\r\n          <label>Escritório</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-6\">\r\n        <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"CadSentenca\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Sentencas\"></textarea>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"CadMotivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n      </div>\r\n    </div>\r\n    \r\n\r\n  </div>\r\n  <div class=\"ui-g-12 ui-md-12\">\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.html":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.html ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n    <div *ngIf=\"activeItemIndex==0\">\r\n      <app-cadastro-pagamento></app-cadastro-pagamento>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==1\">\r\n      <app-listapendentes></app-listapendentes>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==2\">\r\n      <app-acompanharaprovacao></app-acompanharaprovacao>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==3\">\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.html":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.html ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"sentencas\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <div >\r\n        <div class=\"ui-g-2\">Sentenças</div>\r\n      </div>\r\n      <ng-template let-sentencas pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-2\"><b>{{sentencas.processo}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.autor}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.empresa}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.natureza}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.dataProgramada}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.valor}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.escritorio}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.centroDeCusto}}</b></div>\r\n            <div class=\"ui-g-1\">\r\n              <p-rating [ngModel]=\"sentencas.valor >= 5000 ? 3 : sentencas.valor >= 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showSentenca(sentencas)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n<p-dialog header=\"Editar\\Aprovar\" [(visible)]=\"displayEditSentenca\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"sentencaSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12 ui-md-3\"   [(ngModel)]=\"sentencaSelect.dataProgramada\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n          <label>Data Programação</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        Nível de Aprovação\r\n        <p-rating [ngModel]=\"sentencaSelect.valor >= 5000 ? 3 : sentencaSelect.valor >= 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.empresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Empresa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.autor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Autor</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.processo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Processo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.natureza\" class=\"ui-g-12\" pInputText/>\r\n            <label >Natureza</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n            \r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.valor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Valor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.ContaContabil\" class=\"ui-g-12\" pInputText/>\r\n            <label >Conta Contábil</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.centroDeCusto\" class=\"ui-g-12\" pInputText/>\r\n            <label>Centro de Custo</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.fornecedor\" class=\"ui-g-12\" pInputText/>\r\n            <label >fornecedor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.escritorio\" class=\"ui-g-12\" pInputText/>\r\n            <label>Escritório</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12\">\r\n          <label>Sentencas</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"sentencaSelect.sentenca\"  pInputText rows=\"10\" cols=\"35\"></textarea>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n          <label>Motivo do Pagamento</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"sentencaSelect.motivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"Salvar(sentencaSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\"  style=\"background:#3cb627;\" pButton icon=\"pi pi-save\" label=\"Aprovar\"  (click)=\"Aprovar()\"></button>\r\n       </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/demo/view/chartsdemo.component.html":
 /*!*******************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/demo/view/chartsdemo.component.html ***!
@@ -764,7 +808,7 @@ module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <div 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"card card-title ui-g-12\">\r\n  <h1>Status de Bot's</h1>\r\n  <div class=\"card ui-g-2\" style=\"margin-left: 40px;margin-top: 5px;\" *ngFor=\"let b of bot\">\r\n    <div style=\"font-weight: bold;\" class=\"ui-g-12\">{{ b.nomebot }}</div>\r\n    <img class=\"ui-g-6\" src=\"assets/layout/images/rpa/{{b.historico[0].status}}.png\">\r\n    <div class=\"ui-g-6\">\r\n      <div class=\"ui-g-12\">{{ b.status }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].user }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].ultimostart }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].status }}</div>\r\n      <div class=\"ui-g-12\" >\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(b)\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<p-dialog header=\"Detalhe Bot\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"selectedBot\" style=\"height:50%\">\r\n    <div class=\"ui-g-6\" style=\"text-align:center\">\r\n        <img src=\"assets/layout/images/rpa/{{selectedBot.status}}.png\" width=\"200px\">\r\n    </div>\r\n    <div class=\"ui-g-6\" style=\"text-align:left\">\r\n    \r\n      <div class=\"ui-g-4\">Nome: </div>\r\n      <div class=\"ui-g-8\">{{selectedBot.nomebot}}</div>\r\n\r\n      <div class=\"ui-g-4\">Status: </div>\r\n      <div class=\"ui-g-8\">{{selectedBot.status}}</div>\r\n\r\n      <div class=\"ui-g-4\">Descricao: </div>\r\n      <div class=\"ui-g-8\">{{selectedBot.descricao}}</div>\r\n      \r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <p-dataView #dv [value]=\"selectedBot.historico\" [paginator]=\"true\" [rows]=\"5\" paginatorPosition=\"both\" filterBy=\"nome\" [sortOrder]=\"sortOrder\">\r\n\r\n        <ng-template let-bot pTemplate=\"listItem\">\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"car-details\">\r\n              <div class=\"ui-g-2\">Nome: <b>{{bot.user}}</b></div>\r\n              <div class=\"ui-g-2\">Hostname: <b>{{bot.ultimostart}}</b></div>\r\n              <div class=\"ui-g-2\">Status: <b>{{bot.status}}</b></div>\r\n              <div class=\"ui-g-6\">Datahora: <b>{{bot.timestamp}}</b></div>\r\n            </div>\r\n          </div>\r\n        </ng-template>\r\n      </p-dataView>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+module.exports = "\r\n<div class=\"card card-title ui-g-12\">\r\n  <h1>Status de Bot's</h1>\r\n  <div class=\"card ui-g-2\" style=\"margin-left: 40px;margin-top: 5px;\" *ngFor=\"let b of bot\">\r\n    <div style=\"font-weight: bold;\" class=\"ui-g-12\">{{ b.nomebot }}</div>\r\n    <img class=\"ui-g-6\" src=\"assets/layout/images/rpa/{{b.historico[0].status}}.png\">\r\n    <div class=\"ui-g-6\">\r\n      <div class=\"ui-g-12\">{{ b.status }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].user }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].ultimostart }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].status }}</div>\r\n      <div class=\"ui-g-12\">{{ b.historico[0].timestamp }}</div>\r\n      <div class=\"ui-g-12\" >\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(b)\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<p-dialog header=\"Detalhe Bot\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"selectedBot\" style=\"height:50%\">\r\n    <div class=\"ui-g-6\" style=\"text-align:center\">\r\n        <img src=\"assets/layout/images/rpa/{{selectedBot.historico[0].status}}.png\" width=\"200px\">\r\n    </div>\r\n    <div class=\"ui-g-6\" style=\"text-align:left\">\r\n    \r\n      <div class=\"ui-g-4\">Nome: </div>\r\n      <div class=\"ui-g-8\">{{selectedBot.nomebot}}</div>\r\n\r\n      <div class=\"ui-g-4\">Status: </div>\r\n      <div class=\"ui-g-8\">{{selectedBot.status}}</div>\r\n\r\n      <div class=\"ui-g-4\">Descricao: </div>\r\n      <div class=\"ui-g-8\">{{selectedBot.descricao}}</div>\r\n      \r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <p-dataView #dv [value]=\"selectedBot.historico\" [paginator]=\"true\" [rows]=\"5\" paginatorPosition=\"both\" filterBy=\"nome\" [sortOrder]=\"sortOrder\">\r\n        <ng-template let-bot pTemplate=\"listItem\">\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"car-details\">\r\n              <div class=\"ui-g-2\">Nome: <b>{{bot.user}}</b></div>\r\n              <div class=\"ui-g-2\">Hostname: <b>{{bot.ultimostart}}</b></div>\r\n              <div class=\"ui-g-2\">Status: <b>{{bot.status}}</b></div>\r\n              <div class=\"ui-g-6\">Datahora: <b>{{bot.timestamp}}</b></div>\r\n            </div>\r\n          </div>\r\n        </ng-template>\r\n      </p-dataView>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -1360,6 +1404,7 @@ var AppMenuComponent = /** @class */ (function () {
                     items: []
                 }, { label: 'Jurídico', icon: 'gavel',
                     items: [
+                        { label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject' },
                         { label: 'Processos', icon: 'subject' },
                         { label: 'Regulatório', icon: 'subject' }
                     ]
@@ -2006,8 +2051,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-var API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
-//export const API_CONFIG =  'http://localhost:7777'
+// export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
+var API_CONFIG = 'http://localhost:7777';
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -2305,6 +2350,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.component */ "./src/app/performance/admin-indicadores/admin-indicadores.component.ts");
 /* harmony import */ var _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./notificacoessispc/notificacoessispc.component */ "./src/app/notificacoessispc/notificacoessispc.component.ts");
 /* harmony import */ var _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./rpa/rpa.service */ "./src/app/rpa/rpa.service.ts");
+/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_146__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.component */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_147__ = __webpack_require__(/*! ./controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component */ "./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__ = __webpack_require__(/*! ./controledepagamentosjuridico/listapendentes/listapendentes.component */ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component */ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+
+
+
+
+
 
 
 
@@ -2594,7 +2649,11 @@ var AppModule = /** @class */ (function () {
                 _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_141__["RpaComponent"],
                 _transporte_agendamentos_lista_agendamentos_lista_agendamentos_component__WEBPACK_IMPORTED_MODULE_142__["ListaAgendamentosComponent"],
                 _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_143__["AdminIndicadoresComponent"],
-                _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_144__["NotificacoessispcComponent"]
+                _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_144__["NotificacoessispcComponent"],
+                _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_146__["controledepagamentosjuridicoComponent"],
+                _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_147__["CadastroPagamentoComponent"],
+                _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__["ListapendentesComponent"],
+                _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__["AcompanharaprovacaoComponent"]
             ],
             providers: [
                 { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
@@ -2606,7 +2665,8 @@ var AppModule = /** @class */ (function () {
                 _guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_121__["AuthGuard"],
                 _performance_performance_service__WEBPACK_IMPORTED_MODULE_122__["PerformanceService"],
                 _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"],
-                _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"]
+                _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"],
+                _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
         })
@@ -2668,6 +2728,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./rpa/rpa.component */ "./src/app/rpa/rpa.component.ts");
 /* harmony import */ var _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.component */ "./src/app/performance/admin-indicadores/admin-indicadores.component.ts");
 /* harmony import */ var _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./notificacoessispc/notificacoessispc.component */ "./src/app/notificacoessispc/notificacoessispc.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.component */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts");
+
 
 
 
@@ -2741,6 +2803,7 @@ var routes = [
             { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"] },
             { path: 'email', component: _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__["NotificacoessispcComponent"] },
             { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
+            { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"] },
             { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
         ]
     },
@@ -2763,6 +2826,385 @@ var AppRoutingModule = /** @class */ (function () {
         })
     ], AppRoutingModule);
     return AppRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.css":
+/*!****************************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.css ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhY29tcGFuaGFyYXByb3ZhY2FvL2Fjb21wYW5oYXJhcHJvdmFjYW8uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.ts":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.ts ***!
+  \***************************************************************************************************/
+/*! exports provided: AcompanharaprovacaoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcompanharaprovacaoComponent", function() { return AcompanharaprovacaoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AcompanharaprovacaoComponent = /** @class */ (function () {
+    function AcompanharaprovacaoComponent() {
+        this.sentencas = [];
+    }
+    AcompanharaprovacaoComponent.prototype.ngOnInit = function () {
+        this.sentencas = [
+            { Empresa: "PR00", Autor: "ARLINDO DOS SANTOS MARTINS", Processo: "0248946-60.2013.8.19.0001", NaturezaPagamento: "CUSTAS ", DataPagamento: '21/02/2020', Valor: "98,71", Escritorio: "VIEIRA E BRITTO ", ContaContabil: "412600011-CUSTAS JUDICIAIS", CentroDeCusto: "PR10700007", Fornecedor: "820248", Sentencas: "TESTE 1", MotivoPagamento: "TESTE MOTIVO 1", aprovJuridico: false, aprovGestao: false, aprovDiretoria: false },
+            { Empresa: "PR00", Autor: "ARLINDO DOS SANTOS MARTINS", Processo: "0248946-60.2013.8.19.0001", NaturezaPagamento: "CUSTAS ", DataPagamento: '21/02/2020', Valor: "529,35", Escritorio: "VIEIRA E BRITTO ", ContaContabil: "412600011-CUSTAS JUDICIAIS", CentroDeCusto: "PR10700007", Fornecedor: "820248", Sentencas: "TESTE 2", MotivoPagamento: "TESTE MOTIVO 2", aprovJuridico: false, aprovGestao: false, aprovDiretoria: false },
+            { Empresa: "PR00", Autor: "LUIZ CARLOS DUARTE DA CONCEIÇÃO", Processo: "0031905-26.2018.8.19.0054", NaturezaPagamento: "CUSTAS ", DataPagamento: '21/02/2020', Valor: "2090", Escritorio: "VIEIRA E BRITTO ", ContaContabil: "412600011-CUSTAS JUDICIAIS", CentroDeCusto: "PR10700007", Fornecedor: "820330", Sentencas: "TESTE 3", MotivoPagamento: "TESTE MOTIVO 1", aprovJuridico: true, aprovGestao: false, aprovDiretoria: false }
+        ];
+    };
+    AcompanharaprovacaoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-acompanharaprovacao',
+            template: __webpack_require__(/*! raw-loader!./acompanharaprovacao.component.html */ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.html"),
+            styles: [__webpack_require__(/*! ./acompanharaprovacao.component.css */ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AcompanharaprovacaoComponent);
+    return AcompanharaprovacaoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.css":
+/*!**************************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.css ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjYWRhc3Ryby1wYWdhbWVudG8vY2FkYXN0cm8tcGFnYW1lbnRvLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.ts":
+/*!*************************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.ts ***!
+  \*************************************************************************************************/
+/*! exports provided: CadastroPagamentoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CadastroPagamentoComponent", function() { return CadastroPagamentoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+
+
+
+
+var CadastroPagamentoComponent = /** @class */ (function () {
+    function CadastroPagamentoComponent(ControlePagamento, messageService) {
+        this.ControlePagamento = ControlePagamento;
+        this.messageService = messageService;
+        this.CadEmpresa = null;
+        this.CadAutor = null;
+        this.CadProcesso = null;
+        this.CadNatureza = null;
+        this.CadDataProgramada = null;
+        this.CadValor = null;
+        this.CadEscritorio = null;
+        this.CadContaContabil = null;
+        this.CadCentroDeCusto = null;
+        this.CadFornecedor = null;
+        this.CadSentenca = null;
+        this.CadMotivoPagamento = null;
+        this.CadFalhaConcessao = false;
+    }
+    CadastroPagamentoComponent.prototype.ngOnInit = function () {
+        this.ListaCentroDeCusto =
+            [
+                { label: '', value: '' },
+                { label: '412600011-CUSTAS JUDICIAIS', value: '412600011-CUSTAS JUDICIAIS' },
+                { label: '512600011-CUSTAS JUDICIAIS', value: '512600011-CUSTAS JUDICIAIS' },
+                { label: '412300001-INDENIZAÇÕES CÍVEIS', value: '412300001-INDENIZAÇÕES CÍVEIS' },
+                { label: '512300001-INDENIZAÇÕES CÍVEIS', value: '512300001-INDENIZAÇÕES CÍVEIS' },
+                { label: '412300002-INDENIZAÇÕES TRABALHISTAS', value: '412300002-INDENIZAÇÕES TRABALHISTAS' },
+                { label: '512300002-INDENIZAÇÕES TRABALHISTAS', value: '512300002-INDENIZAÇÕES TRABALHISTAS' },
+                { label: '126100001-DEPOSITOS JUDICIAIS', value: '126100001-DEPOSITOS JUDICIAIS' },
+                { label: '126100002-BLOQUEIOS JUDICIAIS', value: '126100002-BLOQUEIOS JUDICIAIS' }
+            ];
+    };
+    CadastroPagamentoComponent.prototype.salvar = function () {
+        var _this = this;
+        var objeto = {
+            idPagamento: null,
+            dataCadastro: null,
+            usuarioInsert: "",
+            empresa: this.CadEmpresa,
+            autor: this.CadAutor,
+            processo: this.CadProcesso,
+            natureza: this.CadNatureza,
+            dataProgramada: this.CadDataProgramada,
+            valor: this.CadValor,
+            escritorio: this.CadEscritorio,
+            contaContabil: this.CadContaContabil,
+            centroDeCusto: this.CadCentroDeCusto,
+            fornecedor: this.CadFornecedor,
+            sentenca: this.CadSentenca,
+            motivoPagamento: this.CadMotivoPagamento,
+            falhaConcess: this.CadFalhaConcessao,
+            enviadoParaAprovacao: false,
+            aprovador1: null,
+            aprovacao1: false,
+            aprovador2: null,
+            aprovacao2: false,
+            aprovador3: null,
+            aprovacao3: false
+        };
+        console.log(objeto);
+        this.ControlePagamento.InputPagamento(objeto).subscribe(function (response) {
+            if (response.status === 201) {
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    };
+    CadastroPagamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cadastro-pagamento',
+            template: __webpack_require__(/*! raw-loader!./cadastro-pagamento.component.html */ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.html"),
+            styles: [__webpack_require__(/*! ./cadastro-pagamento.component.css */ "./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__["ControledepagamentosjuridicoService"],
+            primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+    ], CadastroPagamentoComponent);
+    return CadastroPagamentoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.css":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.css ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb250cm9sZWRlcGFnYW1lbnRvc2p1cmlkaWNvLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts":
+/*!****************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts ***!
+  \****************************************************************************************/
+/*! exports provided: controledepagamentosjuridicoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "controledepagamentosjuridicoComponent", function() { return controledepagamentosjuridicoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var controledepagamentosjuridicoComponent = /** @class */ (function () {
+    function controledepagamentosjuridicoComponent() {
+    }
+    controledepagamentosjuridicoComponent.prototype.ngOnInit = function () {
+        this.items =
+            [
+                { label: 'Cadastro' },
+                { label: 'Lista' },
+                { label: 'Aprovacoes' },
+                { label: 'Relatórios' }
+            ];
+        this.trocadeitemIndex(0);
+    };
+    controledepagamentosjuridicoComponent.prototype.trocadeitem = function (activeItem) {
+        this.activeItem = activeItem['activeItem'];
+        this.activeItemIndex = this.items.indexOf(this.activeItem);
+    };
+    controledepagamentosjuridicoComponent.prototype.trocadeitemIndex = function (index) {
+        this.activeItem = this.items[index];
+        this.activeItemIndex = index;
+    };
+    controledepagamentosjuridicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-controledepagamentosjuridico',
+            template: __webpack_require__(/*! raw-loader!./controledepagamentosjuridico.component.html */ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.html"),
+            styles: [__webpack_require__(/*! ./controledepagamentosjuridico.component.css */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], controledepagamentosjuridicoComponent);
+    return controledepagamentosjuridicoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts":
+/*!**************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts ***!
+  \**************************************************************************************/
+/*! exports provided: ControledepagamentosjuridicoService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ControledepagamentosjuridicoService", function() { return ControledepagamentosjuridicoService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+var ControledepagamentosjuridicoService = /** @class */ (function () {
+    function ControledepagamentosjuridicoService(http) {
+        this.http = http;
+    }
+    ControledepagamentosjuridicoService.prototype.Pagamentos = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/pagamentoJuridico")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    ControledepagamentosjuridicoService.prototype.editaveis = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/pagamentoJuridico/editaveis")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    ControledepagamentosjuridicoService.prototype.InputPagamento = function (corpo) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        console.log(corpo);
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/pagamentoJuridico", corpo, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        }); }));
+    };
+    ControledepagamentosjuridicoService.prototype.UpdatePagamento = function (agendamento) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/pagamentoJuridico/" + agendamento.idPagamento, agendamento, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({
+            data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        }); }));
+    };
+    ControledepagamentosjuridicoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], ControledepagamentosjuridicoService);
+    return ControledepagamentosjuridicoService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsaXN0YXBlbmRlbnRlcy9saXN0YXBlbmRlbnRlcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: ListapendentesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListapendentesComponent", function() { return ListapendentesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+
+
+
+
+var ListapendentesComponent = /** @class */ (function () {
+    function ListapendentesComponent(ControlePagamento, messageService) {
+        this.ControlePagamento = ControlePagamento;
+        this.messageService = messageService;
+        this.sentencas = [];
+        this.displayEditSentenca = false;
+    }
+    ListapendentesComponent.prototype.ngOnInit = function () {
+        this.AtualizarLista();
+    };
+    ListapendentesComponent.prototype.AtualizarLista = function () {
+        var _this = this;
+        this.sentencas = [];
+        this.ControlePagamento.Pagamentos().subscribe(function (response) {
+            _this.sentencas = response;
+            console.log(response);
+        });
+    };
+    ListapendentesComponent.prototype.showSentenca = function (sentenca) {
+        this.sentencaSelectDate = null;
+        this.sentencaSelect = sentenca;
+        this.displayEditSentenca = true;
+        event.preventDefault();
+    };
+    ListapendentesComponent.prototype.Salvar = function (sentencas) {
+        var _this = this;
+        console.log(sentencas);
+        this.ControlePagamento.UpdatePagamento(sentencas).subscribe(function (response) {
+            _this.sentencas = response;
+            console.log(response);
+            _this.displayEditSentenca = false;
+            _this.sentencaSelect = null;
+            _this.AtualizarLista();
+        });
+    };
+    ListapendentesComponent.prototype.Aprovar = function () {
+    };
+    ListapendentesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-listapendentes',
+            template: __webpack_require__(/*! raw-loader!./listapendentes.component.html */ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.html"),
+            styles: [__webpack_require__(/*! ./listapendentes.component.css */ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__["ControledepagamentosjuridicoService"],
+            primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+    ], ListapendentesComponent);
+    return ListapendentesComponent;
 }());
 
 
@@ -6429,6 +6871,15 @@ var GraficosComponent = /** @class */ (function () {
                 {
                     type: 'line',
                     fill: false,
+                    label: 'Realizado',
+                    borderWidth: 1,
+                    backgroundColor: '#253F93',
+                    borderColor: '#253F93',
+                    data: realizado
+                },
+                {
+                    type: 'line',
+                    fill: false,
                     borderDash: [2, 2],
                     pointRadius: 0,
                     borderWidth: 2,
@@ -6456,15 +6907,6 @@ var GraficosComponent = /** @class */ (function () {
                     backgroundColor: '#6C8CC7',
                     borderColor: '#6C8CC7',
                     data: DentroPrazo
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizado
                 }
             ]
         };
@@ -6708,7 +7150,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloPrevisaoMensal = (Meta * 100);
             this.RotuloOrcadoMensal = (Meta * 100);
             this.RotuloOrcadoAcum = (Meta * 100);
-            this.RotuloRealizAcum = RealMedia;
+            this.RotuloRealizAcum = (RealMedia * 100);
             this.RotuloDiferencaAcum = "-";
             this.RotuloDiferencaAcum2 = "-";
             this.RotuloDiferencaPerc = "-";
@@ -8443,7 +8885,7 @@ var TelaImpressaoRelatorioComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJycGEuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ycGEvcnBhLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -8470,6 +8912,10 @@ var RpaComponent = /** @class */ (function () {
     }
     RpaComponent.prototype.ngOnInit = function () {
         this.Arrayas();
+        var i = 0;
+        // while(i===0){
+        //   this.f3();
+        // }
     };
     RpaComponent.prototype.selectCar = function (bot) {
         this.selectedBot = bot;
@@ -8481,6 +8927,7 @@ var RpaComponent = /** @class */ (function () {
     };
     RpaComponent.prototype.Arrayas = function () {
         var _this = this;
+        this.bot = [];
         this.cadastro = [];
         this.status = [];
         this.rpaservice.cadastroBots().subscribe(function (cadastro) {
@@ -8517,6 +8964,13 @@ var RpaComponent = /** @class */ (function () {
         }
         statusbot = statusbot.reverse();
         return statusbot;
+    };
+    RpaComponent.prototype.f3 = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
     };
     RpaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

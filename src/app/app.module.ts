@@ -156,6 +156,8 @@ import { controledepagamentosjuridicoComponent } from './controledepagamentosjur
 import { CadastroPagamentoComponent } from './controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component';
 import { ListapendentesComponent } from './controledepagamentosjuridico/listapendentes/listapendentes.component';
 import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component';
+import { ControledepagamentosjuridicoService } from './controledepagamentosjuridico/controledepagamentosjuridico.service';
+import { Controledepagamentosjuridico } from './controledepagamentosjuridico/controledepagamentosjuridico.model';
 
 
 
@@ -314,7 +316,8 @@ import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/aco
         AuthGuard,
         PerformanceService,
         TransporteService,
-        RpaService
+        RpaService,
+        ControledepagamentosjuridicoService
     ],
     bootstrap: [AppComponent]
 })

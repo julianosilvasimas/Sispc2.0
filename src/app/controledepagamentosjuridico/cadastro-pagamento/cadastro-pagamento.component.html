@@ -3,10 +3,15 @@
   <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
 
     <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
-      <span class="md-inputfield">
-        <p-calendar class="ui-g-12 ui-md-3"   [(ngModel)]="CadDataProgramada" dateFormat="dd/mm/yy"></p-calendar>
-        <label>Data Programação</label>
-      </span>
+      <div class="ui-g-12 ui-md-12">
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12 ui-md-3"   [(ngModel)]="CadDataProgramada" dateFormat="dd/mm/yy"></p-calendar>
+          <label>Data Programação</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <p-toggleButton [(ngModel)]="CadFalhaConcessao" onLabel="FalhaConcessao" offLabel="FalhaConcessao" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
+      </div>
     </div>
     
     <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
@@ -47,7 +52,7 @@
       </div>
       <div class="ui-g-12 ui-md-4" >
         <span class="md-inputfield">
-          <input id="input" type="text" [(ngModel)]="CadContaContabil" class="ui-g-12" pInputText/>
+          <p-dropdown [autoWidth]="true" [(ngModel)]="CadContaContabil" styleClass = "drop95" [options]="ListaCentroDeCusto"></p-dropdown>
           <label >Conta Contábil</label>
         </span>
       </div>
@@ -82,8 +87,12 @@
       </div>
     </div>
     
+
+  </div>
+  <div class="ui-g-12 ui-md-12">
+
     <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
-      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="SalvarVeiculo()"></button>
+      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="salvar()"></button>
     </div>
   </div>
 </div>
