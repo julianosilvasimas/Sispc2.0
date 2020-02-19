@@ -3,6 +3,8 @@ import { Car, Projetos } from '../../demo/domain/car';
 import { SelectItem, MessageService } from 'primeng/api';
 import { CarService } from '../../demo/service/carservice';
 import { RouterLink } from '@angular/router';
+import { ProjetosService } from './projetos.service';
+
 
 @Component({
   selector: 'app-projetos',
@@ -12,10 +14,11 @@ export class ProjetosComponent implements OnInit {
 
   cars: Projetos[];
 
+  projetos: any[];
     cols: any[];
 
     nome: SelectItem[];
-
+ 
     yearFilter: number;
 
     yearTimeout: any;
@@ -23,10 +26,11 @@ export class ProjetosComponent implements OnInit {
     data: any;
 
     selectedCar1: SelectItem[];
+    selectedProjeto: SelectItem[];
     municipio: SelectItem[];
     status:SelectItem[];
 
-  constructor(private carService: CarService, private messageService: MessageService) {  
+  constructor(private carService: CarService,private projetosService: ProjetosService, private messageService: MessageService) {  
     
     this.data = {
       datasets: [{
@@ -62,6 +66,12 @@ export class ProjetosComponent implements OnInit {
     
     this.carService.getProjetos().then(cars => this.cars = cars);
 
+    this.projetosService.projetos()
+    .subscribe(res => {
+        console.log(res)
+        this.projetos = res
+    });
+
     this.municipio = [
         { label: 'Todos', value: null },
         { label: 'Arraial do Cabo', value: 'Arraial do Cabo' },
@@ -80,18 +90,20 @@ export class ProjetosComponent implements OnInit {
     ];
 
     this.cols = [
-        { field: 'nProjeto', header: 'N° Projeto' },
-        { field: 'nome', header: 'Nome' },
-        { field: 'status', header: 'Status' },
-        { field: 'tipo', header: 'Tipo' },
-        { field: 'segmento', header: 'Segmento' },
-        { field: 'municipio', header: 'Município' },
-        { field: 'marco', header: 'Marco' }
+        { field: 'projetoId', header: 'N° Projeto' },
+        { field: 'projeto', header: 'Nome' },
+        { field: 'statusgloblal', header: 'Status' },
+        { field: 'setor', header: 'Setor' },
+        //{ field: 'responsavel', header: 'Responsavel' },
+        //{ field: 'localidade', header: 'Município' },
+        { field: 'radar', header: 'Marco' }
     ]; 
   }
 
   abrir(){
-      window.open("/mainprojeto")
+      sessionStorage.setItem('idProjeto',this.selectedProjeto['projetoId'])
+      sessionStorage.setItem('nomeProjeto',this.selectedProjeto['projeto'])
+      //window.open("/mainprojeto")
   }
 
   onYearChange(event, dt) {

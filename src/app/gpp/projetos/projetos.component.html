@@ -11,6 +11,10 @@
                         <div class="item"><p-multiSelect [options]="municipio" defaultLabel="Engenharia(Projeto)" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect  [options]="municipio" defaultLabel="Financeiro(Capex)" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect [options]="municipio" defaultLabel="Licenciamentos" ></p-multiSelect></div>
+                        </section>
+                    </div>
+                    <div style="text-align: center; padding-top: 15px">
+                        <section class="grid grid-auto-flow-1">
                         <div class="item"><p-multiSelect  [options]="municipio" defaultLabel="Contratação" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect [options]="municipio" defaultLabel="Engenharia(Obra)" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect  [options]="municipio" defaultLabel="Comissionamento" ></p-multiSelect></div>
@@ -20,7 +24,7 @@
                 </p-panel>
               <h1>Portfólio</h1>
                 
-                  <p-table #dt [columns]="cols" [value]="cars"  [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="selectedCar1" dataKey="nProjeto">
+                  <p-table #dt [columns]="cols" [value]="projetos"  [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="selectedProjeto" dataKey="projetoId">
                       <ng-template pTemplate="caption">
                           <div style="text-align: right; height: 30px;">       
                               <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -58,9 +62,9 @@
                       <ng-template pTemplate="summary">
                           
                             <div style="text-align: left">
-                                Projeto selecionado: {{selectedCar1 ? selectedCar1.nProjeto + ' - ' + selectedCar1.nome + ' - ' + selectedCar1.status + ' - ' + selectedCar1.municipio: 'none'}}
+                                Projeto selecionado: {{selectedProjeto ? selectedProjeto.projetoId + ' - ' + selectedProjeto.projeto : 'Nenhum projeto selecionado'}}
                             </div>
-                            <button type="button"  routerLink="/mainprojeto"  pButton icon="ui-icon-receipt" iconPos="left" label="Abrir Projeto"  style="float:right;background: #1B82D7;margin-top: -25px;"></button>
+                            <button type="button"  (click)="abrir()"  pButton icon="ui-icon-receipt" iconPos="left" label="Abrir Projeto"  style="float:right;background: #1B82D7;margin-top: -25px;"></button>
                         </ng-template>
                     </div>
                     

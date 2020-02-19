@@ -149,6 +149,7 @@ import { AgendarVeiculoComponent } from './transporte/agendamentos/agendar-veicu
 import { TransporteService } from './transporte/transporte.service';
 import { RpaComponent } from './rpa/rpa.component';
 import { ListaAgendamentosComponent } from './transporte/agendamentos/lista-agendamentos/lista-agendamentos.component';
+import { ProjetosService } from './gpp/projetos/projetos.service';
 
 
 
@@ -300,7 +301,8 @@ import { ListaAgendamentosComponent } from './transporte/agendamentos/lista-agen
         AuthService,
         AuthGuard,
         PerformanceService,
-        TransporteService
+        TransporteService,
+        ProjetosService
     ],
     bootstrap: [AppComponent]
 })

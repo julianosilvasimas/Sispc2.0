@@ -357,7 +357,7 @@ module.exports = "<p-toast [style]=\"{marginTop: '80px'}\"></p-toast>\r\n\r\n\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout-sidebar\" [ngStyle]=\"{'overflow':app.sidebarActive ? 'hidden' : 'visible'}\"\r\n                            [ngClass]=\"{'layout-sidebar-dark':app.darkMenu}\" (click)=\"app.onSidebarClick($event)\">\r\n    <div class=\"layout-tabmenu\">\r\n        <ul class=\"layout-tabmenu-nav\">\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 0}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 0)\"><i class=\"material-icons\">home</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Features</div>\r\n                </div>\r\n            </li>\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 1}\">\r\n                    <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 1)\"><i class=\"material-icons\">apps</i></a>\r\n                    <div class=\"layout-tabmenu-tooltip\">\r\n                        <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                        <div class=\"layout-tabmenu-tooltip-text\">Features</div>\r\n                    </div>\r\n                </li>\r\n                <!--\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 2}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 2)\"><i class=\"material-icons\">timer</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Tarefas</div>\r\n                </div>\r\n            </li>-->\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 3}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 3)\"><i class=\"material-icons\">local_printshop</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Calendar</div>\r\n                </div>\r\n            </li>\r\n            <!--\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 4}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 4)\"><i class=\"material-icons\">insert_invitation</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Calendar</div>\r\n                </div>\r\n            </li>\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 5}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 5)\"><i class=\"material-icons\">contacts</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Team</div>\r\n                </div>\r\n            </li>\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 6}\">\r\n                    <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 6)\"><i class=\"material-icons\">settings</i></a>\r\n                    <div class=\"layout-tabmenu-tooltip\">\r\n                        <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                        <div class=\"layout-tabmenu-tooltip-text\">Configurações</div>\r\n                    </div>\r\n                </li>-->\r\n        </ul>\r\n\r\n                \r\n        <div class=\"layout-tabmenu-contents\">\r\n                <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 0}\">\r\n                        <div class=\"layout-submenu-title clearfix\">\r\n                            <span>Área de trabalho</span>\r\n                            <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                        </div>\r\n                        <app-sidebarTabContent>\r\n\r\n                            <div class=\"projects-tab\">\r\n                                    <ul>\r\n                                        <li class=\"clearfix\">\r\n                                            <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                                <i class=\"material-icons\">dashboard</i>\r\n                                                <span class=\"project-title\" style=\"color:#F5F5F5 !important;\">Dashboard</span>\r\n                                            </a>\r\n                                        </li><!--\r\n                                        <li class=\"clearfix\">\r\n                                            <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                                <i class=\"material-icons\">view_module</i>\r\n                                                <span class=\"project-title\" style=\"color:#F5F5F5 !important;\">Módulos</span>\r\n                                            </a>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">playlist_add_check</i>\r\n                                            <span class=\"project-title\">Minhas Tarefas</span>\r\n                                            <span>3 pendentes, 4 encerradas</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 50%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">message</i>\r\n                                            <span class=\"project-title\">Comunicados</span>\r\n                                            <span>24 novas mensagens</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 65%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">favorite</i>\r\n                                            <span class=\"project-title\">Contatos Favoritos</span>\r\n                                            <span>8 total, 4 aprovados</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 80%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">verified_user</i>\r\n                                            <span class=\"project-title\">Usuários</span>\r\n                                            <span>90 total, 45 inativos</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 90%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">videocam</i>\r\n                                            <span class=\"project-title\">Últimas Notícias</span>\r\n                                            <span>12 Novas, 2 edições</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 20%\"></div>\r\n                                            </div>\r\n                                        </li>-->\r\n                                    </ul>\r\n                                </div>\r\n\r\n                        </app-sidebarTabContent>\r\n                    </div>\r\n                    <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 1}\">\r\n                            <div class=\"layout-submenu-title clearfix\">\r\n                                <span>Módulos</span>\r\n                                <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                            </div>\r\n                            <app-sidebarTabContent>\r\n                                <app-menu></app-menu>\r\n                            </app-sidebarTabContent>\r\n                        </div>\r\n                        <!--\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 6}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Apenas Admin*</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                    <app-menu-demo></app-menu-demo>\r\n                </app-sidebarTabContent>\r\n            </div>\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 2}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Tarefas</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                        <div class=\"inbox-labels\">\r\n                            <span>Vencidas</span>\r\n                        </div>\r\n                    <div class=\"inbox-tab\">\r\n                        <ul>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar1.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Joshua Williams</span>\r\n                                <span class=\"message\">Relatórios anexados</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar1.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Joshua Williams</span>\r\n                                <span class=\"message\">Sobre a reunião</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar2.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Emily Clark</span>\r\n                                <span class=\"message\">Atualização de tarefas</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar3.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Tim Johnson</span>\r\n                                <span class=\"message\">Relatório de despesas</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar4.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">David Stark</span>\r\n                                <span class=\"message\">Revisão de orçamento</span>\r\n                            </li>\r\n                        </ul>\r\n                        <div class=\"inbox-labels\">\r\n                            <span>Tipos</span>\r\n                            <ul>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Performance</span>\r\n                                        <span class=\"inbox-label-badge\">4</span>\r\n                                    </a>\r\n                                </li>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Avulsas</span>\r\n                                        <span class=\"inbox-label-badge\">2</span>\r\n                                    </a>\r\n                                </li>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Recorrentes</span>\r\n                                        <span class=\"inbox-label-badge\">3</span>\r\n                                    </a>\r\n                                </li>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Outras</span>\r\n                                        <span class=\"inbox-label-badge\">5</span>\r\n                                    </a>\r\n                                </li>\r\n                            </ul>\r\n                        </div>\r\n                    </div>\r\n                </app-sidebarTabContent>\r\n            </div>-->\r\n\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 3}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Relatórios</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                        <app-menurelatorio></app-menurelatorio>\r\n                </app-sidebarTabContent>\r\n            </div>\r\n\r\n           \r\n<!--\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 4}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Reunioes</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n\r\n                    \r\n                    <div class=\"calendar-tab\">\r\n                        <ul>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>21</span>\r\n                                    <span>OUT</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Reunião Diretoria</span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">Sala Cabo Frio</span>\r\n                                </div>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>13</span>\r\n                                    <span>NOV</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Apresentação 1 </span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">Brig. Faria Lima</span>\r\n                                </div>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>01</span>\r\n                                    <span>DEZ</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Apresentação 2</span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">CAA</span>\r\n                                </div>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>20</span>\r\n                                    <span>DEZ</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Reunião Gerencial</span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">Sala Tamoios</span>\r\n                                </div>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n\r\n\r\n                </app-sidebarTabContent>\r\n            </div>\r\n\r\n\r\n\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 5}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Contatos</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                    <div class=\"team-tab\">\r\n                        <ul>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar1.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Joshua Williams</span>\r\n                                <span class=\"location\">Plan., Anl. Capex</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar2.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Jennifer Clarkson</span>\r\n                                <span class=\"location\">Plan., Ger. Planejamento</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar3.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Tim Johnson</span>\r\n                                <span class=\"location\">Plan., Anl. Opex</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar4.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">David Stark</span>\r\n                                <span class=\"location\">Proj., Ger. Projetos</span>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                </app-sidebarTabContent>\r\n            </div>-->\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"layout-sidebar\" [ngStyle]=\"{'overflow':app.sidebarActive ? 'hidden' : 'visible'}\"\r\n                            [ngClass]=\"{'layout-sidebar-dark':app.darkMenu}\" (click)=\"app.onSidebarClick($event)\">\r\n    <div class=\"layout-tabmenu\">\r\n        <ul class=\"layout-tabmenu-nav\">\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 0}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 0)\"><i class=\"material-icons\">home</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Features</div>\r\n                </div>\r\n            </li>\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 1}\">\r\n                    <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 1)\"><i class=\"material-icons\">apps</i></a>\r\n                    <div class=\"layout-tabmenu-tooltip\">\r\n                        <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                        <div class=\"layout-tabmenu-tooltip-text\">Features</div>\r\n                    </div>\r\n                </li>\r\n                <!--\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 2}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 2)\"><i class=\"material-icons\">timer</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Tarefas</div>\r\n                </div>\r\n            </li>-->\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 3}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 3)\"><i class=\"material-icons\">local_printshop</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Calendar</div>\r\n                </div>\r\n            </li>\r\n            <!--\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 4}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 4)\"><i class=\"material-icons\">insert_invitation</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Calendar</div>\r\n                </div>\r\n            </li>\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 5}\">\r\n                <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 5)\"><i class=\"material-icons\">contacts</i></a>\r\n                <div class=\"layout-tabmenu-tooltip\">\r\n                    <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                    <div class=\"layout-tabmenu-tooltip-text\">Team</div>\r\n                </div>\r\n            </li>\r\n            <li [ngClass]=\"{'active-item':app.activeTabIndex === 6}\">\r\n                    <a href=\"#\" class=\"ripplelink tabmenuitem-link\" (click)=\"app.onTabClick($event, 6)\"><i class=\"material-icons\">settings</i></a>\r\n                    <div class=\"layout-tabmenu-tooltip\">\r\n                        <div class=\"layout-tabmenu-tooltip-arrow\"></div>\r\n                        <div class=\"layout-tabmenu-tooltip-text\">Configurações</div>\r\n                    </div>\r\n                </li>-->\r\n        </ul>\r\n\r\n                \r\n        <div class=\"layout-tabmenu-contents\">\r\n                <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 0}\">\r\n                        <div class=\"layout-submenu-title clearfix\">\r\n                            <span>Área de trabalho</span>\r\n                            <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                        </div>\r\n                        <app-sidebarTabContent>\r\n\r\n                            <div class=\"projects-tab\">\r\n                                    <ul>\r\n                                        <li class=\"clearfix\">\r\n                                            <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                                <i class=\"material-icons\">dashboard</i>\r\n                                                <span class=\"project-title\" style=\"color:#F5F5F5 !important;\">Dashboard</span>\r\n                                            </a>\r\n                                        </li><!--\r\n                                        <li class=\"clearfix\">\r\n                                            <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                                <i class=\"material-icons\">view_module</i>\r\n                                                <span class=\"project-title\" style=\"color:#F5F5F5 !important;\">Módulos</span>\r\n                                            </a>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">playlist_add_check</i>\r\n                                            <span class=\"project-title\">Minhas Tarefas</span>\r\n                                            <span>3 pendentes, 4 encerradas</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 50%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">message</i>\r\n                                            <span class=\"project-title\">Comunicados</span>\r\n                                            <span>24 novas mensagens</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 65%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">favorite</i>\r\n                                            <span class=\"project-title\">Contatos Favoritos</span>\r\n                                            <span>8 total, 4 aprovados</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 80%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">verified_user</i>\r\n                                            <span class=\"project-title\">Usuários</span>\r\n                                            <span>90 total, 45 inativos</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 90%\"></div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li class=\"clearfix\">\r\n                                            <i class=\"material-icons\">videocam</i>\r\n                                            <span class=\"project-title\">Últimas Notícias</span>\r\n                                            <span>12 Novas, 2 edições</span>\r\n                                            <div class=\"project-progressbar\">\r\n                                                <div class=\"project-progressbar-value\" style=\"width: 20%\"></div>\r\n                                            </div>\r\n                                        </li>-->\r\n                                    </ul>\r\n                                </div>\r\n\r\n                        </app-sidebarTabContent>\r\n                    </div>\r\n                    <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 1}\">\r\n                            <div class=\"layout-submenu-title clearfix\">\r\n                                <span>Módulos</span>\r\n                                <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                            </div>\r\n                            <app-sidebarTabContent>\r\n                                <app-menu></app-menu>\r\n                            </app-sidebarTabContent>\r\n                        </div>\r\n                        <!--\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 6}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Apenas Admin*</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                    <app-menu-demo></app-menu-demo>\r\n                </app-sidebarTabContent>\r\n            </div>\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 2}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Tarefas</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                        <div class=\"inbox-labels\">\r\n                            <span>Vencidas</span>\r\n                        </div>\r\n                    <div class=\"inbox-tab\">\r\n                        <ul>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar1.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Joshua Williams</span>\r\n                                <span class=\"message\">Relatórios anexados</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar1.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Joshua Williams</span>\r\n                                <span class=\"message\">Sobre a reunião</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar2.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Emily Clark</span>\r\n                                <span class=\"message\">Atualização de tarefas</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar3.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Tim Johnson</span>\r\n                                <span class=\"message\">Relatório de despesas</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar4.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">David Stark</span>\r\n                                <span class=\"message\">Revisão de orçamento</span>\r\n                            </li>\r\n                        </ul>\r\n                        <div class=\"inbox-labels\">\r\n                            <span>Tipos</span>\r\n                            <ul>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Performance</span>\r\n                                        <span class=\"inbox-label-badge\">4</span>\r\n                                    </a>\r\n                                </li>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Avulsas</span>\r\n                                        <span class=\"inbox-label-badge\">2</span>\r\n                                    </a>\r\n                                </li>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Recorrentes</span>\r\n                                        <span class=\"inbox-label-badge\">3</span>\r\n                                    </a>\r\n                                </li>\r\n                                <li class=\"clearfix\">\r\n                                    <a routerLink='/' (click)=\"app.onTopbarSubItemClick($event)\">\r\n                                        <span class=\"inbox-label\" style=\"color:#F5F5F5 !important;\">Outras</span>\r\n                                        <span class=\"inbox-label-badge\">5</span>\r\n                                    </a>\r\n                                </li>\r\n                            </ul>\r\n                        </div>\r\n                    </div>\r\n                </app-sidebarTabContent>\r\n            </div>-->\r\n\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 3}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Relatórios</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent> \r\n                        <app-menurelatorio></app-menurelatorio>\r\n                </app-sidebarTabContent>\r\n            </div>\r\n\r\n           \r\n<!--\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 4}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Reunioes</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n\r\n                    \r\n                    <div class=\"calendar-tab\">\r\n                        <ul>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>21</span>\r\n                                    <span>OUT</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Reunião Diretoria</span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">Sala Cabo Frio</span>\r\n                                </div>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>13</span>\r\n                                    <span>NOV</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Apresentação 1 </span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">Brig. Faria Lima</span>\r\n                                </div>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>01</span>\r\n                                    <span>DEZ</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Apresentação 2</span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">CAA</span>\r\n                                </div>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <div class=\"calendar-event-date\">\r\n                                    <span>20</span>\r\n                                    <span>DEZ</span>\r\n                                </div>\r\n                                <div class=\"calendar-event-detail\">\r\n                                    <span class=\"calendar-event-title\">Reunião Gerencial</span>\r\n                                    <i class=\"material-icons\">place</i>\r\n                                    <span class=\"calendar-event-location\">Sala Tamoios</span>\r\n                                </div>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n\r\n\r\n                </app-sidebarTabContent>\r\n            </div>\r\n\r\n\r\n\r\n            <div class=\"layout-tabmenu-content\" [ngClass]=\"{'layout-tabmenu-content-active': app.activeTabIndex === 5}\">\r\n                <div class=\"layout-submenu-title clearfix\">\r\n                    <span>Contatos</span>\r\n                    <a href=\"#\" class=\"menu-button material-icons\" (click)=\"app.closeSidebar($event)\">menu</a>\r\n                </div>\r\n                <app-sidebarTabContent>\r\n                    <div class=\"team-tab\">\r\n                        <ul>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar1.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Joshua Williams</span>\r\n                                <span class=\"location\">Plan., Anl. Capex</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar2.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Jennifer Clarkson</span>\r\n                                <span class=\"location\">Plan., Ger. Planejamento</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar3.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">Tim Johnson</span>\r\n                                <span class=\"location\">Plan., Anl. Opex</span>\r\n                            </li>\r\n                            <li class=\"clearfix\">\r\n                                <img src=\"assets/layout/images/avatar4.png\" alt=\"\" width=\"45\">\r\n                                <span class=\"name\">David Stark</span>\r\n                                <span class=\"location\">Proj., Ger. Projetos</span>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                </app-sidebarTabContent>\r\n            </div>-->\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -797,7 +797,7 @@ module.exports = "<!--<p-button label=\"Click\" (onClick)=\"teste()\"></p-button
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==0\">\r\n    <app-agendar-veiculo></app-agendar-veiculo>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n    <app-aprovar-agendamento></app-aprovar-agendamento>\r\n\r\n</div>\r\n\r\n<!--Lista de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==2\">\r\n    <app-lista-agendamentos></app-lista-agendamentos>\r\n\r\n</div>\r\n  \r\n  "
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==0\">\r\n    <app-agendar-veiculo></app-agendar-veiculo>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n    <app-aprovar-agendamento></app-aprovar-agendamento>\r\n\r\n</div>\r\n\r\n<!--Lista de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==2\">\r\n    <app-lista-agendamentos></app-lista-agendamentos>\r\n\r\n</div>\r\n  \r\n  <!--Lista de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==3\">\r\n    <app-calendario-agendamentos></app-calendario-agendamentos>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -819,7 +819,7 @@ module.exports = "<!--AGENDAMENTO DE VEICULO-->\r\n<div class=\"card card-w-titl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"solicitante\"\r\n    [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n            <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n            \r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n    <ng-template let-car pTemplate=\"listItem\">\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"car-details\">\r\n          <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/car{{car.tipoVeiculoSolicitado}}.png\">\r\n          <div class=\"ui-g-10\" >\r\n            <div style=\"margin-left:90px; vertical-align: middle; \" >\r\n\r\n              <div class=\"ui-g-2\">Solicitante: <b>{{car.solicitante}}</b></div>\r\n\r\n              <div class=\"ui-g-2\">\r\n                <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n                <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n              </div>\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">Data Agendamento: <b>{{car.dataAgendamento}}</b></div>\r\n                <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n              </div>\r\n\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">de: <b>{{car.agendadode}}</b></div>\r\n                <div class=\"ui-g-12\">até: <b>{{car.agendadoate}}</b></div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"ui-g-1\" >\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-times\" (click)=\"Reprovar(car)\" style=\"background:#b62727;\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"Aprovar(car)\" style=\"background:#3cb627;\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n    \r\n</p-dataView>\r\n\r\n<p-dialog header=\"Aprovar Solicitação\" [(visible)]=\"displayAprove\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Veiculo Solicitado:       {{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-6\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-6\"><img src=\"assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n  \r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" (click)=\"VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)\" pButton icon=\"pi pi-search\" label=\"Ver Carros Disponíveis\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Aprovando()\" pButton icon=\"pi pi-thumbs-up\" label=\"Aprovar\" style=\"float:right;background:#3cb627;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Veículos Disponíveis\" [(visible)]=\"displaySelect\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onSelectHide()\">\r\n  <div class=\"ui-g\">\r\n    <p-dataView class=\"ui-g-12\" #dv [value]=\"veiculosDisponiveis\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                <div class=\"ui-g-12\">\r\n                  <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar por Placa\" (input)=\"dv.filter($event.target.value)\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car2 pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">Placa: <b>{{car2.placa}}</b></div>\r\n          <div class=\"ui-g-4\">Tipo: <b>{{car2.tipoVeiculo}}</b></div>\r\n          <div class=\"ui-g-3\">Pool: <b>{{car2.pool}}</b></div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"Escolher(car2)\" style=\"background:#b62727;\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-dataView>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Reprovar Solicitação Solicitação\" [(visible)]=\"displayRecuse\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\">\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-4\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n    \r\n\r\n    <div class=\"ui-g-12\">\r\n      <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"Justificativa\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Justificativa\"></textarea>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Reprovando()\" pButton icon=\"pi pi-thumbs-down\" label=\"Reprovar\" style=\"float:right;background:#b62727;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-dataView [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" >\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Solicitante\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n            <p-calendar  class=\"ui-g-4\" (onSelect)=\"Filter()\" [(ngModel)]=\"VALOR3data\" dateFormat=\"yy-mm-dd\" placeholder=\"Agendamento\" ></p-calendar>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n    <ng-template let-car pTemplate=\"listItem\">\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"car-details\">\r\n          <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/car{{car.tipoVeiculoSolicitado}}.png\">\r\n          <div class=\"ui-g-10\" >\r\n            <div style=\"margin-left:90px; vertical-align: middle; \" >\r\n\r\n              <div class=\"ui-g-2\">Solicitante: <b>{{car.solicitante}}</b></div>\r\n\r\n              <div class=\"ui-g-2\">\r\n                <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n                <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n              </div>\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">Data Agendamento: <b>{{car.dataAgendamento}}</b></div>\r\n                <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n              </div>\r\n\r\n\r\n              <div class=\"ui-g-3\">\r\n                <div class=\"ui-g-12\">de: <b>{{car.agendadode}}</b></div>\r\n                <div class=\"ui-g-12\">até: <b>{{car.agendadoate}}</b></div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"ui-g-1\" >\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-times\" (click)=\"Reprovar(car)\" style=\"background:#b62727;\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"Aprovar(car)\" style=\"background:#3cb627;\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n    \r\n</p-dataView>\r\n\r\n<p-dialog header=\"Aprovar Solicitação\" [(visible)]=\"displayAprove\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Veiculo Solicitado:       {{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:       {{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:       {{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-6\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-6\"><img src=\"assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n  \r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" (click)=\"VerificarDisponibilidade(AgendamentoSelecionado.agendadode, AgendamentoSelecionado.agendadoate)\" pButton icon=\"pi pi-search\" label=\"Ver Carros Disponíveis\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Aprovando()\" pButton icon=\"pi pi-thumbs-up\" label=\"Aprovar\" style=\"float:right;background:#3cb627;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Veículos Disponíveis\" [(visible)]=\"displaySelect\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onSelectHide()\">\r\n  <div class=\"ui-g\">\r\n    <p-dataView class=\"ui-g-12\" #dv [value]=\"veiculosDisponiveis\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                <div class=\"ui-g-12\">\r\n                  <input class=\"ui-g-12\" type=\"search\" pInputText placeholder=\"Pesquisar por Placa\" (input)=\"dv.filter($event.target.value)\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car2 pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">Placa: <b>{{car2.placa}}</b></div>\r\n          <div class=\"ui-g-4\">Tipo: <b>{{car2.tipoVeiculo}}</b></div>\r\n          <div class=\"ui-g-3\">Pool: <b>{{car2.pool}}</b></div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"Escolher(car2)\" style=\"background:#b62727;\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-dataView>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Reprovar Solicitação Solicitação\" [(visible)]=\"displayRecuse\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\">\r\n\r\n    <div class=\"ui-g-12\">Solicitante:    {{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:       {{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-4\" >Condutor:       {{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\">Modelo Solicitado: </div>\r\n    <div class=\"ui-g-12\"><img src=\"assets/layout/images/transporte/car{{AgendamentoSelecionado.tipoVeiculoSolicitado}}.png\" width=\"150px\"></div>\r\n    \r\n\r\n    <div class=\"ui-g-12\">\r\n      <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"Justificativa\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Justificativa\"></textarea>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <button type=\"button\" (click)=\"Reprovando()\" pButton icon=\"pi pi-thumbs-down\" label=\"Reprovar\" style=\"float:right;background:#b62727;\"></button>\r\n    </div>\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -841,7 +841,7 @@ module.exports = "<h4>Calendário de Agendamentos</h4>\r\n<p-fullCalendar [event
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Solicitante\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        \r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 filter-container\">\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Solicitante\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n                <p-calendar class=\"ui-g-4\" type=\"search\" (onSelect)=\"Filter()\" [(ngModel)]=\"VALOR3data\" dateFormat=\"yy-mm-dd\" placeholder=\"Agendamento\" ></p-calendar>\r\n                \r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -852,7 +852,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\" filterBy=\"placa\"\r\n      [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 ui-md-4 filter-container\">\r\n              <div style=\"position:relative\">\r\n                  <input type=\"search\" pInputText placeholder=\"Pesquisar pelo Placa\" (input)=\"dv.filter($event.target.value)\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/car{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n\r\n  <p-dialog header=\"Detalhes do Veículo\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"selectedCar\" style=\"height:50%\">\r\n      <div class=\"ui-g-12\" style=\"text-align:center\">\r\n          <img src=\"assets/layout/images/transporte/car{{selectedCar.modelo}}.png\" width=\"400px\">\r\n      </div>\r\n\r\n      <div class=\"ui-g-4\">Placa: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.placa}}</div>\r\n\r\n      <div class=\"ui-g-4\">Condutor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.responsavel}}</div>\r\n\r\n      <div class=\"ui-g-4\">Modelo: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.modelo}}</div>\r\n\r\n      <div class=\"ui-g-4\">Adicional: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cadcapacidadem3}}</div>\r\n\r\n      <div class=\"ui-g-4\">Odometro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.odometro}}</div>\r\n\r\n      <div class=\"ui-g-4\">Data do Cadastro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.datcad}}</div>\r\n\r\n      <div class=\"ui-g-4\">Ano: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.ano}}</div>\r\n\r\n      <div class=\"ui-g-4\">Cor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cor}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Gerencia: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.gerencia}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Supervisao: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.supervisao}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Chassi: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.chassi}}</div>\r\n      <div class=\"ui-g-12\" style=\"text-align:center;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"editCar(selectedCar)\"></button>\r\n      </div>\r\n  </div>\r\n  </p-dialog>\r\n\r\n\r\n  <p-dialog header=\"Editar Veículo\" [(visible)]=\"displayEdit\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"editedCar\" style=\"height:100%\">\r\n      <div class='ui-g-12'>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n          <div class=\"ui-g-6 item\">\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editplaca\"  class=\"ui-g-12\" [disabled]=\"disabled\" pInputText/>\r\n              <label>Placa</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editchassi\" class=\"ui-g-12\"  [disabled]=\"disabled\" pInputText/>\r\n              <label >Chassi</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editgps\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12 item\" >\r\n                <label >GPS</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editoficina\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Oficina</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editpool\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Pool</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editdevolvido\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Devolvido</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown  [options]=\"modelos\" [autoWidth]=\"true\" [(ngModel)]=\"editmodelo\" styleClass = \"drop95\"  filter=\"true\"></p-dropdown>\r\n              <label >Modelos</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [options]=\"adicionais\" [autoWidth]=\"true\" [(ngModel)]=\"editcapacidadem3\" styleClass = \"drop95\" filter=\"true\"></p-dropdown>\r\n              <label >Adicional</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\" filter=\"true\"></p-dropdown>\r\n              <label >Supervisão</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editresponsavel\" styleClass = \"drop95\" [options]=\"condutores\" filter=\"true\"></p-dropdown>\r\n              <label >Responsável</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"edittipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\" filter=\"true\"></p-dropdown>\r\n              <label >Tipo do Veículo</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editlocadora\" styleClass = \"drop95\" [options]=\"locadoras\" filter=\"true\"></p-dropdown>\r\n              <label >Locadoras</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n      \r\n      <div class=\"ui-g-12\" style=\"text-align:center; margin-top: 40px;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"EditarVeiculo()\"></button>\r\n      </div>\r\n    </div>\r\n    </p-dialog>\r\n</div>\r\n\r\n\r\n\r\n\r\n<!--CADASTRO DE NOVO VEICULO-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==1\">\r\n  <h4>CADASTRAR NOVO VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class='ui-g-8'>\r\n      <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6 item\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\" class=\"ui-g-12\" pInputText/>\r\n            <label>Placa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n            <label >Chassi</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\" [options]=\"modelos\"></p-dropdown>\r\n            <label >Modelos</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n            <label >Adicional</label>\r\n          </span>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-3\" >\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >GPS</label>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Oficina</label>\r\n        </div>\r\n      </div>\r\n\r\n        \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Pool</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >;\r\n          <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Devolvido</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n          <label >Locadoras</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadgerencia\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <!-- <div class=\"ui-g-8 item\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" class=\"ui-g-12 item\" value=\"PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto\" pInputText/>\r\n          <label>Unidade</label>\r\n        </span>\r\n      </div> -->\r\n\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n          <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Responsável</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarVeiculo()\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==0\">\r\n  <p-dataView [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 filter-container\">\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Placa\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Gerencia\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR3\">\r\n            </div>\r\n            <!-- <div class=\"ui-g-12 filter-container\">\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Modelo\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR4\" >\r\n                <div class=\"ui-g-4 item\" >\r\n                  <div class=\"ui-g-6 item\" >\r\n                    <label >Pool</label>\r\n                  </div>\r\n                  <div class=\"ui-g-6 item\" >\r\n                    <p-inputSwitch [(ngModel)]=\"VALOR5\" (onChange)=\"Filter()\" ></p-inputSwitch>\r\n                  </div>\r\n                </div>\r\n                <div class=\"ui-g-4 item\" >\r\n                  <div class=\"ui-g-6 item\" >\r\n                    <label >Oficina</label>\r\n                  </div>\r\n                  <div class=\"ui-g-6 item\" >\r\n                    <p-inputSwitch [(ngModel)]=\"VALOR6\" (onChange)=\"Filter()\" ></p-inputSwitch>\r\n                  </div>\r\n                </div>\r\n\r\n            </div> -->\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"ui-g-12\">\r\n          <div class=\"car-details\">\r\n            <img class=\"ui-g-1\" src=\"assets/layout/images/transporte/car{{car.modelo}}.png\">\r\n            <div class=\"ui-g-10\" >\r\n              <div style=\"margin-left:90px;\" >\r\n                <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n                <div class=\"ui-g-6\">Modelo/Ano: <b>{{car.modelo}} / {{car.year}}</b></div>\r\n                <div class=\"ui-g-6\">Condutor: <b>{{car.responsavel}}</b></div>\r\n                <div class=\"ui-g-6\">Gerencia: <b>{{car.gerencia}}</b></div>\r\n                <div class=\"ui-g-6\">Supervisao: <b>{{car.supervisao}}</b></div>\r\n              </div>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar(car)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n\r\n  <p-dialog header=\"Detalhes do Veículo\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"selectedCar\" style=\"height:50%\">\r\n      <div class=\"ui-g-12\" style=\"text-align:center\">\r\n          <img src=\"assets/layout/images/transporte/car{{selectedCar.modelo}}.png\" width=\"400px\">\r\n      </div>\r\n\r\n      <div class=\"ui-g-4\">Placa: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.placa}}</div>\r\n\r\n      <div class=\"ui-g-4\">Condutor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.responsavel}}</div>\r\n\r\n      <div class=\"ui-g-4\">Modelo: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.modelo}}</div>\r\n\r\n      <div class=\"ui-g-4\">Adicional: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cadcapacidadem3}}</div>\r\n\r\n      <div class=\"ui-g-4\">Odometro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.odometro}}</div>\r\n\r\n      <div class=\"ui-g-4\">Data do Cadastro: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.datcad}}</div>\r\n\r\n      <div class=\"ui-g-4\">Ano: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.ano}}</div>\r\n\r\n      <div class=\"ui-g-4\">Cor: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.cor}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Gerencia: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.gerencia}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Supervisao: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.supervisao}}</div>\r\n      \r\n      <div class=\"ui-g-4\">Chassi: </div>\r\n      <div class=\"ui-g-8\">{{selectedCar.chassi}}</div>\r\n      <div class=\"ui-g-12\" style=\"text-align:center;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"editCar(selectedCar)\"></button>\r\n      </div>\r\n  </div>\r\n  </p-dialog>\r\n\r\n\r\n  <p-dialog header=\"Editar Veículo\" [(visible)]=\"displayEdit\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <div class=\"ui-g\" *ngIf=\"editedCar\" style=\"height:100%\">\r\n      <div class='ui-g-12'>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n          <div class=\"ui-g-6 item\">\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editplaca\"  class=\"ui-g-12\" [disabled]=\"disabled\" pInputText/>\r\n              <label>Placa</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <input id=\"input\" type=\"text\" [(ngModel)]=\"editchassi\" class=\"ui-g-12\"  [disabled]=\"disabled\" pInputText/>\r\n              <label >Chassi</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editgps\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12 item\" >\r\n                <label >GPS</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editoficina\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Oficina</label>\r\n              </div>\r\n            </div>\r\n    \r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editpool\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Pool</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"ui-g-3 item\" >\r\n              <div class=\"ui-g-12 item\" >\r\n                <p-inputSwitch [(ngModel)]=\"editdevolvido\"></p-inputSwitch>\r\n              </div>\r\n              <div class=\"ui-g-12\" >\r\n                  <label >Devolvido</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown  [options]=\"modelos\" [autoWidth]=\"true\" [(ngModel)]=\"editmodelo\" styleClass = \"drop95\"  filter=\"true\"></p-dropdown>\r\n              <label >Modelos</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [options]=\"adicionais\" [autoWidth]=\"true\" [(ngModel)]=\"editcapacidadem3\" styleClass = \"drop95\" filter=\"true\"></p-dropdown>\r\n              <label >Adicional</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\" filter=\"true\"></p-dropdown>\r\n              <label >Supervisão</label>\r\n            </span>\r\n          </div>\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editresponsavel\" styleClass = \"drop95\" [options]=\"condutores\" filter=\"true\"></p-dropdown>\r\n              <label >Responsável</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"edittipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\" filter=\"true\"></p-dropdown>\r\n              <label >Tipo do Veículo</label>\r\n            </span>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6 item\" >\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"editlocadora\" styleClass = \"drop95\" [options]=\"locadoras\" filter=\"true\"></p-dropdown>\r\n              <label >Locadoras</label>\r\n            </span>\r\n          </div>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n      \r\n      <div class=\"ui-g-12\" style=\"text-align:center; margin-top: 40px;\" >\r\n        <button pButton type=\"button\" label=\"Editar\" (click)=\"EditarVeiculo()\"></button>\r\n      </div>\r\n    </div>\r\n    </p-dialog>\r\n</div>\r\n\r\n\r\n\r\n\r\n<!--CADASTRO DE NOVO VEICULO-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==1\">\r\n  <h4>CADASTRAR NOVO VEÍCULO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class='ui-g-8'>\r\n      <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6 item\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadplaca\" class=\"ui-g-12\" pInputText/>\r\n            <label>Placa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"cadchassi\" class=\"ui-g-12\" pInputText/>\r\n            <label >Chassi</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadmodelo\" styleClass = \"drop95\" [options]=\"modelos\"></p-dropdown>\r\n            <label >Modelos</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-6 item\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadcapacidadem3\" styleClass = \"drop95\" [options]=\"adicionais\"></p-dropdown>\r\n            <label >Adicional</label>\r\n          </span>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-3\" >\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadgps\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >GPS</label>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadoficina\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Oficina</label>\r\n        </div>\r\n      </div>\r\n\r\n        \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >\r\n          <p-inputSwitch [(ngModel)]=\"cadpool\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Pool</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-3 item\" >;\r\n          <p-inputSwitch [(ngModel)]=\"caddevolvido\"></p-inputSwitch>\r\n        </div>\r\n        <div class=\"ui-g-9\" >\r\n            <label >Devolvido</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadtipoVeiculo\" styleClass = \"drop95\" [options]=\"tipoVeiculo\"></p-dropdown>\r\n          <label >Tipo do Veículo</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadlocadora\" styleClass = \"drop95\" [options]=\"locadoras\"></p-dropdown>\r\n          <label >Locadoras</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadgerencia\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 40px;\">\r\n      <!-- <div class=\"ui-g-8 item\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" class=\"ui-g-12 item\" value=\"PR - Prolagos S.A. - Concessionária de Serviços Públicos de Água e Esgoto\" pInputText/>\r\n          <label>Unidade</label>\r\n        </span>\r\n      </div> -->\r\n\r\n      \r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadsupervisao\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n          <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4 item\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"cadresponsavel\" styleClass = \"drop95\" [options]=\"condutores\"></p-dropdown>\r\n          <label >Responsável</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarVeiculo()\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -1202,8 +1202,37 @@ let AppMenuComponent = class AppMenuComponent {
     constructor(app, performanceService) {
         this.app = app;
         this.performanceService = performanceService;
+        this.permissoes = [];
+        this.usuPerformance = false;
+        this.usuComissao = false;
+        this.usuTransporte = false;
     }
     ngOnInit() {
+        //Preencehendo array de permissoes e liberando acessos
+        let i = 0;
+        while (sessionStorage.getItem("permissao " + i) != null) {
+            let permissao = sessionStorage.getItem("permissao " + i);
+            this.permissoes.push(permissao);
+            //Liberando acessos
+            if (permissao === "ROLE_ADMIN") {
+                this.usuPerformance = true;
+                this.usuComissao = true;
+                this.usuTransporte = true;
+            }
+            else if (permissao === "ROLE_USER_COMISSAO") {
+                this.usuComissao = true;
+            }
+            else if (permissao === "ROLE_USER_FROTAS") {
+                this.usuTransporte = true;
+            }
+            else if (permissao === "ROLE_USER_INDICADOR") {
+                this.usuPerformance
+                    = true;
+            }
+            i++;
+        }
+        console.log(this.usuPerformance);
+        console.log(this.permissoes);
         this.performanceService.classindicadores(6)
             .subscribe(response => {
             this.indicadores = response;
@@ -1212,28 +1241,41 @@ let AppMenuComponent = class AppMenuComponent {
         this.performanceService.gerencias()
             .subscribe(response => {
             this.gerencias = response.splice(2, Number.MAX_VALUE);
-            this.model = [
-                {
+            this.model = [];
+            //Começando a construção do Menu
+            //Performance
+            if (this.usuPerformance === true) {
+                this.model.push({
                     label: 'Performance', icon: 'timeline',
+                    items: this.permissoes[1] === "ROLE_DESENVOLVIMENTO" ? //DEntro do operador o que ainda será construído
+                        [
+                            {
+                                label: 'Acompanhamento', icon: 'subject',
+                                items: this.gerencias
+                            },
+                            {
+                                label: 'Fechamento', icon: 'subject',
+                                items: [
+                                    { label: 'Relatórios por área', icon: 'subject' },
+                                    { label: 'Arquivamento', icon: 'subject' }
+                                ]
+                            }
+                        ] :
+                        [
+                            {
+                                label: 'Acompanhamento', icon: 'subject',
+                                items: this.gerencias
+                            }
+                        ]
+                });
+            }
+            //Em Construção...
+            if (this.permissoes[1] === "ROLE_DESENVOLVIMENTO") { // usado temporariamente esse perfil por estar ain
+                this.model.push({ label: 'Planejamento', icon: 'equalizer',
                     items: [
-                        {
-                            label: 'Acompanhamento', icon: 'subject',
-                            items: this.gerencias
-                        } /*,
-                        {
-                            label: 'Fechamento', icon: 'subject',
-                            items: [
-                                {label: 'Relatórios por área', icon: 'subject'},
-                                {label: 'Arquivamento', icon: 'subject'}
-                            ]
-                        }*/
-                    ],
-                },
-                { label: 'Planejamento', icon: 'equalizer',
-                    items: [
-                        /*{label: 'Capex', icon: 'subject'},
-                        {label: 'Opex', icon: 'subject'},
-                        {label: 'DRE', icon: 'subject'},*/
+                        { label: 'Capex', icon: 'subject' },
+                        { label: 'Opex', icon: 'subject' },
+                        { label: 'DRE', icon: 'subject' },
                         { label: 'GPP', icon: 'view_list',
                             items: [
                                 { label: 'Dashboard', icon: 'subject' },
@@ -1241,9 +1283,55 @@ let AppMenuComponent = class AppMenuComponent {
                                 { label: 'Processos', icon: 'call_split' }
                             ]
                         },
+                        { label: 'RPA', icon: 'pi-android',
+                            items: [
+                                { label: 'Robos', icon: 'pi-android', routerLink: '/rpa' }
+                            ]
+                        },
                     ]
-                },
-                { label: 'Comercial', icon: 'monetization_on',
+                }, { label: 'Diretoria', icon: 'business_center',
+                    items: [
+                        { label: 'Indicadores', icon: 'subject' },
+                        { label: 'Projetos', icon: 'subject' }
+                    ]
+                }, { label: 'Operacional', icon: 'invert_colors',
+                    items: [
+                        { label: 'Operação Água', icon: 'subject' },
+                        { label: 'Operação Esgoto', icon: 'subject' },
+                        { label: 'Eletromecânica', icon: 'settings_input_component',
+                            items: [
+                                { label: 'Preventivas/Corretivas', icon: 'subject' },
+                                { label: 'Inventário', icon: 'subject' }
+                            ]
+                        },
+                    ]
+                }, { label: 'Administrativo', icon: 'domain',
+                    items: [
+                        { label: 'Contratos', icon: 'subject' },
+                        { label: 'Facilities', icon: 'subject' },
+                        { label: 'Compras', icon: 'subject' }
+                    ]
+                }, { label: 'Serviços', icon: 'build',
+                    items: []
+                }, { label: 'Comunicação', icon: 'videocam',
+                    items: []
+                }, { label: 'Jurídico', icon: 'gavel',
+                    items: [
+                        { label: 'Processos', icon: 'subject' },
+                        { label: 'Regulatório', icon: 'subject' }
+                    ]
+                }, { label: 'Recursos Humanos', icon: 'people',
+                    items: []
+                }, { label: 'EHS', icon: 'local_florist',
+                    items: [
+                        { label: 'Planejamento', icon: 'subject' },
+                        { label: 'Gestão', icon: 'subject' }
+                    ]
+                });
+            }
+            //Comissão
+            if (this.usuComissao === true) {
+                this.model.push({ label: 'Comercial', icon: 'monetization_on',
                     items: [
                         {
                             label: 'Comissão de Fraudes', icon: 'subject',
@@ -1252,67 +1340,24 @@ let AppMenuComponent = class AppMenuComponent {
                                 {label: 'Controle de fraudes', icon: 'subject'}   */
                             ]
                         } /*,
-                       {label: 'Receita', icon: 'subject'},
-                       {label: 'Cobrança', icon: 'subject'},
-                       {label: 'Atendimento', icon: 'subject'},
-                       {label: 'Cadastro', icon: 'subject'}*/
+                        {label: 'Receita', icon: 'subject'},
+                        {label: 'Cobrança', icon: 'subject'},
+                        {label: 'Atendimento', icon: 'subject'},
+                        {label: 'Cadastro', icon: 'subject'}*/
                     ]
-                },
-                { label: 'Transporte', icon: 'directions_car',
-                    items: [
-                        { label: 'Gestão de Frotas', icon: 'subject', routerLink: '/transporte' },
+                });
+            }
+            // GLobal com pequena alteração para usuários transportes
+            this.model.push({ label: 'Transporte', icon: 'directions_car',
+                items: [
+                    //Operador ternário controle usuario
+                    this.usuTransporte === true ?
+                        { label: 'Gestão de Frotas', icon: 'subject', routerLink: '/transporte' } :
                         { label: 'Agendamento', icon: 'subject', routerLink: '/agendamento' }
-                    ]
-                }
-                /*,{label: 'Operacional', icon: 'invert_colors',
-                 items: [
-                    {label: 'Operação Água', icon: 'subject'},
-                    {label: 'Operação Esgoto', icon: 'subject'},
-                    {label: 'Eletromecânica', icon: 'settings_input_component',
-                        items: [
-                            {label: 'Preventivas/Corretivas', icon: 'subject'},
-                            {label: 'Inventário', icon: 'subject'}
-                        ]
-                    },
-                 ]
-                },
-                {label: 'Administrativo', icon: 'domain',
-                 items: [
-                     {label: 'Contratos', icon: 'subject'},
-                     {label: 'Facilities', icon: 'subject'},
-                     {label: 'Compras', icon: 'subject'}
-                    ]
-                },
-                {label: 'Serviços', icon: 'build',
-                 items: [
-    
-                 ]
-                },
-                {label: 'Comunicação', icon: 'videocam',
-                 items: [
-    
-                 ]
-                },
-                {label: 'Jurídico', icon: 'gavel',
-                 items: [
-                    {label: 'Processos', icon: 'subject'},
-                    {label: 'Regulatório', icon: 'subject'}
-                 ]
-                },
-                {label: 'Recursos Humanos', icon: 'people',
-                 items: [
-    
-                 ]
-                },
-                {label: 'EHS', icon: 'local_florist',
-                 items: [
-                    {label: 'Planejamento', icon: 'subject'},
-                    {label: 'Gestão', icon: 'subject'}
-                 ]
-                },*/
-            ];
+                ]
+            });
         });
-    }
+    } //fechando subscribe de gerencia
 };
 AppMenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1829,9 +1874,36 @@ let MenurelatorioComponent = class MenurelatorioComponent {
     constructor(performanceService) {
         this.performanceService = performanceService;
         this.qtd = 0;
+        this.permissoes = [];
+        this.usuPerformance = false;
+        this.usuComissao = false;
+        this.usuTransporte = false;
     }
     ngOnInit() {
         this.preenchergerencias();
+        //Preencehendo array de permissoes e liberando acessos
+        let i = 0;
+        while (sessionStorage.getItem("permissao " + i) != null) {
+            let permissao = sessionStorage.getItem("permissao " + i);
+            this.permissoes.push(permissao);
+            //Liberando acessos
+            if (permissao === "ROLE_ADMIN") {
+                this.usuPerformance = true;
+                this.usuComissao = true;
+                this.usuTransporte = true;
+            }
+            else if (permissao === "ROLE_ADMIN_COMISSAO") {
+                this.usuComissao = true;
+            }
+            else if (permissao === "ROLE_ADMIN_FROTAS") {
+                this.usuTransporte = true;
+            }
+            else if (permissao === "ROLE_ADMIN_INDICADOR") {
+                this.usuPerformance
+                    = true;
+            }
+            i++;
+        }
     }
     preenchergerencias() {
         this.performanceService.gerencias()
@@ -1854,11 +1926,13 @@ let MenurelatorioComponent = class MenurelatorioComponent {
         });
     }
     Preencheitems() {
-        this.items = [
-            {
-                label: 'Performance', icon: 'timeline', routerLink: '/relatorio'
-            }
-        ];
+        this.items = this.usuPerformance === true ?
+            [
+                {
+                    label: 'Performance', icon: 'timeline', routerLink: '/relatorio'
+                }
+            ] :
+            [];
     }
 };
 MenurelatorioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1936,8 +2010,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-const API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
-// export const API_CONFIG =  'http://localhost:7777'
+//export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
+const API_CONFIG = 'http://sispcprl01:7777/teste-sispc-backend';
+//  export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/sispc-backend-teste'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -6729,10 +6804,11 @@ let HomeComponent = class HomeComponent {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_4__["ErrorHandler"].handleError)));
     }
     ngOnInit() {
+        // console.log(sessionStorage.getItem("permissao 2"))    traz permissão
         this.tempoagora()
             .subscribe(tempo => {
             let d;
-            //console.log(tempo['data']),
+            //console.log(tempo['data']), mostra o tempo completo
             this.temperatura = tempo['data'].temperature;
             this.hoje = tempo['data'].date;
             this.condicao = tempo['data'].condition;
@@ -6749,8 +6825,8 @@ let HomeComponent = class HomeComponent {
         });
         this.temposemana()
             .subscribe(tempo => {
-            console.log(tempo['data']),
-                this.previsoes = tempo['data'],
+            // console.log(tempo['data']),
+            this.previsoes = tempo['data'],
                 this.previsoes.forEach(element => {
                     this.chuva.push(element['rain']['probability']),
                         this.condicoes.push(element['text_icon']['text']['pt']),
@@ -6761,7 +6837,7 @@ let HomeComponent = class HomeComponent {
             this.manha = this.previsoes[0]['text_icon']['text']['phrase']['morning'];
             this.tarde = this.previsoes[0]['text_icon']['text']['phrase']['afternoon'];
             this.noite = this.previsoes[0]['text_icon']['text']['phrase']['night'];
-            console.log(this.manha);
+            //console.log(this.manha)
         });
     }
 };
@@ -6909,8 +6985,10 @@ let AuthService = class AuthService {
         //console.log('Data Login: '+ dateIni);
         //console.log('Data Validade: '+ dateExp);
         // Verificando permissões
-        tokenDecode.roles.forEach(element => {
+        tokenDecode.roles.forEach((element, index) => {
             this.auth.push(element['authority']);
+            sessionStorage.setItem("permissao " + index, element['authority']);
+            console.log(element);
         });
         return this.dados;
     }
@@ -8948,11 +9026,16 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         ];
         this.ArrDestinos = [
             { label: '', value: '' },
+            { label: 'ARARUAMA', value: 'ARARUAMA' },
             { label: 'ARMAÇÃO DOS BÚZIOS', value: 'ARMAÇÃO DOS BÚZIOS' },
             { label: 'ARRAIAL DO CABO', value: 'ARRAIAL DO CABO' },
             { label: 'CABO FRIO', value: 'CABO FRIO' },
             { label: 'CABO FRIO TAMOIOS', value: 'CABO FRIO TAMOIOS' },
             { label: 'SÃO PEDRO DA ALDEIA', value: 'SÃO PEDRO DA ALDEIA' },
+            { label: 'SÃO VICENTE DE PAULO', value: 'SÃO VICENTE DE PAULO' },
+            { label: 'NITERÓI', value: 'NITERÓI' },
+            { label: 'RIO DE JANEIRO', value: 'RIO DE JANEIRO' },
+            { label: 'RIO DAS OSTRAS', value: 'RIO DAS OSTRAS' },
             { label: 'IGUABA GRANDE', value: 'IGUABA GRANDE' }
         ];
         this.menorData();
@@ -9127,11 +9210,33 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
         });
         this.transporteService.ParaAprovar()
             .subscribe(Agendamento => {
+            this.Agendamentos2 = Agendamento;
             this.Agendamentos = Agendamento;
-            console.log(Agendamento);
+            this.Filter();
+        });
+        this.Agendamentos2.array.forEach(element => {
+            element['agendamentode'];
         });
     }
-    //==========================================================================================
+    Filter() {
+        this.VALOR1 = this.VALOR1 == undefined ? null : this.VALOR1 == "" ? null : this.VALOR1;
+        this.VALOR2 = this.VALOR2 == undefined ? null : this.VALOR2 == "" ? null : this.VALOR2;
+        this.VALOR3 = this.VALOR3data == undefined ? null : this.dataAtualFormatada(this.VALOR3data);
+        var agend = this.Agendamentos2;
+        if (this.VALOR1 !== null) {
+            console.log(this.VALOR1);
+            agend = agend.filter(item => item.solicitante.toUpperCase().includes(this.VALOR1.toUpperCase()));
+        }
+        else if (this.VALOR2 !== null) {
+            console.log(this.VALOR2);
+            agend = agend.filter(item => item.condutor.toUpperCase().includes(this.VALOR2.toUpperCase()));
+        }
+        else if (this.VALOR3 !== null) {
+            console.log(this.VALOR3);
+            agend = agend.filter(item => item.agendadode.includes(this.VALOR3));
+        }
+        this.Agendamentos = agend;
+    }
     Aprovar(Agendamento) {
         this.AgendamentoSelecionado = Agendamento;
         this.displayAprove = true;
@@ -9245,7 +9350,6 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
         });
     }
     PreencherDisponiveis(Agendados) {
-        console.log(Agendados);
         var todos = this.veiculos;
         this.veiculosDisponiveis = [];
         this.veiculosNaoDisponiveis = Agendados;
@@ -9269,6 +9373,17 @@ let AprovarAgendamentoComponent = class AprovarAgendamentoComponent {
             }
         }
         this.displaySelect = true;
+    }
+    //==========================================================================================
+    dataAtualFormatada(datareceb) {
+        var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
+        return ano2 + "-" + mes2 + "-" + dia2;
+    }
+    dataHoraFormatada(datareceb) {
+        var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
+        return dia2 + "/" + mes2 + "/" + ano2 + " " + hora2 + ":" + minuto2 + ":00";
     }
 };
 AprovarAgendamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9437,8 +9552,28 @@ let ListaAgendamentosComponent = class ListaAgendamentosComponent {
         this.Agendamentos = [];
         this.transporteService.Aprovados()
             .subscribe(agendamentos => {
+            this.Agendamentos2 = agendamentos;
             this.Agendamentos = agendamentos;
         });
+    }
+    Filter() {
+        this.VALOR1 = this.VALOR1 == undefined ? null : this.VALOR1 == "" ? null : this.VALOR1;
+        this.VALOR2 = this.VALOR2 == undefined ? null : this.VALOR2 == "" ? null : this.VALOR2;
+        this.VALOR3 = this.VALOR3data == undefined ? null : this.dataAtualFormatada(this.VALOR3data);
+        var agend = this.Agendamentos2;
+        if (this.VALOR1 !== null) {
+            console.log(this.VALOR1);
+            agend = agend.filter(item => item.solicitante.toUpperCase().includes(this.VALOR1.toUpperCase()));
+        }
+        else if (this.VALOR2 !== null) {
+            console.log(this.VALOR2);
+            agend = agend.filter(item => item.condutor.toUpperCase().includes(this.VALOR2.toUpperCase()));
+        }
+        else if (this.VALOR3 !== null) {
+            console.log(this.VALOR3);
+            agend = agend.filter(item => item.agendadode.includes(this.VALOR3));
+        }
+        this.Agendamentos = agend;
     }
     showAgendamento(agendamento) {
         this.displayAgendamento = true;
@@ -9448,6 +9583,11 @@ let ListaAgendamentosComponent = class ListaAgendamentosComponent {
         this.Agendamentos = null;
         this.displayAgendamento = false;
         this.AtualizarLista();
+    }
+    dataAtualFormatada(datareceb) {
+        var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
+        return ano2 + "-" + mes2 + "-" + dia2;
     }
 };
 ListaAgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9565,29 +9705,62 @@ let CadastroComponent = class CadastroComponent {
         ];
         this.trocadeitemIndex(0);
     }
-    filter() {
-        console.log("============");
-        this.cars = this.cars0;
-        if (this.sortKey == '0') {
-            this.cars = this.cars0;
+    Filter() {
+        this.VALOR1 = this.VALOR1 == undefined ? null : this.VALOR1 == "" ? null : this.VALOR1;
+        this.VALOR2 = this.VALOR2 == undefined ? null : this.VALOR2 == "" ? null : this.VALOR2;
+        this.VALOR3 = this.VALOR3 == undefined ? null : this.VALOR3 == "" ? null : this.VALOR3;
+        this.VALOR4 = this.VALOR4 == undefined ? null : this.VALOR4 == "" ? null : this.VALOR4;
+        var agend = this.cars0;
+        if (this.VALOR1 !== null) {
+            console.log(this.VALOR1);
+            agend = agend.filter(item => item.placa.toUpperCase().includes(this.VALOR1.toUpperCase()));
         }
-        else {
-            for (var i = 0; i < this.cars0.length; i++) {
-                console.log("index = " + i + " de " + this.cars0.length);
-                var modelo = this.cars0[i].brand;
-                var modelocomp = this.modelos[(this.sortKey - 1)].label;
-                if (modelo == modelocomp) {
-                    this.cars.push({
-                        vin: this.cars0[i].vin,
-                        brand: this.cars0[i].brand,
-                        color: this.cars0[i].color,
-                        placa: this.cars0[i].placa,
-                        year: this.cars0[i].year,
-                    });
-                }
-            }
+        else if (this.VALOR2 !== null) {
+            console.log(this.VALOR2);
+            agend = agend.filter(item => item.gerencia.toUpperCase().includes(this.VALOR2.toUpperCase()));
         }
+        else if (this.VALOR3 !== null) {
+            console.log(this.VALOR3);
+            agend = agend.filter(item => item.responsavel.toUpperCase().includes(this.VALOR3.toUpperCase()));
+        }
+        else if (this.VALOR4 !== null) {
+            console.log(this.VALOR4);
+            agend = agend.filter(item => item.modelo.toUpperCase().includes(this.VALOR4.toUpperCase()));
+            // }else if(this.VALOR5=false){
+            //   this.cars = agend
+            // }else if(this.VALOR6=false){
+            //   this.cars = agend
+            // }else if(this.VALOR6=true){
+            //     agend = agend.filter(item => item.oficina == this.VALOR6)
+            // }else if(this.VALOR5=true){
+            //   agend = agend.filter(item => item.pool == this.VALOR5)
+        }
+        this.cars = agend;
     }
+    // filter(){
+    //   console.log("============")
+    //   this.cars = this.cars0
+    //   if(this.sortKey == '0'){
+    //     this.cars = this.cars0
+    //   }else{
+    //     for(var i = 0; i<this.cars0.length; i++ ){
+    //       console.log("index = "+i+" de "+this.cars0.length)
+    //       var modelo:string=this.cars0[i].brand ;
+    //       var modelocomp:string=this.modelos[(this.sortKey-1)].label ;
+    //       if(modelo == modelocomp){
+    //         this.cars.push(
+    //           {
+    //             vin: this.cars0[i].vin,
+    //             brand: this.cars0[i].brand,
+    //             color: this.cars0[i].color,
+    //             placa: this.cars0[i].placa,
+    //             year: this.cars0[i].year,
+    //           }
+    //         )
+    //       }
+    //     }
+    //   }
+    // }
     trocadeitem(activeItem) {
         this.activeItem = activeItem['activeItem'];
         this.activeItemIndex = this.items.indexOf(this.activeItem);
@@ -9603,6 +9776,7 @@ let CadastroComponent = class CadastroComponent {
             .subscribe(Veiculos => {
             this.cars0 = Veiculos;
             this.cars = Veiculos;
+            this.cars2 = Veiculos;
         });
         this.transporteService.Gerencias()
             .subscribe(Gerencias => {
@@ -9733,6 +9907,11 @@ let CadastroComponent = class CadastroComponent {
         this.cadgps = null;
         this.cadoficina = null;
         this.caddevolvido = null;
+    }
+    dataAtualFormatada(datareceb) {
+        var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
+        return ano2 + "-" + mes2 + "-" + dia2;
     }
 };
 CadastroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -10282,7 +10461,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc\Sispc2.0\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Users\juliano.simas\Documents\AngularProjects\Sispc2.0\src\main.ts */"./src/main.ts");
 
 
 /***/ })
