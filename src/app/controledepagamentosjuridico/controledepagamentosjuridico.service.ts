@@ -23,6 +23,15 @@ export class ControledepagamentosjuridicoService {
     return  this.http.get(`${API_CONFIG}/pagamentoJuridico/editaveis`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
+  emAprovacao(): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/pagamentoJuridico/emaprovacao`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
+  Aprovando(nivel, centrosdecustos): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/pagamentoJuridico/aprovando/${nivel}/${centrosdecustos}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
 
   InputPagamento(corpo: Pagamento): Observable<any>{
     let headers = new HttpHeaders();

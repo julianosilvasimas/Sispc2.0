@@ -27,5 +27,7 @@ export class AppTopbarComponent {
             }
         })
     }
-
+    fechar(){
+        sessionStorage.clear()
+    }
 }

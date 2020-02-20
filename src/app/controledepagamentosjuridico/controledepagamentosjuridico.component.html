@@ -1,16 +1,17 @@
 <div class="ui-g">
   <div class="ui-g-12">
     <p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
-    <div *ngIf="activeItemIndex==0">
+    <div *ngIf="activeItem.label === 'Cadastro'">
       <app-cadastro-pagamento></app-cadastro-pagamento>
     </div>
-    <div *ngIf="activeItemIndex==1">
+    <div *ngIf="activeItem.label === 'Lista'">
       <app-listapendentes></app-listapendentes>
     </div>
-    <div *ngIf="activeItemIndex==2">
+    <div *ngIf="activeItem.label === 'Acompanhar Aprovações'">
       <app-acompanharaprovacao></app-acompanharaprovacao>
     </div>
-    <div *ngIf="activeItemIndex==3">
+    <div *ngIf="activeItem.label === 'Aprovador'">
+      <app-aprovar [Nivel]="usuNivel" [CentrosdeCustos]="centrosDeCustos"></app-aprovar>
     </div>
   </div>
 </div>

@@ -29,6 +29,8 @@ export class AppMenuComponent implements OnInit {
     usuComissao: boolean = false;
     usuTransporte: boolean = false;
 
+    
+
     ngOnInit() {
 
         //Preencehendo array de permissoes e liberando acessos
@@ -46,8 +48,7 @@ export class AppMenuComponent implements OnInit {
             }else if(permissao === "ROLE_USER_FROTAS"){
                 this.usuTransporte = true
             }else if(permissao === "ROLE_USER_INDICADOR"){
-                this.usuPerformance
-                 = true
+                this.usuPerformance = true
             }
             
             i++
@@ -55,7 +56,7 @@ export class AppMenuComponent implements OnInit {
 
         console.log(this.usuPerformance)
 
-        console.log(this.permissoes)
+        // console.log(this.permissoes)
         this.performanceService.classindicadores(6)
         .subscribe(response => {this.indicadores = response
             //console.log(response)

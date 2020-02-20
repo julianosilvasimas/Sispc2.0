@@ -158,6 +158,8 @@ import { ListapendentesComponent } from './controledepagamentosjuridico/listapen
 import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component';
 import { ControledepagamentosjuridicoService } from './controledepagamentosjuridico/controledepagamentosjuridico.service';
 import { Controledepagamentosjuridico } from './controledepagamentosjuridico/controledepagamentosjuridico.model';
+import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
+import { AprovarComponent } from './controledepagamentosjuridico/aprovar/aprovar.component';
 
 
 
@@ -235,7 +237,8 @@ import { Controledepagamentosjuridico } from './controledepagamentosjuridico/con
         TooltipModule,
         TreeModule,
         TreeTableModule,
-        VirtualScrollerModule
+        VirtualScrollerModule,
+        TriStateCheckboxModule
     ],
     declarations: [
         AppComponent,
@@ -303,7 +306,8 @@ import { Controledepagamentosjuridico } from './controledepagamentosjuridico/con
         controledepagamentosjuridicoComponent,
         CadastroPagamentoComponent,
         ListapendentesComponent,
-        AcompanharaprovacaoComponent
+        AcompanharaprovacaoComponent,
+        AprovarComponent
 
     ],
     providers: [
