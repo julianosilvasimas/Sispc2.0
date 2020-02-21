@@ -1,3 +1,137 @@
-<p>
-  aprovar works!
-</p>
+<!--SCROOOL DE CARROS-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
+  <p-dataView #dv [value]="pagamentos" [paginator]="true" [rows]="10" paginatorPosition="both">
+      <div >
+        <div class="ui-g-2">Sentenças</div>
+      </div>
+      <ng-template let-pagamentos pTemplate="listItem">
+        <div class="car-details">
+          <div class="ui-g-12">
+            <div class="ui-g-2"><b>{{pagamentos.processo}}</b></div>
+            <div class="ui-g-1"><b>{{pagamentos.dataProgramada}}</b></div>
+            <div class="ui-g-1"><b>{{pagamentos.valor}}</b></div>
+            <div class="ui-g-2"><b>{{pagamentos.centroDeCusto}}</b></div>
+            <div class="ui-g-2"><b>{{pagamentos.escritorio}}</b></div>
+            <div class="ui-g-3"><b>{{pagamentos.autor}}</b></div>
+            
+            <div class="ui-g-1" >
+              <button pButton type="button" icon="ui-icon-thumbs-up-down" (click)="showPagamentos(pagamentos)"></button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+       
+  </p-dataView>
+</div>
+<p-dialog header="Aprovar" [(visible)]="displayEditPagamento" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="sentencaSelect" >
+    <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+
+      
+      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <p-calendar class="ui-g-12 ui-md-3"   [disabled]="true" [(ngModel)]="sentencaSelect.dataProgramada" dateFormat="yy-mm-dd"></p-calendar>
+            <label>Data Programação</label>
+          </span>
+        </div>
+        
+        <div class="ui-g-12 ui-md-4">
+          Nível de Aprovação
+          <p-rating [ngModel]="sentencaSelect.valor > 5000 ? 3 : sentencaSelect.valor > 1000 ? 2 : 1" readonly="true" stars="3" [cancel]="false"></p-rating>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <div class="ui-g-12 item" >
+            <p-checkbox name="group1" [disabled]="true" [(ngModel)]="sentencaSelect.falhaConcess" inputId="ny"></p-checkbox>
+            <label >Falha da Concessão</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.empresa" class="ui-g-12" pInputText/>
+            <label>Empresa</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.autor" class="ui-g-12" pInputText/>
+            <label >Autor</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.processo" class="ui-g-12" pInputText/>
+            <label>Processo</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.natureza" class="ui-g-12" pInputText/>
+            <label >Natureza</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-md-12 ui-md-12" style="margin-top: 20px;">
+            
+        <div class="ui-g-12 ui-md-4" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.valor" class="ui-g-12" pInputText/>
+            <label >Valor</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-4" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.contaContabil" class="ui-g-12" pInputText/>
+            <label >Conta Contábil</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.centroDeCusto" class="ui-g-12" pInputText/>
+            <label>Centro de Custo</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.fornecedor" class="ui-g-12" pInputText/>
+            <label >fornecedor</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.escritorio" class="ui-g-12" pInputText/>
+           <label>Escritório</label>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12">
+          <label>Sentencas</label>
+          <textarea style="width: 100%; height: 120px !important;" [disabled]="true" [(ngModel)]="sentencaSelect.sentenca"  pInputText rows="10" cols="35"></textarea>
+        </div>
+        <div class="ui-g-12">
+          <label>Motivo do Pagamento</label>
+          <textarea style="width: 100%; height: 120px !important;" [disabled]="true" [(ngModel)]="sentencaSelect.motivoPagamento"  pInputText rows="10" cols="35" placeholder="Motivo do Pagamento"></textarea>
+        </div>
+      </div>
+
+      <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+        <div class="ui-g-6" style="text-align: center;">
+          <button type="button"  style="background:#FF0000;" pButton icon="ui-icon-save" label="Reprovar"  (click)="reprovar(sentencaSelect)"></button>
+        </div>
+        <div class="ui-g-6" style="text-align: center;">
+          <button type="button"  style="background:#3cb627;" pButton icon="ui-icon-done" label="Aprovar"  (click)="aprovar(sentencaSelect)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>

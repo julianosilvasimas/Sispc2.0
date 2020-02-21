@@ -40,8 +40,8 @@ export class ListapendentesComponent implements OnInit {
     [
       { label: null, value: null },
       { label: 'PR10200005 - Jurídico Estratégico', value: 'PR10200005' , aprovador: 'niella.cancado@prolagos.com.br' },
-      { label: 'PR10600007  - Gerência Operacional Água', value: 'PR10600007 1' , aprovador: 'jose.marino@aegea.com.br' },
-      { label: 'PR10600007  - Gerência Operacional Esgoto', value: 'PR10600007 2' , aprovador: 'mario.goncalves@serraambiental.com.br' },
+      { label: 'PR10600007  - Gerência Operacional Água', value: 'PR106000071' , aprovador: 'jose.marino@aegea.com.br' },
+      { label: 'PR10600007  - Gerência Operacional Esgoto', value: 'PR106000072' , aprovador: 'mario.goncalves@serraambiental.com.br' },
       { label: 'PR10700007  - Gerência Comercial', value: 'PR10700007' , aprovador: 'vitor.gabriel@aguasdomirante.com.br' },
       { label: 'PR10500002  - Administração', value: 'PR10500002 ' , aprovador: 'andre.pires@aegea.com.br' },
       { label: 'PR10800004  - Gerência De Serviços', value: 'PR10800004' , aprovador: 'wellington.blanck@aegea.com.br ' },
@@ -106,8 +106,23 @@ export class ListapendentesComponent implements OnInit {
   }
 
 
-  Aprovar(){
+  EnviarAprovacao(sentencas){
+    sentencas["enviadoParaAprovacao"] = sentencas.valor > 5000 ? 3 : sentencas.valor > 1000 ? 2 : 1;
+    sentencas["aprovador1"] = null;
+    sentencas["aprovador2"] = null;
+    sentencas["aprovador3"] = null;
+    sentencas["aprovacao1"] = null;
+    sentencas["aprovacao2"] = null;
+    sentencas["aprovacao3"] = null;
+    this.ControlePagamento.UpdatePagamento(sentencas).subscribe(
+      response => {
+        this.sentencas = response
+        this.displayEditSentenca = false
 
+        this.sentencaSelect= null;
+        this.AtualizarLista()
+      }
+    );
   }
 
 }

@@ -28,6 +28,9 @@ export class AppMenuComponent implements OnInit {
     usuPerformance: boolean = false;
     usuComissao: boolean = false;
     usuTransporte: boolean = false;
+    usuJuridicoPagamentos: boolean = false;
+    usuProjetos: boolean = false;
+    usuJuridicoPagamentosAprovacao: boolean = false;
 
     
 
@@ -49,6 +52,10 @@ export class AppMenuComponent implements OnInit {
                 this.usuTransporte = true
             }else if(permissao === "ROLE_USER_INDICADOR"){
                 this.usuPerformance = true
+            }else if(permissao === "ROLE_ADMIN_PROJETOS"){
+                this.usuPerformance = true
+            }else if(permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO")>0){
+                this.usuJuridicoPagamentos= true
             }
             
             i++
@@ -197,7 +204,28 @@ export class AppMenuComponent implements OnInit {
                         ]
                         })
             }
-            
+            if(this.usuJuridicoPagamentos === true){
+                this.model.push(
+                    {label: 'Jurídico', icon: 'gavel',
+                        items: [
+                            {label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject'},
+                        ]
+                    }
+                )
+            }
+            if(this.usuProjetos === true){
+                this.model.push(
+                    {label: 'Planejamento', icon: 'equalizer',
+                        items: [
+                            {label: 'GPP', icon: 'view_list',
+                                items: [
+                                    {label: 'Projetos', icon: 'subject', routerLink: '/projetos'}
+                                ]
+                            }
+                        ]
+                        },
+                )
+            }
             //Comissão
             if(this.usuComissao === true){
             this.model.push(

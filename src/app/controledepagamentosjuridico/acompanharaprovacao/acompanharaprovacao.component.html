@@ -14,9 +14,9 @@
             <div class="ui-g-1"><b>{{sentencas.centroDeCusto}}</b></div>
             <div class="ui-g-1"><b>{{sentencas.dataProgramada}}</b></div>
             <div class="ui-g-3">    
-              <p-triStateCheckbox *ngIf="sentencas.enviadoParaAprovacao >= 1" [(ngModel)]="sentencas.aprovacao1" label="Juridico"></p-triStateCheckbox>
-              <p-triStateCheckbox *ngIf="sentencas.enviadoParaAprovacao >= 2" [(ngModel)]="sentencas.aprovacao2" label="Gerencia"></p-triStateCheckbox>
-              <p-triStateCheckbox *ngIf="sentencas.enviadoParaAprovacao >= 3" [(ngModel)]="sentencas.aprovacao3" label="Diretoria"></p-triStateCheckbox>
+              <p-triStateCheckbox [disabled]="true" *ngIf="sentencas.enviadoParaAprovacao >= 1" [(ngModel)]="sentencas.aprovacao1" label="Juridico"></p-triStateCheckbox>
+              <p-triStateCheckbox [disabled]="true" *ngIf="sentencas.enviadoParaAprovacao >= 2" [(ngModel)]="sentencas.aprovacao2" label="Gerencia"></p-triStateCheckbox>
+              <p-triStateCheckbox [disabled]="true" *ngIf="sentencas.enviadoParaAprovacao >= 3" [(ngModel)]="sentencas.aprovacao3" label="Diretoria"></p-triStateCheckbox>
             </div>
             <div class="ui-g-1" >
               <button pButton type="button" icon="pi pi-search" (click)="showSentenca(sentencas)"></button>
@@ -48,28 +48,32 @@
         </div>
 
         <div class="ui-g-12 ui-md-4">
-          <p-toggleButton [disabled]= "true"  [(ngModel)]="sentencaSelect.falhaConcess" onLabel="FalhaConcessao" offLabel="FalhaConcessao" onIcon="pi_pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
+          <div class="ui-g-12 item" >
+            <p-checkbox name="group1" [disabled]= "true" [(ngModel)]="sentencaSelect.falhaConcess" inputId="ny"></p-checkbox>
+            <label >Falha da Concessão</label>
+          </div>
         </div>
       </div>
+
 
       <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
         <div class="ui-g-12 ui-md-4">
           <span class="md-inputfield">
-            <input id="input" type="text" [disabled]= "true"  [(ngModel)]="sentencaSelect.aprovador1" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [disabled]="true"  [(ngModel)]="sentencaSelect.aprovador1" class="ui-g-12" pInputText/>
             <label>Aprovador 1</label>
           </span>
         </div>
         
         <div class="ui-g-12 ui-md-4">
           <span class="md-inputfield">
-            <input id="input" type="text" [disabled]= "true"  [(ngModel)]="sentencaSelect.aprovador2" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelectAprovador2" class="ui-g-12" pInputText/>
             <label>Aprovador 2</label>
           </span>
         </div>
 
         <div class="ui-g-12 ui-md-4">
           <span class="md-inputfield">
-            <input id="input" type="text" [disabled]= "true"  [(ngModel)]="sentencaSelect.aprovador3" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [disabled]="true" [(ngModel)]="sentencaSelect.aprovador3" class="ui-g-12" pInputText/>
             <label>Aprovador 3</label>
           </span>
         </div>
@@ -113,7 +117,7 @@
         </div>
         <div class="ui-g-12 ui-md-4" >
           <span class="md-inputfield">
-            <p-dropdown [autoWidth]="true" filter="true"  [disabled]= "true"  [(ngModel)]="sentencaSelect.ContaContabil" styleClass = "drop95" [options]="ListaContas"></p-dropdown>
+            <p-dropdown [autoWidth]="true" filter="true"  [disabled]= "true"  [(ngModel)]="sentencaSelect.contaContabil" styleClass = "drop95" [options]="ListaContas"></p-dropdown>
           <label >Conta Contábil</label>
           </span>
         </div>
@@ -147,15 +151,6 @@
           <label>Motivo do Pagamento</label>
           <textarea style="width: 100%; height: 120px !important;" [disabled]= "true"  [(ngModel)]="sentencaSelect.motivoPagamento"  pInputText rows="10" cols="35" placeholder="Motivo do Pagamento"></textarea>
         </div>
-      </div>
-
-      <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
-        <div class="ui-g-6" style="text-align: center;">
-          <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="Salvar(sentencaSelect)"></button>
-        </div>
-        <div class="ui-g-6" style="text-align: center;">
-          <button type="button"  style="background:#3cb627;" pButton icon="pi pi-save" label="Aprovar"  (click)="Aprovar()"></button>
-       </div>
       </div>
     </div>
   </div>

@@ -17,16 +17,48 @@ export class AprovarComponent implements OnInit {
   @Input() CentrosdeCustos;
 
   pagamentos: Pagamento[];
+  colunas;
+  sentencaSelect
+  displayEditPagamento = false;
+
+
 
   ngOnInit() {
+    this.atualizar();
 
   }
   atualizar() {
+    this.pagamentos=[]
     this.ControlePagamento.Aprovando(this.Nivel, this.CentrosdeCustos).subscribe(
       response => {
         this.pagamentos = response
+        this.displayEditPagamento = false;
         console.log(response)
       }
     );
+  }
+
+  aprovar(pagamentos){
+    pagamentos['aprovacao'+this.Nivel] = 1
+    pagamentos['aprovador'+this.Nivel] = sessionStorage.getItem('nome')
+    this.ControlePagamento.UpdatePagamento(pagamentos).subscribe(
+      response => {
+        this.atualizar()
+      }
+    );
+  }
+  reprovar(pagamentos){
+
+    pagamentos['aprovacao'+this.Nivel] = 0
+    pagamentos['aprovador'+this.Nivel] = sessionStorage.getItem('nome')
+    this.ControlePagamento.UpdatePagamento(pagamentos).subscribe(
+      response => {
+        this.atualizar()
+      }
+    );
+  }
+  showPagamentos(pagamentos){
+    this.sentencaSelect = pagamentos
+    this.displayEditPagamento = true;
   }
 }

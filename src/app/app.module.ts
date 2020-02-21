@@ -160,6 +160,10 @@ import { ControledepagamentosjuridicoService } from './controledepagamentosjurid
 import { Controledepagamentosjuridico } from './controledepagamentosjuridico/controledepagamentosjuridico.model';
 import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import { AprovarComponent } from './controledepagamentosjuridico/aprovar/aprovar.component';
+import { AdminComponent } from './admin/admin.component';
+import { CriacaodeusuarioComponent } from './admin/criacaodeusuario/criacaodeusuario.component';
+import { ConcederacessosComponent } from './admin/concederacessos/concederacessos.component';
+import { ResetarsenhasComponent } from './admin/resetarsenhas/resetarsenhas.component';
 
 
 
@@ -307,7 +311,11 @@ import { AprovarComponent } from './controledepagamentosjuridico/aprovar/aprovar
         CadastroPagamentoComponent,
         ListapendentesComponent,
         AcompanharaprovacaoComponent,
-        AprovarComponent
+        AprovarComponent,
+        AdminComponent,
+        CriacaodeusuarioComponent,
+        ConcederacessosComponent,
+        ResetarsenhasComponent
 
     ],
     providers: [

@@ -368,7 +368,7 @@ module.exports = "<div class=\"layout-sidebar\" [ngStyle]=\"{'overflow':app.side
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmoke !important;\">\r\n    <!--<div class=\"logo\">\r\n        <a href=\"#\">\r\n            <img src=\"assets/layout/images/sisp.png\">\r\n        </a>\r\n    </div>-->\r\n\r\n    <img src=\"assets/layout/images/SISPC 2.0.png\" class=\"app-name\"/>\r\n\r\n    <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\r\n        <i class=\"material-icons\">menu</i>\r\n    </a>\r\n\r\n    <ul class=\"topbar-menu fadeInDown\" [ngClass]=\"{'topbar-menu-visible': app.topbarMenuActive}\">\r\n        <li #profile class=\"profile-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === profile}\" style=\"width:180px\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,profile)\">\r\n                <div class=\"profile-image\">\r\n                    <img src= {{imgPerfil}}>\r\n                </div>\r\n                <div class=\"profile-info\">\r\n                    <span class=\"topbar-item-name profile-name\" style=\"width:180px\">{{nome}}</span>\r\n                    <span class=\"topbar-item-name profile-role\" style=\"width:180px\">{{cargo}}</span>\r\n                </div>\r\n            </a>\r\n\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">person</i>\r\n                        <span>Perfil</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">security</i>\r\n                        <span>Privacidade</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">settings_applications</i>\r\n                        <span>Configurações</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">power_settings_new</i>\r\n                        <span>Sair</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n\r\n        <li #settings [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === settings}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,settings)\">\r\n                <i class=\"topbar-icon material-icons\">settings</i>\r\n                <span class=\"topbar-item-name\">Settings</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">palette</i>\r\n                        <span>Change Theme</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">favorite_border</i>\r\n                        <span>Favoritos</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">lock</i>\r\n                        <span>Alterar Senha</span>\r\n                    </a>\r\n                </li>\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">wallpaper</i>\r\n                        <span>Wallpaper</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n            </ul>\r\n        </li>\r\n        <li #messages [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === messages}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,messages)\">\r\n                <i class=\"topbar-icon material-icons\">message</i>\r\n                <!--<span class=\"topbar-badge\">5</span>-->\r\n                <span class=\"topbar-item-name\">Messages</span>\r\n            </a>\r\n           <!-- <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar1.png\" width=\"35\"/>\r\n                        <span>Preciso de um relatório</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Poderia me ajudar com uma planilha?</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar3.png\" width=\"35\"/>\r\n                        <span>Podemos marcar uma reunião</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Reunião às 10pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar4.png\" width=\"35\"/>\r\n                        <span>Favor atualizar os dados dos indicadores</span>\r\n                    </a>\r\n                </li>\r\n            </ul>-->\r\n        </li>\r\n        <li #notifications [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === notifications}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,notifications)\">\r\n                <i class=\"topbar-icon material-icons\">timer</i>\r\n                <!--<span class=\"topbar-badge\">4</span>-->\r\n                <span class=\"topbar-item-name\">Notifications</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">bug_report</i>\r\n                        <span>Tarefas pendentes</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">event</i>\r\n                        <span>Reunião às 3pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">file_download</i>\r\n                        <span>Baixar Relatórios</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">flight</i>\r\n                        <span>Plano de vôo</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n        <li #search class=\"search-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === search}\"\r\n            (click)=\"app.onTopbarItemClick($event,search)\">\r\n            <span class=\"md-inputfield\">\r\n                <input type=\"text\" pInputText>\r\n                <label>Search</label>\r\n                <i class=\"topbar-icon material-icons\">search</i>\r\n            </span>\r\n        </li>\r\n    </ul>\r\n</div>"
+module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmoke !important;\">\r\n    <!--<div class=\"logo\">\r\n        <a href=\"#\">\r\n            <img src=\"assets/layout/images/sisp.png\">\r\n        </a>\r\n    </div>-->\r\n\r\n    <img src=\"assets/layout/images/SISPC 2.0.png\" class=\"app-name\"/>\r\n\r\n    <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\r\n        <i class=\"material-icons\">menu</i>\r\n    </a>\r\n\r\n    <ul class=\"topbar-menu fadeInDown\" [ngClass]=\"{'topbar-menu-visible': app.topbarMenuActive}\">\r\n        <li #profile class=\"profile-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === profile}\" style=\"width:180px\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,profile)\">\r\n                <div class=\"profile-image\">\r\n                    <img src= {{imgPerfil}}>\r\n                </div>\r\n                <div class=\"profile-info\">\r\n                    <span class=\"topbar-item-name profile-name\" style=\"width:180px\">{{nome}}</span>\r\n                    <span class=\"topbar-item-name profile-role\" style=\"width:180px\">{{cargo}}</span>\r\n                </div>\r\n            </a>\r\n\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">person</i>\r\n                        <span>Perfil</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">security</i>\r\n                        <span>Privacidade</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">settings_applications</i>\r\n                        <span>Configurações</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"fechar()\">\r\n                        <i class=\"material-icons\">power_settings_new</i>\r\n                        <span>Sair</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n\r\n        <li #settings [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === settings}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,settings)\">\r\n                <i class=\"topbar-icon material-icons\">settings</i>\r\n                <span class=\"topbar-item-name\">Settings</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">palette</i>\r\n                        <span>Change Theme</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">favorite_border</i>\r\n                        <span>Favoritos</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">lock</i>\r\n                        <span>Alterar Senha</span>\r\n                    </a>\r\n                </li>\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">wallpaper</i>\r\n                        <span>Wallpaper</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n            </ul>\r\n        </li>\r\n        <li #messages [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === messages}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,messages)\">\r\n                <i class=\"topbar-icon material-icons\">message</i>\r\n                <!--<span class=\"topbar-badge\">5</span>-->\r\n                <span class=\"topbar-item-name\">Messages</span>\r\n            </a>\r\n           <!-- <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar1.png\" width=\"35\"/>\r\n                        <span>Preciso de um relatório</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Poderia me ajudar com uma planilha?</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar3.png\" width=\"35\"/>\r\n                        <span>Podemos marcar uma reunião</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Reunião às 10pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar4.png\" width=\"35\"/>\r\n                        <span>Favor atualizar os dados dos indicadores</span>\r\n                    </a>\r\n                </li>\r\n            </ul>-->\r\n        </li>\r\n        <li #notifications [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === notifications}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,notifications)\">\r\n                <i class=\"topbar-icon material-icons\">timer</i>\r\n                <!--<span class=\"topbar-badge\">4</span>-->\r\n                <span class=\"topbar-item-name\">Notifications</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">bug_report</i>\r\n                        <span>Tarefas pendentes</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">event</i>\r\n                        <span>Reunião às 3pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">file_download</i>\r\n                        <span>Baixar Relatórios</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">flight</i>\r\n                        <span>Plano de vôo</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n        <li #search class=\"search-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === search}\"\r\n            (click)=\"app.onTopbarItemClick($event,search)\">\r\n            <span class=\"md-inputfield\">\r\n                <input type=\"text\" pInputText>\r\n                <label>Search</label>\r\n                <i class=\"topbar-icon material-icons\">search</i>\r\n            </span>\r\n        </li>\r\n    </ul>\r\n</div>"
 
 /***/ }),
 
@@ -379,7 +379,18 @@ module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmok
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"sentencas\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n    <div >\r\n      <div class=\"ui-g-2\">Informeção</div>\r\n    </div>\r\n    <ng-template let-sentencas pTemplate=\"listItem\">\r\n      <div class=\"car-details\">\r\n        <div class=\"ui-g-10\">\r\n          <div class=\"ui-g-2\"><b>{{sentencas.Processo}}</b></div>\r\n          <div class=\"ui-g-2\"><b>{{sentencas.Autor}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.Empresa}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.NaturezaPagamento}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.DataPagamento}}</b></div>\r\n          <div class=\"ui-g-1\"><b>{{sentencas.Valor}}</b></div>\r\n          <div class=\"ui-g-2\"><b>{{sentencas.Escritorio}}</b></div>\r\n          <div class=\"ui-g-2\"><b>{{sentencas.CentroDeCusto}}</b></div>\r\n        </div>\r\n        <div class=\"ui-g-2\" >\r\n          <p-checkbox [(ngModel)]=\"sentencas.aprovJuridico\" disabled=\"true\" binary=\"true\" value=\"Jurídico\" label=\"Jurídico\" ></p-checkbox>\r\n          <p-checkbox [(ngModel)]=\"sentencas.aprovGestao\" disabled=\"true\" binary=\"true\" value=\"Gerstão\" label=\"Gestão\"  *ngIf=\"sentencas.Valor >= 1000\"></p-checkbox>\r\n          <p-checkbox [(ngModel)]=\"sentencas.aprovDiretoria\" disabled=\"true\" binary=\"true\" value=\"Diretoria\" label=\"Diretoria\"  *ngIf=\"sentencas.Valor >= 5000\"></p-checkbox>\r\n        </div>\r\n      </div>\r\n    </ng-template>\r\n  </p-dataView>\r\n</div>"
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"sentencas\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <div >\r\n        <div class=\"ui-g-2\">Sentenças</div>\r\n      </div>\r\n      <ng-template let-sentencas pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-2\"><b>{{sentencas.processo}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.empresa}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.valor}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.escritorio}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.centroDeCusto}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.dataProgramada}}</b></div>\r\n            <div class=\"ui-g-3\">    \r\n              <p-triStateCheckbox [disabled]=\"true\" *ngIf=\"sentencas.enviadoParaAprovacao >= 1\" [(ngModel)]=\"sentencas.aprovacao1\" label=\"Juridico\"></p-triStateCheckbox>\r\n              <p-triStateCheckbox [disabled]=\"true\" *ngIf=\"sentencas.enviadoParaAprovacao >= 2\" [(ngModel)]=\"sentencas.aprovacao2\" label=\"Gerencia\"></p-triStateCheckbox>\r\n              <p-triStateCheckbox [disabled]=\"true\" *ngIf=\"sentencas.enviadoParaAprovacao >= 3\" [(ngModel)]=\"sentencas.aprovacao3\" label=\"Diretoria\"></p-triStateCheckbox>\r\n            </div>\r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showSentenca(sentencas)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n<p-dialog header=\"Ver Status\" [(visible)]=\"displayStatusSentenca\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '80%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"sentencaSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-calendar class=\"ui-g-12 ui-md-3\"   [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.dataProgramada\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n            <label>Data Programação</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          Nível de Aprovação\r\n          <p-rating [ngModel]=\"sentencaSelect.valor > 5000 ? 3 : sentencaSelect.valor > 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox name=\"group1\" [disabled]= \"true\" [(ngModel)]=\"sentencaSelect.falhaConcess\" inputId=\"ny\"></p-checkbox>\r\n            <label >Falha da Concessão</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\"  [(ngModel)]=\"sentencaSelect.aprovador1\" class=\"ui-g-12\" pInputText/>\r\n            <label>Aprovador 1</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelectAprovador2\" class=\"ui-g-12\" pInputText/>\r\n            <label>Aprovador 2</label>\r\n          </span>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.aprovador3\" class=\"ui-g-12\" pInputText/>\r\n            <label>Aprovador 3</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.empresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Empresa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.autor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Autor</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.processo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Processo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.natureza\" class=\"ui-g-12\" pInputText/>\r\n            <label >Natureza</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n            \r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.valor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Valor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.contaContabil\" styleClass = \"drop95\" [options]=\"ListaContas\"></p-dropdown>\r\n          <label >Conta Contábil</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.centroDeCusto\" styleClass = \"drop95\" [options]=\"ListaCentroDeCusto\"></p-dropdown>\r\n            <label>Centro de Custo</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.fornecedor\" styleClass = \"drop95\" [options]=\"ListaFornecedores\"></p-dropdown>\r\n            <label >Fornecedor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.escritorio\" styleClass = \"drop95\" [options]=\"ListaEscritorios\"></p-dropdown>\r\n            <label>Escritório</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12\">\r\n          <label>Sentencas</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.sentenca\"  pInputText rows=\"10\" cols=\"35\"></textarea>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n          <label>Motivo do Pagamento</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [disabled]= \"true\"  [(ngModel)]=\"sentencaSelect.motivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/aprovar/aprovar.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/controledepagamentosjuridico/aprovar/aprovar.component.html ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"pagamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <div >\r\n        <div class=\"ui-g-2\">Sentenças</div>\r\n      </div>\r\n      <ng-template let-pagamentos pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-2\"><b>{{pagamentos.processo}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{pagamentos.dataProgramada}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{pagamentos.valor}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{pagamentos.centroDeCusto}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{pagamentos.escritorio}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{pagamentos.autor}}</b></div>\r\n            \r\n            <div class=\"ui-g-1\" >\r\n              <button pButton type=\"button\" icon=\"ui-icon-thumbs-up-down\" (click)=\"showPagamentos(pagamentos)\"></button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Aprovar\" [(visible)]=\"displayEditPagamento\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '80%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"sentencaSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-calendar class=\"ui-g-12 ui-md-3\"   [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.dataProgramada\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n            <label>Data Programação</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          Nível de Aprovação\r\n          <p-rating [ngModel]=\"sentencaSelect.valor > 5000 ? 3 : sentencaSelect.valor > 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox name=\"group1\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.falhaConcess\" inputId=\"ny\"></p-checkbox>\r\n            <label >Falha da Concessão</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.empresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Empresa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.autor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Autor</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.processo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Processo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.natureza\" class=\"ui-g-12\" pInputText/>\r\n            <label >Natureza</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n            \r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.valor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Valor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.contaContabil\" class=\"ui-g-12\" pInputText/>\r\n            <label >Conta Contábil</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.centroDeCusto\" class=\"ui-g-12\" pInputText/>\r\n            <label>Centro de Custo</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.fornecedor\" class=\"ui-g-12\" pInputText/>\r\n            <label >fornecedor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.escritorio\" class=\"ui-g-12\" pInputText/>\r\n           <label>Escritório</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12\">\r\n          <label>Sentencas</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.sentenca\"  pInputText rows=\"10\" cols=\"35\"></textarea>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n          <label>Motivo do Pagamento</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [disabled]=\"true\" [(ngModel)]=\"sentencaSelect.motivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\"  style=\"background:#FF0000;\" pButton icon=\"ui-icon-save\" label=\"Reprovar\"  (click)=\"reprovar(sentencaSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\"  style=\"background:#3cb627;\" pButton icon=\"ui-icon-done\" label=\"Aprovar\"  (click)=\"aprovar(sentencaSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -390,7 +401,7 @@ module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO PAGAMENTO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-12\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12 ui-md-3\"   [(ngModel)]=\"CadDataProgramada\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n          <label>Data Programação</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\">\r\n        <p-toggleButton [(ngModel)]=\"CadFalhaConcessao\" onLabel=\"FalhaConcessao\" offLabel=\"FalhaConcessao\" onIcon=\"pi pi-check\" offIcon=\"pi pi-times\" [style]=\"{'width':'150px'}\"></p-toggleButton>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmpresa\" class=\"ui-g-12\" pInputText/>\r\n          <label>Empresa</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadAutor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Autor</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadProcesso\" class=\"ui-g-12\" pInputText/>\r\n          <label>Processo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNatureza\" class=\"ui-g-12\" pInputText/>\r\n          <label >Natureza</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n          \r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadValor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Valor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"CadContaContabil\" styleClass = \"drop95\" [options]=\"ListaCentroDeCusto\"></p-dropdown>\r\n          <label >Conta Contábil</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadCentroDeCusto\" class=\"ui-g-12\" pInputText/>\r\n          <label>Centro de Custo</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadFornecedor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Fornecedor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEscritorio\" class=\"ui-g-12\" pInputText/>\r\n          <label>Escritório</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-6\">\r\n        <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"CadSentenca\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Sentencas\"></textarea>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"CadMotivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n      </div>\r\n    </div>\r\n    \r\n\r\n  </div>\r\n  <div class=\"ui-g-12 ui-md-12\">\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO PAGAMENTO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12 ui-md-3\" [(ngModel)]=\"CadDataProgramada\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n          <label>Data Programação</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <div class=\"ui-g-12 item\" >\r\n          <p-checkbox name=\"group1\" [(ngModel)]=\"CadFalhaConcessao\" inputId=\"ny\"></p-checkbox>\r\n          <label >Falha da Concessão</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmpresa\" class=\"ui-g-12\" pInputText/>\r\n          <label>Empresa</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadAutor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Autor</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadProcesso\" class=\"ui-g-12\" pInputText/>\r\n          <label>Processo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNatureza\" class=\"ui-g-12\" pInputText/>\r\n          <label >Natureza</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n          \r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadValor\" class=\"ui-g-12\" pInputText/>\r\n          <label >Valor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"CadContaContabil\" styleClass = \"drop95\" [options]=\"ListaContas\"></p-dropdown>\r\n          <label >Conta Contábil</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"CadCentroDeCusto\" styleClass = \"drop95\" [options]=\"ListaCentroDeCusto\"></p-dropdown>\r\n          <label>Centro de Custo</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"CadFornecedor\" styleClass = \"drop95\" [options]=\"ListaFornecedores\"></p-dropdown>\r\n          <label >Fornecedor</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"CadEscritorio\" styleClass = \"drop95\" [options]=\"ListaEscritorios\"></p-dropdown>\r\n          <label>Escritório</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-6\">\r\n        <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"CadSentenca\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Sentencas\"></textarea>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"CadMotivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n      </div>\r\n    </div>\r\n    \r\n\r\n  </div>\r\n  <div class=\"ui-g-12 ui-md-12\">\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -401,7 +412,7 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO PAG
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n    <div *ngIf=\"activeItemIndex==0\">\r\n      <app-cadastro-pagamento></app-cadastro-pagamento>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==1\">\r\n      <app-listapendentes></app-listapendentes>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==2\">\r\n      <app-acompanharaprovacao></app-acompanharaprovacao>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==3\">\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n    <div *ngIf=\"activeItem.label === 'Cadastro'\">\r\n      <app-cadastro-pagamento></app-cadastro-pagamento>\r\n    </div>\r\n    <div *ngIf=\"activeItem.label === 'Lista'\">\r\n      <app-listapendentes></app-listapendentes>\r\n    </div>\r\n    <div *ngIf=\"activeItem.label === 'Acompanhar Aprovações'\">\r\n      <app-acompanharaprovacao></app-acompanharaprovacao>\r\n    </div>\r\n    <div *ngIf=\"activeItem.label === 'Aprovador'\">\r\n      <app-aprovar [Nivel]=\"usuNivel\" [CentrosdeCustos]=\"centrosDeCustos\"></app-aprovar>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -412,7 +423,7 @@ module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <p-ta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"sentencas\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <div >\r\n        <div class=\"ui-g-2\">Sentenças</div>\r\n      </div>\r\n      <ng-template let-sentencas pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-2\"><b>{{sentencas.processo}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.autor}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.empresa}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.natureza}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.dataProgramada}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.valor}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.escritorio}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.centroDeCusto}}</b></div>\r\n            <div class=\"ui-g-1\">\r\n              <p-rating [ngModel]=\"sentencas.valor >= 5000 ? 3 : sentencas.valor >= 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showSentenca(sentencas)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n<p-dialog header=\"Editar\\Aprovar\" [(visible)]=\"displayEditSentenca\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"sentencaSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12 ui-md-3\"   [(ngModel)]=\"sentencaSelect.dataProgramada\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n          <label>Data Programação</label>\r\n        </span>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        Nível de Aprovação\r\n        <p-rating [ngModel]=\"sentencaSelect.valor >= 5000 ? 3 : sentencaSelect.valor >= 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.empresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Empresa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.autor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Autor</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.processo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Processo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.natureza\" class=\"ui-g-12\" pInputText/>\r\n            <label >Natureza</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n            \r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.valor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Valor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.ContaContabil\" class=\"ui-g-12\" pInputText/>\r\n            <label >Conta Contábil</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.centroDeCusto\" class=\"ui-g-12\" pInputText/>\r\n            <label>Centro de Custo</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.fornecedor\" class=\"ui-g-12\" pInputText/>\r\n            <label >fornecedor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.escritorio\" class=\"ui-g-12\" pInputText/>\r\n            <label>Escritório</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12\">\r\n          <label>Sentencas</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"sentencaSelect.sentenca\"  pInputText rows=\"10\" cols=\"35\"></textarea>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n          <label>Motivo do Pagamento</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"sentencaSelect.motivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"Salvar(sentencaSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\"  style=\"background:#3cb627;\" pButton icon=\"pi pi-save\" label=\"Aprovar\"  (click)=\"Aprovar()\"></button>\r\n       </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"sentencas\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <div >\r\n        <div class=\"ui-g-2\">Sentenças</div>\r\n      </div>\r\n      <ng-template let-sentencas pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-2\"><b>{{sentencas.processo}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.autor}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.empresa}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.natureza}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.dataProgramada}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.valor}}</b></div>\r\n            <div class=\"ui-g-2\"><b>{{sentencas.escritorio}}</b></div>\r\n            <div class=\"ui-g-1\"><b>{{sentencas.centroDeCusto}}</b></div>\r\n            <div class=\"ui-g-1\">\r\n              <p-rating [ngModel]=\"sentencas.valor > 5000 ? 3 : sentencas.valor > 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"showSentenca(sentencas)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"displayEditSentenca\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '80%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"sentencaSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-calendar class=\"ui-g-12 ui-md-3\"   [(ngModel)]=\"sentencaSelect.dataProgramada\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n            <label>Data Programação</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          Nível de Aprovação\r\n          <p-rating [ngModel]=\"sentencaSelect.valor > 5000 ? 3 : sentencaSelect.valor > 1000 ? 2 : 1\" readonly=\"true\" stars=\"3\" [cancel]=\"false\"></p-rating>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox name=\"group1\" [(ngModel)]=\"sentencaSelect.falhaConcess\" inputId=\"ny\"></p-checkbox>\r\n            <label >Falha da Concessão</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.aprovador1\" class=\"ui-g-12\" pInputText/>\r\n            <label>Aprovador 1</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelectAprovador2\" class=\"ui-g-12\" pInputText/>\r\n            <label>Aprovador 2</label>\r\n          </span>\r\n        </div>\r\n\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.aprovador3\" class=\"ui-g-12\" pInputText/>\r\n            <label>Aprovador 3</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.empresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Empresa</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.autor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Autor</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.processo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Processo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.natureza\" class=\"ui-g-12\" pInputText/>\r\n            <label >Natureza</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-md-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n            \r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"sentencaSelect.valor\" class=\"ui-g-12\" pInputText/>\r\n            <label >Valor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"sentencaSelect.contaContabil\" styleClass = \"drop95\" [options]=\"ListaContas\"></p-dropdown>\r\n          <label >Conta Contábil</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"sentencaSelect.centroDeCusto\" styleClass = \"drop95\" [options]=\"ListaCentroDeCusto\"></p-dropdown>\r\n            <label>Centro de Custo</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"sentencaSelect.fornecedor\" styleClass = \"drop95\" [options]=\"ListaFornecedores\"></p-dropdown>\r\n            <label >fornecedor</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [autoWidth]=\"true\" filter=\"true\"  [(ngModel)]=\"sentencaSelect.escritorio\" styleClass = \"drop95\" [options]=\"ListaEscritorios\"></p-dropdown>\r\n            <label>Escritório</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12\">\r\n          <label>Sentencas</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"sentencaSelect.sentenca\"  pInputText rows=\"10\" cols=\"35\"></textarea>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n          <label>Motivo do Pagamento</label>\r\n          <textarea style=\"width: 100%; height: 120px !important;\" [(ngModel)]=\"sentencaSelect.motivoPagamento\"  pInputText rows=\"10\" cols=\"35\" placeholder=\"Motivo do Pagamento\"></textarea>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\" pButton icon=\"ui-icon-save\" label=\"Salvar\"  (click)=\"Salvar(sentencaSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: center;\">\r\n          <button type=\"button\"  style=\"background:#3cb627;\" pButton icon=\"ui-icon-done\" label=\"Enviar Aprovação\"  (click)=\"EnviarAprovacao(sentencaSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -1272,6 +1283,9 @@ let AppMenuComponent = class AppMenuComponent {
         this.usuPerformance = false;
         this.usuComissao = false;
         this.usuTransporte = false;
+        this.usuJuridicoPagamentos = false;
+        this.usuProjetos = false;
+        this.usuJuridicoPagamentosAprovacao = false;
     }
     ngOnInit() {
         //Preencehendo array de permissoes e liberando acessos
@@ -1292,13 +1306,18 @@ let AppMenuComponent = class AppMenuComponent {
                 this.usuTransporte = true;
             }
             else if (permissao === "ROLE_USER_INDICADOR") {
-                this.usuPerformance
-                    = true;
+                this.usuPerformance = true;
+            }
+            else if (permissao === "ROLE_ADMIN_PROJETOS") {
+                this.usuPerformance = true;
+            }
+            else if (permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO") > 0) {
+                this.usuJuridicoPagamentos = true;
             }
             i++;
         }
         console.log(this.usuPerformance);
-        console.log(this.permissoes);
+        // console.log(this.permissoes)
         this.performanceService.classindicadores(6)
             .subscribe(response => {
             this.indicadores = response;
@@ -1413,6 +1432,24 @@ let AppMenuComponent = class AppMenuComponent {
                     items: [
                         { label: 'Planejamento', icon: 'subject' },
                         { label: 'Gestão', icon: 'subject' }
+                    ]
+                });
+            }
+            if (this.usuJuridicoPagamentos === true) {
+                this.model.push({ label: 'Jurídico', icon: 'gavel',
+                    items: [
+                        { label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject' },
+                    ]
+                });
+            }
+            if (this.usuProjetos === true) {
+                this.model.push({ label: 'Planejamento', icon: 'equalizer',
+                    items: [
+                        { label: 'GPP', icon: 'view_list',
+                            items: [
+                                { label: 'Projetos', icon: 'subject', routerLink: '/projetos' }
+                            ]
+                        }
                     ]
                 });
             }
@@ -2072,6 +2109,9 @@ let AppTopbarComponent = class AppTopbarComponent {
             }
         });
     }
+    fechar() {
+        sessionStorage.clear();
+    }
 };
 AppTopbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2097,8 +2137,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-// export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
-const API_CONFIG = 'http://localhost:7777';
+const API_CONFIG = 'http://sispcprl01:7777/teste-sispc-backend';
+//export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -2394,6 +2434,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__ = __webpack_require__(/*! ./controledepagamentosjuridico/listapendentes/listapendentes.component */ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.ts");
 /* harmony import */ var _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component */ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.ts");
 /* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+/* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! primeng/tristatecheckbox */ "./node_modules/primeng/tristatecheckbox.js");
+/* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151___default = /*#__PURE__*/__webpack_require__.n(primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__);
+/* harmony import */ var _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! ./controledepagamentosjuridico/aprovar/aprovar.component */ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.ts");
+
+
 
 
 
@@ -2623,7 +2668,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             primeng_tooltip__WEBPACK_IMPORTED_MODULE_71__["TooltipModule"],
             primeng_tree__WEBPACK_IMPORTED_MODULE_72__["TreeModule"],
             primeng_treetable__WEBPACK_IMPORTED_MODULE_73__["TreeTableModule"],
-            primeng_virtualscroller__WEBPACK_IMPORTED_MODULE_74__["VirtualScrollerModule"]
+            primeng_virtualscroller__WEBPACK_IMPORTED_MODULE_74__["VirtualScrollerModule"],
+            primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__["TriStateCheckboxModule"]
         ],
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"],
@@ -2691,7 +2737,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_146__["controledepagamentosjuridicoComponent"],
             _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_147__["CadastroPagamentoComponent"],
             _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__["ListapendentesComponent"],
-            _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__["AcompanharaprovacaoComponent"]
+            _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__["AcompanharaprovacaoComponent"],
+            _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__["AprovarComponent"]
         ],
         providers: [
             { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
@@ -2872,7 +2919,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhY29tcGFuaGFyYXByb3ZhY2FvL2Fjb21wYW5oYXJhcHJvdmFjYW8uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xlZGVwYWdhbWVudG9zanVyaWRpY28vYWNvbXBhbmhhcmFwcm92YWNhby9hY29tcGFuaGFyYXByb3ZhY2FvLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -2888,18 +2935,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcompanharaprovacaoComponent", function() { return AcompanharaprovacaoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+
+
 
 
 let AcompanharaprovacaoComponent = class AcompanharaprovacaoComponent {
-    constructor() {
+    constructor(ControlePagamento, messageService) {
+        this.ControlePagamento = ControlePagamento;
+        this.messageService = messageService;
         this.sentencas = [];
     }
     ngOnInit() {
-        this.sentencas = [
-            { Empresa: "PR00", Autor: "ARLINDO DOS SANTOS MARTINS", Processo: "0248946-60.2013.8.19.0001", NaturezaPagamento: "CUSTAS ", DataPagamento: '21/02/2020', Valor: "98,71", Escritorio: "VIEIRA E BRITTO ", ContaContabil: "412600011-CUSTAS JUDICIAIS", CentroDeCusto: "PR10700007", Fornecedor: "820248", Sentencas: "TESTE 1", MotivoPagamento: "TESTE MOTIVO 1", aprovJuridico: false, aprovGestao: false, aprovDiretoria: false },
-            { Empresa: "PR00", Autor: "ARLINDO DOS SANTOS MARTINS", Processo: "0248946-60.2013.8.19.0001", NaturezaPagamento: "CUSTAS ", DataPagamento: '21/02/2020', Valor: "529,35", Escritorio: "VIEIRA E BRITTO ", ContaContabil: "412600011-CUSTAS JUDICIAIS", CentroDeCusto: "PR10700007", Fornecedor: "820248", Sentencas: "TESTE 2", MotivoPagamento: "TESTE MOTIVO 2", aprovJuridico: false, aprovGestao: false, aprovDiretoria: false },
-            { Empresa: "PR00", Autor: "LUIZ CARLOS DUARTE DA CONCEIÇÃO", Processo: "0031905-26.2018.8.19.0054", NaturezaPagamento: "CUSTAS ", DataPagamento: '21/02/2020', Valor: "2090", Escritorio: "VIEIRA E BRITTO ", ContaContabil: "412600011-CUSTAS JUDICIAIS", CentroDeCusto: "PR10700007", Fornecedor: "820330", Sentencas: "TESTE 3", MotivoPagamento: "TESTE MOTIVO 1", aprovJuridico: true, aprovGestao: false, aprovDiretoria: false }
-        ];
+        this.ControlePagamento.emAprovacao().subscribe(response => {
+            this.sentencas = response;
+            console.log(response);
+        });
+    }
+    showSentenca(sentenca) {
+        this.sentencaSelectDate = null;
+        this.sentencaSelect = sentenca;
+        this.displayStatusSentenca = true;
+        event.preventDefault();
     }
 };
 AcompanharaprovacaoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2908,8 +2967,97 @@ AcompanharaprovacaoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
         template: __webpack_require__(/*! raw-loader!./acompanharaprovacao.component.html */ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.html"),
         styles: [__webpack_require__(/*! ./acompanharaprovacao.component.css */ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__["ControledepagamentosjuridicoService"],
+        primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
 ], AcompanharaprovacaoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.css":
+/*!****************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/aprovar/aprovar.component.css ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xlZGVwYWdhbWVudG9zanVyaWRpY28vYXByb3Zhci9hcHJvdmFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/controledepagamentosjuridico/aprovar/aprovar.component.ts ***!
+  \***************************************************************************/
+/*! exports provided: AprovarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AprovarComponent", function() { return AprovarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+
+
+
+
+let AprovarComponent = class AprovarComponent {
+    constructor(ControlePagamento, messageService) {
+        this.ControlePagamento = ControlePagamento;
+        this.messageService = messageService;
+        this.displayEditPagamento = false;
+    }
+    ngOnInit() {
+        this.atualizar();
+    }
+    atualizar() {
+        this.pagamentos = [];
+        this.ControlePagamento.Aprovando(this.Nivel, this.CentrosdeCustos).subscribe(response => {
+            this.pagamentos = response;
+            this.displayEditPagamento = false;
+            console.log(response);
+        });
+    }
+    aprovar(pagamentos) {
+        pagamentos['aprovacao' + this.Nivel] = 1;
+        pagamentos['aprovador' + this.Nivel] = sessionStorage.getItem('nome');
+        this.ControlePagamento.UpdatePagamento(pagamentos).subscribe(response => {
+            this.atualizar();
+        });
+    }
+    reprovar(pagamentos) {
+        pagamentos['aprovacao' + this.Nivel] = 0;
+        pagamentos['aprovador' + this.Nivel] = sessionStorage.getItem('nome');
+        this.ControlePagamento.UpdatePagamento(pagamentos).subscribe(response => {
+            this.atualizar();
+        });
+    }
+    showPagamentos(pagamentos) {
+        this.sentencaSelect = pagamentos;
+        this.displayEditPagamento = true;
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], AprovarComponent.prototype, "Nivel", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], AprovarComponent.prototype, "CentrosdeCustos", void 0);
+AprovarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-aprovar',
+        template: __webpack_require__(/*! raw-loader!./aprovar.component.html */ "./node_modules/raw-loader/index.js!./src/app/controledepagamentosjuridico/aprovar/aprovar.component.html"),
+        styles: [__webpack_require__(/*! ./aprovar.component.css */ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_3__["ControledepagamentosjuridicoService"],
+        primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+], AprovarComponent);
 
 
 
@@ -2922,7 +3070,7 @@ AcompanharaprovacaoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjYWRhc3Ryby1wYWdhbWVudG8vY2FkYXN0cm8tcGFnYW1lbnRvLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xlZGVwYWdhbWVudG9zanVyaWRpY28vY2FkYXN0cm8tcGFnYW1lbnRvL2NhZGFzdHJvLXBhZ2FtZW50by5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -2966,16 +3114,48 @@ let CadastroPagamentoComponent = class CadastroPagamentoComponent {
     ngOnInit() {
         this.ListaCentroDeCusto =
             [
-                { label: '', value: '' },
-                { label: '412600011-CUSTAS JUDICIAIS', value: '412600011-CUSTAS JUDICIAIS' },
-                { label: '512600011-CUSTAS JUDICIAIS', value: '512600011-CUSTAS JUDICIAIS' },
-                { label: '412300001-INDENIZAÇÕES CÍVEIS', value: '412300001-INDENIZAÇÕES CÍVEIS' },
-                { label: '512300001-INDENIZAÇÕES CÍVEIS', value: '512300001-INDENIZAÇÕES CÍVEIS' },
-                { label: '412300002-INDENIZAÇÕES TRABALHISTAS', value: '412300002-INDENIZAÇÕES TRABALHISTAS' },
-                { label: '512300002-INDENIZAÇÕES TRABALHISTAS', value: '512300002-INDENIZAÇÕES TRABALHISTAS' },
-                { label: '126100001-DEPOSITOS JUDICIAIS', value: '126100001-DEPOSITOS JUDICIAIS' },
-                { label: '126100002-BLOQUEIOS JUDICIAIS', value: '126100002-BLOQUEIOS JUDICIAIS' }
+                { label: null, value: null },
+                { label: 'PR10200005 - Jurídico Estratégico', value: 'PR10200005', aprovador: 'niella.cancado@prolagos.com.br' },
+                { label: 'PR10600007  - Gerência Operacional', value: 'PR10600007 ', aprovador: 'jose.marino@aegea.com.br;  mario.goncalves@serraambiental.com.br ' },
+                { label: 'PR10700007  - Gerência Comercial', value: 'PR10700007 ', aprovador: 'vitor.gabriel@aguasdomirante.com.br' },
+                { label: 'PR10500002  - Administração', value: 'PR10500002 ', aprovador: 'andre.pires@aegea.com.br' },
+                { label: 'PR10800004  - Gerência De Serviços', value: 'PR10800004 ', aprovador: 'wellington.blanck@aegea.com.br ' },
+                { label: 'PR10400008  - Planejamento', value: 'PR10400008 ', aprovador: 'aline.povoas@prolagos.com.br' },
+                { label: 'PR10300001 - Diretoria Executiva', value: 'PR10300001', aprovador: 'jose.almeida@prolagos.com.br' },
+                { label: 'PR10200001  - Presidência', value: 'PR10200001 ', aprovador: 'sergio.braga@prolagos.com.br' }
             ];
+        this.ListaEscritorios = [
+            { label: null, value: null },
+            { label: 'Bergqvist & Alvarez Advogados', value: 'Bergqvist & Alvarez Advogados' },
+            { label: 'Campos Chagas & Ferrari Advogados', value: 'Campos Chagas & Ferrari Advogados' },
+            { label: 'Carlos Magno Advogados Associados', value: 'Carlos Magno Advogados Associados' },
+            { label: 'Chamon Santana Sociedade De Advogados', value: 'Chamon Santana Sociedade De Advogados' },
+            { label: 'Guimarães Irmes E Araújo Advogados', value: 'Guimarães Irmes E Araújo Advogados' },
+            { label: 'Lacaz, Pereira, Gurevich & Schoueri', value: 'Lacaz, Pereira, Gurevich & Schoueri' },
+            { label: 'Luciane Pinheiro Pedro Sociedade Individual De Advocacia', value: 'Luciane Pinheiro Pedro Sociedade Individual De Advocacia' },
+            { label: 'Mannheimer, Perez e Lyra Advogados', value: 'Mannheimer, Perez e Lyra Advogados' },
+            { label: 'Mattos Filho; Veiga Filho; Marrey Jr E Quiroga Advogados', value: 'Mattos Filho; Veiga Filho; Marrey Jr E Quiroga Advogados' },
+            { label: 'Vieira & Britto Advogados Associados', value: 'Vieira & Britto Advogados Associados' }
+        ];
+        this.ListaContas = [
+            { label: null, value: null },
+            { label: '412600011-CUSTAS JUDICIAIS', value: '412600011' },
+            { label: '512600011-CUSTAS JUDICIAIS', value: '512600011' },
+            { label: '412300001-INDENIZAÇÕES CÍVEIS', value: '412300001' },
+            { label: '512300001-INDENIZAÇÕES CÍVEIS', value: '512300001' },
+            { label: '412300002-INDENIZAÇÕES TRABALHISTAS', value: '412300002' },
+            { label: '512300002-INDENIZAÇÕES TRABALHISTAS', value: '512300002' },
+            { label: '126100001-DEPOSITOS JUDICIAIS', value: '126100001' },
+            { label: '126100002-BLOQUEIOS JUDICIAIS', value: '126100002' }
+        ];
+        this.ListaFornecedores = [
+            { label: null, value: null },
+            { label: 'BANCO DO BRASIL S.A - SETOR PUBLICO', value: '820330' },
+            { label: 'TRIBUNAL DE JUSTICA DO ESTADO DO RJ', value: '820248' },
+            { label: 'SUPREMO TRIBUNAL FEDERAL', value: '107280' },
+            { label: 'SECRETARIA DO SUPERIOR TRIBUNAL DE JUSTICA', value: '820162' },
+            { label: 'TRIBUNAL REGIONAL DO TRABALHO DA 1ª REGIAO', value: '820178' }
+        ];
     }
     salvar() {
         var objeto = {
@@ -2995,25 +3175,40 @@ let CadastroPagamentoComponent = class CadastroPagamentoComponent {
             sentenca: this.CadSentenca,
             motivoPagamento: this.CadMotivoPagamento,
             falhaConcess: this.CadFalhaConcessao,
-            enviadoParaAprovacao: false,
+            enviadoParaAprovacao: 0,
             aprovador1: null,
-            aprovacao1: false,
+            aprovacao1: null,
             aprovador2: null,
-            aprovacao2: false,
+            aprovacao2: null,
             aprovador3: null,
-            aprovacao3: false
+            aprovacao3: null
         };
         console.log(objeto);
         this.ControlePagamento.InputPagamento(objeto).subscribe(response => {
-            if (response.status === 201) {
-                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
-                    detail: 'Dados enviados com sucesso!' });
-                console.log('Dados enviados com sucesso!');
-            }
+            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!', life: 5000,
+                detail: 'Dados enviados com sucesso!' });
+            console.log('Dados enviados com sucesso!');
         }, error => {
             this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 5000 });
             console.log(error);
         });
+        this.limpar();
+    }
+    limpar() {
+        this.CadEmpresa = null;
+        this.CadAutor = null;
+        this.CadProcesso = null;
+        this.CadNatureza = null;
+        this.CadDataProgramada = null;
+        this.CadValor = null;
+        this.CadEscritorio = null;
+        this.CadContaContabil = null;
+        this.CadContaContabil = null;
+        this.CadCentroDeCusto = null;
+        this.CadFornecedor = null;
+        this.CadSentenca = null;
+        this.CadMotivoPagamento = null;
+        this.CadFalhaConcessao = null;
     }
 };
 CadastroPagamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3037,7 +3232,7 @@ CadastroPagamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb250cm9sZWRlcGFnYW1lbnRvc2p1cmlkaWNvLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xlZGVwYWdhbWVudG9zanVyaWRpY28vY29udHJvbGVkZXBhZ2FtZW50b3NqdXJpZGljby5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -3056,16 +3251,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let controledepagamentosjuridicoComponent = class controledepagamentosjuridicoComponent {
-    constructor() { }
+    constructor() {
+        this.items = [];
+        this.CentrodeCusto = [];
+        this.usuNivel = 0;
+        this.centrosDeCustos = null;
+    }
     ngOnInit() {
-        this.items =
-            [
-                { label: 'Cadastro' },
-                { label: 'Lista' },
-                { label: 'Aprovacoes' },
-                { label: 'Relatórios' }
-            ];
-        this.trocadeitemIndex(0);
+        //Preencehendo array de permissoes e liberando acessos
+        let i = 0;
+        while (sessionStorage.getItem("permissao " + i) != null) {
+            let permissao = sessionStorage.getItem("permissao " + i);
+            //Liberando acessos
+            if (permissao === "ROLE_JURIDICO_PAGAMENTOS") {
+                this.usuPagamentos = true;
+            }
+            else if (permissao === "ROLE_JURIDICO_APROVACAO1") {
+                this.usuAprovacao = true;
+                this.usuNivel = 1;
+            }
+            else if (permissao === "ROLE_JURIDICO_APROVACAO3") {
+                this.usuAprovacao = true;
+                this.usuNivel = 3;
+            }
+            else if (permissao.substring(0, 24) === "ROLE_JURIDICO_APROVACAO2") {
+                this.usuAprovacao = true;
+                this.usuNivel = 2;
+                var cc = permissao.substring(25, Number.MAX_VALUE);
+                this.centrosDeCustos = this.centrosDeCustos == null ? cc : this.centrosDeCustos + "," + cc;
+            }
+            i++;
+        }
+        if (this.usuPagamentos == true) {
+            this.items.push({ label: 'Cadastro' });
+            this.items.push({ label: 'Lista' });
+            this.items.push({ label: 'Acompanhar Aprovações' });
+        }
+        if (this.usuAprovacao == true) {
+            this.items.push({ label: 'Aprovador' });
+        }
+        console.log(this.centrosDeCustos);
+        this.activeItem = this.items[0];
     }
     trocadeitem(activeItem) {
         this.activeItem = activeItem['activeItem'];
@@ -3123,6 +3349,14 @@ let ControledepagamentosjuridicoService = class ControledepagamentosjuridicoServ
         return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/pagamentoJuridico/editaveis`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     }
+    emAprovacao() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/pagamentoJuridico/emaprovacao`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    Aprovando(nivel, centrosdecustos) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/pagamentoJuridico/aprovando/${nivel}/${centrosdecustos}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
     InputPagamento(corpo) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
         headers = headers.set('Content-Type', 'application/json');
@@ -3162,7 +3396,7 @@ ControledepagamentosjuridicoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__deco
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsaXN0YXBlbmRlbnRlcy9saXN0YXBlbmRlbnRlcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xlZGVwYWdhbWVudG9zanVyaWRpY28vbGlzdGFwZW5kZW50ZXMvbGlzdGFwZW5kZW50ZXMuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -3197,10 +3431,55 @@ let ListapendentesComponent = class ListapendentesComponent {
     }
     AtualizarLista() {
         this.sentencas = [];
-        this.ControlePagamento.Pagamentos().subscribe(response => {
+        this.ControlePagamento.editaveis().subscribe(response => {
             this.sentencas = response;
             console.log(response);
         });
+        this.ListaCentroDeCusto =
+            [
+                { label: null, value: null },
+                { label: 'PR10200005 - Jurídico Estratégico', value: 'PR10200005', aprovador: 'niella.cancado@prolagos.com.br' },
+                { label: 'PR10600007  - Gerência Operacional Água', value: 'PR106000071', aprovador: 'jose.marino@aegea.com.br' },
+                { label: 'PR10600007  - Gerência Operacional Esgoto', value: 'PR106000072', aprovador: 'mario.goncalves@serraambiental.com.br' },
+                { label: 'PR10700007  - Gerência Comercial', value: 'PR10700007', aprovador: 'vitor.gabriel@aguasdomirante.com.br' },
+                { label: 'PR10500002  - Administração', value: 'PR10500002 ', aprovador: 'andre.pires@aegea.com.br' },
+                { label: 'PR10800004  - Gerência De Serviços', value: 'PR10800004', aprovador: 'wellington.blanck@aegea.com.br ' },
+                { label: 'PR10400008  - Ndi', value: 'PR10400008', aprovador: 'aline.povoas@prolagos.com.br' },
+                { label: 'PR10300001 - Diretoria Executiva', value: 'PR10300001', aprovador: 'jose.almeida@prolagos.com.br' },
+                { label: 'PR10200001  - Presidência', value: 'PR10200001', aprovador: 'sergio.braga@prolagos.com.br' }
+            ];
+        this.ListaEscritorios = [
+            { label: null, value: null },
+            { label: 'Bergqvist & Alvarez Advogados', value: 'Bergqvist & Alvarez Advogados' },
+            { label: 'Campos Chagas & Ferrari Advogados', value: 'Campos Chagas & Ferrari Advogados' },
+            { label: 'Carlos Magno Advogados Associados', value: 'Carlos Magno Advogados Associados' },
+            { label: 'Chamon Santana Sociedade De Advogados', value: 'Chamon Santana Sociedade De Advogados' },
+            { label: 'Guimarães Irmes E Araújo Advogados', value: 'Guimarães Irmes E Araújo Advogados' },
+            { label: 'Lacaz, Pereira, Gurevich & Schoueri', value: 'Lacaz, Pereira, Gurevich & Schoueri' },
+            { label: 'Luciane Pinheiro Pedro Sociedade Individual De Advocacia', value: 'Luciane Pinheiro Pedro Sociedade Individual De Advocacia' },
+            { label: 'Mannheimer, Perez e Lyra Advogados', value: 'Mannheimer, Perez e Lyra Advogados' },
+            { label: 'Mattos Filho; Veiga Filho; Marrey Jr E Quiroga Advogados', value: 'Mattos Filho; Veiga Filho; Marrey Jr E Quiroga Advogados' },
+            { label: 'Vieira & Britto Advogados Associados', value: 'Vieira & Britto Advogados Associados' }
+        ];
+        this.ListaContas = [
+            { label: null, value: null },
+            { label: '412600011-CUSTAS JUDICIAIS', value: '412600011' },
+            { label: '512600011-CUSTAS JUDICIAIS', value: '512600011' },
+            { label: '412300001-INDENIZAÇÕES CÍVEIS', value: '412300001' },
+            { label: '512300001-INDENIZAÇÕES CÍVEIS', value: '512300001' },
+            { label: '412300002-INDENIZAÇÕES TRABALHISTAS', value: '412300002' },
+            { label: '512300002-INDENIZAÇÕES TRABALHISTAS', value: '512300002' },
+            { label: '126100001-DEPOSITOS JUDICIAIS', value: '126100001' },
+            { label: '126100002-BLOQUEIOS JUDICIAIS', value: '126100002' }
+        ];
+        this.ListaFornecedores = [
+            { label: null, value: null },
+            { label: 'BANCO DO BRASIL S.A - SETOR PUBLICO', value: '820330' },
+            { label: 'TRIBUNAL DE JUSTICA DO ESTADO DO RJ', value: '820248' },
+            { label: 'SUPREMO TRIBUNAL FEDERAL', value: '107280' },
+            { label: 'SECRETARIA DO SUPERIOR TRIBUNAL DE JUSTICA', value: '820162' },
+            { label: 'TRIBUNAL REGIONAL DO TRABALHO DA 1ª REGIAO', value: '820178' }
+        ];
     }
     showSentenca(sentenca) {
         this.sentencaSelectDate = null;
@@ -3209,16 +3488,28 @@ let ListapendentesComponent = class ListapendentesComponent {
         event.preventDefault();
     }
     Salvar(sentencas) {
-        console.log(sentencas);
+        sentencas["enviadoParaAprovacao"] = sentencas.valor > 5000 ? 3 : sentencas.valor > 1000 ? 2 : 1;
         this.ControlePagamento.UpdatePagamento(sentencas).subscribe(response => {
             this.sentencas = response;
-            console.log(response);
             this.displayEditSentenca = false;
             this.sentencaSelect = null;
             this.AtualizarLista();
         });
     }
-    Aprovar() {
+    EnviarAprovacao(sentencas) {
+        sentencas["enviadoParaAprovacao"] = sentencas.valor > 5000 ? 3 : sentencas.valor > 1000 ? 2 : 1;
+        sentencas["aprovador1"] = null;
+        sentencas["aprovador2"] = null;
+        sentencas["aprovador3"] = null;
+        sentencas["aprovacao1"] = null;
+        sentencas["aprovacao2"] = null;
+        sentencas["aprovacao3"] = null;
+        this.ControlePagamento.UpdatePagamento(sentencas).subscribe(response => {
+            this.sentencas = response;
+            this.displayEditSentenca = false;
+            this.sentencaSelect = null;
+            this.AtualizarLista();
+        });
     }
 };
 ListapendentesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -4896,7 +5187,7 @@ GestaoDeliberacaoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#imagem {\r\n    margin-top: -700px;\r\n    margin-left: 400px;\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#assinatura {\r\n    margin-top: -400px;\r\n    float:center;\r\n    width: 50px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2dlc3Rhb2RlZGVsaWJlcmFjYW8vcGFpbmVscHJvY2Vzc28vcGFpbmVscHJvY2Vzc28uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLFlBQVk7SUFDWixhQUFhO0dBQ2Q7OEJBQzJCO0FBQzlCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixXQUFXO0dBQ1o7OEJBQzJCO0FBQzlCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGtCQUFrQjtBQUN0QiIsImZpbGUiOiIuLi9nZXN0YW9kZWRlbGliZXJhY2FvL3BhaW5lbHByb2Nlc3NvL3BhaW5lbHByb2Nlc3NvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjaW1hZ2VtIHtcclxuICAgIG1hcmdpbi10b3A6IC03MDBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiA0MDBweDtcclxuICAgIGZsb2F0OmNlbnRlcjtcclxuICAgIHdpZHRoOiAyODBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgIC8qIG9wYWNpdHk6IDAuMDtcclxuICAgIGZpbHRlcjogYWxwaGEob3BhY2l0eT0wKTsqL1xyXG59XHJcblxyXG4jYXNzaW5hdHVyYSB7XHJcbiAgICBtYXJnaW4tdG9wOiAtNDAwcHg7XHJcbiAgICBmbG9hdDpjZW50ZXI7XHJcbiAgICB3aWR0aDogNTBweDtcclxuICAgLyogb3BhY2l0eTogMC4wO1xyXG4gICAgZmlsdGVyOiBhbHBoYShvcGFjaXR5PTApOyovXHJcbn1cclxuICAgIFxyXG4jdGV4dG8ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEzMHB4O1xyXG59Il19 */"
+module.exports = "#imagem {\r\n    margin-top: -700px;\r\n    margin-left: 400px;\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#assinatura {\r\n    margin-top: -400px;\r\n    float:center;\r\n    width: 50px;\r\n   /* opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n\r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2VzdGFvZGVkZWxpYmVyYWNhby9wYWluZWxwcm9jZXNzby9wYWluZWxwcm9jZXNzby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osWUFBWTtJQUNaLGFBQWE7R0FDZDs4QkFDMkI7QUFDOUI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLFdBQVc7R0FDWjs4QkFDMkI7QUFDOUI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvZ2VzdGFvZGVkZWxpYmVyYWNhby9wYWluZWxwcm9jZXNzby9wYWluZWxwcm9jZXNzby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2ltYWdlbSB7XHJcbiAgICBtYXJnaW4tdG9wOiAtNzAwcHg7XHJcbiAgICBtYXJnaW4tbGVmdDogNDAwcHg7XHJcbiAgICBmbG9hdDpjZW50ZXI7XHJcbiAgICB3aWR0aDogMjgwcHg7XHJcbiAgICBoZWlnaHQ6IDMwMHB4O1xyXG4gICAvKiBvcGFjaXR5OiAwLjA7XHJcbiAgICBmaWx0ZXI6IGFscGhhKG9wYWNpdHk9MCk7Ki9cclxufVxyXG5cclxuI2Fzc2luYXR1cmEge1xyXG4gICAgbWFyZ2luLXRvcDogLTQwMHB4O1xyXG4gICAgZmxvYXQ6Y2VudGVyO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgIC8qIG9wYWNpdHk6IDAuMDtcclxuICAgIGZpbHRlcjogYWxwaGEob3BhY2l0eT0wKTsqL1xyXG59XHJcbiAgICBcclxuI3RleHRvIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIG1hcmdpbi10b3A6IC0xMzBweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -5377,7 +5668,7 @@ PainelprocessoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n#imagem {\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n    /*opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n    \r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2dlc3Rhb2RlZGVsaWJlcmFjYW8vcHJpbnRkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFFQTtJQUNJLFlBQVk7SUFDWixZQUFZO0lBQ1osYUFBYTtJQUNiOzhCQUMwQjtBQUM5Qjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7QUFDdEIiLCJmaWxlIjoiLi4vZ2VzdGFvZGVkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvL3ByaW50ZGVsaWJlcmFjYW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuI2ltYWdlbSB7XHJcbiAgICBmbG9hdDpjZW50ZXI7XHJcbiAgICB3aWR0aDogMjgwcHg7XHJcbiAgICBoZWlnaHQ6IDMwMHB4O1xyXG4gICAgLypvcGFjaXR5OiAwLjA7XHJcbiAgICBmaWx0ZXI6IGFscGhhKG9wYWNpdHk9MCk7Ki9cclxufVxyXG4gICAgXHJcbiN0ZXh0byB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBtYXJnaW4tdG9wOiAtMTMwcHg7XHJcbn1cclxuIl19 */"
+module.exports = "\r\n\r\n#imagem {\r\n    float:center;\r\n    width: 280px;\r\n    height: 300px;\r\n    /*opacity: 0.0;\r\n    filter: alpha(opacity=0);*/\r\n}\r\n    \r\n#texto {\r\n    position: absolute;\r\n    margin-top: -130px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2VzdGFvZGVkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvL3ByaW50ZGVsaWJlcmFjYW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7SUFDWixhQUFhO0lBQ2I7OEJBQzBCO0FBQzlCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGtCQUFrQjtBQUN0QiIsImZpbGUiOiJzcmMvYXBwL2dlc3Rhb2RlZGVsaWJlcmFjYW8vcHJpbnRkZWxpYmVyYWNhby9wcmludGRlbGliZXJhY2FvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuXHJcbiNpbWFnZW0ge1xyXG4gICAgZmxvYXQ6Y2VudGVyO1xyXG4gICAgd2lkdGg6IDI4MHB4O1xyXG4gICAgaGVpZ2h0OiAzMDBweDtcclxuICAgIC8qb3BhY2l0eTogMC4wO1xyXG4gICAgZmlsdGVyOiBhbHBoYShvcGFjaXR5PTApOyovXHJcbn1cclxuICAgIFxyXG4jdGV4dG8ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEzMHB4O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -5889,7 +6180,7 @@ PrintdeliberacaoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ncHAvcHJvamV0b3MvcGFnZW1haW4vcGFnZW1haW4uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dwcC9wcm9qZXRvcy9wYWdlbWFpbi9wYWdlbWFpbi5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -6081,7 +6372,7 @@ PagemainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ncHAvcHJvamV0b3MvcGFnZXN0b3JpZXMvcGFnZXN0b3JpZXMuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dwcC9wcm9qZXRvcy9wYWdlc3Rvcmllcy9wYWdlc3Rvcmllcy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -6263,7 +6554,7 @@ SesuiteprojectComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ncmFmaWNvcy9ncmFmaWNvcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dyYWZpY29zL2dyYWZpY29zLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -7258,7 +7549,7 @@ AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n/*--\r\nAuthor: W3layouts\r\nAuthor URL: http://w3layouts.com\r\nLicense: Creative Commons Attribution 3.0 Unported\r\nLicense URL: http://creativecommons.org/licenses/by/3.0/\r\n--*/\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\na{text-decoration:none;}\r\n.txt-rt{text-align:right;}\r\n/* text align right */\r\n.txt-lt{text-align:left;}\r\n/* text align left */\r\n.txt-center{text-align:center;}\r\n/* text align center */\r\n.float-rt{float:right;}\r\n/* float right */\r\n.float-lt{float:left;}\r\n/* float left */\r\n.clear{clear:both;}\r\n/* clear float */\r\n.pos-relative{position:relative;}\r\n/* Position Relative */\r\n.pos-absolute{position:absolute;}\r\n/* Position Absolute */\r\n.vertical-base{\tvertical-align:baseline;}\r\n/* vertical align baseline */\r\n.vertical-top{\tvertical-align:top;}\r\n/* vertical align top */\r\nnav.vertical ul li{\tdisplay:block;}\r\n/* vertical menu */\r\nnav.horizontal ul li{\tdisplay: inline-block;}\r\n/* horizontal menu */\r\nimg{max-width:100%;}\r\n/*end reset*/\r\nbody{\r\n    padding: 0px;\r\n    margin: 0px;\r\n    background: url('2.jpg') no-repeat;\r\n    background-size: cover;\r\n    font-family: 'Gudea', sans-serif;\r\n}\r\nh1,h2,h3,h4,h5,h6{\r\n    margin: 0;\r\n}\r\np{\r\n    margin: 0;\r\n}\r\nul{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nlabel{\r\n    margin: 0;\r\n}\r\na{\r\n    -webkit-transition: 0.5s;\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\na:hover{\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\n.wrap{\r\n    width: 100%;\r\n    float: right;\r\n\r\n}\r\n/*widget start here*/\r\n.widget-main{\r\n    background: url('s2.jpg'); \r\n    min-height: 700px;\r\n    background-size: cover;\r\n    width: 100%;\r\n    box-shadow: 0 0 10px #3C3B3B;     \r\n    float: right !important;\r\n}\r\n.widget-left{\r\n    float: left;\r\n    width: 40%;\r\n    background: rgba(255, 255, 255, 0.65);\r\n    padding: 1.5em 2em;\r\n    min-height: 302px;\r\n}\r\n.date{\r\n    float: right;\r\n    width: 100%;\r\n    text-align: right;\r\n    margin-top: -90px;\r\n}\r\n.date h6{\r\n    font-size: 0.9em;\r\n    color: #000;\r\n}\r\n.degree{\r\n    float: left;\r\n    width: 100%;\r\n    padding-bottom: 20px;\r\n}\r\n.degree h4{\r\n    font-size: 1em;\r\n    color: #000;\r\n    margin-bottom: 0.2em;\r\n}\r\n.degree h3{\r\n    font-size: 1.8em;\r\n    color: #000;\r\n}\r\n.widget-right{\r\n    float: right;\r\n    width: 49%;\r\n    text-align: right;\r\n    padding: 2em 1em 1em 1em;\r\n    position: relative;\r\n}\r\n.widget-right p{\r\n    font-size: 1em;\r\n    color: #fff;\r\n    line-height: 1.5em;\r\n}\r\n.widget-right h2{\r\n    font-size: 4em;\r\n    color:#fff;\r\n    position: absolute;\r\n    bottom: -200px;\r\n    right: 22px;\r\n}\r\n.widget-right h5{\r\n    font-size: 1.7em;\r\n    color: #fff;\r\n    margin: 0.8em 0em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTs7Ozs7R0FLRztBQUNILFVBQVU7QUFDViw0WkFBNFosUUFBUSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLFlBQVksQ0FBQyx1QkFBdUIsQ0FBQztBQUM1ZSx3RkFBd0YsY0FBYyxDQUFDO0FBQ3ZHLE1BQU0sZUFBZSxDQUFDLFVBQVUsQ0FBQyxXQUFXLENBQUM7QUFDN0MsYUFBYSxXQUFXLENBQUM7QUFDekIsb0RBQW9ELFVBQVUsQ0FBQyxZQUFZLENBQUM7QUFDNUUsTUFBTSx3QkFBd0IsQ0FBQyxnQkFBZ0IsQ0FBQztBQUNoRCw0QkFBNEI7QUFDNUIsVUFBVTtBQUNWLDRaQUE0WixRQUFRLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsWUFBWSxDQUFDLHVCQUF1QixDQUFDO0FBQzVlLHdGQUF3RixjQUFjLENBQUM7QUFDdkcsTUFBTSxlQUFlLENBQUMsVUFBVSxDQUFDLFdBQVcsQ0FBQztBQUM3QyxhQUFhLFdBQVcsQ0FBQztBQUN6QixvREFBb0QsVUFBVSxDQUFDLFlBQVksQ0FBQztBQUM1RSxNQUFNLHdCQUF3QixDQUFDLGdCQUFnQixDQUFDO0FBQ2hELDRCQUE0QjtBQUM1QixFQUFFLG9CQUFvQixDQUFDO0FBQ3ZCLFFBQVEsZ0JBQWdCLENBQUM7QUFBQyxxQkFBcUI7QUFDL0MsUUFBUSxlQUFlLENBQUM7QUFBQyxvQkFBb0I7QUFDN0MsWUFBWSxpQkFBaUIsQ0FBQztBQUFDLHNCQUFzQjtBQUNyRCxVQUFVLFdBQVcsQ0FBQztBQUFDLGdCQUFnQjtBQUN2QyxVQUFVLFVBQVUsQ0FBQztBQUFDLGVBQWU7QUFDckMsT0FBTyxVQUFVLENBQUM7QUFBQyxnQkFBZ0I7QUFDbkMsY0FBYyxpQkFBaUIsQ0FBQztBQUFDLHNCQUFzQjtBQUN2RCxjQUFjLGlCQUFpQixDQUFDO0FBQUMsc0JBQXNCO0FBQ3ZELGdCQUFnQix1QkFBdUIsQ0FBQztBQUFDLDRCQUE0QjtBQUNyRSxlQUFlLGtCQUFrQixDQUFDO0FBQUMsdUJBQXVCO0FBQzFELG9CQUFvQixhQUFhLENBQUM7QUFBQyxrQkFBa0I7QUFDckQsc0JBQXNCLHFCQUFxQixDQUFDO0FBQUMsb0JBQW9CO0FBQ2pFLElBQUksY0FBYyxDQUFDO0FBQ25CLFlBQVk7QUFDWjtJQUNJLFlBQVk7SUFDWixXQUFXO0lBQ1gsa0NBQXVDO0lBQ3ZDLHNCQUFzQjtJQUN0QixnQ0FBZ0M7QUFDcEM7QUFDQTtJQUNJLFNBQVM7QUFDYjtBQUNBO0lBQ0ksU0FBUztBQUNiO0FBQ0E7SUFDSSxTQUFTO0lBQ1QsVUFBVTtBQUNkO0FBQ0E7SUFDSSxTQUFTO0FBQ2I7QUFDQTtJQUNJLHdCQUF3QjtJQUV4Qiw0QkFBb0I7SUFBcEIsb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSw0QkFBNEI7SUFFNUIsb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsWUFBWTs7QUFFaEI7QUFDQSxvQkFBb0I7QUFDcEI7SUFDSSx5QkFBOEI7SUFDOUIsaUJBQWlCO0lBQ2pCLHNCQUFzQjtJQUN0QixXQUFXO0lBQ1gsNEJBQTRCO0lBQzVCLHVCQUF1QjtBQUMzQjtBQUNBO0lBQ0ksV0FBVztJQUNYLFVBQVU7SUFDVixxQ0FBcUM7SUFDckMsa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFdBQVc7SUFDWCxpQkFBaUI7SUFDakIsaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsV0FBVztBQUNmO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsV0FBVztJQUNYLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksY0FBYztJQUNkLFdBQVc7SUFDWCxvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0FBQ2Y7QUFDQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsaUJBQWlCO0lBQ2pCLHdCQUF3QjtJQUN4QixrQkFBa0I7QUFDdEI7QUFDQTtJQUNJLGNBQWM7SUFDZCxXQUFXO0lBQ1gsa0JBQWtCO0FBQ3RCO0FBQ0E7SUFDSSxjQUFjO0lBQ2QsVUFBVTtJQUNWLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2QsV0FBVztBQUNmO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsV0FBVztJQUNYLGlCQUFpQjtBQUNyQiIsImZpbGUiOiIuLi9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4vKi0tXHJcbkF1dGhvcjogVzNsYXlvdXRzXHJcbkF1dGhvciBVUkw6IGh0dHA6Ly93M2xheW91dHMuY29tXHJcbkxpY2Vuc2U6IENyZWF0aXZlIENvbW1vbnMgQXR0cmlidXRpb24gMy4wIFVucG9ydGVkXHJcbkxpY2Vuc2UgVVJMOiBodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS8zLjAvXHJcbi0tKi9cclxuLyogcmVzZXQgKi9cclxuaHRtbCxib2R5LGRpdixzcGFuLGFwcGxldCxvYmplY3QsaWZyYW1lLGgxLGgyLGgzLGg0LGg1LGg2LHAsYmxvY2txdW90ZSxwcmUsYSxhYmJyLGFjcm9ueW0sYWRkcmVzcyxiaWcsY2l0ZSxjb2RlLGRlbCxkZm4sZW0saW1nLGlucyxrYmQscSxzLHNhbXAsc21hbGwsc3RyaWtlLHN0cm9uZyxzdWIsc3VwLHR0LHZhcixiLHUsaSxkbCxkdCxkZCxvbCxuYXYgdWwsbmF2IGxpLGZpZWxkc2V0LGZvcm0sbGFiZWwsbGVnZW5kLHRhYmxlLGNhcHRpb24sdGJvZHksdGZvb3QsdGhlYWQsdHIsdGgsdGQsYXJ0aWNsZSxhc2lkZSxjYW52YXMsZGV0YWlscyxlbWJlZCxmaWd1cmUsZmlnY2FwdGlvbixmb290ZXIsaGVhZGVyLGhncm91cCxtZW51LG5hdixvdXRwdXQscnVieSxzZWN0aW9uLHN1bW1hcnksdGltZSxtYXJrLGF1ZGlvLHZpZGVve21hcmdpbjowO3BhZGRpbmc6MDtib3JkZXI6MDtmb250LXNpemU6MTAwJTtmb250OmluaGVyaXQ7dmVydGljYWwtYWxpZ246YmFzZWxpbmU7fVxyXG5hcnRpY2xlLCBhc2lkZSwgZGV0YWlscywgZmlnY2FwdGlvbiwgZmlndXJlLGZvb3RlciwgaGVhZGVyLCBoZ3JvdXAsIG1lbnUsIG5hdiwgc2VjdGlvbiB7ZGlzcGxheTogYmxvY2s7fVxyXG5vbCx1bHtsaXN0LXN0eWxlOm5vbmU7bWFyZ2luOjBweDtwYWRkaW5nOjBweDt9XHJcbmJsb2NrcXVvdGUscXtxdW90ZXM6bm9uZTt9XHJcbmJsb2NrcXVvdGU6YmVmb3JlLGJsb2NrcXVvdGU6YWZ0ZXIscTpiZWZvcmUscTphZnRlcntjb250ZW50OicnO2NvbnRlbnQ6bm9uZTt9XHJcbnRhYmxle2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtib3JkZXItc3BhY2luZzowO31cclxuLyogc3RhcnQgZWRpdGluZyBmcm9tIGhlcmUgKi9cclxuLyogcmVzZXQgKi9cclxuaHRtbCxib2R5LGRpdixzcGFuLGFwcGxldCxvYmplY3QsaWZyYW1lLGgxLGgyLGgzLGg0LGg1LGg2LHAsYmxvY2txdW90ZSxwcmUsYSxhYmJyLGFjcm9ueW0sYWRkcmVzcyxiaWcsY2l0ZSxjb2RlLGRlbCxkZm4sZW0saW1nLGlucyxrYmQscSxzLHNhbXAsc21hbGwsc3RyaWtlLHN0cm9uZyxzdWIsc3VwLHR0LHZhcixiLHUsaSxkbCxkdCxkZCxvbCxuYXYgdWwsbmF2IGxpLGZpZWxkc2V0LGZvcm0sbGFiZWwsbGVnZW5kLHRhYmxlLGNhcHRpb24sdGJvZHksdGZvb3QsdGhlYWQsdHIsdGgsdGQsYXJ0aWNsZSxhc2lkZSxjYW52YXMsZGV0YWlscyxlbWJlZCxmaWd1cmUsZmlnY2FwdGlvbixmb290ZXIsaGVhZGVyLGhncm91cCxtZW51LG5hdixvdXRwdXQscnVieSxzZWN0aW9uLHN1bW1hcnksdGltZSxtYXJrLGF1ZGlvLHZpZGVve21hcmdpbjowO3BhZGRpbmc6MDtib3JkZXI6MDtmb250LXNpemU6MTAwJTtmb250OmluaGVyaXQ7dmVydGljYWwtYWxpZ246YmFzZWxpbmU7fVxyXG5hcnRpY2xlLCBhc2lkZSwgZGV0YWlscywgZmlnY2FwdGlvbiwgZmlndXJlLGZvb3RlciwgaGVhZGVyLCBoZ3JvdXAsIG1lbnUsIG5hdiwgc2VjdGlvbiB7ZGlzcGxheTogYmxvY2s7fVxyXG5vbCx1bHtsaXN0LXN0eWxlOm5vbmU7bWFyZ2luOjBweDtwYWRkaW5nOjBweDt9XHJcbmJsb2NrcXVvdGUscXtxdW90ZXM6bm9uZTt9XHJcbmJsb2NrcXVvdGU6YmVmb3JlLGJsb2NrcXVvdGU6YWZ0ZXIscTpiZWZvcmUscTphZnRlcntjb250ZW50OicnO2NvbnRlbnQ6bm9uZTt9XHJcbnRhYmxle2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtib3JkZXItc3BhY2luZzowO31cclxuLyogc3RhcnQgZWRpdGluZyBmcm9tIGhlcmUgKi9cclxuYXt0ZXh0LWRlY29yYXRpb246bm9uZTt9XHJcbi50eHQtcnR7dGV4dC1hbGlnbjpyaWdodDt9LyogdGV4dCBhbGlnbiByaWdodCAqL1xyXG4udHh0LWx0e3RleHQtYWxpZ246bGVmdDt9LyogdGV4dCBhbGlnbiBsZWZ0ICovXHJcbi50eHQtY2VudGVye3RleHQtYWxpZ246Y2VudGVyO30vKiB0ZXh0IGFsaWduIGNlbnRlciAqL1xyXG4uZmxvYXQtcnR7ZmxvYXQ6cmlnaHQ7fS8qIGZsb2F0IHJpZ2h0ICovXHJcbi5mbG9hdC1sdHtmbG9hdDpsZWZ0O30vKiBmbG9hdCBsZWZ0ICovXHJcbi5jbGVhcntjbGVhcjpib3RoO30vKiBjbGVhciBmbG9hdCAqL1xyXG4ucG9zLXJlbGF0aXZle3Bvc2l0aW9uOnJlbGF0aXZlO30vKiBQb3NpdGlvbiBSZWxhdGl2ZSAqL1xyXG4ucG9zLWFic29sdXRle3Bvc2l0aW9uOmFic29sdXRlO30vKiBQb3NpdGlvbiBBYnNvbHV0ZSAqL1xyXG4udmVydGljYWwtYmFzZXtcdHZlcnRpY2FsLWFsaWduOmJhc2VsaW5lO30vKiB2ZXJ0aWNhbCBhbGlnbiBiYXNlbGluZSAqL1xyXG4udmVydGljYWwtdG9we1x0dmVydGljYWwtYWxpZ246dG9wO30vKiB2ZXJ0aWNhbCBhbGlnbiB0b3AgKi9cclxubmF2LnZlcnRpY2FsIHVsIGxpe1x0ZGlzcGxheTpibG9jazt9LyogdmVydGljYWwgbWVudSAqL1xyXG5uYXYuaG9yaXpvbnRhbCB1bCBsaXtcdGRpc3BsYXk6IGlubGluZS1ibG9jazt9LyogaG9yaXpvbnRhbCBtZW51ICovXHJcbmltZ3ttYXgtd2lkdGg6MTAwJTt9XHJcbi8qZW5kIHJlc2V0Ki9cclxuYm9keXtcclxuICAgIHBhZGRpbmc6IDBweDtcclxuICAgIG1hcmdpbjogMHB4O1xyXG4gICAgYmFja2dyb3VuZDogdXJsKGltYWdlcy8yLmpwZykgbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGZvbnQtZmFtaWx5OiAnR3VkZWEnLCBzYW5zLXNlcmlmO1xyXG59XHJcbmgxLGgyLGgzLGg0LGg1LGg2e1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcbnB7XHJcbiAgICBtYXJnaW46IDA7XHJcbn1cclxudWx7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG59XHJcbmxhYmVse1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcbmF7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IDAuNXM7XHJcbiAgICAtbW96LXRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG4gICAgdHJhbnNpdGlvbjogMC41cyBhbGw7XHJcbn1cclxuYTpob3ZlcntcclxuICAgIC13ZWJraXQtdHJhbnNpdGlvbjogMC41cyBhbGw7XHJcbiAgICAtbW96LXRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG4gICAgdHJhbnNpdGlvbjogMC41cyBhbGw7XHJcbn1cclxuLndyYXB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGZsb2F0OiByaWdodDtcclxuXHJcbn1cclxuLyp3aWRnZXQgc3RhcnQgaGVyZSovXHJcbi53aWRnZXQtbWFpbntcclxuICAgIGJhY2tncm91bmQ6IHVybChpbWFnZXMvczIuanBnKTsgXHJcbiAgICBtaW4taGVpZ2h0OiA3MDBweDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAxMHB4ICMzQzNCM0I7ICAgICBcclxuICAgIGZsb2F0OiByaWdodCAhaW1wb3J0YW50O1xyXG59XHJcbi53aWRnZXQtbGVmdHtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42NSk7XHJcbiAgICBwYWRkaW5nOiAxLjVlbSAyZW07XHJcbiAgICBtaW4taGVpZ2h0OiAzMDJweDtcclxufVxyXG4uZGF0ZXtcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbiAgICBtYXJnaW4tdG9wOiAtOTBweDtcclxufVxyXG4uZGF0ZSBoNntcclxuICAgIGZvbnQtc2l6ZTogMC45ZW07XHJcbiAgICBjb2xvcjogIzAwMDtcclxufVxyXG4uZGVncmVle1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xyXG59XHJcbi5kZWdyZWUgaDR7XHJcbiAgICBmb250LXNpemU6IDFlbTtcclxuICAgIGNvbG9yOiAjMDAwO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMC4yZW07XHJcbn1cclxuLmRlZ3JlZSBoM3tcclxuICAgIGZvbnQtc2l6ZTogMS44ZW07XHJcbiAgICBjb2xvcjogIzAwMDtcclxufVxyXG4ud2lkZ2V0LXJpZ2h0e1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgd2lkdGg6IDQ5JTtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gICAgcGFkZGluZzogMmVtIDFlbSAxZW0gMWVtO1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcbi53aWRnZXQtcmlnaHQgcHtcclxuICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBsaW5lLWhlaWdodDogMS41ZW07XHJcbn1cclxuLndpZGdldC1yaWdodCBoMntcclxuICAgIGZvbnQtc2l6ZTogNGVtO1xyXG4gICAgY29sb3I6I2ZmZjtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGJvdHRvbTogLTIwMHB4O1xyXG4gICAgcmlnaHQ6IDIycHg7XHJcbn1cclxuLndpZGdldC1yaWdodCBoNXtcclxuICAgIGZvbnQtc2l6ZTogMS43ZW07XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIG1hcmdpbjogMC44ZW0gMGVtO1xyXG59Il19 */"
+module.exports = "\r\n/*--\r\nAuthor: W3layouts\r\nAuthor URL: http://w3layouts.com\r\nLicense: Creative Commons Attribution 3.0 Unported\r\nLicense URL: http://creativecommons.org/licenses/by/3.0/\r\n--*/\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\n/* reset */\r\nhtml,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}\r\narticle, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}\r\nol,ul{list-style:none;margin:0px;padding:0px;}\r\nblockquote,q{quotes:none;}\r\nblockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}\r\ntable{border-collapse:collapse;border-spacing:0;}\r\n/* start editing from here */\r\na{text-decoration:none;}\r\n.txt-rt{text-align:right;}\r\n/* text align right */\r\n.txt-lt{text-align:left;}\r\n/* text align left */\r\n.txt-center{text-align:center;}\r\n/* text align center */\r\n.float-rt{float:right;}\r\n/* float right */\r\n.float-lt{float:left;}\r\n/* float left */\r\n.clear{clear:both;}\r\n/* clear float */\r\n.pos-relative{position:relative;}\r\n/* Position Relative */\r\n.pos-absolute{position:absolute;}\r\n/* Position Absolute */\r\n.vertical-base{\tvertical-align:baseline;}\r\n/* vertical align baseline */\r\n.vertical-top{\tvertical-align:top;}\r\n/* vertical align top */\r\nnav.vertical ul li{\tdisplay:block;}\r\n/* vertical menu */\r\nnav.horizontal ul li{\tdisplay: inline-block;}\r\n/* horizontal menu */\r\nimg{max-width:100%;}\r\n/*end reset*/\r\nbody{\r\n    padding: 0px;\r\n    margin: 0px;\r\n    background: url('2.jpg') no-repeat;\r\n    background-size: cover;\r\n    font-family: 'Gudea', sans-serif;\r\n}\r\nh1,h2,h3,h4,h5,h6{\r\n    margin: 0;\r\n}\r\np{\r\n    margin: 0;\r\n}\r\nul{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nlabel{\r\n    margin: 0;\r\n}\r\na{\r\n    -webkit-transition: 0.5s;\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\na:hover{\r\n    -webkit-transition: 0.5s all;\r\n    transition: 0.5s all;\r\n}\r\n.wrap{\r\n    width: 100%;\r\n    float: right;\r\n\r\n}\r\n/*widget start here*/\r\n.widget-main{\r\n    background: url('s2.jpg'); \r\n    min-height: 700px;\r\n    background-size: cover;\r\n    width: 100%;\r\n    box-shadow: 0 0 10px #3C3B3B;     \r\n    float: right !important;\r\n}\r\n.widget-left{\r\n    float: left;\r\n    width: 40%;\r\n    background: rgba(255, 255, 255, 0.65);\r\n    padding: 1.5em 2em;\r\n    min-height: 302px;\r\n}\r\n.date{\r\n    float: right;\r\n    width: 100%;\r\n    text-align: right;\r\n    margin-top: -90px;\r\n}\r\n.date h6{\r\n    font-size: 0.9em;\r\n    color: #000;\r\n}\r\n.degree{\r\n    float: left;\r\n    width: 100%;\r\n    padding-bottom: 20px;\r\n}\r\n.degree h4{\r\n    font-size: 1em;\r\n    color: #000;\r\n    margin-bottom: 0.2em;\r\n}\r\n.degree h3{\r\n    font-size: 1.8em;\r\n    color: #000;\r\n}\r\n.widget-right{\r\n    float: right;\r\n    width: 49%;\r\n    text-align: right;\r\n    padding: 2em 1em 1em 1em;\r\n    position: relative;\r\n}\r\n.widget-right p{\r\n    font-size: 1em;\r\n    color: #fff;\r\n    line-height: 1.5em;\r\n}\r\n.widget-right h2{\r\n    font-size: 4em;\r\n    color:#fff;\r\n    position: absolute;\r\n    bottom: -200px;\r\n    right: 22px;\r\n}\r\n.widget-right h5{\r\n    font-size: 1.7em;\r\n    color: #fff;\r\n    margin: 0.8em 0em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBOzs7OztHQUtHO0FBQ0gsVUFBVTtBQUNWLDRaQUE0WixRQUFRLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsWUFBWSxDQUFDLHVCQUF1QixDQUFDO0FBQzVlLHdGQUF3RixjQUFjLENBQUM7QUFDdkcsTUFBTSxlQUFlLENBQUMsVUFBVSxDQUFDLFdBQVcsQ0FBQztBQUM3QyxhQUFhLFdBQVcsQ0FBQztBQUN6QixvREFBb0QsVUFBVSxDQUFDLFlBQVksQ0FBQztBQUM1RSxNQUFNLHdCQUF3QixDQUFDLGdCQUFnQixDQUFDO0FBQ2hELDRCQUE0QjtBQUM1QixVQUFVO0FBQ1YsNFpBQTRaLFFBQVEsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLGNBQWMsQ0FBQyxZQUFZLENBQUMsdUJBQXVCLENBQUM7QUFDNWUsd0ZBQXdGLGNBQWMsQ0FBQztBQUN2RyxNQUFNLGVBQWUsQ0FBQyxVQUFVLENBQUMsV0FBVyxDQUFDO0FBQzdDLGFBQWEsV0FBVyxDQUFDO0FBQ3pCLG9EQUFvRCxVQUFVLENBQUMsWUFBWSxDQUFDO0FBQzVFLE1BQU0sd0JBQXdCLENBQUMsZ0JBQWdCLENBQUM7QUFDaEQsNEJBQTRCO0FBQzVCLEVBQUUsb0JBQW9CLENBQUM7QUFDdkIsUUFBUSxnQkFBZ0IsQ0FBQztBQUFDLHFCQUFxQjtBQUMvQyxRQUFRLGVBQWUsQ0FBQztBQUFDLG9CQUFvQjtBQUM3QyxZQUFZLGlCQUFpQixDQUFDO0FBQUMsc0JBQXNCO0FBQ3JELFVBQVUsV0FBVyxDQUFDO0FBQUMsZ0JBQWdCO0FBQ3ZDLFVBQVUsVUFBVSxDQUFDO0FBQUMsZUFBZTtBQUNyQyxPQUFPLFVBQVUsQ0FBQztBQUFDLGdCQUFnQjtBQUNuQyxjQUFjLGlCQUFpQixDQUFDO0FBQUMsc0JBQXNCO0FBQ3ZELGNBQWMsaUJBQWlCLENBQUM7QUFBQyxzQkFBc0I7QUFDdkQsZ0JBQWdCLHVCQUF1QixDQUFDO0FBQUMsNEJBQTRCO0FBQ3JFLGVBQWUsa0JBQWtCLENBQUM7QUFBQyx1QkFBdUI7QUFDMUQsb0JBQW9CLGFBQWEsQ0FBQztBQUFDLGtCQUFrQjtBQUNyRCxzQkFBc0IscUJBQXFCLENBQUM7QUFBQyxvQkFBb0I7QUFDakUsSUFBSSxjQUFjLENBQUM7QUFDbkIsWUFBWTtBQUNaO0lBQ0ksWUFBWTtJQUNaLFdBQVc7SUFDWCxrQ0FBdUM7SUFDdkMsc0JBQXNCO0lBQ3RCLGdDQUFnQztBQUNwQztBQUNBO0lBQ0ksU0FBUztBQUNiO0FBQ0E7SUFDSSxTQUFTO0FBQ2I7QUFDQTtJQUNJLFNBQVM7SUFDVCxVQUFVO0FBQ2Q7QUFDQTtJQUNJLFNBQVM7QUFDYjtBQUNBO0lBQ0ksd0JBQXdCO0lBRXhCLDRCQUFvQjtJQUFwQixvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLDRCQUE0QjtJQUU1QixvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLFdBQVc7SUFDWCxZQUFZOztBQUVoQjtBQUNBLG9CQUFvQjtBQUNwQjtJQUNJLHlCQUE4QjtJQUM5QixpQkFBaUI7SUFDakIsc0JBQXNCO0lBQ3RCLFdBQVc7SUFDWCw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsVUFBVTtJQUNWLHFDQUFxQztJQUNyQyxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSSxZQUFZO0lBQ1osV0FBVztJQUNYLGlCQUFpQjtJQUNqQixpQkFBaUI7QUFDckI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0FBQ2Y7QUFDQTtJQUNJLFdBQVc7SUFDWCxXQUFXO0lBQ1gsb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSxjQUFjO0lBQ2QsV0FBVztJQUNYLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksZ0JBQWdCO0lBQ2hCLFdBQVc7QUFDZjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7SUFDVixpQkFBaUI7SUFDakIsd0JBQXdCO0lBQ3hCLGtCQUFrQjtBQUN0QjtBQUNBO0lBQ0ksY0FBYztJQUNkLFdBQVc7SUFDWCxrQkFBa0I7QUFDdEI7QUFDQTtJQUNJLGNBQWM7SUFDZCxVQUFVO0lBQ1Ysa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0lBQ1gsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLyotLVxyXG5BdXRob3I6IFczbGF5b3V0c1xyXG5BdXRob3IgVVJMOiBodHRwOi8vdzNsYXlvdXRzLmNvbVxyXG5MaWNlbnNlOiBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDMuMCBVbnBvcnRlZFxyXG5MaWNlbnNlIFVSTDogaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvMy4wL1xyXG4tLSovXHJcbi8qIHJlc2V0ICovXHJcbmh0bWwsYm9keSxkaXYsc3BhbixhcHBsZXQsb2JqZWN0LGlmcmFtZSxoMSxoMixoMyxoNCxoNSxoNixwLGJsb2NrcXVvdGUscHJlLGEsYWJicixhY3JvbnltLGFkZHJlc3MsYmlnLGNpdGUsY29kZSxkZWwsZGZuLGVtLGltZyxpbnMsa2JkLHEscyxzYW1wLHNtYWxsLHN0cmlrZSxzdHJvbmcsc3ViLHN1cCx0dCx2YXIsYix1LGksZGwsZHQsZGQsb2wsbmF2IHVsLG5hdiBsaSxmaWVsZHNldCxmb3JtLGxhYmVsLGxlZ2VuZCx0YWJsZSxjYXB0aW9uLHRib2R5LHRmb290LHRoZWFkLHRyLHRoLHRkLGFydGljbGUsYXNpZGUsY2FudmFzLGRldGFpbHMsZW1iZWQsZmlndXJlLGZpZ2NhcHRpb24sZm9vdGVyLGhlYWRlcixoZ3JvdXAsbWVudSxuYXYsb3V0cHV0LHJ1Ynksc2VjdGlvbixzdW1tYXJ5LHRpbWUsbWFyayxhdWRpbyx2aWRlb3ttYXJnaW46MDtwYWRkaW5nOjA7Ym9yZGVyOjA7Zm9udC1zaXplOjEwMCU7Zm9udDppbmhlcml0O3ZlcnRpY2FsLWFsaWduOmJhc2VsaW5lO31cclxuYXJ0aWNsZSwgYXNpZGUsIGRldGFpbHMsIGZpZ2NhcHRpb24sIGZpZ3VyZSxmb290ZXIsIGhlYWRlciwgaGdyb3VwLCBtZW51LCBuYXYsIHNlY3Rpb24ge2Rpc3BsYXk6IGJsb2NrO31cclxub2wsdWx7bGlzdC1zdHlsZTpub25lO21hcmdpbjowcHg7cGFkZGluZzowcHg7fVxyXG5ibG9ja3F1b3RlLHF7cXVvdGVzOm5vbmU7fVxyXG5ibG9ja3F1b3RlOmJlZm9yZSxibG9ja3F1b3RlOmFmdGVyLHE6YmVmb3JlLHE6YWZ0ZXJ7Y29udGVudDonJztjb250ZW50Om5vbmU7fVxyXG50YWJsZXtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Ym9yZGVyLXNwYWNpbmc6MDt9XHJcbi8qIHN0YXJ0IGVkaXRpbmcgZnJvbSBoZXJlICovXHJcbi8qIHJlc2V0ICovXHJcbmh0bWwsYm9keSxkaXYsc3BhbixhcHBsZXQsb2JqZWN0LGlmcmFtZSxoMSxoMixoMyxoNCxoNSxoNixwLGJsb2NrcXVvdGUscHJlLGEsYWJicixhY3JvbnltLGFkZHJlc3MsYmlnLGNpdGUsY29kZSxkZWwsZGZuLGVtLGltZyxpbnMsa2JkLHEscyxzYW1wLHNtYWxsLHN0cmlrZSxzdHJvbmcsc3ViLHN1cCx0dCx2YXIsYix1LGksZGwsZHQsZGQsb2wsbmF2IHVsLG5hdiBsaSxmaWVsZHNldCxmb3JtLGxhYmVsLGxlZ2VuZCx0YWJsZSxjYXB0aW9uLHRib2R5LHRmb290LHRoZWFkLHRyLHRoLHRkLGFydGljbGUsYXNpZGUsY2FudmFzLGRldGFpbHMsZW1iZWQsZmlndXJlLGZpZ2NhcHRpb24sZm9vdGVyLGhlYWRlcixoZ3JvdXAsbWVudSxuYXYsb3V0cHV0LHJ1Ynksc2VjdGlvbixzdW1tYXJ5LHRpbWUsbWFyayxhdWRpbyx2aWRlb3ttYXJnaW46MDtwYWRkaW5nOjA7Ym9yZGVyOjA7Zm9udC1zaXplOjEwMCU7Zm9udDppbmhlcml0O3ZlcnRpY2FsLWFsaWduOmJhc2VsaW5lO31cclxuYXJ0aWNsZSwgYXNpZGUsIGRldGFpbHMsIGZpZ2NhcHRpb24sIGZpZ3VyZSxmb290ZXIsIGhlYWRlciwgaGdyb3VwLCBtZW51LCBuYXYsIHNlY3Rpb24ge2Rpc3BsYXk6IGJsb2NrO31cclxub2wsdWx7bGlzdC1zdHlsZTpub25lO21hcmdpbjowcHg7cGFkZGluZzowcHg7fVxyXG5ibG9ja3F1b3RlLHF7cXVvdGVzOm5vbmU7fVxyXG5ibG9ja3F1b3RlOmJlZm9yZSxibG9ja3F1b3RlOmFmdGVyLHE6YmVmb3JlLHE6YWZ0ZXJ7Y29udGVudDonJztjb250ZW50Om5vbmU7fVxyXG50YWJsZXtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Ym9yZGVyLXNwYWNpbmc6MDt9XHJcbi8qIHN0YXJ0IGVkaXRpbmcgZnJvbSBoZXJlICovXHJcbmF7dGV4dC1kZWNvcmF0aW9uOm5vbmU7fVxyXG4udHh0LXJ0e3RleHQtYWxpZ246cmlnaHQ7fS8qIHRleHQgYWxpZ24gcmlnaHQgKi9cclxuLnR4dC1sdHt0ZXh0LWFsaWduOmxlZnQ7fS8qIHRleHQgYWxpZ24gbGVmdCAqL1xyXG4udHh0LWNlbnRlcnt0ZXh0LWFsaWduOmNlbnRlcjt9LyogdGV4dCBhbGlnbiBjZW50ZXIgKi9cclxuLmZsb2F0LXJ0e2Zsb2F0OnJpZ2h0O30vKiBmbG9hdCByaWdodCAqL1xyXG4uZmxvYXQtbHR7ZmxvYXQ6bGVmdDt9LyogZmxvYXQgbGVmdCAqL1xyXG4uY2xlYXJ7Y2xlYXI6Ym90aDt9LyogY2xlYXIgZmxvYXQgKi9cclxuLnBvcy1yZWxhdGl2ZXtwb3NpdGlvbjpyZWxhdGl2ZTt9LyogUG9zaXRpb24gUmVsYXRpdmUgKi9cclxuLnBvcy1hYnNvbHV0ZXtwb3NpdGlvbjphYnNvbHV0ZTt9LyogUG9zaXRpb24gQWJzb2x1dGUgKi9cclxuLnZlcnRpY2FsLWJhc2V7XHR2ZXJ0aWNhbC1hbGlnbjpiYXNlbGluZTt9LyogdmVydGljYWwgYWxpZ24gYmFzZWxpbmUgKi9cclxuLnZlcnRpY2FsLXRvcHtcdHZlcnRpY2FsLWFsaWduOnRvcDt9LyogdmVydGljYWwgYWxpZ24gdG9wICovXHJcbm5hdi52ZXJ0aWNhbCB1bCBsaXtcdGRpc3BsYXk6YmxvY2s7fS8qIHZlcnRpY2FsIG1lbnUgKi9cclxubmF2Lmhvcml6b250YWwgdWwgbGl7XHRkaXNwbGF5OiBpbmxpbmUtYmxvY2s7fS8qIGhvcml6b250YWwgbWVudSAqL1xyXG5pbWd7bWF4LXdpZHRoOjEwMCU7fVxyXG4vKmVuZCByZXNldCovXHJcbmJvZHl7XHJcbiAgICBwYWRkaW5nOiAwcHg7XHJcbiAgICBtYXJnaW46IDBweDtcclxuICAgIGJhY2tncm91bmQ6IHVybChpbWFnZXMvMi5qcGcpIG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgICBmb250LWZhbWlseTogJ0d1ZGVhJywgc2Fucy1zZXJpZjtcclxufVxyXG5oMSxoMixoMyxoNCxoNSxoNntcclxuICAgIG1hcmdpbjogMDtcclxufVxyXG5we1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcbnVse1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgcGFkZGluZzogMDtcclxufVxyXG5sYWJlbHtcclxuICAgIG1hcmdpbjogMDtcclxufVxyXG5he1xyXG4gICAgLXdlYmtpdC10cmFuc2l0aW9uOiAwLjVzO1xyXG4gICAgLW1vei10cmFuc2l0aW9uOiAwLjVzIGFsbDtcclxuICAgIHRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG59XHJcbmE6aG92ZXJ7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG4gICAgLW1vei10cmFuc2l0aW9uOiAwLjVzIGFsbDtcclxuICAgIHRyYW5zaXRpb246IDAuNXMgYWxsO1xyXG59XHJcbi53cmFwe1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcblxyXG59XHJcbi8qd2lkZ2V0IHN0YXJ0IGhlcmUqL1xyXG4ud2lkZ2V0LW1haW57XHJcbiAgICBiYWNrZ3JvdW5kOiB1cmwoaW1hZ2VzL3MyLmpwZyk7IFxyXG4gICAgbWluLWhlaWdodDogNzAwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMTBweCAjM0MzQjNCOyAgICAgXHJcbiAgICBmbG9hdDogcmlnaHQgIWltcG9ydGFudDtcclxufVxyXG4ud2lkZ2V0LWxlZnR7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICAgIHdpZHRoOiA0MCU7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNjUpO1xyXG4gICAgcGFkZGluZzogMS41ZW0gMmVtO1xyXG4gICAgbWluLWhlaWdodDogMzAycHg7XHJcbn1cclxuLmRhdGV7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gICAgbWFyZ2luLXRvcDogLTkwcHg7XHJcbn1cclxuLmRhdGUgaDZ7XHJcbiAgICBmb250LXNpemU6IDAuOWVtO1xyXG4gICAgY29sb3I6ICMwMDA7XHJcbn1cclxuLmRlZ3JlZXtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMjBweDtcclxufVxyXG4uZGVncmVlIGg0e1xyXG4gICAgZm9udC1zaXplOiAxZW07XHJcbiAgICBjb2xvcjogIzAwMDtcclxuICAgIG1hcmdpbi1ib3R0b206IDAuMmVtO1xyXG59XHJcbi5kZWdyZWUgaDN7XHJcbiAgICBmb250LXNpemU6IDEuOGVtO1xyXG4gICAgY29sb3I6ICMwMDA7XHJcbn1cclxuLndpZGdldC1yaWdodHtcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIHdpZHRoOiA0OSU7XHJcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcclxuICAgIHBhZGRpbmc6IDJlbSAxZW0gMWVtIDFlbTtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG4ud2lkZ2V0LXJpZ2h0IHB7XHJcbiAgICBmb250LXNpemU6IDFlbTtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgbGluZS1oZWlnaHQ6IDEuNWVtO1xyXG59XHJcbi53aWRnZXQtcmlnaHQgaDJ7XHJcbiAgICBmb250LXNpemU6IDRlbTtcclxuICAgIGNvbG9yOiNmZmY7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBib3R0b206IC0yMDBweDtcclxuICAgIHJpZ2h0OiAyMnB4O1xyXG59XHJcbi53aWRnZXQtcmlnaHQgaDV7XHJcbiAgICBmb250LXNpemU6IDEuN2VtO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBtYXJnaW46IDAuOGVtIDBlbTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -7516,7 +7807,7 @@ AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -7576,6 +7867,7 @@ let LoginComponent = class LoginComponent {
         }
     }
     logar() {
+        sessionStorage.clear;
         this.authService.fazerLogin(this.usuario)
             .subscribe(resp => {
             const keys = resp.data.get('Authorization');
@@ -7643,7 +7935,7 @@ class Usuario {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ub3RpZmljYWNvZXNzaXNwYy9ub3RpZmljYWNvZXNzaXNwYy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25vdGlmaWNhY29lc3Npc3BjL25vdGlmaWNhY29lc3Npc3BjLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -7794,7 +8086,7 @@ AppNotfoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9wZXJmb3JtYW5jZS9hZG1pbi1pbmRpY2Fkb3Jlcy9hZG1pbi1pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2FkbWluLWluZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -8268,7 +8560,7 @@ PerformanceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvY2FwYS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksK0NBQStDO0lBQy9DLDhCQUE4QjtJQUM5Qix1QkFBdUI7SUFDdkIseUJBQXlCO0lBQ3pCLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3QiwyQkFBMkI7SUFDM0IsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLCtDQUErQztJQUMvQywwQ0FBMEM7SUFDMUMsMEJBQTBCO0lBQzFCLHNCQUFzQjtJQUN0Qiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCOztBQUNBO0lBQ0ksK0NBQStDO0lBQy9DLHVCQUF1QjtJQUN2Qiw2QkFBNkI7SUFDN0IsOENBQThDO0lBQzlDLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCIiwiZmlsZSI6Ii4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvY2FwYS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRleHRvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWwgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOmJsYWNrICFpbXBvcnRhbnQgOyBcclxuICAgIGZvbnQtc2l6ZToxMnB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgbWFyZ2luLXRvcDogNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1yaWdodDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICB0ZXh0LWFsaWduOmp1c3RpZnkgIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6ICA1cHggIWltcG9ydGFudDsgXHJcbiAgICB3aWR0aDogOTUwcHggIWltcG9ydGFudDsgXHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmdyaWQuVGl0dWxvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDM3LDYzLDE0NykgIWltcG9ydGFudDsgXHJcbiAgICBmb250LXNpemU6IDEwcHggIWltcG9ydGFudDsgXHJcbiAgICBjb2xvcjp3aGl0ZSAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyN3B4ICFpbXBvcnRhbnQ7IFxyXG59XHJcbi5ncmlkIHtcclxuICAgIGZvbnQtZmFtaWx5OlRyZWJ1Y2hldCBNUywgc2Fucy1zZXJpZiAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50IDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDIyOSwgMjM0LCAyMzgpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxOXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci13aWR0aDogMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBoZWlnaHQ6IDI1cHggIWltcG9ydGFudDsgXHJcbn0iXX0= */"
+module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGVyZm9ybWFuY2UvcmVsYXRvcmlvaW5kaWNhZG9yZXMvY2FwYS9jYXBhLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwrQ0FBK0M7SUFDL0MsOEJBQThCO0lBQzlCLHVCQUF1QjtJQUN2Qix5QkFBeUI7SUFDekIsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw2QkFBNkI7SUFDN0IsNkJBQTZCO0lBQzdCLDJCQUEyQjtJQUMzQix1QkFBdUI7SUFDdkIsNkJBQTZCO0FBQ2pDOztBQUVBO0lBQ0ksK0NBQStDO0lBQy9DLDBDQUEwQztJQUMxQywwQkFBMEI7SUFDMUIsc0JBQXNCO0lBQ3RCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0I7O0FBQ0E7SUFDSSwrQ0FBK0M7SUFDL0MsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtJQUM3Qiw4Q0FBOEM7SUFDOUMsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9jYXBhL2NhcGEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50ZXh0b3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogbm9ybWFsICFpbXBvcnRhbnQ7XHJcbiAgICBjb2xvcjpibGFjayAhaW1wb3J0YW50IDsgXHJcbiAgICBmb250LXNpemU6MTJweCAhaW1wb3J0YW50OyBcclxuICAgIG1hcmdpbi10b3A6IDVweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgdGV4dC1hbGlnbjpqdXN0aWZ5ICFpbXBvcnRhbnQ7XHJcbiAgICBtYXJnaW4tdG9wOiAgNXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgd2lkdGg6IDk1MHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5ncmlkLlRpdHVsb3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigzNyw2MywxNDcpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxMHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgY29sb3I6d2hpdGUgIWltcG9ydGFudDsgXHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAycHggIWltcG9ydGFudDtcclxuICAgIGhlaWdodDogMjdweCAhaW1wb3J0YW50OyBcclxufVxyXG4uZ3JpZCB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQgIWltcG9ydGFudCA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigyMjksIDIzNCwgMjM4KSAhaW1wb3J0YW50OyBcclxuICAgIGZvbnQtc2l6ZTogMTlweCAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyNXB4ICFpbXBvcnRhbnQ7IFxyXG59Il19 */"
 
 /***/ }),
 
@@ -8350,7 +8642,7 @@ CapaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvcmVzdW1vLWluZGljYWRvcmVzL3Jlc3Vtby1pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksK0NBQStDO0lBQy9DLDhCQUE4QjtJQUM5Qix1QkFBdUI7SUFDdkIseUJBQXlCO0lBQ3pCLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3QiwyQkFBMkI7SUFDM0IsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLCtDQUErQztJQUMvQywwQ0FBMEM7SUFDMUMsMEJBQTBCO0lBQzFCLHNCQUFzQjtJQUN0Qiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCOztBQUNBO0lBQ0ksK0NBQStDO0lBQy9DLHVCQUF1QjtJQUN2Qiw2QkFBNkI7SUFDN0IsOENBQThDO0lBQzlDLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsOEJBQThCO0lBQzlCLDhCQUE4QjtJQUM5Qiw0QkFBNEI7SUFDNUIsdUJBQXVCO0FBQzNCIiwiZmlsZSI6Ii4uL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2NhcGEvcmVzdW1vLWluZGljYWRvcmVzL3Jlc3Vtby1pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRleHRvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWwgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOmJsYWNrICFpbXBvcnRhbnQgOyBcclxuICAgIGZvbnQtc2l6ZToxMnB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgbWFyZ2luLXRvcDogNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1yaWdodDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICB0ZXh0LWFsaWduOmp1c3RpZnkgIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6ICA1cHggIWltcG9ydGFudDsgXHJcbiAgICB3aWR0aDogOTUwcHggIWltcG9ydGFudDsgXHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmdyaWQuVGl0dWxvcyB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDM3LDYzLDE0NykgIWltcG9ydGFudDsgXHJcbiAgICBmb250LXNpemU6IDEwcHggIWltcG9ydGFudDsgXHJcbiAgICBjb2xvcjp3aGl0ZSAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyN3B4ICFpbXBvcnRhbnQ7IFxyXG59XHJcbi5ncmlkIHtcclxuICAgIGZvbnQtZmFtaWx5OlRyZWJ1Y2hldCBNUywgc2Fucy1zZXJpZiAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50IDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiKDIyOSwgMjM0LCAyMzgpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxOXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci13aWR0aDogMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBoZWlnaHQ6IDI1cHggIWltcG9ydGFudDsgXHJcbn0iXX0= */"
+module.exports = ".textos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    font-weight: normal !important;\r\n    color:black !important ; \r\n    font-size:12px !important; \r\n    margin-top: 5px !important;\r\n    padding-left: 1em !important;\r\n    padding-right: 1em !important;\r\n    text-align:justify !important;\r\n    margin-top:  5px !important; \r\n    width: 950px !important; \r\n    position: absolute !important;\r\n}\r\n\r\n.grid.Titulos {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    background-color:rgb(37,63,147) !important; \r\n    font-size: 10px !important; \r\n    color:white !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 27px !important; \r\n}\r\n\r\n.grid {\r\n    font-family:Trebuchet MS, sans-serif !important;\r\n    color: black !important;\r\n    font-weight: bold !important ;\r\n    background-color:rgb(229, 234, 238) !important; \r\n    font-size: 19px !important; \r\n    padding-left: 1em !important;\r\n    border-style: solid !important;\r\n    border-color: white !important;\r\n    border-width: 2px !important;\r\n    height: 25px !important; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGVyZm9ybWFuY2UvcmVsYXRvcmlvaW5kaWNhZG9yZXMvY2FwYS9yZXN1bW8taW5kaWNhZG9yZXMvcmVzdW1vLWluZGljYWRvcmVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwrQ0FBK0M7SUFDL0MsOEJBQThCO0lBQzlCLHVCQUF1QjtJQUN2Qix5QkFBeUI7SUFDekIsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw2QkFBNkI7SUFDN0IsNkJBQTZCO0lBQzdCLDJCQUEyQjtJQUMzQix1QkFBdUI7SUFDdkIsNkJBQTZCO0FBQ2pDOztBQUVBO0lBQ0ksK0NBQStDO0lBQy9DLDBDQUEwQztJQUMxQywwQkFBMEI7SUFDMUIsc0JBQXNCO0lBQ3RCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0I7O0FBQ0E7SUFDSSwrQ0FBK0M7SUFDL0MsdUJBQXVCO0lBQ3ZCLDZCQUE2QjtJQUM3Qiw4Q0FBOEM7SUFDOUMsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1Qiw4QkFBOEI7SUFDOUIsOEJBQThCO0lBQzlCLDRCQUE0QjtJQUM1Qix1QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9jYXBhL3Jlc3Vtby1pbmRpY2Fkb3Jlcy9yZXN1bW8taW5kaWNhZG9yZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50ZXh0b3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogbm9ybWFsICFpbXBvcnRhbnQ7XHJcbiAgICBjb2xvcjpibGFjayAhaW1wb3J0YW50IDsgXHJcbiAgICBmb250LXNpemU6MTJweCAhaW1wb3J0YW50OyBcclxuICAgIG1hcmdpbi10b3A6IDVweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxZW0gIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgdGV4dC1hbGlnbjpqdXN0aWZ5ICFpbXBvcnRhbnQ7XHJcbiAgICBtYXJnaW4tdG9wOiAgNXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgd2lkdGg6IDk1MHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5ncmlkLlRpdHVsb3Mge1xyXG4gICAgZm9udC1mYW1pbHk6VHJlYnVjaGV0IE1TLCBzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigzNyw2MywxNDcpICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxMHB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgY29sb3I6d2hpdGUgIWltcG9ydGFudDsgXHJcbiAgICBwYWRkaW5nLWxlZnQ6IDFlbSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAycHggIWltcG9ydGFudDtcclxuICAgIGhlaWdodDogMjdweCAhaW1wb3J0YW50OyBcclxufVxyXG4uZ3JpZCB7XHJcbiAgICBmb250LWZhbWlseTpUcmVidWNoZXQgTVMsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQgIWltcG9ydGFudCA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigyMjksIDIzNCwgMjM4KSAhaW1wb3J0YW50OyBcclxuICAgIGZvbnQtc2l6ZTogMTlweCAhaW1wb3J0YW50OyBcclxuICAgIHBhZGRpbmctbGVmdDogMWVtICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAyNXB4ICFpbXBvcnRhbnQ7IFxyXG59Il19 */"
 
 /***/ }),
 
@@ -8591,7 +8883,7 @@ ResumoIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9pbmRpY2Fkb3Jlcy9pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL2luZGljYWRvcmVzL2luZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -8662,7 +8954,7 @@ IndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9wZXJmb3JtYW5jZS9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy9yZWxhdG9yaW9pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL3JlbGF0b3Jpb2luZGljYWRvcmVzL3JlbGF0b3Jpb2luZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -8722,7 +9014,7 @@ RelatorioindicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9wZXJmb3JtYW5jZS90ZWxhLWltcHJlc3Nhby1yZWxhdG9yaW8vdGVsYS1pbXByZXNzYW8tcmVsYXRvcmlvLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL3RlbGEtaW1wcmVzc2FvLXJlbGF0b3Jpby90ZWxhLWltcHJlc3Nhby1yZWxhdG9yaW8uY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -8809,7 +9101,7 @@ TelaImpressaoRelatorioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9ycGEvcnBhLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JwYS9ycGEuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -8964,7 +9256,7 @@ RpaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90YXJlZmFzL2NhZGFzdHJhci9jYWRhc3RyYXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhcmVmYXMvY2FkYXN0cmFyL2NhZGFzdHJhci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -9033,7 +9325,7 @@ CadastrarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90YXJlZmFzL2VkaXRhci9lZGl0YXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhcmVmYXMvZWRpdGFyL2VkaXRhci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -9106,7 +9398,7 @@ EditarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90YXJlZmFzL2xpc3Rhci9saXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhcmVmYXMvbGlzdGFyL2xpc3Rhci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -9452,7 +9744,7 @@ TarefasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2FnZW5kYW1lbnRvcy9hZ2VuZGFtZW50b3MuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2FnZW5kYW1lbnRvcy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -9510,7 +9802,7 @@ AgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2FnZW5kYW1lbnRvcy9hZ2VuZGFyLXZlaWN1bG8vYWdlbmRhci12ZWljdWxvLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2FnZW5kYXItdmVpY3Vsby9hZ2VuZGFyLXZlaWN1bG8uY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -9713,7 +10005,7 @@ AgendarVeiculoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2FnZW5kYW1lbnRvcy9hcHJvdmFyLWFnZW5kYW1lbnRvL2Fwcm92YXItYWdlbmRhbWVudG8uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2Fwcm92YXItYWdlbmRhbWVudG8vYXByb3Zhci1hZ2VuZGFtZW50by5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -9954,7 +10246,7 @@ AprovarAgendamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2FnZW5kYW1lbnRvcy9jYWxlbmRhcmlvLWFnZW5kYW1lbnRvcy9jYWxlbmRhcmlvLWFnZW5kYW1lbnRvcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2NhbGVuZGFyaW8tYWdlbmRhbWVudG9zL2NhbGVuZGFyaW8tYWdlbmRhbWVudG9zLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -10068,7 +10360,7 @@ CalendarioAgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2FnZW5kYW1lbnRvcy9saXN0YS1hZ2VuZGFtZW50b3MvbGlzdGEtYWdlbmRhbWVudG9zLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvYWdlbmRhbWVudG9zL2xpc3RhLWFnZW5kYW1lbnRvcy9saXN0YS1hZ2VuZGFtZW50b3MuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -10157,7 +10449,7 @@ ListaAgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".car-item .ui-md-3 {\r\n    text-align: center;\r\n}\r\n\r\n.car-item .ui-g-10 {\r\n    font-weight: bold;\r\n}\r\n\r\n.empty-car-item-index {\r\n    background-color: #f1f1f1;\r\n    width: 60px;\r\n    height: 60px;\r\n    margin: 36px auto 0 auto;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-image {\r\n    background-color: #f1f1f1;\r\n    width: 120px;\r\n    height: 120px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-text {\r\n    background-color: #f1f1f1;\r\n    height: 18px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.title-container {\r\n    padding: 1em;\r\n    text-align: right;\r\n}\r\n\r\n.sort-container {\r\n    text-align: left;\r\n}\r\n\r\n@media (max-width: 40em) {\r\n    .car-item {\r\n        text-align: center;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3RyYW5zcG9ydGUvY2FkYXN0cm8vY2FkYXN0cm8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtBQUN0Qjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFDQTtJQUNJLHlCQUF5QjtJQUN6QixXQUFXO0lBQ1gsWUFBWTtJQUNaLHdCQUF3QjtJQUN4QixnREFBd0M7WUFBeEMsd0NBQXdDO0FBQzVDOztBQUNBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixhQUFhO0lBQ2IsZ0RBQXdDO1lBQXhDLHdDQUF3QztBQUM1Qzs7QUFDQTtJQUNJLHlCQUF5QjtJQUN6QixZQUFZO0lBQ1osZ0RBQXdDO1lBQXhDLHdDQUF3QztBQUM1Qzs7QUFDQTtJQUNJLFlBQVk7SUFDWixpQkFBaUI7QUFDckI7O0FBQ0E7SUFDSSxnQkFBZ0I7QUFDcEI7O0FBQ0E7SUFDSTtRQUNJLGtCQUFrQjtJQUN0QjtBQUNKIiwiZmlsZSI6Ii4uL3RyYW5zcG9ydGUvY2FkYXN0cm8vY2FkYXN0cm8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXItaXRlbSAudWktbWQtMyB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5jYXItaXRlbSAudWktZy0xMCB7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG4uZW1wdHktY2FyLWl0ZW0taW5kZXgge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTtcclxuICAgIHdpZHRoOiA2MHB4O1xyXG4gICAgaGVpZ2h0OiA2MHB4O1xyXG4gICAgbWFyZ2luOiAzNnB4IGF1dG8gMCBhdXRvO1xyXG4gICAgYW5pbWF0aW9uOiBwdWxzZSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxufVxyXG4uZW1wdHktY2FyLWl0ZW0taW1hZ2Uge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTtcclxuICAgIHdpZHRoOiAxMjBweDtcclxuICAgIGhlaWdodDogMTIwcHg7XHJcbiAgICBhbmltYXRpb246IHB1bHNlIDFzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xyXG59XHJcbi5lbXB0eS1jYXItaXRlbS10ZXh0IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICBoZWlnaHQ6IDE4cHg7XHJcbiAgICBhbmltYXRpb246IHB1bHNlIDFzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xyXG59XHJcbi50aXRsZS1jb250YWluZXIge1xyXG4gICAgcGFkZGluZzogMWVtO1xyXG4gICAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbn1cclxuLnNvcnQtY29udGFpbmVyIHtcclxuICAgIHRleHQtYWxpZ246IGxlZnQ7XHJcbn1cclxuQG1lZGlhIChtYXgtd2lkdGg6IDQwZW0pIHtcclxuICAgIC5jYXItaXRlbSB7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgfVxyXG59Il19 */"
+module.exports = ".car-item .ui-md-3 {\r\n    text-align: center;\r\n}\r\n\r\n.car-item .ui-g-10 {\r\n    font-weight: bold;\r\n}\r\n\r\n.empty-car-item-index {\r\n    background-color: #f1f1f1;\r\n    width: 60px;\r\n    height: 60px;\r\n    margin: 36px auto 0 auto;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-image {\r\n    background-color: #f1f1f1;\r\n    width: 120px;\r\n    height: 120px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.empty-car-item-text {\r\n    background-color: #f1f1f1;\r\n    height: 18px;\r\n    -webkit-animation: pulse 1s infinite ease-in-out;\r\n            animation: pulse 1s infinite ease-in-out;\r\n}\r\n\r\n.title-container {\r\n    padding: 1em;\r\n    text-align: right;\r\n}\r\n\r\n.sort-container {\r\n    text-align: left;\r\n}\r\n\r\n@media (max-width: 40em) {\r\n    .car-item {\r\n        text-align: center;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdHJhbnNwb3J0ZS9jYWRhc3Ryby9jYWRhc3Ryby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUNBO0lBQ0kseUJBQXlCO0lBQ3pCLFdBQVc7SUFDWCxZQUFZO0lBQ1osd0JBQXdCO0lBQ3hCLGdEQUF3QztZQUF4Qyx3Q0FBd0M7QUFDNUM7O0FBQ0E7SUFDSSx5QkFBeUI7SUFDekIsWUFBWTtJQUNaLGFBQWE7SUFDYixnREFBd0M7WUFBeEMsd0NBQXdDO0FBQzVDOztBQUNBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixnREFBd0M7WUFBeEMsd0NBQXdDO0FBQzVDOztBQUNBO0lBQ0ksWUFBWTtJQUNaLGlCQUFpQjtBQUNyQjs7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFDQTtJQUNJO1FBQ0ksa0JBQWtCO0lBQ3RCO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC90cmFuc3BvcnRlL2NhZGFzdHJvL2NhZGFzdHJvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyLWl0ZW0gLnVpLW1kLTMge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4uY2FyLWl0ZW0gLnVpLWctMTAge1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuLmVtcHR5LWNhci1pdGVtLWluZGV4IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICB3aWR0aDogNjBweDtcclxuICAgIGhlaWdodDogNjBweDtcclxuICAgIG1hcmdpbjogMzZweCBhdXRvIDAgYXV0bztcclxuICAgIGFuaW1hdGlvbjogcHVsc2UgMXMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XHJcbn1cclxuLmVtcHR5LWNhci1pdGVtLWltYWdlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICB3aWR0aDogMTIwcHg7XHJcbiAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgYW5pbWF0aW9uOiBwdWxzZSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxufVxyXG4uZW1wdHktY2FyLWl0ZW0tdGV4dCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xyXG4gICAgaGVpZ2h0OiAxOHB4O1xyXG4gICAgYW5pbWF0aW9uOiBwdWxzZSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcclxufVxyXG4udGl0bGUtY29udGFpbmVyIHtcclxuICAgIHBhZGRpbmc6IDFlbTtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG59XHJcbi5zb3J0LWNvbnRhaW5lciB7XHJcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG59XHJcbkBtZWRpYSAobWF4LXdpZHRoOiA0MGVtKSB7XHJcbiAgICAuY2FyLWl0ZW0ge1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIH1cclxufSJdfQ== */"
 
 /***/ }),
 
@@ -10483,7 +10775,7 @@ CadastroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\r\n    margin: auto;\r\n    width: 50%;\r\n    padding: 10px;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3RyYW5zcG9ydGUvZGFzaGJvYXJkcy9kYXNoYm9hcmRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osVUFBVTtJQUNWLGFBQWE7RUFDZiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2Rhc2hib2FyZHMvZGFzaGJvYXJkcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlciB7XHJcbiAgICBtYXJnaW46IGF1dG87XHJcbiAgICB3aWR0aDogNTAlO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICB9Il19 */"
+module.exports = ".center {\r\n    margin: auto;\r\n    width: 50%;\r\n    padding: 10px;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdHJhbnNwb3J0ZS9kYXNoYm9hcmRzL2Rhc2hib2FyZHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsYUFBYTtFQUNmIiwiZmlsZSI6InNyYy9hcHAvdHJhbnNwb3J0ZS9kYXNoYm9hcmRzL2Rhc2hib2FyZHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXIge1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgfSJdfQ== */"
 
 /***/ }),
 
@@ -10627,7 +10919,7 @@ DashboardsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL2dyYWZpY29zLXRyYW5zcG9ydGUvZ3JhZmljb3MtdHJhbnNwb3J0ZS5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvZ3JhZmljb3MtdHJhbnNwb3J0ZS9ncmFmaWNvcy10cmFuc3BvcnRlLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -10799,7 +11091,7 @@ GraficosTransporteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi90cmFuc3BvcnRlL3RyYW5zcG9ydGUuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RyYW5zcG9ydGUvdHJhbnNwb3J0ZS5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 

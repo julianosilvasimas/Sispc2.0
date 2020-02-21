@@ -113,16 +113,32 @@ export class CadastroPagamentoComponent implements OnInit {
     console.log(objeto)
     this.ControlePagamento.InputPagamento(objeto).subscribe(
       response => {
-        if(response.status === 201){
-          this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
-          detail:'Dados enviados com sucesso!'});
-          console.log('Dados enviados com sucesso!')
-        }
+        this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', life: 5000, 
+        detail:'Dados enviados com sucesso!'});
+        console.log('Dados enviados com sucesso!')
       },
       error =>  { 
         this.messageService.add({severity:'error', summary: "Dados não Enviados!", detail: error.message, life: 5000});
         console.log(error)
       });
+      this.limpar();
   }
 
+
+  limpar(){
+    this.CadEmpresa=null;
+    this.CadAutor=null;
+    this.CadProcesso=null;
+    this.CadNatureza=null;
+    this.CadDataProgramada=null;
+    this.CadValor=null;
+    this.CadEscritorio=null
+    this.CadContaContabil=null; 
+    this.CadContaContabil=null; 
+    this.CadCentroDeCusto=null;
+    this.CadFornecedor=null;
+    this.CadSentenca=null;
+    this.CadMotivoPagamento=null;
+    this.CadFalhaConcessao = null;
+  }
 }
