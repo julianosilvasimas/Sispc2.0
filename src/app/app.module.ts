@@ -162,9 +162,7 @@ import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import { AprovarComponent } from './controledepagamentosjuridico/aprovar/aprovar.component';
 import { AdminComponent } from './admin/admin.component';
 import { CriacaodeusuarioComponent } from './admin/criacaodeusuario/criacaodeusuario.component';
-import { ConcederacessosComponent } from './admin/concederacessos/concederacessos.component';
-import { ResetarsenhasComponent } from './admin/resetarsenhas/resetarsenhas.component';
-
+import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuarios.component';
 
 
 @NgModule({
@@ -314,8 +312,7 @@ import { ResetarsenhasComponent } from './admin/resetarsenhas/resetarsenhas.comp
         AprovarComponent,
         AdminComponent,
         CriacaodeusuarioComponent,
-        ConcederacessosComponent,
-        ResetarsenhasComponent
+        ListadeusuariosComponent
 
     ],
     providers: [

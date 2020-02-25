@@ -30,6 +30,7 @@ export class AppMenuComponent implements OnInit {
     usuTransporte: boolean = false;
     usuJuridicoPagamentos: boolean = false;
     usuProjetos: boolean = false;
+    usuAdminSispc: boolean = false;
     usuJuridicoPagamentosAprovacao: boolean = false;
 
     
@@ -54,6 +55,8 @@ export class AppMenuComponent implements OnInit {
                 this.usuPerformance = true
             }else if(permissao === "ROLE_ADMIN_PROJETOS"){
                 this.usuPerformance = true
+            }else if(permissao === "ROLE_ADMIN_SISPC"){
+                this.usuAdminSispc = true
             }else if(permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO")>0){
                 this.usuJuridicoPagamentos= true
             }
@@ -259,6 +262,17 @@ export class AppMenuComponent implements OnInit {
                 }
             );
             
+            
+            
+            if(this.usuAdminSispc === true){
+                this.model.push(
+                    {label: 'Administrador', icon: 'pi-cog',
+                        items: [
+                            {label: 'Acessos', routerLink: '/admin', icon: 'pi-users'},
+                        ]
+                    }
+                )
+            }
             
        
         

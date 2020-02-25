@@ -91,6 +91,9 @@ export class AgendarVeiculoComponent implements OnInit {
     if(this.OpcCondutores==null){
       campos = campos + "Condutor | "
     }
+    if(this.OpcData==null){
+      campos = campos + "Data | "
+    }
     if(this.OpcDe==null){
       campos = campos + "De | "
     }
@@ -109,13 +112,21 @@ export class AgendarVeiculoComponent implements OnInit {
     if(this.OpcCondutores==null){
       campos = campos + "Condutor | "
     }
+
     if(campos.length>38){
       this.messageService.add({sticky: true, severity:'info', summary: 'Incompleto!', 
         detail: campos});
       
     }else{
-      this.SalvarAgendamento()
-    }
+      if(this.OpcDe < this.OpcAte){
+        // this.SalvarAgendamento()
+        this.messageService.add({sticky: true, severity:'info', summary: 'Solicitação Enviada!', 
+        detail: "Soliciação enviada com sucesso."});
+      }else{
+        this.messageService.add({sticky: true, severity:'info', summary: 'Erro de Lógica', 
+        detail: "O campo \'De\' não pode ser maior do que o campo \'Até\'!"});
+      }
+    };
     
   }
   SalvarAgendamento(){

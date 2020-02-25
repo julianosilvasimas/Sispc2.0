@@ -40,6 +40,7 @@ import { RpaComponent } from './rpa/rpa.component'
 import { AdminIndicadoresComponent } from './performance/admin-indicadores/admin-indicadores.component'
 import { NotificacoessispcComponent } from './notificacoessispc/notificacoessispc.component'
 import { controledepagamentosjuridicoComponent } from './controledepagamentosjuridico/controledepagamentosjuridico.component'
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -78,8 +79,9 @@ export const routes: Routes = [
             { path: 'agendamento', component: AgendarVeiculoComponent, canActivate: [AuthGuard]},
             { path: 'indicadoresAdmin', component: AdminIndicadoresComponent},
             { path: 'email', component: NotificacoessispcComponent},
+            { path: 'admin', component: AdminComponent},
             { path: 'rpa', component: RpaComponent},
-            { path: 'cpjuridico', component: controledepagamentosjuridicoComponent},
+            { path: 'cpjuridico', component: controledepagamentosjuridicoComponent, canActivate: [AuthGuard]},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
         ]
     },

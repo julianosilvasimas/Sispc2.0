@@ -1,0 +1,101 @@
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
+  <h4>GESTÃO DE USUÁRIOS</h4>
+  <p-dataView #dv [value]="usuarios" [paginator]="true" [rows]="10" paginatorPosition="both">
+      <ng-template let-usuarios pTemplate="listItem">
+        <div class="car-details">
+          <div class="ui-g-11">
+            <div class="ui-g-1"><b>{{usuarios.usuarioId}}</b></div>
+            <div class="ui-g-1"><p-checkbox [disabled]="true" [(ngModel)]="usuarios.ativo" binary="true"></p-checkbox></div>
+            <div class="ui-g-3"><b>{{usuarios.nome}}</b></div>
+            <div class="ui-g-3"><b>{{usuarios.login}}</b></div>
+            <div class="ui-g-4"><b>{{usuarios.email}}</b></div>
+          </div>
+          <div class="ui-g-1" >
+            <button pButton type="button" icon="ui-icon-edit" (click)="selecionar(usuarios)"></button>
+          </div>
+        </div>
+      </ng-template>  
+  </p-dataView>
+</div>
+
+
+
+<p-dialog header="Editar" [(visible)]="EditUsuario" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="UsuarioSelect" >
+
+    <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.nome" class="ui-g-12" pInputText/>
+            <label>Nome Completo</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-g-12 item" >
+            <p-checkbox [disabled]="false" [(ngModel)]="UsuarioSelect.ativo" binary="true"></p-checkbox>
+            <label >Status</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.email" class="ui-g-12" pInputText/>
+            <label>Email</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.login" class="ui-g-12" pInputText/>
+            <label >Login</label>
+          </span>
+        </div>
+      </div>
+  
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.gerencia" class="ui-g-12" pInputText/>
+            <label>Gerencia</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.supervisao" class="ui-g-12" pInputText/>
+            <label >Supervisao</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-12">
+      <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
+        <button type="button" pButton icon="pi pi-save" label="Resetar Senha"  (click)="resetarSenah()"></button>
+      </div>
+      <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
+        <button type="button" pButton icon="pi pi-save" label="Atribuir Permissões"  (click)="atribuirPermissoes()"></button>
+      </div>
+      <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
+        <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="salvar()"></button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog header="Editar" [(visible)]="displayEditSentenca" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="UsuarioSelect" >
+
+    <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.nome" class="ui-g-12" pInputText/>
+            <label>Nome Completo</label>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>

@@ -9,7 +9,21 @@ export class CriacaodeusuarioComponent implements OnInit {
 
   constructor() { }
 
+  usuario
+
+  CadAtivo:boolean;
+  CadNome
+  CadEmail
+  CadLogin
+  CadGerencia
+  CadSupervisao
+  
+
   ngOnInit() {
   }
 
+
+  salvar(){
+    
+  }
 }
