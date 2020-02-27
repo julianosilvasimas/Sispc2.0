@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuarios, Permissoes, Usuario } from "../usuarios.model";
+import { Usuarios, Permissoes } from "../usuarios.model";
 import { AdminService } from './../Admin.service';
 import {MessageService} from 'primeng/api';
 
@@ -15,12 +15,13 @@ export class ListadeusuariosComponent implements OnInit {
   usuarios:Usuarios[]; 
   gerencias:any[]; 
   supervisoes:any[]; 
+  unidades:any[]; 
 
   UsuarioSelect: Usuarios;
   EditUsuario: boolean = false;
   
   PermissoesSelect: Usuarios;
-  UsuarioEditarPermissoes: Usuario;
+  UsuarioEditarPermissoes: any;
   EditPermissoes: boolean = false;
 
   sourcePermissoes: Permissoes[];
@@ -34,20 +35,17 @@ export class ListadeusuariosComponent implements OnInit {
     )
     this.adminserv.listgerencias().subscribe(
       response =>{
-        this.gerencias.push({
-          gerenciaId: 0,
-          label: "",
-          tag: null,
-          icon: null,
-          routerLink: null,
-          escopoIndicador: null
-        })
-        this.gerencias.push(response)
+        this.gerencias=response
       }
     )
     this.adminserv.listsupervisoes().subscribe(
       response =>{
         this.supervisoes = response
+      }
+    )
+    this.adminserv.listunidades().subscribe(
+      response =>{
+        this.unidades = response
       }
     )
   }
@@ -155,13 +153,17 @@ export class ListadeusuariosComponent implements OnInit {
     this.UsuarioSelect = null
   }
 
-  newarray(minhasperm: Permissoes[], todasperm:Permissoes[]){
+  newarray(minhasperm: any[], todasperm:any[]){
+    this.sourcePermissoes = todasperm
     
     for(var i = 0; i<minhasperm.length;i++){
-      var index = todasperm.indexOf(minhasperm[i]);
-      todasperm.splice(index,1)
+      for(var j = 0; j<todasperm.length;j++){
+        if(minhasperm[i].perfilId === todasperm[j].perfilId){
+          this.sourcePermissoes.splice(j,1)
+          break;
+        }
+      }
     }  
-    this.sourcePermissoes = todasperm
   }
   //====================================================================================
 

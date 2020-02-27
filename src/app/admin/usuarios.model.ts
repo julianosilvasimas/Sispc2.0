@@ -14,17 +14,30 @@ export interface Permissoes{
 }
 
 
+export interface UsuarioDTO{
+    usuarioId: number,
+    nome: string,
+    email: string,
+    login: string
+    ativo: boolean,
+    senha: string,
+    gerenciaId: any[],
+    supervisaoId: any[],
+    undcodigo: any[]
+}
+
 export interface Usuario{
     usuarioId: number,
     nome: string,
     email: string,
     login: string
     ativo: boolean,
-    cargo: number,
     foto: string,
-    undcodigo: number,
-    gerenciaId: number,
-    supervisaoId: number,
-    perfis: Permissoes[],
-
+    cargo: string,
+    senha: string,
+    gerenciaId: any[],
+    supervisaoId: any[],
+    undcodigo: any[]
+    perfis: any[]
+    
 }

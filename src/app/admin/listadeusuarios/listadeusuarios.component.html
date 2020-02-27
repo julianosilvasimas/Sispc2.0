@@ -53,7 +53,7 @@
         </div>
         <div class="ui-g-12 ui-md-4">
           <span class="md-inputfield">
-            <p-dropdown [options]="unidades" [autoWidth]="true" [(ngModel)]="UsuarioSelect.undcodigo"  placeholder="." optionLabel="label"styleClass = "drop95" filter="true" [showClear]="true"></p-dropdown>
+            <p-dropdown [options]="unidades" [autoWidth]="true" [(ngModel)]="UsuarioSelect.undcodigo"  placeholder="." optionLabel="unidade" styleClass = "drop95" filter="true" [showClear]="true"></p-dropdown>
           </span>
         </div>
       </div>
@@ -93,11 +93,11 @@
   <div class="ui-g" *ngIf="PermissoesSelect" >
     <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
       
-    <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Available" targetHeader="Selected" [responsive]="true" filterBy="permissao" 
+    <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Available" targetHeader="Selected" [responsive]="true" filterBy="perfil" 
     dragdrop="true" sourceFilterPlaceholder="Pesquise pelo nome" targetFilterPlaceholder="Pesquise pelo nome" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
       <ng-template let-perfil pTemplate="item">
       <div class="ui-helper-clearfix">
-          <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{perfil.perfil}}</div>
+          <div style="font-size:10px;float:left;margin:15px 5px 0 0">{{perfil.perfil}}</div>
       </div>
       </ng-template>
     </p-pickList>
