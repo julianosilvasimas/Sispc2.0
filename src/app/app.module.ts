@@ -163,6 +163,9 @@ import { AprovarComponent } from './controledepagamentosjuridico/aprovar/aprovar
 import { AdminComponent } from './admin/admin.component';
 import { CriacaodeusuarioComponent } from './admin/criacaodeusuario/criacaodeusuario.component';
 import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuarios.component';
+import { CadastrarindicadorComponent } from './performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component';
+import { EditindicadoresComponent } from './performance/admin-indicadores/editindicadores/editindicadores.component';
+import { AdminService } from './admin/Admin.service';
 
 
 @NgModule({
@@ -312,7 +315,9 @@ import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuario
         AprovarComponent,
         AdminComponent,
         CriacaodeusuarioComponent,
-        ListadeusuariosComponent
+        ListadeusuariosComponent,
+        CadastrarindicadorComponent,
+        EditindicadoresComponent
 
     ],
     providers: [
@@ -326,7 +331,8 @@ import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuario
         PerformanceService,
         TransporteService,
         RpaService,
-        ControledepagamentosjuridicoService
+        ControledepagamentosjuridicoService,
+        AdminService
     ],
     bootstrap: [AppComponent]
 })

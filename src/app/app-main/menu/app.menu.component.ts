@@ -30,7 +30,8 @@ export class AppMenuComponent implements OnInit {
     usuTransporte: boolean = false;
     usuJuridicoPagamentos: boolean = false;
     usuProjetos: boolean = false;
-    usuAdminSispc: boolean = false;
+    admSispc: boolean = false;
+    admPerformance: boolean = false;
     usuJuridicoPagamentosAprovacao: boolean = false;
 
     
@@ -49,14 +50,22 @@ export class AppMenuComponent implements OnInit {
                 this.usuTransporte = true
             }else if(permissao === "ROLE_USER_COMISSAO"){
                 this.usuComissao = true
+
             }else if(permissao === "ROLE_USER_FROTAS"){
                 this.usuTransporte = true
+
+            }else if(permissao === "ROLE_ADMIN_INDICADOR"){
+                this.admPerformance = true
+
             }else if(permissao === "ROLE_USER_INDICADOR"){
                 this.usuPerformance = true
+
             }else if(permissao === "ROLE_ADMIN_PROJETOS"){
-                this.usuPerformance = true
+                this.usuProjetos = true
+
             }else if(permissao === "ROLE_ADMIN_SISPC"){
-                this.usuAdminSispc = true
+                this.admSispc = true
+
             }else if(permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO")>0){
                 this.usuJuridicoPagamentos= true
             }
@@ -99,13 +108,13 @@ export class AppMenuComponent implements OnInit {
                                 ]
                             },
                             {
-                                label: 'Configurações', icon: '',
+                                label: 'Configurações', icon: 'subject',
                                 items: [
-                                    {label: 'Indicadores', icon: '', routerLink: 'indicadoresAdmin'}
+                                    {label: 'Indicadores', icon: 'subject', routerLink: 'indicadoresAdmin'}
                                 ]
                             }
                         ] :
-                        this.permissoes[1] === "ROLE_ADMIN_INDICADOR" ?  //DEntro do operador o que ainda será construído
+                        this.admPerformance === true ?  //DEntro do operador o que ainda será construído
                         [
                             {
                                 label: 'Acompanhamento', icon: 'subject',
@@ -113,11 +122,10 @@ export class AppMenuComponent implements OnInit {
                                 
                             },
                             {
-                                label: 'Configurações', icon: 'pencil',
+                                label: 'Configurações', icon: 'settings',
                                 items: [
-                                    {label: '', icon: 'pencil', routerLink: 'indicadoresAdmin'}
+                                    {label: 'Indicadores', icon: 'build', routerLink: 'indicadoresAdmin'}
                                 ]
-                                
                             }
                         ] :
                         [
@@ -264,11 +272,12 @@ export class AppMenuComponent implements OnInit {
             
             
             
-            if(this.usuAdminSispc === true){
+            if(this.admSispc === true){
                 this.model.push(
-                    {label: 'Administrador', icon: 'pi-cog',
+                    {label: 'Administrador', icon: 'settings',
                         items: [
-                            {label: 'Acessos', routerLink: '/admin', icon: 'pi-users'},
+                            {label: 'Acessos', routerLink: '/admin', icon: 'person'},
+                            {label: 'Notificações', routerLink: '/email', icon: 'notifications'}
                         ]
                     }
                 )

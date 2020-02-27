@@ -38,7 +38,7 @@ export class RpaComponent implements OnInit {
   }
 
   Arrayas(){
-    this.bot=[];
+    // this.bot=[];
     this.cadastro=[];
     this.status = [];
     this.rpaservice.cadastroBots().subscribe(

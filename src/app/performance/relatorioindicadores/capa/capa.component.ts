@@ -1,6 +1,5 @@
 
 import { Component, OnInit, Input} from '@angular/core';
-import { Indicador } from '../../performance.model';
 import { PerformanceService } from '../../performance.service';
 import { AuthService } from '../../../login/auth.service';
 
@@ -31,11 +30,11 @@ export class CapaComponent implements OnInit {
     this.nome = sessionStorage.getItem('nome');
     this.email = sessionStorage.getItem('email');
     var data = new Date(),
-      diaF = ("0" + data.getDate()).slice(-2),
-      mesF = ("0" + data.getMonth()+1).slice(-2),
+      diaF = ((data.getDate())<10 ? "0" + (data.getDate()): (data.getDate())),
+      mesF = ((data.getMonth()+1)<10 ? "0" + (data.getMonth()+1): (data.getMonth()+1)),
       anoF = data.getFullYear(),
-      hora = ("0" + data.getHours()).slice(-2),
-      minuto = ("0" + data.getMinutes()).slice(-2),
+      hora = ((data.getHours())<10 ? "0" + (data.getHours()): (data.getHours())),
+      minuto = ((data.getMinutes())<10 ? "0" + (data.getMinutes()): (data.getMinutes())),
       dias = new Array('Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado');
 
     this.date = dias[data.getDay()]+" - "+diaF+"/"+mesF+"/"+anoF+" "+hora+":"+minuto;

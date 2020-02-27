@@ -1,5 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { Indicador } from '../../../performance.model';
+import { Component, OnInit, Input} from '@angular/core'
 import { PerformanceService } from '../../../performance.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class ResumoIndicadoresComponent implements OnInit {
   public Cora: any  = "black";
 
 
-  @Input() indicador : Indicador
   @Input() element;
   @Input() refer;
 
@@ -126,13 +124,13 @@ export class ResumoIndicadoresComponent implements OnInit {
       if(tipoGraph==1 || tipoGraph==2 || tipoGraph==6){
         val1 = orcadoAcumulad
         val2 = realizadoAcumulad
-        this.RotuloOrcadoMensal = converterComDecimal(orcadoMensal)
-        this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad)
-        this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad)
-        this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2)
-        this.RotuloDiferencaAcum2 =converterComDecimal(val2-val1)
-        this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
-        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
+        this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal)
+        this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad)
+        this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad)
+        this.RotuloDiferencaAcum = ((val2-val1)).toFixed(0)
+        this.RotuloDiferencaAcum2 =converterSemDecimal(val2-val1)
+        this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
+        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(0);
 
       }else if(tipoGraph==8 ){
         val1 = orcadoAcumulad

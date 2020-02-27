@@ -1,6 +1,6 @@
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
   <h4>GESTÃO DE USUÁRIOS</h4>
-  <p-dataView #dv [value]="usuarios" [paginator]="true" [rows]="10" paginatorPosition="both">
+  <p-dataView #dv [value]="usuarios" [paginator]="true" [rows]="25" paginatorPosition="both">
       <ng-template let-usuarios pTemplate="listItem">
         <div class="car-details">
           <div class="ui-g-11">
@@ -20,7 +20,7 @@
 
 
 
-<p-dialog header="Editar" [(visible)]="EditUsuario" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
+<p-dialog header="Editar" [(visible)]="EditUsuario" [responsive]="false" showEffect="fade" [modal]="true" [style]="{'height':'500px', width: '800px'}"  (onAfterHide)="onDialogHide()">
   <div class="ui-g" *ngIf="UsuarioSelect" >
 
     <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
@@ -40,6 +40,25 @@
       </div>
       
       <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-4" >
+          <span class="md-inputfield"> 
+           <p-dropdown [options]="supervisoes" [autoWidth]="true" [(ngModel)]="UsuarioSelect.supervisaoId"  placeholder="."  optionLabel="label" styleClass = "drop95" filter="true" [showClear]="true"></p-dropdown>
+           <label >Supervisão</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <p-dropdown [options]="gerencias" [autoWidth]="true" [(ngModel)]="UsuarioSelect.gerenciaId"  placeholder="." optionLabel="label"styleClass = "drop95" filter="true" [showClear]="true"></p-dropdown>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <p-dropdown [options]="unidades" [autoWidth]="true" [(ngModel)]="UsuarioSelect.undcodigo"  placeholder="." optionLabel="label"styleClass = "drop95" filter="true" [showClear]="true"></p-dropdown>
+          </span>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
         <div class="ui-g-12 ui-md-6">
           <span class="md-inputfield">
             <input id="input" type="text" [(ngModel)]="UsuarioSelect.email" class="ui-g-12" pInputText/>
@@ -53,49 +72,38 @@
           </span>
         </div>
       </div>
-  
-      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
-        <div class="ui-g-12 ui-md-6">
-          <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="UsuarioSelect.gerencia" class="ui-g-12" pInputText/>
-            <label>Gerencia</label>
-          </span>
-        </div>
-        <div class="ui-g-12 ui-md-6" >
-          <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="UsuarioSelect.supervisao" class="ui-g-12" pInputText/>
-            <label >Supervisao</label>
-          </span>
-        </div>
-      </div>
-    </div>
 
-    <div class="ui-g-12 ui-md-12">
-      <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
-        <button type="button" pButton icon="pi pi-save" label="Resetar Senha"  (click)="resetarSenah()"></button>
-      </div>
-      <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
-        <button type="button" pButton icon="pi pi-save" label="Atribuir Permissões"  (click)="atribuirPermissoes()"></button>
-      </div>
-      <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
-        <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="salvar()"></button>
+      <div class="ui-g-12 ui-md-12" style="margin-top: 80px;">
+        <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
+          <button type="button" pButton icon="pi pi-save" label="Resetar Senha"  (click)="resetarSenha(UsuarioSelect)"></button>
+        </div>
+        <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
+          <button type="button" pButton icon="pi pi-save" label="Atribuir Permissões"  (click)="atribuirPermissoes(UsuarioSelect)"></button>
+        </div>
+        <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
+          <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="updateUser(UsuarioSelect)"></button>
+        </div>
       </div>
     </div>
+    
   </div>
 </p-dialog>
 
-<p-dialog header="Editar" [(visible)]="displayEditSentenca" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
-  <div class="ui-g" *ngIf="UsuarioSelect" >
-
+<p-dialog header="Editar" [(visible)]="EditPermissoes" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '800px'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="PermissoesSelect" >
     <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
-      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
-        <div class="ui-g-12 ui-md-6">
-          <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="UsuarioSelect.nome" class="ui-g-12" pInputText/>
-            <label>Nome Completo</label>
-          </span>
-        </div>
+      
+    <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Available" targetHeader="Selected" [responsive]="true" filterBy="permissao" 
+    dragdrop="true" sourceFilterPlaceholder="Pesquise pelo nome" targetFilterPlaceholder="Pesquise pelo nome" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
+      <ng-template let-perfil pTemplate="item">
+      <div class="ui-helper-clearfix">
+          <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{perfil.perfil}}</div>
       </div>
+      </ng-template>
+    </p-pickList>
+    <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="editarPermissoes()"></button>
+    </div>
     </div>
   </div>
 </p-dialog>

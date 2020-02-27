@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { EventEmitterService } from '../../demo/service/EventEmitterService';
 import { PerformanceService } from './../performance.service';
-import { Indicadores, Indicador } from '../performance.model';
+import { Indicadores } from '../performance.model';
 import { element } from 'protractor';
 import { AuthService } from '../../login/auth.service';
 import { GraficosComponent } from 'src/app/graficos/graficos.component';
@@ -34,7 +34,7 @@ export class InputindicadoresComponent implements OnInit {
   barraAtiva: boolean = false;
   tipoindicador: string;
 
-  ind: Indicador[] = [];
+  ind: any[] = [];
 
   realacum: any;
   orcadoacum: any;

@@ -1,3 +1,12 @@
-<p>
-  admin-indicadores works!
-</p>
+<p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
+
+<!--Agendar-->
+<div class="card card-w-title"  *ngIf="activeItemIndex==0">
+  <app-cadastrarindicador></app-cadastrarindicador>
+</div>
+
+
+<!--Aprovação de Agendamentos-->
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==1">
+  <app-editindicadores></app-editindicadores>
+</div>

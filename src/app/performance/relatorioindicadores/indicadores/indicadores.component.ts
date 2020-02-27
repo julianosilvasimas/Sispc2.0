@@ -1,5 +1,4 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Indicador } from '../../performance.model';
 import { PerformanceService } from '../../performance.service';
 
 
