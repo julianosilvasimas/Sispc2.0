@@ -1,15 +1,157 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminIndicadoresService } from '../admin-indicadores.service';
+import { Indicadores } from '../../performance.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-editindicadores',
   templateUrl: './editindicadores.component.html',
-  styleUrls: ['./editindicadores.component.css']
+  styles: [`
+        .old-car {
+            background-color: #1CA979 !important;
+            color: #ffffff !important;
+        }
+
+        .very-old-car {
+            background-color: #2CA8B1 !important;
+            color: #ffffff !important;
+        }
+    `
+    ]
 })
 export class EditindicadoresComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private adminindic: AdminIndicadoresService,  private messageService: MessageService) {
   }
 
+  filtroData;
+  filtroIndicador;
+  filtroListaIndicador
+
+  editing=false
+  ListaOk: boolean = false;
+  ListaParaEnviar: boolean = false;
+  CarregarVisible: boolean = false;
+  porcentagemconcluido: number = 0;
+
+  listaCompleta: Indicadores[];
+  listaCompletaImutavel: Indicadores[];
+  listaAlterada: Indicadores[]=[];
+
+  ngOnInit() {
+    this.adminindic.listaIndicadores().subscribe(
+      indicador  =>  {
+        this.filtroListaIndicador = indicador
+      }
+    )
+  }
+
+  onDialogHide(){
+    this.ListaOk=false
+    this.listaCompleta=[]
+    this.listaAlterada=[]
+    this.editing=false
+  }
+
+  atualizar(){
+    this.adminindic.indicadoresByMonth(this.FormatarData(this.filtroData),this.filtroIndicador.indicadorId)
+      .subscribe(
+      indicador  =>  {
+        this.listaCompleta = indicador
+        this.ListaOk=true
+        this.atualizar2();
+      }
+    );
+  }
+  atualizar2(){
+    this.listaCompletaImutavel=[]
+    this.adminindic.indicadoresByMonth(this.FormatarData(this.filtroData),this.filtroIndicador.indicadorId)
+      .subscribe(
+      indicador  =>  {
+        this.listaCompletaImutavel = indicador
+      }
+    );
+  }
+  FormatarData(datareceb){
+    var dataFinal
+
+    if(datareceb.length<20){
+      dataFinal = datareceb
+    }else{
+      var data = datareceb,
+        dia2  = data.getDate().toString().padStart(2, '0'),
+        mes2  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2  = data.getFullYear();
+
+      dataFinal = ano2+"-"+mes2+"-"+dia2;
+    }
+     return dataFinal;
+  }
+  
+  onRowEditSave(indicador: Indicadores) {
+    
+  }
+
+  onRowEditCancel(){
+
+  }
+
+  SolicitarAlteracao(){
+    this.listaAlterada = []
+    for(var i = 0;i<this.listaCompletaImutavel.length;i++){
+      if(
+        this.listaCompletaImutavel[i].datareferencia!==this.FormatarData(this.listaCompleta[i].datareferencia) ||
+        this.listaCompletaImutavel[i].orcado!==this.listaCompleta[i].orcado ||
+        this.listaCompletaImutavel[i].realizado!==this.listaCompleta[i].realizado ||
+        this.listaCompletaImutavel[i].minimo!==this.listaCompleta[i].minimo ||
+        this.listaCompletaImutavel[i].maximo!==this.listaCompleta[i].maximo ||
+        this.listaCompletaImutavel[i].meta!==this.listaCompleta[i].meta ||
+        this.listaCompletaImutavel[i].dentroprazoreg!==this.listaCompleta[i].dentroprazoreg ||
+        this.listaCompletaImutavel[i].dentroprazo!==this.listaCompleta[i].dentroprazo
+      ){
+        this.listaCompleta[i].datareferencia = this.FormatarData(this.listaCompleta[i].datareferencia)
+        this.listaAlterada.push(this.listaCompleta[i])
+      }
+    }
+    this.ListaOk=false
+    
+    // this.listaAlterada=this.listaCompleta
+    if(this.listaAlterada.length>0){
+      this.ListaParaEnviar=true
+    }
+    this.listaCompleta=[]
+    this.atualizar2()
+  }
+
+
+  AprovarAlteracoes(){
+    this.CarregarVisible=true
+    for(var i = 0 ; i<this.listaAlterada.length;i++){
+      this.porcentagemconcluido = Math.floor(((i+1)/this.listaAlterada.length)*100)
+
+      //CODIGO DE INSERT COMEÇA AQUI
+      //============================================================================================
+      var objetoDaVez= this.listaAlterada[i]
+      this.adminindic.indicadoresAtt(objetoDaVez).subscribe(
+        indicador  =>  {
+          this.messageService.add({severity: 'info', summary: 'Success', detail: 'Linha de Indicadores '+objetoDaVez.exeindicadorId+' alterado'});
+        }
+      );
+      //============================================================================================
+
+      if (this.porcentagemconcluido >= 100) {
+        this.porcentagemconcluido = 100;
+        this.messageService.add({severity: 'info', summary: 'Success', detail: 'Process Completed'});
+      }
+    }
+    this.listaAlterada = [];
+    this.ListaParaEnviar=false
+    this.CarregarVisible=false
+    
+  }
+
+
+  CancelarAlteracoes(){
+    this.onDialogHide();
+  }
 }

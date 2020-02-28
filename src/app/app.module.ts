@@ -166,6 +166,8 @@ import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuario
 import { CadastrarindicadorComponent } from './performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component';
 import { EditindicadoresComponent } from './performance/admin-indicadores/editindicadores/editindicadores.component';
 import { AdminService } from './admin/Admin.service';
+import { AdminIndicadoresService } from './performance/admin-indicadores/admin-indicadores.service';
+import { EditarcadastroindicadoresComponent } from './performance/admin-indicadores/editarcadastroindicadores/editarcadastroindicadores.component';
 
 
 @NgModule({
@@ -317,7 +319,8 @@ import { AdminService } from './admin/Admin.service';
         CriacaodeusuarioComponent,
         ListadeusuariosComponent,
         CadastrarindicadorComponent,
-        EditindicadoresComponent
+        EditindicadoresComponent,
+        EditarcadastroindicadoresComponent
 
     ],
     providers: [
@@ -332,7 +335,8 @@ import { AdminService } from './admin/Admin.service';
         TransporteService,
         RpaService,
         ControledepagamentosjuridicoService,
-        AdminService
+        AdminService,
+        AdminIndicadoresService
     ],
     bootstrap: [AppComponent]
 })

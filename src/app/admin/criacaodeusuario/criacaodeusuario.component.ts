@@ -17,10 +17,12 @@ export class CriacaodeusuarioComponent implements OnInit {
   unidades:any[]; 
   supervisoes:any[]; 
 
-  CadAtivo:boolean;
+  CadAtivo:boolean= false;
   CadNome
   CadEmail
   CadLogin
+  CadCargo
+  CadFoto
   CadGerencia
   CadSupervisao
   CadUnidades
@@ -54,6 +56,8 @@ export class CriacaodeusuarioComponent implements OnInit {
       login: this.CadLogin,
       ativo: this.CadAtivo,
       senha: null,
+      cargo: this.CadCargo,
+      foto: this.CadFoto,
       gerenciaId: this.CadGerencia===undefined ? null : this.CadGerencia,
       supervisaoId: this.CadSupervisao===undefined ? null : this.CadSupervisao,
       undcodigo: this.CadUnidades===undefined ? null : this.CadUnidades

@@ -1,6 +1,15 @@
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
   <h4>GESTÃO DE USUÁRIOS</h4>
   <p-dataView #dv [value]="usuarios" [paginator]="true" [rows]="25" paginatorPosition="both">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="ui-g">
+          <div class="ui-g-12 filter-container">
+            <input class="ui-g-4" type="search" pInputText placeholder="Nome" (keyup)="Filter()" [(ngModel)]="VALOR1" >
+          </div>
+        </div>
+      </div>
+    </p-header>
       <ng-template let-usuarios pTemplate="listItem">
         <div class="car-details">
           <div class="ui-g-11">
@@ -34,7 +43,8 @@
         <div class="ui-g-12 ui-md-6">
           <div class="ui-g-12 item" >
             <p-checkbox [disabled]="false" [(ngModel)]="UsuarioSelect.ativo" binary="true"></p-checkbox>
-            <label >Status</label>
+            <label *ngIf="UsuarioSelect.ativo === true" >Ativo</label>
+            <label *ngIf="UsuarioSelect.ativo === false" >Inativo</label>
           </div>
         </div>
       </div>
@@ -61,6 +71,21 @@
       <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
         <div class="ui-g-12 ui-md-6">
           <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.cargo" class="ui-g-12" pInputText/>
+            <label>Cargo</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-6" >
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="UsuarioSelect.foto" class="ui-g-12" pInputText/>
+            <label >Foto</label>
+          </span>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+        <div class="ui-g-12 ui-md-6">
+          <span class="md-inputfield">
             <input id="input" type="text" [(ngModel)]="UsuarioSelect.email" class="ui-g-12" pInputText/>
             <label>Email</label>
           </span>
@@ -73,7 +98,7 @@
         </div>
       </div>
 
-      <div class="ui-g-12 ui-md-12" style="margin-top: 80px;">
+      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
         <div class="ui-g-4" style="text-align: center; margin-top: 20px;">
           <button type="button" pButton icon="pi pi-save" label="Resetar Senha"  (click)="resetarSenha(UsuarioSelect)"></button>
         </div>
@@ -93,8 +118,8 @@
   <div class="ui-g" *ngIf="PermissoesSelect" >
     <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
       
-    <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Available" targetHeader="Selected" [responsive]="true" filterBy="perfil" 
-    dragdrop="true" sourceFilterPlaceholder="Pesquise pelo nome" targetFilterPlaceholder="Pesquise pelo nome" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
+    <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Disponíveis" targetHeader="Acessos" [responsive]="true" filterBy="perfil" 
+    dragdrop="true" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
       <ng-template let-perfil pTemplate="item">
       <div class="ui-helper-clearfix">
           <div style="font-size:10px;float:left;margin:15px 5px 0 0">{{perfil.perfil}}</div>

@@ -902,7 +902,7 @@ export class GraficosComponent implements OnInit {
       
       //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
       //========================================================================================
-      if(tipoGraph==1 || tipoGraph==2 || tipoGraph==6){
+      if(tipoGraph==1 || tipoGraph==2 || tipoGraph==6|| tipoGraph==7 ){
         val1 = orcadoAcumulad
         val2 = realizadoAcumulad
         this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal)
@@ -962,7 +962,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloDiferencaAcum2 = "-";
         this.RotuloDiferencaPerc = "-";
 
-      }else if(tipoGraph==7 || tipoGraph==9){      
+      }else if(tipoGraph==9){      
         val1 = OrcadoMedia;
         val2 = RealMedia;
         this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);

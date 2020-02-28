@@ -18,7 +18,7 @@ export class AdminIndicadoresComponent implements OnInit {
       {label: 'Cadastrar Indicador'},
       {label: 'Editar Indicadores'}
     ];
-    this.trocadeitemIndex(0);
+    this.trocadeitemIndex(1);
   }
 
 

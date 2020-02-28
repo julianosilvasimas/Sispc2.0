@@ -119,7 +119,7 @@ export class AgendarVeiculoComponent implements OnInit {
       
     }else{
       if(this.OpcDe < this.OpcAte){
-        // this.SalvarAgendamento()
+        this.SalvarAgendamento()
         this.messageService.add({sticky: true, severity:'info', summary: 'Solicitação Enviada!', 
         detail: "Soliciação enviada com sucesso."});
       }else{

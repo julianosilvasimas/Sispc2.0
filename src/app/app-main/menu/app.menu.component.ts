@@ -55,6 +55,7 @@ export class AppMenuComponent implements OnInit {
                 this.usuTransporte = true
 
             }else if(permissao === "ROLE_ADMIN_INDICADOR"){
+                this.usuPerformance = true
                 this.admPerformance = true
 
             }else if(permissao === "ROLE_USER_INDICADOR"){

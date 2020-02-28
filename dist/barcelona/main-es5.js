@@ -357,7 +357,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USUÁRIO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNome\" class=\"ui-g-12\" pInputText/>\r\n          <label>Nome Completo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <div class=\"ui-g-12 item\" >\r\n          <p-checkbox  [(ngModel)]=\"CadAtivo\"  binary=\"true\"></p-checkbox>\r\n          <label >Status</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n         <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"CadSupervisao\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n         <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"CadGerencia\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"CadUnidades\" placeholder=\".\"   optionLabel=\"unidade\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Unidade</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmail\" class=\"ui-g-12\" pInputText/>\r\n          <label>Email</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadLogin\" class=\"ui-g-12\" pInputText/>\r\n          <label >Login</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USUÁRIO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNome\" class=\"ui-g-12\" pInputText/>\r\n          <label>Nome Completo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <div class=\"ui-g-12 item\" >\r\n          <p-checkbox  [(ngModel)]=\"CadAtivo\"  binary=\"true\"></p-checkbox>\r\n          <label *ngIf=\"CadAtivo === true\" >Ativo</label>\r\n          <label *ngIf=\"CadAtivo === false\" >Inativo</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n         <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"CadSupervisao\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n         <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"CadGerencia\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"CadUnidades\" placeholder=\".\"   optionLabel=\"unidade\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Unidade</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadCargo\" class=\"ui-g-12\" pInputText/>\r\n          <label>Cargo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadFoto\" class=\"ui-g-12\" pInputText/>\r\n          <label >Foto</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmail\" class=\"ui-g-12\" pInputText/>\r\n          <label>Email</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadLogin\" class=\"ui-g-12\" pInputText/>\r\n          <label >Login</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -368,7 +368,7 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label >Status</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 80px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Available\" targetHeader=\"Selected\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" sourceFilterPlaceholder=\"Pesquise pelo nome\" targetFilterPlaceholder=\"Pesquise pelo nome\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n      <div class=\"ui-helper-clearfix\">\r\n          <div style=\"font-size:10px;float:left;margin:15px 5px 0 0\">{{perfil.perfil}}</div>\r\n      </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Nome\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label *ngIf=\"UsuarioSelect.ativo === true\" >Ativo</label>\r\n            <label *ngIf=\"UsuarioSelect.ativo === false\" >Inativo</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.cargo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Cargo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.foto\" class=\"ui-g-12\" pInputText/>\r\n            <label >Foto</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Disponíveis\" targetHeader=\"Acessos\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n      <div class=\"ui-helper-clearfix\">\r\n          <div style=\"font-size:10px;float:left;margin:15px 5px 0 0\">{{perfil.perfil}}</div>\r\n      </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -401,7 +401,7 @@ module.exports = "<div class=\"layout-sidebar\" [ngStyle]=\"{'overflow':app.side
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmoke !important;\">\r\n    <!--<div class=\"logo\">\r\n        <a href=\"#\">\r\n            <img src=\"assets/layout/images/sisp.png\">\r\n        </a>\r\n    </div>-->\r\n\r\n    <img src=\"assets/layout/images/SISPC 2.0.png\" class=\"app-name\"/>\r\n\r\n    <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\r\n        <i class=\"material-icons\">menu</i>\r\n    </a>\r\n\r\n    <ul class=\"topbar-menu fadeInDown\" [ngClass]=\"{'topbar-menu-visible': app.topbarMenuActive}\">\r\n        <li #profile class=\"profile-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === profile}\" style=\"width:180px\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,profile)\">\r\n                <div class=\"profile-image\">\r\n                    <img src= {{imgPerfil}}>\r\n                </div>\r\n                <div class=\"profile-info\">\r\n                    <span class=\"topbar-item-name profile-name\" style=\"width:180px\">{{nome}}</span>\r\n                    <span class=\"topbar-item-name profile-role\" style=\"width:180px\">{{cargo}}</span>\r\n                </div>\r\n            </a>\r\n\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">person</i>\r\n                        <span>Perfil</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">security</i>\r\n                        <span>Privacidade</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">settings_applications</i>\r\n                        <span>Configurações</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"fechar()\">\r\n                        <i class=\"material-icons\">power_settings_new</i>\r\n                        <span>Sair</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n\r\n        <li #settings [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === settings}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,settings)\">\r\n                <i class=\"topbar-icon material-icons\">settings</i>\r\n                <span class=\"topbar-item-name\">Settings</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">palette</i>\r\n                        <span>Change Theme</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">favorite_border</i>\r\n                        <span>Favoritos</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">lock</i>\r\n                        <span>Alterar Senha</span>\r\n                    </a>\r\n                </li>\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">wallpaper</i>\r\n                        <span>Wallpaper</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n            </ul>\r\n        </li>\r\n        <li #messages [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === messages}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,messages)\">\r\n                <i class=\"topbar-icon material-icons\">message</i>\r\n                <!--<span class=\"topbar-badge\">5</span>-->\r\n                <span class=\"topbar-item-name\">Messages</span>\r\n            </a>\r\n           <!-- <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar1.png\" width=\"35\"/>\r\n                        <span>Preciso de um relatório</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Poderia me ajudar com uma planilha?</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar3.png\" width=\"35\"/>\r\n                        <span>Podemos marcar uma reunião</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Reunião às 10pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar4.png\" width=\"35\"/>\r\n                        <span>Favor atualizar os dados dos indicadores</span>\r\n                    </a>\r\n                </li>\r\n            </ul>-->\r\n        </li>\r\n        <li #notifications [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === notifications}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,notifications)\">\r\n                <i class=\"topbar-icon material-icons\">timer</i>\r\n                <!--<span class=\"topbar-badge\">4</span>-->\r\n                <span class=\"topbar-item-name\">Notifications</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">bug_report</i>\r\n                        <span>Tarefas pendentes</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">event</i>\r\n                        <span>Reunião às 3pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">file_download</i>\r\n                        <span>Baixar Relatórios</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">flight</i>\r\n                        <span>Plano de vôo</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n        <li #search class=\"search-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === search}\"\r\n            (click)=\"app.onTopbarItemClick($event,search)\">\r\n            <span class=\"md-inputfield\">\r\n                <input type=\"text\" pInputText>\r\n                <label>Search</label>\r\n                <i class=\"topbar-icon material-icons\">search</i>\r\n            </span>\r\n        </li>\r\n    </ul>\r\n</div>"
+module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmoke !important;\">\r\n    <!--<div class=\"logo\">\r\n        <a href=\"#\">\r\n            <img src=\"assets/layout/images/sisp.png\">\r\n        </a>\r\n    </div>-->\r\n\r\n    <img src=\"assets/layout/images/SISPC 2.0.png\" class=\"app-name\"/>\r\n\r\n    <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\r\n        <i class=\"material-icons\">menu</i>\r\n    </a>\r\n\r\n    <ul class=\"topbar-menu fadeInDown\" [ngClass]=\"{'topbar-menu-visible': app.topbarMenuActive}\">\r\n        <li #profile class=\"profile-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === profile}\" style=\"width:180px\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,profile)\">\r\n                <div class=\"profile-image\">\r\n                    <img src= {{imgPerfil}}>\r\n                </div>\r\n                <div class=\"profile-info\">\r\n                    <span class=\"topbar-item-name profile-name\" style=\"width:180px\">{{nome}}</span>\r\n                    <span class=\"topbar-item-name profile-role\" style=\"width:180px\">{{cargo}}</span>\r\n                </div>\r\n            </a>\r\n\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">person</i>\r\n                        <span>Perfil</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">security</i>\r\n                        <span>Privacidade</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">settings_applications</i>\r\n                        <span>Configurações</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"\" (click)=\"fechar()\">\r\n                        <i class=\"material-icons\">power_settings_new</i>\r\n                        <span>Sair</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n\r\n        <li #settings [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === settings}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,settings)\">\r\n                <i class=\"topbar-icon material-icons\">settings</i>\r\n                <span class=\"topbar-item-name\">Settings</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">palette</i>\r\n                        <span>Change Theme</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">favorite_border</i>\r\n                        <span>Favoritos</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">lock</i>\r\n                        <span>Alterar Senha</span>\r\n                    </a>\r\n                </li>\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">wallpaper</i>\r\n                        <span>Wallpaper</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n            </ul>\r\n        </li>\r\n        <li #messages [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === messages}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,messages)\">\r\n                <i class=\"topbar-icon material-icons\">message</i>\r\n                <!--<span class=\"topbar-badge\">5</span>-->\r\n                <span class=\"topbar-item-name\">Messages</span>\r\n            </a>\r\n           <!-- <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar1.png\" width=\"35\"/>\r\n                        <span>Preciso de um relatório</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Poderia me ajudar com uma planilha?</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar3.png\" width=\"35\"/>\r\n                        <span>Podemos marcar uma reunião</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Reunião às 10pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar4.png\" width=\"35\"/>\r\n                        <span>Favor atualizar os dados dos indicadores</span>\r\n                    </a>\r\n                </li>\r\n            </ul>-->\r\n        </li>\r\n        <li #notifications [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === notifications}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,notifications)\">\r\n                <i class=\"topbar-icon material-icons\">timer</i>\r\n                <!--<span class=\"topbar-badge\">4</span>-->\r\n                <span class=\"topbar-item-name\">Notifications</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">bug_report</i>\r\n                        <span>Tarefas pendentes</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">event</i>\r\n                        <span>Reunião às 3pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">file_download</i>\r\n                        <span>Baixar Relatórios</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">flight</i>\r\n                        <span>Plano de vôo</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n        <li #search class=\"search-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === search}\"\r\n            (click)=\"app.onTopbarItemClick($event,search)\">\r\n            <span class=\"md-inputfield\">\r\n                <input type=\"text\" pInputText>\r\n                <label>Search</label>\r\n                <i class=\"topbar-icon material-icons\">search</i>\r\n            </span>\r\n        </li>\r\n    </ul>\r\n</div>"
 
 /***/ }),
 
@@ -775,7 +775,7 @@ module.exports = "<div class=\"exception-body pagenotfound-body\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==0\">\r\n  <app-cadastrarindicador></app-cadastrarindicador>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  <app-editindicadores></app-editindicadores>\r\n</div>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div   *ngIf=\"activeItemIndex==0\">\r\n  <app-cadastrarindicador></app-cadastrarindicador>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div  style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  <app-editindicadores></app-editindicadores>\r\n</div>"
 
 /***/ }),
 
@@ -786,7 +786,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  cadastrarindicador works!\r\n</p>\r\n"
+module.exports = ""
 
 /***/ }),
 
@@ -797,7 +797,7 @@ module.exports = "<p>\r\n  cadastrarindicador works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  editindicadores works!\r\n</p>\r\n"
+module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3px\" >\r\n    <h4>EDITAR INDICADORES</h4>\r\n   <div class=\"ui-g-6 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"filtroData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n          <label>Referencia</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n\r\n          <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" filterBy=\"indicador\" \r\n          [autoWidth]=\"true\" [(ngModel)]=\"filtroIndicador\"  placeholder=\".\" styleClass = \"drop95\" \r\n          filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n\r\n          <label>Indicador</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"atualizar()\"></button>\r\n      </div>\r\n    </div>\r\n    <div style=\" margin-top: 60px\"></div>\r\n  </div>\r\n\r\n\r\n  <p-dialog header=\"Editar\" [(visible)]=\"ListaOk\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '95%', width: '95%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <p-table [value]=\"listaCompleta\" dataKey=\"vin\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataIndicador</th>\r\n            <th>DataReferencia</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n            <th style=\"width:8em\"></th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\">\r\n            <td>\r\n                {{rowData.dataindicador}}\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                      <p-calendar [(ngModel)]=\"rowData.datareferencia\" view=\"month\" dateFormat=\"yy-mm-dd\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.datareferencia}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.orcado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.orcado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.realizado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.realizado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.minimo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.minimo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.maximo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.maximo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.meta\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.meta}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazoreg\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazoreg}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td style=\"text-align:center\">\r\n              <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow icon=\"pi pi-info\" class=\"ui-button-info\"></button>\r\n              <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"onRowEditSave(rowData)\" style=\"margin-right: .5em\"></button>\r\n              </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Cancelar\" (click)=\"CancelarAlteracoes()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"SolicitarAlteracao()\"></button>\r\n      </div>\r\n    </div>\r\n    \r\n  </p-dialog>\r\n\r\n\r\n  <div *ngIf=\"ListaParaEnviar\" showEffect=\"fade\">\r\n    <p-table [value]=\"listaAlterada\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" [reorderableColumns]=\"true\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataReferencia</th>\r\n            <th>DataIndicador</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\"  [ngClass]=\"new-car\">\r\n            <td>{{rowData.dataindicador}}</td>\r\n            <td>{{rowData.datareferencia}}</td>\r\n            <td>{{rowData.orcado}}</td>\r\n            <td>{{rowData.realizado}}</td>\r\n            <td>{{rowData.minimo}}</td>\r\n            <td>{{rowData.maximo}}</td>\r\n            <td>{{rowData.meta}}</td>\r\n            <td>{{rowData.dentroprazoreg}}</td>\r\n            <td>{{rowData.dentroprazo}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div *ngIf=\"CarregarVisible\" showEffect=\"fade\" >\r\n      <h3 class=\"first\">Carregando</h3>\r\n      <p-progressBar [value]=\"porcentagemconcluido\"></p-progressBar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\"  align=\"center\">\r\n      <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"AprovarAlteracoes()\"></button>\r\n    </div>\r\n  </div>    \r\n"
 
 /***/ }),
 
@@ -1208,6 +1208,7 @@ var CriacaodeusuarioComponent = /** @class */ (function () {
     function CriacaodeusuarioComponent(adminserv, messageService) {
         this.adminserv = adminserv;
         this.messageService = messageService;
+        this.CadAtivo = false;
     }
     CriacaodeusuarioComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1230,6 +1231,8 @@ var CriacaodeusuarioComponent = /** @class */ (function () {
             login: this.CadLogin,
             ativo: this.CadAtivo,
             senha: null,
+            cargo: this.CadCargo,
+            foto: this.CadFoto,
             gerenciaId: this.CadGerencia === undefined ? null : this.CadGerencia,
             supervisaoId: this.CadSupervisao === undefined ? null : this.CadSupervisao,
             undcodigo: this.CadUnidades === undefined ? null : this.CadUnidades
@@ -1305,9 +1308,6 @@ var ListadeusuariosComponent = /** @class */ (function () {
     }
     ListadeusuariosComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.adminserv.listusers().subscribe(function (response) {
-            _this.usuarios = response['content'];
-        });
         this.adminserv.listgerencias().subscribe(function (response) {
             _this.gerencias = response;
         });
@@ -1317,6 +1317,7 @@ var ListadeusuariosComponent = /** @class */ (function () {
         this.adminserv.listunidades().subscribe(function (response) {
             _this.unidades = response;
         });
+        this.atualizarlista();
     };
     ListadeusuariosComponent.prototype.selecionar = function (usuario) {
         this.UsuarioSelect = usuario;
@@ -1370,7 +1371,8 @@ var ListadeusuariosComponent = /** @class */ (function () {
             newpermissoes.push({
                 perfilId: this.targetPermissoes[i].perfilId,
                 perfil: this.targetPermissoes[i].perfil,
-                permissao: this.targetPermissoes[i].permissao
+                permissao: this.targetPermissoes[i].permissao,
+                descricao: this.targetPermissoes[i].descricao
             });
         }
         var usuarioupdatePerms = {
@@ -1400,6 +1402,7 @@ var ListadeusuariosComponent = /** @class */ (function () {
         this.EditPermissoes = false;
         this.EditUsuario = false;
         this.UsuarioSelect = null;
+        this.atualizarlista();
     };
     ListadeusuariosComponent.prototype.newarray = function (minhasperm, todasperm) {
         this.sourcePermissoes = todasperm;
@@ -1411,6 +1414,29 @@ var ListadeusuariosComponent = /** @class */ (function () {
                 }
             }
         }
+    };
+    ListadeusuariosComponent.prototype.Filter = function () {
+        var _this = this;
+        this.VALOR1 = this.VALOR1 == undefined ? null : this.VALOR1 == "" ? null : this.VALOR1;
+        var agend = this.usuarios;
+        if (this.VALOR1 !== null) {
+            // console.log(this.VALOR1)
+            agend = agend.filter(function (item) { return item.nome.toUpperCase().includes(_this.VALOR1.toUpperCase()); });
+        }
+        else {
+            this.atualizarlista();
+        }
+        this.usuarios = agend;
+    };
+    ListadeusuariosComponent.prototype.atualizarlista = function () {
+        var _this = this;
+        this.usuarios = [];
+        this.adminserv.listusers().subscribe(function (response) {
+            _this.usuarios = response['content'];
+        });
+    };
+    ListadeusuariosComponent.prototype.Mensagem = function (dado, perfil) {
+        this.messageService.add({ sticky: true, severity: 'info', summary: perfil, detail: dado, life: 500 });
     };
     ListadeusuariosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1770,6 +1796,7 @@ var AppMenuComponent = /** @class */ (function () {
                 this.usuTransporte = true;
             }
             else if (permissao === "ROLE_ADMIN_INDICADOR") {
+                this.usuPerformance = true;
                 this.admPerformance = true;
             }
             else if (permissao === "ROLE_USER_INDICADOR") {
@@ -2568,9 +2595,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-//export const API_CONFIG =  'http://sispcprl01:7777/teste-sispc-backend'
-var API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
-// export const API_CONFIG =  'http://localhost:7777'
+var API_CONFIG = 'http://sispcprl01:7777/teste-sispc-backend';
+//export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
+//export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -2882,6 +2909,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts");
 /* harmony import */ var _performance_admin_indicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./performance/admin-indicadores/editindicadores/editindicadores.component */ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts");
 /* harmony import */ var _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__ = __webpack_require__(/*! ./admin/Admin.service */ "./src/app/admin/Admin.service.ts");
+/* harmony import */ var _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+
 
 
 
@@ -3209,7 +3238,8 @@ var AppModule = /** @class */ (function () {
                 _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"],
                 _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"],
                 _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"],
-                _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"]
+                _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"],
+                _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
         })
@@ -7890,7 +7920,7 @@ var GraficosComponent = /** @class */ (function () {
         var val2 = realizadoAcumulad;
         //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
         //========================================================================================
-        if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6) {
+        if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6 || tipoGraph == 7) {
             val1 = orcadoAcumulad;
             val2 = realizadoAcumulad;
             this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
@@ -7950,7 +7980,7 @@ var GraficosComponent = /** @class */ (function () {
             this.RotuloDiferencaAcum2 = "-";
             this.RotuloDiferencaPerc = "-";
         }
-        else if (tipoGraph == 7 || tipoGraph == 9) {
+        else if (tipoGraph == 9) {
             val1 = OrcadoMedia;
             val2 = RealMedia;
             this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);
@@ -8666,7 +8696,7 @@ var AdminIndicadoresComponent = /** @class */ (function () {
             { label: 'Cadastrar Indicador' },
             { label: 'Editar Indicadores' }
         ];
-        this.trocadeitemIndex(0);
+        this.trocadeitemIndex(1);
     };
     AdminIndicadoresComponent.prototype.trocadeitem = function (activeItem) {
         this.activeItem = activeItem['activeItem'];
@@ -8685,6 +8715,60 @@ var AdminIndicadoresComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], AdminIndicadoresComponent);
     return AdminIndicadoresComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/admin-indicadores.service.ts ***!
+  \****************************************************************************/
+/*! exports provided: AdminIndicadoresService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminIndicadoresService", function() { return AdminIndicadoresService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+var AdminIndicadoresService = /** @class */ (function () {
+    function AdminIndicadoresService(http) {
+        this.http = http;
+    }
+    AdminIndicadoresService.prototype.indicadoresByMonth = function (referencia, indicador) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/indicadores/pormes/" + indicador + "/" + referencia)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    AdminIndicadoresService.prototype.listaIndicadores = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/cadindicadores")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    AdminIndicadoresService.prototype.indicadoresAtt = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/indicadores/" + bodyObj.exeindicadorId, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    AdminIndicadoresService.prototype.extractData = function (res) {
+        var body = res;
+        return body;
+    };
+    AdminIndicadoresService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], AdminIndicadoresService);
+    return AdminIndicadoresService;
 }());
 
 
@@ -8736,17 +8820,6 @@ var CadastrarindicadorComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css":
-/*!*********************************************************************************************!*\
-  !*** ./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2VkaXRpbmRpY2Fkb3Jlcy9lZGl0aW5kaWNhZG9yZXMuY29tcG9uZW50LmNzcyJ9 */"
-
-/***/ }),
-
 /***/ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts":
 /*!********************************************************************************************!*\
   !*** ./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts ***!
@@ -8759,20 +8832,124 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditindicadoresComponent", function() { return EditindicadoresComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 var EditindicadoresComponent = /** @class */ (function () {
-    function EditindicadoresComponent() {
+    function EditindicadoresComponent(adminindic, messageService) {
+        this.adminindic = adminindic;
+        this.messageService = messageService;
+        this.editing = false;
+        this.ListaOk = false;
+        this.ListaParaEnviar = false;
+        this.CarregarVisible = false;
+        this.porcentagemconcluido = 0;
+        this.listaAlterada = [];
     }
     EditindicadoresComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.adminindic.listaIndicadores().subscribe(function (indicador) {
+            _this.filtroListaIndicador = indicador;
+        });
+    };
+    EditindicadoresComponent.prototype.onDialogHide = function () {
+        this.ListaOk = false;
+        this.listaCompleta = [];
+        this.listaAlterada = [];
+        this.editing = false;
+    };
+    EditindicadoresComponent.prototype.atualizar = function () {
+        var _this = this;
+        this.adminindic.indicadoresByMonth(this.FormatarData(this.filtroData), this.filtroIndicador.indicadorId)
+            .subscribe(function (indicador) {
+            _this.listaCompleta = indicador;
+            _this.ListaOk = true;
+            _this.atualizar2();
+        });
+    };
+    EditindicadoresComponent.prototype.atualizar2 = function () {
+        var _this = this;
+        this.listaCompletaImutavel = [];
+        this.adminindic.indicadoresByMonth(this.FormatarData(this.filtroData), this.filtroIndicador.indicadorId)
+            .subscribe(function (indicador) {
+            _this.listaCompletaImutavel = indicador;
+        });
+    };
+    EditindicadoresComponent.prototype.FormatarData = function (datareceb) {
+        var dataFinal;
+        if (datareceb.length < 20) {
+            dataFinal = datareceb;
+        }
+        else {
+            var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano2 = data.getFullYear();
+            dataFinal = ano2 + "-" + mes2 + "-" + dia2;
+        }
+        return dataFinal;
+    };
+    EditindicadoresComponent.prototype.onRowEditSave = function (indicador) {
+    };
+    EditindicadoresComponent.prototype.onRowEditCancel = function () {
+    };
+    EditindicadoresComponent.prototype.SolicitarAlteracao = function () {
+        this.listaAlterada = [];
+        for (var i = 0; i < this.listaCompletaImutavel.length; i++) {
+            if (this.listaCompletaImutavel[i].datareferencia !== this.FormatarData(this.listaCompleta[i].datareferencia) ||
+                this.listaCompletaImutavel[i].orcado !== this.listaCompleta[i].orcado ||
+                this.listaCompletaImutavel[i].realizado !== this.listaCompleta[i].realizado ||
+                this.listaCompletaImutavel[i].minimo !== this.listaCompleta[i].minimo ||
+                this.listaCompletaImutavel[i].maximo !== this.listaCompleta[i].maximo ||
+                this.listaCompletaImutavel[i].meta !== this.listaCompleta[i].meta ||
+                this.listaCompletaImutavel[i].dentroprazoreg !== this.listaCompleta[i].dentroprazoreg ||
+                this.listaCompletaImutavel[i].dentroprazo !== this.listaCompleta[i].dentroprazo) {
+                this.listaCompleta[i].datareferencia = this.FormatarData(this.listaCompleta[i].datareferencia);
+                this.listaAlterada.push(this.listaCompleta[i]);
+            }
+        }
+        this.ListaOk = false;
+        this.listaAlterada = this.listaCompleta;
+        if (this.listaAlterada.length > 0) {
+            this.ListaParaEnviar = true;
+        }
+        this.listaCompleta = [];
+        this.atualizar2();
+    };
+    EditindicadoresComponent.prototype.AprovarAlteracoes = function () {
+        var _this = this;
+        this.CarregarVisible = true;
+        for (var i = 0; i < this.listaAlterada.length; i++) {
+            this.porcentagemconcluido = Math.floor(((i + 1) / this.listaAlterada.length) * 100);
+            //CODIGO DE INSERT COMEÇA AQUI
+            //============================================================================================
+            var objetoDaVez = this.listaAlterada[i];
+            this.adminindic.indicadoresAtt(objetoDaVez).subscribe(function (indicador) {
+                _this.filtroListaIndicador = indicador;
+                _this.messageService.add({ severity: 'info', summary: 'Success', detail: 'Linha de Indicadores ' + objetoDaVez.exeindicadorId + ' alterado' });
+            });
+            //============================================================================================
+            if (this.porcentagemconcluido >= 100) {
+                this.porcentagemconcluido = 100;
+                this.messageService.add({ severity: 'info', summary: 'Success', detail: 'Process Completed' });
+            }
+        }
+        this.listaAlterada = [];
+        this.ListaParaEnviar = false;
+        this.CarregarVisible = false;
+    };
+    EditindicadoresComponent.prototype.CancelarAlteracoes = function () {
+        this.onDialogHide();
     };
     EditindicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-editindicadores',
             template: __webpack_require__(/*! raw-loader!./editindicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html"),
-            styles: [__webpack_require__(/*! ./editindicadores.component.css */ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css")]
+            styles: ["\n        .old-car {\n            background-color: #1CA979 !important;\n            color: #ffffff !important;\n        }\n\n        .very-old-car {\n            background-color: #2CA8B1 !important;\n            color: #ffffff !important;\n        }\n    "]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
     ], EditindicadoresComponent);
     return EditindicadoresComponent;
 }());
@@ -10595,7 +10772,7 @@ var AgendarVeiculoComponent = /** @class */ (function () {
         }
         else {
             if (this.OpcDe < this.OpcAte) {
-                // this.SalvarAgendamento()
+                this.SalvarAgendamento();
                 this.messageService.add({ sticky: true, severity: 'info', summary: 'Solicitação Enviada!',
                     detail: "Soliciação enviada com sucesso." });
             }
