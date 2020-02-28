@@ -1,6 +1,4 @@
-export interface Indicador{
 
-}
 
 export interface Indicadores{
     exeindicadorId: number,

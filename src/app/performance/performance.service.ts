@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { map, catchError } from 'rxjs/operators';
 import { ErrorHandler } from 'src/app/app.error-handler';
-import { Indicador, Indicadores } from './performance.model';
+import { Indicadores } from './performance.model';
 
 @Injectable()
 export class PerformanceService{
@@ -25,13 +25,13 @@ export class PerformanceService{
         .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
      }
 
-     indicadores(referencia : string, indicadorId : number): Observable<Indicador[]>{
+     indicadores(referencia : string, indicadorId : number): Observable<any[]>{
         return  this.http.get(`${API_CONFIG}/indicadores/grafico/${referencia}/${indicadorId}`) 
-        .pipe(map((res : Indicador[]) => res, catchError(ErrorHandler.handleError)))
+        .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
      }
-     indicadoresResumo(referencia : string, indicadorId : number): Observable<Indicador[]>{
+     indicadoresResumo(referencia : string, indicadorId : number): Observable<any[]>{
         return  this.http.get(`${API_CONFIG}/indicadores/graficoResumo/${referencia}/${indicadorId}`) 
-        .pipe(map((res : Indicador[]) => res, catchError(ErrorHandler.handleError)))
+        .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
      }
 
      indicadoresByDay(indicador : number, referencia : string): Observable<Indicadores[]>{

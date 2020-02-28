@@ -1,3 +1,62 @@
-<p>
-  criacaodeusuario works!
-</p>
+<div class="card card-w-title" >
+  <h4>CADASTRAR NOVO USUÁRIO</h4>
+  <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+
+    <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
+      <div class="ui-g-12 ui-md-6">
+        <span class="md-inputfield">
+          <input id="input" type="text" [(ngModel)]="CadNome" class="ui-g-12" pInputText/>
+          <label>Nome Completo</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-12 item" >
+          <p-checkbox  [(ngModel)]="CadAtivo"  binary="true"></p-checkbox>
+          <label >Status</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+      <div class="ui-g-12 ui-md-4" >
+        <span class="md-inputfield">
+         <p-dropdown [options]="supervisoes" [autoWidth]="true" [(ngModel)]="CadSupervisao" placeholder="."   optionLabel="label" styleClass = "drop95" [showClear]="true"></p-dropdown>
+         <label >Supervisão</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <span class="md-inputfield">
+          <p-dropdown [options]="gerencias" [autoWidth]="true" [(ngModel)]="CadGerencia" placeholder="."   optionLabel="label" styleClass = "drop95" [showClear]="true"></p-dropdown>
+          <label >Gerência</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <span class="md-inputfield">
+          <p-dropdown [options]="unidades" [autoWidth]="true" [(ngModel)]="CadUnidades" placeholder="."   optionLabel="unidade" styleClass = "drop95" [showClear]="true"></p-dropdown>
+          <label >Unidade</label>
+        </span>
+      </div>
+    </div>
+    
+    <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+      <div class="ui-g-12 ui-md-6">
+        <span class="md-inputfield">
+          <input id="input" type="text" [(ngModel)]="CadEmail" class="ui-g-12" pInputText/>
+          <label>Email</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6" >
+        <span class="md-inputfield">
+          <input id="input" type="text" [(ngModel)]="CadLogin" class="ui-g-12" pInputText/>
+          <label >Login</label>
+        </span>
+      </div>
+    </div>
+
+
+
+    <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="salvar()"></button>
+    </div>
+  </div>
+</div>

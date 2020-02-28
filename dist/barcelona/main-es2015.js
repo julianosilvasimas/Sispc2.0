@@ -339,6 +339,39 @@ webpackContext.id = "./node_modules/numero-por-extenso/lib/estilos sync recursiv
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin.component.html":
+/*!**********************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/admin.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==0\">\r\n    <app-criacaodeusuario></app-criacaodeusuario>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n    <app-listadeusuarios></app-listadeusuarios>\r\n\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/criacaodeusuario/criacaodeusuario.component.html":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/criacaodeusuario/criacaodeusuario.component.html ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USUÁRIO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNome\" class=\"ui-g-12\" pInputText/>\r\n          <label>Nome Completo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <div class=\"ui-g-12 item\" >\r\n          <p-checkbox  [(ngModel)]=\"CadAtivo\"  binary=\"true\"></p-checkbox>\r\n          <label >Status</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n         <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"CadSupervisao\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n         <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"CadGerencia\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"CadUnidades\" placeholder=\".\"   optionLabel=\"unidade\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Unidade</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmail\" class=\"ui-g-12\" pInputText/>\r\n          <label>Email</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadLogin\" class=\"ui-g-12\" pInputText/>\r\n          <label >Login</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/listadeusuarios/listadeusuarios.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/listadeusuarios/listadeusuarios.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label >Status</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 80px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Available\" targetHeader=\"Selected\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" sourceFilterPlaceholder=\"Pesquise pelo nome\" targetFilterPlaceholder=\"Pesquise pelo nome\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n      <div class=\"ui-helper-clearfix\">\r\n          <div style=\"font-size:10px;float:left;margin:15px 5px 0 0\">{{perfil.perfil}}</div>\r\n      </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/app-main/app.main.component.html":
 /*!****************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/app-main/app.main.component.html ***!
@@ -654,7 +687,7 @@ module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.RotuloOrcadoAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.RotuloRealizAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.RotuloDiferencaAcum2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.RotuloDiferencaPerc }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
+module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.RotuloOrcadoAcum }}</span>\r\n    \r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.RotuloRealizAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.RotuloDiferencaAcum2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.RotuloDiferencaPerc }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
 
 /***/ }),
 
@@ -687,7 +720,7 @@ module.exports = "<p-toast [style]=\"{marginTop: '80px'}\"></p-toast>\r\n<div cl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"card card-w-title\" >\r\n    <h4>ENVIAR EMAIL DE NOTIFICAÇÃO</h4>\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n  \r\n        <div class=\"ui-g-12 ui-md-12\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmpresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Assunto</label>\r\n          </span>\r\n        </div>\r\n      \r\n    \r\n        <div class=\"ui-g-12\">\r\n          <p-editor [(ngModel)]=\"text1\" [style]=\"{'height':'320px'}\"></p-editor>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Enviar\"  (click)=\"salvar()\"></button>\r\n        </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -742,7 +775,29 @@ module.exports = "<div class=\"exception-body pagenotfound-body\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  admin-indicadores works!\r\n</p>\r\n"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==0\">\r\n  <app-cadastrarindicador></app-cadastrarindicador>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  <app-editindicadores></app-editindicadores>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.html":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.html ***!
+  \******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  cadastrarindicador works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  editindicadores works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -963,6 +1018,400 @@ module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n    <div *ngIf=\"activeItemIndex==0\">\r\n      <app-dashboards></app-dashboards>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==1\">\r\n      <app-agendamentos></app-agendamentos>\r\n    </div>\r\n    <div *ngIf=\"activeItemIndex==2\">\r\n      <app-cadastro></app-cadastro>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/admin/Admin.service.ts":
+/*!****************************************!*\
+  !*** ./src/app/admin/Admin.service.ts ***!
+  \****************************************/
+/*! exports provided: AdminService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminService", function() { return AdminService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+let AdminService = class AdminService {
+    constructor(http) {
+        this.http = http;
+    }
+    selecionarusuario(user) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios/${user.usuarioId}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    //LISTAS
+    listusers() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios/page`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    listgerencias() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/gerencias`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    listsupervisoes() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/supervisoes`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    listunidades() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/unidades`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    listpermissoes() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/perfis`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    //OPERAÇÕES
+    indicadoresAtt(user) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios/${user.usuarioId}`, JSON.stringify(user), { headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    resetSenha(user) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios/recupereSenhaUser/${user.usuarioId}`, JSON.stringify(user), { headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    updateUsers(user) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios/${user.usuarioId}`, JSON.stringify(user), { headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    //atualizarPermissões
+    updateUser(user) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios/user/${user.usuarioId}`, JSON.stringify(user), { headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    //INSERIR USUÁRIO
+    InputUsuario(user) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios`, user, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        })));
+    }
+    extractData(res) {
+        let body = res;
+        return body;
+    }
+};
+AdminService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], AdminService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin/admin.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/admin/admin.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/admin/admin.component.ts ***!
+  \******************************************/
+/*! exports provided: AdminComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let AdminComponent = class AdminComponent {
+    constructor() { }
+    ngOnInit() {
+        this.items = [
+            { label: 'Cadastrar Usuário' },
+            { label: 'Lista de Usuários' }
+        ];
+        this.trocadeitemIndex(0);
+    }
+    trocadeitem(activeItem) {
+        this.activeItem = activeItem['activeItem'];
+        this.activeItemIndex = this.items.indexOf(this.activeItem);
+    }
+    trocadeitemIndex(index) {
+        this.activeItem = this.items[index];
+        this.activeItemIndex = index;
+    }
+};
+AdminComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-admin',
+        template: __webpack_require__(/*! raw-loader!./admin.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/admin.component.html"),
+        styles: [__webpack_require__(/*! ./admin.component.css */ "./src/app/admin/admin.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], AdminComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/admin/criacaodeusuario/criacaodeusuario.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2NyaWFjYW9kZXVzdWFyaW8vY3JpYWNhb2RldXN1YXJpby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/admin/criacaodeusuario/criacaodeusuario.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: CriacaodeusuarioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CriacaodeusuarioComponent", function() { return CriacaodeusuarioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Admin_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Admin.service */ "./src/app/admin/Admin.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+let CriacaodeusuarioComponent = class CriacaodeusuarioComponent {
+    constructor(adminserv, messageService) {
+        this.adminserv = adminserv;
+        this.messageService = messageService;
+    }
+    ngOnInit() {
+        this.adminserv.listgerencias().subscribe(response => {
+            this.gerencias = response;
+        });
+        this.adminserv.listsupervisoes().subscribe(response => {
+            this.supervisoes = response;
+        });
+        this.adminserv.listunidades().subscribe(response => {
+            this.unidades = response;
+        });
+    }
+    salvar() {
+        var usuario = {
+            usuarioId: null,
+            nome: this.CadNome,
+            email: this.CadEmail,
+            login: this.CadLogin,
+            ativo: this.CadAtivo,
+            senha: null,
+            gerenciaId: this.CadGerencia === undefined ? null : this.CadGerencia,
+            supervisaoId: this.CadSupervisao === undefined ? null : this.CadSupervisao,
+            undcodigo: this.CadUnidades === undefined ? null : this.CadUnidades
+        };
+        this.adminserv.InputUsuario(usuario).subscribe(response => {
+            if (response.status === 201) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Usuário ' + usuario.nome + ' foi incluído com sucesso!' });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+        });
+        console.log(usuario);
+        this.CadAtivo = null;
+        this.CadNome = null;
+        this.CadEmail = null;
+        this.CadLogin = null;
+        this.CadGerencia = null;
+        this.CadSupervisao = null;
+        this.CadUnidades = null;
+    }
+};
+CriacaodeusuarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-criacaodeusuario',
+        template: __webpack_require__(/*! raw-loader!./criacaodeusuario.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/criacaodeusuario/criacaodeusuario.component.html"),
+        styles: [__webpack_require__(/*! ./criacaodeusuario.component.css */ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Admin_service__WEBPACK_IMPORTED_MODULE_2__["AdminService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+], CriacaodeusuarioComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin/listadeusuarios/listadeusuarios.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/admin/listadeusuarios/listadeusuarios.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2xpc3RhZGV1c3Vhcmlvcy9saXN0YWRldXN1YXJpb3MuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/admin/listadeusuarios/listadeusuarios.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/admin/listadeusuarios/listadeusuarios.component.ts ***!
+  \********************************************************************/
+/*! exports provided: ListadeusuariosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListadeusuariosComponent", function() { return ListadeusuariosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Admin_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Admin.service */ "./src/app/admin/Admin.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+let ListadeusuariosComponent = class ListadeusuariosComponent {
+    constructor(adminserv, messageService) {
+        this.adminserv = adminserv;
+        this.messageService = messageService;
+        this.EditUsuario = false;
+        this.EditPermissoes = false;
+    }
+    ngOnInit() {
+        this.adminserv.listusers().subscribe(response => {
+            this.usuarios = response['content'];
+        });
+        this.adminserv.listgerencias().subscribe(response => {
+            this.gerencias = response;
+        });
+        this.adminserv.listsupervisoes().subscribe(response => {
+            this.supervisoes = response;
+        });
+        this.adminserv.listunidades().subscribe(response => {
+            this.unidades = response;
+        });
+    }
+    selecionar(usuario) {
+        this.UsuarioSelect = usuario;
+        this.EditUsuario = true;
+    }
+    //====================================================================================
+    resetarSenha(usuario) {
+        this.adminserv.resetSenha(usuario).subscribe(response => {
+            if (response === null) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Senha ' + usuario.nome + ' foi resetada!' });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+        });
+        this.EditUsuario = false;
+        this.UsuarioSelect = null;
+    }
+    //====================================================================================
+    updateUser(usuario) {
+        this.adminserv.updateUsers(usuario).subscribe(response => {
+            if (response === null) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Usuário ' + usuario.nome + ' foi alterado com sucesso!' });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+        });
+        this.EditUsuario = false;
+        this.UsuarioSelect = null;
+    }
+    //====================================================================================
+    atribuirPermissoes(usuario) {
+        this.EditPermissoes = true;
+        this.PermissoesSelect = usuario;
+        this.adminserv.selecionarusuario(usuario).subscribe(response => {
+            this.UsuarioEditarPermissoes = response;
+            this.targetPermissoes = response['perfis'];
+            this.adminserv.listpermissoes().subscribe(response => {
+                this.newarray(this.targetPermissoes, response);
+            });
+        });
+    }
+    editarPermissoes() {
+        var newpermissoes = [];
+        for (var i = 0; i < this.targetPermissoes.length; i++) {
+            newpermissoes.push({
+                perfilId: this.targetPermissoes[i].perfilId,
+                perfil: this.targetPermissoes[i].perfil,
+                permissao: this.targetPermissoes[i].permissao
+            });
+        }
+        var usuarioupdatePerms = {
+            usuarioId: this.UsuarioEditarPermissoes.usuarioId,
+            nome: this.UsuarioEditarPermissoes.nome,
+            email: this.UsuarioEditarPermissoes.email,
+            login: this.UsuarioEditarPermissoes.login,
+            ativo: this.UsuarioEditarPermissoes.ativo,
+            cargo: this.UsuarioEditarPermissoes.cargo,
+            foto: this.UsuarioEditarPermissoes.foto,
+            undcodigo: this.UsuarioEditarPermissoes.undcodigo,
+            gerenciaId: this.UsuarioEditarPermissoes.gerenciaId,
+            supervisaoId: this.UsuarioEditarPermissoes.supervisaoId,
+            perfis: newpermissoes
+        };
+        this.adminserv.updateUser(usuarioupdatePerms).subscribe(response => {
+            if (response === null) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Usuário ' + usuarioupdatePerms.nome + ' foi alterado com sucesso!' });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+        });
+        this.UsuarioEditarPermissoes = null;
+        this.targetPermissoes = [];
+        this.sourcePermissoes = [];
+        this.EditPermissoes = false;
+        this.EditUsuario = false;
+        this.UsuarioSelect = null;
+    }
+    newarray(minhasperm, todasperm) {
+        this.sourcePermissoes = todasperm;
+        for (var i = 0; i < minhasperm.length; i++) {
+            for (var j = 0; j < todasperm.length; j++) {
+                if (minhasperm[i].perfilId === todasperm[j].perfilId) {
+                    this.sourcePermissoes.splice(j, 1);
+                    break;
+                }
+            }
+        }
+    }
+};
+ListadeusuariosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-listadeusuarios',
+        template: __webpack_require__(/*! raw-loader!./listadeusuarios.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/listadeusuarios/listadeusuarios.component.html"),
+        styles: [__webpack_require__(/*! ./listadeusuarios.component.css */ "./src/app/admin/listadeusuarios/listadeusuarios.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Admin_service__WEBPACK_IMPORTED_MODULE_2__["AdminService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+], ListadeusuariosComponent);
+
+
 
 /***/ }),
 
@@ -1285,6 +1734,8 @@ let AppMenuComponent = class AppMenuComponent {
         this.usuTransporte = false;
         this.usuJuridicoPagamentos = false;
         this.usuProjetos = false;
+        this.admSispc = false;
+        this.admPerformance = false;
         this.usuJuridicoPagamentosAprovacao = false;
     }
     ngOnInit() {
@@ -1305,11 +1756,17 @@ let AppMenuComponent = class AppMenuComponent {
             else if (permissao === "ROLE_USER_FROTAS") {
                 this.usuTransporte = true;
             }
+            else if (permissao === "ROLE_ADMIN_INDICADOR") {
+                this.admPerformance = true;
+            }
             else if (permissao === "ROLE_USER_INDICADOR") {
                 this.usuPerformance = true;
             }
             else if (permissao === "ROLE_ADMIN_PROJETOS") {
-                this.usuPerformance = true;
+                this.usuProjetos = true;
+            }
+            else if (permissao === "ROLE_ADMIN_SISPC") {
+                this.admSispc = true;
             }
             else if (permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO") > 0) {
                 this.usuJuridicoPagamentos = true;
@@ -1346,22 +1803,22 @@ let AppMenuComponent = class AppMenuComponent {
                                 ]
                             },
                             {
-                                label: 'Configurações', icon: '',
+                                label: 'Configurações', icon: 'subject',
                                 items: [
-                                    { label: 'Indicadores', icon: '', routerLink: 'indicadoresAdmin' }
+                                    { label: 'Indicadores', icon: 'subject', routerLink: 'indicadoresAdmin' }
                                 ]
                             }
                         ] :
-                        this.permissoes[1] === "ROLE_ADMIN_INDICADOR" ? //DEntro do operador o que ainda será construído
+                        this.admPerformance === true ? //DEntro do operador o que ainda será construído
                             [
                                 {
                                     label: 'Acompanhamento', icon: 'subject',
                                     items: this.gerencias
                                 },
                                 {
-                                    label: 'Configurações', icon: 'pencil',
+                                    label: 'Configurações', icon: 'settings',
                                     items: [
-                                        { label: '', icon: 'pencil', routerLink: 'indicadoresAdmin' }
+                                        { label: 'Indicadores', icon: 'build', routerLink: 'indicadoresAdmin' }
                                     ]
                                 }
                             ] :
@@ -1480,6 +1937,14 @@ let AppMenuComponent = class AppMenuComponent {
                         { label: 'Agendamento', icon: 'subject', routerLink: '/agendamento' }
                 ]
             });
+            if (this.admSispc === true) {
+                this.model.push({ label: 'Administrador', icon: 'settings',
+                    items: [
+                        { label: 'Acessos', routerLink: '/admin', icon: 'person' },
+                        { label: 'Notificações', routerLink: '/email', icon: 'notifications' }
+                    ]
+                });
+            }
         });
     } //fechando subscribe de gerencia
 };
@@ -2137,8 +2602,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-const API_CONFIG = 'http://sispcprl01:7777/teste-sispc-backend';
-//export const API_CONFIG =  'http://localhost:7777'
+//export const API_CONFIG =  'http://sispcprl01:7777/teste-sispc-backend'
+const API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
+// export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -2437,6 +2903,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! primeng/tristatecheckbox */ "./node_modules/primeng/tristatecheckbox.js");
 /* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151___default = /*#__PURE__*/__webpack_require__.n(primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__);
 /* harmony import */ var _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! ./controledepagamentosjuridico/aprovar/aprovar.component */ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.ts");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_153__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_154__ = __webpack_require__(/*! ./admin/criacaodeusuario/criacaodeusuario.component */ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.ts");
+/* harmony import */ var _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_155__ = __webpack_require__(/*! ./admin/listadeusuarios/listadeusuarios.component */ "./src/app/admin/listadeusuarios/listadeusuarios.component.ts");
+/* harmony import */ var _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts");
+/* harmony import */ var _performance_admin_indicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./performance/admin-indicadores/editindicadores/editindicadores.component */ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts");
+/* harmony import */ var _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__ = __webpack_require__(/*! ./admin/Admin.service */ "./src/app/admin/Admin.service.ts");
+
+
+
+
+
+
 
 
 
@@ -2738,7 +3216,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_147__["CadastroPagamentoComponent"],
             _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__["ListapendentesComponent"],
             _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__["AcompanharaprovacaoComponent"],
-            _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__["AprovarComponent"]
+            _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__["AprovarComponent"],
+            _admin_admin_component__WEBPACK_IMPORTED_MODULE_153__["AdminComponent"],
+            _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_154__["CriacaodeusuarioComponent"],
+            _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_155__["ListadeusuariosComponent"],
+            _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__["CadastrarindicadorComponent"],
+            _performance_admin_indicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__["EditindicadoresComponent"]
         ],
         providers: [
             { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
@@ -2751,7 +3234,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _performance_performance_service__WEBPACK_IMPORTED_MODULE_122__["PerformanceService"],
             _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"],
             _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"],
-            _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"]
+            _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"],
+            _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
     })
@@ -2812,6 +3296,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.component */ "./src/app/performance/admin-indicadores/admin-indicadores.component.ts");
 /* harmony import */ var _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./notificacoessispc/notificacoessispc.component */ "./src/app/notificacoessispc/notificacoessispc.component.ts");
 /* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.component */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+
 
 
 
@@ -2883,11 +3369,12 @@ const routes = [
             { path: 'painelprocess', component: _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_32__["PainelprocessoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'transporte', component: _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__["TransporteComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'agendamento', component: _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_34__["AgendarVeiculoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"] },
-            { path: 'email', component: _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__["NotificacoessispcComponent"] },
-            { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
-            { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"] },
+            { path: 'email', component: _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__["NotificacoessispcComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"] },
+            { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
         ]
     },
     { path: 'printPerformance/:id/:ref', component: _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_29__["RelatorioindicadoresComponent"] },
@@ -7362,13 +7849,13 @@ let GraficosComponent = class GraficosComponent {
         if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6) {
             val1 = orcadoAcumulad;
             val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterComDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
+            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
+            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
+            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
+            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(0);
+            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
+            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
+            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(0);
         }
         else if (tipoGraph == 8) {
             val1 = orcadoAcumulad;
@@ -7482,10 +7969,6 @@ tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
 ], GraficosComponent.prototype, "gerencia", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], GraficosComponent, "indicador", void 0);
 GraficosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-graficos',
@@ -8107,6 +8590,19 @@ __webpack_require__.r(__webpack_exports__);
 let AdminIndicadoresComponent = class AdminIndicadoresComponent {
     constructor() { }
     ngOnInit() {
+        this.items = [
+            { label: 'Cadastrar Indicador' },
+            { label: 'Editar Indicadores' }
+        ];
+        this.trocadeitemIndex(0);
+    }
+    trocadeitem(activeItem) {
+        this.activeItem = activeItem['activeItem'];
+        this.activeItemIndex = this.items.indexOf(this.activeItem);
+    }
+    trocadeitemIndex(index) {
+        this.activeItem = this.items[index];
+        this.activeItemIndex = index;
     }
 };
 AdminIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8117,6 +8613,92 @@ AdminIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], AdminIndicadoresComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.css":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.css ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2NhZGFzdHJhcmluZGljYWRvci9jYWRhc3RyYXJpbmRpY2Fkb3IuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts":
+/*!**************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts ***!
+  \**************************************************************************************************/
+/*! exports provided: CadastrarindicadorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CadastrarindicadorComponent", function() { return CadastrarindicadorComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let CadastrarindicadorComponent = class CadastrarindicadorComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+CadastrarindicadorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-cadastrarindicador',
+        template: __webpack_require__(/*! raw-loader!./cadastrarindicador.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.html"),
+        styles: [__webpack_require__(/*! ./cadastrarindicador.component.css */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], CadastrarindicadorComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2VkaXRpbmRpY2Fkb3Jlcy9lZGl0aW5kaWNhZG9yZXMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts":
+/*!********************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts ***!
+  \********************************************************************************************/
+/*! exports provided: EditindicadoresComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditindicadoresComponent", function() { return EditindicadoresComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let EditindicadoresComponent = class EditindicadoresComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+EditindicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-editindicadores',
+        template: __webpack_require__(/*! raw-loader!./editindicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html"),
+        styles: [__webpack_require__(/*! ./editindicadores.component.css */ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], EditindicadoresComponent);
 
 
 
@@ -8588,7 +9170,7 @@ let CapaComponent = class CapaComponent {
         this.authService = authService;
         this.nome = sessionStorage.getItem('nome');
         this.email = sessionStorage.getItem('email');
-        var data = new Date(), diaF = ("0" + data.getDate()).slice(-2), mesF = ("0" + data.getMonth() + 1).slice(-2), anoF = data.getFullYear(), hora = ("0" + data.getHours()).slice(-2), minuto = ("0" + data.getMinutes()).slice(-2), dias = new Array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado');
+        var data = new Date(), diaF = ((data.getDate()) < 10 ? "0" + (data.getDate()) : (data.getDate())), mesF = ((data.getMonth() + 1) < 10 ? "0" + (data.getMonth() + 1) : (data.getMonth() + 1)), anoF = data.getFullYear(), hora = ((data.getHours()) < 10 ? "0" + (data.getHours()) : (data.getHours())), minuto = ((data.getMinutes()) < 10 ? "0" + (data.getMinutes()) : (data.getMinutes())), dias = new Array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado');
         this.date = dias[data.getDay()] + " - " + diaF + "/" + mesF + "/" + anoF + " " + hora + ":" + minuto;
     }
     ngOnInit() {
@@ -8743,13 +9325,13 @@ let ResumoIndicadoresComponent = class ResumoIndicadoresComponent {
         if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6) {
             val1 = orcadoAcumulad;
             val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterComDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterComDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterComDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterComDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
+            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
+            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
+            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
+            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(0);
+            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
+            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
+            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(0);
         }
         else if (tipoGraph == 8) {
             val1 = orcadoAcumulad;
@@ -8851,10 +9433,6 @@ let ResumoIndicadoresComponent = class ResumoIndicadoresComponent {
         return formatado;
     }
 };
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], ResumoIndicadoresComponent.prototype, "indicador", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -9142,7 +9720,7 @@ let RpaComponent = class RpaComponent {
         this.selectedBot = null;
     }
     Arrayas() {
-        this.bot = [];
+        // this.bot=[];
         this.cadastro = [];
         this.status = [];
         this.rpaservice.cadastroBots().subscribe(cadastro => {
@@ -9883,6 +10461,9 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         if (this.OpcCondutores == null) {
             campos = campos + "Condutor | ";
         }
+        if (this.OpcData == null) {
+            campos = campos + "Data | ";
+        }
         if (this.OpcDe == null) {
             campos = campos + "De | ";
         }
@@ -9906,8 +10487,17 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
                 detail: campos });
         }
         else {
-            this.SalvarAgendamento();
+            if (this.OpcDe < this.OpcAte) {
+                // this.SalvarAgendamento()
+                this.messageService.add({ sticky: true, severity: 'info', summary: 'Solicitação Enviada!',
+                    detail: "Soliciação enviada com sucesso." });
+            }
+            else {
+                this.messageService.add({ sticky: true, severity: 'info', summary: 'Erro de Lógica',
+                    detail: "O campo \'De\' não pode ser maior do que o campo \'Até\'!" });
+            }
         }
+        ;
     }
     SalvarAgendamento() {
         var agendamento;
