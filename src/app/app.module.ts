@@ -156,6 +156,14 @@ import { controledepagamentosjuridicoComponent } from './controledepagamentosjur
 import { CadastroPagamentoComponent } from './controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component';
 import { ListapendentesComponent } from './controledepagamentosjuridico/listapendentes/listapendentes.component';
 import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component';
+import { ControledepagamentosjuridicoService } from './controledepagamentosjuridico/controledepagamentosjuridico.service';
+import { Controledepagamentosjuridico } from './controledepagamentosjuridico/controledepagamentosjuridico.model';
+import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
+import { AprovarComponent } from './controledepagamentosjuridico/aprovar/aprovar.component';
+import { AdminComponent } from './admin/admin.component';
+import { CriacaodeusuarioComponent } from './admin/criacaodeusuario/criacaodeusuario.component';
+import { ConcederacessosComponent } from './admin/concederacessos/concederacessos.component';
+import { ResetarsenhasComponent } from './admin/resetarsenhas/resetarsenhas.component';
 
 
 
@@ -233,7 +241,8 @@ import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/aco
         TooltipModule,
         TreeModule,
         TreeTableModule,
-        VirtualScrollerModule
+        VirtualScrollerModule,
+        TriStateCheckboxModule
     ],
     declarations: [
         AppComponent,
@@ -301,7 +310,12 @@ import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/aco
         controledepagamentosjuridicoComponent,
         CadastroPagamentoComponent,
         ListapendentesComponent,
-        AcompanharaprovacaoComponent
+        AcompanharaprovacaoComponent,
+        AprovarComponent,
+        AdminComponent,
+        CriacaodeusuarioComponent,
+        ConcederacessosComponent,
+        ResetarsenhasComponent
 
     ],
     providers: [
@@ -314,7 +328,8 @@ import { AcompanharaprovacaoComponent } from './controledepagamentosjuridico/aco
         AuthGuard,
         PerformanceService,
         TransporteService,
-        RpaService
+        RpaService,
+        ControledepagamentosjuridicoService
     ],
     bootstrap: [AppComponent]
 })

@@ -18,7 +18,13 @@ export class RpaComponent implements OnInit {
   constructor(private rpaservice: RpaService) { }
 
   ngOnInit() {
+    
     this.Arrayas();
+    
+    var i = 0
+    // while(i===0){
+    //   this.f3();
+    // }
   }
 
   selectCar(bot: any) {
@@ -32,6 +38,7 @@ export class RpaComponent implements OnInit {
   }
 
   Arrayas(){
+    this.bot=[];
     this.cadastro=[];
     this.status = [];
     this.rpaservice.cadastroBots().subscribe(
@@ -77,6 +84,15 @@ export class RpaComponent implements OnInit {
     }
     statusbot = statusbot.reverse();
     return statusbot;
+  }
+  async f3() {
+    // try {
+    //   var z = await 30;
+    //   this.Arrayas();
+    //   console.log("atualizado")
+    // } catch(e) {
+    //   console.log(e); // 30
+    // }
   }
 }
 

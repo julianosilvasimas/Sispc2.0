@@ -67,114 +67,115 @@ export class GraficosComponent implements OnInit {
   options: any;
 
     
-    ngOnInit() {
-      this.comentarCom = [];
-      this.responsaveisCom = [];
-      this.datasCom = [];
-      this.Validador(this.element)
-    }
+  ngOnInit() {
+    this.comentarCom = [];
+    this.responsaveisCom = [];
+    this.datasCom = [];
+    this.Validador(this.element)
+  }
 
-    constructor(private performanceService: PerformanceService) {
-    }
+  constructor(private performanceService: PerformanceService) {
+  }
 
-    // TIPOGRAPH 1 == Receitas (REALIZADO, ORÇADO, REALIZADO ACUMULADO, ORÇADO ACUMULADO)
-    // TIPOGRAPH 2 == Acumulados (REALIZADO ACUMULADO, ORÇADO ACUMULADO)
-    // TIPOGRAPH 3 == TemposMedia (REALIZADO MEDIA, ORÇADO MEDIA) Formato de HORA
+  // TIPOGRAPH 1 == Receitas (REALIZADO, ORÇADO, REALIZADO ACUMULADO, ORÇADO ACUMULADO)
+  // TIPOGRAPH 2 == Acumulados (REALIZADO ACUMULADO, ORÇADO ACUMULADO)
+  // TIPOGRAPH 3 == TemposMedia (REALIZADO MEDIA, ORÇADO MEDIA) Formato de HORA
 
-    Validador(indic){
-      this.performanceService.indicadores(this.refer, indic.indicadorId)
-      .subscribe(
-        indicador  =>  {
-        //Consulta endpoint que possui os nomes dos indicadores
-        //=======================================================================================
-        this.tipoindicador = indic.indicador
-        this.tipoGraph = indic.tipoGrafico
-        this.indicadorId = indic.indicadorId
-        this.Tendencia = indic.tendencia
+  Validador(indic){
+    this.performanceService.indicadores(this.refer, indic.indicadorId)
+    .subscribe(
+      indicador  =>  {
+      //Consulta endpoint que possui os nomes dos indicadores
+      //=======================================================================================
+      this.tipoindicador = indic.indicador
+      this.tipoGraph = indic.tipoGrafico
+      this.indicadorId = indic.indicadorId
+      this.Tendencia = indic.tendencia
 
-        //Consulta do EIXO
-        //=======================================================================================
+      //Consulta do EIXO
+      //=======================================================================================
+    
+      this.eixo  = []
+      this.eixo =indicador[0]
+      this.eixo = this.eixo.splice(1, Number.MAX_VALUE)
+      this.eixo  = this.eixo.filter(item => item !== null)
+
+
+      //ROTULOS DE COMENTARIOS
+      //========================================================================================
+
+      this.temp1  = []
+      this.temp1 = indicador[1]
+      this.temp1 = this.temp1.splice(1, Number.MAX_VALUE)
+
+      var responsaveis: any = []
+      responsaveis = indicador[2]
+      responsaveis = responsaveis.splice(1, Number.MAX_VALUE)
       
-        this.eixo  = []
-        this.eixo =indicador[0]
-        this.eixo = this.eixo.splice(1, Number.MAX_VALUE)
-        this.eixo  = this.eixo.filter(item => item !== null)
-
-
-        //ROTULOS DE COMENTARIOS
-        //========================================================================================
-
-        this.temp1  = []
-        this.temp1 = indicador[1]
-        this.temp1 = this.temp1.splice(1, Number.MAX_VALUE)
-
-        var responsaveis: any = []
-        responsaveis = indicador[2]
-        responsaveis = responsaveis.splice(1, Number.MAX_VALUE)
-        
-        
-        this.PreencherComentarios(this.temp1, responsaveis,this.eixo)
+      
+      this.PreencherComentarios(this.temp1, responsaveis,this.eixo)
 
 
 
-        //ROTULOS DE ACUMULADOS
-        //========================================================================================
-        this.temp1  = []
-        this.temp1  = indicador[3]
+      //ROTULOS DE ACUMULADOS
+      //========================================================================================
+      this.temp1  = []
+      this.temp1  = indicador[3]
 
-        this.RotulosAcumulados(this.tipoGraph, this.temp1)
+      this.RotulosAcumulados(this.tipoGraph, this.temp1)
 
-        var orcado: any= []; 
-        orcado = indicador[4]
-        orcado = orcado.splice(1, Number.MAX_VALUE)
+      var orcado: any= []; 
+      orcado = indicador[4]
+      orcado = orcado.splice(1, Number.MAX_VALUE)
 
-        var realiz: any= []; 
-        realiz = indicador[5]
-        realiz = realiz.splice(1, Number.MAX_VALUE)
+      var realiz: any= []; 
+      realiz = indicador[5]
+      realiz = realiz.splice(1, Number.MAX_VALUE)
 
-        var orcadoDiaAc: any= []; 
-        orcadoDiaAc = indicador[6]
-        orcadoDiaAc = orcadoDiaAc.splice(1, Number.MAX_VALUE)
+      var orcadoDiaAc: any= []; 
+      orcadoDiaAc = indicador[6]
+      orcadoDiaAc = orcadoDiaAc.splice(1, Number.MAX_VALUE)
 
-        var realizDiaAc: any= []; 
-        realizDiaAc = indicador[7]
-        realizDiaAc = realizDiaAc.splice(1, Number.MAX_VALUE)
+      var realizDiaAc: any= []; 
+      realizDiaAc = indicador[7]
+      realizDiaAc = realizDiaAc.splice(1, Number.MAX_VALUE)
 
-        var orcadoDiaMed: any= []; 
-        orcadoDiaMed = indicador[8]
-        orcadoDiaMed = orcadoDiaMed.splice(1, Number.MAX_VALUE)
+      var orcadoDiaMed: any= []; 
+      orcadoDiaMed = indicador[8]
+      orcadoDiaMed = orcadoDiaMed.splice(1, Number.MAX_VALUE)
 
-        var realizDiaMed: any= []; 
-        realizDiaMed = indicador[9]
-        realizDiaMed = realizDiaMed.splice(1, Number.MAX_VALUE)
+      var realizDiaMed: any= []; 
+      realizDiaMed = indicador[9]
+      realizDiaMed = realizDiaMed.splice(1, Number.MAX_VALUE)
 
-        var Minimo: any= []; 
-        Minimo = indicador[10]
-        Minimo = Minimo.splice(1, Number.MAX_VALUE)
+      var Minimo: any= []; 
+      Minimo = indicador[10]
+      Minimo = Minimo.splice(1, Number.MAX_VALUE)
 
-        var Maximo: any= []; 
-        Maximo = indicador[11]
-        Maximo = Maximo.splice(1, Number.MAX_VALUE)
+      var Maximo: any= []; 
+      Maximo = indicador[11]
+      Maximo = Maximo.splice(1, Number.MAX_VALUE)
 
-        var Meta: any= []; 
-        Meta = indicador[12]
-        Meta = Meta.splice(1, Number.MAX_VALUE)
+      var Meta: any= []; 
+      Meta = indicador[12]
+      Meta = Meta.splice(1, Number.MAX_VALUE)
 
-        var MetaAcumulada: any= []; 
-        MetaAcumulada = indicador[13]
-        MetaAcumulada = MetaAcumulada.splice(1, Number.MAX_VALUE)
+      var MetaAcumulada: any= []; 
+      MetaAcumulada = indicador[13]
+      MetaAcumulada = MetaAcumulada.splice(1, Number.MAX_VALUE)
 
-        var DentroPrazoReg: any= []; 
-        DentroPrazoReg = indicador[14]
-        DentroPrazoReg = DentroPrazoReg.splice(1, Number.MAX_VALUE)
+      var DentroPrazoReg: any= []; 
+      DentroPrazoReg = indicador[14]
+      DentroPrazoReg = DentroPrazoReg.splice(1, Number.MAX_VALUE)
 
-        var DentroPrazo: any= []; 
-        DentroPrazo = indicador[15]
-        DentroPrazo = DentroPrazo.splice(1, Number.MAX_VALUE)
+      var DentroPrazo: any= []; 
+      DentroPrazo = indicador[15]
+      DentroPrazo = DentroPrazo.splice(1, Number.MAX_VALUE)
 
 
-        this.EscolherTipoGrafico(this.tipoGraph,this.eixo,orcado,realiz,orcadoDiaAc,realizDiaAc,orcadoDiaMed,realizDiaMed, Minimo, Maximo,Meta,MetaAcumulada,DentroPrazoReg,DentroPrazo)
-        });
+      this.EscolherTipoGrafico(this.tipoGraph,this.eixo,orcado,realiz,orcadoDiaAc,realizDiaAc,orcadoDiaMed,realizDiaMed, Minimo, Maximo,Meta,MetaAcumulada,DentroPrazoReg,DentroPrazo)
+      }
+    );
   }
 
 
@@ -285,15 +286,9 @@ export class GraficosComponent implements OnInit {
   }
 }
 
-
-
-
-
-
   //____________________________________________________________________________________________
   ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
   //TIPOS DE GRAFICOS
-
 
   //BARLINE TIPO RECEITADIRETA
   Tipo1(eixo,orcado,realiz,orcadoDiaAc,realizDiaAc){
@@ -738,7 +733,7 @@ export class GraficosComponent implements OnInit {
     }
   }
 
-    //TIPO TMA TME 2 EIXOS
+  //TIPO TMA TME 2 EIXOS
   Tipo679(eixo,orcadoDiaAc,realizDiaAc,metaDiaAc){
     this.data = {
       labels: this.eixo,
@@ -801,20 +796,8 @@ export class GraficosComponent implements OnInit {
         }
       }
   }
-  
-
   //FIM DE TIPOS DE GRAFICOS
   //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
-
-
-
-
-
-
-
-
-
 
   RotulosAcumulados(tipoGraph, linhaDeResumo){
     
@@ -830,7 +813,6 @@ export class GraficosComponent implements OnInit {
         }        
         break;
       }
-    
       case "MELHORNEGATIVO":{
         if(this.RotuloDiferencaPerc>0 && this.RotuloDiferencaPerc!=""){
           this.Cor1 = "Red"; 
@@ -840,7 +822,6 @@ export class GraficosComponent implements OnInit {
         } 
         break;
       }
-
       case "MELHORENTREFAIXAS":{
         if(this.RotuloDiferencaAcum<0 || this.RotuloDiferencaAcum>0){
           this.Cor1 = "Red"; 
@@ -851,7 +832,6 @@ export class GraficosComponent implements OnInit {
         break;
       }
     }
-    
 
     if(tipoGraph==5){
       this.RotuloDiferencaPerc = this.RotuloDiferencaPerc+"%";
@@ -865,9 +845,6 @@ export class GraficosComponent implements OnInit {
       this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
     }
   }
-
-
-
 
   //SUPRIMIR COMENTÁRIOS VAZIOS E PREENCHER COM DATA
   //========================================================================================
@@ -904,13 +881,6 @@ export class GraficosComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
- 
     //MESMA CLASSE DO QUE O graficos.component.ts
     CondicionalDeGraficos(tipoGraph, temp1){
       //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
@@ -989,7 +959,7 @@ export class GraficosComponent implements OnInit {
         this.RotuloPrevisaoMensal = (Meta*100) ;
         this.RotuloOrcadoMensal = (Meta*100);
         this.RotuloOrcadoAcum = (Meta*100);
-        this.RotuloRealizAcum = RealMedia;
+        this.RotuloRealizAcum = (RealMedia*100);
         this.RotuloDiferencaAcum  = "-";
         this.RotuloDiferencaAcum2 = "-";
         this.RotuloDiferencaPerc = "-";
@@ -1028,7 +998,6 @@ export class GraficosComponent implements OnInit {
 
   }
     ConverterParaHora(s){
-      
       if(s<0){
         s=s*-1
       }
@@ -1038,18 +1007,17 @@ export class GraficosComponent implements OnInit {
         }
         return numero;
       }
-    
-        var hora = Math.trunc(s/3600);
-        var minuto = Math.trunc(s/60)-(hora*60);
-        var segundo = Math.trunc(s)-(hora*3600)-(minuto*60);
-  
-        hora = duas_casas(hora);
-        minuto = duas_casas(minuto);
-        segundo = duas_casas(segundo);
+      var hora = Math.trunc(s/3600);
+      var minuto = Math.trunc(s/60)-(hora*60);
+      var segundo = Math.trunc(s)-(hora*3600)-(minuto*60);
 
-        var formatado = hora+":"+minuto+":"+segundo;
-                  
-        return formatado;
+      hora = duas_casas(hora);
+      minuto = duas_casas(minuto);
+      segundo = duas_casas(segundo);
+
+      var formatado = hora+":"+minuto+":"+segundo;
+                
+      return formatado;
     }
     
 }

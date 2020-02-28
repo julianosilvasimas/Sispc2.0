@@ -7,17 +7,20 @@
       <ng-template let-sentencas pTemplate="listItem">
         <div class="car-details">
           <div class="ui-g-11">
-            <div class="ui-g-2"><b>{{sentencas.Processo}}</b></div>
-            <div class="ui-g-2"><b>{{sentencas.Autor}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.Empresa}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.NaturezaPagamento}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.DataPagamento}}</b></div>
-            <div class="ui-g-1"><b>{{sentencas.Valor}}</b></div>
-            <div class="ui-g-2"><b>{{sentencas.Escritorio}}</b></div>
-            <div class="ui-g-2"><b>{{sentencas.CentroDeCusto}}</b></div>
+            <div class="ui-g-2"><b>{{sentencas.processo}}</b></div>
+            <div class="ui-g-2"><b>{{sentencas.autor}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.empresa}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.natureza}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.dataProgramada}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.valor}}</b></div>
+            <div class="ui-g-2"><b>{{sentencas.escritorio}}</b></div>
+            <div class="ui-g-1"><b>{{sentencas.centroDeCusto}}</b></div>
+            <div class="ui-g-1">
+              <p-rating [ngModel]="sentencas.valor > 5000 ? 3 : sentencas.valor > 1000 ? 2 : 1" readonly="true" stars="3" [cancel]="false"></p-rating>
+            </div>
           </div>
           <div class="ui-g-1" >
-            <button pButton type="button" icon="pi pi-search" (click)="showsentenca(sentencas)"></button>
+            <button pButton type="button" icon="ui-icon-edit" (click)="showSentenca(sentencas)"></button>
           </div>
         </div>
       </ng-template>
@@ -26,28 +29,65 @@
 </div>
 
 
-<p-dialog header="Editar\Aprovar" [(visible)]="displayEditSentenca" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
+<p-dialog header="Editar" [(visible)]="displayEditSentenca" [responsive]="false" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
   <div class="ui-g" *ngIf="sentencaSelect" >
     <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
 
       
       <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
-        <span class="md-inputfield">
-          <p-calendar class="ui-g-12 ui-md-3"   [(ngModel)]="sentencaSelect.DataPagamento" dateFormat="dd/mm/yy"></p-calendar>
-          <label>Data Programação</label>
-        </span>
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <p-calendar class="ui-g-12 ui-md-3"   [(ngModel)]="sentencaSelect.dataProgramada" dateFormat="yy-mm-dd"></p-calendar>
+            <label>Data Programação</label>
+          </span>
+        </div>
+        
+        <div class="ui-g-12 ui-md-4">
+          Nível de Aprovação
+          <p-rating [ngModel]="sentencaSelect.valor > 5000 ? 3 : sentencaSelect.valor > 1000 ? 2 : 1" readonly="true" stars="3" [cancel]="false"></p-rating>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <div class="ui-g-12 item" >
+            <p-checkbox name="group1" [(ngModel)]="sentencaSelect.falhaConcess" inputId="ny"></p-checkbox>
+            <label >Falha da Concessão</label>
+          </div>
+        </div>
       </div>
-      
+
+      <div class="ui-g-12 ui-md-12" style="margin-top: 40px;">
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.aprovador1" class="ui-g-12" pInputText/>
+            <label>Aprovador 1</label>
+          </span>
+        </div>
+        
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelectAprovador2" class="ui-g-12" pInputText/>
+            <label>Aprovador 2</label>
+          </span>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.aprovador3" class="ui-g-12" pInputText/>
+            <label>Aprovador 3</label>
+          </span>
+        </div>
+      </div>
+
       <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
         <div class="ui-g-12 ui-md-6">
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.Empresa" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.empresa" class="ui-g-12" pInputText/>
             <label>Empresa</label>
           </span>
         </div>
         <div class="ui-g-12 ui-md-6" >
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.Autor" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.autor" class="ui-g-12" pInputText/>
             <label >Autor</label>
           </span>
         </div>
@@ -55,13 +95,13 @@
       <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
         <div class="ui-g-12 ui-md-6">
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.Processo" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.processo" class="ui-g-12" pInputText/>
             <label>Processo</label>
           </span>
         </div>
         <div class="ui-g-12 ui-md-6" >
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.NaturezaPagamento" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.natureza" class="ui-g-12" pInputText/>
             <label >Natureza</label>
           </span>
         </div>
@@ -70,19 +110,19 @@
             
         <div class="ui-g-12 ui-md-4" >
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.Valor" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [(ngModel)]="sentencaSelect.valor" class="ui-g-12" pInputText/>
             <label >Valor</label>
           </span>
         </div>
         <div class="ui-g-12 ui-md-4" >
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.ContaContabil" class="ui-g-12" pInputText/>
-            <label >Conta Contábil</label>
+            <p-dropdown [autoWidth]="true" filter="true"  [(ngModel)]="sentencaSelect.contaContabil" styleClass = "drop95" [options]="ListaContas"></p-dropdown>
+          <label >Conta Contábil</label>
           </span>
         </div>
         <div class="ui-g-12 ui-md-4">
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.CentroDeCusto" class="ui-g-12" pInputText/>
+            <p-dropdown [autoWidth]="true" filter="true"  [(ngModel)]="sentencaSelect.centroDeCusto" styleClass = "drop95" [options]="ListaCentroDeCusto"></p-dropdown>
             <label>Centro de Custo</label>
           </span>
         </div>
@@ -90,13 +130,13 @@
       <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
         <div class="ui-g-12 ui-md-6" >
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.Fornecedor" class="ui-g-12" pInputText/>
-            <label >Fornecedor</label>
+            <p-dropdown [autoWidth]="true" filter="true"  [(ngModel)]="sentencaSelect.fornecedor" styleClass = "drop95" [options]="ListaFornecedores"></p-dropdown>
+            <label >fornecedor</label>
           </span>
         </div>
         <div class="ui-g-12 ui-md-6">
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="sentencaSelect.Escritorio" class="ui-g-12" pInputText/>
+            <p-dropdown [autoWidth]="true" filter="true"  [(ngModel)]="sentencaSelect.escritorio" styleClass = "drop95" [options]="ListaEscritorios"></p-dropdown>
             <label>Escritório</label>
           </span>
         </div>
@@ -104,21 +144,22 @@
       <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
         <div class="ui-g-12">
           <label>Sentencas</label>
-          <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="sentencaSelect.Sentencas"  pInputText rows="10" cols="35"></textarea>
+          <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="sentencaSelect.sentenca"  pInputText rows="10" cols="35"></textarea>
         </div>
         <div class="ui-g-12">
           <label>Motivo do Pagamento</label>
-          <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="sentencaSelect.MotivoPagamento"  pInputText rows="10" cols="35" placeholder="Motivo do Pagamento"></textarea>
+          <textarea style="width: 100%; height: 120px !important;" [(ngModel)]="sentencaSelect.motivoPagamento"  pInputText rows="10" cols="35" placeholder="Motivo do Pagamento"></textarea>
         </div>
       </div>
 
       <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
         <div class="ui-g-6" style="text-align: center;">
-          <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="Salvar()"></button>
+          <button type="button" pButton icon="ui-icon-save" label="Salvar"  (click)="Salvar(sentencaSelect)"></button>
         </div>
         <div class="ui-g-6" style="text-align: center;">
-          <button type="button"  style="background:#3cb627;" pButton icon="pi pi-save" label="Aprovar"  (click)="Aprovar()"></button>
-       </div>
+          <button type="button"  style="background:#3cb627;" pButton icon="ui-icon-done" label="Enviar Aprovação"  (click)="EnviarAprovacao(sentencaSelect)"></button>
+        </div>
       </div>
     </div>
   </div>
+</p-dialog>

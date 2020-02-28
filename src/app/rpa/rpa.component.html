@@ -9,6 +9,7 @@
       <div class="ui-g-12">{{ b.historico[0].user }}</div>
       <div class="ui-g-12">{{ b.historico[0].ultimostart }}</div>
       <div class="ui-g-12">{{ b.historico[0].status }}</div>
+      <div class="ui-g-12">{{ b.historico[0].timestamp }}</div>
       <div class="ui-g-12" >
         <button pButton type="button" icon="pi pi-search" (click)="selectCar(b)"></button>
       </div>
@@ -18,7 +19,7 @@
 <p-dialog header="Detalhe Bot" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
   <div class="ui-g" *ngIf="selectedBot" style="height:50%">
     <div class="ui-g-6" style="text-align:center">
-        <img src="assets/layout/images/rpa/{{selectedBot.status}}.png" width="200px">
+        <img src="assets/layout/images/rpa/{{selectedBot.historico[0].status}}.png" width="200px">
     </div>
     <div class="ui-g-6" style="text-align:left">
     
@@ -34,7 +35,6 @@
     </div>
     <div class="ui-g-12">
       <p-dataView #dv [value]="selectedBot.historico" [paginator]="true" [rows]="5" paginatorPosition="both" filterBy="nome" [sortOrder]="sortOrder">
-
         <ng-template let-bot pTemplate="listItem">
           <div class="ui-g-12">
             <div class="car-details">

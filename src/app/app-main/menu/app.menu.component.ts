@@ -28,6 +28,11 @@ export class AppMenuComponent implements OnInit {
     usuPerformance: boolean = false;
     usuComissao: boolean = false;
     usuTransporte: boolean = false;
+    usuJuridicoPagamentos: boolean = false;
+    usuProjetos: boolean = false;
+    usuJuridicoPagamentosAprovacao: boolean = false;
+
+    
 
     ngOnInit() {
 
@@ -46,8 +51,11 @@ export class AppMenuComponent implements OnInit {
             }else if(permissao === "ROLE_USER_FROTAS"){
                 this.usuTransporte = true
             }else if(permissao === "ROLE_USER_INDICADOR"){
-                this.usuPerformance
-                 = true
+                this.usuPerformance = true
+            }else if(permissao === "ROLE_ADMIN_PROJETOS"){
+                this.usuPerformance = true
+            }else if(permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO")>0){
+                this.usuJuridicoPagamentos= true
             }
             
             i++
@@ -55,7 +63,7 @@ export class AppMenuComponent implements OnInit {
 
         console.log(this.usuPerformance)
 
-        console.log(this.permissoes)
+        // console.log(this.permissoes)
         this.performanceService.classindicadores(6)
         .subscribe(response => {this.indicadores = response
             //console.log(response)
@@ -179,6 +187,7 @@ export class AppMenuComponent implements OnInit {
                         },
                         {label: 'Jurídico', icon: 'gavel',
                         items: [
+                            {label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject'},
                             {label: 'Processos', icon: 'subject'},
                             {label: 'Regulatório', icon: 'subject'}
                         ]
@@ -195,7 +204,28 @@ export class AppMenuComponent implements OnInit {
                         ]
                         })
             }
-            
+            if(this.usuJuridicoPagamentos === true){
+                this.model.push(
+                    {label: 'Jurídico', icon: 'gavel',
+                        items: [
+                            {label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject'},
+                        ]
+                    }
+                )
+            }
+            if(this.usuProjetos === true){
+                this.model.push(
+                    {label: 'Planejamento', icon: 'equalizer',
+                        items: [
+                            {label: 'GPP', icon: 'view_list',
+                                items: [
+                                    {label: 'Projetos', icon: 'subject', routerLink: '/projetos'}
+                                ]
+                            }
+                        ]
+                        },
+                )
+            }
             //Comissão
             if(this.usuComissao === true){
             this.model.push(

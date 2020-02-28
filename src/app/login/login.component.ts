@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   alterarsenha(){
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   logar(){
-
+    sessionStorage.clear
     this.authService.fazerLogin(this.usuario)
     .subscribe(
       resp => {
