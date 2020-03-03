@@ -92,7 +92,7 @@ export class CadastroPagamentoComponent implements OnInit {
       autor: this.CadAutor,
       processo:  this.CadProcesso,
       natureza: this.CadNatureza,
-      dataProgramada: this.CadDataProgramada,
+      dataProgramada: this.FormatarData(this.CadDataProgramada),
       valor: this.CadValor,
       escritorio: this.CadEscritorio,
       contaContabil: this.CadContaContabil,
@@ -124,6 +124,21 @@ export class CadastroPagamentoComponent implements OnInit {
       this.limpar();
   }
 
+  FormatarData(datareceb){
+    var dataFinal
+
+    if(datareceb.length<20){
+      dataFinal = datareceb
+    }else{
+      var data = datareceb,
+        dia2  = data.getDate().toString().padStart(2, '0'),
+        mes2  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano2  = data.getFullYear();
+
+      dataFinal = ano2+"-"+mes2+"-"+dia2;
+    }
+    return dataFinal;
+}
 
   limpar(){
     this.CadEmpresa=null;

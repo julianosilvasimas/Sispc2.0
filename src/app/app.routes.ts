@@ -83,6 +83,7 @@ export const routes: Routes = [
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
             { path: 'indicadoresAdmin', component: AdminIndicadoresComponent},
             { path: 'rpa', component: RpaComponent},
+            { path: 'graficos', component: RpaComponent},
         ]
     },
     { path: 'printPerformance/:id/:ref', component: RelatorioindicadoresComponent},

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminIndicadoresService } from '../admin-indicadores.service';
-import { Indicadores } from '../../performance.model';
+import { AdminIndicadoresService } from '../../admin-indicadores.service';
+import { Indicadores } from '../../../performance.model';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -88,13 +88,6 @@ export class EditindicadoresComponent implements OnInit {
      return dataFinal;
   }
   
-  onRowEditSave(indicador: Indicadores) {
-    
-  }
-
-  onRowEditCancel(){
-
-  }
 
   SolicitarAlteracao(){
     this.listaAlterada = []

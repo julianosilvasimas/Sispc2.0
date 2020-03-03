@@ -53,6 +53,7 @@ export class InputindicadoresComponent implements OnInit {
   forecast: any
   minimo: any
   maximo: any
+  vlrretido: any
   meta: any
   dentroprazo: any
   foraprazo: any
@@ -151,6 +152,7 @@ export class InputindicadoresComponent implements OnInit {
       {label: 'Meta', valor: this.meta}, 
       {label: 'Previsão', valor: this.previsao}, 
       {label: 'DP', valor: this.dentroprazo}, 
+      {label: 'VlRet', valor: this.vlrretido}, 
       {label: 'FP', valor: this.foraprazo}, 
       {label: 'DP Reguladas', valor: this.dentroprazoreg}, 
       {label: 'FP Reguladas', valor: this.foraprazoreg}, 
@@ -292,6 +294,7 @@ export class InputindicadoresComponent implements OnInit {
     this.maximo = 0;
     this.meta = 0;
     this.dentroprazo = 0;
+    this.vlrretido = 0;
     this.foraprazo = 0;
     this.dentroprazoreg = 0;
     this.foraprazoreg = 0;
@@ -328,6 +331,7 @@ export class InputindicadoresComponent implements OnInit {
     this.maximo = indicadores['maximo'] === null ? indicadores['maximo'] :indicadores['maximo'].toLocaleString(),
     this.meta = indicadores['meta'] === null ? indicadores['meta'] :indicadores['meta'].toLocaleString(),
     this.dentroprazo = indicadores['dentroprazo'] === null ? indicadores['dentroprazo'] :indicadores['dentroprazo'].toLocaleString(),
+    this.vlrretido = indicadores['vlrretido'] === null ? indicadores['vlrretido'] :indicadores['vlrretido'].toLocaleString(),
     this.foraprazo = indicadores['foraprazo'] === null ? indicadores['foraprazo'] :indicadores['foraprazo'].toLocaleString(),
     this.dentroprazoreg = indicadores['dentroprazoreg'] === null ? indicadores['dentroprazoreg'] :indicadores['dentroprazoreg'].toLocaleString(),
     this.foraprazoreg = indicadores['foraprazoreg'] === null ? indicadores['foraprazoreg'] :indicadores['foraprazoreg'].toLocaleString(),
@@ -399,6 +403,7 @@ export class InputindicadoresComponent implements OnInit {
     this.maximo = this.maximo.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
     this.meta = this.meta.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
     this.dentroprazo = this.dentroprazo.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
+    this.vlrretido = this.vlrretido.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
     this.foraprazo = this.foraprazo.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
     this.previsao = this.previsao.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
     this.dentroprazoreg = this.dentroprazoreg.replace(/([\u0300-\u036f]|[^0-9,])/g,'').replace(/\D/g,'.')
@@ -406,7 +411,7 @@ export class InputindicadoresComponent implements OnInit {
 
 
   this.performanceService.indicadoresAtt(this.exeindicadorId,this.datareferencia, this.dataindicador, this.ciclo,  this.orcado, this.realizado,
-    this.pecld, this.atendente, this.atendimento, this.comentario, this.forecast, this.minimo, this.maximo, this.meta, this.previsao, this.dentroprazo, this.foraprazo,
+    this.pecld, this.atendente, this.atendimento, this.comentario, this.forecast, this.minimo, this.maximo, this.meta, this.previsao, this.vlrretido, this.dentroprazo, this.foraprazo,
     this.dentroprazoreg, this.foraprazoreg, this.acao, this.analise, sessionStorage.getItem('nome'), this.indicadorId, this.undcodigo)
    .subscribe(
        response => {

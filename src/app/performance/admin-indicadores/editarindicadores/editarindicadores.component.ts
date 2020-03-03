@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MessageService, MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'app-admin-indicadores',
-  templateUrl: './admin-indicadores.component.html',
-  styleUrls: ['./admin-indicadores.component.css']
+  selector: 'app-editarindicadores',
+  templateUrl: './editarindicadores.component.html',
+  styleUrls: ['./editarindicadores.component.css']
 })
-export class AdminIndicadoresComponent implements OnInit {
+export class EditarindicadoresComponent implements OnInit {
+
+  constructor() { }
 
   items: MenuItem[];
   public activeItem; 
   public activeItemIndex;
-  constructor() { }
 
   ngOnInit() {
     this.items = [
-      {label: 'Cadastrar'},
-      {label: 'Editar'},
-      {label: 'Importar'}
+      {label: 'Editar Cadastro'},
+      {label: 'Editar Orçados'}
     ];
     this.trocadeitemIndex(0);
+   
+  
   }
-
 
   trocadeitem(activeItem: MenuItem){
     this.activeItem = activeItem['activeItem']

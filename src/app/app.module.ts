@@ -164,10 +164,13 @@ import { AdminComponent } from './admin/admin.component';
 import { CriacaodeusuarioComponent } from './admin/criacaodeusuario/criacaodeusuario.component';
 import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuarios.component';
 import { CadastrarindicadorComponent } from './performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component';
-import { EditindicadoresComponent } from './performance/admin-indicadores/editindicadores/editindicadores.component';
+import { EditindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component';
 import { AdminService } from './admin/Admin.service';
 import { AdminIndicadoresService } from './performance/admin-indicadores/admin-indicadores.service';
-import { EditarcadastroindicadoresComponent } from './performance/admin-indicadores/editarcadastroindicadores/editarcadastroindicadores.component';
+import { EditarcadastroindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component';
+import { GraficosIndicadoresComponent } from './graficos-indicadores/graficos-indicadores.component';
+import { NovoIndicadorComponent } from './performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component';
+import { EditarindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editarindicadores.component';
 
 
 @NgModule({
@@ -320,7 +323,10 @@ import { EditarcadastroindicadoresComponent } from './performance/admin-indicado
         ListadeusuariosComponent,
         CadastrarindicadorComponent,
         EditindicadoresComponent,
-        EditarcadastroindicadoresComponent
+        EditarcadastroindicadoresComponent,
+        GraficosIndicadoresComponent,
+        NovoIndicadorComponent,
+        EditarindicadoresComponent,
 
     ],
     providers: [
