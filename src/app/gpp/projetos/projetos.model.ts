@@ -16,13 +16,13 @@ export interface Projetos{
     terminoprevisto: Date,
     terminoreplanejado: Date,
     terminorealizado: Date,
-    partestinteressadas: [
+    /*partestinteressadas: [
         {
                 orgaoId: number,
                 orgao : string,
                 ambito: string
         } 
-    ]
+    ]*/
 }
 //editar esse modelo
 export interface ProjCompletos{

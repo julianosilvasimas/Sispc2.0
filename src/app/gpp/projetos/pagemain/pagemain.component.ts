@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem, TreeNode, MessageService, SelectItem, Message } from 'primeng/api';
 import { CarService } from '../../../demo/service/carservice';
 import { Car, Engenharia, Processos, Licencas } from '../../../demo/domain/car';
+import { ProjetosService } from '../projetos.service';
 
 @Component({
   selector: 'app-pagemain',
   templateUrl: './pagemain.component.html',
   styleUrls: ['./pagemain.component.css']
 })
-export class PagemainComponent implements OnInit {
+export class PagemainComponent implements OnInit { 
 
   cars: Engenharia[];
   processos: Processos[];
@@ -25,6 +26,8 @@ export class PagemainComponent implements OnInit {
   cols2: { field: string; header: string; }[];
   selected: boolean;
 
+  idProjeto;
+  projeto;
   
 
 
@@ -37,15 +40,26 @@ export class PagemainComponent implements OnInit {
     uploadedFiles: any[] = [];
     cols3: { field: string; header: string; }[];
     licencas: Licencas[];
+    arrProjeto: any[];
   
-  constructor(private carService: CarService, private messageService: MessageService) { }
+  constructor(private carService: CarService, private messageService: MessageService, private projetosService: ProjetosService) { }
 
   ngOnInit() {
     this.dia=[1,2,3,4,5,6,7,8,9,10,11,12,1314,15,16,17,18,19,10,21,22,23,24,25,26,27,28,2,3,31];
     this.mes=[1,2,3,4,5,6,7,8,9,10,11,12];
     this.ano=[2019,2020,2021,2022];
 
-    
+    this.idProjeto = sessionStorage.getItem('idProjeto')
+    this.projeto = sessionStorage.getItem('nomeProjeto')
+
+    this.projetosService.projetosId(this.idProjeto)
+    .subscribe(res => {
+        console.log(res)
+        this.arrProjeto = res
+    });
+
+    console.log(this.idProjeto)
+    console.log(this.projeto)
 
     this.stepsItems = [
       {label: 'Regulatório'},

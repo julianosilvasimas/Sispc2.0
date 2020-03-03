@@ -1,7 +1,7 @@
 <div class="ui-g">
     <div class="ui-g-12">
         <div class="card card-w-title" style="text-align: center; height: 70px; background:#303C89; color:white;">
-            <h1>Projeto PRJ-xxxx - Xxxxxxxxxxxxxx Xxxxxxxxxxxxx</h1>
+            <h1>Projeto PRJ - {{idProjeto}} - {{projeto}}</h1>
         </div>
        </div> 
 
@@ -55,7 +55,7 @@
                         <div class="card card-w-title" >
                             <div  style="margin-top: 20px; margin-bottom: 50px;">
                                 <span class="md-inputfield">
-                                    <input id="input" type="text" size="60" pInputText/>
+                                    <input id="input" type="text" size="60" [(ngModel)]="arrProjeto.projeto" pInputText/>
                                     <label>Nome do Projeto</label>
                                 </span>
                          </div>
@@ -63,7 +63,7 @@
                           
                           <div class="item" >
                             <span class="md-inputfield">
-                            <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                            <p-dropdown [options]="localidades"  [(ngModel)]="arrProjeto.localidade" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
                             <label >Localidade</label>
                             </span>
                           </div>
