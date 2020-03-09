@@ -1,5 +1,11 @@
 
+export interface Bots{
+    label: string,
+    funcao: string,
+    value: number,
+    status: string
 
+}
 export interface Indicadores{
     exeindicadorId: number,
     datareferencia: Date,

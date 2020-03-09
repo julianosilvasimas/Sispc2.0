@@ -16,7 +16,7 @@ export class GraficosIndicadoresComponent implements OnInit {
   
   
   ngOnInit() {
-    this.performanceService.indicadores(this.refer, this.indicador.indicadorId).subscribe(
+    this.performanceService.indicadores(this.refer, this.indicador['indicadorId']).subscribe(
       dados  =>  {
         var maximo = 0;
 

@@ -1,4 +1,5 @@
-<p-chart class="chart" type="bar" [data]="data" [options]="options" height="400px" width="100%"></p-chart>
+<!-- <p-chart class="chart" type="bar" [data]="data" [options]="options" height="400px" width="100%"></p-chart>
+<p-graficos-indicadores></p-graficos-indicadores> -->
 <!-- Parâmetros -->
 <br>
 <div class="subtitulos">
@@ -14,21 +15,20 @@
 <div class="divParametros Dados">{{ this.RotuloPrevisaoMensal }}</div>
 <br>
 <div class = "divParametros rectangle" >
-    <span>{{ this.RotuloOrcadoAcum }}</span>
-    
+    <span>{{ this.campoCalc1 }}</span>
 </div>
 <div [style.color]="this.Cor2" class = "divParametros rectangle" style="margin-left: 360px !important;">
-    <span>{{ this.RotuloRealizAcum }}</span>
+    <span>{{ this.campoCalc2 }}</span>
 </div>
 <div [style.color]="this.Cor3" class = "divParametros rectangle" style="margin-left: 520px !important;">
-        <span> {{ this.RotuloDiferencaAcum2 }}</span>
+        <span> {{ this.campoCalc3 }}</span>
 </div>
 <div [style.color]="this.Cor4" class = "divParametros rectangle" style="margin-left: 680px !important;">
-    <span>{{ this.RotuloDiferencaPerc }}</span>
+    <span>{{ this.campoCalc4 }}</span>
 </div>
 
-<div class = "divParametros titles">{{ this.campo2 }}</div>
-<div class = "divParametros titles" style="margin-left: 360px !important;">{{ this.campo1 }}</div>
+<div class = "divParametros titles">{{ this.campo1 }}</div>
+<div class = "divParametros titles" style="margin-left: 360px !important;">{{ this.campo2 }}</div>
 <div class = "divParametros titles" style="margin-left: 520px !important;">{{ this.campo3 }}</div>
 <div class = "divParametros titles" style="margin-left: 680px !important;">{{ this.campo4 }}</div>
 <div class="alertarelatorio">*Indicadores em vermelho significam que estão com desvio.</div>

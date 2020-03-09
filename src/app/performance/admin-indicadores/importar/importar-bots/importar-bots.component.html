@@ -1,0 +1,20 @@
+<div class="card card-title ui-g">
+  <h1>Status de Bot's</h1>
+  <div class="ui-g-12">
+    <div class="card ui-g-3"  *ngFor="let b of botsLista, let i of index">
+      <img class="ui-g-4" style="width: 90px; height: 120px;" src="assets/layout/images/rpa/robo.png">
+      <div class="ui-g-8">
+        <div style="font-weight: bold;" class="ui-g-12">{{ b.label }}</div>
+        <div class="ui-g-12">{{ b.funcao }}</div>
+        <div class="ui-g-6"  >
+          <button *ngIf="b.status=='Executando'" [disabled]="true" pButton type="button"  label="Executando" class="ui-button-danger"></button>
+          <button *ngIf="b.status=='Pronto'" [disabled]="true" pButton type="button"  label="Disponível" class="ui-button-success"></button>
+          <button *ngIf="b.status=='Falha'" [disabled]="true" pButton type="button"  label="Sem Informação" class="ui-button-secondary"></button>
+        </div>
+        <div class="ui-g-6" style="text-align: right;" >
+          <button pButton type="button" class="pi pi-chevron-circle-right" (click)="StartBot(b)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

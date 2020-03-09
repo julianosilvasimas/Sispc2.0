@@ -171,6 +171,9 @@ import { EditarcadastroindicadoresComponent } from './performance/admin-indicado
 import { GraficosIndicadoresComponent } from './graficos-indicadores/graficos-indicadores.component';
 import { NovoIndicadorComponent } from './performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component';
 import { EditarindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editarindicadores.component';
+import { ImportarComponent } from './performance/admin-indicadores/importar/importar.component';
+import { ImportarOrcadosComponent } from './performance/admin-indicadores/importar/importar-orcados/importar-orcados.component';
+import { ImportarBotsComponent } from './performance/admin-indicadores/importar/importar-bots/importar-bots.component';
 
 
 @NgModule({
@@ -327,6 +330,9 @@ import { EditarindicadoresComponent } from './performance/admin-indicadores/edit
         GraficosIndicadoresComponent,
         NovoIndicadorComponent,
         EditarindicadoresComponent,
+        ImportarComponent,
+        ImportarOrcadosComponent,
+        ImportarBotsComponent,
 
     ],
     providers: [

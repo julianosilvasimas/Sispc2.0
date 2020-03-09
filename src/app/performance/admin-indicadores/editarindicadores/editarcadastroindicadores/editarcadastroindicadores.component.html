@@ -112,9 +112,33 @@
     <!-- <div class="ui-g-12">
       <p-editor [(ngModel)]="editarIndicadorDescricao" [style]="{'height':'120px'}"></p-editor>
     </div> -->
-
+    <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
+      <div class="ui-g-12"><h2>Labels</h2></div>
+      <div class="ui-g-12">
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo1"
+          placeholder="Label 01" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo2"
+          placeholder="Label 02" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo3"
+          placeholder="Label 03" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo4"
+          placeholder="Label 04" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+      <div class="ui-g-12">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 01" [(ngModel)]="indicadorSelecionado.rotulocampo1">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 02" [(ngModel)]="indicadorSelecionado.rotulocampo2">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 03" [(ngModel)]="indicadorSelecionado.rotulocampo3">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 04" [(ngModel)]="indicadorSelecionado.rotulocampo4">
+      </div>
+    </div>
+    w
     <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
       <div class="ui-g-6"><h2>Editor de Gráfico</h2></div>
+
       <div class="ui-g-6">  
         <div class="ui-g-10"  style="text-align: right">
           <p-calendar placeholder="Selecione a Referência" *ngIf="visualizarGrafico==false"  [(ngModel)]="filtroGraficoData" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
@@ -123,6 +147,7 @@
           <button pButton type="button" icon="pi pi-search" *ngIf="visualizarGrafico==false" (click)="carregarGrafico()"></button>
         </div>
       </div>
+
 
       <div class="ui-g-7" width="600px" height="400px">
         <button type="button" pButton  *ngIf="visualizarGrafico" iconPos="right" label="Recarregar" (click)="atualizarvisualizacao()" class="ui-button-raised ui-button-success" style="margin-right: 0.5em;"></button>

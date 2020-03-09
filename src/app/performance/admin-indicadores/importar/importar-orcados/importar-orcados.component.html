@@ -1,0 +1,72 @@
+<div class="card ui-g card-w-title" style=" margin-left: 3px" >
+  <div class="ui-g-12">
+    <h4>IMPORTAR ORÇADOS</h4>
+  </div>
+  <div class="ui-g-8">
+    <p-dropdown [options]="filtroListaIndicador" optionLabel="indicador" 
+    [autoWidth]="true" [(ngModel)]="IndicadorSelecionado"  
+    placeholder="Selecione o Indicador" styleClass = "drop95" 
+    filter="true" [showClear]="true" ></p-dropdown>
+  </div>
+
+
+  <div class="ui-g-2" *ngIf="tableactive==false">
+    <p-fileUpload  mode="basic"
+      accept=".csv"
+      maxFileSize="1000000"
+      chooseLabel="Escolha os Arquivos"
+      uploadLabel="Ler Csv's"
+      auto="auto"
+      customUpload="true"
+      (uploadHandler)="myUploader($event)">
+    </p-fileUpload>
+  </div>
+  <div class="ui-g-2" *ngIf="tableactive">
+    <button type="button" pButton  iconPos="right" label="Enviar Dados" (click)="enviarDados()"  style="margin-right: 0.5em;"></button>
+  </div>
+  <div class="ui-g-2" *ngIf="tableactive">
+    <button type="button" pButton  iconPos="right" label="Resetar" (click)="resetar()"  style="margin-right: 0.5em;"></button>
+  </div>
+</div>
+
+<div class="ui-g-12">
+  <p-table selectionMode="single"  *ngIf="tableactive" [value]="Listaindicadores" > 
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Data</th>
+        <th>Orçado</th>
+        <th>Meta</th>
+        <th>Mínimo</th>
+        <th>Máximo</th>
+        <th>Forecast</th>
+        <th>Previsão</th>
+      </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body"  let-rowData let-index="rowIndex">
+      <tr [pReorderableRow]="index" [pSelectableRow]="rowData">
+        <td>
+          {{rowData.dataindicador}}
+        </td>
+        <td>
+          {{rowData.orcado}}
+        </td>
+        <td>
+          {{rowData.meta}}
+        </td>
+        <td>
+          {{rowData.minimo}}
+        </td>
+        <td>
+          {{rowData.maximo}}
+        </td>
+        <td>
+          {{rowData.forecast}}
+        </td>
+        <td>
+          {{rowData.previsao}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

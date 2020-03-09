@@ -40,7 +40,7 @@ export class PerformanceService{
      }
 
      indicadoresAtt(exeindicadorId: any,  datareferencia: Date,  dataindicador: Date, ciclo: Number, orcado: Number, realizado: Number, pdd: Number, atendente: Number, atendimento: Number, coment: string, 
-        forecast: Number, minimo: number, maximo:number, meta: number, previsao: number, vlrretido:number ,  dentroprazo: number, foraprazo: number,
+        forecast: Number, minimo: number, maximo:number, meta: number, previsao: number,   dentroprazo: number, foraprazo: number,
         dentroprazoreg: number, foraprazoreg: number, acao: string, analise, colaborador: string, indicadorId: number, unidadeId: number): Observable<any[]>{
             const headers = new HttpHeaders()
             .set("Content-Type", "application/json",
@@ -60,7 +60,7 @@ export class PerformanceService{
                         "maximo": maximo,
                         "meta": meta,
                         "previsao": previsao,
-                        "valorretido": vlrretido,
+                        // "valorretido": vlrretido,
                         "dentroprazo": dentroprazo,
                         "foraprazo": foraprazo,
                         "dentroprazoreg": dentroprazoreg,

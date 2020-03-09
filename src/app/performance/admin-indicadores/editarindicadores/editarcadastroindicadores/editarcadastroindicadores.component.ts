@@ -25,6 +25,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
   listaEdicaodeGraficoPosicoes
   listaEdicaodeGraficoCores
   listaTipodeLabel
+  listaDeCamposParaRotulos
   
   gridDeLista: boolean = false
 
@@ -64,6 +65,23 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       { label:'#ffc20e', value: 'ffc20e'},
       { label:'#88d1d1', value: '88d1d1'}
     ]
+    this.listaDeCamposParaRotulos=[
+        {label: "Último Orçado", value: "ultimoorcado"},
+        {label: "Orçado Acumulado", value: "orcadoacumulado"},
+        {label: "Orçado Média", value: "orcadomedia"},
+        {label: "Último Realizado", value: "ultimorealizado"},
+        {label: "Realizado Acumulado", value: "realizadoacumulado"},
+        {label: "Realizado Média", value: "realizadomedia"},
+        {label: "Meta Média", value: "meta"},
+        {label: "Meta Acumulada", value: "metaacumulada"},
+        {label: "Mínimo Média", value: "minimo"},
+        {label: "Máximo Média", value: "maximo"},
+        {label: "Regulados DP", value: "reguladodp"},
+        {label: "Não Regulados DP", value: "naoreguladodp"},
+        {label: "Diferença = Campo2-Campo1", value: "diferenca"},
+        {label: "Variação = 1-(Campo2/Campo1)", value: "variacao"},
+    ]
+
 
 
 
@@ -109,6 +127,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       );
     }
   }
+  
   fechalista(){
     this.listaIndicadores = []
     this.gridDeLista = false
@@ -144,13 +163,17 @@ export class EditarcadastroindicadoresComponent implements OnInit {
   editarIndicadorGerencia
   editarIndicadorTipoRotulo
   editarIndicadorDescricao
+  editarIndicadorCampo1
+  editarIndicadorCampo2
+  editarIndicadorCampo3
+  editarIndicadorCampo4
 
   editargraficoseixos: any[]= []
   editartiposgraficos: any[]= []
   editarposicoes: any[]= []
   editarestilos: any[]= []
   editarcores: any[]= []
-
+u
   abrirDialog(indic: CadIndicador){
     this.indicadorSelecionado = indic
     this.editarCadastro=true
@@ -213,6 +236,35 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       }
     }
     
+
+    for(var i =0; i<this.listaDeCamposParaRotulos.length ; i++){
+      if(this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo1){
+        this.editarIndicadorCampo1 = this.listaDeCamposParaRotulos[i]
+        break;
+      }
+    }
+    
+    for(var i =0; i<this.listaDeCamposParaRotulos.length ; i++){
+      if(this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo2){
+        this.editarIndicadorCampo2 = this.listaDeCamposParaRotulos[i]
+        break;
+      }
+    }
+    
+    for(var i =0; i<this.listaDeCamposParaRotulos.length ; i++){
+      if(this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo3){
+        this.editarIndicadorCampo3 = this.listaDeCamposParaRotulos[i]
+        break;
+      }
+    }
+    
+    for(var i =0; i<this.listaDeCamposParaRotulos.length ; i++){
+      if(this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo4){
+        this.editarIndicadorCampo4 = this.listaDeCamposParaRotulos[i]
+        break;
+      }
+    }
+    
     this.reloadArrays();
   }
 
@@ -220,6 +272,10 @@ export class EditarcadastroindicadoresComponent implements OnInit {
     this.indicadorSelecionado['classificacao']=this.editarIndicadorClassificacao['value']
     this.indicadorSelecionado['tendencia']=this.editarIndicadorTendencia['value']
     this.indicadorSelecionado['rotuloVirgula']=this.editarIndicadorTipoRotulo['value']
+    this.indicadorSelecionado['campo1']=this.editarIndicadorCampo1['value']
+    this.indicadorSelecionado['campo2']=this.editarIndicadorCampo2['value']
+    this.indicadorSelecionado['campo3']=this.editarIndicadorCampo3['value']
+    this.indicadorSelecionado['campo4']=this.editarIndicadorCampo4['value']
     this.indicadorSelecionado['gerencia']=this.editarIndicadorGerencia['gerenciaId']
     for(var i = 0 ; i<this.editarposicoes.length;i++){
       this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value']

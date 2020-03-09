@@ -48,7 +48,7 @@ export class IndicadoresComponent implements OnInit {
     this.indicadoresService.classindicadores(indicador)
       .subscribe(
         Indicadores  =>  {
-          this.ind = Indicadores
+          this.ind = Indicadores.filter(el => el.ativo ==1);
           this.totalpaginas = this.ind.length+1
         });
   }

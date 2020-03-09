@@ -28,6 +28,7 @@ export class AdminIndicadoresService {
     return  this.http.get(`${API_CONFIG}/cadindicadores`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
+
   UnicoIndicadores(id): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/cadindicadores/${id}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -62,7 +63,7 @@ export class AdminIndicadoresService {
   indicadoresByMonth(referencia : string,indicador : number): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/indicadores/pormes/${indicador}/${referencia}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
- }
+  }
   listaIndicadoresgerenc(gerenc:number): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/cadindicadores/gerencia/${gerenc}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -75,8 +76,24 @@ export class AdminIndicadoresService {
     catchError(ErrorHandler.handleError))
   }
 
+  importarIndicador(bodyObj: any, fkindic:number): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return  this.http.put(`${API_CONFIG}/indicadores/updateCsv/${fkindic}`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
   private extractData(res: Response[]) {
     let body = res;
     return body;
+  }
+
+
+  statusBots(robo:number):any{
+    return  this.http.get(`${API_CONFIG}/cadrpa/statusbot/${robo}`)
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+  startBot(robo:number):any{
+    return  this.http.get(`${API_CONFIG}/cadrpa/startbot/${robo}`)
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
 }
