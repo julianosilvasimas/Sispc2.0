@@ -1,3 +1,41 @@
+export interface Combos {
+    label;
+    value;
+}
+
+export interface Colunas {
+    label;
+    header;
+}
+
+export interface Engenharia {
+    nomeEmpresa;
+    respEmpresa;
+    status;
+    tipo;
+    previsto;
+    replanejado;
+    realizado;
+}
+
+export interface Processos {
+    nProcesso;
+    responsavel;
+    envio;
+    retorno;
+}
+
+export interface Licencas {
+    numeroLicenca;
+    tipoLicenca;
+    status;
+    orgao;
+    descricao;
+    protocolo;
+    inicio;
+    termino;
+}
+
 export interface Projetos{
 
     projetoId: number,
@@ -42,15 +80,6 @@ export interface ProjCompletos{
     terminoprevisto: Date,
     terminoreplanejado: Date,
     terminorealizado: Date,
-        regulatorio: {
-            regulatorioId: 1,
-            processo: null,
-            fluxoinvestimento: null,
-            inicio: null,
-            termino: null,
-            valorprojeto: null,
-            deliberacoes: []
-        },
         financeiro: {
             capexId: number,
             nprojetocognos: number,
@@ -82,21 +111,21 @@ export interface ProjCompletos{
             realizado: Date
         },
         comissionamento: {
-            comissionamentoId: 1,
-            avancofisico: 0.54,
-            previsto: null,
-            replanejado: null,
-            realizado: null
+            comissionamentoId: number,
+            avancofisico: number,
+            previsto: Date,
+            replanejado: Date,
+            realizado: Date
         },
         comprovacao: {
-            comprovacaoId: 1,
-            nprocesso: 321,
-            envio: null,
-            retorno: null,
-            valorcomprovado: 235460.0
+            comprovacaoId: number,
+            nprocesso: number,
+            envio: Date,
+            retorno: Date,
+            valorcomprovado: number
         },
         licoes: {
-            licoesId: 1,
+            licoesId: number,
             objetivosatendidos: string,
             entreguenoprazo: string,
             noorcamento: string,
@@ -107,37 +136,90 @@ export interface ProjCompletos{
             recomendacoes: string
         },
         sesuite: {
-            sesuiteId: 1,
-            cognosid: null,
-            nprojeto: null,
-            unidade: null,
-            escopo: null,
-            justificativa: null,
-            premissas: null,
-            nvengenharia: null,
-            responsavel: null,
-            preenchimento: null,
-            area: null,
-            email: null,
-            tel: null,
-            teveinvestimento: null,
-            envolve: null,
-            tipo: null,
-            corebusiness: null,
-            negocioexistente: null,
-            principalmotivacao: null,
-            melhoraempresa: null,
-            delineado: null,
-            nagua: null,
-            impactoagua: null,
-            nesgoto: null,
-            impactoesgoto: null,
-            maturidade: null,
-            modelomercado: null,
-            diferencialcompetitivo: null,
-            modeloconcessao: null,
-            sinergia: null,
-            maturidaderegiao: null
+            sesuiteId: number,
+            cognosid: string,
+            nprojeto: string,
+            unidade: string,
+            escopo: string,
+            justificativa: string,
+            premissas: string,
+            nvengenharia: string,
+            responsavel: string,
+            preenchimento: string,
+            area: string,
+            email: string,
+            tel: string,
+            teveinvestimento: string,
+            envolve: string,
+            tipo: string,
+            corebusiness: string,
+            negocioexistente: string,
+            principalmotivacao: string,
+            melhoraempresa: string,
+            delineado: string,
+            beneficios: {
+                sesuiteBeneficiosId: number,
+                impactogestao: string,
+                impactomotivacao: string,
+                impactoseguranca: string,
+                impactosustentabilidade: string,
+                outramelhoria: string,
+                outramelhoriaespec: string
+            },
+            direcionamento: {
+                sesuiteDirecionamentoId: number,
+                nagua: string,
+                impactoagua: string,
+                nesgoto: string,
+                impactoesgoto: string,
+                maturidade: string,
+                modelomercado: string,
+                diferencialcompetitivo: string,
+                modeloconcessao: string,
+                sinergia: string,
+                maturidaderegiao: string
+            },
+            licenca: {
+                sesuiteLicencaId: number,
+                impactosocial: string,
+                relacionamentopolitico: string,
+                relacionamentosociedade: string,
+                impactoimagem: string,
+                probabilidadeimpactoimagem: string,
+                impactoreputacional: string
+            },
+            riscoscontratual: {
+                sesuiteRiscoContratualId: number,
+                clausulacontratual: string,
+                tipometa: string,
+                metaatingida: string,
+                penalidade12meses: string,
+                penalidadeaplicavel: string,
+                probabilidadepenalidade: string,
+                postergacao: string,
+                impactopolitico: string
+            },
+            riscosoperacionais: {
+                sesuiteRiscoOperacionaisId: number,
+                impactointerrupcao: string,
+                probabilidadeimpactointerrupcao: string,
+                custointerrupcao: string,
+                complexidadeexecucao: string,
+                impactosubstituicao: string,
+                probabilidadeimpactosubstituicao: string,
+                impactoambiental: string,
+                probabilidadeimpactoambiental: string,
+                impactointegridade: string,
+                probabilidadeimpactointegridade: string,
+                riscoatraso: string,
+                possuilicenca: string,
+                nlicenca: string,
+                prazolicenca: string,
+                condicionantelicenca: string,
+                condicionantelicencaespec: string,
+                emissaolicenca: Date,
+                validadelicenca: Date
+            }
         },
         partestinteressadas: [
             {
@@ -146,4 +228,10 @@ export interface ProjCompletos{
                 ambito: string
             }
         ]
+}
+
+export interface PartesInteressadas{
+    orgaoId: number,
+    orgao: string,
+    ambito: string
 }

@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="ui-g-12">
-                        <p-steps [model]="stepsItems"></p-steps>
+                        <p-steps [model]="fasesProjetos"></p-steps>
                       </div>
             </div>
             </div>
@@ -55,7 +55,7 @@
                         <div class="card card-w-title" >
                             <div  style="margin-top: 20px; margin-bottom: 50px;">
                                 <span class="md-inputfield">
-                                    <input id="input" type="text" size="60" [(ngModel)]="arrProjeto.projeto" pInputText/>
+                                    <input  type="text" size="60" [(ngModel)]="arrProjeto.projeto" pInputText/>
                                     <label>Nome do Projeto</label>
                                 </span>
                          </div>
@@ -63,19 +63,14 @@
                           
                           <div class="item" >
                             <span class="md-inputfield">
-                            <p-dropdown [options]="localidades"  [(ngModel)]="arrProjeto.localidade" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                            <p-dropdown [options]="localidades"  [(ngModel)]="selectedLocal" defaultLabel="" [style]="{width: '95%', height: '25px'}"   ></p-dropdown> 
                             <label >Localidade</label>
                             </span>
                           </div>
+                          
                           <div class="item" >
                               <span class="md-inputfield">
-                              <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
-                              <label >Área Responsável</label>
-                              </span>
-                          </div>
-                          <div class="item" >
-                              <span class="md-inputfield">
-                              <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                <input  type="text" size="60" [(ngModel)]="arrProjeto.responsavel" pInputText/>
                               <label >Responsável</label>
                               </span>
                             </div>
@@ -87,13 +82,13 @@
                           <section class="grid grid-auto-flow-1">
                           <div class="item" style="margin-top: 20px" >
                               <span class="md-inputfield">
-                              <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                <p-dropdown [options]="status"  [(ngModel)]="selectedStatusGlobal" defaultLabel="" [style]="{width: '95%', height: '25px'}"  ></p-dropdown> 
                               <label >Status Global</label>
                               </span>
                             </div>
                             <div class="item" style="margin-top: 20px" >
                                 <span class="md-inputfield">
-                                <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                    <p-dropdown [options]="anos"  [(ngModel)]="selectedRadar" defaultLabel="" [style]="{width: '95%', height: '25px'}"  ></p-dropdown> 
                                 <label >Radar</label>
                                 </span>
                             </div>
@@ -102,19 +97,19 @@
                           <section class="grid grid-auto-flow-1">
                               <div class="item" style="margin-top: 40px" >
                                   <span class="md-inputfield">
-                                  <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                    <p-dropdown [options]="indices"  [(ngModel)]="selectedGravidade" defaultLabel="" [style]="{width: '95%', height: '25px'}"  ></p-dropdown> 
                                   <label >Gravidade</label>
                                   </span>
                                 </div>
                                 <div class="item" style="margin-top: 40px" >
                                     <span class="md-inputfield">
-                                    <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                        <p-dropdown [options]="indices"  [(ngModel)]="selectedUrgencia" defaultLabel="" [style]="{width: '95%', height: '25px'}"  ></p-dropdown> 
                                     <label >Urgência</label>
                                     </span>
                                 </div>
                                 <div class="item" style="margin-top: 40px" >
                                     <span class="md-inputfield">
-                                    <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                        <p-dropdown [options]="indices"  [(ngModel)]="selectedTendencia" defaultLabel="" [style]="{width: '95%', height: '25px'}"  ></p-dropdown> 
                                     <label >Tendência</label>
                                     </span>
                                 </div>
@@ -124,23 +119,23 @@
                           <hr>
                           <div class="card card-w-title">
                               <h2>Objetivo</h2>
-                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                              <textarea  style="width: 100%" pInputTextarea [(ngModel)]="arrProjeto.objetivo" autoResize="autoResize"></textarea>
                           </div>
                           <div class="card card-w-title">
                               <h2>Descrição</h2>
-                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                              <textarea  style="width: 100%" pInputTextarea  [(ngModel)]="arrProjeto.descricao" autoResize="autoResize"></textarea>
                           </div>
                           <div class="card card-w-title">
                               <h2>Premissas</h2>
-                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                              <textarea  style="width: 100%" pInputTextarea  [(ngModel)]="arrProjeto.premissas" autoResize="autoResize"></textarea>
                           </div>
                           <div class="card card-w-title">
                               <h2>Restrições</h2>
-                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                              <textarea  style="width: 100%" pInputTextarea  [(ngModel)]="arrProjeto.restricao" autoResize="autoResize"></textarea>
                           </div>
                           <div class="card card-w-title">
                               <h2>Riscos</h2>
-                              <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                              <textarea  style="width: 100%" pInputTextarea  [(ngModel)]="arrProjeto.riscos" autoResize="autoResize"></textarea>
                           </div>
 
 
@@ -156,19 +151,19 @@
                             <h2>Início</h2>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="inicioprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Previsto</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="inicioreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Replanejado</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="iniciorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Realizado</label>
                                 </span>
                             </div>
@@ -177,26 +172,26 @@
                           <h2>Término</h2>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="terminoprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Previsto</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="terminoreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Replanejado</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="terminorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Realizado</label>
                                 </span>
                             </div>
                           
                             </div>
 
-
+<!--
                           <div class="card card-w-title" >
                               <h2>Segmento</h2>
   
@@ -218,25 +213,18 @@
                             
       
                         </div>
+                    -->
 
+                    <!-- Construir comunicação com banco-->
                         <div class="card card-w-title" >
                           <h2>Partes Interessadas</h2>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Agenersa</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Poder Concedente</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  MPF</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  MPE</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Decisão Judicial</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  ICMBio</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  INEA</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Comitê de Bacias</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  CILSJ</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Poder Local</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Sociedade Civil</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  ALERJ</div>
-                        <div class="seletor"><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  CREA</div>
-                        <div><p-inputSwitch [(ngModel)]="switchChecked" label="Agenersa"></p-inputSwitch>  Defesa Civil</div>
-                      </div>
-                      
+                          <div *ngFor="let parte of partesInt">
+                            <div class="seletor"><p-inputSwitch [(ngModel)]="partes[parte.orgaoId]" value="parte.orgaoId" label="parte.orgao"></p-inputSwitch>  {{parte.orgao}} </div>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <button pButton type="button" style="width:100%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
+                        </div>
                       
                       </div>
                   
@@ -251,35 +239,47 @@
                 </p-accordionTab>
 
                 <!--Aqui trato do Regulatório-->
-                <p-accordionTab header="Regulatório"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                <p-accordionTab header="Regulatório"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{oFluxo.aprovacao}}</div><br>
                   <div class="ui-g">
                       
                       <div div class="ui-g-6">
-                        <div class="card card-w-title">
+                            <div class="card card-w-title" >
+                        <div class="ui-g">
+                                <div div class="ui-g-8">
                             <span class="md-inputfield" style="margin-top: 20px;">
-                                <input id="input" type="text" size="60" pInputText/>
+                                <p-dropdown [options]="fluxos"  [(ngModel)]="selectedFluxo" defaultLabel="" [style]="{width: '100%', height: '25px'}" (onChange)="atualizarRevisao(selectedFluxo)" ></p-dropdown> 
+                               
+                                
                                 <label>Fluxo de investimento</label>
-                            </span>
+                            </span></div>
+                            <div div class="ui-g-4" *ngIf="aprov"><!-- -->
+                                    <button pButton type="button" label="Aprovar" (click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()"
+                                     style="width:100%"  icon="ui-icon-thumb-up" ></button>
+                            </div>
+                            <div div class="ui-g-12">
                             <h2>Descrição</h2>
-                            <textarea  style="width: 100%; padding-bottom: 18px" pInputTextarea  autoResize="autoResize"></textarea>
+                                <textarea  style="width: 100%; padding-bottom: 18px" [(ngModel)]="oFluxo.descricao" pInputTextarea autoResize="autoResize"></textarea>
+                            </div>
                          </div>
                       </div>
-
+                    </div>
                       <div div class="ui-g-6">
+                            <button type="button" icon="ui-icon-add" pButton (click)="dialogVisible=true" ></button>
+                            <span><b> Adicionar uma nova revisão</b></span>
                           <div class="card card-w-title" style="width:100%">
                                   <h2>Marco Contratual</h2>
                                   <div class="ui-g">
                                   <div class="ui-g-6" style="border-style: outset;padding-right:10px; background: #F5F6F7; width:46%;margin-left: 20px;">
                                       <div class="ui-g-12"><b>Início</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dias" [(ngModel)]="regIniDia" placeholder="dia"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" [(ngModel)]="regIniMes"placeholder="mês"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" [(ngModel)]="regIniAno" placeholder="ano"  ></p-dropdown> </div>
                                   </div>
                                   <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
                                       <div class="ui-g-12"><b>Término</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dias"[(ngModel)]="regFimDia"  placeholder="dia"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" [(ngModel)]="regFimMes" placeholder="mês"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" [(ngModel)]="regFimAno" placeholder="ano"  ></p-dropdown> </div>
                                   </div>
                                 </div>
                           </div>
@@ -288,12 +288,16 @@
                       <div class="ui-g-12">
                         <div class="card card-w-title" style="width:100%">
                         <div class="ui-g">
-                            <div  div class="ui-g-12" style="margin-top: 20px;">
+                            <div  div class="ui-g-6" style="margin-top: 20px;">
                                 <span class="md-inputfield">
-                                    <input id="input" type="text" size="60" pInputText/>
-                                    <label>Valor do Projeto</label>
+                                    <input  type="text" [(ngModel)]="oFluxo.valorprojeto"  size="60" pInputText/><p-dropdown [(ngModel)]="selectedMoedaReg"  [options]="anos" placeholder="Moeda"  ></p-dropdown>
+                                    <label>Valor do Projeto/moeda</label>
                                 </span>
                             </div>
+                            <div class="ui-g-6">
+                                    <button pButton type="button" style="width:100%" label="Salvar" icon="ui-icon-save"
+                                     (click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()"  ></button>
+                                </div>
                             <div  div class="ui-g-12">
                                 
                                 <br>
@@ -341,7 +345,43 @@
                     
 
                     </div>
-                    <app-pagestories></app-pagestories>
+
+
+
+                     <!--Box de Cadastro-->
+    <p-dialog header="Cadastro" [resizable]="true" responsive="true" [(visible)]="dialogVisible">
+            <div class="ui-g">
+                    <div class="ui-g-12">
+                    <span class="md-inputfield" style="margin-top: 20px;">
+                            <p-dropdown [options]="fluxoInvest"  [(ngModel)]="selectedCadFluxo" defaultLabel="" [style]="{width: '100%', height: '25px'}" ></p-dropdown> 
+                           
+                            
+                            <label>Fluxo de investimento</label>
+                        </span>
+                        </div>
+                <div  div class="ui-g-12">
+                  <div class="card card-w-title" >
+                      <div  style="margin-top: 20px; margin-bottom: 50px;">
+                          <span class="md-inputfield">
+                              <input id="input" [(ngModel)]="descrevendo" type="text" size="60" pInputText/>
+                              <label>Descrição</label>
+                          </span>
+                   </div>
+                 </div>
+                 </div>
+                 </div>
+    
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                    <button type="button" label="Salvar" icon="ui-icon-save" (click)="enviarReg(selectedCadFluxo)" pButton></button>
+                </div>
+            </p-footer>
+        </p-dialog>
+
+
+
+
+                    
                 </p-accordionTab>
 
                 <!--Aqui da Engenharia(Projeto)-->
@@ -351,7 +391,7 @@
                       <div  div class="ui-g-12">
                           <div class="ui-g-3" style="margin-top: 20px;">
                               <span class="md-inputfield">
-                                  <input id="input" type="text" size="40" pInputText/>
+                                  <input  type="text" size="40" pInputText/>
                                   <label>PEP do Projeto</label>
                               </span>
                           </div>
@@ -411,7 +451,7 @@
                   </div>
                 </div>
 
-                  <app-pagestories></app-pagestories>
+                  
                 </p-accordionTab>
 
                 <!--Aqui trato do Capex-->
@@ -421,14 +461,14 @@
                         <div  div class="ui-g-12">
                             <div class="ui-g-3" style="margin-top: 20px;">
                                 <span class="md-inputfield">
-                                    <input id="input" type="text" size="35" pInputText/>
+                                    <input  type="text" size="35" pInputText/>
                                     <label>Número do Projeto Cognos</label>
                                 </span>
                             </div>
                             
                             <div class="ui-g-3">
                                 <span class="md-inputfield" style="margin-top: 20px;margin-left: 10%;">
-                                    <input id="input" type="text" size="30" pInputText/>
+                                    <input  type="text" size="30" pInputText/>
                                     <label>Valor Total do Projeto</label>
                                 </span>
                             </div>
@@ -467,7 +507,7 @@
                                       <div class="ui-g-4">
                                           <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                   <span class="md-inputfield">
-                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <input  type="text" size="45" pInputText/>
                                                       <label>Valor Aprovado</label>
                                                   </span>
                                            </div>
@@ -475,7 +515,7 @@
                                       <div class="ui-g-4">
                                            <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                   <span class="md-inputfield">
-                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <input  type="text" size="45" pInputText/>
                                                       <label>Valor Realizado</label>
                                                   </span>
                                            </div>
@@ -483,7 +523,7 @@
                                       <div class="ui-g-4">
                                           <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                   <span class="md-inputfield">
-                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <input  type="text" size="45" pInputText/>
                                                       <label>Avanço Financeiro</label>
                                                   </span>
                                            </div>
@@ -491,7 +531,7 @@
                                       <div class="ui-g-4">
                                           <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                   <span class="md-inputfield">
-                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <input  type="text" size="45" pInputText/>
                                                       <label>1° Rolling-Forecast</label>
                                                   </span>
                                            </div>
@@ -499,7 +539,7 @@
                                       <div class="ui-g-4">
                                           <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                   <span class="md-inputfield">
-                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <input  type="text" size="45" pInputText/>
                                                       <label>2° Rolling-Forecast</label>
                                                   </span>
                                            </div>
@@ -507,7 +547,7 @@
                                       <div class="ui-g-4">
                                           <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                   <span class="md-inputfield">
-                                                      <input id="input" type="text" size="45" pInputText/>
+                                                      <input  type="text" size="45" pInputText/>
                                                       <label>3° Rolling-Forecast</label>
                                                   </span>
                                            </div>
@@ -519,7 +559,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>Valor Aprovado</label>
                                                     </span>
                                              </div>
@@ -527,7 +567,7 @@
                                         <div class="ui-g-4">
                                              <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>Valor Realizado</label>
                                                     </span>
                                              </div>
@@ -535,7 +575,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>Avanço Financeiro</label>
                                                     </span>
                                              </div>
@@ -543,7 +583,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>1° Rolling-Forecast</label>
                                                     </span>
                                              </div>
@@ -551,7 +591,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>2° Rolling-Forecast</label>
                                                     </span>
                                              </div>
@@ -559,7 +599,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>3° Rolling-Forecast</label>
                                                     </span>
                                              </div>
@@ -571,7 +611,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>Valor Aprovado</label>
                                                     </span>
                                              </div>
@@ -579,7 +619,7 @@
                                         <div class="ui-g-4">
                                              <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>Valor Realizado</label>
                                                     </span>
                                              </div>
@@ -587,7 +627,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>Avanço Financeiro</label>
                                                     </span>
                                              </div>
@@ -595,7 +635,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>1° Rolling-Forecast</label>
                                                     </span>
                                              </div>
@@ -603,7 +643,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>2° Rolling-Forecast</label>
                                                     </span>
                                              </div>
@@ -611,7 +651,7 @@
                                         <div class="ui-g-4">
                                             <div  style="margin-top: 20px; margin-bottom: 25px;">
                                                     <span class="md-inputfield">
-                                                        <input id="input" type="text" size="45" pInputText/>
+                                                        <input  type="text" size="45" pInputText/>
                                                         <label>3° Rolling-Forecast</label>
                                                     </span>
                                              </div>
@@ -623,7 +663,7 @@
                     </div>
 
                   </div>
-                  <app-pagestories></app-pagestories>
+                    
                 </p-accordionTab>
 
                 <!--Aqui trato do Licenciamento-->
@@ -634,7 +674,7 @@
                               <div  div class="ui-g-12">
                                   <div class="ui-g-3" style="margin-top: 20px;">
                                       <span class="md-inputfield">
-                                          <input id="input" type="text" size="40" pInputText/>
+                                          <input  type="text" size="40" pInputText/>
                                           <label>Status Geral</label>
                                       </span>
                                   </div>
@@ -694,7 +734,7 @@
                           </div>
                         </div>
 
-                    <app-pagestories></app-pagestories>
+                      
                 </p-accordionTab>
 
                 <!--Aqui trato do Contratação-->
@@ -707,38 +747,38 @@
                                         <div class="ui-g">
                                                 <div class="ui-g-6" style="margin-top: 10px;">
                                                         <span class="md-inputfield" style="margin-top: 10px;">
-                                                            <input id="input" type="text" size="60" pInputText/>
+                                                            <input  type="text" size="60" pInputText/>
                                                             <label>Número do Pedido</label>
                                                         </span>
                                                       </div>
                                                       <div class="ui-g-6" style="margin-top: 10px;">
                                                           <span class="md-inputfield" style="margin-top: 10px;">
-                                                              <input id="input" type="text" size="60" pInputText/>
+                                                              <input  type="text" size="60" pInputText/>
                                                               <label>Requisição</label>
                                                           </span>
                                                       </div>
                                     
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input id="input" type="text" size="30" pInputText/>
+                                            <input  type="text" size="30" pInputText/>
                                             <label>Contrato Sistêmico</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input id="input" type="text" size="30" pInputText/>
+                                            <input  type="text" size="30" pInputText/>
                                             <label>Contrato Físico</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input id="input" type="text" size="30" pInputText/>
+                                            <input  type="text" size="30" pInputText/>
                                             <label>Nome da Empresa</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input id="input" type="text" size="30" pInputText/>
+                                            <input  type="text" size="30" pInputText/>
                                             <label>Nome do Responsável</label>
                                         </span>
                                     </div>
@@ -755,19 +795,19 @@
                                 <div class="ui-g">
                                 <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;">
                                     <div class="ui-g-12"><b>Início</b></div>
-                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
-                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
-                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
                                 </div>
                                 <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
                                     <div class="ui-g-12"><b>Término</b></div>
-                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
-                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
-                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
                                 </div>
                                 <div class="ui-g-6" style="margin-top: 15px;">
                                         <span class="md-inputfield" style="margin-top: 15px;">
-                                            <input id="input" type="text" size="30" pInputText/>
+                                            <input  type="text" size="30" pInputText/>
                                             <label>Valor Contratado</label>
                                         </span>
                                     </div>
@@ -790,19 +830,19 @@
                                   <div class="ui-g">
                                   <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;">
                                       <div class="ui-g-12"><b>Início</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
                                   </div>
                                   <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
                                       <div class="ui-g-12"><b>Término</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"></p-dropdown></div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"></p-dropdown></div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
                                   </div>
                                   <div class="ui-g-12" style="margin-top: 15px;">
                                     <span class="md-inputfield" style="margin-top: 15px;">
-                                        <input id="input" type="text" size="60" pInputText/>
+                                        <input  type="text" size="60" pInputText/>
                                         <label>Valor Contratado</label>
                                     </span>
                                   </div>
@@ -819,7 +859,7 @@
                         
                     </div>
 
-                    <app-pagestories></app-pagestories>
+                      
                 </p-accordionTab>
 
                 <!--Aqui trato da Obra-->
@@ -829,7 +869,7 @@
                             <div  div class="ui-g-12">
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield">
-                                            <input id="input" type="text" size="35" pInputText/>
+                                            <input  type="text" size="35" pInputText/>
                                             <label>Avanço Físico</label>
                                         </span>
                                     </div>
@@ -911,7 +951,7 @@
                             </div> 
                         </div>
                     </div>
-                    <app-pagestories></app-pagestories>
+                      
                 </p-accordionTab>
 
                 <!--Aqui trato do Comissionamento-->
@@ -921,7 +961,7 @@
                                 <div  div class="ui-g-12">
                                         <div class="ui-g-3" style="margin-top: 20px;">
                                             <span class="md-inputfield">
-                                                <input id="input" type="text" size="35" pInputText/>
+                                                <input  type="text" size="35" pInputText/>
                                                 <label>Avanço Físico</label>
                                             </span>
                                         </div>
@@ -1002,7 +1042,7 @@
                                     </div>
                                 </div> 
                             </div>
-                        </div><app-pagestories></app-pagestories>
+                        </div>  
                 </p-accordionTab>
 
                 <!--Aqui trato da Comprovação-->
@@ -1012,7 +1052,7 @@
                                 <div  div class="ui-g-12">
                                         <div class="ui-g-8" style="margin-top: 20px;">
                                             <span class="md-inputfield">
-                                                <input id="input" type="text" size="60" pInputText/>
+                                                <input  type="text" size="60" pInputText/>
                                                 <label>Número do Processo</label>
                                             </span>
                                         </div>
@@ -1047,7 +1087,7 @@
                                         </div>
                                         <div class="ui-g-3">
                                             <span class="md-inputfield" style="margin-top: 20px;">
-                                                <input id="input" type="text" size="30" pInputText/>
+                                                <input  type="text" size="30" pInputText/>
                                                 <label>Valor Comprovado</label>
                                             </span>
                                         </div>
@@ -1072,7 +1112,7 @@
                                 </div>
                             </div>
                             </div>
-                            <app-pagestories></app-pagestories>
+                              
                 </p-accordionTab>
 
                 <!--Aqui trato das Lições Aprendidas-->
@@ -1085,25 +1125,25 @@
                                 <div class="ui-g" style="margin-top: 15px;">
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input id="input" type="text" size="35" pInputText/>
+                                            <input  type="text" size="35" pInputText/>
                                             <label>Os objetivos foram atingidos?</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input id="input" type="text" size="35" pInputText/>
+                                            <input  type="text" size="35" pInputText/>
                                             <label>Projeto foi entregue no prazo?</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input id="input" type="text" size="35" pInputText/>
+                                            <input  type="text" size="35" pInputText/>
                                             <label>No orçamento?</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input id="input" type="text" size="35" pInputText/>
+                                            <input  type="text" size="35" pInputText/>
                                             <label>Atendeu o escopo?</label>
                                         </span>
                                     </div>
@@ -1129,10 +1169,10 @@
                             </div>
                         </div>
                     </div>
-                <app-pagestories></app-pagestories>
+                  
                 </p-accordionTab>
             </p-accordion>
         </div>
-
+        <app-pagestories></app-pagestories>
     </div>
 </div>      

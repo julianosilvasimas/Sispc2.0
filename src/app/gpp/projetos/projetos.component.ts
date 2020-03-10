@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Car, Projetos } from '../../demo/domain/car';
 import { SelectItem, MessageService } from 'primeng/api';
-import { CarService } from '../../demo/service/carservice';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProjetosService } from './projetos.service';
+import {  ProjCompletos } from './projetos.model';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class ProjetosComponent implements OnInit {
 
   inserir: any 
 
-  projetos: any[];
+  projetos: ProjCompletos[];
     cols: any[];
 
     nome: SelectItem[];
@@ -49,7 +49,7 @@ export class ProjetosComponent implements OnInit {
     indices: { label: string; value: number; }[];
     nomeProj: any;
 
-  constructor(private carService: CarService,private projetosService: ProjetosService, private messageService: MessageService, private router: Router) {  
+  constructor(private projetosService: ProjetosService, private messageService: MessageService, private router: Router) {  
     
     this.data = {
       datasets: [{
@@ -124,8 +124,7 @@ export class ProjetosComponent implements OnInit {
       sessionStorage.removeItem('idProjeto')
       sessionStorage.removeItem('nomeProjeto')
     
-    this.carService.getProjetos().then(cars => this.cars = cars);
-
+    
     this.projetosService.projetos()
     .subscribe(res => {
         console.log(res)
@@ -155,7 +154,7 @@ export class ProjetosComponent implements OnInit {
         { field: 'statusgloblal', header: 'Status' },
         { field: 'setor', header: 'Setor' },
         //{ field: 'responsavel', header: 'Responsavel' },
-        //{ field: 'localidade', header: 'Município' },
+        //{ field: 'localidade', header: 'Município' }, 
         { field: 'radar', header: 'Marco' }
     ]; 
   }
@@ -168,6 +167,7 @@ export class ProjetosComponent implements OnInit {
 
   enviar(){
 
+        
         this.inserir = {
             projetoId: null,
             projeto: this.nomeProject,
@@ -185,6 +185,40 @@ export class ProjetosComponent implements OnInit {
             terminoprevisto: null,
             terminoreplanejado: null,
             terminorealizado: null,
+            financeiro: {},
+            contratacao: {},
+            obra: {},
+            comissionamento: {},
+            comprovacao: {},
+            licoes: {},
+            sesuite: {
+                sesuiteId: null,
+                cognosid: null,
+                nprojeto: null,
+                unidade: null,
+                escopo: null,
+                justificativa: null,
+                premissas: null,
+                nvengenharia: null,
+                responsavel: null,
+                preenchimento: null,
+                area: null,
+                email: null,
+                tel: null,
+                teveinvestimento: null,
+                envolve: null,
+                tipo: null,
+                corebusiness: null,
+                negocioexistente: null,
+                principalmotivacao: null,
+                melhoraempresa: null,
+                delineado: null,
+                beneficios: {},
+                direcionamento: { },
+                licenca: {},
+                riscoscontratual: {},
+                riscosoperacionais: {}
+            }
         };
 
       this.projetosService.projetosAdd(this.inserir)
