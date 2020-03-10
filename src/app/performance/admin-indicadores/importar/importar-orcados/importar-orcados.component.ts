@@ -71,6 +71,8 @@ export class ImportarOrcadosComponent implements OnInit {
     var minimo
     var maximo
     var forecast
+    var forecast2
+    var forecast3
     var previsao
     var fileCols = fileLines[0].split(';');
 
@@ -82,6 +84,8 @@ export class ImportarOrcadosComponent implements OnInit {
       minimo = c.includes('minimo') ? i : minimo;
       maximo = c.includes('maximo') ? i : maximo;
       forecast = c.includes('forecast') ? i : forecast;
+      forecast2 = c.includes('forecast2') ? i : forecast2;
+      forecast3 = c.includes('forecast3') ? i : forecast3;
       previsao = c.includes('previsao') ? i : previsao;
       
     }
@@ -95,6 +99,8 @@ export class ImportarOrcadosComponent implements OnInit {
         minimo: fileCol[minimo].replace(".","").replace(",",".")*1,
         maximo: fileCol[maximo].replace(".","").replace(",",".")*1,
         forecast: fileCol[forecast].replace(".","").replace(",",".")*1,
+        forecast2: fileCol[forecast2].replace(".","").replace(",",".")*1,
+        forecast3: fileCol[forecast3].replace(".","").replace(",",".")*1,
         previsao: fileCol[previsao].replace(".","").replace(",",".")*1,
       });
     }

@@ -40,6 +40,8 @@
             <th>DP Regulado</th>
             <th>DP Não Regulado</th>
             <th>Forecast</th>
+            <th>Forecast2</th>
+            <th>Forecast3</th>
             <th>Previsão</th>
             <th style="width:8em"></th>
         </tr>
@@ -119,6 +121,22 @@
                         <input pInputText type="number" [(ngModel)]="rowData.forecast">
                     </ng-template>
                     <ng-template pTemplate="output">{{rowData.forecast}}</ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="number" [(ngModel)]="rowData.forecast2">
+                    </ng-template>
+                    <ng-template pTemplate="output">{{rowData.forecast2}}</ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="number" [(ngModel)]="rowData.forecast3">
+                    </ng-template>
+                    <ng-template pTemplate="output">{{rowData.forecast3}}</ng-template>
                 </p-cellEditor>
             </td>
             <td>

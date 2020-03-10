@@ -98,6 +98,9 @@ export class EditindicadoresComponent implements OnInit {
           this.listaCompletaImutavel[i].datareferencia!==this.FormatarData(this.listaCompleta[i].datareferencia) ||
           this.listaCompletaImutavel[i].orcado!==this.listaCompleta[i].orcado ||
           this.listaCompletaImutavel[i].realizado!==this.listaCompleta[i].realizado ||
+          this.listaCompletaImutavel[i].forecast!==this.listaCompleta[i].forecast ||
+          this.listaCompletaImutavel[i].forecast2!==this.listaCompleta[i].forecast2 ||
+          this.listaCompletaImutavel[i].forecast3!==this.listaCompleta[i].forecast3 ||
           this.listaCompletaImutavel[i].minimo!==this.listaCompleta[i].minimo ||
           this.listaCompletaImutavel[i].maximo!==this.listaCompleta[i].maximo ||
           this.listaCompletaImutavel[i].meta!==this.listaCompleta[i].meta ||

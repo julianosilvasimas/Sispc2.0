@@ -96,4 +96,14 @@ export class AdminIndicadoresService {
     return  this.http.get(`${API_CONFIG}/cadrpa/startbot/${robo}`)
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
+
+  unidades():any{
+    return  this.http.get(`${API_CONFIG}/unidades`)
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
+  CarregarIndicadors(indicadorid, ano,datacorte,unidadeid,dialimite):any{
+    return  this.http.get(`${API_CONFIG}/indicadores/novoindicador/${indicadorid}/${ano}/${datacorte}/${unidadeid}/${dialimite}`)
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
 }

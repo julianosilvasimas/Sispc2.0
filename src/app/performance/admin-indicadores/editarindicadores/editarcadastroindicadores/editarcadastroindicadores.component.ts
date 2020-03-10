@@ -39,7 +39,9 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       {label: "realizadoMedia", value: "realizadoMedia"},
       {label: "Minimo", value: "Minimo"},
       {label: "Maximo", value: "Maximo"},
-      {label: "Meta", value: "Meta"},
+      {label: "Forecast", value: "forecast"},
+      {label: "Forecast 2", value: "forecast2"},
+      {label: "Forecast 3", value: "forecast3"},
       {label: "MetaAcumulada", value: "MetaAcumulada"},
       {label: "DentrodoPrazoReg", value: "DentrodoPrazoReg"},
       {label: "DentrodoPrazoNreg", value: "DentrodoPrazoNreg"}
@@ -81,7 +83,35 @@ export class EditarcadastroindicadoresComponent implements OnInit {
         {label: "Diferença = Campo2-Campo1", value: "diferenca"},
         {label: "Variação = 1-(Campo2/Campo1)", value: "variacao"},
     ]
+    this.classificacoesLista = 
+    [
+      {label: "Atendimento", value: "ATENDIMENTO"},
+      {label: "Serviços Comerciais", value: "SERVCOMERCIAL"},
+      {label: "Comparativo", value: "CORPORATIVO"},
+      {label: "Energia", value: "ENERGIA"},
+      {label: "Volumes", value: "VOLUMES"},
+      {label: "Produtos Químicos", value: "PRODUTOSQU"},
+      {label: "Comerciais", value: "FATURAMENTO"},
+      {label: "Indicador Operacional", value: "INDICADOROPERACIONAL"},
+      {label: "Cobrança", value: "COBRANCA"},
+      {label: "Assertividade", value: "ASSERTIVIDADE"},
+      {label: "Produtivade", value: "PRODUTIVIDADE"},
+      {label: "Prazos", value: "PRAZOS"}
+    ]
 
+    this.tiporotuloLista = [
+      {label: "Com Virgula", value: 1},
+      {label: "Sem Virgula", value: 2},
+      {label: "Horas", value: 3},
+      {label: "Porcentagem", value: 4},
+    ]
+
+    this.tendenciaLista = 
+    [
+      {label: "Melhor Positivo", value: "MELHORPOSITIVO"},
+      {label: "Melhor Negativo", value: "MELHORNEGATIVO"},
+      {label: "Melhor Entre Faixas", value: "MELHORENTREFAIXAS"}
+    ]
 
 
 
@@ -177,36 +207,6 @@ u
   abrirDialog(indic: CadIndicador){
     this.indicadorSelecionado = indic
     this.editarCadastro=true
-
-    this.classificacoesLista = 
-    [
-      {label: "Atendimento", value: "ATENDIMENTO"},
-      {label: "Serviços Comerciais", value: "SERVCOMERCIAL"},
-      {label: "Comparativo", value: "CORPORATIVO"},
-      {label: "Energia", value: "ENERGIA"},
-      {label: "Volumes", value: "VOLUMES"},
-      {label: "Produtos Químicos", value: "PRODUTOSQU"},
-      {label: "Comerciais", value: "FATURAMENTO"},
-      {label: "Indicador Operacional", value: "INDICADOROPERACIONAL"},
-      {label: "Cobrança", value: "COBRANCA"},
-      {label: "Assertividade", value: "ASSERTIVIDADE"},
-      {label: "Produtivade", value: "PRODUTIVIDADE"},
-      {label: "Prazos", value: "PRAZOS"}
-    ]
-
-    this.tiporotuloLista = [
-      {label: "Com Virgula", value: 1},
-      {label: "Sem Virgula", value: 2},
-      {label: "Horas", value: 3},
-      {label: "Porcentagem", value: 4},
-    ]
-
-    this.tendenciaLista = 
-    [
-      {label: "Melhor Positivo", value: "MELHORPOSITIVO"},
-      {label: "Melhor Negativo", value: "MELHORNEGATIVO"},
-      {label: "Melhor Entre Faixas", value: "MELHORENTREFAIXAS"}
-    ]
     
     for(var i =0; i<this.tiporotuloLista.length ; i++){
       if(this.tiporotuloLista[i].value === this.indicadorSelecionado.rotuloVirgula){
