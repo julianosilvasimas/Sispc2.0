@@ -93,28 +93,12 @@ export class GraficosComponent implements OnInit {
       
       this.PreencherComentarios(eixo, responsaveis,comentarios)
 
-      this.RotulosAcumulados(IndicadorCadastro ,Resumo)
+      this.CondicionalDeGraficos(IndicadorCadastro ,Resumo)
 
       }
     );
   }
 
-  RotulosAcumulados(CadstroIndicador, linhaDeResumo){
-    
-    this.CondicionalDeGraficos(CadstroIndicador, linhaDeResumo)
-
-    // if(tipoGraph==5){
-    //   this.RotuloDiferencaPerc = this.RotuloDiferencaPerc+"%";
-    //   this.RotuloDiferencaAcum = this.RotuloDiferencaAcum+"%";
-    //   this.RotuloOrcadoMensal = this.RotuloOrcadoMensal+"%";
-    //   this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal+"%";
-    //   this.RotuloRealizAcum = this.RotuloRealizAcum+"%";
-    //   this.RotuloOrcadoAcum = this.RotuloOrcadoAcum+"%";
-    // }else{
-    //   this.RotuloDiferencaPerc = "Δ% " +this.RotuloDiferencaPerc;
-    //   this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
-    // }
-  }
 
   //SUPRIMIR COMENTÁRIOS VAZIOS E PREENCHER COM DATA
   //========================================================================================

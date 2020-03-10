@@ -66,7 +66,7 @@ export class CapaComponent implements OnInit {
     this.performanceService.classindicadores(indicador)
       .subscribe(
         Indicadores  =>  {
-          this.ind = Indicadores
+          this.ind = Indicadores.filter(el => el.ativo ==1);
 
         });
   }
