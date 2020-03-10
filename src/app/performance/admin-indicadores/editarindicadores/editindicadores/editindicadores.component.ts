@@ -91,21 +91,28 @@ export class EditindicadoresComponent implements OnInit {
 
   SolicitarAlteracao(){
     this.listaAlterada = []
-    for(var i = 0;i<this.listaCompletaImutavel.length;i++){
-      if(
-        this.listaCompletaImutavel[i].datareferencia!==this.FormatarData(this.listaCompleta[i].datareferencia) ||
-        this.listaCompletaImutavel[i].orcado!==this.listaCompleta[i].orcado ||
-        this.listaCompletaImutavel[i].realizado!==this.listaCompleta[i].realizado ||
-        this.listaCompletaImutavel[i].minimo!==this.listaCompleta[i].minimo ||
-        this.listaCompletaImutavel[i].maximo!==this.listaCompleta[i].maximo ||
-        this.listaCompletaImutavel[i].meta!==this.listaCompleta[i].meta ||
-        this.listaCompletaImutavel[i].dentroprazoreg!==this.listaCompleta[i].dentroprazoreg ||
-        this.listaCompletaImutavel[i].dentroprazo!==this.listaCompleta[i].dentroprazo
-      ){
-        this.listaCompleta[i].datareferencia = this.FormatarData(this.listaCompleta[i].datareferencia)
-        this.listaAlterada.push(this.listaCompleta[i])
+      for(var i = 0;i<this.listaCompletaImutavel.length;i++){
+        console.log(this.listaCompleta[i])
+        console.log(this.listaCompletaImutavel[i])
+        if(
+          this.listaCompletaImutavel[i].datareferencia!==this.FormatarData(this.listaCompleta[i].datareferencia) ||
+          this.listaCompletaImutavel[i].orcado!==this.listaCompleta[i].orcado ||
+          this.listaCompletaImutavel[i].realizado!==this.listaCompleta[i].realizado ||
+          this.listaCompletaImutavel[i].minimo!==this.listaCompleta[i].minimo ||
+          this.listaCompletaImutavel[i].maximo!==this.listaCompleta[i].maximo ||
+          this.listaCompletaImutavel[i].meta!==this.listaCompleta[i].meta ||
+          this.listaCompletaImutavel[i].dentroprazoreg!==this.listaCompleta[i].dentroprazoreg ||
+          this.listaCompletaImutavel[i].previsao!==this.listaCompleta[i].previsao ||
+          this.listaCompletaImutavel[i].dentroprazo!==this.listaCompleta[i].dentroprazo
+        ){
+          this.listaCompleta[i].datareferencia = this.FormatarData(this.listaCompleta[i].datareferencia)
+          this.listaAlterada.push(this.listaCompleta[i])
+        }
       }
-    }
+      
+    
+
+   
     this.ListaOk=false
     
     // this.listaAlterada=this.listaCompleta

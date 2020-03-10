@@ -54,7 +54,7 @@ export class CriacaodeusuarioComponent implements OnInit {
       nome: this.CadNome,
       email: this.CadEmail,
       login: this.CadLogin,
-      ativo: this.CadAtivo,
+      ativo: this.CadAtivo === true ? 1 : 0,
       senha: null,
       cargo: this.CadCargo,
       foto: this.CadFoto,

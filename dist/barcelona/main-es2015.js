@@ -698,7 +698,7 @@ module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.RotuloOrcadoAcum }}</span>\r\n    \r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.RotuloRealizAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.RotuloDiferencaAcum2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.RotuloDiferencaPerc }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
+module.exports = "<!-- <p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<p-graficos-indicadores></p-graficos-indicadores> -->\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.campoCalc1 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.campoCalc2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.campoCalc3 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.campoCalc4 }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
 
 /***/ }),
 
@@ -819,7 +819,7 @@ module.exports = "<div class=\"card\" style=\"width: 99.5%; margin-left: 3px;\" 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>EDITAR CADASTRO DO INDICADOR</h4>\r\n\r\n  <div class=\"ui-g-6 ui-md-12\" >\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [options]=\"FiltroListaGerencia\" optionLabel=\"label\" filterBy=\"label,FiltroListaGerencia.label\" \r\n        [autoWidth]=\"true\" [(ngModel)]=\"FiltroGerenciaSelecionada\"  \r\n        placeholder=\"Selecione a Gerencia\" styleClass = \"drop95\" \r\n        filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-3\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar(FiltroGerenciaSelecionada)\"></button>\r\n    </div>\r\n  </div>\r\n  <div style=\" margin-top: 100px\"></div>\r\n</div>\r\n\r\n\r\n<p-table selectionMode=\"single\"  *ngIf=\"listaIndicadores\" [reorderableColumns]=\"true\" [value]=\"listaIndicadores\" [reorderableColumns]=\"true\" > \r\n  <ng-template class=\"ui-g-12\" pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n      <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdem()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div class=\"ui-helper-clearfix ui-g-6\" style=\"text-align: right\">\r\n      <button type=\"button\" pButton  iconPos=\"right\" label=\"X\" (click)=\"fecharLista()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div style=\" margin-top: 50px\"></div>\r\n  </ng-template>\r\n\r\n  <ng-template pTemplate=\"header\">\r\n    <tr>\r\n      <th style=\"width:2.5em\"></th>\r\n      <th>Ordem</th>\r\n      <th>Id</th>\r\n      <th>Nome Indicador</th>\r\n      <th>Classificação</th>\r\n      <th>Tendência</th>\r\n      <th style=\"width:8em\"></th>\r\n    </tr>\r\n  </ng-template>\r\n  \r\n  <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n    <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n      <td>\r\n          <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n      </td>\r\n      <td>\r\n        {{rowData.ordem}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicadorId}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicador}}\r\n      </td>\r\n      <td>\r\n        {{rowData.classificacao}}\r\n      </td>\r\n      <td>\r\n        {{rowData.tendencia}}\r\n      </td>\r\n      <td style=\"text-align:center\">\r\n        <button pButton type=\"button\" icon=\"pi pi-info\" class=\"ui-button-info\" (click)=\"abrirDialog(rowData)\" ></button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n\r\n\r\n\r\n<p-dialog [(visible)]=\"editarCadastro\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '1900px', width: '95%'}\" \t (onHide)=\"aoFecharODialog()\">\r\n  <p-header *ngIf=\"indicadorSelecionado\">{{ indicadorSelecionado.indicadorId }} - {{ indicadorSelecionado.indicador }}</p-header>\r\n  <div class=\"ui-g\" *ngIf=\"indicadorSelecionado\">\r\n    <!-- ===============================================================================================-->\r\n    \r\n    <div class=\"ui-g-6\"><h2>Editor de Indicador</h2></div>\r\n    <div class=\"ui-g-6\"  style=\"text-align: right\">\r\n      <div class=\"ui-g-12\">\r\n        <p-checkbox [(ngModel)]=\"indicadorSelecionado.ativo\" label=\"Indicador Ativo\"  binary=\"true\"></p-checkbox>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <button type=\"button\" pButton iconPos=\"right\" label=\"Salvar Alterações\" (click)=\"SalvarTudo(indicadorSelecionado)\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"classificacoesLista\" [(ngModel)]=\"editarIndicadorClassificacao\" \r\n        placeholder=\"Selecione a Classificação\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tendenciaLista\" [(ngModel)]=\"editarIndicadorTendencia\"\r\n        placeholder=\"Selecione a Tendência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tiporotuloLista\" [(ngModel)]=\"editarIndicadorTipoRotulo\" \r\n        placeholder=\"Selecione o Tipo do Rótulo\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"FiltroListaGerencia\" [(ngModel)]=\"editarIndicadorGerencia\"\r\n        placeholder=\"Selecione a Gerência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <!-- <div class=\"ui-g-12\">\r\n      <p-editor [(ngModel)]=\"editarIndicadorDescricao\" [style]=\"{'height':'120px'}\"></p-editor>\r\n    </div> -->\r\n\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-6\"><h2>Editor de Gráfico</h2></div>\r\n      <div class=\"ui-g-6\">  \r\n        <div class=\"ui-g-10\"  style=\"text-align: right\">\r\n          <p-calendar placeholder=\"Selecione a Referência\" *ngIf=\"visualizarGrafico==false\"  [(ngModel)]=\"filtroGraficoData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align: right\">  \r\n          <button pButton type=\"button\" icon=\"pi pi-search\" *ngIf=\"visualizarGrafico==false\" (click)=\"carregarGrafico()\"></button>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-7\" width=\"600px\" height=\"400px\">\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Recarregar\" (click)=\"atualizarvisualizacao()\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Fechar\"   (click)=\"fecharvisualizacao()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n        <p-chart class=\"chart\" *ngIf=\"visualizarGrafico\" type=\"bar\" [data]=\"data\" [options]=\"options\" widht=\"100%\" height=\"400px\"></p-chart>\r\n      </div>\r\n      \r\n      <div *ngIf=\"visualizarGrafico\" class=\"ui-g-5\">\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Inserir Campo\" (click)=\"inserirnovoCampo()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Alterar Ordem\" (click)=\"AlteraOrdemDosCampos()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n        </div>\r\n\r\n        <p-fieldset [toggleable]=\"true\" [collapsed]='true' *ngFor=\"let eixos of indicadorSelecionado.campoDoGraficoId; let i = index\" >\r\n          <p-header>{{ eixos.label }}</p-header>\r\n          <div class=\"ui-g-6\">\r\n            <input pInputText type=\"text\" [(ngModel)]=\"eixos.label\">\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"editargraficoseixos[i]\"\r\n              placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n              <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"editartiposgraficos[i]\"\r\n                placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n                styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"editarposicoes[i]\"\r\n              placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\" *ngIf=\"editartiposgraficos[i].value ==='line'\">\r\n            <h4 class=\"first\"></h4>\r\n            <p-checkbox [(ngModel)]=\"editarestilos[i]\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n          </div>\r\n          <div class=\"ui-g-6\" >\r\n            <h4 class=\"first\">Cor Selecionada</h4>\r\n            <img width=\"40px\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{editarcores[i]}}.PNG\" >\r\n          </div>\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n              <img width=\"40px\" (click)=\"atualizarCores(i, cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Deletar\" (click)=\"deletarCampo(eixos.campoDoGraficoId)\" class=\"ui-button-rounded ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Atualizar\" (click)=\"atualizarCampo(i)\" class=\"ui-button-rounded ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n        </p-fieldset>\r\n\r\n      </div>\r\n    </div>\r\n    <!-- ===============================================================================================-->\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Ficha do Indicador\" [(visible)]=\"inserirUmCampo\" [style]=\"{ height: '500px', width: '400px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"inserirUmCampo\">\r\n    <div class=\"ui-g-6\">\r\n      <input pInputText type=\"text\" [(ngModel)]=\"NovoCampoLabel\">\r\n    </div>\r\n\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"NovoCampoEixo\"\r\n        placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"NovoCampoTipo\"\r\n          placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"NovoCampoPosicao\"\r\n        placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-12\" *ngIf=\"NovoCampoTipo['value'] === 'line'\">\r\n      <h4 class=\"first\"></h4>\r\n      <p-checkbox [(ngModel)]=\"NovoCampoEstilo\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n        <img width=\"40px\" (click)=\"selectcor(cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <button pButton type=\"button\" label=\"Inserir\"  (click)=\"inserirnovoCampoOk()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Alterar Ordem\" [(visible)]=\"alteraOrdemCampos\" [style]=\"{ height: '500px', width: '700px'}\">\r\n  <div class=\"ui-g\">\r\n    <p-table *ngIf=\"gridDeLista\" selectionMode=\"single\" [reorderableColumns]=\"true\" [value]=\"indicadorSelecionado.campoDoGraficoId\" [reorderableColumns]=\"true\" > \r\n      <ng-template class=\"ui-g-12\" pTemplate=\"caption\" >\r\n        <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n          <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdemDosCampos()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        </div>\r\n        <div style=\" margin-top: 50px\"></div>\r\n      </ng-template>\r\n    \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n          <th style=\"width:2.5em\"></th>\r\n          <th>Ordem</th>\r\n          <th>Label</th>\r\n          <th>Campo</th>\r\n        </tr>\r\n      </ng-template>\r\n      \r\n      <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n        <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n          <td>\r\n              <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n          </td>\r\n          <td>\r\n            {{rowData.ordem}}\r\n          </td>\r\n          <td>\r\n            {{rowData.label}}\r\n          </td>\r\n          <td>\r\n            {{rowData.eixo}}\r\n          </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>EDITAR CADASTRO DO INDICADOR</h4>\r\n\r\n  <div class=\"ui-g-6 ui-md-12\" >\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [options]=\"FiltroListaGerencia\" optionLabel=\"label\" filterBy=\"label,FiltroListaGerencia.label\" \r\n        [autoWidth]=\"true\" [(ngModel)]=\"FiltroGerenciaSelecionada\"  \r\n        placeholder=\"Selecione a Gerencia\" styleClass = \"drop95\" \r\n        filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-3\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar(FiltroGerenciaSelecionada)\"></button>\r\n    </div>\r\n  </div>\r\n  <div style=\" margin-top: 100px\"></div>\r\n</div>\r\n\r\n\r\n<p-table selectionMode=\"single\"  *ngIf=\"listaIndicadores\" [reorderableColumns]=\"true\" [value]=\"listaIndicadores\" [reorderableColumns]=\"true\" > \r\n  <ng-template class=\"ui-g-12\" pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n      <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdem()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div class=\"ui-helper-clearfix ui-g-6\" style=\"text-align: right\">\r\n      <button type=\"button\" pButton  iconPos=\"right\" label=\"X\" (click)=\"fecharLista()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div style=\" margin-top: 50px\"></div>\r\n  </ng-template>\r\n\r\n  <ng-template pTemplate=\"header\">\r\n    <tr>\r\n      <th style=\"width:2.5em\"></th>\r\n      <th>Ordem</th>\r\n      <th>Id</th>\r\n      <th>Nome Indicador</th>\r\n      <th>Classificação</th>\r\n      <th>Tendência</th>\r\n      <th style=\"width:8em\"></th>\r\n    </tr>\r\n  </ng-template>\r\n  \r\n  <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n    <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n      <td>\r\n          <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n      </td>\r\n      <td>\r\n        {{rowData.ordem}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicadorId}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicador}}\r\n      </td>\r\n      <td>\r\n        {{rowData.classificacao}}\r\n      </td>\r\n      <td>\r\n        {{rowData.tendencia}}\r\n      </td>\r\n      <td style=\"text-align:center\">\r\n        <button pButton type=\"button\" icon=\"pi pi-info\" class=\"ui-button-info\" (click)=\"abrirDialog(rowData)\" ></button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n\r\n\r\n\r\n<p-dialog [(visible)]=\"editarCadastro\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '1900px', width: '95%'}\" \t (onHide)=\"aoFecharODialog()\">\r\n  <p-header *ngIf=\"indicadorSelecionado\">{{ indicadorSelecionado.indicadorId }} - {{ indicadorSelecionado.indicador }}</p-header>\r\n  <div class=\"ui-g\" *ngIf=\"indicadorSelecionado\">\r\n    <!-- ===============================================================================================-->\r\n    \r\n    <div class=\"ui-g-6\"><h2>Editor de Indicador</h2></div>\r\n    <div class=\"ui-g-6\"  style=\"text-align: right\">\r\n      <div class=\"ui-g-12\">\r\n        <p-checkbox [(ngModel)]=\"indicadorSelecionado.ativo\" label=\"Indicador Ativo\"  binary=\"true\"></p-checkbox>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <button type=\"button\" pButton iconPos=\"right\" label=\"Salvar Alterações\" (click)=\"SalvarTudo(indicadorSelecionado)\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"classificacoesLista\" [(ngModel)]=\"editarIndicadorClassificacao\" \r\n        placeholder=\"Selecione a Classificação\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tendenciaLista\" [(ngModel)]=\"editarIndicadorTendencia\"\r\n        placeholder=\"Selecione a Tendência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tiporotuloLista\" [(ngModel)]=\"editarIndicadorTipoRotulo\" \r\n        placeholder=\"Selecione o Tipo do Rótulo\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"FiltroListaGerencia\" [(ngModel)]=\"editarIndicadorGerencia\"\r\n        placeholder=\"Selecione a Gerência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <!-- <div class=\"ui-g-12\">\r\n      <p-editor [(ngModel)]=\"editarIndicadorDescricao\" [style]=\"{'height':'120px'}\"></p-editor>\r\n    </div> -->\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-12\"><h2>Labels</h2></div>\r\n      <div class=\"ui-g-12\">\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo1\"\r\n          placeholder=\"Label 01\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo2\"\r\n          placeholder=\"Label 02\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo3\"\r\n          placeholder=\"Label 03\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo4\"\r\n          placeholder=\"Label 04\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 01\" [(ngModel)]=\"indicadorSelecionado.rotulocampo1\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 02\" [(ngModel)]=\"indicadorSelecionado.rotulocampo2\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 03\" [(ngModel)]=\"indicadorSelecionado.rotulocampo3\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 04\" [(ngModel)]=\"indicadorSelecionado.rotulocampo4\">\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-6\"><h2>Editor de Gráfico</h2></div>\r\n\r\n      <div class=\"ui-g-6\">  \r\n        <div class=\"ui-g-10\"  style=\"text-align: right\">\r\n          <p-calendar placeholder=\"Selecione a Referência\" *ngIf=\"visualizarGrafico==false\"  [(ngModel)]=\"filtroGraficoData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align: right\">  \r\n          <button pButton type=\"button\" icon=\"pi pi-search\" *ngIf=\"visualizarGrafico==false\" (click)=\"carregarGrafico()\"></button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"ui-g-7\" width=\"600px\" height=\"400px\">\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Recarregar\" (click)=\"atualizarvisualizacao()\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Fechar\"   (click)=\"fecharvisualizacao()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n        <p-chart class=\"chart\" *ngIf=\"visualizarGrafico\" type=\"bar\" [data]=\"data\" [options]=\"options\" widht=\"100%\" height=\"400px\"></p-chart>\r\n      </div>\r\n      \r\n      <div *ngIf=\"visualizarGrafico\" class=\"ui-g-5\">\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Inserir Campo\" (click)=\"inserirnovoCampo()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Alterar Ordem\" (click)=\"AlteraOrdemDosCampos()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n        </div>\r\n\r\n        <p-fieldset [toggleable]=\"true\" [collapsed]='true' *ngFor=\"let eixos of indicadorSelecionado.campoDoGraficoId; let i = index\" >\r\n          <p-header>{{ eixos.label }}</p-header>\r\n          <div class=\"ui-g-6\">\r\n            <input pInputText type=\"text\" [(ngModel)]=\"eixos.label\">\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"editargraficoseixos[i]\"\r\n              placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n              <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"editartiposgraficos[i]\"\r\n                placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n                styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"editarposicoes[i]\"\r\n              placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\" *ngIf=\"editartiposgraficos[i].value ==='line'\">\r\n            <h4 class=\"first\"></h4>\r\n            <p-checkbox [(ngModel)]=\"editarestilos[i]\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n          </div>\r\n          <div class=\"ui-g-6\" >\r\n            <h4 class=\"first\">Cor Selecionada</h4>\r\n            <img width=\"40px\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{editarcores[i]}}.PNG\" >\r\n          </div>\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n              <img width=\"40px\" (click)=\"atualizarCores(i, cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Deletar\" (click)=\"deletarCampo(eixos.campoDoGraficoId)\" class=\"ui-button-rounded ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Atualizar\" (click)=\"atualizarCampo(i)\" class=\"ui-button-rounded ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n        </p-fieldset>\r\n\r\n      </div>\r\n    </div>\r\n    <!-- ===============================================================================================-->\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Ficha do Indicador\" [(visible)]=\"inserirUmCampo\" [style]=\"{ height: '500px', width: '400px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"inserirUmCampo\">\r\n    <div class=\"ui-g-6\">\r\n      <input pInputText type=\"text\" [(ngModel)]=\"NovoCampoLabel\">\r\n    </div>\r\n\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"NovoCampoEixo\"\r\n        placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"NovoCampoTipo\"\r\n          placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"NovoCampoPosicao\"\r\n        placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-12\" *ngIf=\"NovoCampoTipo['value'] === 'line'\">\r\n      <h4 class=\"first\"></h4>\r\n      <p-checkbox [(ngModel)]=\"NovoCampoEstilo\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n        <img width=\"40px\" (click)=\"selectcor(cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <button pButton type=\"button\" label=\"Inserir\"  (click)=\"inserirnovoCampoOk()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Alterar Ordem\" [(visible)]=\"alteraOrdemCampos\" [style]=\"{ height: '500px', width: '700px'}\">\r\n  <div class=\"ui-g\">\r\n    <p-table *ngIf=\"gridDeLista\" selectionMode=\"single\" [reorderableColumns]=\"true\" [value]=\"indicadorSelecionado.campoDoGraficoId\" [reorderableColumns]=\"true\" > \r\n      <ng-template class=\"ui-g-12\" pTemplate=\"caption\" >\r\n        <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n          <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdemDosCampos()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        </div>\r\n        <div style=\" margin-top: 50px\"></div>\r\n      </ng-template>\r\n    \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n          <th style=\"width:2.5em\"></th>\r\n          <th>Ordem</th>\r\n          <th>Label</th>\r\n          <th>Campo</th>\r\n        </tr>\r\n      </ng-template>\r\n      \r\n      <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n        <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n          <td>\r\n              <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n          </td>\r\n          <td>\r\n            {{rowData.ordem}}\r\n          </td>\r\n          <td>\r\n            {{rowData.label}}\r\n          </td>\r\n          <td>\r\n            {{rowData.eixo}}\r\n          </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -841,7 +841,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3px\" >\r\n    <h4>EDITAR INDICADORES</h4>\r\n   <div class=\"ui-g-6 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"filtroData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n          <label>Referencia</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n\r\n          <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" filterBy=\"label,filtroListaIndicador.indicador\" \r\n          [autoWidth]=\"true\" [(ngModel)]=\"filtroIndicador\"  placeholder=\".\" styleClass = \"drop95\" \r\n          filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n\r\n          <label>Indicador</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"atualizar()\"></button>\r\n      </div>\r\n    </div>\r\n    <div style=\" margin-top: 60px\"></div>\r\n  </div>\r\n\r\n\r\n  <p-dialog header=\"Editar\" [(visible)]=\"ListaOk\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '95%', width: '95%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <p-table [value]=\"listaCompleta\" dataKey=\"vin\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataIndicador</th>\r\n            <th>DataReferencia</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n            <th>Forecast</th>\r\n            <th>Previsão</th>\r\n            <th style=\"width:8em\"></th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\">\r\n            <td>\r\n                {{rowData.dataindicador}}\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                      <p-calendar [(ngModel)]=\"rowData.datareferencia\" view=\"month\" dateFormat=\"yy-mm-dd\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.datareferencia}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.orcado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.orcado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.realizado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.realizado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.minimo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.minimo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.maximo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.maximo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.meta\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.meta}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazoreg\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazoreg}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.previsao\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.previsao}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td style=\"text-align:center\">\r\n              <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow icon=\"pi pi-info\" class=\"ui-button-info\"></button>\r\n              <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"onRowEditSave(rowData)\" style=\"margin-right: .5em\"></button>\r\n              </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Cancelar\" (click)=\"CancelarAlteracoes()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"SolicitarAlteracao()\"></button>\r\n      </div>\r\n    </div>\r\n    \r\n  </p-dialog>\r\n\r\n\r\n  <div *ngIf=\"ListaParaEnviar\" showEffect=\"fade\">\r\n    <p-table [value]=\"listaAlterada\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" [reorderableColumns]=\"true\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataReferencia</th>\r\n            <th>DataIndicador</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\"  [ngClass]=\"new-car\">\r\n            <td>{{rowData.dataindicador}}</td>\r\n            <td>{{rowData.datareferencia}}</td>\r\n            <td>{{rowData.orcado}}</td>\r\n            <td>{{rowData.realizado}}</td>\r\n            <td>{{rowData.minimo}}</td>\r\n            <td>{{rowData.maximo}}</td>\r\n            <td>{{rowData.meta}}</td>\r\n            <td>{{rowData.dentroprazoreg}}</td>\r\n            <td>{{rowData.dentroprazo}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div *ngIf=\"CarregarVisible\" showEffect=\"fade\" >\r\n      <h3 class=\"first\">Carregando</h3>\r\n      <p-progressBar [value]=\"porcentagemconcluido\"></p-progressBar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\"  align=\"center\">\r\n      <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"AprovarAlteracoes()\"></button>\r\n    </div>\r\n  </div>    \r\n"
+module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3px\" >\r\n    <h4>EDITAR INDICADORES</h4>\r\n   <div class=\"ui-g-6 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"filtroData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n          <label>Referencia</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n\r\n          <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" filterBy=\"label,filtroListaIndicador.indicador\" \r\n          [autoWidth]=\"true\" [(ngModel)]=\"filtroIndicador\"  placeholder=\".\" styleClass = \"drop95\" \r\n          filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n\r\n          <label>Indicador</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"atualizar()\"></button>\r\n      </div>\r\n    </div>\r\n    <div style=\" margin-top: 60px\"></div>\r\n  </div>\r\n\r\n\r\n  <p-dialog header=\"Editar\" [(visible)]=\"ListaOk\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '95%', width: '95%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <p-table [value]=\"listaCompleta\" dataKey=\"vin\" editMode=\"row\" [paginator]=\"true\" [rows]=\"13\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataIndicador</th>\r\n            <th>DataReferencia</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n            <th>Forecast</th>\r\n            <th>Previsão</th>\r\n            <th style=\"width:8em\"></th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\">\r\n            <td>\r\n                {{rowData.dataindicador}}\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                      <p-calendar [(ngModel)]=\"rowData.datareferencia\" view=\"month\" dateFormat=\"yy-mm-dd\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.datareferencia}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.orcado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.orcado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.realizado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.realizado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.minimo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.minimo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.maximo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.maximo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.meta\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.meta}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazoreg\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazoreg}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.previsao\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.previsao}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td style=\"text-align:center\">\r\n              <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow icon=\"pi pi-info\" class=\"ui-button-info\"></button>\r\n              <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"onRowEditSave(rowData)\" style=\"margin-right: .5em\"></button>\r\n              </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Cancelar\" (click)=\"CancelarAlteracoes()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"SolicitarAlteracao()\"></button>\r\n      </div>\r\n    </div>\r\n    \r\n  </p-dialog>\r\n\r\n\r\n  <div *ngIf=\"ListaParaEnviar\" showEffect=\"fade\">\r\n    <p-table [value]=\"listaAlterada\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" [reorderableColumns]=\"true\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataReferencia</th>\r\n            <th>DataIndicador</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\"  [ngClass]=\"new-car\">\r\n            <td>{{rowData.dataindicador}}</td>\r\n            <td>{{rowData.datareferencia}}</td>\r\n            <td>{{rowData.orcado}}</td>\r\n            <td>{{rowData.realizado}}</td>\r\n            <td>{{rowData.minimo}}</td>\r\n            <td>{{rowData.maximo}}</td>\r\n            <td>{{rowData.meta}}</td>\r\n            <td>{{rowData.dentroprazoreg}}</td>\r\n            <td>{{rowData.dentroprazo}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div *ngIf=\"CarregarVisible\" showEffect=\"fade\" >\r\n      <h3 class=\"first\">Carregando</h3>\r\n      <p-progressBar [value]=\"porcentagemconcluido\"></p-progressBar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\"  align=\"center\">\r\n      <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"AprovarAlteracoes()\"></button>\r\n    </div>\r\n  </div>    \r\n"
 
 /***/ }),
 
@@ -852,7 +852,7 @@ module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-title ui-g\">\r\n  <h1>Status de Bot's</h1>\r\n  <div class=\"ui-g-12\">\r\n    <div class=\"card ui-g-3\"  *ngFor=\"let b of botsLista, let i of index\">\r\n      <img class=\"ui-g-4\" style=\"width: 90px; height: 120px;\" src=\"assets/layout/images/rpa/robo.png\">\r\n      <div class=\"ui-g-8\">\r\n        <div style=\"font-weight: bold;\" class=\"ui-g-12\">{{ b.label }}</div>\r\n        <div class=\"ui-g-12\">{{ b.funcao }}</div>\r\n        <div class=\"ui-g-6\"  >\r\n          <button *ngIf=\"b.status=='Ocupado'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Executando\" class=\"ui-button-danger\"></button>\r\n          <button *ngIf=\"b.status=='Pronto'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Disponível\" class=\"ui-button-success\"></button>\r\n          <button *ngIf=\"b.status=='S/I'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Sem Informação\" class=\"ui-button-secondary\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: right;\" >\r\n          <button pButton type=\"button\" class=\"pi pi-chevron-circle-right\" (click)=\"StartBot(b.value)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card card-title ui-g\">\r\n  <h1>Status de Bot's</h1>\r\n  <div class=\"ui-g-12\">\r\n    <div class=\"card ui-g-3\"  *ngFor=\"let b of botsLista, let i of index\">\r\n      <img class=\"ui-g-4\" style=\"width: 90px; height: 120px;\" src=\"assets/layout/images/rpa/robo.png\">\r\n      <div class=\"ui-g-8\">\r\n        <div style=\"font-weight: bold;\" class=\"ui-g-12\">{{ b.label }}</div>\r\n        <div class=\"ui-g-12\">{{ b.funcao }}</div>\r\n        <div class=\"ui-g-6\"  >\r\n          <button *ngIf=\"b.status=='Executando'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Executando\" class=\"ui-button-danger\"></button>\r\n          <button *ngIf=\"b.status=='Pronto'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Disponível\" class=\"ui-button-success\"></button>\r\n          <button *ngIf=\"b.status=='Falha'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Sem Informação\" class=\"ui-button-secondary\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: right;\" >\r\n          <button pButton type=\"button\" class=\"pi pi-chevron-circle-right\" (click)=\"StartBot(b)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -885,7 +885,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n      <div class=\"card card-w-title\">\r\n          <h1>Performance {{setor}}</h1>\r\n          <p-accordion  (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <div class=\"card\">\r\n              <p-accordionTab  *ngFor=\"let classificao of classificacoes\" header=\"{{classificao}}\" >\r\n\r\n                    <p-table [columns]=\"cols\" [value]=\"resumo\">\r\n                            <ng-template pTemplate=\"header\" let-columns>\r\n                                <tr>\r\n                                    <th *ngFor=\"let col of columns\">\r\n                                        {{col.header}}\r\n                                    </th>\r\n                                    <th style=\"width:4em\"></th>\r\n                                </tr>\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n                                <tr> <!-- *ngIf=\"resumo.classificacao === classificao\"-->\r\n                                    <td  *ngFor=\"let col of columns\">\r\n                                        {{ rowData[col.field] }}\r\n                                    </td>\r\n                                    <td>\r\n                                        <button pButton icon=\"pi pi-search\" (click)=\" selectIndicador(rowData)\"></button>\r\n                                    </td>\r\n                                </tr>\r\n                            </ng-template>\r\n                        </p-table>\r\n                        <br>\r\n              </p-accordionTab>\r\n\r\n              <div class=\"card\" *ngIf=\"barraAtiva\">\r\n\r\n                    <div class =\"ui-g-6\"><h1 class=\"centerText\">{{indi}}</h1></div>\r\n                    <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"op2.toggle($event); pesquisarIndicador(ontem)\"></button>\r\n                    <span style=\"position: absolute;margin-top: 30px;margin-left: -40px;\">Atualizar</span>\r\n                    <button style=\"position: absolute;margin-left: 30%;\"type=\"button\" icon=\"ui-icon-clear\" pButton (click)=\"desativaBarra()\"></button>\r\n                    \r\n                      <p-overlayPanel #op2 [showCloseIcon]=\"true\" [dismissable]=\"false\" >\r\n                            <span class=\"ui-overlaypanel-close-icon pi pi-times\"></span>\r\n\r\n                            \r\n                          \r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                    <div class =\"ui-g-6\"><b>{{indi}}</b></div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center\">\r\n                                        <p-calendar id=\"calendar\" [(ngModel)]=\"date\" (onSelect)=\"pesquisarIndicador(date)\" [monthNavigator]=\"true\" [yearNavigator]=\"true\"\r\n                                        yearRange=\"2008:2041\" [showIcon]=\"true\"  [locale]=\"pt\" dateFormat=\"dd/mm/yy\" placeholder=\"Data\" ></p-calendar>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                   <!--<div class=\"ui-g-6\" *ngFor=\"let dados of dadosIndicador\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dados.valor\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>{{dados.label}}</label>\r\n                                        </span>\r\n                                    </div>-->\r\n\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"orcado\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Orçado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"realizado\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Realizado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"pecld\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Pecld</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"minimo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Minimo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"maximo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Maximo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"meta\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Meta</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <!-- <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"vlrretido\" type=\"text\" size=\"37\" pInputText />\r\n                                            <label>Valor Retido</label>\r\n                                        </span>\r\n                                    </div> -->\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"previsao\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Mensal</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendente\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendente</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendimento\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendimento</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                            \r\n                              <div class=\"card\" >\r\n                                  <p-tabView >\r\n                                      <p-tabPanel header=\"Comentários\"  leftIcon=\"ui-icon-check\">\r\n                                           <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"comentario\"   autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Análise\"  leftIcon=\"ui-icon-edit\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"analise\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Ações\"  leftIcon=\"ui-icon-refresh\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"acao\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                  </p-tabView>\r\n                              </div>\r\n                          \r\n                          <div class=\"centerText\" style=\"text-align: center;\">\r\n                          <p-button label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"atualizaDados()\"></p-button>\r\n                          </div>\r\n                      \r\n                      </p-overlayPanel>\r\n\r\n            <!--############################# Chamada do Gráfico #############################################-->\r\n                    <app-graficos [element]= \"ind\" [refer]= \"refer\" ></app-graficos>\r\n                </div> \r\n            </div>\r\n            <!--######################################################################################################################-->\r\n              \r\n          </p-accordion>\r\n      </div>\r\n    \r\n  </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n      <div class=\"card card-w-title\">\r\n          <h1>Performance {{setor}}</h1>\r\n          \r\n            <div Style=\"padding-left: 10px !important;\">\r\n                <h2>Data</h2>\r\n                <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n                yearRange=\"2000:2030\" \r\n                [(ngModel)]=\"referencia\" \r\n                [readonlyInput]=\"true\"\r\n                (onSelect)=\"onChangeTime($event)\">\r\n                </p-calendar>\r\n    \r\n                <br>\r\n                <br>\r\n            </div>\r\n          <p-accordion  (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <div class=\"card\">\r\n              <p-accordionTab  *ngFor=\"let classificao of classificacoes\" header=\"{{classificao}}\" >\r\n\r\n                    <p-table [columns]=\"cols\" [value]=\"resumo\">\r\n                            <ng-template pTemplate=\"header\" let-columns>\r\n                                <tr>\r\n                                    <th *ngFor=\"let col of columns\">\r\n                                        {{col.header}}\r\n                                    </th>\r\n                                    <th style=\"width:4em\"></th>\r\n                                </tr>\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n                                <tr> <!-- *ngIf=\"resumo.classificacao === classificao\"-->\r\n                                    <td  *ngFor=\"let col of columns\">\r\n                                        {{ rowData[col.field] }}\r\n                                    </td>\r\n                                    <td>\r\n                                        <button pButton icon=\"pi pi-search\" (click)=\" selectIndicador(rowData)\"></button>\r\n                                    </td>\r\n                                </tr>\r\n                            </ng-template>\r\n                        </p-table>\r\n                        <br>\r\n              </p-accordionTab>\r\n\r\n              <div class=\"card\" *ngIf=\"barraAtiva\">\r\n\r\n                    <div class =\"ui-g-6\"><h1 class=\"centerText\">{{indi}}</h1></div>\r\n                    <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"op2.toggle($event); pesquisarIndicador(ontem)\"></button>\r\n                    <span style=\"position: absolute;margin-top: 30px;margin-left: -40px;\">Atualizar</span>\r\n                    <button style=\"position: absolute;margin-left: 30%;\"type=\"button\" icon=\"ui-icon-clear\" pButton (click)=\"desativaBarra()\"></button>\r\n                    \r\n                      <p-overlayPanel #op2 [showCloseIcon]=\"true\" [dismissable]=\"false\" >\r\n                            <span class=\"ui-overlaypanel-close-icon pi pi-times\"></span>\r\n\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                    <div class =\"ui-g-6\"><b>{{indi}}</b></div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center\">\r\n                                        <p-calendar id=\"calendar\" [(ngModel)]=\"date\" (onSelect)=\"pesquisarIndicador(date)\" [monthNavigator]=\"true\" [yearNavigator]=\"true\"\r\n                                        yearRange=\"2008:2041\" [showIcon]=\"true\"  [locale]=\"pt\" dateFormat=\"dd/mm/yy\" placeholder=\"Data\" ></p-calendar>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                   <!--<div class=\"ui-g-6\" *ngFor=\"let dados of dadosIndicador\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dados.valor\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>{{dados.label}}</label>\r\n                                        </span>\r\n                                    </div>-->\r\n\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"orcado\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Orçado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"realizado\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Realizado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"pecld\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Pecld</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"minimo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Minimo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"maximo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Maximo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"meta\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Meta</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <!-- <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"vlrretido\" type=\"text\" size=\"37\" pInputText />\r\n                                            <label>Valor Retido</label>\r\n                                        </span>\r\n                                    </div> -->\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"previsao\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Mensal</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendente\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendente</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendimento\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendimento</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                            \r\n                              <div class=\"card\" >\r\n                                  <p-tabView >\r\n                                      <p-tabPanel header=\"Comentários\"  leftIcon=\"ui-icon-check\">\r\n                                           <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"comentario\"   autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Análise\"  leftIcon=\"ui-icon-edit\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"analise\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Ações\"  leftIcon=\"ui-icon-refresh\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"acao\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                  </p-tabView>\r\n                              </div>\r\n                          \r\n                          <div class=\"centerText\" style=\"text-align: center;\">\r\n                          <p-button label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"atualizaDados()\"></p-button>\r\n                          </div>\r\n                      \r\n                      </p-overlayPanel>\r\n\r\n            <!--############################# Chamada do Gráfico #############################################-->\r\n            \r\n                    <app-graficos-indicadores [indicador]=\"ind\" [refer]=\"refer\" ></app-graficos-indicadores>\r\n                    <app-graficos [element]= \"ind\" [refer]= \"refer\" ></app-graficos>\r\n                </div> \r\n            </div>\r\n            <!--######################################################################################################################-->\r\n              \r\n          </p-accordion>\r\n      </div>\r\n    \r\n  </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -918,7 +918,7 @@ module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div style=\" margin-top: 101%;\"   *ngFor=\"let indic of ind; let i = index\">\r\n    <!-- Indicador1 -->\r\n    <br>\r\n    \r\n\r\n    <div class=\"subtitulos\" style=\"position: relative;\">\r\n        <div class=\"ui-g-10\">\r\n            {{ indic.indicador }}\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align:right; margin-top:10px; font-size:11px;\">\r\n            Página {{ (i+2) }} de {{this.totalpaginas }}\r\n        </div>\r\n    </div>\r\n    <br>\r\n    \r\n    <div class=\"separador\"></div>\r\n\r\n    <app-graficos [element]=\"indic\" [refer]=\"refer\" ></app-graficos>\r\n    <!-- <app-graficos [element]=\"indic\" [refer]=\"refer\" [comentarios]=\"true\" ></app-graficos> -->\r\n    \r\n</div>"
+module.exports = "\r\n<div style=\" margin-top: 101%;\"   *ngFor=\"let indic of ind; let i = index\">\r\n    <!-- Indicador1 -->\r\n    <br>\r\n    \r\n\r\n    <div class=\"subtitulos\" style=\"position: relative;\">\r\n        <div class=\"ui-g-10\">\r\n            {{ indic.indicador }}\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align:right; margin-top:10px; font-size:11px;\">\r\n            Página {{ (i+2) }} de {{this.totalpaginas }}\r\n        </div>\r\n    </div>\r\n    <br>\r\n    \r\n    <div class=\"separador\"></div>\r\n\r\n    <app-graficos-indicadores [indicador]=\"indic\" [refer]=\"refer\" ></app-graficos-indicadores>\r\n    <app-graficos [element]=\"indic\" [refer]=\"refer\" ></app-graficos>\r\n    \r\n</div>"
 
 /***/ }),
 
@@ -1301,7 +1301,7 @@ let CriacaodeusuarioComponent = class CriacaodeusuarioComponent {
             nome: this.CadNome,
             email: this.CadEmail,
             login: this.CadLogin,
-            ativo: this.CadAtivo,
+            ativo: this.CadAtivo === true ? 1 : 0,
             senha: null,
             cargo: this.CadCargo,
             foto: this.CadFoto,
@@ -2704,9 +2704,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-// export const API_CONFIG =  'http://sispcprl01:7777/teste-sispc-backend'
-const API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
-// export const API_CONFIG =  'http://localhost:7777'
+const API_CONFIG = 'http://sispcprl01:7777/teste-sispc-backend';
+//export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
+//export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -7205,7 +7205,7 @@ let GraficosIndicadoresComponent = class GraficosIndicadoresComponent {
         this.performanceService = performanceService;
     }
     ngOnInit() {
-        this.performanceService.indicadores(this.refer, this.indicador.indicadorId).subscribe(dados => {
+        this.performanceService.indicadores(this.refer, this.indicador['indicadorId']).subscribe(dados => {
             var maximo = 0;
             for (var i = 34; i >= 0; i--) {
                 if (dados[0][i] !== '01/01') {
@@ -7371,18 +7371,6 @@ __webpack_require__.r(__webpack_exports__);
 let GraficosComponent = class GraficosComponent {
     constructor(performanceService) {
         this.performanceService = performanceService;
-        //GRAFICOS
-        this.eixo = [];
-        this.orcado = [];
-        this.realiz = [];
-        this.orcadoDiaAc = [];
-        this.realizDiaAc = [];
-        this.tipoGrafico = [];
-        //ROTULO DOS DADOS
-        this.campo1 = "Realizado Acumulado";
-        this.campo2 = "Orçado Acumulado";
-        this.campo3 = "Δ (Realizado-Orçado)";
-        this.campo4 = "Variação Percentual";
         this.title = 'projeto';
     }
     ngOnInit() {
@@ -7391,734 +7379,55 @@ let GraficosComponent = class GraficosComponent {
         this.datasCom = [];
         this.Validador(this.element);
     }
-    // TIPOGRAPH 1 == Receitas (REALIZADO, ORÇADO, REALIZADO ACUMULADO, ORÇADO ACUMULADO)
-    // TIPOGRAPH 2 == Acumulados (REALIZADO ACUMULADO, ORÇADO ACUMULADO)
-    // TIPOGRAPH 3 == TemposMedia (REALIZADO MEDIA, ORÇADO MEDIA) Formato de HORA
     Validador(indic) {
-        this.performanceService.indicadores(this.refer, indic.indicadorId)
+        this.performanceService.indicadoresResumo(this.refer, indic.indicadorId)
             .subscribe(indicador => {
-            //Consulta endpoint que possui os nomes dos indicadores
-            //=======================================================================================
-            this.tipoindicador = indic.indicador;
-            this.tipoGraph = indic.tipoGrafico;
-            this.indicadorId = indic.indicadorId;
-            this.Tendencia = indic.tendencia;
-            //Consulta do EIXO
-            //=======================================================================================
-            this.eixo = [];
-            this.eixo = indicador[0];
-            this.eixo = this.eixo.splice(1, Number.MAX_VALUE);
-            this.eixo = this.eixo.filter(item => item !== null);
+            var IndicadorCadastro = indic;
+            var Resumo = [];
+            Resumo = indicador[3];
+            // Resumo = Resumo.splice(1, Number.MAX_VALUE)
             //ROTULOS DE COMENTARIOS
             //========================================================================================
-            this.temp1 = [];
-            this.temp1 = indicador[1];
-            this.temp1 = this.temp1.splice(1, Number.MAX_VALUE);
+            var eixo = [];
+            eixo = indicador[0];
+            eixo = eixo.splice(1, Number.MAX_VALUE);
+            eixo = eixo.filter(item => item !== null);
+            var comentarios = [];
+            comentarios = indicador[1];
+            comentarios = comentarios.splice(1, Number.MAX_VALUE);
             var responsaveis = [];
             responsaveis = indicador[2];
             responsaveis = responsaveis.splice(1, Number.MAX_VALUE);
-            this.PreencherComentarios(this.temp1, responsaveis, this.eixo);
-            //ROTULOS DE ACUMULADOS
-            //========================================================================================
-            this.temp1 = [];
-            this.temp1 = indicador[3];
-            this.RotulosAcumulados(this.tipoGraph, this.temp1);
-            var orcado = [];
-            orcado = indicador[4];
-            orcado = orcado.splice(1, Number.MAX_VALUE);
-            var realiz = [];
-            realiz = indicador[5];
-            realiz = realiz.splice(1, Number.MAX_VALUE);
-            var orcadoDiaAc = [];
-            orcadoDiaAc = indicador[6];
-            orcadoDiaAc = orcadoDiaAc.splice(1, Number.MAX_VALUE);
-            var realizDiaAc = [];
-            realizDiaAc = indicador[7];
-            realizDiaAc = realizDiaAc.splice(1, Number.MAX_VALUE);
-            var orcadoDiaMed = [];
-            orcadoDiaMed = indicador[8];
-            orcadoDiaMed = orcadoDiaMed.splice(1, Number.MAX_VALUE);
-            var realizDiaMed = [];
-            realizDiaMed = indicador[9];
-            realizDiaMed = realizDiaMed.splice(1, Number.MAX_VALUE);
-            var Minimo = [];
-            Minimo = indicador[10];
-            Minimo = Minimo.splice(1, Number.MAX_VALUE);
-            var Maximo = [];
-            Maximo = indicador[11];
-            Maximo = Maximo.splice(1, Number.MAX_VALUE);
-            var Meta = [];
-            Meta = indicador[12];
-            Meta = Meta.splice(1, Number.MAX_VALUE);
-            var MetaAcumulada = [];
-            MetaAcumulada = indicador[13];
-            MetaAcumulada = MetaAcumulada.splice(1, Number.MAX_VALUE);
-            var DentroPrazoReg = [];
-            DentroPrazoReg = indicador[14];
-            DentroPrazoReg = DentroPrazoReg.splice(1, Number.MAX_VALUE);
-            var DentroPrazo = [];
-            DentroPrazo = indicador[15];
-            DentroPrazo = DentroPrazo.splice(1, Number.MAX_VALUE);
-            this.EscolherTipoGrafico(this.tipoGraph, this.eixo, orcado, realiz, orcadoDiaAc, realizDiaAc, orcadoDiaMed, realizDiaMed, Minimo, Maximo, Meta, MetaAcumulada, DentroPrazoReg, DentroPrazo);
+            this.PreencherComentarios(eixo, responsaveis, comentarios);
+            this.RotulosAcumulados(IndicadorCadastro, Resumo);
         });
     }
-    EscolherTipoGrafico(TipoGraph, eixo, orcado, realiz, orcadoDiaAc, realizDiaAc, orcadoDiaMed, realizDiaMed, Minimo, Maximo, Meta, MetaAcumulada, DentroPrazoReg, DentroPrazo) {
-        //REMOVER FINAIS DE SEMANA E ORÇADOS ZERADOS
-        //========================================================================================
-        let indice = 0;
-        // while(indice <33){     
-        //   let soma =  (realiz[indice]+orcado[indice]+Minimo[indice]+Maximo[indice]+DentroPrazoReg[indice]+DentroPrazo[indice])
-        //   if(soma==0){   
-        //     eixo.splice(indice, 1)
-        //     orcado.splice(indice, 1)
-        //     realiz.splice(indice, 1)
-        //     orcadoDiaAc.splice(indice, 1)
-        //     realizDiaAc.splice(indice, 1)
-        //     orcadoDiaMed.splice(indice, 1)
-        //     realizDiaMed.splice(indice, 1)
-        //     Minimo.splice(indice, 1)
-        //     Maximo.splice(indice, 1)
-        //     Meta.splice(indice, 1)
-        //     MetaAcumulada.splice(indice, 1)
-        //     DentroPrazoReg.splice(indice, 1)
-        //     DentroPrazo.splice(indice, 1)
-        //     indice=0
-        //   }
-        //   indice =indice+1
+    RotulosAcumulados(CadstroIndicador, linhaDeResumo) {
+        this.CondicionalDeGraficos(CadstroIndicador, linhaDeResumo);
+        // if(tipoGraph==5){
+        //   this.RotuloDiferencaPerc = this.RotuloDiferencaPerc+"%";
+        //   this.RotuloDiferencaAcum = this.RotuloDiferencaAcum+"%";
+        //   this.RotuloOrcadoMensal = this.RotuloOrcadoMensal+"%";
+        //   this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal+"%";
+        //   this.RotuloRealizAcum = this.RotuloRealizAcum+"%";
+        //   this.RotuloOrcadoAcum = this.RotuloOrcadoAcum+"%";
+        // }else{
+        //   this.RotuloDiferencaPerc = "Δ% " +this.RotuloDiferencaPerc;
+        //   this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
         // }
-        // while(indice <34){     
-        //   let soma =  (realiz[indice]+orcado[indice]+realizDiaAc[indice]+orcadoDiaAc[indice])
-        //   if(soma==0){   
-        //     Meta.splice(indice, 1)
-        //     orcado.splice(indice, 1)
-        //     Minimo.splice(indice, 1)
-        //     Maximo.splice(indice, 1)
-        //     indice=0
-        //   }
-        //   indice =indice+1
-        // }
-        //CORTAR REALIZADOS ZERADOS ATÉ A ULTIMA ATUALIZAÇÃO
-        //========================================================================================
-        var arr;
-        arr = eixo;
-        // console.log(eixo)
-        indice = 0;
-        let maximo = 0;
-        for (var i = indice; i < 34; i++) {
-            if (i > 10) {
-                var real = arr[i];
-                if (real == "01/01") {
-                    maximo = i;
-                    break;
-                }
-                else {
-                    maximo = Number.MAX_VALUE;
-                }
-            }
-        }
-        eixo.splice(maximo, Number.MAX_VALUE);
-        orcado.splice(maximo, Number.MAX_VALUE);
-        realiz.splice(maximo, Number.MAX_VALUE);
-        orcadoDiaAc.splice(maximo, Number.MAX_VALUE);
-        realizDiaAc.splice(maximo, Number.MAX_VALUE);
-        Meta.splice(maximo, Number.MAX_VALUE);
-        MetaAcumulada.splice(maximo, Number.MAX_VALUE);
-        Minimo.splice(maximo, Number.MAX_VALUE);
-        Maximo.splice(maximo, Number.MAX_VALUE);
-        DentroPrazo.splice(maximo, Number.MAX_VALUE);
-        DentroPrazoReg.splice(maximo, Number.MAX_VALUE);
-        // console.log(eixo)
-        //SEPARAR TIPOS DE GRAFICO
-        //========================================================================================
-        //ORCADO - REALIZADO - SUM ORCADO - SUM REALIZADO 
-        if (TipoGraph == 1) {
-            this.Tipo1(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc);
-            //MESMOGRAFICO DE CIMA SÓ QUE COM ROTULOS COLADOS EM QTD SEM VIRGULA
-        }
-        else if (TipoGraph == 8) {
-            this.Tipo8(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc);
-            //SUM ORCADO - SUM REALIZADO 
-        }
-        else if (TipoGraph == 2) {
-            this.Tipo2(eixo, orcadoDiaAc, realizDiaAc);
-            //AVG ORCADO - AVG REALIZADO 
-        }
-        else if (TipoGraph == 3) {
-            this.Tipo3(eixo, orcado, realiz);
-            //AVG MAXIMO - AVG MINIMO - AVG MEDIA 
-        }
-        else if (TipoGraph == 4) {
-            this.Tipo4(eixo, Minimo, Maximo, realiz);
-            //META - DENTRO DO PRAZO - DENTRO DO PRAZO REGULADO
-        }
-        else if (TipoGraph == 5) {
-            this.Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo, realiz);
-        }
-        else if (TipoGraph == 6) {
-            this.Tipo679(eixo, orcadoDiaAc, realizDiaAc, MetaAcumulada);
-        }
-        else if (TipoGraph == 7) {
-            this.Tipo679(eixo, orcado, realiz, Meta);
-        }
-        else if (TipoGraph == 9) {
-            this.Tipo679(eixo, orcado, realiz, Meta);
-        }
-    }
-    //____________________________________________________________________________________________
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-    //TIPOS DE GRAFICOS
-    //BARLINE TIPO RECEITADIRETA
-    Tipo1(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                { type: 'line',
-                    pointStyle: 'circle',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    borderColor: '#253f93',
-                    label: 'Orçado Acumulado',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderWidth: 1,
-                    borderColor: '#253F93',
-                    backgroundColor: '#253f93',
-                    label: 'Realizado Acumulado',
-                    data: realizDiaAc
-                },
-                {
-                    label: 'Orçado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcado
-                },
-                {
-                    label: 'Realizado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#88D1D1',
-                    borderColor: '#88D1D1',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            responsive: true,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        },
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        scales: {
-                            yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                        },
-                    }],
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //GRAFICOS DE QUANTIDADES
-    Tipo8(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                { type: 'line',
-                    pointStyle: 'circle',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    borderColor: '#253f93',
-                    label: 'Orçado Acumulado',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderWidth: 1,
-                    borderColor: '#253F93',
-                    backgroundColor: '#253f93',
-                    label: 'Realizado Acumulado',
-                    data: realizDiaAc
-                },
-                {
-                    label: 'Orçado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcado
-                },
-                {
-                    label: 'Realizado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#88D1D1',
-                    borderColor: '#88D1D1',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            responsive: true,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        },
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        scales: {
-                            yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                        },
-                    }],
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //TIPO TMA TME 2 EIXOS
-    Tipo2(eixo, orcadoDiaAc, realizDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Orçado',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizDiaAc
-                }
-            ]
-        };
-        this.options = {
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //TIPO TMA TME
-    Tipo3(eixo, orcado, realiz) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Orçado',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcado
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //tipo maximo minimo media
-    Tipo4(eixo, minimo, maximo, realiz) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Maximo',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: maximo
-                }, {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Minimo',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: minimo
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            scales: {
-                yAxes: [{
-                        barPercentage: 0.5,
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            ticks: {
-                beginAtZero: true
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //tipo prazo serviços
-    Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo, realizado) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizado
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 2,
-                    label: 'Meta',
-                    borderColor: '#6C8CC7',
-                    data: Meta
-                },
-                {
-                    type: 'bar',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Regulados',
-                    backgroundColor: 'lightgreen',
-                    borderColor: 'lightgreen',
-                    data: DentroPrazoReg
-                }, {
-                    type: 'bar',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Não Regulados',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: DentroPrazo
-                }
-            ]
-        };
-        this.options = {
-            scales: {
-                yAxes: [{
-                        barPercentage: 0.5,
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //TIPO TMA TME 2 EIXOS
-    Tipo679(eixo, orcadoDiaAc, realizDiaAc, metaDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Orçado',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizDiaAc
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Meta',
-                    backgroundColor: '#808080',
-                    borderColor: '#808080',
-                    data: metaDiaAc
-                }
-            ]
-        };
-        this.options = {
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //FIM DE TIPOS DE GRAFICOS
-    //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-    RotulosAcumulados(tipoGraph, linhaDeResumo) {
-        this.CondicionalDeGraficos(tipoGraph, linhaDeResumo);
-        switch (this.Tendencia) {
-            case "MELHORPOSITIVO": {
-                if (this.RotuloDiferencaPerc < 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cor1 = "Red";
-                    this.Cor2 = "Red";
-                    this.Cor3 = "Red";
-                    this.Cor4 = "Red";
-                }
-                break;
-            }
-            case "MELHORNEGATIVO": {
-                if (this.RotuloDiferencaPerc > 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cor1 = "Red";
-                    this.Cor2 = "Red";
-                    this.Cor3 = "Red";
-                    this.Cor4 = "Red";
-                }
-                break;
-            }
-            case "MELHORENTREFAIXAS": {
-                if (this.RotuloDiferencaAcum < 0 || this.RotuloDiferencaAcum > 0) {
-                    this.Cor1 = "Red";
-                    this.Cor2 = "Red";
-                    this.Cor3 = "Red";
-                    this.Cor4 = "Red";
-                }
-                break;
-            }
-        }
-        if (tipoGraph == 5) {
-            this.RotuloDiferencaPerc = this.RotuloDiferencaPerc + "%";
-            this.RotuloDiferencaAcum = this.RotuloDiferencaAcum + "%";
-            this.RotuloOrcadoMensal = this.RotuloOrcadoMensal + "%";
-            this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal + "%";
-            this.RotuloRealizAcum = this.RotuloRealizAcum + "%";
-            this.RotuloOrcadoAcum = this.RotuloOrcadoAcum + "%";
-        }
-        else {
-            this.RotuloDiferencaPerc = "Δ% " + this.RotuloDiferencaPerc;
-            this.RotuloDiferencaAcum2 = "Δ " + this.RotuloDiferencaAcum2;
-        }
     }
     //SUPRIMIR COMENTÁRIOS VAZIOS E PREENCHER COM DATA
     //========================================================================================
-    PreencherComentarios(temp1, responsaveis, eixos) {
-        // temp2.reverse();
-        // responsaveis2.reverse();
-        // eixo.reverse();
+    PreencherComentarios(eixo, responsaveis, comentarios) {
         let indice = 0;
         var Comentarios1 = [];
         var Nomes1 = [];
         var Datas1 = [];
-        while (indice < temp1.length) {
-            if (temp1[indice] != null && temp1[indice] != "") {
-                Comentarios1.push(temp1[indice]);
+        while (indice < comentarios.length) {
+            if (comentarios[indice] != null && comentarios[indice] != "") {
+                Comentarios1.push(comentarios[indice]);
                 Nomes1.push(responsaveis[indice]);
-                Datas1.push(eixos[indice]);
+                Datas1.push(eixo[indice]);
             }
             indice = indice + 1;
         }
@@ -8133,97 +7442,138 @@ let GraficosComponent = class GraficosComponent {
         }
     }
     //MESMA CLASSE DO QUE O graficos.component.ts
-    CondicionalDeGraficos(tipoGraph, temp1) {
+    CondicionalDeGraficos(IndicadorCadastro, resumo) {
         //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
         //========================================================================================
-        let orcadoMensal = parseFloat(temp1.splice(1, 1));
-        let orcadoAcumulad = parseFloat(temp1.splice(1, 1));
-        let realizadoAcumulad = parseFloat(temp1.splice(1, 1));
-        let PrevisaoMensal = parseFloat(temp1.splice(1, 1));
-        let OrcadoMedia = parseFloat(temp1.splice(1, 1));
-        let RealMedia = parseFloat(temp1.splice(1, 1));
-        let Minimo = parseFloat(temp1.splice(1, 1));
-        let Maximo = parseFloat(temp1.splice(1, 1));
-        let Meta = parseFloat(temp1.splice(1, 1));
-        let MetaAcum = parseFloat(temp1.splice(1, 1));
-        let ReguladoDp = parseFloat(temp1.splice(1, 1));
-        let NaoReguladoDp = parseFloat(temp1.splice(1, 1));
+        let orcadoMensal = parseFloat(resumo.splice(1, 1));
+        let orcadoAcumulad = parseFloat(resumo.splice(1, 1));
+        let realizadoAcumulad = parseFloat(resumo.splice(1, 1));
+        let PrevisaoMensal = parseFloat(resumo.splice(1, 1));
+        let OrcadoMedia = parseFloat(resumo.splice(1, 1));
+        let RealMedia = parseFloat(resumo.splice(1, 1));
+        let Minimo = parseFloat(resumo.splice(1, 1));
+        let Maximo = parseFloat(resumo.splice(1, 1));
+        let Meta = parseFloat(resumo.splice(1, 1));
+        let MetaAcum = parseFloat(resumo.splice(1, 1));
+        let ReguladoDp = parseFloat(resumo.splice(1, 1));
+        let NaoReguladoDp = parseFloat(resumo.splice(1, 1));
+        let UltReal = parseFloat(resumo.splice(1, 1));
+        let UltOrcado = parseFloat(resumo.splice(1, 1));
+        //MONTAR OBJETO COM OS DADOS DO RESUMO
         //========================================================================================
-        let val1 = orcadoAcumulad;
-        let val2 = realizadoAcumulad;
-        //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
+        var ResumoDosEixos = {
+            orcadoacumulado: orcadoAcumulad,
+            orcadomedia: OrcadoMedia,
+            realizadoacumulado: realizadoAcumulad,
+            realizadomedia: RealMedia,
+            metaacumulada: MetaAcum,
+            meta: Meta,
+            minimo: Minimo,
+            maximo: Maximo,
+            reguladodp: ReguladoDp,
+            naoreguladodp: NaoReguladoDp,
+            ultimorealizado: UltReal,
+            ultimoorcado: UltOrcado
+        };
+        this.RotuloOrcadoMensal = orcadoMensal;
+        this.RotuloPrevisaoMensal = PrevisaoMensal;
+        //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
         //========================================================================================
-        if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6 || tipoGraph == 7) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(0);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(0);
+        if (IndicadorCadastro.rotulocampo1 === 'orcadomedia' || IndicadorCadastro.rotulocampo1 === 'realizadomedia'
+            || IndicadorCadastro.rotulocampo2 === 'orcadomedia' || IndicadorCadastro.rotulocampo2 === 'realizadomedia'
+            || IndicadorCadastro.rotulocampo3 === 'orcadomedia' || IndicadorCadastro.rotulocampo3 === 'realizadomedia'
+            || IndicadorCadastro.rotulocampo4 === 'orcadomedia' || IndicadorCadastro.rotulocampo4 === 'realizadomedia') {
+            this.RotuloOrcadoMensal = OrcadoMedia;
         }
-        else if (tipoGraph == 8) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-            //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
-            //========================================================================================
+        if (IndicadorCadastro.rotulocampo1 === 'ultimorealizado' || IndicadorCadastro.rotulocampo1 === 'UltOrcado'
+            || IndicadorCadastro.rotulocampo2 === 'ultimorealizado' || IndicadorCadastro.rotulocampo2 === 'UltOrcado'
+            || IndicadorCadastro.rotulocampo3 === 'ultimorealizado' || IndicadorCadastro.rotulocampo3 === 'UltOrcado'
+            || IndicadorCadastro.rotulocampo4 === 'ultimorealizado' || IndicadorCadastro.rotulocampo4 === 'UltOrcado') {
+            this.RotuloOrcadoMensal = UltOrcado;
         }
-        else if (tipoGraph == 3) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloOrcadoAcum = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
-            this.RotuloDiferencaAcum = this.ConverterParaHora((val2 - val1));
-            this.RotuloDiferencaAcum2 = this.ConverterParaHora(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
-            this.RotuloPrevisaoMensal = this.ConverterParaHora(this.RotuloPrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
+        this.campo1 = IndicadorCadastro.rotulocampo1;
+        this.campo2 = IndicadorCadastro.rotulocampo2;
+        this.campo3 = IndicadorCadastro.rotulocampo3;
+        this.campo4 = IndicadorCadastro.rotulocampo4;
+        //CONSTRUIR OS CAMPOS DE CALCULO COM O CADASTRO DE INDICADORES
+        //========================================================================================
+        this.campoCalc1 = ResumoDosEixos[IndicadorCadastro.campo1];
+        this.campoCalc2 = ResumoDosEixos[IndicadorCadastro.campo2];
+        var cam3 = IndicadorCadastro.campo3 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam3 = IndicadorCadastro.campo3 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam3;
+        this.campoCalc3 = cam3;
+        var cam4 = IndicadorCadastro.campo4 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam4 = IndicadorCadastro.campo4 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam4;
+        this.campoCalc4 = cam4;
+        //SELECIONAR TENDENDCIAS DE EIXO
+        //========================================================================================
+        switch (IndicadorCadastro.tendencia) {
+            case "MELHORPOSITIVO": {
+                if (this.campoCalc2 < this.campoCalc1) {
+                    this.Cor1 = "Red";
+                }
+                break;
+            }
+            case "MELHORNEGATIVO": {
+                if (this.campoCalc2 > this.campoCalc1) {
+                    this.Cor1 = "Red";
+                }
+                break;
+            }
+            case "MELHORENTREFAIXAS": {
+                if (ResumoDosEixos['realizadomedia'] > ResumoDosEixos['maximo']
+                    || ResumoDosEixos['realizadomedia'] < ResumoDosEixos['minimo']) {
+                    this.Cor1 = "Red";
+                }
+                break;
+            }
         }
-        else if (tipoGraph == 4) {
-            val2 = RealMedia;
-            Minimo = Minimo > 60 ? parseFloat(Minimo.toFixed(0)) : Minimo;
-            Maximo = Minimo > 60 ? parseFloat(Maximo.toFixed(0)) : Maximo;
-            this.RotuloOrcadoMensal = Minimo + " - " + Maximo;
-            this.RotuloOrcadoAcum = Minimo + " - " + Maximo;
-            this.RotuloRealizAcum = RealMedia;
-            let val3 = RealMedia > Minimo ? RealMedia < Maximo ? 0 : RealMedia - Maximo : RealMedia - Minimo;
-            this.RotuloDiferencaAcum = val3.toFixed(2);
-            this.RotuloDiferencaAcum2 = val3 == 0 ? 0 : val3.toFixed(2);
-            val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
-            this.RotuloPrevisaoMensal = PrevisaoMensal;
-            this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal)) ? 0 : PrevisaoMensal;
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
+        this.Cor2 = this.Cor1;
+        this.Cor3 = this.Cor1;
+        this.Cor4 = this.Cor1;
+        //SELECIONAR TENDENDCIAS DE EIXO
+        //========================================================================================
+        switch (IndicadorCadastro.rotuloVirgula) {
+            case 1: {
+                this.campoCalc1 = converterComDecimal(this.campoCalc1);
+                this.campoCalc2 = converterComDecimal(this.campoCalc2);
+                this.campoCalc3 = converterComDecimal(this.campoCalc3);
+                this.campoCalc4 = converterComDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterComDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterComDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 2: {
+                this.campoCalc1 = converterSemDecimal(this.campoCalc1);
+                this.campoCalc2 = converterSemDecimal(this.campoCalc2);
+                this.campoCalc3 = converterSemDecimal(this.campoCalc3);
+                this.campoCalc4 = converterSemDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterSemDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterSemDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 3: {
+                this.campoCalc1 = ConverterParaHora(this.campoCalc1);
+                this.campoCalc2 = ConverterParaHora(this.campoCalc2);
+                this.RotuloOrcadoMensal = ConverterParaHora(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = ConverterParaHora(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
         }
-        else if (tipoGraph == 5) {
-            this.RotuloPrevisaoMensal = (Meta * 100);
-            this.RotuloOrcadoMensal = (Meta * 100);
-            this.RotuloOrcadoAcum = (Meta * 100);
-            this.RotuloRealizAcum = (RealMedia * 100);
-            this.RotuloDiferencaAcum = "-";
-            this.RotuloDiferencaAcum2 = "-";
-            this.RotuloDiferencaPerc = "-";
-        }
-        else if (tipoGraph == 9) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);
-            this.RotuloOrcadoAcum = converterComDecimal(OrcadoMedia);
-            this.RotuloRealizAcum = converterComDecimal(RealMedia);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = converterComDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
+        //FUNÇÕES
+        //========================================================================================
         function converterComDecimal(z) {
             let v = z.toFixed(2);
             v = v.replace(/\D/g, ""); // permite digitar apenas numero
@@ -8243,25 +7593,25 @@ let GraficosComponent = class GraficosComponent {
             v = v.replace(/(\d{1})(\d{3})$/, "$1.$2"); // coloca ponto antes dos ultimos 7 digitos
             return v;
         }
-    }
-    ConverterParaHora(s) {
-        if (s < 0) {
-            s = s * -1;
-        }
-        function duas_casas(numero) {
-            if (numero <= 9) {
-                numero = "0" + parseInt(numero);
+        function ConverterParaHora(s) {
+            if (s < 0) {
+                s = s * -1;
             }
-            return numero;
+            function duas_casas(numero) {
+                if (numero <= 9) {
+                    numero = "0" + parseInt(numero);
+                }
+                return numero;
+            }
+            var hora = Math.trunc(s / 3600);
+            var minuto = Math.trunc(s / 60) - (hora * 60);
+            var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
+            hora = duas_casas(hora);
+            minuto = duas_casas(minuto);
+            segundo = duas_casas(segundo);
+            var formatado = hora + ":" + minuto + ":" + segundo;
+            return formatado;
         }
-        var hora = Math.trunc(s / 3600);
-        var minuto = Math.trunc(s / 60) - (hora * 60);
-        var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
-        hora = duas_casas(hora);
-        minuto = duas_casas(minuto);
-        segundo = duas_casas(segundo);
-        var formatado = hora + ":" + minuto + ":" + segundo;
-        return formatado;
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8902,7 +8252,7 @@ let AdminIndicadoresComponent = class AdminIndicadoresComponent {
             { label: 'Editar' },
             { label: 'Importar' }
         ];
-        this.trocadeitemIndex(2);
+        this.trocadeitemIndex(0);
     }
     trocadeitem(activeItem) {
         this.activeItem = activeItem['activeItem'];
@@ -9301,6 +8651,22 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
             { label: '#ffc20e', value: 'ffc20e' },
             { label: '#88d1d1', value: '88d1d1' }
         ];
+        this.listaDeCamposParaRotulos = [
+            { label: "Último Orçado", value: "ultimoorcado" },
+            { label: "Orçado Acumulado", value: "orcadoacumulado" },
+            { label: "Orçado Média", value: "orcadomedia" },
+            { label: "Último Realizado", value: "ultimorealizado" },
+            { label: "Realizado Acumulado", value: "realizadoacumulado" },
+            { label: "Realizado Média", value: "realizadomedia" },
+            { label: "Meta Média", value: "meta" },
+            { label: "Meta Acumulada", value: "metaacumulada" },
+            { label: "Mínimo Média", value: "minimo" },
+            { label: "Máximo Média", value: "maximo" },
+            { label: "Regulados DP", value: "reguladodp" },
+            { label: "Não Regulados DP", value: "naoreguladodp" },
+            { label: "Diferença = Campo2-Campo1", value: "diferenca" },
+            { label: "Variação = 1-(Campo2/Campo1)", value: "variacao" },
+        ];
         this.adminindic.gerencias().subscribe(gerencias => {
             this.FiltroListaGerencia = gerencias;
         });
@@ -9401,12 +8767,40 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
                 break;
             }
         }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo1) {
+                this.editarIndicadorCampo1 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo2) {
+                this.editarIndicadorCampo2 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo3) {
+                this.editarIndicadorCampo3 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo4) {
+                this.editarIndicadorCampo4 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
         this.reloadArrays();
     }
     atualizarDadosdoArray() {
         this.indicadorSelecionado['classificacao'] = this.editarIndicadorClassificacao['value'];
         this.indicadorSelecionado['tendencia'] = this.editarIndicadorTendencia['value'];
         this.indicadorSelecionado['rotuloVirgula'] = this.editarIndicadorTipoRotulo['value'];
+        this.indicadorSelecionado['campo1'] = this.editarIndicadorCampo1['value'];
+        this.indicadorSelecionado['campo2'] = this.editarIndicadorCampo2['value'];
+        this.indicadorSelecionado['campo3'] = this.editarIndicadorCampo3['value'];
+        this.indicadorSelecionado['campo4'] = this.editarIndicadorCampo4['value'];
         this.indicadorSelecionado['gerencia'] = this.editarIndicadorGerencia['gerenciaId'];
         for (var i = 0; i < this.editarposicoes.length; i++) {
             this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value'];
@@ -9856,6 +9250,8 @@ let EditindicadoresComponent = class EditindicadoresComponent {
     SolicitarAlteracao() {
         this.listaAlterada = [];
         for (var i = 0; i < this.listaCompletaImutavel.length; i++) {
+            console.log(this.listaCompleta[i]);
+            console.log(this.listaCompletaImutavel[i]);
             if (this.listaCompletaImutavel[i].datareferencia !== this.FormatarData(this.listaCompleta[i].datareferencia) ||
                 this.listaCompletaImutavel[i].orcado !== this.listaCompleta[i].orcado ||
                 this.listaCompletaImutavel[i].realizado !== this.listaCompleta[i].realizado ||
@@ -9863,6 +9259,7 @@ let EditindicadoresComponent = class EditindicadoresComponent {
                 this.listaCompletaImutavel[i].maximo !== this.listaCompleta[i].maximo ||
                 this.listaCompletaImutavel[i].meta !== this.listaCompleta[i].meta ||
                 this.listaCompletaImutavel[i].dentroprazoreg !== this.listaCompleta[i].dentroprazoreg ||
+                this.listaCompletaImutavel[i].previsao !== this.listaCompleta[i].previsao ||
                 this.listaCompletaImutavel[i].dentroprazo !== this.listaCompleta[i].dentroprazo) {
                 this.listaCompleta[i].datareferencia = this.FormatarData(this.listaCompleta[i].datareferencia);
                 this.listaAlterada.push(this.listaCompleta[i]);
@@ -9937,38 +9334,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 let ImportarBotsComponent = class ImportarBotsComponent {
-    constructor(adminindic) {
+    constructor(adminindic, messageService) {
         this.adminindic = adminindic;
+        this.messageService = messageService;
         this.bots = [];
         this.botsLista = [];
-        this.bots = [
-            { label: "Inserir Orçados", value: 0, funcao: "Carregar volume produzido", status: "S/I" },
-        ];
     }
     ngOnInit() {
+        this.bots = [
+            { label: "Atualizar Volumes", value: 1, funcao: "Carregar volume produzido", status: "S/I" },
+            { label: "Calculos Energia", value: 2, funcao: "kW/m³, R$/m³ ", status: "S/I" },
+            { label: "Calculos de Produtos Quimicos", value: 3, funcao: "Carregar volume produzido", status: "S/I" },
+        ];
         this.botsLista = this.bots;
         console.log(this.botsLista);
         this.StatusBot();
     }
     StatusBot() {
         for (var i = 0; i < this.botsLista.length; i++) {
-            this.adminindic.statusBots(i).subscribe(res => {
+            this.adminindic.statusBots(this.botsLista[i].value).subscribe(res => {
                 var dado = JSON.parse(res).status;
-                console.log(dado);
-                dado = dado === 'Falha' ? 'S/I' : dado === 'Executando' ? 'Ocupado' : 'Pronto';
-                this.botsLista[i]['status'] = dado;
+                this.bots[0].status = dado;
             });
         }
     }
     StartBot(bot) {
-        this.botsLista = [];
-        this.adminindic.startBot(bot).subscribe();
-        this.StatusBot();
-        this.botsLista = this.bots;
+        if (bot.status === "Pronto") {
+            this.adminindic.startBot(bot.value).subscribe();
+            this.bots[0].status = "Executando";
+            this.messageService.add({ severity: 'success', summary: 'Executando', detail: 'Executando.' });
+        }
+        else if (bot.status === "Executando") {
+            this.messageService.add({ severity: 'info', summary: 'Informação', detail: 'O robot já está em execução.' });
+        }
+        else if (bot.status === "S/I") {
+            this.messageService.add({ severity: 'info', summary: 'Informação', detail: 'O robot ainda não está completo.' });
+        }
     }
 };
 ImportarBotsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9977,7 +9385,7 @@ ImportarBotsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./importar-bots.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.html"),
         styles: [__webpack_require__(/*! ./importar-bots.component.css */ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
 ], ImportarBotsComponent);
 
 
@@ -10160,9 +9568,8 @@ let ImportarComponent = class ImportarComponent {
     ngOnInit() {
         this.items = [
             { label: 'Importar Orçados' },
-            { label: 'Bots' }
         ];
-        this.trocadeitemIndex(1);
+        this.trocadeitemIndex(0);
     }
     trocadeitem(activeItem) {
         this.activeItem = activeItem['activeItem'];
@@ -10243,6 +9650,9 @@ let InputindicadoresComponent = class InputindicadoresComponent {
             //this.indicador(this.idgerenciasretornado),
             //console.log(this.idgerenciasretornado)
         });
+    }
+    onChangeTime(event) {
+        this.refer = this.referencia.toISOString().substr(0, 10);
     }
     ngOnInit() {
         this.date = this.ontem;
@@ -10985,7 +10395,7 @@ let IndicadoresComponent = class IndicadoresComponent {
     MontarArrayDeIndicadores(indicador) {
         this.indicadoresService.classindicadores(indicador)
             .subscribe(Indicadores => {
-            this.ind = Indicadores;
+            this.ind = Indicadores.filter(el => el.ativo == 1);
             this.totalpaginas = this.ind.length + 1;
         });
     }

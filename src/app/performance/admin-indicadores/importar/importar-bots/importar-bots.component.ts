@@ -45,7 +45,7 @@ export class ImportarBotsComponent implements OnInit {
     if(bot.status==="Pronto"){
       this.adminindic.startBot(bot.value).subscribe();
       this.bots[0].status = "Executando";
-      this.messageService.add({severity: 'success', summary: 'Informação', detail: 'Executando.'});
+      this.messageService.add({severity: 'success', summary: 'Executando', detail: 'Executando.'});
     }else if(bot.status==="Executando"){
       this.messageService.add({severity: 'info', summary: 'Informação', detail: 'O robot já está em execução.'});
     }else if(bot.status==="S/I"){

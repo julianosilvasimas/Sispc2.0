@@ -18,7 +18,7 @@ export class ImportarComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {label: 'Importar Orçados'},
-      {label: 'Bots'}
+      // {label: 'Bots'}
     ];
     this.trocadeitemIndex(0);
    

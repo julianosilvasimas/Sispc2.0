@@ -19,7 +19,7 @@ export class AdminIndicadoresComponent implements OnInit {
       {label: 'Editar'},
       {label: 'Importar'}
     ];
-    this.trocadeitemIndex(1);
+    this.trocadeitemIndex(0);
   }
 
 
