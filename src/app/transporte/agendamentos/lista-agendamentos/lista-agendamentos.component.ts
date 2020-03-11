@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TransporteService } from '../../transporte.service';
 import { Veiculo, Agendamento } from '../../transporte.model';
+import { CsvDataService } from '../../../csv-data.service';
+
 
 @Component({
   selector: 'app-lista-agendamentos',
@@ -18,10 +20,8 @@ export class ListaAgendamentosComponent implements OnInit {
   AgendamentoSelecionado;
   ngOnInit() {
     this.AtualizarLista();
-
-    
-
   }
+
   AtualizarLista(){
     this.Agendamentos=[];
     this.transporteService.Aprovados()
@@ -30,8 +30,8 @@ export class ListaAgendamentosComponent implements OnInit {
         this.Agendamentos2 = agendamentos
         this.Agendamentos = agendamentos
       });
-
   }
+
   //==========================================================================================
   VALOR1: string;
   VALOR2: string;
@@ -57,17 +57,18 @@ export class ListaAgendamentosComponent implements OnInit {
       agend = agend.filter(item => item.agendadode.includes(this.VALOR3))
     }
     this.Agendamentos = agend
-
   }
   showAgendamento(agendamento: Agendamento){
     this.displayAgendamento =true;
     this.AgendamentoSelecionado = agendamento;
   }
+
   onDialogHide() {
     this.Agendamentos = null;
     this.displayAgendamento = false;
     this.AtualizarLista();
   }
+
   dataAtualFormatada(datareceb){
     var data = datareceb,
         dia2  = data.getDate().toString().padStart(2, '0'),
@@ -78,5 +79,7 @@ export class ListaAgendamentosComponent implements OnInit {
     return ano2+"-"+mes2+"-"+dia2;
   }
 
-  
+  salvarCSV(){
+    CsvDataService.exportToCsv('test.csv', this.Agendamentos);
+  }
 }

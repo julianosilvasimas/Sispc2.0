@@ -85,6 +85,7 @@
       </div>
     </div>
 
+
     <div class="ui-g-12">
       <div class="ui-g-6">
         <p-dropdown  class="ui-g-12" [options]="classificacoesLista" [(ngModel)]="editarIndicadorClassificacao" 
@@ -112,6 +113,17 @@
     <!-- <div class="ui-g-12">
       <p-editor [(ngModel)]="editarIndicadorDescricao" [style]="{'height':'120px'}"></p-editor>
     </div> -->
+
+
+    <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
+      <div><h2>Mensais</h2></div>
+      <div class="ui-g-12">
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulosMensal" [(ngModel)]="editarIndicadorCampoMensal"
+          placeholder="Label 01" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+
     <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
       <div class="ui-g-12"><h2>Labels</h2></div>
       <div class="ui-g-12">

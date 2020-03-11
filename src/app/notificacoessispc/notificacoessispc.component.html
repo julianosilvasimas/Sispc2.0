@@ -4,17 +4,17 @@
   
         <div class="ui-g-12 ui-md-12">
           <span class="md-inputfield">
-            <input id="input" type="text" [(ngModel)]="CadEmpresa" class="ui-g-12" pInputText/>
+            <input id="input" type="text" [(ngModel)]="Assunto" class="ui-g-12" pInputText/>
             <label>Assunto</label>
           </span>
         </div>
       
     
         <div class="ui-g-12">
-          <p-editor [(ngModel)]="text1" [style]="{'height':'320px'}"></p-editor>
+          <p-editor [(ngModel)]="Texto" [style]="{'height':'320px'}"></p-editor>
         </div>
         <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
-          <button type="button" pButton icon="pi pi-save" label="Enviar"  (click)="salvar()"></button>
+          <button type="button" pButton icon="pi pi-save" label="Enviar"  (click)="AoSalvar()"></button>
         </div>
     </div>
   </div>

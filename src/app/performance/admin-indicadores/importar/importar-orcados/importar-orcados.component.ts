@@ -89,19 +89,31 @@ export class ImportarOrcadosComponent implements OnInit {
       previsao = c.includes('previsao') ? i : previsao;
       
     }
+
+    orcado = orcado == undefined ? '-' : orcado
+    meta = meta == undefined ? '-' : meta
+    minimo = minimo == undefined ? '-' : minimo
+    maximo = maximo == undefined ? '-' : maximo
+    forecast = forecast == undefined ? '-' : forecast
+    forecast2 = forecast2 == undefined ? '-' : forecast2
+    forecast3 = forecast3 == undefined ? '-' : forecast3
+    previsao = previsao == undefined ? '-' : previsao
+
+    console.log(orcado + ' - '+meta+ ' - '+minimo+ ' - '+maximo+ ' - '+forecast+ ' - '+forecast2+ ' - '+forecast3+ ' - '+previsao)
+
     for(var i =1;i<fileLines.length;i++){
       var fileCol = fileLines[i].split(';');
       var dataconvertida = fileCol[data].substring(6,10) + '-' + fileCol[data].substring(3,5) + '-' + fileCol[data].substring(0,2);
       this.Listaindicadores.push({
         dataindicador: dataconvertida,
-        orcado: fileCol[orcado].replace(".","").replace(",",".")*1,
-        meta: fileCol[meta].replace(".","").replace(",",".")*1,
-        minimo: fileCol[minimo].replace(".","").replace(",",".")*1,
-        maximo: fileCol[maximo].replace(".","").replace(",",".")*1,
-        forecast: fileCol[forecast].replace(".","").replace(",",".")*1,
-        forecast2: fileCol[forecast2].replace(".","").replace(",",".")*1,
-        forecast3: fileCol[forecast3].replace(".","").replace(",",".")*1,
-        previsao: fileCol[previsao].replace(".","").replace(",",".")*1,
+        orcado: orcado == '-' ? 0 : fileCol[orcado].replace(".","").replace(",",".")*1,
+        meta: meta == '-' ? 0 :fileCol[meta].replace(".","").replace(",",".")*1,
+        minimo: minimo == '-' ? 0 :fileCol[minimo].replace(".","").replace(",",".")*1,
+        maximo: maximo == '-' ? 0 :fileCol[maximo].replace(".","").replace(",",".")*1,
+        forecast: forecast == '-' ? 0 :fileCol[forecast].replace(".","").replace(",",".")*1,
+        forecast2: forecast2 == '-' ? 0 : fileCol[forecast2].replace(".","").replace(",",".")*1,
+        forecast3: forecast3 == '-' ? 0 :fileCol[forecast3].replace(".","").replace(",",".")*1,
+        previsao: previsao == '-' ? 0 :fileCol[previsao].replace(".","").replace(",",".")*1
       });
     }
   }

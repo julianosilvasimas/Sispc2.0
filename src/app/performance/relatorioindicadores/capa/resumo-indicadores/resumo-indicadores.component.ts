@@ -107,25 +107,10 @@ export class ResumoIndicadoresComponent implements OnInit {
         ultimoorcado: UltOrcado
       }
       
-      this.RotuloOrcadoMensal = orcadoMensal;
+      this.RotuloOrcadoMensal = IndicadorCadastro.campoMensal;
       this.RotuloPrevisaoMensal = PrevisaoMensal;
       //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
       //========================================================================================
-      if(IndicadorCadastro.rotulocampo1==='orcadomedia' || IndicadorCadastro.rotulocampo1==='realizadomedia'
-      || IndicadorCadastro.rotulocampo2==='orcadomedia' || IndicadorCadastro.rotulocampo2==='realizadomedia'
-      || IndicadorCadastro.rotulocampo3==='orcadomedia' || IndicadorCadastro.rotulocampo3==='realizadomedia'
-      || IndicadorCadastro.rotulocampo4==='orcadomedia' || IndicadorCadastro.rotulocampo4==='realizadomedia'
-      ){
-        this.RotuloOrcadoMensal = OrcadoMedia;
-      }
-
-      if(IndicadorCadastro.rotulocampo1==='ultimorealizado' || IndicadorCadastro.rotulocampo1==='UltOrcado'
-      || IndicadorCadastro.rotulocampo2==='ultimorealizado' || IndicadorCadastro.rotulocampo2==='UltOrcado'
-      || IndicadorCadastro.rotulocampo3==='ultimorealizado' || IndicadorCadastro.rotulocampo3==='UltOrcado'
-      || IndicadorCadastro.rotulocampo4==='ultimorealizado' || IndicadorCadastro.rotulocampo4==='UltOrcado'
-      ){
-        this.RotuloOrcadoMensal = UltOrcado;
-      }
 
       this.campo1 = IndicadorCadastro.rotulocampo1;
       this.campo2 = IndicadorCadastro.rotulocampo2;

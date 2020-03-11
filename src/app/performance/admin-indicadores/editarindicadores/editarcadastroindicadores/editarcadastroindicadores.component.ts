@@ -26,6 +26,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
   listaEdicaodeGraficoCores
   listaTipodeLabel
   listaDeCamposParaRotulos
+  listaDeCamposParaRotulosMensal
   
   gridDeLista: boolean = false
 
@@ -83,6 +84,30 @@ export class EditarcadastroindicadoresComponent implements OnInit {
         {label: "Diferença = Campo2-Campo1", value: "diferenca"},
         {label: "Variação = 1-(Campo2/Campo1)", value: "variacao"},
     ]
+
+    this.listaDeCamposParaRotulos=[
+      {label: "Último Orçado", value: "ultimoorcado"},
+      {label: "Orçado Acumulado", value: "orcadoacumulado"},
+      {label: "Orçado Média", value: "orcadomedia"},
+      {label: "Último Realizado", value: "ultimorealizado"},
+      {label: "Realizado Acumulado", value: "realizadoacumulado"},
+      {label: "Realizado Média", value: "realizadomedia"},
+      {label: "Meta Média", value: "meta"},
+      {label: "Meta Acumulada", value: "metaacumulada"},
+      {label: "Mínimo Média", value: "minimo"},
+      {label: "Máximo Média", value: "maximo"},
+      {label: "Regulados DP", value: "reguladodp"},
+      {label: "Não Regulados DP", value: "naoreguladodp"},
+      {label: "Diferença = Campo2-Campo1", value: "diferenca"},
+      {label: "Variação = 1-(Campo2/Campo1)", value: "variacao"},
+  ]
+    this.listaDeCamposParaRotulosMensal=[
+      {label: "Orçado Mensal", value: "orcadomensal"},
+      {label: "Último Orçado", value: "ultimoorcado"},
+      {label: "Orçado Acumulado", value: "orcadoacumulado"},
+      {label: "Orçado Média", value: "orcadomedia"}
+  ]
+
     this.classificacoesLista = 
     [
       {label: "Atendimento", value: "ATENDIMENTO"},
@@ -197,13 +222,14 @@ export class EditarcadastroindicadoresComponent implements OnInit {
   editarIndicadorCampo2
   editarIndicadorCampo3
   editarIndicadorCampo4
+  editarIndicadorCampoMensal
 
   editargraficoseixos: any[]= []
   editartiposgraficos: any[]= []
   editarposicoes: any[]= []
   editarestilos: any[]= []
   editarcores: any[]= []
-u
+
   abrirDialog(indic: CadIndicador){
     this.indicadorSelecionado = indic
     this.editarCadastro=true
@@ -264,6 +290,13 @@ u
         break;
       }
     }
+
+    for(var i =0; i<this.listaDeCamposParaRotulosMensal.length ; i++){
+      if(this.listaDeCamposParaRotulosMensal[i].value === this.indicadorSelecionado.campoMensal){
+        this.editarIndicadorCampoMensal = this.listaDeCamposParaRotulosMensal[i]
+        break;
+      }
+    }
     
     this.reloadArrays();
   }
@@ -276,6 +309,7 @@ u
     this.indicadorSelecionado['campo2']=this.editarIndicadorCampo2['value']
     this.indicadorSelecionado['campo3']=this.editarIndicadorCampo3['value']
     this.indicadorSelecionado['campo4']=this.editarIndicadorCampo4['value']
+    this.indicadorSelecionado['campoMensal']=this.editarIndicadorCampoMensal['value']
     this.indicadorSelecionado['gerencia']=this.editarIndicadorGerencia['gerenciaId']
     for(var i = 0 ; i<this.editarposicoes.length;i++){
       this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value']
@@ -429,6 +463,7 @@ u
     this.alteraOrdemCampos = true;
     this.gridDeLista = true
   }
+
   ajustarOrdemDosCampos(){
     for(var i =0; i < this.indicadorSelecionado.campoDoGraficoId.length; i++){
       var id = this.indicadorSelecionado.campoDoGraficoId[i].campoDoGraficoId 

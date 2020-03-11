@@ -12,6 +12,7 @@ export interface CadIndicador{
     campoDoGraficoId: campoDoGraficoId[],
     rotuloVirgula: any,
     qtdEixos: any
+    campoMensal: any
     campo1: any
     campo2: any
     campo3: any
