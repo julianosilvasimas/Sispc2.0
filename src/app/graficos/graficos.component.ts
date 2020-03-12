@@ -167,7 +167,7 @@ export class GraficosComponent implements OnInit {
         ultimoorcado: UltOrcado
       }
       
-      this.RotuloOrcadoMensal = IndicadorCadastro.campoMensal;
+      this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
       this.RotuloPrevisaoMensal = PrevisaoMensal;
       //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
       //========================================================================================

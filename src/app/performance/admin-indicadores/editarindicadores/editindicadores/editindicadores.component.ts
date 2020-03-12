@@ -104,6 +104,7 @@ export class EditindicadoresComponent implements OnInit {
           this.listaCompletaImutavel[i].minimo!==this.listaCompleta[i].minimo ||
           this.listaCompletaImutavel[i].maximo!==this.listaCompleta[i].maximo ||
           this.listaCompletaImutavel[i].meta!==this.listaCompleta[i].meta ||
+          this.listaCompletaImutavel[i].valorretido !==this.listaCompleta[i].valorretido ||
           this.listaCompletaImutavel[i].dentroprazoreg!==this.listaCompleta[i].dentroprazoreg ||
           this.listaCompletaImutavel[i].previsao!==this.listaCompleta[i].previsao ||
           this.listaCompletaImutavel[i].dentroprazo!==this.listaCompleta[i].dentroprazo

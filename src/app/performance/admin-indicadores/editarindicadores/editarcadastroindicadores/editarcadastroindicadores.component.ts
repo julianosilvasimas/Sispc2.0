@@ -38,6 +38,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       {label: "realizadoAcumulado", value: "realizadoAcumulado"},
       {label: "orcadoMedia", value: "orcadoMedia"},
       {label: "realizadoMedia", value: "realizadoMedia"},
+      {label: "Valor Retido", value: "valorretido"},
       {label: "Minimo", value: "Minimo"},
       {label: "Maximo", value: "Maximo"},
       {label: "Forecast", value: "forecast"},
@@ -68,22 +69,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       { label:'#ffc20e', value: 'ffc20e'},
       { label:'#88d1d1', value: '88d1d1'}
     ]
-    this.listaDeCamposParaRotulos=[
-        {label: "Último Orçado", value: "ultimoorcado"},
-        {label: "Orçado Acumulado", value: "orcadoacumulado"},
-        {label: "Orçado Média", value: "orcadomedia"},
-        {label: "Último Realizado", value: "ultimorealizado"},
-        {label: "Realizado Acumulado", value: "realizadoacumulado"},
-        {label: "Realizado Média", value: "realizadomedia"},
-        {label: "Meta Média", value: "meta"},
-        {label: "Meta Acumulada", value: "metaacumulada"},
-        {label: "Mínimo Média", value: "minimo"},
-        {label: "Máximo Média", value: "maximo"},
-        {label: "Regulados DP", value: "reguladodp"},
-        {label: "Não Regulados DP", value: "naoreguladodp"},
-        {label: "Diferença = Campo2-Campo1", value: "diferenca"},
-        {label: "Variação = 1-(Campo2/Campo1)", value: "variacao"},
-    ]
+
 
     this.listaDeCamposParaRotulos=[
       {label: "Último Orçado", value: "ultimoorcado"},

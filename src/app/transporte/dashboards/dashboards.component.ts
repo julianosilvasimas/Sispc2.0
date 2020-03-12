@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransporteService } from '../transporte.service';
 
 @Component({
   selector: 'app-dashboards',
@@ -19,8 +20,12 @@ export class DashboardsComponent implements OnInit {
   public supervSelect;
   public placSelect;
 
+  public agendamentospendentes;
+  public agendamentosaprovados;
+  public agendamentosregistrados;
 
-  constructor() { }
+
+  constructor(private transporteService: TransporteService) { }
 
   ngOnInit() {
 
@@ -66,85 +71,27 @@ export class DashboardsComponent implements OnInit {
     ];
 
 
-  }
-  exportCSV(){
-    function convertToCSV(objArray) {
-      var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-      var str = '';
-
-      for (var i = 0; i < array.length; i++) {
-          var line = '';
-          for (var index in array[i]) {
-              if (line != '') line += ';'
-
-              line += array[i][index];
-          }
-
-          str += line + '\r\n';
-      }
-
-      return str;
-  }
-
-  function exportCSVFile(headers, items, fileTitle) {
-    if (headers) {
-        items.unshift(headers);
-    }
-
-    // Convert Object to JSON
-    var jsonObject = JSON.stringify(items);
-
-    var csv = convertToCSV(jsonObject);
-
-    var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
-
-    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    if (navigator.msSaveBlob) { // IE 10+
-        navigator.msSaveBlob(blob, exportedFilenmae);
-    } else {
-        var link = document.createElement("a");
-        if (link.download !== undefined) { // feature detection
-            // Browsers that support HTML5 download attribute
-            var url = URL.createObjectURL(blob);
-            link.setAttribute("href", url);
-            link.setAttribute("download", exportedFilenmae);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-      }
-    }
-
-    var headers = {
-        indice: 'Indice', // remove commas to avoid errors
-        placa: "Placa",
-        condutor: "Condutor",
-        nome: "Responsavel",
-        gerencia: "Gerencia",
-        departamento: "Departamento",
-    };
-
-    var itemsNotFormatted = this.ranking1;
-  
-
-    var itemsFormatted = [];
-
-    // format the data
-    itemsNotFormatted.forEach((item) => {
-        itemsFormatted.push({
-            indice: item.indice, // remove commas to avoid errors,
-            placa: item.placa,
-            condutor: item.condutor,
-            nome: item.nome,
-            gerencia: item.gerencia,
-            departamento: item.departamento
-        });
+    this.transporteService.ParaAprovar()
+    .subscribe(
+    Agendamento  =>  {
+      console.log(Agendamento)
+      this.agendamentospendentes = Agendamento.length
     });
 
-    var fileTitle = 'orders'; // or 'my-unique-title'
-
-    exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+    this.transporteService.Aprovados()
+    .subscribe(
+    Agendamento  =>  {
+      console.log(Agendamento)
+      this.agendamentosregistrados = Agendamento.length
+    });
+    
+    this.transporteService.Aprovados()
+    .subscribe(
+    Agendamento  =>  {
+      console.log(Agendamento)
+      this.agendamentosaprovados = Agendamento.filter(item => item.aprovacao===1).length
+    });
 
   }
+
 }

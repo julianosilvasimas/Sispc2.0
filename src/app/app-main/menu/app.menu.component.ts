@@ -111,7 +111,7 @@ export class AppMenuComponent implements OnInit {
                             {
                                 label: 'Configurações', icon: 'subject',
                                 items: [
-                                    {label: 'Indicadores', icon: 'subject', routerLink: 'indicadoresAdmin'}
+                                    {label: 'Indicadores', icon: 'subject', routerLink: '/indicadoresAdmin'}
                                 ]
                             }
                         ] :
@@ -125,7 +125,7 @@ export class AppMenuComponent implements OnInit {
                             {
                                 label: 'Configurações', icon: 'settings',
                                 items: [
-                                    {label: 'Indicadores', icon: 'build', routerLink: 'indicadoresAdmin'}
+                                    {label: 'Indicadores', icon: 'build', routerLink: '/indicadoresAdmin'}
                                 ]
                             }
                         ] :

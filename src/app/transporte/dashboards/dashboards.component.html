@@ -1,8 +1,36 @@
 <!--SCROOOL DE CARROS-->
+<div class="ui-g dashboard">
+    <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-4 ui-lg-4">
+            <div class="ui-g card overview-box overview-box-1">
+                <span class="overview-box-name">Agendamentos Pendentes</span>
+                <span class="overview-box-count">{{agendamentospendentes}}</span>
+                <!-- <span class="overview-box-badge">+30%</span> -->
+                <img src="assets/layout/images/dashboard/chart-1.svg" />
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-lg-4">
+            <div class="ui-g card overview-box overview-box-3">
+                <span class="overview-box-name">Agendamentos Registrados</span>
+                <span class="overview-box-count">{{agendamentosregistrados}}</span>
+                <!-- <span class="overview-box-badge">-75%</span> -->
+                <img src="assets/layout/images/dashboard/chart-3.svg" />
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-lg-4">
+            <div class="ui-g card overview-box overview-box-2">
+                <span class="overview-box-name">Agendamentos Aprovados</span>
+                <span class="overview-box-count">{{agendamentosaprovados}}</span>
+                <!-- <span class="overview-box-badge">25%</span> -->
+                <img src="assets/layout/images/dashboard/chart-4.svg" />
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
     
     <div class="ui-g">
-        <h4>DASHBOARDS</h4>
+        <h4>FILTROS</h4>
         <div class="ui-g-12">
             <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
                 <span class="md-inputfield">
@@ -49,6 +77,7 @@
 
 
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
+    <h4>ACOMPANHAMENTOS</h4>
     <p-fieldset legend="Combustível" [toggleable]="true" [collapsed]="true"> 
         <div class="ui-g">
             <div class="ui-g-6"> 

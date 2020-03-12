@@ -731,7 +731,7 @@ module.exports = "<p-toast [style]=\"{marginTop: '80px'}\"></p-toast>\r\n<div cl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" >\r\n    <h4>ENVIAR EMAIL DE NOTIFICAÇÃO</h4>\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n  \r\n        <div class=\"ui-g-12 ui-md-12\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmpresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Assunto</label>\r\n          </span>\r\n        </div>\r\n      \r\n    \r\n        <div class=\"ui-g-12\">\r\n          <p-editor [(ngModel)]=\"text1\" [style]=\"{'height':'320px'}\"></p-editor>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Enviar\"  (click)=\"salvar()\"></button>\r\n        </div>\r\n    </div>\r\n  </div>"
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>ENVIAR EMAIL DE NOTIFICAÇÃO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g ui-md\">\r\n\r\n    <div class=\"ui-g-12 ui-md-5\">\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" type=\"text\" [(ngModel)]=\"Assunto\" class=\"ui-g-12\" pInputText/>\r\n        <label>Assunto</label>\r\n      </span>\r\n    </div>\r\n  \r\n    <div class=\"ui-g-12 ui-md-6\" >\r\n        <p-multiSelect class=\"ui-g-12\" [options]=\"ArrEmails\" optionLabel=\"nome\" [(ngModel)]=\"OpcEmails\" [style]=\"{width: '100%'}\" [panelStyle]=\"{minWidth:'120px'}\"></p-multiSelect>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-1\" style=\"text-align: right;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Enviar\"  (click)=\"AoSalvar()\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12  ui-md-12\">\r\n      <p-editor [(ngModel)]=\"Texto\" [style]=\"{'height':'320px'}\"></p-editor>\r\n    </div>\r\n    <div class=\"ui-g-12  ui-md-12\" style=\"text-align: right;\">\r\n      <div class=\"ui-g-12  ui-md-10\" style=\"text-align: right;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar novo Modelo\"  (click)=\"novoModelo()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12  ui-md-2\" style=\"text-align: right;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Modelos\"  (click)=\"Modelos()\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<p-dialog [(visible)]=\"carregando\" [style]=\"{width: '1%',height: '1%'}\">\r\n  <div class=\"splash-screen\" style=\"margin-top:-180px; margin-left:-180px;height:20%;width:20%; border-radius: 15px;\" >\r\n    <div class=\"splash-loader\">\r\n        <img src=\"assets/layout/images/SISPCpng.png\">\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog [(visible)]=\"novoModeloP\" [style]=\"{width: '1%',height: '1%'}\">\r\n  <div class=\"ui-g ui-md\">\r\n    <div class=\"ui-g-12 ui-md-6\">\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" type=\"text\" [(ngModel)]=\"NomeDoModelo\" class=\"ui-g-12\" pInputText/>\r\n        <label>Nome do Modelo</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12  ui-md-6\" style=\"text-align: right;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Modelos\"  (click)=\"novoModelo()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog [(visible)]=\"modelos\" [style]=\"{width: '50%',height: '50%'}\">\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g ui-md\">\r\n    <p-table [value]=\"modelosCadastrados\">\r\n        <ng-template pTemplate=\"header\">\r\n            <tr>\r\n                <th>NomeDoTemplate</th>\r\n                <th>Assunto</th>\r\n                <th>Selecionar</th>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-car>\r\n            <tr>\r\n                <td>{{car.nomeDoTemplate}}</td>\r\n                <td>{{car.assunto}}</td>\r\n                <td>\r\n                  <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Selecionar\" (click)=\"selecionarModelo(car)\"></button>\r\n                  <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Deletar\" (click)=\"deletarModelo(car)\"></button>\r\n                </td>\r\n            </tr>\r\n        </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>\r\n"
 
 /***/ }),
 
@@ -819,7 +819,7 @@ module.exports = "<div class=\"card\" style=\"width: 99.5%; margin-left: 3px;\" 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>EDITAR CADASTRO DO INDICADOR</h4>\r\n\r\n  <div class=\"ui-g-6 ui-md-12\" >\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [options]=\"FiltroListaGerencia\" optionLabel=\"label\" filterBy=\"label,FiltroListaGerencia.label\" \r\n        [autoWidth]=\"true\" [(ngModel)]=\"FiltroGerenciaSelecionada\"  \r\n        placeholder=\"Selecione a Gerencia\" styleClass = \"drop95\" \r\n        filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-3\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar(FiltroGerenciaSelecionada)\"></button>\r\n    </div>\r\n  </div>\r\n  <div style=\" margin-top: 100px\"></div>\r\n</div>\r\n\r\n\r\n<p-table selectionMode=\"single\"  *ngIf=\"listaIndicadores\" [reorderableColumns]=\"true\" [value]=\"listaIndicadores\" [reorderableColumns]=\"true\" > \r\n  <ng-template class=\"ui-g-12\" pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n      <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdem()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div class=\"ui-helper-clearfix ui-g-6\" style=\"text-align: right\">\r\n      <button type=\"button\" pButton  iconPos=\"right\" label=\"X\" (click)=\"fecharLista()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div style=\" margin-top: 50px\"></div>\r\n  </ng-template>\r\n\r\n  <ng-template pTemplate=\"header\">\r\n    <tr>\r\n      <th style=\"width:2.5em\"></th>\r\n      <th>Ordem</th>\r\n      <th>Id</th>\r\n      <th>Nome Indicador</th>\r\n      <th>Classificação</th>\r\n      <th>Tendência</th>\r\n      <th style=\"width:8em\"></th>\r\n    </tr>\r\n  </ng-template>\r\n  \r\n  <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n    <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n      <td>\r\n          <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n      </td>\r\n      <td>\r\n        {{rowData.ordem}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicadorId}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicador}}\r\n      </td>\r\n      <td>\r\n        {{rowData.classificacao}}\r\n      </td>\r\n      <td>\r\n        {{rowData.tendencia}}\r\n      </td>\r\n      <td style=\"text-align:center\">\r\n        <button pButton type=\"button\" icon=\"pi pi-info\" class=\"ui-button-info\" (click)=\"abrirDialog(rowData)\" ></button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n\r\n\r\n\r\n<p-dialog [(visible)]=\"editarCadastro\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '1900px', width: '95%'}\" \t (onHide)=\"aoFecharODialog()\">\r\n  <p-header *ngIf=\"indicadorSelecionado\">{{ indicadorSelecionado.indicadorId }} - {{ indicadorSelecionado.indicador }}</p-header>\r\n  <div class=\"ui-g\" *ngIf=\"indicadorSelecionado\">\r\n    <!-- ===============================================================================================-->\r\n    \r\n    <div class=\"ui-g-6\"><h2>Editor de Indicador</h2></div>\r\n    <div class=\"ui-g-6\"  style=\"text-align: right\">\r\n      <div class=\"ui-g-12\">\r\n        <p-checkbox [(ngModel)]=\"indicadorSelecionado.ativo\" label=\"Indicador Ativo\"  binary=\"true\"></p-checkbox>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <button type=\"button\" pButton iconPos=\"right\" label=\"Salvar Alterações\" (click)=\"SalvarTudo(indicadorSelecionado)\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"classificacoesLista\" [(ngModel)]=\"editarIndicadorClassificacao\" \r\n        placeholder=\"Selecione a Classificação\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tendenciaLista\" [(ngModel)]=\"editarIndicadorTendencia\"\r\n        placeholder=\"Selecione a Tendência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tiporotuloLista\" [(ngModel)]=\"editarIndicadorTipoRotulo\" \r\n        placeholder=\"Selecione o Tipo do Rótulo\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"FiltroListaGerencia\" [(ngModel)]=\"editarIndicadorGerencia\"\r\n        placeholder=\"Selecione a Gerência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <!-- <div class=\"ui-g-12\">\r\n      <p-editor [(ngModel)]=\"editarIndicadorDescricao\" [style]=\"{'height':'120px'}\"></p-editor>\r\n    </div> -->\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-12\"><h2>Labels</h2></div>\r\n      <div class=\"ui-g-12\">\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo1\"\r\n          placeholder=\"Label 01\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo2\"\r\n          placeholder=\"Label 02\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo3\"\r\n          placeholder=\"Label 03\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo4\"\r\n          placeholder=\"Label 04\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 01\" [(ngModel)]=\"indicadorSelecionado.rotulocampo1\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 02\" [(ngModel)]=\"indicadorSelecionado.rotulocampo2\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 03\" [(ngModel)]=\"indicadorSelecionado.rotulocampo3\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 04\" [(ngModel)]=\"indicadorSelecionado.rotulocampo4\">\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-6\"><h2>Editor de Gráfico</h2></div>\r\n\r\n      <div class=\"ui-g-6\">  \r\n        <div class=\"ui-g-10\"  style=\"text-align: right\">\r\n          <p-calendar placeholder=\"Selecione a Referência\" *ngIf=\"visualizarGrafico==false\"  [(ngModel)]=\"filtroGraficoData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align: right\">  \r\n          <button pButton type=\"button\" icon=\"pi pi-search\" *ngIf=\"visualizarGrafico==false\" (click)=\"carregarGrafico()\"></button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"ui-g-7\" width=\"600px\" height=\"400px\">\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Recarregar\" (click)=\"atualizarvisualizacao()\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Fechar\"   (click)=\"fecharvisualizacao()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n        <p-chart class=\"chart\" *ngIf=\"visualizarGrafico\" type=\"bar\" [data]=\"data\" [options]=\"options\" widht=\"100%\" height=\"400px\"></p-chart>\r\n      </div>\r\n      \r\n      <div *ngIf=\"visualizarGrafico\" class=\"ui-g-5\">\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Inserir Campo\" (click)=\"inserirnovoCampo()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Alterar Ordem\" (click)=\"AlteraOrdemDosCampos()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n        </div>\r\n\r\n        <p-fieldset [toggleable]=\"true\" [collapsed]='true' *ngFor=\"let eixos of indicadorSelecionado.campoDoGraficoId; let i = index\" >\r\n          <p-header>{{ eixos.label }}</p-header>\r\n          <div class=\"ui-g-6\">\r\n            <input pInputText type=\"text\" [(ngModel)]=\"eixos.label\">\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"editargraficoseixos[i]\"\r\n              placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n              <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"editartiposgraficos[i]\"\r\n                placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n                styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"editarposicoes[i]\"\r\n              placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\" *ngIf=\"editartiposgraficos[i].value ==='line'\">\r\n            <h4 class=\"first\"></h4>\r\n            <p-checkbox [(ngModel)]=\"editarestilos[i]\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n          </div>\r\n          <div class=\"ui-g-6\" >\r\n            <h4 class=\"first\">Cor Selecionada</h4>\r\n            <img width=\"40px\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{editarcores[i]}}.PNG\" >\r\n          </div>\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n              <img width=\"40px\" (click)=\"atualizarCores(i, cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Deletar\" (click)=\"deletarCampo(eixos.campoDoGraficoId)\" class=\"ui-button-rounded ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Atualizar\" (click)=\"atualizarCampo(i)\" class=\"ui-button-rounded ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n        </p-fieldset>\r\n\r\n      </div>\r\n    </div>\r\n    <!-- ===============================================================================================-->\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Ficha do Indicador\" [(visible)]=\"inserirUmCampo\" [style]=\"{ height: '500px', width: '400px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"inserirUmCampo\">\r\n    <div class=\"ui-g-6\">\r\n      <input pInputText type=\"text\" [(ngModel)]=\"NovoCampoLabel\">\r\n    </div>\r\n\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"NovoCampoEixo\"\r\n        placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"NovoCampoTipo\"\r\n          placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"NovoCampoPosicao\"\r\n        placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-12\" *ngIf=\"NovoCampoTipo['value'] === 'line'\">\r\n      <h4 class=\"first\"></h4>\r\n      <p-checkbox [(ngModel)]=\"NovoCampoEstilo\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n        <img width=\"40px\" (click)=\"selectcor(cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <button pButton type=\"button\" label=\"Inserir\"  (click)=\"inserirnovoCampoOk()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Alterar Ordem\" [(visible)]=\"alteraOrdemCampos\" [style]=\"{ height: '500px', width: '700px'}\">\r\n  <div class=\"ui-g\">\r\n    <p-table *ngIf=\"gridDeLista\" selectionMode=\"single\" [reorderableColumns]=\"true\" [value]=\"indicadorSelecionado.campoDoGraficoId\" [reorderableColumns]=\"true\" > \r\n      <ng-template class=\"ui-g-12\" pTemplate=\"caption\" >\r\n        <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n          <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdemDosCampos()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        </div>\r\n        <div style=\" margin-top: 50px\"></div>\r\n      </ng-template>\r\n    \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n          <th style=\"width:2.5em\"></th>\r\n          <th>Ordem</th>\r\n          <th>Label</th>\r\n          <th>Campo</th>\r\n        </tr>\r\n      </ng-template>\r\n      \r\n      <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n        <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n          <td>\r\n              <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n          </td>\r\n          <td>\r\n            {{rowData.ordem}}\r\n          </td>\r\n          <td>\r\n            {{rowData.label}}\r\n          </td>\r\n          <td>\r\n            {{rowData.eixo}}\r\n          </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>EDITAR CADASTRO DO INDICADOR</h4>\r\n\r\n  <div class=\"ui-g-6 ui-md-12\" >\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [options]=\"FiltroListaGerencia\" optionLabel=\"label\" filterBy=\"label,FiltroListaGerencia.label\" \r\n        [autoWidth]=\"true\" [(ngModel)]=\"FiltroGerenciaSelecionada\"  \r\n        placeholder=\"Selecione a Gerencia\" styleClass = \"drop95\" \r\n        filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-3\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar(FiltroGerenciaSelecionada)\"></button>\r\n    </div>\r\n  </div>\r\n  <div style=\" margin-top: 100px\"></div>\r\n</div>\r\n\r\n\r\n<p-table selectionMode=\"single\"  *ngIf=\"listaIndicadores\" [reorderableColumns]=\"true\" [value]=\"listaIndicadores\" [reorderableColumns]=\"true\" > \r\n  <ng-template class=\"ui-g-12\" pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n      <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdem()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div class=\"ui-helper-clearfix ui-g-6\" style=\"text-align: right\">\r\n      <button type=\"button\" pButton  iconPos=\"right\" label=\"X\" (click)=\"fecharLista()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div style=\" margin-top: 50px\"></div>\r\n  </ng-template>\r\n\r\n  <ng-template pTemplate=\"header\">\r\n    <tr>\r\n      <th style=\"width:2.5em\"></th>\r\n      <th>Ordem</th>\r\n      <th>Id</th>\r\n      <th>Nome Indicador</th>\r\n      <th>Classificação</th>\r\n      <th>Tendência</th>\r\n      <th style=\"width:8em\"></th>\r\n    </tr>\r\n  </ng-template>\r\n  \r\n  <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n    <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n      <td>\r\n          <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n      </td>\r\n      <td>\r\n        {{rowData.ordem}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicadorId}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicador}}\r\n      </td>\r\n      <td>\r\n        {{rowData.classificacao}}\r\n      </td>\r\n      <td>\r\n        {{rowData.tendencia}}\r\n      </td>\r\n      <td style=\"text-align:center\">\r\n        <button pButton type=\"button\" icon=\"pi pi-info\" class=\"ui-button-info\" (click)=\"abrirDialog(rowData)\" ></button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n\r\n\r\n\r\n<p-dialog [(visible)]=\"editarCadastro\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '1900px', width: '95%'}\" \t (onHide)=\"aoFecharODialog()\">\r\n  <p-header *ngIf=\"indicadorSelecionado\">{{ indicadorSelecionado.indicadorId }} - {{ indicadorSelecionado.indicador }}</p-header>\r\n  <div class=\"ui-g\" *ngIf=\"indicadorSelecionado\">\r\n    <!-- ===============================================================================================-->\r\n    \r\n    <div class=\"ui-g-6\"><h2>Editor de Indicador</h2></div>\r\n    <div class=\"ui-g-6\"  style=\"text-align: right\">\r\n      <div class=\"ui-g-12\">\r\n        <p-checkbox [(ngModel)]=\"indicadorSelecionado.ativo\" label=\"Indicador Ativo\"  binary=\"true\"></p-checkbox>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <button type=\"button\" pButton iconPos=\"right\" label=\"Salvar Alterações\" (click)=\"SalvarTudo(indicadorSelecionado)\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"classificacoesLista\" [(ngModel)]=\"editarIndicadorClassificacao\" \r\n        placeholder=\"Selecione a Classificação\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tendenciaLista\" [(ngModel)]=\"editarIndicadorTendencia\"\r\n        placeholder=\"Selecione a Tendência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tiporotuloLista\" [(ngModel)]=\"editarIndicadorTipoRotulo\" \r\n        placeholder=\"Selecione o Tipo do Rótulo\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"FiltroListaGerencia\" [(ngModel)]=\"editarIndicadorGerencia\"\r\n        placeholder=\"Selecione a Gerência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <!-- <div class=\"ui-g-12\">\r\n      <p-editor [(ngModel)]=\"editarIndicadorDescricao\" [style]=\"{'height':'120px'}\"></p-editor>\r\n    </div> -->\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div><h2>Mensais</h2></div>\r\n      <div class=\"ui-g-12\">\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulosMensal\" [(ngModel)]=\"editarIndicadorCampoMensal\"\r\n          placeholder=\"Label 01\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-12\"><h2>Labels</h2></div>\r\n      <div class=\"ui-g-12\">\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo1\"\r\n          placeholder=\"Label 01\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo2\"\r\n          placeholder=\"Label 02\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo3\"\r\n          placeholder=\"Label 03\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo4\"\r\n          placeholder=\"Label 04\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 01\" [(ngModel)]=\"indicadorSelecionado.rotulocampo1\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 02\" [(ngModel)]=\"indicadorSelecionado.rotulocampo2\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 03\" [(ngModel)]=\"indicadorSelecionado.rotulocampo3\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 04\" [(ngModel)]=\"indicadorSelecionado.rotulocampo4\">\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-6\"><h2>Editor de Gráfico</h2></div>\r\n\r\n      <div class=\"ui-g-6\">  \r\n        <div class=\"ui-g-10\"  style=\"text-align: right\">\r\n          <p-calendar placeholder=\"Selecione a Referência\" *ngIf=\"visualizarGrafico==false\"  [(ngModel)]=\"filtroGraficoData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align: right\">  \r\n          <button pButton type=\"button\" icon=\"pi pi-search\" *ngIf=\"visualizarGrafico==false\" (click)=\"carregarGrafico()\"></button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"ui-g-7\" width=\"600px\" height=\"400px\">\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Recarregar\" (click)=\"atualizarvisualizacao()\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Fechar\"   (click)=\"fecharvisualizacao()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n        <p-chart class=\"chart\" *ngIf=\"visualizarGrafico\" type=\"bar\" [data]=\"data\" [options]=\"options\" widht=\"100%\" height=\"400px\"></p-chart>\r\n      </div>\r\n      \r\n      <div *ngIf=\"visualizarGrafico\" class=\"ui-g-5\">\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Inserir Campo\" (click)=\"inserirnovoCampo()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Alterar Ordem\" (click)=\"AlteraOrdemDosCampos()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n        </div>\r\n\r\n        <p-fieldset [toggleable]=\"true\" [collapsed]='true' *ngFor=\"let eixos of indicadorSelecionado.campoDoGraficoId; let i = index\" >\r\n          <p-header>{{ eixos.label }}</p-header>\r\n          <div class=\"ui-g-6\">\r\n            <input pInputText type=\"text\" [(ngModel)]=\"eixos.label\">\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"editargraficoseixos[i]\"\r\n              placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n              <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"editartiposgraficos[i]\"\r\n                placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n                styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"editarposicoes[i]\"\r\n              placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\" *ngIf=\"editartiposgraficos[i].value ==='line'\">\r\n            <h4 class=\"first\"></h4>\r\n            <p-checkbox [(ngModel)]=\"editarestilos[i]\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n          </div>\r\n          <div class=\"ui-g-6\" >\r\n            <h4 class=\"first\">Cor Selecionada</h4>\r\n            <img width=\"40px\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{editarcores[i]}}.PNG\" >\r\n          </div>\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n              <img width=\"40px\" (click)=\"atualizarCores(i, cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Deletar\" (click)=\"deletarCampo(eixos.campoDoGraficoId)\" class=\"ui-button-rounded ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Atualizar\" (click)=\"atualizarCampo(i)\" class=\"ui-button-rounded ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n        </p-fieldset>\r\n\r\n      </div>\r\n    </div>\r\n    <!-- ===============================================================================================-->\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Ficha do Indicador\" [(visible)]=\"inserirUmCampo\" [style]=\"{ height: '500px', width: '400px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"inserirUmCampo\">\r\n    <div class=\"ui-g-6\">\r\n      <input pInputText type=\"text\" [(ngModel)]=\"NovoCampoLabel\">\r\n    </div>\r\n\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"NovoCampoEixo\"\r\n        placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"NovoCampoTipo\"\r\n          placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"NovoCampoPosicao\"\r\n        placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-12\" *ngIf=\"NovoCampoTipo['value'] === 'line'\">\r\n      <h4 class=\"first\"></h4>\r\n      <p-checkbox [(ngModel)]=\"NovoCampoEstilo\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n        <img width=\"40px\" (click)=\"selectcor(cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <button pButton type=\"button\" label=\"Inserir\"  (click)=\"inserirnovoCampoOk()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Alterar Ordem\" [(visible)]=\"alteraOrdemCampos\" [style]=\"{ height: '500px', width: '700px'}\">\r\n  <div class=\"ui-g\">\r\n    <p-table *ngIf=\"gridDeLista\" selectionMode=\"single\" [reorderableColumns]=\"true\" [value]=\"indicadorSelecionado.campoDoGraficoId\" [reorderableColumns]=\"true\" > \r\n      <ng-template class=\"ui-g-12\" pTemplate=\"caption\" >\r\n        <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n          <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdemDosCampos()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        </div>\r\n        <div style=\" margin-top: 50px\"></div>\r\n      </ng-template>\r\n    \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n          <th style=\"width:2.5em\"></th>\r\n          <th>Ordem</th>\r\n          <th>Label</th>\r\n          <th>Campo</th>\r\n        </tr>\r\n      </ng-template>\r\n      \r\n      <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n        <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n          <td>\r\n              <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n          </td>\r\n          <td>\r\n            {{rowData.ordem}}\r\n          </td>\r\n          <td>\r\n            {{rowData.label}}\r\n          </td>\r\n          <td>\r\n            {{rowData.eixo}}\r\n          </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -841,7 +841,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3px\" >\r\n    <h4>EDITAR INDICADORES</h4>\r\n   <div class=\"ui-g-6 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"filtroData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n          <label>Referencia</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n\r\n          <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" filterBy=\"label,filtroListaIndicador.indicador\" \r\n          [autoWidth]=\"true\" [(ngModel)]=\"filtroIndicador\"  placeholder=\".\" styleClass = \"drop95\" \r\n          filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n\r\n          <label>Indicador</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"atualizar()\"></button>\r\n      </div>\r\n    </div>\r\n    <div style=\" margin-top: 60px\"></div>\r\n  </div>\r\n\r\n\r\n  <p-dialog header=\"Editar\" [(visible)]=\"ListaOk\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '95%', width: '95%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <p-table [value]=\"listaCompleta\" dataKey=\"vin\" editMode=\"row\" [paginator]=\"true\" [rows]=\"13\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataIndicador</th>\r\n            <th>DataReferencia</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n            <th>Forecast</th>\r\n            <th>Forecast2</th>\r\n            <th>Forecast3</th>\r\n            <th>Previsão</th>\r\n            <th style=\"width:8em\"></th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\">\r\n            <td>\r\n                {{rowData.dataindicador}}\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                      <p-calendar [(ngModel)]=\"rowData.datareferencia\" view=\"month\" dateFormat=\"yy-mm-dd\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.datareferencia}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.orcado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.orcado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.realizado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.realizado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.minimo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.minimo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.maximo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.maximo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.meta\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.meta}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazoreg\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazoreg}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast2\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast2}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast3\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast3}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.previsao\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.previsao}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td style=\"text-align:center\">\r\n              <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow icon=\"pi pi-info\" class=\"ui-button-info\"></button>\r\n              <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"onRowEditSave(rowData)\" style=\"margin-right: .5em\"></button>\r\n              </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Cancelar\" (click)=\"CancelarAlteracoes()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"SolicitarAlteracao()\"></button>\r\n      </div>\r\n    </div>\r\n    \r\n  </p-dialog>\r\n\r\n\r\n  <div *ngIf=\"ListaParaEnviar\" showEffect=\"fade\">\r\n    <p-table [value]=\"listaAlterada\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" [reorderableColumns]=\"true\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataReferencia</th>\r\n            <th>DataIndicador</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\"  [ngClass]=\"new-car\">\r\n            <td>{{rowData.dataindicador}}</td>\r\n            <td>{{rowData.datareferencia}}</td>\r\n            <td>{{rowData.orcado}}</td>\r\n            <td>{{rowData.realizado}}</td>\r\n            <td>{{rowData.minimo}}</td>\r\n            <td>{{rowData.maximo}}</td>\r\n            <td>{{rowData.meta}}</td>\r\n            <td>{{rowData.dentroprazoreg}}</td>\r\n            <td>{{rowData.dentroprazo}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div *ngIf=\"CarregarVisible\" showEffect=\"fade\" >\r\n      <h3 class=\"first\">Carregando</h3>\r\n      <p-progressBar [value]=\"porcentagemconcluido\"></p-progressBar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\"  align=\"center\">\r\n      <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"AprovarAlteracoes()\"></button>\r\n    </div>\r\n  </div>    \r\n"
+module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3px\" >\r\n    <h4>EDITAR INDICADORES</h4>\r\n   <div class=\"ui-g-6 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"filtroData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n          <label>Referencia</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n\r\n          <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" filterBy=\"label,filtroListaIndicador.indicador\" \r\n          [autoWidth]=\"true\" [(ngModel)]=\"filtroIndicador\"  placeholder=\".\" styleClass = \"drop95\" \r\n          filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n\r\n          <label>Indicador</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"atualizar()\"></button>\r\n      </div>\r\n    </div>\r\n    <div style=\" margin-top: 60px\"></div>\r\n  </div>\r\n\r\n\r\n  <p-dialog header=\"Editar\" [(visible)]=\"ListaOk\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '95%', width: '95%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <p-table [value]=\"listaCompleta\" dataKey=\"vin\" editMode=\"row\" [paginator]=\"true\" [rows]=\"13\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataIndicador</th>\r\n            <th>DataReferencia</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Vl. Retido</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n            <th>Forecast</th>\r\n            <th>Forecast2</th>\r\n            <th>Forecast3</th>\r\n            <th>Previsão</th>\r\n            <th style=\"width:8em\"></th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\">\r\n            <td>\r\n                {{rowData.dataindicador}}\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                      <p-calendar [(ngModel)]=\"rowData.datareferencia\" view=\"month\" dateFormat=\"yy-mm-dd\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.datareferencia}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.orcado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.orcado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.realizado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.realizado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.valorretido\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.valorretido}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.minimo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.minimo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.maximo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.maximo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.meta\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.meta}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazoreg\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazoreg}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast2\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast2}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast3\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast3}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.previsao\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.previsao}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td style=\"text-align:center\">\r\n              <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow icon=\"pi pi-info\" class=\"ui-button-info\"></button>\r\n              <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"onRowEditSave(rowData)\" style=\"margin-right: .5em\"></button>\r\n              </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Cancelar\" (click)=\"CancelarAlteracoes()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"SolicitarAlteracao()\"></button>\r\n      </div>\r\n    </div>\r\n    \r\n  </p-dialog>\r\n\r\n\r\n  <div *ngIf=\"ListaParaEnviar\" showEffect=\"fade\">\r\n    <p-table [value]=\"listaAlterada\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" [reorderableColumns]=\"true\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataReferencia</th>\r\n            <th>DataIndicador</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\"  [ngClass]=\"new-car\">\r\n            <td>{{rowData.dataindicador}}</td>\r\n            <td>{{rowData.datareferencia}}</td>\r\n            <td>{{rowData.orcado}}</td>\r\n            <td>{{rowData.realizado}}</td>\r\n            <td>{{rowData.minimo}}</td>\r\n            <td>{{rowData.maximo}}</td>\r\n            <td>{{rowData.meta}}</td>\r\n            <td>{{rowData.dentroprazoreg}}</td>\r\n            <td>{{rowData.dentroprazo}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div *ngIf=\"CarregarVisible\" showEffect=\"fade\" >\r\n      <h3 class=\"first\">Carregando</h3>\r\n      <p-progressBar [value]=\"porcentagemconcluido\"></p-progressBar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\"  align=\"center\">\r\n      <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"AprovarAlteracoes()\"></button>\r\n    </div>\r\n  </div>    \r\n"
 
 /***/ }),
 
@@ -907,7 +907,7 @@ module.exports = "<!-- DIV DA CAPA -->\r\n<div class=\"div1\" style=\"height: 60
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n    {{ this.element.classificacao }}\r\n  </div>\r\n  <div class=\"ui-g-4 gridRel\">\r\n    {{ this.element.indicador }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloRealizAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\">\r\n    {{ this.RotuloDiferencaPerc }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloDiferencaAcum2 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloPrevisaoMensal}}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoMensal}}\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n    {{ this.element.classificacao }}\r\n  </div>\r\n  <div class=\"ui-g-4 gridRel\">\r\n    {{ this.element.indicador }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.campoCalc1 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cor1\" >\r\n    {{ this.campoCalc2 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cor2\">\r\n    {{ this.campoCalc3 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cor3\" >\r\n    {{ this.campoCalc4 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloPrevisaoMensal}}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoMensal}}\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1050,7 +1050,7 @@ module.exports = "<h4>Calendário de Agendamentos</h4>\r\n<p-fullCalendar [event
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 filter-container\">\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Solicitante\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n                <p-calendar class=\"ui-g-4\" type=\"search\" (onSelect)=\"Filter()\" [(ngModel)]=\"VALOR3data\" dateFormat=\"yy-mm-dd\" placeholder=\"Agendamento\" ></p-calendar>\r\n                \r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <div class=\"ui-g\">\r\n    <div class=\"ui-g-12 filter-container\">\r\n        <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Solicitante\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n        <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n        <p-calendar class=\"ui-g-4\" type=\"search\" (onSelect)=\"Filter()\" [(ngModel)]=\"VALOR3data\" dateFormat=\"yy-mm-dd\" placeholder=\"Agendamento\" ></p-calendar>\r\n        \r\n    </div>\r\n  </div>\r\n\r\n  <p-table #dt [value]=\"Agendamentos\" selectionMode=\"multiple\" [(selection)]=\"selectedCars\">\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr>\r\n          <th>Data Agendamento</th>\r\n          <th>Placa</th>\r\n          <th>Status</th>\r\n          <th>Inicio</th>\r\n          <th>Término</th>\r\n          <th>Aprovador</th>\r\n          <th>Qtd. Pessoas</th>\r\n          <th>Solicitante</th>\r\n          <th></th>\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-car pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"car\">\r\n        <td>{{car.dataAgendamento}}</td>\r\n        <td>{{car.placa}}</td>\r\n        <td>\r\n          <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n          <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n        </td>\r\n        <td>{{car.agendadode}}</td>\r\n        <td>{{car.agendadoate}}</td>\r\n        <td>{{car.aprovador}}</td>\r\n        <td>{{car.qtdPessoas}}</td>\r\n        <td>{{car.solicitante}}</td>\r\n        <td>\r\n          <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n        </td>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -1072,7 +1072,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <div class=\"ui-g\">\r\n        <h4>DASHBOARDS</h4>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Gerencias</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Departamentos</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Placas</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Tipo de Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Modelo do Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Natureza do Cadastro</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n       \r\n     </div>\r\n</div>\r\n\r\n\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <p-fieldset legend=\"Combustível\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Consumo de Combustível: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Consumo de Combustível: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\"  class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Manutenção\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <h2>Quantidade</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Valor Utilizado</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                        <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                        </ng-template>\r\n                        </p-cellEditor>\r\n                    </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Distância Percorrida\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Distancia Percorrida: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">  \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Distancia Percorrida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">    \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n\r\n\r\n    <p-fieldset legend=\"Velocidade\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <h2>Velocidade Máxima Atingida: Acumulado</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">     \r\n                    <h2>Velocidade Máxima Atingida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n</div>"
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"ui-g dashboard\">\r\n    <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-12 ui-md-4 ui-lg-4\">\r\n            <div class=\"ui-g card overview-box overview-box-1\">\r\n                <span class=\"overview-box-name\">Agendamentos Pendentes</span>\r\n                <span class=\"overview-box-count\">{{agendamentospendentes}}</span>\r\n                <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                <img src=\"assets/layout/images/dashboard/chart-1.svg\" />\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4 ui-lg-4\">\r\n            <div class=\"ui-g card overview-box overview-box-3\">\r\n                <span class=\"overview-box-name\">Agendamentos Registrados</span>\r\n                <span class=\"overview-box-count\">{{agendamentosregistrados}}</span>\r\n                <!-- <span class=\"overview-box-badge\">-75%</span> -->\r\n                <img src=\"assets/layout/images/dashboard/chart-3.svg\" />\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4 ui-lg-4\">\r\n            <div class=\"ui-g card overview-box overview-box-2\">\r\n                <span class=\"overview-box-name\">Agendamentos Aprovados</span>\r\n                <span class=\"overview-box-count\">{{agendamentosaprovados}}</span>\r\n                <!-- <span class=\"overview-box-badge\">25%</span> -->\r\n                <img src=\"assets/layout/images/dashboard/chart-4.svg\" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    \r\n    <div class=\"ui-g\">\r\n        <h4>FILTROS</h4>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Gerencias</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Departamentos</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Placas</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Tipo de Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Modelo do Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Natureza do Cadastro</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n       \r\n     </div>\r\n</div>\r\n\r\n\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <h4>ACOMPANHAMENTOS</h4>\r\n    <p-fieldset legend=\"Combustível\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Consumo de Combustível: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Consumo de Combustível: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\"  class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Manutenção\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <h2>Quantidade</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Valor Utilizado</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                        <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                        </ng-template>\r\n                        </p-cellEditor>\r\n                    </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Distância Percorrida\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Distancia Percorrida: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">  \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Distancia Percorrida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">    \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n\r\n\r\n    <p-fieldset legend=\"Velocidade\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <h2>Velocidade Máxima Atingida: Acumulado</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">     \r\n                    <h2>Velocidade Máxima Atingida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n</div>"
 
 /***/ }),
 
@@ -1922,7 +1922,7 @@ var AppMenuComponent = /** @class */ (function () {
                             {
                                 label: 'Configurações', icon: 'subject',
                                 items: [
-                                    { label: 'Indicadores', icon: 'subject', routerLink: 'indicadoresAdmin' }
+                                    { label: 'Indicadores', icon: 'subject', routerLink: '/indicadoresAdmin' }
                                 ]
                             }
                         ] :
@@ -1935,7 +1935,7 @@ var AppMenuComponent = /** @class */ (function () {
                                 {
                                     label: 'Configurações', icon: 'settings',
                                     items: [
-                                        { label: 'Indicadores', icon: 'build', routerLink: 'indicadoresAdmin' }
+                                        { label: 'Indicadores', icon: 'build', routerLink: '/indicadoresAdmin' }
                                     ]
                                 }
                             ] :
@@ -2672,9 +2672,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-var API_CONFIG = 'http://sispcprl01:7777/teste-sispc-backend';
-//export const API_CONFIG =  'http://sispcprl01:7777/sispc-backend'
-//export const API_CONFIG =  'http://localhost:7777'
+// export const API_CONFIG =  'http://sispcprl01:7777/teste-sispc-backend'
+var API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
+// export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
 //export const API_CONFIG =  'http://webprl01:7777/sispc-backend'
 //export const API_CONFIG =  'http://ntbprl013863:7777'
@@ -3011,6 +3011,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_164__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar.component */ "./src/app/performance/admin-indicadores/importar/importar.component.ts");
 /* harmony import */ var _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_165__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-orcados/importar-orcados.component */ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.ts");
 /* harmony import */ var _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_166__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-bots/importar-bots.component */ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.ts");
+/* harmony import */ var _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__ = __webpack_require__(/*! ./notificacoessispc/notificacoes.service */ "./src/app/notificacoessispc/notificacoes.service.ts");
+
 
 
 
@@ -3354,7 +3356,8 @@ var AppModule = /** @class */ (function () {
                 _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"],
                 _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"],
                 _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"],
-                _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"]
+                _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"],
+                _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__["NotificacoesService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
         })
@@ -3468,7 +3471,7 @@ var routes = [
     { path: '', component: _app_main_app_main_component__WEBPACK_IMPORTED_MODULE_17__["AppMainComponent"],
         children: [
             { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_21__["HomeComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"] },
             { path: 'sample', component: _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_4__["SampleDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'forms', component: _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_5__["FormsDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'data', component: _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_6__["DataDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
@@ -3488,15 +3491,15 @@ var routes = [
             { path: 'cadastrar', component: _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_25__["CadastrarComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'relatorio', component: _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_30__["TelaImpressaoRelatorioComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'painelprocess', component: _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_32__["PainelprocessoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'transporte', component: _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__["TransporteComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'agendamento', component: _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_34__["AgendarVeiculoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'email', component: _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__["NotificacoessispcComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'transporte', component: _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__["TransporteComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'email', component: _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__["NotificacoessispcComponent"] },
             { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"] },
+            { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
-            { path: 'graficos', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
+            // { path: 'graficos', component: RpaComponent},
+            { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
         ]
     },
     { path: 'printPerformance/:id/:ref', component: _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_29__["RelatorioindicadoresComponent"] },
@@ -4158,6 +4161,66 @@ var ListapendentesComponent = /** @class */ (function () {
             primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
     ], ListapendentesComponent);
     return ListapendentesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/csv-data.service.ts":
+/*!*************************************!*\
+  !*** ./src/app/csv-data.service.ts ***!
+  \*************************************/
+/*! exports provided: CsvDataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CsvDataService", function() { return CsvDataService; });
+var CsvDataService = /** @class */ (function () {
+    function CsvDataService() {
+    }
+    CsvDataService.exportToCsv = function (filename, rows) {
+        if (!rows || !rows.length) {
+            return;
+        }
+        var separator = ';';
+        var keys = Object.keys(rows[0]);
+        var BOM = "\uFEFF";
+        var csvData = BOM +
+            keys.join(separator) +
+            '\n' +
+            rows.map(function (row) {
+                return keys.map(function (k) {
+                    var cell = row[k] === null || row[k] === undefined ? '' : row[k];
+                    cell = cell instanceof Date
+                        ? cell.toLocaleString()
+                        : cell.toString().replace(/"/g, '""');
+                    if (cell.search(/("|,|\n)/g) >= 0) {
+                        cell = "\"" + cell + "\"";
+                    }
+                    return cell;
+                }).join(separator);
+            }).join('\n');
+        var blob = new Blob([csvData], { type: 'text/csv;charset=windows-1252;' });
+        if (navigator.msSaveBlob) { // IE 10+
+            navigator.msSaveBlob(blob, filename);
+        }
+        else {
+            var link = document.createElement('a');
+            if (link.download !== undefined) {
+                // Browsers that support HTML5 download attribute
+                var url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    };
+    return CsvDataService;
 }());
 
 
@@ -7428,7 +7491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraficosComponent", function() { return GraficosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../performance/performance.service */ "./src/app/performance/performance.service.ts");
+/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../performance/performance.service */ "./src/app/performance/performance.service.ts");
 
 
 
@@ -7464,22 +7527,8 @@ var GraficosComponent = /** @class */ (function () {
             responsaveis = indicador[2];
             responsaveis = responsaveis.splice(1, Number.MAX_VALUE);
             _this.PreencherComentarios(eixo, responsaveis, comentarios);
-            _this.RotulosAcumulados(IndicadorCadastro, Resumo);
+            _this.CondicionalDeGraficos(IndicadorCadastro, Resumo);
         });
-    };
-    GraficosComponent.prototype.RotulosAcumulados = function (CadstroIndicador, linhaDeResumo) {
-        this.CondicionalDeGraficos(CadstroIndicador, linhaDeResumo);
-        // if(tipoGraph==5){
-        //   this.RotuloDiferencaPerc = this.RotuloDiferencaPerc+"%";
-        //   this.RotuloDiferencaAcum = this.RotuloDiferencaAcum+"%";
-        //   this.RotuloOrcadoMensal = this.RotuloOrcadoMensal+"%";
-        //   this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal+"%";
-        //   this.RotuloRealizAcum = this.RotuloRealizAcum+"%";
-        //   this.RotuloOrcadoAcum = this.RotuloOrcadoAcum+"%";
-        // }else{
-        //   this.RotuloDiferencaPerc = "Δ% " +this.RotuloDiferencaPerc;
-        //   this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
-        // }
     };
     //SUPRIMIR COMENTÁRIOS VAZIOS E PREENCHER COM DATA
     //========================================================================================
@@ -7527,6 +7576,7 @@ var GraficosComponent = /** @class */ (function () {
         //MONTAR OBJETO COM OS DADOS DO RESUMO
         //========================================================================================
         var ResumoDosEixos = {
+            orcadomensal: orcadoMensal,
             orcadoacumulado: orcadoAcumulad,
             orcadomedia: OrcadoMedia,
             realizadoacumulado: realizadoAcumulad,
@@ -7540,22 +7590,10 @@ var GraficosComponent = /** @class */ (function () {
             ultimorealizado: UltReal,
             ultimoorcado: UltOrcado
         };
-        this.RotuloOrcadoMensal = orcadoMensal;
+        this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
         this.RotuloPrevisaoMensal = PrevisaoMensal;
         //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
         //========================================================================================
-        if (IndicadorCadastro.rotulocampo1 === 'orcadomedia' || IndicadorCadastro.rotulocampo1 === 'realizadomedia'
-            || IndicadorCadastro.rotulocampo2 === 'orcadomedia' || IndicadorCadastro.rotulocampo2 === 'realizadomedia'
-            || IndicadorCadastro.rotulocampo3 === 'orcadomedia' || IndicadorCadastro.rotulocampo3 === 'realizadomedia'
-            || IndicadorCadastro.rotulocampo4 === 'orcadomedia' || IndicadorCadastro.rotulocampo4 === 'realizadomedia') {
-            this.RotuloOrcadoMensal = OrcadoMedia;
-        }
-        if (IndicadorCadastro.rotulocampo1 === 'ultimorealizado' || IndicadorCadastro.rotulocampo1 === 'UltOrcado'
-            || IndicadorCadastro.rotulocampo2 === 'ultimorealizado' || IndicadorCadastro.rotulocampo2 === 'UltOrcado'
-            || IndicadorCadastro.rotulocampo3 === 'ultimorealizado' || IndicadorCadastro.rotulocampo3 === 'UltOrcado'
-            || IndicadorCadastro.rotulocampo4 === 'ultimorealizado' || IndicadorCadastro.rotulocampo4 === 'UltOrcado') {
-            this.RotuloOrcadoMensal = UltOrcado;
-        }
         this.campo1 = IndicadorCadastro.rotulocampo1;
         this.campo2 = IndicadorCadastro.rotulocampo2;
         this.campo3 = IndicadorCadastro.rotulocampo3;
@@ -8146,6 +8184,75 @@ var Usuario = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/notificacoessispc/notificacoes.service.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/notificacoessispc/notificacoes.service.ts ***!
+  \***********************************************************/
+/*! exports provided: NotificacoesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacoesService", function() { return NotificacoesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+var NotificacoesService = /** @class */ (function () {
+    function NotificacoesService(http) {
+        this.http = http;
+    }
+    NotificacoesService.prototype.ListaDeModelos = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/notificacao")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    NotificacoesService.prototype.ListaDeModelosNovo = function (nomeTemplate, Usuarios, Assunto, Texto) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        var envio = { id: null, nomeDoTemplate: nomeTemplate, usuarios: Usuarios, assunto: Assunto, texto: Texto };
+        console.log(envio);
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/notificacao", envio, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        }); }));
+    };
+    NotificacoesService.prototype.enviarNotificacao = function (Usuarios, Assunto, Texto) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        var envio = { usuarios: Usuarios, assunto: Assunto, texto: Texto };
+        console.log(envio);
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/notificacao/enviarEmail", envio, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        }); }));
+    };
+    NotificacoesService.prototype.UsuariosSispc = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/usuarios")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    NotificacoesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], NotificacoesService);
+    return NotificacoesService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/notificacoessispc/notificacoessispc.component.css":
 /*!*******************************************************************!*\
   !*** ./src/app/notificacoessispc/notificacoessispc.component.css ***!
@@ -8169,12 +8276,68 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacoessispcComponent", function() { return NotificacoessispcComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _notificacoes_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notificacoes.service */ "./src/app/notificacoessispc/notificacoes.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 var NotificacoessispcComponent = /** @class */ (function () {
-    function NotificacoessispcComponent() {
+    function NotificacoessispcComponent(not, messageService) {
+        this.not = not;
+        this.messageService = messageService;
+        this.email = [];
+        this.carregando = false;
+        //MODELOS
+        //=================================================================================================
+        this.modelos = false;
+        //NOVO MODELO
+        //=================================================================================================
+        this.novoModeloP = false;
     }
     NotificacoessispcComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.not.UsuariosSispc().subscribe(function (response) {
+            _this.ArrEmails = response;
+        });
+    };
+    NotificacoessispcComponent.prototype.AoSalvar = function () {
+        var _this = this;
+        this.carregando = true;
+        this.email = [];
+        for (var i = 0; i < this.OpcEmails.length; i++) {
+            this.email.push(this.OpcEmails[i]["email"]);
+        }
+        this.not.enviarNotificacao(this.email, this.Assunto, this.Texto).subscribe(function (response) {
+            _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                detail: 'Dados enviados com sucesso!' });
+            console.log('Dados enviados com sucesso!');
+            _this.Assunto = "";
+            _this.Texto = "";
+            _this.OpcEmails = null;
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+            console.log(error);
+        });
+        this.carregando = false;
+    };
+    NotificacoessispcComponent.prototype.Modelos = function () {
+        var _this = this;
+        this.modelos = true;
+        this.not.ListaDeModelos().subscribe(function (resp) {
+            _this.modelosCadastrados = resp;
+        });
+    };
+    NotificacoessispcComponent.prototype.selecionarModelo = function (i) {
+        this.Texto = i.texto;
+        this.Assunto = i.assunto;
+        this.modelos = false;
+    };
+    NotificacoessispcComponent.prototype.deletarModelo = function (i) {
+    };
+    NotificacoessispcComponent.prototype.novoModelo = function () {
+        this.novoModeloP = true;
     };
     NotificacoessispcComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -8182,7 +8345,7 @@ var NotificacoessispcComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./notificacoessispc.component.html */ "./node_modules/raw-loader/index.js!./src/app/notificacoessispc/notificacoessispc.component.html"),
             styles: [__webpack_require__(/*! ./notificacoessispc.component.css */ "./src/app/notificacoessispc/notificacoessispc.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_notificacoes_service__WEBPACK_IMPORTED_MODULE_2__["NotificacoesService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
     ], NotificacoessispcComponent);
     return NotificacoessispcComponent;
 }());
@@ -8345,7 +8508,7 @@ var AdminIndicadoresComponent = /** @class */ (function () {
             { label: 'Editar' },
             { label: 'Importar' }
         ];
-        this.trocadeitemIndex(2);
+        this.trocadeitemIndex(0);
     };
     AdminIndicadoresComponent.prototype.trocadeitem = function (activeItem) {
         this.activeItem = activeItem['activeItem'];
@@ -8731,6 +8894,7 @@ var EditarcadastroindicadoresComponent = /** @class */ (function () {
             { label: "realizadoAcumulado", value: "realizadoAcumulado" },
             { label: "orcadoMedia", value: "orcadoMedia" },
             { label: "realizadoMedia", value: "realizadoMedia" },
+            { label: "Valor Retido", value: "valorretido" },
             { label: "Minimo", value: "Minimo" },
             { label: "Maximo", value: "Maximo" },
             { label: "Forecast", value: "forecast" },
@@ -8776,6 +8940,12 @@ var EditarcadastroindicadoresComponent = /** @class */ (function () {
             { label: "Não Regulados DP", value: "naoreguladodp" },
             { label: "Diferença = Campo2-Campo1", value: "diferenca" },
             { label: "Variação = 1-(Campo2/Campo1)", value: "variacao" },
+        ];
+        this.listaDeCamposParaRotulosMensal = [
+            { label: "Orçado Mensal", value: "orcadomensal" },
+            { label: "Último Orçado", value: "ultimoorcado" },
+            { label: "Orçado Acumulado", value: "orcadoacumulado" },
+            { label: "Orçado Média", value: "orcadomedia" }
         ];
         this.classificacoesLista =
             [
@@ -8903,6 +9073,12 @@ var EditarcadastroindicadoresComponent = /** @class */ (function () {
                 break;
             }
         }
+        for (var i = 0; i < this.listaDeCamposParaRotulosMensal.length; i++) {
+            if (this.listaDeCamposParaRotulosMensal[i].value === this.indicadorSelecionado.campoMensal) {
+                this.editarIndicadorCampoMensal = this.listaDeCamposParaRotulosMensal[i];
+                break;
+            }
+        }
         this.reloadArrays();
     };
     EditarcadastroindicadoresComponent.prototype.atualizarDadosdoArray = function () {
@@ -8913,6 +9089,7 @@ var EditarcadastroindicadoresComponent = /** @class */ (function () {
         this.indicadorSelecionado['campo2'] = this.editarIndicadorCampo2['value'];
         this.indicadorSelecionado['campo3'] = this.editarIndicadorCampo3['value'];
         this.indicadorSelecionado['campo4'] = this.editarIndicadorCampo4['value'];
+        this.indicadorSelecionado['campoMensal'] = this.editarIndicadorCampoMensal['value'];
         this.indicadorSelecionado['gerencia'] = this.editarIndicadorGerencia['gerenciaId'];
         for (var i = 0; i < this.editarposicoes.length; i++) {
             this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value'];
@@ -9385,6 +9562,7 @@ var EditindicadoresComponent = /** @class */ (function () {
                 this.listaCompletaImutavel[i].minimo !== this.listaCompleta[i].minimo ||
                 this.listaCompletaImutavel[i].maximo !== this.listaCompleta[i].maximo ||
                 this.listaCompletaImutavel[i].meta !== this.listaCompleta[i].meta ||
+                this.listaCompletaImutavel[i].valorretido !== this.listaCompleta[i].valorretido ||
                 this.listaCompletaImutavel[i].dentroprazoreg !== this.listaCompleta[i].dentroprazoreg ||
                 this.listaCompletaImutavel[i].previsao !== this.listaCompleta[i].previsao ||
                 this.listaCompletaImutavel[i].dentroprazo !== this.listaCompleta[i].dentroprazo) {
@@ -9652,19 +9830,28 @@ var ImportarOrcadosComponent = /** @class */ (function () {
             forecast3 = c.includes('forecast3') ? i : forecast3;
             previsao = c.includes('previsao') ? i : previsao;
         }
+        orcado = orcado == undefined ? '-' : orcado;
+        meta = meta == undefined ? '-' : meta;
+        minimo = minimo == undefined ? '-' : minimo;
+        maximo = maximo == undefined ? '-' : maximo;
+        forecast = forecast == undefined ? '-' : forecast;
+        forecast2 = forecast2 == undefined ? '-' : forecast2;
+        forecast3 = forecast3 == undefined ? '-' : forecast3;
+        previsao = previsao == undefined ? '-' : previsao;
+        console.log(orcado + ' - ' + meta + ' - ' + minimo + ' - ' + maximo + ' - ' + forecast + ' - ' + forecast2 + ' - ' + forecast3 + ' - ' + previsao);
         for (var i = 1; i < fileLines.length; i++) {
             var fileCol = fileLines[i].split(';');
             var dataconvertida = fileCol[data].substring(6, 10) + '-' + fileCol[data].substring(3, 5) + '-' + fileCol[data].substring(0, 2);
             this.Listaindicadores.push({
                 dataindicador: dataconvertida,
-                orcado: fileCol[orcado].replace(".", "").replace(",", ".") * 1,
-                meta: fileCol[meta].replace(".", "").replace(",", ".") * 1,
-                minimo: fileCol[minimo].replace(".", "").replace(",", ".") * 1,
-                maximo: fileCol[maximo].replace(".", "").replace(",", ".") * 1,
-                forecast: fileCol[forecast].replace(".", "").replace(",", ".") * 1,
-                forecast2: fileCol[forecast2].replace(".", "").replace(",", ".") * 1,
-                forecast3: fileCol[forecast3].replace(".", "").replace(",", ".") * 1,
-                previsao: fileCol[previsao].replace(".", "").replace(",", ".") * 1,
+                orcado: orcado == '-' ? 0 : fileCol[orcado].replace(".", "").replace(",", ".") * 1,
+                meta: meta == '-' ? 0 : fileCol[meta].replace(".", "").replace(",", ".") * 1,
+                minimo: minimo == '-' ? 0 : fileCol[minimo].replace(".", "").replace(",", ".") * 1,
+                maximo: maximo == '-' ? 0 : fileCol[maximo].replace(".", "").replace(",", ".") * 1,
+                forecast: forecast == '-' ? 0 : fileCol[forecast].replace(".", "").replace(",", ".") * 1,
+                forecast2: forecast2 == '-' ? 0 : fileCol[forecast2].replace(".", "").replace(",", ".") * 1,
+                forecast3: forecast3 == '-' ? 0 : fileCol[forecast3].replace(".", "").replace(",", ".") * 1,
+                previsao: previsao == '-' ? 0 : fileCol[previsao].replace(".", "").replace(",", ".") * 1
             });
         }
     };
@@ -10282,7 +10469,7 @@ var CapaComponent = /** @class */ (function () {
         var _this = this;
         this.performanceService.classindicadores(indicador)
             .subscribe(function (Indicadores) {
-            _this.ind = Indicadores;
+            _this.ind = Indicadores.filter(function (el) { return el.ativo == 1; });
         });
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -10338,7 +10525,6 @@ __webpack_require__.r(__webpack_exports__);
 var ResumoIndicadoresComponent = /** @class */ (function () {
     function ResumoIndicadoresComponent(indicadoresService) {
         this.indicadoresService = indicadoresService;
-        this.Cora = "black";
     }
     ResumoIndicadoresComponent.prototype.ngOnInit = function () {
         this.Validador(this.element, this.refer);
@@ -10347,144 +10533,147 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
         var _this = this;
         this.indicadoresService.indicadoresResumo(referencia, indic.indicadorId)
             .subscribe(function (indicador) {
-            var var1;
-            _this.temp1 = indicador[0];
-            _this.tipoGraph = indic.tipoGrafico;
-            _this.Tendencia = indic.tendencia;
-            _this.RotulosAcumulados(_this.tipoGraph, _this.temp1);
-            // console.log("========================")
-            // console.log(this.Tendencia)
-            // console.log(this.Cora)
+            var IndicadorCadastro = indic;
+            var Resumo = [];
+            Resumo = indicador[3];
+            // Resumo = Resumo.splice(1, Number.MAX_VALUE)
+            //ROTULOS DE COMENTARIOS
+            //========================================================================================
+            var eixo = [];
+            eixo = indicador[0];
+            eixo = eixo.splice(1, Number.MAX_VALUE);
+            eixo = eixo.filter(function (item) { return item !== null; });
+            var comentarios = [];
+            comentarios = indicador[1];
+            comentarios = comentarios.splice(1, Number.MAX_VALUE);
+            var responsaveis = [];
+            responsaveis = indicador[2];
+            responsaveis = responsaveis.splice(1, Number.MAX_VALUE);
+            _this.CondicionalDeGraficos(IndicadorCadastro, Resumo);
         });
     };
-    ResumoIndicadoresComponent.prototype.RotulosAcumulados = function (tipoGraph, linhaDeResumo) {
-        this.CondicionalDeGraficos(tipoGraph, linhaDeResumo);
-        // console.log(this.RotuloDiferencaPerc)
-        switch (this.Tendencia) {
+    //MESMA CLASSE DO QUE O graficos.component.ts
+    ResumoIndicadoresComponent.prototype.CondicionalDeGraficos = function (IndicadorCadastro, resumo) {
+        //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
+        //========================================================================================
+        var orcadoMensal = parseFloat(resumo.splice(1, 1));
+        var orcadoAcumulad = parseFloat(resumo.splice(1, 1));
+        var realizadoAcumulad = parseFloat(resumo.splice(1, 1));
+        var PrevisaoMensal = parseFloat(resumo.splice(1, 1));
+        var OrcadoMedia = parseFloat(resumo.splice(1, 1));
+        var RealMedia = parseFloat(resumo.splice(1, 1));
+        var Minimo = parseFloat(resumo.splice(1, 1));
+        var Maximo = parseFloat(resumo.splice(1, 1));
+        var Meta = parseFloat(resumo.splice(1, 1));
+        var MetaAcum = parseFloat(resumo.splice(1, 1));
+        var ReguladoDp = parseFloat(resumo.splice(1, 1));
+        var NaoReguladoDp = parseFloat(resumo.splice(1, 1));
+        var UltReal = parseFloat(resumo.splice(1, 1));
+        var UltOrcado = parseFloat(resumo.splice(1, 1));
+        //MONTAR OBJETO COM OS DADOS DO RESUMO
+        //========================================================================================
+        var ResumoDosEixos = {
+            orcadomensal: orcadoMensal,
+            orcadoacumulado: orcadoAcumulad,
+            orcadomedia: OrcadoMedia,
+            realizadoacumulado: realizadoAcumulad,
+            realizadomedia: RealMedia,
+            metaacumulada: MetaAcum,
+            meta: Meta,
+            minimo: Minimo,
+            maximo: Maximo,
+            reguladodp: ReguladoDp,
+            naoreguladodp: NaoReguladoDp,
+            ultimorealizado: UltReal,
+            ultimoorcado: UltOrcado
+        };
+        this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
+        this.RotuloPrevisaoMensal = PrevisaoMensal;
+        //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
+        //========================================================================================
+        this.campo1 = IndicadorCadastro.rotulocampo1;
+        this.campo2 = IndicadorCadastro.rotulocampo2;
+        this.campo3 = IndicadorCadastro.rotulocampo3;
+        this.campo4 = IndicadorCadastro.rotulocampo4;
+        //CONSTRUIR OS CAMPOS DE CALCULO COM O CADASTRO DE INDICADORES
+        //========================================================================================
+        this.campoCalc1 = ResumoDosEixos[IndicadorCadastro.campo1];
+        this.campoCalc2 = ResumoDosEixos[IndicadorCadastro.campo2];
+        var cam3 = IndicadorCadastro.campo3 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam3 = IndicadorCadastro.campo3 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam3;
+        this.campoCalc3 = cam3;
+        var cam4 = IndicadorCadastro.campo4 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam4 = IndicadorCadastro.campo4 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam4;
+        this.campoCalc4 = cam4;
+        //SELECIONAR TENDENDCIAS DE EIXO
+        //========================================================================================
+        switch (IndicadorCadastro.tendencia) {
             case "MELHORPOSITIVO": {
-                if (this.RotuloDiferencaPerc < 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cora = "red";
+                if (this.campoCalc2 < this.campoCalc1) {
+                    this.Cor1 = "Red";
                 }
                 break;
             }
             case "MELHORNEGATIVO": {
-                if (this.RotuloDiferencaPerc > 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cora = "red";
+                if (this.campoCalc2 > this.campoCalc1) {
+                    this.Cor1 = "Red";
                 }
                 break;
             }
             case "MELHORENTREFAIXAS": {
-                if (this.RotuloDiferencaAcum < 0 || this.RotuloDiferencaAcum > 0) {
-                    this.Cora = "red";
+                if (ResumoDosEixos['realizadomedia'] > ResumoDosEixos['maximo']
+                    || ResumoDosEixos['realizadomedia'] < ResumoDosEixos['minimo']) {
+                    this.Cor1 = "Red";
                 }
                 break;
             }
         }
-        if (tipoGraph == 5) {
-            this.RotuloDiferencaPerc = this.RotuloDiferencaPerc + "%";
-            this.RotuloDiferencaAcum = this.RotuloDiferencaAcum + "%";
-            this.RotuloOrcadoMensal = this.RotuloOrcadoMensal + "%";
-            this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal + "%";
-            this.RotuloRealizAcum = this.RotuloRealizAcum + "%";
-            this.RotuloOrcadoAcum = this.RotuloOrcadoAcum + "%";
-        }
-        else {
-            this.RotuloDiferencaPerc = "Δ% " + this.RotuloDiferencaPerc;
-            this.RotuloDiferencaAcum2 = "Δ " + this.RotuloDiferencaAcum2;
-        }
-    };
-    //MESMA CLASSE DO QUE O graficos.component.ts
-    ResumoIndicadoresComponent.prototype.CondicionalDeGraficos = function (tipoGraph, temp1) {
-        //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
+        this.Cor2 = this.Cor1;
+        this.Cor3 = this.Cor1;
+        this.Cor4 = this.Cor1;
+        //SELECIONAR TENDENDCIAS DE EIXO
         //========================================================================================
-        var orcadoMensal = parseFloat(temp1.splice(1, 1));
-        var orcadoAcumulad = parseFloat(temp1.splice(1, 1));
-        var realizadoAcumulad = parseFloat(temp1.splice(1, 1));
-        var PrevisaoMensal = parseFloat(temp1.splice(1, 1));
-        var OrcadoMedia = parseFloat(temp1.splice(1, 1));
-        var RealMedia = parseFloat(temp1.splice(1, 1));
-        var Minimo = parseFloat(temp1.splice(1, 1));
-        var Maximo = parseFloat(temp1.splice(1, 1));
-        var Meta = parseFloat(temp1.splice(1, 1));
-        var MetaAcum = parseFloat(temp1.splice(1, 1));
-        var ReguladoDp = parseFloat(temp1.splice(1, 1));
-        var NaoReguladoDp = parseFloat(temp1.splice(1, 1));
+        switch (IndicadorCadastro.rotuloVirgula) {
+            case 1: {
+                this.campoCalc1 = converterComDecimal(this.campoCalc1);
+                this.campoCalc2 = converterComDecimal(this.campoCalc2);
+                this.campoCalc3 = converterComDecimal(this.campoCalc3);
+                this.campoCalc4 = converterComDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterComDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterComDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 2: {
+                this.campoCalc1 = converterSemDecimal(this.campoCalc1);
+                this.campoCalc2 = converterSemDecimal(this.campoCalc2);
+                this.campoCalc3 = converterSemDecimal(this.campoCalc3);
+                this.campoCalc4 = converterSemDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterSemDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterSemDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 3: {
+                this.campoCalc1 = ConverterParaHora(this.campoCalc1);
+                this.campoCalc2 = ConverterParaHora(this.campoCalc2);
+                this.RotuloOrcadoMensal = ConverterParaHora(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = ConverterParaHora(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+        }
+        //FUNÇÕES
         //========================================================================================
-        var val1 = orcadoAcumulad;
-        var val2 = realizadoAcumulad;
-        //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
-        //========================================================================================
-        if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(0);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(0);
-        }
-        else if (tipoGraph == 8) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-            //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
-            //========================================================================================
-        }
-        else if (tipoGraph == 3) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloOrcadoAcum = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
-            this.RotuloDiferencaAcum = this.ConverterParaHora((val2 - val1));
-            this.RotuloDiferencaAcum2 = this.ConverterParaHora(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
-            this.RotuloPrevisaoMensal = this.ConverterParaHora(this.RotuloPrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
-        else if (tipoGraph == 4) {
-            val2 = RealMedia;
-            Minimo = Minimo > 60 ? parseFloat(Minimo.toFixed(0)) : Minimo;
-            Maximo = Minimo > 60 ? parseFloat(Maximo.toFixed(0)) : Maximo;
-            this.RotuloOrcadoMensal = Minimo + " - " + Maximo;
-            this.RotuloOrcadoAcum = Minimo + " - " + Maximo;
-            this.RotuloRealizAcum = RealMedia;
-            var val3 = RealMedia > Minimo ? RealMedia < Maximo ? 0 : RealMedia - Maximo : RealMedia - Minimo;
-            this.RotuloDiferencaAcum = val3.toFixed(2);
-            this.RotuloDiferencaAcum2 = val3 == 0 ? 0 : val3.toFixed(2);
-            val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
-            this.RotuloPrevisaoMensal = PrevisaoMensal;
-            this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal)) ? 0 : PrevisaoMensal;
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
-        else if (tipoGraph == 5) {
-            this.RotuloPrevisaoMensal = (Meta * 100);
-            this.RotuloOrcadoMensal = (Meta * 100);
-            this.RotuloOrcadoAcum = (Meta * 100);
-            this.RotuloRealizAcum = RealMedia;
-            this.RotuloDiferencaAcum = "-";
-            this.RotuloDiferencaAcum2 = "-";
-            this.RotuloDiferencaPerc = "-";
-        }
-        else if (tipoGraph == 7 || tipoGraph == 9) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);
-            this.RotuloOrcadoAcum = converterComDecimal(OrcadoMedia);
-            this.RotuloRealizAcum = converterComDecimal(RealMedia);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = converterComDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
         function converterComDecimal(z) {
             var v = z.toFixed(2);
             v = v.replace(/\D/g, ""); // permite digitar apenas numero
@@ -10504,25 +10693,25 @@ var ResumoIndicadoresComponent = /** @class */ (function () {
             v = v.replace(/(\d{1})(\d{3})$/, "$1.$2"); // coloca ponto antes dos ultimos 7 digitos
             return v;
         }
-    };
-    ResumoIndicadoresComponent.prototype.ConverterParaHora = function (s) {
-        if (s < 0) {
-            s = s * -1;
-        }
-        function duas_casas(numero) {
-            if (numero <= 9) {
-                numero = "0" + parseInt(numero);
+        function ConverterParaHora(s) {
+            if (s < 0) {
+                s = s * -1;
             }
-            return numero;
+            function duas_casas(numero) {
+                if (numero <= 9) {
+                    numero = "0" + parseInt(numero);
+                }
+                return numero;
+            }
+            var hora = Math.trunc(s / 3600);
+            var minuto = Math.trunc(s / 60) - (hora * 60);
+            var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
+            hora = duas_casas(hora);
+            minuto = duas_casas(minuto);
+            segundo = duas_casas(segundo);
+            var formatado = hora + ":" + minuto + ":" + segundo;
+            return formatado;
         }
-        var hora = Math.trunc(s / 3600);
-        var minuto = Math.trunc(s / 60) - (hora * 60);
-        var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
-        hora = duas_casas(hora);
-        minuto = duas_casas(minuto);
-        segundo = duas_casas(segundo);
-        var formatado = hora + ":" + minuto + ":" + segundo;
-        return formatado;
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -12104,6 +12293,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../transporte.service */ "./src/app/transporte/transporte.service.ts");
+/* harmony import */ var _csv_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../csv-data.service */ "./src/app/csv-data.service.ts");
+
 
 
 
@@ -12156,6 +12347,9 @@ var ListaAgendamentosComponent = /** @class */ (function () {
         var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
         ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
         return ano2 + "-" + mes2 + "-" + dia2;
+    };
+    ListaAgendamentosComponent.prototype.salvarCSV = function () {
+        _csv_data_service__WEBPACK_IMPORTED_MODULE_3__["CsvDataService"].exportToCsv('test.csv', this.Agendamentos);
     };
     ListaAgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -12533,12 +12727,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardsComponent", function() { return DashboardsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../transporte.service */ "./src/app/transporte/transporte.service.ts");
+
 
 
 var DashboardsComponent = /** @class */ (function () {
-    function DashboardsComponent() {
+    function DashboardsComponent(transporteService) {
+        this.transporteService = transporteService;
     }
     DashboardsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.Gerencias = [
             { label: '', value: 0 },
             { label: 'Comercial', value: 1 },
@@ -12575,71 +12773,21 @@ var DashboardsComponent = /** @class */ (function () {
             { indice: 9, placa: 'HFE6717', condutor: 'José da Silva', nome: 'José da Silva', gerencia: 'Serviços', departamento: 'Manutenção' },
             { indice: 10, placa: 'HFE6718', condutor: 'NÃO IDENTIFICADO', nome: 'José das Couves', gerencia: 'Operacional Água', departamento: 'Automação' }
         ];
-    };
-    DashboardsComponent.prototype.exportCSV = function () {
-        function convertToCSV(objArray) {
-            var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-            var str = '';
-            for (var i = 0; i < array.length; i++) {
-                var line = '';
-                for (var index in array[i]) {
-                    if (line != '')
-                        line += ';';
-                    line += array[i][index];
-                }
-                str += line + '\r\n';
-            }
-            return str;
-        }
-        function exportCSVFile(headers, items, fileTitle) {
-            if (headers) {
-                items.unshift(headers);
-            }
-            // Convert Object to JSON
-            var jsonObject = JSON.stringify(items);
-            var csv = convertToCSV(jsonObject);
-            var exportedFilenmae = fileTitle + '.csv' || false;
-            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            if (navigator.msSaveBlob) { // IE 10+
-                navigator.msSaveBlob(blob, exportedFilenmae);
-            }
-            else {
-                var link = document.createElement("a");
-                if (link.download !== undefined) { // feature detection
-                    // Browsers that support HTML5 download attribute
-                    var url = URL.createObjectURL(blob);
-                    link.setAttribute("href", url);
-                    link.setAttribute("download", exportedFilenmae);
-                    link.style.visibility = 'hidden';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }
-            }
-        }
-        var headers = {
-            indice: 'Indice',
-            placa: "Placa",
-            condutor: "Condutor",
-            nome: "Responsavel",
-            gerencia: "Gerencia",
-            departamento: "Departamento",
-        };
-        var itemsNotFormatted = this.ranking1;
-        var itemsFormatted = [];
-        // format the data
-        itemsNotFormatted.forEach(function (item) {
-            itemsFormatted.push({
-                indice: item.indice,
-                placa: item.placa,
-                condutor: item.condutor,
-                nome: item.nome,
-                gerencia: item.gerencia,
-                departamento: item.departamento
-            });
+        this.transporteService.ParaAprovar()
+            .subscribe(function (Agendamento) {
+            console.log(Agendamento);
+            _this.agendamentospendentes = Agendamento.length;
         });
-        var fileTitle = 'orders'; // or 'my-unique-title'
-        exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+        this.transporteService.Aprovados()
+            .subscribe(function (Agendamento) {
+            console.log(Agendamento);
+            _this.agendamentosregistrados = Agendamento.length;
+        });
+        this.transporteService.Aprovados()
+            .subscribe(function (Agendamento) {
+            console.log(Agendamento);
+            _this.agendamentosaprovados = Agendamento.filter(function (item) { return item.aprovacao === 1; }).length;
+        });
     };
     DashboardsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -12647,7 +12795,7 @@ var DashboardsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./dashboards.component.html */ "./node_modules/raw-loader/index.js!./src/app/transporte/dashboards/dashboards.component.html"),
             styles: [__webpack_require__(/*! ./dashboards.component.css */ "./src/app/transporte/dashboards/dashboards.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_2__["TransporteService"]])
     ], DashboardsComponent);
     return DashboardsComponent;
 }());
@@ -13048,7 +13196,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc\Sispc2.0\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc2.0\src\main.ts */"./src/main.ts");
 
 
 /***/ })

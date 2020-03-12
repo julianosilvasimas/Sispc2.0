@@ -93,6 +93,7 @@ export class ResumoIndicadoresComponent implements OnInit {
       //MONTAR OBJETO COM OS DADOS DO RESUMO
       //========================================================================================
       var ResumoDosEixos={
+        orcadomensal: orcadoMensal,
         orcadoacumulado: orcadoAcumulad,
         orcadomedia: OrcadoMedia,
         realizadoacumulado: realizadoAcumulad,
@@ -107,7 +108,7 @@ export class ResumoIndicadoresComponent implements OnInit {
         ultimoorcado: UltOrcado
       }
       
-      this.RotuloOrcadoMensal = IndicadorCadastro.campoMensal;
+      this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
       this.RotuloPrevisaoMensal = PrevisaoMensal;
       //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
       //========================================================================================

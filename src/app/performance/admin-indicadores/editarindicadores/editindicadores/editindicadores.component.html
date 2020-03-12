@@ -34,6 +34,7 @@
             <th>DataReferencia</th>
             <th>Orçado</th>
             <th>Realizado</th>
+            <th>Vl. Retido</th>
             <th>Mínimo</th>
             <th>Máximo</th>
             <th>Meta</th>
@@ -73,6 +74,14 @@
                         <input pInputText type="number" [(ngModel)]="rowData.realizado">
                     </ng-template>
                     <ng-template pTemplate="output">{{rowData.realizado}}</ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="number" [(ngModel)]="rowData.valorretido">
+                    </ng-template>
+                    <ng-template pTemplate="output">{{rowData.valorretido}}</ng-template>
                 </p-cellEditor>
             </td>
             <td>
