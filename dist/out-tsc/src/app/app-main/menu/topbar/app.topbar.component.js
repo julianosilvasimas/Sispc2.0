@@ -20,6 +20,9 @@ let AppTopbarComponent = class AppTopbarComponent {
             }
         });
     }
+    fechar() {
+        sessionStorage.clear();
+    }
 };
 AppTopbarComponent = tslib_1.__decorate([
     Component({

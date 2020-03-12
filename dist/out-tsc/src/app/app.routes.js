@@ -28,6 +28,16 @@ import { SesuiteprojectComponent } from './gpp/projetos/sesuiteproject/sesuitepr
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard.service';
 import { RelatorioindicadoresComponent } from './performance/relatorioindicadores/relatorioindicadores.component';
+import { TelaImpressaoRelatorioComponent } from './performance/tela-impressao-relatorio/tela-impressao-relatorio.component';
+import { PrintdeliberacaoComponent } from './gestaodedeliberacao/printdeliberacao/printdeliberacao.component';
+import { PainelprocessoComponent } from './gestaodedeliberacao/painelprocesso/painelprocesso.component';
+import { TransporteComponent } from './transporte/transporte.component';
+import { AgendarVeiculoComponent } from './transporte/agendamentos/agendar-veiculo/agendar-veiculo.component';
+import { RpaComponent } from './rpa/rpa.component';
+import { AdminIndicadoresComponent } from './performance/admin-indicadores/admin-indicadores.component';
+import { NotificacoessispcComponent } from './notificacoessispc/notificacoessispc.component';
+import { controledepagamentosjuridicoComponent } from './controledepagamentosjuridico/controledepagamentosjuridico.component';
+import { AdminComponent } from './admin/admin.component';
 export const routes = [
     /*  {
           path: 'tarefas',
@@ -38,7 +48,7 @@ export const routes = [
     { path: '', component: AppMainComponent,
         children: [
             { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-            { path: 'dash', component: DashboardDemoComponent, canActivate: [AuthGuard] },
+            { path: 'dash', component: DashboardDemoComponent },
             { path: 'sample', component: SampleDemoComponent, canActivate: [AuthGuard] },
             { path: 'forms', component: FormsDemoComponent, canActivate: [AuthGuard] },
             { path: 'data', component: DataDemoComponent, canActivate: [AuthGuard] },
@@ -56,14 +66,25 @@ export const routes = [
             { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
             { path: 'mainprojeto', component: PagemainComponent, canActivate: [AuthGuard] },
             { path: 'cadastrar', component: CadastrarComponent, canActivate: [AuthGuard] },
-            { path: 'relatorio', component: RelatorioindicadoresComponent, canActivate: [AuthGuard] },
+            { path: 'relatorio', component: TelaImpressaoRelatorioComponent, canActivate: [AuthGuard] },
+            { path: 'painelprocess', component: PainelprocessoComponent, canActivate: [AuthGuard] },
+            { path: 'agendamento', component: AgendarVeiculoComponent, canActivate: [AuthGuard] },
+            { path: 'transporte', component: TransporteComponent, canActivate: [AuthGuard] },
+            { path: 'email', component: NotificacoessispcComponent },
+            { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+            { path: 'cpjuridico', component: controledepagamentosjuridicoComponent, canActivate: [AuthGuard] },
+            { path: 'indicadoresAdmin', component: AdminIndicadoresComponent, canActivate: [AuthGuard] },
+            { path: 'rpa', component: RpaComponent },
+            // { path: 'graficos', component: RpaComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
         ]
     },
+    { path: 'printPerformance/:id/:ref', component: RelatorioindicadoresComponent },
     { path: 'error', component: AppErrorComponent, canActivate: [AuthGuard] },
     { path: 'accessdenied', component: AppAccessdeniedComponent, canActivate: [AuthGuard] },
     { path: '404', component: AppNotfoundComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
+    { path: 'printdelib', component: PrintdeliberacaoComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '/404' },
 ];
 export const AppRoutes = RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' });

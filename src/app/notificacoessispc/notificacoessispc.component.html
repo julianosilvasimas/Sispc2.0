@@ -38,7 +38,7 @@
   </div>
 </p-dialog>
 
-<p-dialog [(visible)]="novoModeloP" [style]="{width: '1%',height: '1%'}">
+<p-dialog [(visible)]="novoModeloP" [style]="{width: '30%',height: '20%'}">
   <div class="ui-g ui-md">
     <div class="ui-g-12 ui-md-6">
       <span class="md-inputfield">
@@ -47,7 +47,7 @@
       </span>
     </div>
     <div class="ui-g-12  ui-md-6" style="text-align: right;">
-      <button type="button" pButton icon="pi pi-save" label="Modelos"  (click)="novoModelo()"></button>
+      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="SalvarNovoModelo()"></button>
     </div>
   </div>
 </p-dialog>
@@ -60,6 +60,7 @@
                 <th>NomeDoTemplate</th>
                 <th>Assunto</th>
                 <th>Selecionar</th>
+                <th>Selecionar</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-car>
@@ -67,8 +68,16 @@
                 <td>{{car.nomeDoTemplate}}</td>
                 <td>{{car.assunto}}</td>
                 <td>
-                  <button type="button" pButton icon="pi pi-save" label="Selecionar" (click)="selecionarModelo(car)"></button>
-                  <button type="button" pButton icon="pi pi-save" label="Deletar" (click)="deletarModelo(car)"></button>
+                  <button type="button" pButton icon="pi pi-save" label="Selecionar" (click)="selecionarModelo(car)">
+                    
+
+                  </button>
+                </td>
+                <td>
+                  <button type="button" pButton icon="pi pi-save" label="Deletar" (click)="deletarModelo(car)">
+
+
+                  </button>
                 </td>
             </tr>
         </ng-template>

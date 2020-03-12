@@ -68,9 +68,6 @@ export class NotificacoessispcComponent implements OnInit {
     this.modelos = false
   }
 
-  deletarModelo(i){
-    
-  }
 
   //NOVO MODELO
   //=================================================================================================
@@ -80,11 +77,42 @@ export class NotificacoessispcComponent implements OnInit {
     this.novoModeloP = true
   }
     
+  SalvarNovoModelo(){
+    this.not.ListaDeModelosNovo(0,this.NomeDoModelo,this.Assunto, this.Texto).subscribe(
+      response => {
+          this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
+          detail:'Dados enviados com sucesso!'});
+          console.log('Dados enviados com sucesso!')
+          this.Assunto = "";
+          this.Texto=""
+          this.OpcEmails=null
+      },
+      error =>  { 
+        this.messageService.add({severity:'error', summary: "Dados não Enviados!", detail: error.message, life: 500});
+        console.log(error)
+      }
+    );
+    this.novoModeloP = false
+  }
 
+  //DELETAR MODELO
+  //=================================================================================================
 
-  // selecionarModelo(i){
-  //   this.Texto = i.texto
-  //   this.Assunto = i.assunto
-  //   this.modelos = false
-  // }
+  deletarModelo(i){
+    this.not.ListaDeletar(i.id).subscribe(
+      response => {
+          this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
+          detail:'Dados enviados com sucesso!'});
+          console.log('Dados enviados com sucesso!')
+          this.Assunto = "";
+          this.Texto=""
+          this.OpcEmails=null
+      },
+      error =>  { 
+        this.messageService.add({severity:'error', summary: "Dados não Enviados!", detail: error.message, life: 500});
+        console.log(error)
+      }
+    );
+    this.modelos = false
+  }
 }

@@ -11,9 +11,7 @@ let IndicadoresComponent = class IndicadoresComponent {
         this.MontarArrayDeIndicadores(this.indicador);
     }
     chartTest(index, indic) {
-        if (this.INDICADORESlidos.indexOf(indic) != -1) {
-        }
-        else {
+        if (this.INDICADORESlidos.indexOf(indic) == -1) {
             this.INDICADORESlidos.push(indic);
             this.tipoindicador = indic;
         }
@@ -21,7 +19,8 @@ let IndicadoresComponent = class IndicadoresComponent {
     MontarArrayDeIndicadores(indicador) {
         this.indicadoresService.classindicadores(indicador)
             .subscribe(Indicadores => {
-            this.ind = Indicadores;
+            this.ind = Indicadores.filter(el => el.ativo == 1);
+            this.totalpaginas = this.ind.length + 1;
         });
     }
 };

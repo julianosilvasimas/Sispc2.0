@@ -264,7 +264,7 @@
 </p-dialog>
 
 <p-dialog header="Alterar Ordem" [(visible)]="alteraOrdemCampos" [style]="{ height: '500px', width: '700px'}">
-  <div class="ui-g">
+  <div class="ui-g" *ngIf="alteraOrdemCampos"> 
     <p-table *ngIf="gridDeLista" selectionMode="single" [reorderableColumns]="true" [value]="indicadorSelecionado.campoDoGraficoId" [reorderableColumns]="true" > 
       <ng-template class="ui-g-12" pTemplate="caption" >
         <div class="ui-helper-clearfix ui-g-6 " style="text-align: left">

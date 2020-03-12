@@ -342,7 +342,7 @@ export class InputindicadoresComponent implements OnInit {
     this.maximo = indicadores['maximo'] === null ? indicadores['maximo'] :indicadores['maximo'].toLocaleString(),
     this.meta = indicadores['meta'] === null ? indicadores['meta'] :indicadores['meta'].toLocaleString(),
     this.dentroprazo = indicadores['dentroprazo'] === null ? indicadores['dentroprazo'] :indicadores['dentroprazo'].toLocaleString(),
-    this.vlrretido = indicadores['vlrretido'] === null ? indicadores['vlrretido'] :indicadores['vlrretido'].toLocaleString(),
+    this.vlrretido = indicadores['valorretido'] === null ? indicadores['valorretido'] :indicadores['valorretido'].toLocaleString(),
     this.foraprazo = indicadores['foraprazo'] === null ? indicadores['foraprazo'] :indicadores['foraprazo'].toLocaleString(),
     this.dentroprazoreg = indicadores['dentroprazoreg'] === null ? indicadores['dentroprazoreg'] :indicadores['dentroprazoreg'].toLocaleString(),
     this.foraprazoreg = indicadores['foraprazoreg'] === null ? indicadores['foraprazoreg'] :indicadores['foraprazoreg'].toLocaleString(),

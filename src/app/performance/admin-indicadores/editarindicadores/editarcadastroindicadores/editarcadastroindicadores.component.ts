@@ -39,6 +39,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       {label: "orcadoMedia", value: "orcadoMedia"},
       {label: "realizadoMedia", value: "realizadoMedia"},
       {label: "Valor Retido", value: "valorretido"},
+      {label: "Meta", value: "Meta"},
       {label: "Minimo", value: "Minimo"},
       {label: "Maximo", value: "Maximo"},
       {label: "Forecast", value: "forecast"},
@@ -154,6 +155,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
   }
 
   ajustarOrdem(){
+    console.log(this.listaIndicadores)
     for(var i = 0; i < this.listaIndicadores.length; i++){
       //CODIGO DE UPDATE COMEÇA AQUI
       var objetoDaVez= this.listaIndicadores[i]
@@ -297,6 +299,8 @@ export class EditarcadastroindicadoresComponent implements OnInit {
     this.indicadorSelecionado['campo4']=this.editarIndicadorCampo4['value']
     this.indicadorSelecionado['campoMensal']=this.editarIndicadorCampoMensal['value']
     this.indicadorSelecionado['gerencia']=this.editarIndicadorGerencia['gerenciaId']
+    console.log(this.indicadorSelecionado)
+    console.log( this.editargraficoseixos)
     for(var i = 0 ; i<this.editarposicoes.length;i++){
       this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value']
       this.indicadorSelecionado.campoDoGraficoId[i]['eixo'] = this.editargraficoseixos[i]['value']
@@ -304,7 +308,6 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       this.indicadorSelecionado.campoDoGraficoId[i]['estilo'] = this.editarestilos[i] === true ? "Pontilhado" : null;
     }
     
-    console.log(this.indicadorSelecionado)
   }
 
   //-------------.................---------------------....................---------------------...................
@@ -326,6 +329,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
         for(var i =0; i<this.indicadorSelecionado.campoDoGraficoId.length ; i++){
 
           for(var j =0; j<this.listaEdicaodeGraficoEixos.length ; j++){
+            console.log(this.indicadorSelecionado.campoDoGraficoId[i].eixo)
             if(this.listaEdicaodeGraficoEixos[j].value === this.indicadorSelecionado.campoDoGraficoId[i].eixo){
               this.editargraficoseixos.push(this.listaEdicaodeGraficoEixos[j])
               break;
@@ -346,7 +350,6 @@ export class EditarcadastroindicadoresComponent implements OnInit {
           for(var j =0; j<this.listaEdicaodeGraficoCores.length ; j++){
             if(this.listaEdicaodeGraficoCores[j].label === this.indicadorSelecionado.campoDoGraficoId[i].coreixo){
               this.editarcores.push(this.listaEdicaodeGraficoCores[j].value)
-              console.log(this.listaEdicaodeGraficoCores[j].value)
               break;
             }
           }
@@ -388,6 +391,7 @@ export class EditarcadastroindicadoresComponent implements OnInit {
     this.data = []
     this.options = []
     this.atualizarDadosdoArray();
+    this.filtroGraficoData.setDate(1);
     this.filtroGraficoDataConvertida = this.FormatarData(this.filtroGraficoData)
     this.IniciaGrafico()
     this.reloadArrays();
@@ -564,10 +568,11 @@ export class EditarcadastroindicadoresComponent implements OnInit {
     //=============================================================================================
     //GRAFICOS
     IniciaGrafico() {
+      console.log(this.filtroGraficoDataConvertida)
       this.performanceService.indicadores(this.filtroGraficoDataConvertida, this.indicadorSelecionado.indicadorId).subscribe(
         dados  =>  {
           var maximo = 0;
-  
+          console.log(dados)
           for(var i=34; i>=0 ;i--){
             if(dados[0][i]!=='01/01'){
               maximo = i
