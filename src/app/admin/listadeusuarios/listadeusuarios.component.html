@@ -121,9 +121,17 @@
     <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Disponíveis" targetHeader="Acessos" [responsive]="true" filterBy="perfil" 
     dragdrop="true" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
       <ng-template let-perfil pTemplate="item">
-      <div class="ui-helper-clearfix">
-          <div style="font-size:10px;float:left;margin:15px 5px 0 0">{{perfil.perfil}}</div>
-      </div>
+        <div class="ui-helper-clearfix">
+          <div class="ui-g">
+            <div class="ui-g-3" >
+              <button pButton type="button" label="!" class="ui-button-rounded ui-button-info"></button>
+            </div>
+            <div class="ui-g-9">
+              {{perfil.perfil}}
+              
+            </div>
+          </div>
+        </div>
       </ng-template>
     </p-pickList>
     <div class="ui-g-12" style="text-align: center; margin-top: 20px;">

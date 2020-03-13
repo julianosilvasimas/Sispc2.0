@@ -92,7 +92,9 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       {label: "Orçado Mensal", value: "orcadomensal"},
       {label: "Último Orçado", value: "ultimoorcado"},
       {label: "Orçado Acumulado", value: "orcadoacumulado"},
-      {label: "Orçado Média", value: "orcadomedia"}
+      {label: "Orçado Média", value: "orcadomedia"},
+      {label: "Mínimo Média", value: "minimo"},
+      {label: "Máximo Média", value: "maximo"},
   ]
 
     this.classificacoesLista = 
@@ -101,8 +103,9 @@ export class EditarcadastroindicadoresComponent implements OnInit {
       {label: "Serviços Comerciais", value: "SERVCOMERCIAL"},
       {label: "Comparativo", value: "CORPORATIVO"},
       {label: "Energia", value: "ENERGIA"},
+      {label: "Faturamento", value: "FATURAMENTO"},
       {label: "Volumes", value: "VOLUMES"},
-      {label: "Produtos Químicos", value: "PRODUTOSQU"},
+      {label: "Produtos Químicos", value: "PRODUTOSQUÍMICOS"},
       {label: "Comerciais", value: "FATURAMENTO"},
       {label: "Indicador Operacional", value: "INDICADOROPERACIONAL"},
       {label: "Cobrança", value: "COBRANCA"},

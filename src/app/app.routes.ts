@@ -77,7 +77,7 @@ export const routes: Routes = [
             { path: 'painelprocess',   component: PainelprocessoComponent, canActivate: [AuthGuard] },
             { path: 'agendamento', component: AgendarVeiculoComponent, canActivate: [AuthGuard] },
             { path: 'transporte', component: TransporteComponent, canActivate: [AuthGuard]},
-            { path: 'email', component: NotificacoessispcComponent},
+            { path: 'email', component: NotificacoessispcComponent, canActivate: [AuthGuard]},
             { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
             { path: 'cpjuridico', component: controledepagamentosjuridicoComponent, canActivate: [AuthGuard]},
             { path: 'indicadoresAdmin', component: AdminIndicadoresComponent, canActivate: [AuthGuard] },
