@@ -175,6 +175,8 @@ import { ImportarComponent } from './performance/admin-indicadores/importar/impo
 import { ImportarOrcadosComponent } from './performance/admin-indicadores/importar/importar-orcados/importar-orcados.component';
 import { ImportarBotsComponent } from './performance/admin-indicadores/importar/importar-bots/importar-bots.component';
 import { NotificacoesService } from './notificacoessispc/notificacoes.service';
+import { ProjetosService } from './gpp/projetos/projetos.service';
+
 
 
 @NgModule({
@@ -350,7 +352,8 @@ import { NotificacoesService } from './notificacoessispc/notificacoes.service';
         ControledepagamentosjuridicoService,
         AdminService,
         AdminIndicadoresService,
-        NotificacoesService
+        NotificacoesService,
+        ProjetosService
     ],
     bootstrap: [AppComponent]
 })
