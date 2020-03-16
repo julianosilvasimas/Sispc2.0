@@ -73,14 +73,14 @@ export class PagemainComponent implements OnInit {
     msgs: Message[];
 
     uploadedFiles: any[] = [];
-    cols3: { field: string; header: string; }[];
+    cols3: { field: string; header: string; }[] = [{ field: null, header: null }];
     licencas: Licencas[] =[];
     partesInteressadas: Licencas[] = [];
-    arrProjeto: any[];
-    arrRegulatorio: any[];
-    radar: { label: string; value: string; }[];
-    indices: { label: string; value: number; }[];
-    stats: { label: string; value: string; }[];
+    arrProjeto: any[] = [];
+    arrRegulatorio: any[] = [];
+    radar: { label: string; value: string; }[] = [{ label: null, value: null }];
+    indices: { label: string; value: number; }[] = [{ label: null, value: null }];
+    stats: { label: string; value: string; }[] = [{ label: null, value: null }];
     partesInt: any[]=[];
     
     partes: any[]=[];
@@ -89,14 +89,9 @@ export class PagemainComponent implements OnInit {
     aprov: boolean;
     descrevendo: any = null;
   
-  constructor(private messageService: MessageService, private projetosService: ProjetosService) { }
-
-  ngOnInit() {
-
+  constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
     this.projeto = sessionStorage.getItem('nomeProjeto')
-    this.oFluxo = null;
-    this.attFluxo = null;
 
     this.projetosService.getFluxoInvestimento().then(data => this.fluxoInvest = data);
     this.projetosService.getAnos().then(data => this.anos = data);
@@ -108,23 +103,60 @@ export class PagemainComponent implements OnInit {
     this.projetosService.getProcessos().then(data => this.processos = data);
     this.projetosService.getLicencas().then(data => this.licencas = data);
 
+    this.oFluxo = {
+        "regulatorioId": null,
+        "fluxoinvestimento": null,
+        "inicio": null,
+        "termino": null,
+        "valorprojeto": null,
+        "descricao": null,
+        "aprovacao": null,
+        "moeda": null,
+        "projetoId": {
+            "projetoId": this.idProjeto}
+        };
+
+        this.attFluxo = {
+            "regulatorioId": null,
+            "fluxoinvestimento": null,
+            "inicio": null,
+            "termino": null,
+            "valorprojeto": null,
+            "descricao": null,
+            "aprovacao": null,
+            "moeda": null,
+            "projetoId": {
+                "projetoId": this.idProjeto}
+            };
+    
+   }
+
+  ngOnInit() {
+    
+    
+    
+
+    
     this.projetosService.projetosId(this.idProjeto)
     .subscribe(res => {
         //console.log(res)
         this.arrProjeto = res
-        this.selectedLocal = res['localidade']
-        this.selectedRadar = res['radar']
-        this.selectedStatusGlobal = res['statusgloblal']
-        this.selectedGravidade = res['gravidade']
-        this.selectedTendencia = res['tendencia']
-        this.selectedUrgencia = res['urgencia']
-        this.inicioprevisto =  this.parseDate(res['inicioprevisto'])
-        this.inicioreplanejado = this.parseDate(res['inicioreplanejado'])
-        this.iniciorealizado = this.parseDate(res['iniciorealizado'])
-        this.terminoprevisto = this.parseDate(res['terminoprevisto'])
-        this.terminoreplanejado = this.parseDate(res['terminoreplanejado'])
-        this.terminorealizado = this.parseDate(res['terminorealizado'])
-        this.partesInteressadas = res['partestinteressadas']
+   
+    
+    
+        this.selectedLocal = this.arrProjeto['localidade']
+        this.selectedRadar = this.arrProjeto['radar']
+        this.selectedStatusGlobal = this.arrProjeto['statusgloblal']
+        this.selectedGravidade = this.arrProjeto['gravidade']
+        this.selectedTendencia = this.arrProjeto['tendencia']
+        this.selectedUrgencia = this.arrProjeto['urgencia']
+        this.inicioprevisto =  this.parseDate(this.arrProjeto['inicioprevisto'])
+        this.inicioreplanejado = this.parseDate(this.arrProjeto['inicioreplanejado'])
+        this.iniciorealizado = this.parseDate(this.arrProjeto['iniciorealizado'])
+        this.terminoprevisto = this.parseDate(this.arrProjeto['terminoprevisto'])
+        this.terminoreplanejado = this.parseDate(this.arrProjeto['terminoreplanejado'])
+        this.terminorealizado = this.parseDate(this.arrProjeto['terminorealizado'])
+        this.partesInteressadas = this.arrProjeto['partestinteressadas']
         
             this.projetosService.partesInteressadas()
             .subscribe(response => {
@@ -137,14 +169,14 @@ export class PagemainComponent implements OnInit {
                     this.partes[parte['orgaoId']] = true
                    })
             });
+            try{
             this.projetosService.regulatorios(this.idProjeto)
             .subscribe(res => {
-                res
                 res.forEach(flux=>{
                     this.fluxoInvest.forEach(elem=>{
+                        
                         if(elem['value'] === flux['fluxoinvestimento']){
                         this.fluxos.push(elem)
-                            
                         }
                     })
                 })
@@ -152,12 +184,17 @@ export class PagemainComponent implements OnInit {
                 this.selectedFluxo = res[res.length - 1]['fluxoinvestimento']
                 
                 this.idRevisao = res.length - 1
-                this.atualizarRevisao(this.selectedFluxo)
-    })
 
-    });
+                console.log("tentei aqui => "+ this.selectedFluxo)
+                
+                this.atualizarRevisao(this.selectedFluxo)
+                
+            
+
+                });
+            }catch{this.atualizarRevisao(this.attFluxo)}  
  
-    
+    });
  
 
   this.indices = [
@@ -249,7 +286,7 @@ export class PagemainComponent implements OnInit {
 
   aprovarRev(){
     this.oFluxo['aprovacao'] ='Aprovada'
-    console.log(this.oFluxo)
+    //console.log(this.oFluxo)
     this.atualizarRegulatorio()
   }
 
@@ -268,7 +305,7 @@ export class PagemainComponent implements OnInit {
     .subscribe(res => {
         let aux = []
         res.forEach(flu=>aux.push(flu['fluxoinvestimento']))
-
+        console.log('olhe aqui => '+ aux)
         this.oFluxo = res[aux.indexOf(fluxo, 0)]
         this.selectedFluxo = this.oFluxo['fluxoinvestimento']
         this.selectedMoedaReg = this.oFluxo['moeda']
@@ -277,14 +314,17 @@ export class PagemainComponent implements OnInit {
         }else{
             this.aprov = true
         }
-
-        this.regIniDia =  this.oFluxo.inicio.dayOfMonth < 10 ? "0"+this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString()
-        this.regIniMes =  this.oFluxo.inicio.monthValue < 10 ? "0"+this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString()
-        this.regIniAno =  this.oFluxo.inicio.year.toString()
-        this.regFimDia =  this.oFluxo.termino.dayOfMonth < 10 ? "0"+this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString()
-        this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
-        this.regFimAno =  this.oFluxo.termino.year.toString()
-        
+        //===============================================================//
+        // * Aqui melhorar esse condicional para as diversas hipóteses * //
+        //===============================================================//
+        if(this.regFimAno=null){}else{
+            this.regIniDia =  this.oFluxo.inicio.dayOfMonth < 10 ? "0"+this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString()
+            this.regIniMes =  this.oFluxo.inicio.monthValue < 10 ? "0"+this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString()
+            this.regIniAno =  this.oFluxo.inicio.year.toString()
+            this.regFimDia =  this.oFluxo.termino.dayOfMonth < 10 ? "0"+this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString()
+            this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
+            this.regFimAno =  this.oFluxo.termino.year.toString()
+        }
     })
   }
 
@@ -296,7 +336,7 @@ export class PagemainComponent implements OnInit {
         "termino": null,
         "valorprojeto": null,
         "descricao": this.descrevendo,
-        "aprovacao": null,
+        "aprovacao": "Em Andamento",
         "moeda": null,
         "projetoId": {
             "projetoId": this.idProjeto}
@@ -397,17 +437,19 @@ export class PagemainComponent implements OnInit {
 
     //Método que transforma data formato Json para date
     parseDate(value){
-        let year = value.year
-        let month = value.monthValue
-        if(month < 10){
-          month = "0"+month
+       if(value===null){}else{
+            let year = value.year
+            let month = value.monthValue
+            if(month < 10){
+            month = "0"+month
+            }
+            let day = value.dayOfMonth
+            if(day < 10){
+            day = "0"+day
+            } 
+            value = new Date(year+"-"+month+"-"+day+"T00:00:00")
         }
-        let day = value.dayOfMonth
-        if(day < 10){
-          day = "0"+day
-        }
-    
-        return new Date(year+"-"+month+"-"+day+"T00:00:00");
+        return value;
       }
 
     modelaData(dia, mes, ano, discriminador){
@@ -431,8 +473,8 @@ export class PagemainComponent implements OnInit {
 
             }else{
                 vdia = dia
-                console.log(vdia)
-                console.log(typeof  vdia)
+                //console.log(vdia)
+                //console.log(typeof  vdia)
             }
             resultado = new Date(ano+"-"+vmes+"-"+vdia+"T00:00:00.000")
         }

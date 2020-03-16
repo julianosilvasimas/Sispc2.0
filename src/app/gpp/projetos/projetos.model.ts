@@ -149,13 +149,16 @@ export interface ProjCompletos{
             area: string,
             email: string,
             tel: string,
-            teveinvestimento: string,
+            teveinvestimento: boolean,
+            valorinvestido: string,
             envolve: string,
+            objetivoindepende: boolean,
+            dependente: string,
             tipo: string,
-            corebusiness: string,
-            negocioexistente: string,
+            corebusiness: boolean,
+            negocioexistente: boolean,
             principalmotivacao: string,
-            melhoraempresa: string,
+            melhoraempresa: boolean,
             delineado: string,
             beneficios: {
                 sesuiteBeneficiosId: number,
@@ -163,7 +166,7 @@ export interface ProjCompletos{
                 impactomotivacao: string,
                 impactoseguranca: string,
                 impactosustentabilidade: string,
-                outramelhoria: string,
+                outramelhoria: boolean,
                 outramelhoriaespec: string
             },
             direcionamento: {
@@ -215,7 +218,7 @@ export interface ProjCompletos{
                 possuilicenca: string,
                 nlicenca: string,
                 prazolicenca: string,
-                condicionantelicenca: string,
+                condicionantelicenca: number,
                 condicionantelicencaespec: string,
                 emissaolicenca: Date,
                 validadelicenca: Date

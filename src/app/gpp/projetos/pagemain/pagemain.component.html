@@ -55,7 +55,7 @@
                         <div class="card card-w-title" >
                             <div  style="margin-top: 20px; margin-bottom: 50px;">
                                 <span class="md-inputfield">
-                                    <input  type="text" size="60" [(ngModel)]="arrProjeto.projeto" pInputText/>
+                                    <input  type="text" size="60" [(ngModel)]="projeto" pInputText/>
                                     <label>Nome do Projeto</label>
                                 </span>
                          </div>
@@ -238,7 +238,7 @@
                 <app-sesuiteproject></app-sesuiteproject>
                 </p-accordionTab>
 
-                <!--Aqui trato do Regulatório-->
+                <!--Aqui trato do Regulatório--> <!--{{oFluxo.aprovacao}}-->
                 <p-accordionTab header="Regulatório"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{oFluxo.aprovacao}}</div><br>
                   <div class="ui-g">
                       
@@ -246,19 +246,19 @@
                             <div class="card card-w-title" >
                         <div class="ui-g">
                                 <div div class="ui-g-8">
-                            <span class="md-inputfield" style="margin-top: 20px;">
+                            <span class="md-inputfield" style="margin-top: 20px;"><!--[(ngModel)]="selectedFluxo" -->
                                 <p-dropdown [options]="fluxos"  [(ngModel)]="selectedFluxo" defaultLabel="" [style]="{width: '100%', height: '25px'}" (onChange)="atualizarRevisao(selectedFluxo)" ></p-dropdown> 
                                
                                 
                                 <label>Fluxo de investimento</label>
-                            </span></div>
-                            <div div class="ui-g-4" *ngIf="aprov"><!-- -->
+                            </span></div><!-- *ngIf="aprov"-->
+                            <div div class="ui-g-4" *ngIf="aprov"><!--(click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()"-->
                                     <button pButton type="button" label="Aprovar" (click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()"
                                      style="width:100%"  icon="ui-icon-thumb-up" ></button>
                             </div>
                             <div div class="ui-g-12">
-                            <h2>Descrição</h2>
-                                <textarea  style="width: 100%; padding-bottom: 18px" [(ngModel)]="oFluxo.descricao" pInputTextarea autoResize="autoResize"></textarea>
+                            <h2>Descrição</h2><!--[(ngModel)]="oFluxo.descricao"-->
+                                <textarea  style="width: 100%; padding-bottom: 18px"  [(ngModel)]="oFluxo.descricao" pInputTextarea autoResize="autoResize"></textarea>
                             </div>
                          </div>
                       </div>
@@ -271,15 +271,15 @@
                                   <div class="ui-g">
                                   <div class="ui-g-6" style="border-style: outset;padding-right:10px; background: #F5F6F7; width:46%;margin-left: 20px;">
                                       <div class="ui-g-12"><b>Início</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dias" [(ngModel)]="regIniDia" placeholder="dia"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" [(ngModel)]="regIniMes"placeholder="mês"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" [(ngModel)]="regIniAno" placeholder="ano"  ></p-dropdown> </div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dias"  [(ngModel)]="regIniDia" placeholder="dia"  ></p-dropdown> </div><!--[(ngModel)]="regIniDia"-->
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" [(ngModel)]="regIniMes" placeholder="mês"  ></p-dropdown> </div> <!--[(ngModel)]="regIniMes"-->
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" [(ngModel)]="regIniAno" placeholder="ano"  ></p-dropdown> </div> <!--[(ngModel)]="regIniAno"-->
                                   </div>
                                   <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
                                       <div class="ui-g-12"><b>Término</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dias"[(ngModel)]="regFimDia"  placeholder="dia"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" [(ngModel)]="regFimMes" placeholder="mês"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" [(ngModel)]="regFimAno" placeholder="ano"  ></p-dropdown> </div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dias" [(ngModel)]="regFimDia" placeholder="dia"  ></p-dropdown> </div><!--[(ngModel)]="regFimDia"-->
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [(ngModel)]="regFimMes" [options]="meses"  placeholder="mês"  ></p-dropdown> </div><!--[(ngModel)]="regFimMes"-->
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown [(ngModel)]="regFimAno" [options]="anos"  placeholder="ano"  ></p-dropdown> </div><!--[(ngModel)]="regFimAno"-->
                                   </div>
                                 </div>
                           </div>
@@ -289,14 +289,15 @@
                         <div class="card card-w-title" style="width:100%">
                         <div class="ui-g">
                             <div  div class="ui-g-6" style="margin-top: 20px;">
-                                <span class="md-inputfield">
-                                    <input  type="text" [(ngModel)]="oFluxo.valorprojeto"  size="60" pInputText/><p-dropdown [(ngModel)]="selectedMoedaReg"  [options]="anos" placeholder="Moeda"  ></p-dropdown>
+                                <span class="md-inputfield"><!--[(ngModel)]="oFluxo.valorprojeto" -->
+                                    <input  type="text"  [(ngModel)]="oFluxo.valorprojeto" size="60" pInputText/>
+                                    <p-dropdown  [options]="anos" [(ngModel)]="selectedMoedaReg" placeholder="Moeda"  ></p-dropdown><!--[(ngModel)]="selectedMoedaReg" -->
                                     <label>Valor do Projeto/moeda</label>
                                 </span>
                             </div>
-                            <div class="ui-g-6">
+                            <div class="ui-g-6"><!--(click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()" -->
                                     <button pButton type="button" style="width:100%" label="Salvar" icon="ui-icon-save"
-                                     (click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()"  ></button>
+                                    (click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()" ></button>
                                 </div>
                             <div  div class="ui-g-12">
                                 
@@ -348,7 +349,6 @@
 
 
 
-                     <!--Box de Cadastro-->
     <p-dialog header="Cadastro" [resizable]="true" responsive="true" [(visible)]="dialogVisible">
             <div class="ui-g">
                     <div class="ui-g-12">
@@ -373,7 +373,7 @@
     
             <p-footer>
                 <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                    <button type="button" label="Salvar" icon="ui-icon-save" (click)="enviarReg(selectedCadFluxo)" pButton></button>
+                    <button type="button" label="Salvar" icon="ui-icon-save" (click)="enviarReg(selectedCadFluxo.toString())" pButton></button>
                 </div>
             </p-footer>
         </p-dialog>
@@ -382,7 +382,7 @@
 
 
                     
-                </p-accordionTab>
+                </p-accordionTab>  
 
                 <!--Aqui da Engenharia(Projeto)-->
                 <p-accordionTab header="Engenharia(Projeto)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ; color:white;">Status da fase: Em Andamento</div><br>

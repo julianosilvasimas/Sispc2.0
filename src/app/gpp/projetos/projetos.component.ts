@@ -18,7 +18,7 @@ export class ProjetosComponent implements OnInit {
   nomeProject: any;
   local: any;
   setor: any;
-  radar: any;
+  radar: any; 
   valUrgencia: any;
   valGravidade: any;
   valTendencia: any;
