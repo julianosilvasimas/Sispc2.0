@@ -1,3 +1,17 @@
-<p>
-  cadastrarindicador works!
-</p>
+<p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
+
+<!--Cadastrar Indicadores-->
+<div   *ngIf="activeItemIndex==0">
+    <app-novo-indicador></app-novo-indicador>
+</div>
+
+
+<!--Editar Cadastro dos Indicadores-->
+<div  style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==1">
+  
+</div>
+
+<!--Editar Indicadores-->
+<div  style="width: 99.5%; margin-left: 3px;" *ngIf="activeItemIndex==2">
+  
+</div>

@@ -1,38 +1,22 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-import { EventEmitterService } from '../../demo/service/EventEmitterService';
-import { PerformanceService } from './../../performance/performance.service';
+import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 let RelatorioindicadoresComponent = class RelatorioindicadoresComponent {
-    constructor(performanceService) {
-        this.performanceService = performanceService;
-        this.refer = '2019-12-01';
-        this.indicador = [];
+    constructor(messageService, route) {
+        this.messageService = messageService;
+        this.route = route;
         this.comparar = [];
         this.idgerencias = [];
     }
     ngOnInit() {
-        EventEmitterService.get('indicador').subscribe(emiiterResult => {
-            this.indicador = [],
-                this.gerencia = emiiterResult,
-                this.procurarGerencias();
+        this.route.params.subscribe(parametros => {
+            this.indicador = parametros['id'];
+            this.refer = parametros['ref'];
         });
-        console.log(this.indicador);
+        this.messageService.add({ severity: 'info', summary: 'Referência', detail: 'Aguarde a geração do relatório', life: 9000 });
     }
     procurarGerencias() {
-        this.performanceService.gerencias().subscribe(response => {
-            var ger = response.splice(2, Number.MAX_VALUE);
-            for (var i = 0; i < ger.length; i++) {
-                this.comparar.push(ger[i]['icon'] + ger[i]['label']);
-                this.idgerencias.push(ger[i]['gerenciaId']);
-            }
-            this.gerencia2 = this.gerencia;
-            for (var i = 0; i < this.comparar.length; i++) {
-                if (this.comparar[i].includes(this.gerencia2)) {
-                    this.idgerenciasretornado = this.idgerencias[i];
-                    this.indicador.push(this.idgerenciasretornado);
-                }
-            }
-        });
     }
 };
 RelatorioindicadoresComponent = tslib_1.__decorate([
@@ -41,7 +25,7 @@ RelatorioindicadoresComponent = tslib_1.__decorate([
         templateUrl: './relatorioindicadores.component.html',
         styleUrls: ['./relatorioindicadores.component.css']
     }),
-    tslib_1.__metadata("design:paramtypes", [PerformanceService])
+    tslib_1.__metadata("design:paramtypes", [MessageService, ActivatedRoute])
 ], RelatorioindicadoresComponent);
 export { RelatorioindicadoresComponent };
 //# sourceMappingURL=relatorioindicadores.component.js.map

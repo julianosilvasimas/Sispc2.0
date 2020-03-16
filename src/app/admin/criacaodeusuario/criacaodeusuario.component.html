@@ -12,7 +12,8 @@
       <div class="ui-g-12 ui-md-6">
         <div class="ui-g-12 item" >
           <p-checkbox  [(ngModel)]="CadAtivo"  binary="true"></p-checkbox>
-          <label >Status</label>
+          <label *ngIf="CadAtivo === true" >Ativo</label>
+          <label *ngIf="CadAtivo === false" >Inativo</label>
         </div>
       </div>
     </div>
@@ -34,6 +35,21 @@
         <span class="md-inputfield">
           <p-dropdown [options]="unidades" [autoWidth]="true" [(ngModel)]="CadUnidades" placeholder="."   optionLabel="unidade" styleClass = "drop95" [showClear]="true"></p-dropdown>
           <label >Unidade</label>
+        </span>
+      </div>
+    </div>
+    
+    <div class="ui-g-12 ui-md-12" style="margin-top: 20px;">
+      <div class="ui-g-12 ui-md-6">
+        <span class="md-inputfield">
+          <input id="input" type="text" [(ngModel)]="CadCargo" class="ui-g-12" pInputText/>
+          <label>Cargo</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6" >
+        <span class="md-inputfield">
+          <input id="input" type="text" [(ngModel)]="CadFoto" class="ui-g-12" pInputText/>
+          <label >Foto</label>
         </span>
       </div>
     </div>

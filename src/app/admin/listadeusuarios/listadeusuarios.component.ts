@@ -13,6 +13,7 @@ export class ListadeusuariosComponent implements OnInit {
   constructor(private adminserv: AdminService, private messageService: MessageService) {}
 
   usuarios:Usuarios[]; 
+  usuariosCompleto:Usuarios[]; 
   gerencias:any[]; 
   supervisoes:any[]; 
   unidades:any[]; 
@@ -28,11 +29,6 @@ export class ListadeusuariosComponent implements OnInit {
   targetPermissoes: Permissoes[];
 
   ngOnInit() {
-    this.adminserv.listusers().subscribe(
-      response =>{
-        this.usuarios = response['content']
-      }
-    )
     this.adminserv.listgerencias().subscribe(
       response =>{
         this.gerencias=response
@@ -48,6 +44,8 @@ export class ListadeusuariosComponent implements OnInit {
         this.unidades = response
       }
     )
+
+    this.atualizarlista();
   }
   selecionar(usuario){
     this.UsuarioSelect=usuario
@@ -116,7 +114,8 @@ export class ListadeusuariosComponent implements OnInit {
         {
           perfilId: this.targetPermissoes[i].perfilId,
           perfil: this.targetPermissoes[i].perfil,
-          permissao: this.targetPermissoes[i].permissao
+          permissao: this.targetPermissoes[i].permissao,
+          descricao: this.targetPermissoes[i].descricao
         }
       )
     }
@@ -151,6 +150,7 @@ export class ListadeusuariosComponent implements OnInit {
     this.EditPermissoes = false
     this.EditUsuario = false
     this.UsuarioSelect = null
+    this.atualizarlista();
   }
 
   newarray(minhasperm: any[], todasperm:any[]){
@@ -166,5 +166,31 @@ export class ListadeusuariosComponent implements OnInit {
     }  
   }
   //====================================================================================
+  VALOR1
+  Filter(){
+    this.VALOR1 = this.VALOR1==undefined ? null : this.VALOR1=="" ? null : this.VALOR1;
+    var agend = this.usuarios;
+    if(this.VALOR1!==null){
+      // console.log(this.VALOR1)
+      agend = agend.filter(item => item.nome.toUpperCase().includes(this.VALOR1.toUpperCase()))
+    }else{
+      this.atualizarlista();
+    }
 
+    this.usuarios = agend
+
+  }
+  
+  atualizarlista(){
+    this.usuarios=[]
+    this.adminserv.listusers().subscribe(
+      response =>{
+        this.usuarios = response['content']
+      }
+    )
+  }
+
+  Mensagem(dado, perfil){
+    this.messageService.add({sticky: true, severity:'info', summary: perfil, detail:dado, life: 500});
+  }
 }

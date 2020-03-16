@@ -6,7 +6,6 @@ let PagemainComponent = class PagemainComponent {
     constructor(carService, messageService) {
         this.carService = carService;
         this.messageService = messageService;
-        this.selected = this.selected;
         this.clonedCars = {};
         this.uploadedFiles = [];
     }

@@ -164,8 +164,17 @@ import { AdminComponent } from './admin/admin.component';
 import { CriacaodeusuarioComponent } from './admin/criacaodeusuario/criacaodeusuario.component';
 import { ListadeusuariosComponent } from './admin/listadeusuarios/listadeusuarios.component';
 import { CadastrarindicadorComponent } from './performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component';
-import { EditindicadoresComponent } from './performance/admin-indicadores/editindicadores/editindicadores.component';
+import { EditindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component';
 import { AdminService } from './admin/Admin.service';
+import { AdminIndicadoresService } from './performance/admin-indicadores/admin-indicadores.service';
+import { EditarcadastroindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component';
+import { GraficosIndicadoresComponent } from './graficos-indicadores/graficos-indicadores.component';
+import { NovoIndicadorComponent } from './performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component';
+import { EditarindicadoresComponent } from './performance/admin-indicadores/editarindicadores/editarindicadores.component';
+import { ImportarComponent } from './performance/admin-indicadores/importar/importar.component';
+import { ImportarOrcadosComponent } from './performance/admin-indicadores/importar/importar-orcados/importar-orcados.component';
+import { ImportarBotsComponent } from './performance/admin-indicadores/importar/importar-bots/importar-bots.component';
+import { NotificacoesService } from './notificacoessispc/notificacoes.service';
 
 
 @NgModule({
@@ -317,7 +326,14 @@ import { AdminService } from './admin/Admin.service';
         CriacaodeusuarioComponent,
         ListadeusuariosComponent,
         CadastrarindicadorComponent,
-        EditindicadoresComponent
+        EditindicadoresComponent,
+        EditarcadastroindicadoresComponent,
+        GraficosIndicadoresComponent,
+        NovoIndicadorComponent,
+        EditarindicadoresComponent,
+        ImportarComponent,
+        ImportarOrcadosComponent,
+        ImportarBotsComponent,
 
     ],
     providers: [
@@ -332,7 +348,9 @@ import { AdminService } from './admin/Admin.service';
         TransporteService,
         RpaService,
         ControledepagamentosjuridicoService,
-        AdminService
+        AdminService,
+        AdminIndicadoresService,
+        NotificacoesService
     ],
     bootstrap: [AppComponent]
 })

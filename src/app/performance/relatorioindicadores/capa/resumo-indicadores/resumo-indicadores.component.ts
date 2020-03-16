@@ -8,30 +8,29 @@ import { PerformanceService } from '../../../performance.service';
 })
 export class ResumoIndicadoresComponent implements OnInit {
 
- 
-  public Cora: any  = "black";
-
 
   @Input() element;
   @Input() refer;
 
   //DADOS
-  temp1: any;
-  temp2: any;
-  RotuloOrcadoAcum: any;
-  RotuloRealizAcum: any
-  RotuloOrcadoMedia: any;
-  RotuloRealMedia: any
-  RotuloDiferencaAcum: any;
-  RotuloDiferencaAcum2: any;
-  RotuloDiferencaPerc: any;
-  RotuloOrcadoMensal: any;
-  RotuloPrevisaoMensal: any;
-  tipoGraph: any;
-  Tendencia: any;
+  Cor1: any ;
+  Cor2: any ;
+  Cor3: any ;
+  Cor4: any ;
 
-  orcadoMensal: any;
-  previsaoMensal: any;
+   //ROTULO DOS DADOS
+   RotuloOrcadoMensal;
+   RotuloPrevisaoMensal;
+ 
+   public campo1 
+   public campo2 
+   public campo3 
+   public campo4 
+   
+   public campoCalc1 
+   public campoCalc2 
+   public campoCalc3 
+   public campoCalc4 
 
   ngOnInit() {
     this.Validador(this.element, this.refer)
@@ -45,154 +44,169 @@ export class ResumoIndicadoresComponent implements OnInit {
     this.indicadoresService.indicadoresResumo(referencia,indic.indicadorId)
       .subscribe(
         indicador  =>  {
-          let var1          
-          this.temp1  = indicador[0]
-          this.tipoGraph = indic.tipoGrafico
-          this.Tendencia = indic.tendencia
+          
+        var IndicadorCadastro= indic
 
-          this.RotulosAcumulados(this.tipoGraph, this.temp1)
-          // console.log("========================")
-          // console.log(this.Tendencia)
-          // console.log(this.Cora)
+        var Resumo  = []
+        Resumo = indicador[3]
+        // Resumo = Resumo.splice(1, Number.MAX_VALUE)
+        
+        //ROTULOS DE COMENTARIOS
+        //========================================================================================
+        
+        var eixo  = []
+        eixo =indicador[0]
+        eixo = eixo.splice(1, Number.MAX_VALUE)
+        eixo  = eixo.filter(item => item !== null)
+
+        var comentarios: any = []
+        comentarios = indicador[1]
+        comentarios = comentarios.splice(1, Number.MAX_VALUE)
+
+        var responsaveis: any = []
+        responsaveis = indicador[2]
+        responsaveis = responsaveis.splice(1, Number.MAX_VALUE)
+
+          this.CondicionalDeGraficos(IndicadorCadastro ,Resumo)
         });
       }
     
-    
-      RotulosAcumulados(tipoGraph, linhaDeResumo){
-        this.CondicionalDeGraficos(tipoGraph,linhaDeResumo)
-
-        // console.log(this.RotuloDiferencaPerc)
-        switch(this.Tendencia){
-          case "MELHORPOSITIVO":{
-            if(this.RotuloDiferencaPerc<0 && this.RotuloDiferencaPerc!=""){
-              this.Cora = "red"; 
-            }        
-            break;
-          }
-        
-          case "MELHORNEGATIVO":{
-            if(this.RotuloDiferencaPerc>0 && this.RotuloDiferencaPerc!=""){
-              this.Cora = "red"; 
-            } 
-            break;
-          }
-  
-          case "MELHORENTREFAIXAS":{
-            if(this.RotuloDiferencaAcum<0 || this.RotuloDiferencaAcum>0){
-              this.Cora = "red"; 
-            } 
-            break;
-          }
-        }
-        if(tipoGraph==5){
-          this.RotuloDiferencaPerc = this.RotuloDiferencaPerc+"%";
-          this.RotuloDiferencaAcum = this.RotuloDiferencaAcum+"%";
-          this.RotuloOrcadoMensal = this.RotuloOrcadoMensal+"%";
-          this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal+"%";
-          this.RotuloRealizAcum = this.RotuloRealizAcum+"%";
-          this.RotuloOrcadoAcum = this.RotuloOrcadoAcum+"%";
-        }else{
-          this.RotuloDiferencaPerc = "Δ% " +this.RotuloDiferencaPerc;
-          this.RotuloDiferencaAcum2 = "Δ " +this.RotuloDiferencaAcum2;
-        }
-      }
-
-
     //MESMA CLASSE DO QUE O graficos.component.ts
-    CondicionalDeGraficos(tipoGraph, temp1){
+    CondicionalDeGraficos(IndicadorCadastro, resumo){
       //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
       //========================================================================================
-      let orcadoMensal = parseFloat(temp1.splice(1, 1))
-      let orcadoAcumulad = parseFloat(temp1.splice(1, 1)) 
-      let realizadoAcumulad = parseFloat(temp1.splice(1, 1))
-      let PrevisaoMensal = parseFloat(temp1.splice(1, 1))
-      let OrcadoMedia = parseFloat(temp1.splice(1, 1))
-      let RealMedia = parseFloat(temp1.splice(1, 1))
-      let Minimo = parseFloat(temp1.splice(1, 1))
-      let Maximo = parseFloat(temp1.splice(1, 1))
-      let Meta = parseFloat(temp1.splice(1, 1))
-      let MetaAcum = parseFloat(temp1.splice(1, 1))
-      let ReguladoDp = parseFloat(temp1.splice(1, 1))
-      let NaoReguladoDp = parseFloat(temp1.splice(1, 1))
+      let orcadoMensal = parseFloat(resumo.splice(1, 1))
+      let orcadoAcumulad = parseFloat(resumo.splice(1, 1)) 
+      let realizadoAcumulad = parseFloat(resumo.splice(1, 1))
+      let PrevisaoMensal = parseFloat(resumo.splice(1, 1))
+      let OrcadoMedia = parseFloat(resumo.splice(1, 1))
+      let RealMedia = parseFloat(resumo.splice(1, 1))
+      let Minimo = parseFloat(resumo.splice(1, 1))
+      let Maximo = parseFloat(resumo.splice(1, 1))
+      let Meta = parseFloat(resumo.splice(1, 1))
+      let MetaAcum = parseFloat(resumo.splice(1, 1))
+      let ReguladoDp = parseFloat(resumo.splice(1, 1))
+      let NaoReguladoDp = parseFloat(resumo.splice(1, 1))
+      let UltReal = parseFloat(resumo.splice(1, 1))
+      let UltOrcado = parseFloat(resumo.splice(1, 1))
+
+      //MONTAR OBJETO COM OS DADOS DO RESUMO
       //========================================================================================
-
-      let val1 = orcadoAcumulad
-      let val2 = realizadoAcumulad
-      
-      //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
-      //========================================================================================
-      if(tipoGraph==1 || tipoGraph==2 || tipoGraph==6){
-        val1 = orcadoAcumulad
-        val2 = realizadoAcumulad
-        this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal)
-        this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad)
-        this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad)
-        this.RotuloDiferencaAcum = ((val2-val1)).toFixed(0)
-        this.RotuloDiferencaAcum2 =converterSemDecimal(val2-val1)
-        this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
-        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(0);
-
-      }else if(tipoGraph==8 ){
-        val1 = orcadoAcumulad
-        val2 = realizadoAcumulad
-        this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal)
-        this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad)
-        this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad)
-        this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2)
-        this.RotuloDiferencaAcum2 =converterSemDecimal(val2-val1)
-        this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
-        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
-
-      //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
-      //========================================================================================
-      }else if(tipoGraph==3 ){      
-        val1 = OrcadoMedia;
-        val2 = RealMedia;
-        this.RotuloOrcadoMensal =this.ConverterParaHora(OrcadoMedia);
-        this.RotuloOrcadoAcum  = this.ConverterParaHora(OrcadoMedia);
-        this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
-        this.RotuloDiferencaAcum = this.ConverterParaHora((val2-val1));
-        this.RotuloDiferencaAcum2 =this.ConverterParaHora(val2-val1);
-        this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
-        this.RotuloPrevisaoMensal= this.ConverterParaHora(this.RotuloPrevisaoMensal);
-        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
-
-      }else if(tipoGraph==4){      
-        val2 = RealMedia
-        Minimo = Minimo > 60 ? parseFloat(Minimo.toFixed(0)) : Minimo;
-        Maximo = Minimo > 60 ? parseFloat(Maximo.toFixed(0)) : Maximo;
-        this.RotuloOrcadoMensal = Minimo+" - "+Maximo;
-        this.RotuloOrcadoAcum  = Minimo+" - "+Maximo;
-        this.RotuloRealizAcum = RealMedia;
-        let val3 = RealMedia > Minimo ?  RealMedia < Maximo ? 0 :RealMedia-Maximo : RealMedia-Minimo ;
-        this.RotuloDiferencaAcum = val3.toFixed(2);
-        this.RotuloDiferencaAcum2 = val3==0 ? 0 : val3.toFixed(2);
-        val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
-        this.RotuloPrevisaoMensal = PrevisaoMensal;
-        this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal))  ? 0 : PrevisaoMensal;
-        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
-        
-      }else if(tipoGraph==5){      
-        this.RotuloPrevisaoMensal = (Meta*100) ;
-        this.RotuloOrcadoMensal = (Meta*100);
-        this.RotuloOrcadoAcum = (Meta*100);
-        this.RotuloRealizAcum = RealMedia;
-        this.RotuloDiferencaAcum  = "-";
-        this.RotuloDiferencaAcum2 = "-";
-        this.RotuloDiferencaPerc = "-";
-
-      }else if(tipoGraph==7 || tipoGraph==9){      
-        val1 = OrcadoMedia;
-        val2 = RealMedia;
-        this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);
-        this.RotuloOrcadoAcum  = converterComDecimal(OrcadoMedia);
-        this.RotuloRealizAcum = converterComDecimal(RealMedia);
-        this.RotuloDiferencaAcum = ((val2-val1)).toFixed(2);
-        this.RotuloDiferencaAcum2 =converterComDecimal(val2-val1)
-        this.RotuloPrevisaoMensal =  converterComDecimal(PrevisaoMensal);
-        this.RotuloDiferencaPerc = val1==0 ? 0 : ((-(1-(val2/val1)))*100).toFixed(2);
-
+      var ResumoDosEixos={
+        orcadomensal: orcadoMensal,
+        orcadoacumulado: orcadoAcumulad,
+        orcadomedia: OrcadoMedia,
+        realizadoacumulado: realizadoAcumulad,
+        realizadomedia: RealMedia,
+        metaacumulada: MetaAcum,
+        meta: Meta,
+        minimo: Minimo,
+        maximo: Maximo,
+        reguladodp: ReguladoDp,
+        naoreguladodp: NaoReguladoDp,
+        ultimorealizado: UltReal,
+        ultimoorcado: UltOrcado
       }
+      
+      this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
+      this.RotuloPrevisaoMensal = PrevisaoMensal;
+      //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
+      //========================================================================================
+
+      this.campo1 = IndicadorCadastro.rotulocampo1;
+      this.campo2 = IndicadorCadastro.rotulocampo2;
+      this.campo3 = IndicadorCadastro.rotulocampo3;
+      this.campo4 = IndicadorCadastro.rotulocampo4;
+      
+      //CONSTRUIR OS CAMPOS DE CALCULO COM O CADASTRO DE INDICADORES
+      //========================================================================================
+      this.campoCalc1 = ResumoDosEixos[IndicadorCadastro.campo1];
+      this.campoCalc2 = ResumoDosEixos[IndicadorCadastro.campo2];
+      
+      var cam3 = IndicadorCadastro.campo3 ==='variacao'
+      ? this.campoCalc1===0
+      ? 0
+      : ((-(1-(this.campoCalc1/ this.campoCalc2)))*100).toFixed(2)
+      : ResumoDosEixos[IndicadorCadastro.campo4];
+      cam3 = IndicadorCadastro.campo3 ==='diferenca'
+      ? (this.campoCalc2-this.campoCalc1).toFixed(2)
+      : cam3;
+      this.campoCalc3 = cam3;
+      
+      
+      var cam4 = IndicadorCadastro.campo4 ==='variacao'
+      ? this.campoCalc1===0
+      ? 0
+      : ((-(1-(this.campoCalc1/ this.campoCalc2)))*100).toFixed(2)
+      : ResumoDosEixos[IndicadorCadastro.campo4];
+      cam4 = IndicadorCadastro.campo4 ==='diferenca'
+      ? (this.campoCalc2-this.campoCalc1).toFixed(2)
+      : cam4;
+      this.campoCalc4 = cam4;
+      
+      
+      //SELECIONAR TENDENDCIAS DE EIXO
+      //========================================================================================
+      switch(IndicadorCadastro.tendencia){
+        case "MELHORPOSITIVO":{
+          if(this.campoCalc2< this.campoCalc1){
+            this.Cor1 = "Red"; 
+          }        
+          break;
+        }
+        case "MELHORNEGATIVO":{
+          if(this.campoCalc2> this.campoCalc1){
+            this.Cor1 = "Red"; 
+          } 
+          break;
+        }
+        case "MELHORENTREFAIXAS":{
+          if(ResumoDosEixos['realizadomedia'] >ResumoDosEixos['maximo'] 
+          || ResumoDosEixos['realizadomedia'] <ResumoDosEixos['minimo'] ){
+            this.Cor1 = "Red"; 
+          } 
+          break;
+        }
+      }
+      this.Cor2 = this.Cor1
+      this.Cor3 = this.Cor1
+      this.Cor4 = this.Cor1
+      
+      
+      
+      //SELECIONAR TENDENDCIAS DE EIXO
+      //========================================================================================
+      switch(IndicadorCadastro.rotuloVirgula){
+        case 1:{
+          this.campoCalc1 = converterComDecimal(this.campoCalc1)
+          this.campoCalc2 = converterComDecimal(this.campoCalc2)
+          this.campoCalc3 = converterComDecimal(this.campoCalc3)
+          this.campoCalc4 = converterComDecimal(this.campoCalc4)
+          this.RotuloOrcadoMensal = converterComDecimal(this.RotuloOrcadoMensal*1);
+          this.RotuloPrevisaoMensal = converterComDecimal(this.RotuloPrevisaoMensal*1);
+          break;
+        }
+        case 2:{
+          this.campoCalc1 = converterSemDecimal(this.campoCalc1)
+          this.campoCalc2 = converterSemDecimal(this.campoCalc2)
+          this.campoCalc3 = converterSemDecimal(this.campoCalc3)
+          this.campoCalc4 = converterSemDecimal(this.campoCalc4)
+          this.RotuloOrcadoMensal = converterSemDecimal(this.RotuloOrcadoMensal*1);
+          this.RotuloPrevisaoMensal = converterSemDecimal(this.RotuloPrevisaoMensal*1);
+          break;
+        }
+        case 3:{
+          this.campoCalc1 = ConverterParaHora(this.campoCalc1)
+          this.campoCalc2 = ConverterParaHora(this.campoCalc2)
+          this.RotuloOrcadoMensal = ConverterParaHora(this.RotuloOrcadoMensal*1);
+          this.RotuloPrevisaoMensal = ConverterParaHora(this.RotuloPrevisaoMensal*1);
+          break;
+        }
+      }
+      
+
+      //FUNÇÕES
+      //========================================================================================
       function converterComDecimal(z){
         let v = z.toFixed(2);
         v=v.replace(/\D/g,"") // permite digitar apenas numero
@@ -212,24 +226,20 @@ export class ResumoIndicadoresComponent implements OnInit {
         v=v.replace(/(\d{1})(\d{3})$/,"$1.$2") // coloca ponto antes dos ultimos 7 digitos
         return v;
       }
-
-  }
-    ConverterParaHora(s){
-      
-      if(s<0){
-        s=s*-1
-      }
-      function duas_casas(numero){
-        if (numero <= 9){
-          numero = "0"+parseInt(numero);
+      function ConverterParaHora(s){
+        if(s<0){
+          s=s*-1
         }
-        return numero;
-      }
-    
+        function duas_casas(numero){
+          if (numero <= 9){
+            numero = "0"+parseInt(numero);
+          }
+          return numero;
+        }
         var hora = Math.trunc(s/3600);
         var minuto = Math.trunc(s/60)-(hora*60);
         var segundo = Math.trunc(s)-(hora*3600)-(minuto*60);
-  
+
         hora = duas_casas(hora);
         minuto = duas_casas(minuto);
         segundo = duas_casas(segundo);
@@ -237,5 +247,6 @@ export class ResumoIndicadoresComponent implements OnInit {
         var formatado = hora+":"+minuto+":"+segundo;
                   
         return formatado;
-    }
+      }
+  }
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService, MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastrarindicador',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarindicadorComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor( private messageService: MessageService) {
   }
 
+  items: MenuItem[];
+  public activeItem; 
+  public activeItemIndex;
+
+  ngOnInit() {
+    this.items = [
+      {label: 'Cadastrar'}
+    ];
+    this.trocadeitemIndex(0);
+   
+  
+  }
+
+  trocadeitem(activeItem: MenuItem){
+    this.activeItem = activeItem['activeItem']
+    this.activeItemIndex = this.items.indexOf(this.activeItem)
+  }
+  trocadeitemIndex(index){
+    this.activeItem = this.items[index]
+    this.activeItemIndex = index
+  }
 }

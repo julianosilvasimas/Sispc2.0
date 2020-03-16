@@ -1,0 +1,303 @@
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
+  <h4>EDITAR CADASTRO DO INDICADOR</h4>
+
+  <div class="ui-g-6 ui-md-12" >
+    <div class="ui-g-12 ui-md-2">
+      <span class="md-inputfield">
+        <p-dropdown [options]="FiltroListaGerencia" optionLabel="label" filterBy="label,FiltroListaGerencia.label" 
+        [autoWidth]="true" [(ngModel)]="FiltroGerenciaSelecionada"  
+        placeholder="Selecione a Gerencia" styleClass = "drop95" 
+        filter="true" [showClear]="true" ></p-dropdown>
+      </span>
+    </div>
+    <div class="ui-g-12 ui-md-3">
+      <button pButton type="button" icon="pi pi-search" (click)="consultar(FiltroGerenciaSelecionada)"></button>
+    </div>
+  </div>
+  <div style=" margin-top: 100px"></div>
+</div>
+
+
+<p-table selectionMode="single"  *ngIf="listaIndicadores" [reorderableColumns]="true" [value]="listaIndicadores" [reorderableColumns]="true" > 
+  <ng-template class="ui-g-12" pTemplate="caption">
+    <div class="ui-helper-clearfix ui-g-6 " style="text-align: left">
+      <button type="button" pButton  iconPos="left" label="Salvar Ordem" (click)="ajustarOrdem()" class="ui-button-success" style="margin-right: 0.5em;"></button>
+    </div>
+    <div class="ui-helper-clearfix ui-g-6" style="text-align: right">
+      <button type="button" pButton  iconPos="right" label="X" (click)="fecharLista()" class="ui-button-raised ui-button-danger" style="margin-right: 0.5em;"></button>
+    </div>
+    <div style=" margin-top: 50px"></div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:2.5em"></th>
+      <th>Ordem</th>
+      <th>Id</th>
+      <th>Nome Indicador</th>
+      <th>Classificação</th>
+      <th>Tendência</th>
+      <th style="width:8em"></th>
+    </tr>
+  </ng-template>
+  
+  <ng-template pTemplate="body"  let-rowData let-index="rowIndex">
+    <tr [pReorderableRow]="index" [pSelectableRow]="rowData">
+      <td>
+          <i class="pi pi-bars" pReorderableRowHandle></i>
+      </td>
+      <td>
+        {{rowData.ordem}}
+      </td>
+      <td>
+        {{rowData.indicadorId}}
+      </td>
+      <td>
+        {{rowData.indicador}}
+      </td>
+      <td>
+        {{rowData.classificacao}}
+      </td>
+      <td>
+        {{rowData.tendencia}}
+      </td>
+      <td style="text-align:center">
+        <button pButton type="button" icon="pi pi-info" class="ui-button-info" (click)="abrirDialog(rowData)" ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+
+<p-dialog [(visible)]="editarCadastro" [responsive]="false"  showEffect="fade" [modal]="true" [style]="{ height: '1900px', width: '95%'}" 	 (onHide)="aoFecharODialog()">
+  <p-header *ngIf="indicadorSelecionado">{{ indicadorSelecionado.indicadorId }} - {{ indicadorSelecionado.indicador }}</p-header>
+  <div class="ui-g" *ngIf="indicadorSelecionado">
+    <!-- ===============================================================================================-->
+    
+    <div class="ui-g-6"><h2>Editor de Indicador</h2></div>
+    <div class="ui-g-6"  style="text-align: right">
+      <div class="ui-g-12">
+        <p-checkbox [(ngModel)]="indicadorSelecionado.ativo" label="Indicador Ativo"  binary="true"></p-checkbox>
+      </div>
+      <div class="ui-g-12">
+        <button type="button" pButton iconPos="right" label="Salvar Alterações" (click)="SalvarTudo(indicadorSelecionado)" class="ui-button-raised ui-button-success" style="margin-right: 0.5em;"></button>
+      </div>
+    </div>
+
+
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="classificacoesLista" [(ngModel)]="editarIndicadorClassificacao" 
+        placeholder="Selecione a Classificação" [autoWidth]="true" filter="true"  
+        styleClass = "drop95" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="tendenciaLista" [(ngModel)]="editarIndicadorTendencia"
+        placeholder="Selecione a Tendência" [autoWidth]="true" filter="true"
+        styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="tiporotuloLista" [(ngModel)]="editarIndicadorTipoRotulo" 
+        placeholder="Selecione o Tipo do Rótulo" [autoWidth]="true" filter="true"  
+        styleClass = "drop95" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="FiltroListaGerencia" [(ngModel)]="editarIndicadorGerencia"
+        placeholder="Selecione a Gerência" [autoWidth]="true" filter="true"
+        styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+    <!-- <div class="ui-g-12">
+      <p-editor [(ngModel)]="editarIndicadorDescricao" [style]="{'height':'120px'}"></p-editor>
+    </div> -->
+
+
+    <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
+      <div><h2>Mensais</h2></div>
+      <div class="ui-g-12">
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulosMensal" [(ngModel)]="editarIndicadorCampoMensal"
+          placeholder="Label 01" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
+      <div class="ui-g-12"><h2>Labels</h2></div>
+      <div class="ui-g-12">
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo1"
+          placeholder="Label 01" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo2"
+          placeholder="Label 02" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo3"
+          placeholder="Label 03" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+        <p-dropdown  class="ui-g-3" [options]="listaDeCamposParaRotulos" [(ngModel)]="editarIndicadorCampo4"
+          placeholder="Label 04" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+      <div class="ui-g-12">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 01" [(ngModel)]="indicadorSelecionado.rotulocampo1">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 02" [(ngModel)]="indicadorSelecionado.rotulocampo2">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 03" [(ngModel)]="indicadorSelecionado.rotulocampo3">
+        <input type="text" class="ui-g-3" pInputText placeholder="Label 04" [(ngModel)]="indicadorSelecionado.rotulocampo4">
+      </div>
+    </div>
+    
+    <div class="ui-g-12" style=" margin-top: 10px" height="1300px">
+      <div class="ui-g-6"><h2>Editor de Gráfico</h2></div>
+
+      <div class="ui-g-6">  
+        <div class="ui-g-10"  style="text-align: right">
+          <p-calendar placeholder="Selecione a Referência" *ngIf="visualizarGrafico==false"  [(ngModel)]="filtroGraficoData" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
+        </div>
+        <div class="ui-g-2" style="text-align: right">  
+          <button pButton type="button" icon="pi pi-search" *ngIf="visualizarGrafico==false" (click)="carregarGrafico()"></button>
+        </div>
+      </div>
+
+
+      <div class="ui-g-7" width="600px" height="400px">
+        <button type="button" pButton  *ngIf="visualizarGrafico" iconPos="right" label="Recarregar" (click)="atualizarvisualizacao()" class="ui-button-raised ui-button-success" style="margin-right: 0.5em;"></button>
+        <button type="button" pButton  *ngIf="visualizarGrafico" iconPos="right" label="Fechar"   (click)="fecharvisualizacao()" class="ui-button-raised ui-button-danger" style="margin-right: 0.5em;"></button>
+        <p-chart class="chart" *ngIf="visualizarGrafico" type="bar" [data]="data" [options]="options" widht="100%" height="400px"></p-chart>
+      </div>
+      
+      <div *ngIf="visualizarGrafico" class="ui-g-5">
+        <div class="ui-g-12" >
+          <div class="ui-g-6"  style="text-align: center">
+            <button type="button" pButton  iconPos="left" label="Inserir Campo" (click)="inserirnovoCampo()" class="ui-button-rounded ui-button-info" style="margin-right: 0.5em;"></button>
+          </div>  
+          <div class="ui-g-6"  style="text-align: center">
+            <button type="button" pButton  iconPos="left" label="Alterar Ordem" (click)="AlteraOrdemDosCampos()" class="ui-button-rounded ui-button-info" style="margin-right: 0.5em;"></button>
+          </div>  
+        </div>
+
+        <p-fieldset [toggleable]="true" [collapsed]='true' *ngFor="let eixos of indicadorSelecionado.campoDoGraficoId; let i = index" >
+          <p-header>{{ eixos.label }}</p-header>
+          <div class="ui-g-6">
+            <input pInputText type="text" [(ngModel)]="eixos.label">
+          </div>
+          
+          <div class="ui-g-6">
+            <p-dropdown  class="ui-g-12" [options]="listaEdicaodeGraficoEixos" [(ngModel)]="editargraficoseixos[i]"
+              placeholder="Campo Utilizado" [autoWidth]="true" filter="true"
+              styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+          </div>
+          
+          <div class="ui-g-6">
+              <p-dropdown  class="ui-g-12" [options]="listaEdicaodeGraficoTipos" [(ngModel)]="editartiposgraficos[i]"
+                placeholder="Tipo do Grafico" [autoWidth]="true" filter="true"
+                styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+          </div>
+          <div class="ui-g-6">
+            <p-dropdown  class="ui-g-12" [options]="listaEdicaodeGraficoPosicoes" [(ngModel)]="editarposicoes[i]"
+              placeholder="Posicao Eixo" [autoWidth]="true" filter="true"
+              styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+          </div>
+          <div class="ui-g-6" *ngIf="editartiposgraficos[i].value ==='line'">
+            <h4 class="first"></h4>
+            <p-checkbox [(ngModel)]="editarestilos[i]" label="Pontilhado"  binary="true"></p-checkbox>
+          </div>
+          <div class="ui-g-6" >
+            <h4 class="first">Cor Selecionada</h4>
+            <img width="40px" height="40px" src="assets/layout/images/imagensindicadores/{{editarcores[i]}}.PNG" >
+          </div>
+          <div class="ui-g-12">
+            <div class="ui-g-1" *ngFor="let cores of listaEdicaodeGraficoCores">
+              <img width="40px" (click)="atualizarCores(i, cores.value)" height="40px" src="assets/layout/images/imagensindicadores/{{cores.value}}.PNG" >
+            </div>
+          </div>
+          <div class="ui-g-6" style="text-align: center">
+            <button type="button" pButton  iconPos="left" label="Deletar" (click)="deletarCampo(eixos.campoDoGraficoId)" class="ui-button-rounded ui-button-danger" style="margin-right: 0.5em;"></button>
+          </div>
+          <div class="ui-g-6" style="text-align: center">
+            <button type="button" pButton  iconPos="left" label="Atualizar" (click)="atualizarCampo(i)" class="ui-button-rounded ui-button-success" style="margin-right: 0.5em;"></button>
+          </div>
+        </p-fieldset>
+
+      </div>
+    </div>
+    <!-- ===============================================================================================-->
+  </div>
+</p-dialog>
+
+<p-dialog header="Ficha do Indicador" [(visible)]="inserirUmCampo" [style]="{ height: '500px', width: '400px'}">
+  <div class="ui-g" *ngIf="inserirUmCampo">
+    <div class="ui-g-6">
+      <input pInputText type="text" [(ngModel)]="NovoCampoLabel">
+    </div>
+
+    <div class="ui-g-6">
+      <p-dropdown  class="ui-g-12" [options]="listaEdicaodeGraficoEixos" [(ngModel)]="NovoCampoEixo"
+        placeholder="Campo Utilizado" [autoWidth]="true" filter="true"
+        styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+    </div>
+    
+    <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="listaEdicaodeGraficoTipos" [(ngModel)]="NovoCampoTipo"
+          placeholder="Tipo do Grafico" [autoWidth]="true" filter="true"
+          styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="ui-g-6">
+      <p-dropdown  class="ui-g-12" [options]="listaEdicaodeGraficoPosicoes" [(ngModel)]="NovoCampoPosicao"
+        placeholder="Posicao Eixo" [autoWidth]="true" filter="true"
+        styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="ui-g-12" *ngIf="NovoCampoTipo['value'] === 'line'">
+      <h4 class="first"></h4>
+      <p-checkbox [(ngModel)]="NovoCampoEstilo" label="Pontilhado"  binary="true"></p-checkbox>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-1" *ngFor="let cores of listaEdicaodeGraficoCores">
+        <img width="40px" (click)="selectcor(cores.value)" height="40px" src="assets/layout/images/imagensindicadores/{{cores.value}}.PNG" >
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <button pButton type="button" label="Inserir"  (click)="inserirnovoCampoOk()"></button>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog header="Alterar Ordem" [(visible)]="alteraOrdemCampos" [style]="{ height: '500px', width: '700px'}">
+  <div class="ui-g" *ngIf="alteraOrdemCampos"> 
+    <p-table *ngIf="gridDeLista" selectionMode="single" [reorderableColumns]="true" [value]="indicadorSelecionado.campoDoGraficoId" [reorderableColumns]="true" > 
+      <ng-template class="ui-g-12" pTemplate="caption" >
+        <div class="ui-helper-clearfix ui-g-6 " style="text-align: left">
+          <button type="button" pButton  iconPos="left" label="Salvar Ordem" (click)="ajustarOrdemDosCampos()" class="ui-button-success" style="margin-right: 0.5em;"></button>
+        </div>
+        <div style=" margin-top: 50px"></div>
+      </ng-template>
+    
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:2.5em"></th>
+          <th>Ordem</th>
+          <th>Label</th>
+          <th>Campo</th>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="body"  let-rowData let-index="rowIndex">
+        <tr [pReorderableRow]="index" [pSelectableRow]="rowData">
+          <td>
+              <i class="pi pi-bars" pReorderableRowHandle></i>
+          </td>
+          <td>
+            {{rowData.ordem}}
+          </td>
+          <td>
+            {{rowData.label}}
+          </td>
+          <td>
+            {{rowData.eixo}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-dialog>

@@ -2,69 +2,64 @@
 
 <!--SCROOOL DE CARROS-->
 <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" >
-  <p-dataView #dv [value]="Agendamentos" [paginator]="true" [rows]="10" paginatorPosition="both">
-      <p-header>
-        <div class="ui-helper-clearfix">
-          <div class="ui-g">
-            <div class="ui-g-12 filter-container">
-                <input class="ui-g-4" type="search" pInputText placeholder="Solicitante" (keyup)="Filter()" [(ngModel)]="VALOR1" >
-                <input class="ui-g-4" type="search" pInputText placeholder="Condutor" (keyup)="Filter()" [(ngModel)]="VALOR2">
-                <p-calendar class="ui-g-4" type="search" (onSelect)="Filter()" [(ngModel)]="VALOR3data" dateFormat="yy-mm-dd" placeholder="Agendamento" ></p-calendar>
-                
-            </div>
-          </div>
-        </div>
-      </p-header>
-      <ng-template let-car pTemplate="listItem">
-        <div class="car-details">
-          <div class="ui-g-1" style="text-align: center !important; vertical-align: middle;">
-            <button *ngIf="car.aprovacao==0" pButton type="button"  label="Reprovado" class="ui-button-danger"></button>
-            <button *ngIf="car.aprovacao==1" pButton type="button"  label="Aprovado" class="ui-button-success"></button>
-          </div>
-          <div class="ui-g-3">
-            <div class="ui-g-12">Inicio: <b>{{car.agendadode}}</b></div>
-            <div class="ui-g-12">Término: <b>{{car.agendadoate}}</b></div>
-          </div>
-          <div class="ui-g-3">
-            <div class="ui-g-12">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>
-            <div class="ui-g-12">Aprovador: <b>{{car.aprovador}}</b></div>
-          </div>
-          <div class="ui-g-2">
-            <div class="ui-g-12">Placa: <b>{{car.placa}}</b></div>
-            <div class="ui-g-12">Destino: <b>{{car.destino}}</b></div>
-          </div>
-          <div class="ui-g-2">
-            <div class="ui-g-12">Passageiros: <b>{{car.qtdPessoas}}</b></div>
-            <div class="ui-g-12">Condutor: <b>{{car.condutor}}</b></div>
-          </div>
-          <div class="ui-g-1" >
-            <button pButton type="button" icon="pi pi-search" (click)="showAgendamento(car)"></button>
-          </div>
-        </div>
-      </ng-template>
-       
-  </p-dataView>
+  <div class="ui-g">
+    <div class="ui-g-12 filter-container">
+        <input class="ui-g-4" type="search" pInputText placeholder="Solicitante" (keyup)="Filter()" [(ngModel)]="VALOR1" >
+        <input class="ui-g-4" type="search" pInputText placeholder="Condutor" (keyup)="Filter()" [(ngModel)]="VALOR2">
+        <p-calendar class="ui-g-4" type="search" (onSelect)="Filter()" [(ngModel)]="VALOR3data" dateFormat="yy-mm-dd" placeholder="Agendamento" ></p-calendar>
+        
+    </div>
+  </div>
+
+  <p-table #dt [value]="Agendamentos" selectionMode="multiple" [(selection)]="selectedCars">
+    <ng-template pTemplate="caption">
+      <div class="ui-helper-clearfix" style="text-align: left">
+          <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>Data Agendamento</th>
+          <th>Placa</th>
+          <th>Status</th>
+          <th>Inicio</th>
+          <th>Término</th>
+          <th>Aprovador</th>
+          <th>Qtd. Pessoas</th>
+          <th>Solicitante</th>
+          <th></th>
+        </tr>
+    </ng-template>
+    <ng-template let-car pTemplate="body">
+      <tr [pSelectableRow]="car">
+        <td>{{car.dataAgendamento}}</td>
+        <td>{{car.placa}}</td>
+        <td>
+          <button *ngIf="car.aprovacao==0" pButton type="button"  label="Reprovado" class="ui-button-danger"></button>
+          <button *ngIf="car.aprovacao==1" pButton type="button"  label="Aprovado" class="ui-button-success"></button>
+        </td>
+        <td>{{car.agendadode}}</td>
+        <td>{{car.agendadoate}}</td>
+        <td>{{car.aprovador}}</td>
+        <td>{{car.qtdPessoas}}</td>
+        <td>{{car.solicitante}}</td>
+        <td>
+          <button pButton type="button" icon="pi pi-search" (click)="showAgendamento(car)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
 <p-dialog header="Lista de Agendamentos" [(visible)]="displayAgendamento" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}"  (onAfterHide)="onDialogHide()">
   <div class="ui-g" *ngIf="AgendamentoSelecionado" >
-
     <div class="ui-g-12">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>
-
     <div class="ui-g-12">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>
-
     <div class="ui-g-12">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>
-    
     <div class="ui-g-12" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>
-
     <div class="ui-g-12" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>
-
     <div class="ui-g-12" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>
-
     <div class="ui-g-12" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>
-
     <div class="ui-g-12" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>
-
-
   </div>
   
 </p-dialog>

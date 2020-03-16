@@ -357,7 +357,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USUÁRIO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNome\" class=\"ui-g-12\" pInputText/>\r\n          <label>Nome Completo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <div class=\"ui-g-12 item\" >\r\n          <p-checkbox  [(ngModel)]=\"CadAtivo\"  binary=\"true\"></p-checkbox>\r\n          <label >Status</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n         <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"CadSupervisao\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n         <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"CadGerencia\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"CadUnidades\" placeholder=\".\"   optionLabel=\"unidade\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Unidade</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmail\" class=\"ui-g-12\" pInputText/>\r\n          <label>Email</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadLogin\" class=\"ui-g-12\" pInputText/>\r\n          <label >Login</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USUÁRIO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n\r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadNome\" class=\"ui-g-12\" pInputText/>\r\n          <label>Nome Completo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <div class=\"ui-g-12 item\" >\r\n          <p-checkbox  [(ngModel)]=\"CadAtivo\"  binary=\"true\"></p-checkbox>\r\n          <label *ngIf=\"CadAtivo === true\" >Ativo</label>\r\n          <label *ngIf=\"CadAtivo === false\" >Inativo</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-4\" >\r\n        <span class=\"md-inputfield\">\r\n         <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"CadSupervisao\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n         <label >Supervisão</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"CadGerencia\" placeholder=\".\"   optionLabel=\"label\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Gerência</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-4\">\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"CadUnidades\" placeholder=\".\"   optionLabel=\"unidade\" styleClass = \"drop95\" [showClear]=\"true\"></p-dropdown>\r\n          <label >Unidade</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadCargo\" class=\"ui-g-12\" pInputText/>\r\n          <label>Cargo</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadFoto\" class=\"ui-g-12\" pInputText/>\r\n          <label >Foto</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmail\" class=\"ui-g-12\" pInputText/>\r\n          <label>Email</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\" >\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" type=\"text\" [(ngModel)]=\"CadLogin\" class=\"ui-g-12\" pInputText/>\r\n          <label >Login</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -368,7 +368,7 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label >Status</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 80px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Available\" targetHeader=\"Selected\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" sourceFilterPlaceholder=\"Pesquise pelo nome\" targetFilterPlaceholder=\"Pesquise pelo nome\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n      <div class=\"ui-helper-clearfix\">\r\n          <div style=\"font-size:10px;float:left;margin:15px 5px 0 0\">{{perfil.perfil}}</div>\r\n      </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Nome\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label *ngIf=\"UsuarioSelect.ativo === true\" >Ativo</label>\r\n            <label *ngIf=\"UsuarioSelect.ativo === false\" >Inativo</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.cargo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Cargo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.foto\" class=\"ui-g-12\" pInputText/>\r\n            <label >Foto</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Disponíveis\" targetHeader=\"Acessos\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-3\" >\r\n              <button pButton type=\"button\" label=\"!\" class=\"ui-button-rounded ui-button-info\"></button>\r\n            </div>\r\n            <div class=\"ui-g-9\">\r\n              {{perfil.perfil}}\r\n              \r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -401,7 +401,7 @@ module.exports = "<div class=\"layout-sidebar\" [ngStyle]=\"{'overflow':app.side
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmoke !important;\">\r\n    <!--<div class=\"logo\">\r\n        <a href=\"#\">\r\n            <img src=\"assets/layout/images/sisp.png\">\r\n        </a>\r\n    </div>-->\r\n\r\n    <img src=\"assets/layout/images/SISPC 2.0.png\" class=\"app-name\"/>\r\n\r\n    <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\r\n        <i class=\"material-icons\">menu</i>\r\n    </a>\r\n\r\n    <ul class=\"topbar-menu fadeInDown\" [ngClass]=\"{'topbar-menu-visible': app.topbarMenuActive}\">\r\n        <li #profile class=\"profile-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === profile}\" style=\"width:180px\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,profile)\">\r\n                <div class=\"profile-image\">\r\n                    <img src= {{imgPerfil}}>\r\n                </div>\r\n                <div class=\"profile-info\">\r\n                    <span class=\"topbar-item-name profile-name\" style=\"width:180px\">{{nome}}</span>\r\n                    <span class=\"topbar-item-name profile-role\" style=\"width:180px\">{{cargo}}</span>\r\n                </div>\r\n            </a>\r\n\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">person</i>\r\n                        <span>Perfil</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">security</i>\r\n                        <span>Privacidade</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">settings_applications</i>\r\n                        <span>Configurações</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"fechar()\">\r\n                        <i class=\"material-icons\">power_settings_new</i>\r\n                        <span>Sair</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n\r\n        <li #settings [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === settings}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,settings)\">\r\n                <i class=\"topbar-icon material-icons\">settings</i>\r\n                <span class=\"topbar-item-name\">Settings</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">palette</i>\r\n                        <span>Change Theme</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">favorite_border</i>\r\n                        <span>Favoritos</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">lock</i>\r\n                        <span>Alterar Senha</span>\r\n                    </a>\r\n                </li>\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">wallpaper</i>\r\n                        <span>Wallpaper</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n            </ul>\r\n        </li>\r\n        <li #messages [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === messages}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,messages)\">\r\n                <i class=\"topbar-icon material-icons\">message</i>\r\n                <!--<span class=\"topbar-badge\">5</span>-->\r\n                <span class=\"topbar-item-name\">Messages</span>\r\n            </a>\r\n           <!-- <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar1.png\" width=\"35\"/>\r\n                        <span>Preciso de um relatório</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Poderia me ajudar com uma planilha?</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar3.png\" width=\"35\"/>\r\n                        <span>Podemos marcar uma reunião</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Reunião às 10pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar4.png\" width=\"35\"/>\r\n                        <span>Favor atualizar os dados dos indicadores</span>\r\n                    </a>\r\n                </li>\r\n            </ul>-->\r\n        </li>\r\n        <li #notifications [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === notifications}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,notifications)\">\r\n                <i class=\"topbar-icon material-icons\">timer</i>\r\n                <!--<span class=\"topbar-badge\">4</span>-->\r\n                <span class=\"topbar-item-name\">Notifications</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">bug_report</i>\r\n                        <span>Tarefas pendentes</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">event</i>\r\n                        <span>Reunião às 3pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">file_download</i>\r\n                        <span>Baixar Relatórios</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">flight</i>\r\n                        <span>Plano de vôo</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n        <li #search class=\"search-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === search}\"\r\n            (click)=\"app.onTopbarItemClick($event,search)\">\r\n            <span class=\"md-inputfield\">\r\n                <input type=\"text\" pInputText>\r\n                <label>Search</label>\r\n                <i class=\"topbar-icon material-icons\">search</i>\r\n            </span>\r\n        </li>\r\n    </ul>\r\n</div>"
+module.exports = "<div class=\"topbar clearfix\" Style = \"background: whitesmoke !important;\">\r\n    <!--<div class=\"logo\">\r\n        <a href=\"#\">\r\n            <img src=\"assets/layout/images/sisp.png\">\r\n        </a>\r\n    </div>-->\r\n\r\n    <img src=\"assets/layout/images/SISPC 2.0.png\" class=\"app-name\"/>\r\n\r\n    <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\r\n        <i class=\"material-icons\">menu</i>\r\n    </a>\r\n\r\n    <ul class=\"topbar-menu fadeInDown\" [ngClass]=\"{'topbar-menu-visible': app.topbarMenuActive}\">\r\n        <li #profile class=\"profile-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === profile}\" style=\"width:180px\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,profile)\">\r\n                <div class=\"profile-image\">\r\n                    <img src= {{imgPerfil}}>\r\n                </div>\r\n                <div class=\"profile-info\">\r\n                    <span class=\"topbar-item-name profile-name\" style=\"width:180px\">{{nome}}</span>\r\n                    <span class=\"topbar-item-name profile-role\" style=\"width:180px\">{{cargo}}</span>\r\n                </div>\r\n            </a>\r\n\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">person</i>\r\n                        <span>Perfil</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">security</i>\r\n                        <span>Privacidade</span>\r\n                        <span class=\"topbar-submenuitem-badge\"></span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">settings_applications</i>\r\n                        <span>Configurações</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"\" (click)=\"fechar()\">\r\n                        <i class=\"material-icons\">power_settings_new</i>\r\n                        <span>Sair</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n\r\n        <li #settings [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === settings}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,settings)\">\r\n                <i class=\"topbar-icon material-icons\">settings</i>\r\n                <span class=\"topbar-item-name\">Settings</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">palette</i>\r\n                        <span>Change Theme</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">favorite_border</i>\r\n                        <span>Favoritos</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">lock</i>\r\n                        <span>Alterar Senha</span>\r\n                    </a>\r\n                </li>\r\n                <!--\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">wallpaper</i>\r\n                        <span>Wallpaper</span>\r\n                    </a>\r\n                </li>\r\n            -->\r\n            </ul>\r\n        </li>\r\n        <li #messages [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === messages}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,messages)\">\r\n                <i class=\"topbar-icon material-icons\">message</i>\r\n                <!--<span class=\"topbar-badge\">5</span>-->\r\n                <span class=\"topbar-item-name\">Messages</span>\r\n            </a>\r\n           <!-- <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar1.png\" width=\"35\"/>\r\n                        <span>Preciso de um relatório</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Poderia me ajudar com uma planilha?</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar3.png\" width=\"35\"/>\r\n                        <span>Podemos marcar uma reunião</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar2.png\" width=\"35\"/>\r\n                        <span>Reunião às 10pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" class=\"topbar-message\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <img src=\"assets/layout/images/avatar4.png\" width=\"35\"/>\r\n                        <span>Favor atualizar os dados dos indicadores</span>\r\n                    </a>\r\n                </li>\r\n            </ul>-->\r\n        </li>\r\n        <li #notifications [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === notifications}\">\r\n            <a href=\"#\" (click)=\"app.onTopbarItemClick($event,notifications)\">\r\n                <i class=\"topbar-icon material-icons\">timer</i>\r\n                <!--<span class=\"topbar-badge\">4</span>-->\r\n                <span class=\"topbar-item-name\">Notifications</span>\r\n            </a>\r\n            <ul class=\"fadeInDown\">\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">bug_report</i>\r\n                        <span>Tarefas pendentes</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">event</i>\r\n                        <span>Reunião às 3pm</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">file_download</i>\r\n                        <span>Baixar Relatórios</span>\r\n                    </a>\r\n                </li>\r\n                <li role=\"menuitem\">\r\n                    <a href=\"#\" (click)=\"app.onTopbarSubItemClick($event)\">\r\n                        <i class=\"material-icons\">flight</i>\r\n                        <span>Plano de vôo</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </li>\r\n        <li #search class=\"search-item\" [ngClass]=\"{'active-topmenuitem':app.activeTopbarItem === search}\"\r\n            (click)=\"app.onTopbarItemClick($event,search)\">\r\n            <span class=\"md-inputfield\">\r\n                <input type=\"text\" pInputText>\r\n                <label>Search</label>\r\n                <i class=\"topbar-icon material-icons\">search</i>\r\n            </span>\r\n        </li>\r\n    </ul>\r\n</div>"
 
 /***/ }),
 
@@ -680,6 +680,17 @@ module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/graficos-indicadores/graficos-indicadores.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/graficos-indicadores/graficos-indicadores.component.html ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" widht=\"100%\" height=\"400px\"></p-chart>\r\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/graficos/graficos.component.html":
 /*!****************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/graficos/graficos.component.html ***!
@@ -687,7 +698,7 @@ module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.RotuloOrcadoAcum }}</span>\r\n    \r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.RotuloRealizAcum }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.RotuloDiferencaAcum2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.RotuloDiferencaPerc }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
+module.exports = "<!-- <p-chart class=\"chart\" type=\"bar\" [data]=\"data\" [options]=\"options\" height=\"400px\" width=\"100%\"></p-chart>\r\n<p-graficos-indicadores></p-graficos-indicadores> -->\r\n<!-- Parâmetros -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">PARÂMETROS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div>\r\n<div class=\"divParametros Titulos\">Orçado Mensal</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloOrcadoMensal }}</div>\r\n<div class=\"divParametros Titulos\">Forecast</div>\r\n<div class=\"divParametros Dados\">{{ this.RotuloPrevisaoMensal }}</div>\r\n<br>\r\n<div class = \"divParametros rectangle\" >\r\n    <span>{{ this.campoCalc1 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor2\" class = \"divParametros rectangle\" style=\"margin-left: 360px !important;\">\r\n    <span>{{ this.campoCalc2 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor3\" class = \"divParametros rectangle\" style=\"margin-left: 520px !important;\">\r\n        <span> {{ this.campoCalc3 }}</span>\r\n</div>\r\n<div [style.color]=\"this.Cor4\" class = \"divParametros rectangle\" style=\"margin-left: 680px !important;\">\r\n    <span>{{ this.campoCalc4 }}</span>\r\n</div>\r\n\r\n<div class = \"divParametros titles\">{{ this.campo1 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 360px !important;\">{{ this.campo2 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 520px !important;\">{{ this.campo3 }}</div>\r\n<div class = \"divParametros titles\" style=\"margin-left: 680px !important;\">{{ this.campo4 }}</div>\r\n<div class=\"alertarelatorio\">*Indicadores em vermelho significam que estão com desvio.</div>\r\n<!-- Comentários -->\r\n<br>\r\n<div class=\"subtitulos\">\r\n    <div class=\"ui-g-5\">COMENTÁRIOS</div>\r\n</div>\r\n<br>\r\n<div class=\"separador\"></div>\r\n<br>\r\n<div  *ngFor=\"let coment of datasCom, let i=index\">\r\n    <div>\r\n        <div class=\"comentarios data\">{{ datasCom[i] }}</div>\r\n        <div class=\"comentarios responsavel\">{{ responsaveisCom[i] }}</div>\r\n        <div class=\"comentarios texto\"> | {{ comentarCom[i] }}</div>\r\n        <hr size=\"1\" style=\"border:1px dashed gray;\">\r\n    </div> \r\n</div>       \r\n\r\n\r\n    \r\n\r\n</div>"
 
 /***/ }),
 
@@ -720,7 +731,7 @@ module.exports = "<p-toast [style]=\"{marginTop: '80px'}\"></p-toast>\r\n<div cl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" >\r\n    <h4>ENVIAR EMAIL DE NOTIFICAÇÃO</h4>\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n  \r\n        <div class=\"ui-g-12 ui-md-12\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"CadEmpresa\" class=\"ui-g-12\" pInputText/>\r\n            <label>Assunto</label>\r\n          </span>\r\n        </div>\r\n      \r\n    \r\n        <div class=\"ui-g-12\">\r\n          <p-editor [(ngModel)]=\"text1\" [style]=\"{'height':'320px'}\"></p-editor>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Enviar\"  (click)=\"salvar()\"></button>\r\n        </div>\r\n    </div>\r\n  </div>"
+module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>ENVIAR EMAIL DE NOTIFICAÇÃO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g ui-md\">\r\n\r\n    <div class=\"ui-g-12 ui-md-5\">\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" type=\"text\" [(ngModel)]=\"Assunto\" class=\"ui-g-12\" pInputText/>\r\n        <label>Assunto</label>\r\n      </span>\r\n    </div>\r\n  \r\n    <div class=\"ui-g-12 ui-md-6\" >\r\n        <p-multiSelect class=\"ui-g-12\" [options]=\"ArrEmails\" optionLabel=\"nome\" [(ngModel)]=\"OpcEmails\" [style]=\"{width: '100%'}\" [panelStyle]=\"{minWidth:'120px'}\"></p-multiSelect>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-1\" style=\"text-align: right;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Enviar\"  (click)=\"AoSalvar()\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12  ui-md-12\">\r\n      <p-editor [(ngModel)]=\"Texto\" [style]=\"{'height':'320px'}\"></p-editor>\r\n    </div>\r\n    <div class=\"ui-g-12  ui-md-12\" style=\"text-align: right;\">\r\n      <div class=\"ui-g-12  ui-md-10\" style=\"text-align: right;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar novo Modelo\"  (click)=\"novoModelo()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12  ui-md-2\" style=\"text-align: right;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Modelos\"  (click)=\"Modelos()\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<p-dialog [(visible)]=\"carregando\" [style]=\"{width: '1%',height: '1%'}\">\r\n  <div class=\"splash-screen\" style=\"margin-top:-180px; margin-left:-180px;height:20%;width:20%; border-radius: 15px;\" >\r\n    <div class=\"splash-loader\">\r\n        <img src=\"assets/layout/images/SISPCpng.png\">\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog [(visible)]=\"novoModeloP\" [style]=\"{width: '30%',height: '20%'}\">\r\n  <div class=\"ui-g ui-md\">\r\n    <div class=\"ui-g-12 ui-md-6\">\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" type=\"text\" [(ngModel)]=\"NomeDoModelo\" class=\"ui-g-12\" pInputText/>\r\n        <label>Nome do Modelo</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12  ui-md-6\" style=\"text-align: right;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarNovoModelo()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog [(visible)]=\"modelos\" [style]=\"{width: '50%',height: '50%'}\">\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g ui-md\">\r\n    <p-table [value]=\"modelosCadastrados\">\r\n        <ng-template pTemplate=\"header\">\r\n            <tr>\r\n                <th>NomeDoTemplate</th>\r\n                <th>Assunto</th>\r\n                <th>Selecionar</th>\r\n                <th>Selecionar</th>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-car>\r\n            <tr>\r\n                <td>{{car.nomeDoTemplate}}</td>\r\n                <td>{{car.assunto}}</td>\r\n                <td>\r\n                  <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Selecionar\" (click)=\"selecionarModelo(car)\">\r\n                    \r\n\r\n                  </button>\r\n                </td>\r\n                <td>\r\n                  <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Deletar\" (click)=\"deletarModelo(car)\">\r\n\r\n\r\n                  </button>\r\n                </td>\r\n            </tr>\r\n        </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>\r\n"
 
 /***/ }),
 
@@ -775,7 +786,7 @@ module.exports = "<div class=\"exception-body pagenotfound-body\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Agendar-->\r\n<div class=\"card card-w-title\"  *ngIf=\"activeItemIndex==0\">\r\n  <app-cadastrarindicador></app-cadastrarindicador>\r\n</div>\r\n\r\n\r\n<!--Aprovação de Agendamentos-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  <app-editindicadores></app-editindicadores>\r\n</div>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Cadastrar Indicadores-->\r\n<div   *ngIf=\"activeItemIndex==0\">\r\n  <app-cadastrarindicador></app-cadastrarindicador>\r\n</div>\r\n\r\n\r\n<!--Editar Cadastro dos Indicadores-->\r\n<div  *ngIf=\"activeItemIndex==1\">\r\n  <app-editarindicadores></app-editarindicadores>\r\n</div>\r\n\r\n\r\n<!--Editar Cadastro dos Indicadores-->\r\n<div  *ngIf=\"activeItemIndex==2\">\r\n  <app-importar></app-importar>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -786,18 +797,84 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  cadastrarindicador works!\r\n</p>\r\n"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Cadastrar Indicadores-->\r\n<div   *ngIf=\"activeItemIndex==0\">\r\n    <app-novo-indicador></app-novo-indicador>\r\n</div>\r\n\r\n\r\n<!--Editar Cadastro dos Indicadores-->\r\n<div  style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  \r\n</div>\r\n\r\n<!--Editar Indicadores-->\r\n<div  style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==2\">\r\n  \r\n</div>\r\n"
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html":
-/*!************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html ***!
-  \************************************************************************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.html":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.html ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  editindicadores works!\r\n</p>\r\n"
+module.exports = "<div class=\"card\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <div class=\"ui-g\">\r\n    <div class=\"ui-g-12\"><h4>CRIAÇÃO DE INDICADOR</h4></div>\r\n    <div class=\"ui-g-12\" style=\"text-align: center;padding-bottom: 20px;\">\r\n        <span class=\"md-inputfield\">\r\n            <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"editarIndicadorNome\" type=\"text\" pInputText/>\r\n            <label>Nome do Indicador</label>\r\n        </span>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"classificacoesLista\" [(ngModel)]=\"editarIndicadorClassificacao\" \r\n        placeholder=\"Selecione a Classificação\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tendenciaLista\" [(ngModel)]=\"editarIndicadorTendencia\"\r\n        placeholder=\"Selecione a Tendência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tiporotuloLista\" [(ngModel)]=\"editarIndicadorTipoRotulo\" \r\n        placeholder=\"Selecione o Tipo do Rótulo\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"gerenciasLista\" [(ngModel)]=\"editarIndicadorGerencia\"\r\n        placeholder=\"Selecione a Gerência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-6\" style=\"text-align: left\">\r\n      <p-checkbox [(ngModel)]=\"editarIndicadorAtivo\" label=\"Indicador Ativo\"  binary=\"true\"></p-checkbox>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"text-align: center\">\r\n      <button type=\"button\" pButton iconPos=\"right\" label=\"Criar Indicador\" (click)=\"salvarIndicador()\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.html":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.html ***!
+  \**************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>EDITAR CADASTRO DO INDICADOR</h4>\r\n\r\n  <div class=\"ui-g-6 ui-md-12\" >\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [options]=\"FiltroListaGerencia\" optionLabel=\"label\" filterBy=\"label,FiltroListaGerencia.label\" \r\n        [autoWidth]=\"true\" [(ngModel)]=\"FiltroGerenciaSelecionada\"  \r\n        placeholder=\"Selecione a Gerencia\" styleClass = \"drop95\" \r\n        filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-3\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar(FiltroGerenciaSelecionada)\"></button>\r\n    </div>\r\n  </div>\r\n  <div style=\" margin-top: 100px\"></div>\r\n</div>\r\n\r\n\r\n<p-table selectionMode=\"single\"  *ngIf=\"listaIndicadores\" [reorderableColumns]=\"true\" [value]=\"listaIndicadores\" [reorderableColumns]=\"true\" > \r\n  <ng-template class=\"ui-g-12\" pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n      <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdem()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div class=\"ui-helper-clearfix ui-g-6\" style=\"text-align: right\">\r\n      <button type=\"button\" pButton  iconPos=\"right\" label=\"X\" (click)=\"fecharLista()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n    <div style=\" margin-top: 50px\"></div>\r\n  </ng-template>\r\n\r\n  <ng-template pTemplate=\"header\">\r\n    <tr>\r\n      <th style=\"width:2.5em\"></th>\r\n      <th>Ordem</th>\r\n      <th>Id</th>\r\n      <th>Nome Indicador</th>\r\n      <th>Classificação</th>\r\n      <th>Tendência</th>\r\n      <th style=\"width:8em\"></th>\r\n    </tr>\r\n  </ng-template>\r\n  \r\n  <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n    <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n      <td>\r\n          <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n      </td>\r\n      <td>\r\n        {{rowData.ordem}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicadorId}}\r\n      </td>\r\n      <td>\r\n        {{rowData.indicador}}\r\n      </td>\r\n      <td>\r\n        {{rowData.classificacao}}\r\n      </td>\r\n      <td>\r\n        {{rowData.tendencia}}\r\n      </td>\r\n      <td style=\"text-align:center\">\r\n        <button pButton type=\"button\" icon=\"pi pi-info\" class=\"ui-button-info\" (click)=\"abrirDialog(rowData)\" ></button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n\r\n\r\n\r\n<p-dialog [(visible)]=\"editarCadastro\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '1900px', width: '95%'}\" \t (onHide)=\"aoFecharODialog()\">\r\n  <p-header *ngIf=\"indicadorSelecionado\">{{ indicadorSelecionado.indicadorId }} - {{ indicadorSelecionado.indicador }}</p-header>\r\n  <div class=\"ui-g\" *ngIf=\"indicadorSelecionado\">\r\n    <!-- ===============================================================================================-->\r\n    \r\n    <div class=\"ui-g-6\"><h2>Editor de Indicador</h2></div>\r\n    <div class=\"ui-g-6\"  style=\"text-align: right\">\r\n      <div class=\"ui-g-12\">\r\n        <p-checkbox [(ngModel)]=\"indicadorSelecionado.ativo\" label=\"Indicador Ativo\"  binary=\"true\"></p-checkbox>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <button type=\"button\" pButton iconPos=\"right\" label=\"Salvar Alterações\" (click)=\"SalvarTudo(indicadorSelecionado)\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"classificacoesLista\" [(ngModel)]=\"editarIndicadorClassificacao\" \r\n        placeholder=\"Selecione a Classificação\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tendenciaLista\" [(ngModel)]=\"editarIndicadorTendencia\"\r\n        placeholder=\"Selecione a Tendência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"tiporotuloLista\" [(ngModel)]=\"editarIndicadorTipoRotulo\" \r\n        placeholder=\"Selecione o Tipo do Rótulo\" [autoWidth]=\"true\" filter=\"true\"  \r\n        styleClass = \"drop95\" optionLabel=\"label\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"FiltroListaGerencia\" [(ngModel)]=\"editarIndicadorGerencia\"\r\n        placeholder=\"Selecione a Gerência\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n    <!-- <div class=\"ui-g-12\">\r\n      <p-editor [(ngModel)]=\"editarIndicadorDescricao\" [style]=\"{'height':'120px'}\"></p-editor>\r\n    </div> -->\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div><h2>Mensais</h2></div>\r\n      <div class=\"ui-g-12\">\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulosMensal\" [(ngModel)]=\"editarIndicadorCampoMensal\"\r\n          placeholder=\"Label 01\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-12\"><h2>Labels</h2></div>\r\n      <div class=\"ui-g-12\">\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo1\"\r\n          placeholder=\"Label 01\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo2\"\r\n          placeholder=\"Label 02\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo3\"\r\n          placeholder=\"Label 03\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n        <p-dropdown  class=\"ui-g-3\" [options]=\"listaDeCamposParaRotulos\" [(ngModel)]=\"editarIndicadorCampo4\"\r\n          placeholder=\"Label 04\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 01\" [(ngModel)]=\"indicadorSelecionado.rotulocampo1\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 02\" [(ngModel)]=\"indicadorSelecionado.rotulocampo2\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 03\" [(ngModel)]=\"indicadorSelecionado.rotulocampo3\">\r\n        <input type=\"text\" class=\"ui-g-3\" pInputText placeholder=\"Label 04\" [(ngModel)]=\"indicadorSelecionado.rotulocampo4\">\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\" margin-top: 10px\" height=\"1300px\">\r\n      <div class=\"ui-g-6\"><h2>Editor de Gráfico</h2></div>\r\n\r\n      <div class=\"ui-g-6\">  \r\n        <div class=\"ui-g-10\"  style=\"text-align: right\">\r\n          <p-calendar placeholder=\"Selecione a Referência\" *ngIf=\"visualizarGrafico==false\"  [(ngModel)]=\"filtroGraficoData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align: right\">  \r\n          <button pButton type=\"button\" icon=\"pi pi-search\" *ngIf=\"visualizarGrafico==false\" (click)=\"carregarGrafico()\"></button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"ui-g-7\" width=\"600px\" height=\"400px\">\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Recarregar\" (click)=\"atualizarvisualizacao()\" class=\"ui-button-raised ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        <button type=\"button\" pButton  *ngIf=\"visualizarGrafico\" iconPos=\"right\" label=\"Fechar\"   (click)=\"fecharvisualizacao()\" class=\"ui-button-raised ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n        <p-chart class=\"chart\" *ngIf=\"visualizarGrafico\" type=\"bar\" [data]=\"data\" [options]=\"options\" widht=\"100%\" height=\"400px\"></p-chart>\r\n      </div>\r\n      \r\n      <div *ngIf=\"visualizarGrafico\" class=\"ui-g-5\">\r\n        <div class=\"ui-g-12\" >\r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Inserir Campo\" (click)=\"inserirnovoCampo()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n          <div class=\"ui-g-6\"  style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Alterar Ordem\" (click)=\"AlteraOrdemDosCampos()\" class=\"ui-button-rounded ui-button-info\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>  \r\n        </div>\r\n\r\n        <p-fieldset [toggleable]=\"true\" [collapsed]='true' *ngFor=\"let eixos of indicadorSelecionado.campoDoGraficoId; let i = index\" >\r\n          <p-header>{{ eixos.label }}</p-header>\r\n          <div class=\"ui-g-6\">\r\n            <input pInputText type=\"text\" [(ngModel)]=\"eixos.label\">\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"editargraficoseixos[i]\"\r\n              placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          \r\n          <div class=\"ui-g-6\">\r\n              <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"editartiposgraficos[i]\"\r\n                placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n                styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\">\r\n            <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"editarposicoes[i]\"\r\n              placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n              styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n          </div>\r\n          <div class=\"ui-g-6\" *ngIf=\"editartiposgraficos[i].value ==='line'\">\r\n            <h4 class=\"first\"></h4>\r\n            <p-checkbox [(ngModel)]=\"editarestilos[i]\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n          </div>\r\n          <div class=\"ui-g-6\" >\r\n            <h4 class=\"first\">Cor Selecionada</h4>\r\n            <img width=\"40px\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{editarcores[i]}}.PNG\" >\r\n          </div>\r\n          <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n              <img width=\"40px\" (click)=\"atualizarCores(i, cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n            </div>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Deletar\" (click)=\"deletarCampo(eixos.campoDoGraficoId)\" class=\"ui-button-rounded ui-button-danger\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n          <div class=\"ui-g-6\" style=\"text-align: center\">\r\n            <button type=\"button\" pButton  iconPos=\"left\" label=\"Atualizar\" (click)=\"atualizarCampo(i)\" class=\"ui-button-rounded ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n          </div>\r\n        </p-fieldset>\r\n\r\n      </div>\r\n    </div>\r\n    <!-- ===============================================================================================-->\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Ficha do Indicador\" [(visible)]=\"inserirUmCampo\" [style]=\"{ height: '500px', width: '400px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"inserirUmCampo\">\r\n    <div class=\"ui-g-6\">\r\n      <input pInputText type=\"text\" [(ngModel)]=\"NovoCampoLabel\">\r\n    </div>\r\n\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoEixos\" [(ngModel)]=\"NovoCampoEixo\"\r\n        placeholder=\"Campo Utilizado\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-6\">\r\n        <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoTipos\" [(ngModel)]=\"NovoCampoTipo\"\r\n          placeholder=\"Tipo do Grafico\" [autoWidth]=\"true\" filter=\"true\"\r\n          styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-6\">\r\n      <p-dropdown  class=\"ui-g-12\" [options]=\"listaEdicaodeGraficoPosicoes\" [(ngModel)]=\"NovoCampoPosicao\"\r\n        placeholder=\"Posicao Eixo\" [autoWidth]=\"true\" filter=\"true\"\r\n        styleClass = \"drop95\" optionLabel=\"label\" [showClear]=\"true\"></p-dropdown>\r\n    </div>\r\n    <div class=\"ui-g-12\" *ngIf=\"NovoCampoTipo['value'] === 'line'\">\r\n      <h4 class=\"first\"></h4>\r\n      <p-checkbox [(ngModel)]=\"NovoCampoEstilo\" label=\"Pontilhado\"  binary=\"true\"></p-checkbox>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <div class=\"ui-g-1\" *ngFor=\"let cores of listaEdicaodeGraficoCores\">\r\n        <img width=\"40px\" (click)=\"selectcor(cores.value)\" height=\"40px\" src=\"assets/layout/images/imagensindicadores/{{cores.value}}.PNG\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <button pButton type=\"button\" label=\"Inserir\"  (click)=\"inserirnovoCampoOk()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Alterar Ordem\" [(visible)]=\"alteraOrdemCampos\" [style]=\"{ height: '500px', width: '700px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"alteraOrdemCampos\"> \r\n    <p-table *ngIf=\"gridDeLista\" selectionMode=\"single\" [reorderableColumns]=\"true\" [value]=\"indicadorSelecionado.campoDoGraficoId\" [reorderableColumns]=\"true\" > \r\n      <ng-template class=\"ui-g-12\" pTemplate=\"caption\" >\r\n        <div class=\"ui-helper-clearfix ui-g-6 \" style=\"text-align: left\">\r\n          <button type=\"button\" pButton  iconPos=\"left\" label=\"Salvar Ordem\" (click)=\"ajustarOrdemDosCampos()\" class=\"ui-button-success\" style=\"margin-right: 0.5em;\"></button>\r\n        </div>\r\n        <div style=\" margin-top: 50px\"></div>\r\n      </ng-template>\r\n    \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n          <th style=\"width:2.5em\"></th>\r\n          <th>Ordem</th>\r\n          <th>Label</th>\r\n          <th>Campo</th>\r\n        </tr>\r\n      </ng-template>\r\n      \r\n      <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n        <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n          <td>\r\n              <i class=\"pi pi-bars\" pReorderableRowHandle></i>\r\n          </td>\r\n          <td>\r\n            {{rowData.ordem}}\r\n          </td>\r\n          <td>\r\n            {{rowData.label}}\r\n          </td>\r\n          <td>\r\n            {{rowData.eixo}}\r\n          </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.html":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.html ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Cadastrar Indicadores-->\r\n<div   *ngIf=\"activeItemIndex==0\">\r\n  <app-editarcadastroindicadores></app-editarcadastroindicadores>\r\n</div>\r\n\r\n\r\n<!--Editar Cadastro dos Indicadores-->\r\n<div  style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  <app-editindicadores></app-editindicadores>\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.html":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.html ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n  <div class=\"card card-w-title\" style=\" margin-left: 3px\" >\r\n    <h4>EDITAR INDICADORES</h4>\r\n   <div class=\"ui-g-6 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"filtroData\" view=\"month\" dateFormat=\"mm/yy\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n          <label>Referencia</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-2\">\r\n        <span class=\"md-inputfield\">\r\n\r\n          <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" filterBy=\"label,filtroListaIndicador.indicador\" \r\n          [autoWidth]=\"true\" [(ngModel)]=\"filtroIndicador\"  placeholder=\".\" styleClass = \"drop95\" \r\n          filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n\r\n          <label>Indicador</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\">\r\n        <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"atualizar()\"></button>\r\n      </div>\r\n    </div>\r\n    <div style=\" margin-top: 60px\"></div>\r\n  </div>\r\n\r\n\r\n  <p-dialog header=\"Editar\" [(visible)]=\"ListaOk\" [responsive]=\"false\"  showEffect=\"fade\" [modal]=\"true\" [style]=\"{ height: '95%', width: '95%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n    <p-table [value]=\"listaCompleta\" dataKey=\"vin\" editMode=\"row\" [paginator]=\"true\" [rows]=\"13\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataIndicador</th>\r\n            <th>DataReferencia</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Vl. Retido</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n            <th>Forecast</th>\r\n            <th>Forecast2</th>\r\n            <th>Forecast3</th>\r\n            <th>Previsão</th>\r\n            <th style=\"width:8em\"></th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\">\r\n            <td>\r\n                {{rowData.dataindicador}}\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                      <p-calendar [(ngModel)]=\"rowData.datareferencia\" view=\"month\" dateFormat=\"yy-mm-dd\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\" yearRange=\"2000:2030\" [readonlyInput]=\"true\"></p-calendar>\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.datareferencia}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.orcado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.orcado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.realizado\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.realizado}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.valorretido\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.valorretido}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.minimo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.minimo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.maximo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.maximo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.meta\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.meta}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazoreg\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazoreg}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.dentroprazo\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.dentroprazo}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast2\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast2}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.forecast3\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.forecast3}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td>\r\n                <p-cellEditor>\r\n                    <ng-template pTemplate=\"input\">\r\n                        <input pInputText type=\"number\" [(ngModel)]=\"rowData.previsao\">\r\n                    </ng-template>\r\n                    <ng-template pTemplate=\"output\">{{rowData.previsao}}</ng-template>\r\n                </p-cellEditor>\r\n            </td>\r\n            <td style=\"text-align:center\">\r\n              <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow icon=\"pi pi-info\" class=\"ui-button-info\"></button>\r\n              <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"onRowEditSave(rowData)\" style=\"margin-right: .5em\"></button>\r\n              </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12 ui-md-12\" >\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Cancelar\" (click)=\"CancelarAlteracoes()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12 ui-md-6\"  align=\"center\">\r\n        <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"SolicitarAlteracao()\"></button>\r\n      </div>\r\n    </div>\r\n    \r\n  </p-dialog>\r\n\r\n\r\n  <div *ngIf=\"ListaParaEnviar\" showEffect=\"fade\">\r\n    <p-table [value]=\"listaAlterada\" editMode=\"row\" [paginator]=\"true\" [rows]=\"15\" [reorderableColumns]=\"true\"> \r\n      <ng-template pTemplate=\"header\">\r\n        <tr>\r\n            <th>DataReferencia</th>\r\n            <th>DataIndicador</th>\r\n            <th>Orçado</th>\r\n            <th>Realizado</th>\r\n            <th>Mínimo</th>\r\n            <th>Máximo</th>\r\n            <th>Meta</th>\r\n            <th>DP Regulado</th>\r\n            <th>DP Não Regulado</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template pTemplate=\"body\" let-rowData let-editing=\"editing\" let-ri=\"rowIndex\">\r\n        <tr [pEditableRow]=\"rowData\"  [ngClass]=\"new-car\">\r\n            <td>{{rowData.dataindicador}}</td>\r\n            <td>{{rowData.datareferencia}}</td>\r\n            <td>{{rowData.orcado}}</td>\r\n            <td>{{rowData.realizado}}</td>\r\n            <td>{{rowData.minimo}}</td>\r\n            <td>{{rowData.maximo}}</td>\r\n            <td>{{rowData.meta}}</td>\r\n            <td>{{rowData.dentroprazoreg}}</td>\r\n            <td>{{rowData.dentroprazo}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n    <div *ngIf=\"CarregarVisible\" showEffect=\"fade\" >\r\n      <h3 class=\"first\">Carregando</h3>\r\n      <p-progressBar [value]=\"porcentagemconcluido\"></p-progressBar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-12\"  align=\"center\">\r\n      <button pButton type=\"button\" label=\"Aprovar Alterações\" (click)=\"AprovarAlteracoes()\"></button>\r\n    </div>\r\n  </div>    \r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.html":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.html ***!
+  \*****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card card-title ui-g\">\r\n  <h1>Status de Bot's</h1>\r\n  <div class=\"ui-g-12\">\r\n    <div class=\"card ui-g-3\"  *ngFor=\"let b of botsLista, let i of index\">\r\n      <img class=\"ui-g-4\" style=\"width: 90px; height: 120px;\" src=\"assets/layout/images/rpa/robo.png\">\r\n      <div class=\"ui-g-8\">\r\n        <div style=\"font-weight: bold;\" class=\"ui-g-12\">{{ b.label }}</div>\r\n        <div class=\"ui-g-12\">{{ b.funcao }}</div>\r\n        <div class=\"ui-g-6\"  >\r\n          <button *ngIf=\"b.status=='Executando'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Executando\" class=\"ui-button-danger\"></button>\r\n          <button *ngIf=\"b.status=='Pronto'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Disponível\" class=\"ui-button-success\"></button>\r\n          <button *ngIf=\"b.status=='Falha'\" [disabled]=\"true\" pButton type=\"button\"  label=\"Sem Informação\" class=\"ui-button-secondary\"></button>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: right;\" >\r\n          <button pButton type=\"button\" class=\"pi pi-chevron-circle-right\" (click)=\"SelecionarBot(b)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<p-dialog header=\"Detalhe Bot\" [(visible)]=\"displayDialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%', height: '60%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"displayDialog\">\r\n    <div class=\"ui-g-12\" style=\"text-align:left;font-size: 20px; font-weight: bold;\">\r\n      <div class=\"ui-g-12\">Bot: {{botselecionado.label}}</div>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-6\" style=\"text-align:left\">\r\n        <div class=\"ui-g-4\">Indicador: </div>\r\n        <div class=\"ui-g-8\">\r\n          <p-dropdown  class=\"ui-g-12\" [options]=\"filtroListaIndicador\" [(ngModel)]=\"indicadorselecionado\" \r\n          placeholder=\"Selecione o Indicador\" [autoWidth]=\"true\" filter=\"true\"  \r\n          styleClass = \"drop95\" optionLabel=\"indicador\"></p-dropdown>\r\n        </div>\r\n      </div>\r\n      <div class=\"ui-g-6\" style=\"text-align:left\">\r\n        <div class=\"ui-g-4\">Unidade: </div>\r\n        <div class=\"ui-g-8\">\r\n          <p-dropdown  class=\"ui-g-12\" [options]=\"filtroUnidade\" [(ngModel)]=\"unidadeselecionada\" \r\n          placeholder=\"Selecione a Unidade\" [autoWidth]=\"true\" filter=\"true\"  \r\n          styleClass = \"drop95\" optionLabel=\"unidade\"></p-dropdown>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n      <div class=\"ui-g-4\" style=\"text-align: center;\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"anodoimport\" type=\"text\" pInputText/>\r\n          <label>Ano</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4\" style=\"text-align: center;\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-12\" [disabled]=\"habilitaCorteMes\" [(ngModel)]=\"diadecortereferencia\" (keydown)=\"aoAlterardiaDeCorteRef($event)\" type=\"text\" pInputText/>\r\n          <label>Dia de Corte (Referência)</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-4\" style=\"text-align: center;\">\r\n        <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-12\" [disabled]=\"habilitaCorteCiclo\" [(ngModel)]=\"diadecorteciclo\" (keydown)=\"aoAlterardiaDeCorteCiclo($event)\" type=\"text\" pInputText/>\r\n          <label>Dia de Corte (Ciclo)</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 0px;\">\r\n      <div class=\"ui-g-4\"></div>\r\n      <div class=\"ui-g-4\"><p-checkbox (onChange)=\"naoseaplicadiaDeCorteMes()\" binary=\"true\" name=\"group1\"  label=\"Não se Aplica\" [(ngModel)]=\"habilitaCorteMes\" ></p-checkbox></div>\r\n      <div class=\"ui-g-4\"><p-checkbox (onChange)=\"naoseaplicadiaDeCorteCiclo()\" binary=\"true\" name=\"group2\" label=\"Não se Aplica\" [(ngModel)]=\"habilitaCorteCiclo\" ></p-checkbox></div>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"text-align: right;margin-top: 100px;\" >\r\n      <button pButton type=\"button\" label=\"Salvar Indicador\" (click)=\"StartBot()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.html":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.html ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card ui-g card-w-title\" style=\" margin-left: 3px\" >\r\n  <div class=\"ui-g-12\">\r\n    <h4>IMPORTAR ORÇADOS</h4>\r\n  </div>\r\n  <div class=\"ui-g-8\">\r\n    <p-dropdown [options]=\"filtroListaIndicador\" optionLabel=\"indicador\" \r\n    [autoWidth]=\"true\" [(ngModel)]=\"IndicadorSelecionado\"  \r\n    placeholder=\"Selecione o Indicador\" styleClass = \"drop95\" \r\n    filter=\"true\" [showClear]=\"true\" ></p-dropdown>\r\n  </div>\r\n\r\n\r\n  <div class=\"ui-g-2\" *ngIf=\"tableactive==false\">\r\n    <p-fileUpload  mode=\"basic\"\r\n      accept=\".csv\"\r\n      maxFileSize=\"1000000\"\r\n      chooseLabel=\"Escolha os Arquivos\"\r\n      uploadLabel=\"Ler Csv's\"\r\n      auto=\"auto\"\r\n      customUpload=\"true\"\r\n      (uploadHandler)=\"myUploader($event)\">\r\n    </p-fileUpload>\r\n  </div>\r\n  <div class=\"ui-g-2\" *ngIf=\"tableactive\">\r\n    <button type=\"button\" pButton  iconPos=\"right\" label=\"Enviar Dados\" (click)=\"enviarDados()\"  style=\"margin-right: 0.5em;\"></button>\r\n  </div>\r\n  <div class=\"ui-g-2\" *ngIf=\"tableactive\">\r\n    <button type=\"button\" pButton  iconPos=\"right\" label=\"Resetar\" (click)=\"resetar()\"  style=\"margin-right: 0.5em;\"></button>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ui-g-12\">\r\n  <p-table selectionMode=\"single\"  *ngIf=\"tableactive\" [value]=\"Listaindicadores\" > \r\n    <ng-template pTemplate=\"header\">\r\n      <tr>\r\n        <th>Data</th>\r\n        <th>Orçado</th>\r\n        <th>Meta</th>\r\n        <th>Mínimo</th>\r\n        <th>Máximo</th>\r\n        <th>Forecast</th>\r\n        <th>Forecast2</th>\r\n        <th>Forecast3</th>\r\n        <th>Previsão</th>\r\n      </tr>\r\n    </ng-template>\r\n    \r\n    <ng-template pTemplate=\"body\"  let-rowData let-index=\"rowIndex\">\r\n      <tr [pReorderableRow]=\"index\" [pSelectableRow]=\"rowData\">\r\n        <td>\r\n          {{rowData.dataindicador}}\r\n        </td>\r\n        <td>\r\n          {{rowData.orcado}}\r\n        </td>\r\n        <td>\r\n          {{rowData.meta}}\r\n        </td>\r\n        <td>\r\n          {{rowData.minimo}}\r\n        </td>\r\n        <td>\r\n          {{rowData.maximo}}\r\n        </td>\r\n        <td>\r\n          {{rowData.forecast}}\r\n        </td>\r\n        <td>\r\n          {{rowData.forecast2}}\r\n        </td>\r\n        <td>\r\n          {{rowData.forecast3}}\r\n        </td>\r\n        <td>\r\n          {{rowData.previsao}}\r\n        </td>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/performance/admin-indicadores/importar/importar.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--Cadastrar Indicadores-->\r\n<div   *ngIf=\"activeItemIndex==0\">\r\n  <app-importar-orcados></app-importar-orcados>\r\n</div>\r\n\r\n\r\n<!--Editar Cadastro dos Indicadores-->\r\n<div  style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"activeItemIndex==1\">\r\n  <app-importar-bots></app-importar-bots>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -808,7 +885,7 @@ module.exports = "<p>\r\n  editindicadores works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n      <div class=\"card card-w-title\">\r\n          <h1>Performance {{setor}}</h1>\r\n          <p-accordion  (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <div class=\"card\">\r\n              <p-accordionTab  *ngFor=\"let classificao of classificacoes\" header=\"{{classificao}}\" >\r\n\r\n                    <p-table [columns]=\"cols\" [value]=\"resumo\">\r\n                            <ng-template pTemplate=\"header\" let-columns>\r\n                                <tr>\r\n                                    <th *ngFor=\"let col of columns\">\r\n                                        {{col.header}}\r\n                                    </th>\r\n                                    <th style=\"width:4em\"></th>\r\n                                </tr>\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n                                <tr> <!-- *ngIf=\"resumo.classificacao === classificao\"-->\r\n                                    <td  *ngFor=\"let col of columns\">\r\n                                        {{ rowData[col.field] }}\r\n                                    </td>\r\n                                    <td>\r\n                                        <button pButton icon=\"pi pi-search\" (click)=\" selectIndicador(rowData)\"></button>\r\n                                    </td>\r\n                                </tr>\r\n                            </ng-template>\r\n                        </p-table>\r\n                        <br>\r\n              </p-accordionTab>\r\n\r\n              <div class=\"card\" *ngIf=\"barraAtiva\">\r\n\r\n                    <div class =\"ui-g-6\"><h1 class=\"centerText\">{{indi}}</h1></div>\r\n                    <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"op2.toggle($event); pesquisarIndicador(ontem)\"></button>\r\n                    <span style=\"position: absolute;margin-top: 30px;margin-left: -40px;\">Atualizar</span>\r\n                    <button style=\"position: absolute;margin-left: 30%;\"type=\"button\" icon=\"ui-icon-clear\" pButton (click)=\"desativaBarra()\"></button>\r\n                    \r\n                      <p-overlayPanel #op2 [showCloseIcon]=\"true\" [dismissable]=\"false\" >\r\n                            <span class=\"ui-overlaypanel-close-icon pi pi-times\"></span>\r\n\r\n                            \r\n                          \r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                    <div class =\"ui-g-6\"><b>{{indi}}</b></div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center\">\r\n                                        <p-calendar id=\"calendar\" [(ngModel)]=\"date\" (onSelect)=\"pesquisarIndicador(date)\" [monthNavigator]=\"true\" [yearNavigator]=\"true\"\r\n                                        yearRange=\"2008:2041\" [showIcon]=\"true\"  [locale]=\"pt\" dateFormat=\"dd/mm/yy\" placeholder=\"Data\" ></p-calendar>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                   <!--<div class=\"ui-g-6\" *ngFor=\"let dados of dadosIndicador\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dados.valor\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>{{dados.label}}</label>\r\n                                        </span>\r\n                                    </div>-->\r\n\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"orcado\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Orçado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"realizado\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Realizado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"pecld\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Pecld</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"minimo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Minimo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"maximo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Maximo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"meta\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Meta</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"previsao\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Mensal</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendente\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendente</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendimento\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendimento</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                            \r\n                              <div class=\"card\" >\r\n                                  <p-tabView >\r\n                                      <p-tabPanel header=\"Comentários\"  leftIcon=\"ui-icon-check\">\r\n                                           <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"comentario\"   autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Análise\"  leftIcon=\"ui-icon-edit\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"analise\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Ações\"  leftIcon=\"ui-icon-refresh\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"acao\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                  </p-tabView>\r\n                              </div>\r\n                          \r\n                          <div class=\"centerText\" style=\"text-align: center;\">\r\n                          <p-button label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"atualizaDados()\"></p-button>\r\n                          </div>\r\n                      \r\n                      </p-overlayPanel>\r\n\r\n            <!--############################# Chamada do Gráfico #############################################-->\r\n                    <app-graficos [element]= \"ind\" [refer]= \"refer\" ></app-graficos>\r\n                </div> \r\n            </div>\r\n            <!--######################################################################################################################-->\r\n              \r\n          </p-accordion>\r\n      </div>\r\n    \r\n  </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n      <div class=\"card card-w-title\">\r\n          <h1>Performance {{setor}}</h1>\r\n          \r\n            <div Style=\"padding-left: 10px !important;\">\r\n                <h2>Data</h2>\r\n                <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n                yearRange=\"2000:2030\" \r\n                [(ngModel)]=\"referencia\" \r\n                [readonlyInput]=\"true\"\r\n                (onSelect)=\"onChangeTime($event)\">\r\n                </p-calendar>\r\n    \r\n                <br>\r\n                <br>\r\n            </div>\r\n          <p-accordion  (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <div class=\"card\">\r\n              <p-accordionTab  *ngFor=\"let classificao of classificacoes\" header=\"{{classificao}}\" >\r\n\r\n                    <p-table [columns]=\"cols\" [value]=\"resumo\">\r\n                            <ng-template pTemplate=\"header\" let-columns>\r\n                                <tr>\r\n                                    <th *ngFor=\"let col of columns\">\r\n                                        {{col.header}}\r\n                                    </th>\r\n                                    <th style=\"width:4em\"></th>\r\n                                </tr>\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n                                <tr> <!-- *ngIf=\"resumo.classificacao === classificao\"-->\r\n                                    <td  *ngFor=\"let col of columns\">\r\n                                        {{ rowData[col.field] }}\r\n                                    </td>\r\n                                    <td>\r\n                                        <button pButton icon=\"pi pi-search\" (click)=\" selectIndicador(rowData)\"></button>\r\n                                    </td>\r\n                                </tr>\r\n                            </ng-template>\r\n                        </p-table>\r\n                        <br>\r\n              </p-accordionTab>\r\n\r\n              <div class=\"card\" *ngIf=\"barraAtiva\">\r\n\r\n                    <div class =\"ui-g-6\"><h1 class=\"centerText\">{{indi}}</h1></div>\r\n                    <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"op2.toggle($event); pesquisarIndicador(ontem)\"></button>\r\n                    <span style=\"position: absolute;margin-top: 30px;margin-left: -40px;\">Atualizar</span>\r\n                    <button style=\"position: absolute;margin-left: 30%;\"type=\"button\" icon=\"ui-icon-clear\" pButton (click)=\"desativaBarra()\"></button>\r\n                    \r\n                      <p-overlayPanel #op2 [showCloseIcon]=\"true\" [dismissable]=\"false\" >\r\n                            <span class=\"ui-overlaypanel-close-icon pi pi-times\"></span>\r\n\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                    <div class =\"ui-g-6\"><b>{{indi}}</b></div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center\">\r\n                                        <p-calendar id=\"calendar\" [(ngModel)]=\"date\" (onSelect)=\"pesquisarIndicador(date)\" [monthNavigator]=\"true\" [yearNavigator]=\"true\"\r\n                                        yearRange=\"2008:2041\" [showIcon]=\"true\"  [locale]=\"pt\" dateFormat=\"dd/mm/yy\" placeholder=\"Data\" ></p-calendar>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"card\"  style=\"padding-bottom: 20px;\"> \r\n                                <div class=\"ui-g\">\r\n                                   <!--<div class=\"ui-g-6\" *ngFor=\"let dados of dadosIndicador\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dados.valor\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>{{dados.label}}</label>\r\n                                        </span>\r\n                                    </div>-->\r\n\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"orcado\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Orçado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"realizado\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Realizado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"pecld\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Pecld</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast1 Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast2\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast2 Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"forecast3\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast3 Diário</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"minimo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Minimo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"maximo\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Maximo</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"meta\" type=\"text\" size=\"37\" pInputText [disabled]='true'/>\r\n                                            <label>Meta</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"previsao\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Forecast Mensal</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazo\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"dentroprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>DP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"foraprazoreg\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>FP Reguladas</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendente\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendente</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"atendimento\" type=\"text\" size=\"37\" pInputText/>\r\n                                            <label>Atendimento</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"vlrretido\" type=\"text\" size=\"37\" pInputText />\r\n                                            <label>Valor Retido</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                            \r\n                              <div class=\"card\" >\r\n                                  <p-tabView >\r\n                                      <p-tabPanel header=\"Comentários\"  leftIcon=\"ui-icon-check\">\r\n                                           <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"comentario\"   autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Análise\"  leftIcon=\"ui-icon-edit\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"analise\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                      <p-tabPanel header=\"Ações\"  leftIcon=\"ui-icon-refresh\">\r\n                                            <textarea [rows]=\"3\" [cols]=\"105\" pInputTextarea [(ngModel)]=\"acao\"  autoResize=\"autoResize\"></textarea>\r\n                                      </p-tabPanel>\r\n                                  </p-tabView>\r\n                              </div>\r\n                          \r\n                          <div class=\"centerText\" style=\"text-align: center;\">\r\n                          <p-button label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"atualizaDados()\"></p-button>\r\n                          </div>\r\n                      \r\n                      </p-overlayPanel>\r\n\r\n            <!--############################# Chamada do Gráfico #############################################-->\r\n            \r\n                    <app-graficos-indicadores [indicador]=\"ind\" [refer]=\"refer\" ></app-graficos-indicadores>\r\n                    <app-graficos [element]= \"ind\" [refer]= \"refer\" ></app-graficos>\r\n                </div> \r\n            </div>\r\n            <!--######################################################################################################################-->\r\n              \r\n          </p-accordion>\r\n      </div>\r\n    \r\n  </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -830,7 +907,7 @@ module.exports = "<!-- DIV DA CAPA -->\r\n<div class=\"div1\" style=\"height: 60
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n    {{ this.element.classificacao }}\r\n  </div>\r\n  <div class=\"ui-g-4 gridRel\">\r\n    {{ this.element.indicador }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloRealizAcum }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\">\r\n    {{ this.RotuloDiferencaPerc }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cora\" >\r\n    {{ this.RotuloDiferencaAcum2 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloPrevisaoMensal}}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoMensal}}\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n    {{ this.element.classificacao }}\r\n  </div>\r\n  <div class=\"ui-g-4 gridRel\">\r\n    {{ this.element.indicador }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.campoCalc1 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cor1\" >\r\n    {{ this.campoCalc2 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cor2\">\r\n    {{ this.campoCalc3 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\" [style.color]=\"this.Cor3\" >\r\n    {{ this.campoCalc4 }}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloPrevisaoMensal}}\r\n  </div>\r\n  <div class=\"ui-g-1 gridRel\">\r\n    {{ this.RotuloOrcadoMensal}}\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -841,7 +918,7 @@ module.exports = "<div class=\"ui-g\" >\r\n  <div class=\"ui-g-2 gridRel\">\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div style=\" margin-top: 101%;\"   *ngFor=\"let indic of ind; let i = index\">\r\n    <!-- Indicador1 -->\r\n    <br>\r\n    \r\n\r\n    <div class=\"subtitulos\" style=\"position: relative;\">\r\n        <div class=\"ui-g-10\">\r\n            {{ indic.indicador }}\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align:right; margin-top:10px; font-size:11px;\">\r\n            Página {{ (i+2) }} de {{this.totalpaginas }}\r\n        </div>\r\n    </div>\r\n    <br>\r\n    \r\n    <div class=\"separador\"></div>\r\n  \r\n    <app-graficos [element]=\"indic\" [refer]=\"refer\">\r\n        <div class=\"splash-screen\">\r\n            <div class=\"splash-loader\">\r\n                <img src=\"../../assets/layout/images/SISPCpng.png\">\r\n            </div>\r\n        </div>\r\n    </app-graficos>\r\n    \r\n    \r\n</div>"
+module.exports = "\r\n<div style=\" margin-top: 101%;\"   *ngFor=\"let indic of ind; let i = index\">\r\n    <!-- Indicador1 -->\r\n    <br>\r\n    \r\n\r\n    <div class=\"subtitulos\" style=\"position: relative;\">\r\n        <div class=\"ui-g-10\">\r\n            {{ indic.indicador }}\r\n        </div>\r\n        <div class=\"ui-g-2\" style=\"text-align:right; margin-top:10px; font-size:11px;\">\r\n            Página {{ (i+2) }} de {{this.totalpaginas }}\r\n        </div>\r\n    </div>\r\n    <br>\r\n    \r\n    <div class=\"separador\"></div>\r\n\r\n    <app-graficos-indicadores [indicador]=\"indic\" [refer]=\"refer\" ></app-graficos-indicadores>\r\n    <app-graficos [element]=\"indic\" [refer]=\"refer\" ></app-graficos>\r\n    \r\n</div>"
 
 /***/ }),
 
@@ -852,7 +929,7 @@ module.exports = "\r\n<div style=\" margin-top: 101%;\"   *ngFor=\"let indic of 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div style=\"width:950px !important\">\r\n  <app-capa  [indicador]=\"indicador\" [refer]=\"refer\"></app-capa>\r\n  <app-indicadores [indicador]=\"indicador\" [refer]=\"refer\"></app-indicadores>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div style=\"width:950px !important\">\r\n  <app-capa  [indicador]=\"indicador\" [refer]=\"refer\"></app-capa>\r\n  <app-indicadores [indicador]=\"indicador\" [refer]=\"refer\"></app-indicadores>\r\n  <!-- <app-indicadores [indicador]=\"indicador\" [refer]=\"refer\"></app-indicadores> -->\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -973,7 +1050,7 @@ module.exports = "<h4>Calendário de Agendamentos</h4>\r\n<p-fullCalendar [event
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <p-dataView #dv [value]=\"Agendamentos\" [paginator]=\"true\" [rows]=\"10\" paginatorPosition=\"both\">\r\n      <p-header>\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-12 filter-container\">\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Solicitante\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n                <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n                <p-calendar class=\"ui-g-4\" type=\"search\" (onSelect)=\"Filter()\" [(ngModel)]=\"VALOR3data\" dateFormat=\"yy-mm-dd\" placeholder=\"Agendamento\" ></p-calendar>\r\n                \r\n            </div>\r\n          </div>\r\n        </div>\r\n      </p-header>\r\n      <ng-template let-car pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-1\" style=\"text-align: center !important; vertical-align: middle;\">\r\n            <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n            <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">Inicio: <b>{{car.agendadode}}</b></div>\r\n            <div class=\"ui-g-12\">Término: <b>{{car.agendadoate}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-3\">\r\n            <div class=\"ui-g-12\">DataAgendamento: <b>{{car.dataAgendamento}}</b></div>\r\n            <div class=\"ui-g-12\">Aprovador: <b>{{car.aprovador}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Placa: <b>{{car.placa}}</b></div>\r\n            <div class=\"ui-g-12\">Destino: <b>{{car.destino}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-2\">\r\n            <div class=\"ui-g-12\">Passageiros: <b>{{car.qtdPessoas}}</b></div>\r\n            <div class=\"ui-g-12\">Condutor: <b>{{car.condutor}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n       \r\n  </p-dataView>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    \r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n\r\n\r\n  </div>\r\n  \r\n</p-dialog>"
+module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"activeItem\" (click)=\"trocadeitem(tab)\"></p-tabMenu>\r\n\r\n<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <div class=\"ui-g\">\r\n    <div class=\"ui-g-12 filter-container\">\r\n        <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Solicitante\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n        <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Condutor\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR2\">\r\n        <p-calendar class=\"ui-g-4\" type=\"search\" (onSelect)=\"Filter()\" [(ngModel)]=\"VALOR3data\" dateFormat=\"yy-mm-dd\" placeholder=\"Agendamento\" ></p-calendar>\r\n        \r\n    </div>\r\n  </div>\r\n\r\n  <p-table #dt [value]=\"Agendamentos\" selectionMode=\"multiple\" [(selection)]=\"selectedCars\">\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr>\r\n          <th>Data Agendamento</th>\r\n          <th>Placa</th>\r\n          <th>Status</th>\r\n          <th>Inicio</th>\r\n          <th>Término</th>\r\n          <th>Aprovador</th>\r\n          <th>Qtd. Pessoas</th>\r\n          <th>Solicitante</th>\r\n          <th></th>\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-car pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"car\">\r\n        <td>{{car.dataAgendamento}}</td>\r\n        <td>{{car.placa}}</td>\r\n        <td>\r\n          <button *ngIf=\"car.aprovacao==0\" pButton type=\"button\"  label=\"Reprovado\" class=\"ui-button-danger\"></button>\r\n          <button *ngIf=\"car.aprovacao==1\" pButton type=\"button\"  label=\"Aprovado\" class=\"ui-button-success\"></button>\r\n        </td>\r\n        <td>{{car.agendadode}}</td>\r\n        <td>{{car.agendadoate}}</td>\r\n        <td>{{car.aprovador}}</td>\r\n        <td>{{car.qtdPessoas}}</td>\r\n        <td>{{car.solicitante}}</td>\r\n        <td>\r\n          <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"showAgendamento(car)\"></button>\r\n        </td>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n</div>\r\n<p-dialog header=\"Lista de Agendamentos\" [(visible)]=\"displayAgendamento\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"AgendamentoSelecionado\" >\r\n    <div class=\"ui-g-12\">Solicitante:<p>{{AgendamentoSelecionado.solicitante}}</div>\r\n    <div class=\"ui-g-12\">Data do Agendamento:<p>{{AgendamentoSelecionado.agendadoate}}</div>\r\n    <div class=\"ui-g-12\">De - Até:<p>{{AgendamentoSelecionado.agendadode}} - {{AgendamentoSelecionado.agendadoate}}</div>\r\n    <div class=\"ui-g-12\" >Condutor:<p>{{AgendamentoSelecionado.condutor}}</div>\r\n    <div class=\"ui-g-12\" >Quantidade de Passageiros:<p>{{AgendamentoSelecionado.qtdPessoas}}</div>\r\n    <div class=\"ui-g-12\" >Setor:<p>{{AgendamentoSelecionado.Gerencia}}</div>\r\n    <div class=\"ui-g-12\" >Modelo Solicitado:<p>{{AgendamentoSelecionado.tipoVeiculoSolicitado}}</div>\r\n    <div class=\"ui-g-12\" >Veículo Disponibilizado:<p>{{AgendamentoSelecionado.placa}} - {{AgendamentoSelecionado.tipoVeiculoDisponibilizado}}</div>\r\n  </div>\r\n  \r\n</p-dialog>"
 
 /***/ }),
 
@@ -995,7 +1072,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <div class=\"ui-g\">\r\n        <h4>DASHBOARDS</h4>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Gerencias</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Departamentos</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Placas</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Tipo de Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Modelo do Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Natureza do Cadastro</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n       \r\n     </div>\r\n</div>\r\n\r\n\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <p-fieldset legend=\"Combustível\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Consumo de Combustível: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Consumo de Combustível: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\"  class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Manutenção\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <h2>Quantidade</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Valor Utilizado</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                        <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                        </ng-template>\r\n                        </p-cellEditor>\r\n                    </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Distância Percorrida\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Distancia Percorrida: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">  \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Distancia Percorrida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">    \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n\r\n\r\n    <p-fieldset legend=\"Velocidade\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <h2>Velocidade Máxima Atingida: Acumulado</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">     \r\n                    <h2>Velocidade Máxima Atingida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n</div>"
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"ui-g dashboard\">\r\n    <div class=\"ui-g-12\">\r\n        <div class=\"ui-g-12 ui-md-4 ui-lg-4\">\r\n            <div class=\"ui-g card overview-box overview-box-1\">\r\n                <span class=\"overview-box-name\">Agendamentos Pendentes</span>\r\n                <span class=\"overview-box-count\">{{agendamentospendentes}}</span>\r\n                <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                <img src=\"assets/layout/images/dashboard/chart-1.svg\" />\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4 ui-lg-4\">\r\n            <div class=\"ui-g card overview-box overview-box-3\">\r\n                <span class=\"overview-box-name\">Agendamentos Registrados</span>\r\n                <span class=\"overview-box-count\">{{agendamentosregistrados}}</span>\r\n                <!-- <span class=\"overview-box-badge\">-75%</span> -->\r\n                <img src=\"assets/layout/images/dashboard/chart-3.svg\" />\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4 ui-lg-4\">\r\n            <div class=\"ui-g card overview-box overview-box-2\">\r\n                <span class=\"overview-box-name\">Agendamentos Aprovados</span>\r\n                <span class=\"overview-box-count\">{{agendamentosaprovados}}</span>\r\n                <!-- <span class=\"overview-box-badge\">25%</span> -->\r\n                <img src=\"assets/layout/images/dashboard/chart-4.svg\" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    \r\n    <div class=\"ui-g\">\r\n        <h4>FILTROS</h4>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Gerencias</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Departamentos</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Placas</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"gerencSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Gerencias\"></p-dropdown>\r\n                    <label >Tipo de Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"supervSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"Supervisoes\"></p-dropdown>\r\n                    <label >Modelo do Veículo</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" [(ngModel)]=\"placSelect\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" [options]=\"placas\"></p-dropdown>\r\n                    <label >Natureza do Cadastro</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n       \r\n     </div>\r\n</div>\r\n\r\n\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <h4>ACOMPANHAMENTOS</h4>\r\n    <p-fieldset legend=\"Combustível\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Consumo de Combustível: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Consumo de Combustível: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\"  class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Manutenção\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-6\"> \r\n                <h2>Quantidade</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Valor Utilizado</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                        <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                        </ng-template>\r\n                        </p-cellEditor>\r\n                    </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n\r\n    <p-fieldset legend=\"Distância Percorrida\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <div class=\"ui-g-12\">       \r\n                    <h2>Distancia Percorrida: Mensal</h2>\r\n                </div>\r\n                <div class=\"ui-g-12\">  \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">       \r\n                    <h2>Distancia Percorrida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">    \r\n                    <app-graficos-transporte [tipoGraf]='\"bar\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n\r\n\r\n    <p-fieldset legend=\"Velocidade\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        <div class=\"ui-g\">\r\n            <div class=\"ui-g-5\">\r\n                <h2>Velocidade Máxima Atingida: Acumulado</h2>\r\n                <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"mes\"'></app-graficos-transporte>\r\n            </div>\r\n            <div class=\"ui-g-7\">\r\n                <div class=\"ui-g-9\">     \r\n                    <h2>Velocidade Máxima Atingida: Diário</h2>\r\n                </div>\r\n                <div class=\"ui-g-3\" style=\"text-align: right; height: 30px;\">       \r\n                    <button type=\"button\" pButton icon=\"ui-icon-receipt\" iconPos=\"left\" label=\"Exportar Dados\" (click)=\"exportCSV()\" style=\"float:right;background:#207347;\"></button>\r\n                </div>\r\n                <div class=\"ui-g-12\">   \r\n                    <app-graficos-transporte [tipoGraf]='\"line\"' [tipoEixo]='\"dia\"'></app-graficos-transporte>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div  style=\"margin-top: 100px !important;\" class=\"ui-g\">\r\n            <h2>Ranking:</h2>\r\n            <p-table [columns]=\"cols1\" [value]=\"ranking1\" dataKey=\"placa\" editMode=\"row\">\r\n                <ng-template pTemplate=\"caption\">\r\n                </ng-template>\r\n                <ng-template pTemplate=\"header\" let-columns>\r\n                    <tr> \r\n                        <th *ngFor=\"let col of columns\">\r\n                            {{col.header}}\r\n                        </th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                    <tr [pEditableRow]=\"rowData\">\r\n                        <td *ngFor=\"let col of columns\">\r\n                        <p-cellEditor>\r\n                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                            </ng-template>\r\n                            <ng-template pTemplate=\"output\">\r\n                                {{rowData[col.field]}}\r\n                            </ng-template>\r\n                        </p-cellEditor>\r\n                        </td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </p-fieldset>\r\n        \r\n</div>"
 
 /***/ }),
 
@@ -1205,6 +1282,7 @@ let CriacaodeusuarioComponent = class CriacaodeusuarioComponent {
     constructor(adminserv, messageService) {
         this.adminserv = adminserv;
         this.messageService = messageService;
+        this.CadAtivo = false;
     }
     ngOnInit() {
         this.adminserv.listgerencias().subscribe(response => {
@@ -1223,8 +1301,10 @@ let CriacaodeusuarioComponent = class CriacaodeusuarioComponent {
             nome: this.CadNome,
             email: this.CadEmail,
             login: this.CadLogin,
-            ativo: this.CadAtivo,
+            ativo: this.CadAtivo === true ? 1 : 0,
             senha: null,
+            cargo: this.CadCargo,
+            foto: this.CadFoto,
             gerenciaId: this.CadGerencia === undefined ? null : this.CadGerencia,
             supervisaoId: this.CadSupervisao === undefined ? null : this.CadSupervisao,
             undcodigo: this.CadUnidades === undefined ? null : this.CadUnidades
@@ -1298,9 +1378,6 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
         this.EditPermissoes = false;
     }
     ngOnInit() {
-        this.adminserv.listusers().subscribe(response => {
-            this.usuarios = response['content'];
-        });
         this.adminserv.listgerencias().subscribe(response => {
             this.gerencias = response;
         });
@@ -1310,6 +1387,7 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
         this.adminserv.listunidades().subscribe(response => {
             this.unidades = response;
         });
+        this.atualizarlista();
     }
     selecionar(usuario) {
         this.UsuarioSelect = usuario;
@@ -1359,7 +1437,8 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
             newpermissoes.push({
                 perfilId: this.targetPermissoes[i].perfilId,
                 perfil: this.targetPermissoes[i].perfil,
-                permissao: this.targetPermissoes[i].permissao
+                permissao: this.targetPermissoes[i].permissao,
+                descricao: this.targetPermissoes[i].descricao
             });
         }
         var usuarioupdatePerms = {
@@ -1389,6 +1468,7 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
         this.EditPermissoes = false;
         this.EditUsuario = false;
         this.UsuarioSelect = null;
+        this.atualizarlista();
     }
     newarray(minhasperm, todasperm) {
         this.sourcePermissoes = todasperm;
@@ -1400,6 +1480,27 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
                 }
             }
         }
+    }
+    Filter() {
+        this.VALOR1 = this.VALOR1 == undefined ? null : this.VALOR1 == "" ? null : this.VALOR1;
+        var agend = this.usuarios;
+        if (this.VALOR1 !== null) {
+            // console.log(this.VALOR1)
+            agend = agend.filter(item => item.nome.toUpperCase().includes(this.VALOR1.toUpperCase()));
+        }
+        else {
+            this.atualizarlista();
+        }
+        this.usuarios = agend;
+    }
+    atualizarlista() {
+        this.usuarios = [];
+        this.adminserv.listusers().subscribe(response => {
+            this.usuarios = response['content'];
+        });
+    }
+    Mensagem(dado, perfil) {
+        this.messageService.add({ sticky: true, severity: 'info', summary: perfil, detail: dado, life: 500 });
     }
 };
 ListadeusuariosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1757,6 +1858,7 @@ let AppMenuComponent = class AppMenuComponent {
                 this.usuTransporte = true;
             }
             else if (permissao === "ROLE_ADMIN_INDICADOR") {
+                this.usuPerformance = true;
                 this.admPerformance = true;
             }
             else if (permissao === "ROLE_USER_INDICADOR") {
@@ -1805,7 +1907,7 @@ let AppMenuComponent = class AppMenuComponent {
                             {
                                 label: 'Configurações', icon: 'subject',
                                 items: [
-                                    { label: 'Indicadores', icon: 'subject', routerLink: 'indicadoresAdmin' }
+                                    { label: 'Indicadores', icon: 'subject', routerLink: '/indicadoresAdmin' }
                                 ]
                             }
                         ] :
@@ -1818,7 +1920,7 @@ let AppMenuComponent = class AppMenuComponent {
                                 {
                                     label: 'Configurações', icon: 'settings',
                                     items: [
-                                        { label: 'Indicadores', icon: 'build', routerLink: 'indicadoresAdmin' }
+                                        { label: 'Indicadores', icon: 'build', routerLink: '/indicadoresAdmin' }
                                     ]
                                 }
                             ] :
@@ -2602,7 +2704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK", function() { return API_BLOCK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_BLOCK_REC", function() { return API_BLOCK_REC; });
-//export const API_CONFIG =  'http://sispcprl01:7777/teste-sispc-backend'
+// export const API_CONFIG =  'http://sispcprl01:7777/teste-sispc-backend'
 const API_CONFIG = 'http://sispcprl01:7777/sispc-backend';
 // export const API_CONFIG =  'http://localhost:7777'
 //export const API_CONFIG =  'http://dskprl013862:7777/PROVADEFOGO'
@@ -2626,15 +2728,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 let AppComponent = class AppComponent {
+    constructor(messageService) {
+        this.messageService = messageService;
+        this.statusbot = "Pronto";
+    }
+    resolveAfter5Seconds() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                this.statusbot = "Pronto";
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'A Importação dos dados para o indicador ' + ' criado' });
+                // }, 30000);
+            }, 30000);
+        });
+    }
+    ;
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-root',
         template: '<router-outlet></router-outlet>',
-    })
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
 ], AppComponent);
 
 
@@ -2907,8 +3027,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_154__ = __webpack_require__(/*! ./admin/criacaodeusuario/criacaodeusuario.component */ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.ts");
 /* harmony import */ var _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_155__ = __webpack_require__(/*! ./admin/listadeusuarios/listadeusuarios.component */ "./src/app/admin/listadeusuarios/listadeusuarios.component.ts");
 /* harmony import */ var _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts");
-/* harmony import */ var _performance_admin_indicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./performance/admin-indicadores/editindicadores/editindicadores.component */ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts");
+/* harmony import */ var _performance_admin_indicadores_editarindicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.ts");
 /* harmony import */ var _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__ = __webpack_require__(/*! ./admin/Admin.service */ "./src/app/admin/Admin.service.ts");
+/* harmony import */ var _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var _performance_admin_indicadores_editarindicadores_editarcadastroindicadores_editarcadastroindicadores_component__WEBPACK_IMPORTED_MODULE_160__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.ts");
+/* harmony import */ var _graficos_indicadores_graficos_indicadores_component__WEBPACK_IMPORTED_MODULE_161__ = __webpack_require__(/*! ./graficos-indicadores/graficos-indicadores.component */ "./src/app/graficos-indicadores/graficos-indicadores.component.ts");
+/* harmony import */ var _performance_admin_indicadores_cadastrarindicador_novo_indicador_novo_indicador_component__WEBPACK_IMPORTED_MODULE_162__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.ts");
+/* harmony import */ var _performance_admin_indicadores_editarindicadores_editarindicadores_component__WEBPACK_IMPORTED_MODULE_163__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editarindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.ts");
+/* harmony import */ var _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_164__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar.component */ "./src/app/performance/admin-indicadores/importar/importar.component.ts");
+/* harmony import */ var _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_165__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-orcados/importar-orcados.component */ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.ts");
+/* harmony import */ var _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_166__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-bots/importar-bots.component */ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.ts");
+/* harmony import */ var _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__ = __webpack_require__(/*! ./notificacoessispc/notificacoes.service */ "./src/app/notificacoessispc/notificacoes.service.ts");
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3221,7 +3359,14 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_154__["CriacaodeusuarioComponent"],
             _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_155__["ListadeusuariosComponent"],
             _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__["CadastrarindicadorComponent"],
-            _performance_admin_indicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__["EditindicadoresComponent"]
+            _performance_admin_indicadores_editarindicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__["EditindicadoresComponent"],
+            _performance_admin_indicadores_editarindicadores_editarcadastroindicadores_editarcadastroindicadores_component__WEBPACK_IMPORTED_MODULE_160__["EditarcadastroindicadoresComponent"],
+            _graficos_indicadores_graficos_indicadores_component__WEBPACK_IMPORTED_MODULE_161__["GraficosIndicadoresComponent"],
+            _performance_admin_indicadores_cadastrarindicador_novo_indicador_novo_indicador_component__WEBPACK_IMPORTED_MODULE_162__["NovoIndicadorComponent"],
+            _performance_admin_indicadores_editarindicadores_editarindicadores_component__WEBPACK_IMPORTED_MODULE_163__["EditarindicadoresComponent"],
+            _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_164__["ImportarComponent"],
+            _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_165__["ImportarOrcadosComponent"],
+            _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_166__["ImportarBotsComponent"],
         ],
         providers: [
             { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
@@ -3235,7 +3380,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"],
             _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"],
             _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"],
-            _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"]
+            _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"],
+            _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"],
+            _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__["NotificacoesService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
     })
@@ -3347,7 +3494,7 @@ const routes = [
     { path: '', component: _app_main_app_main_component__WEBPACK_IMPORTED_MODULE_17__["AppMainComponent"],
         children: [
             { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_21__["HomeComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"] },
             { path: 'sample', component: _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_4__["SampleDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'forms', component: _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_5__["FormsDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'data', component: _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_6__["DataDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
@@ -3367,14 +3514,15 @@ const routes = [
             { path: 'cadastrar', component: _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_25__["CadastrarComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'relatorio', component: _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_30__["TelaImpressaoRelatorioComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'painelprocess', component: _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_32__["PainelprocessoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'transporte', component: _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__["TransporteComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'agendamento', component: _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_34__["AgendarVeiculoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'transporte', component: _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_33__["TransporteComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'email', component: _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__["NotificacoessispcComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"] },
+            { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
+            // { path: 'graficos', component: RpaComponent},
+            { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
         ]
     },
     { path: 'printPerformance/:id/:ref', component: _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_29__["RelatorioindicadoresComponent"] },
@@ -3653,7 +3801,7 @@ let CadastroPagamentoComponent = class CadastroPagamentoComponent {
             autor: this.CadAutor,
             processo: this.CadProcesso,
             natureza: this.CadNatureza,
-            dataProgramada: this.CadDataProgramada,
+            dataProgramada: this.FormatarData(this.CadDataProgramada),
             valor: this.CadValor,
             escritorio: this.CadEscritorio,
             contaContabil: this.CadContaContabil,
@@ -3680,6 +3828,18 @@ let CadastroPagamentoComponent = class CadastroPagamentoComponent {
             console.log(error);
         });
         this.limpar();
+    }
+    FormatarData(datareceb) {
+        var dataFinal;
+        if (datareceb.length < 20) {
+            dataFinal = datareceb;
+        }
+        else {
+            var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano2 = data.getFullYear();
+            dataFinal = ano2 + "-" + mes2 + "-" + dia2;
+        }
+        return dataFinal;
     }
     limpar() {
         this.CadEmpresa = null;
@@ -4009,6 +4169,62 @@ ListapendentesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
 ], ListapendentesComponent);
 
+
+
+/***/ }),
+
+/***/ "./src/app/csv-data.service.ts":
+/*!*************************************!*\
+  !*** ./src/app/csv-data.service.ts ***!
+  \*************************************/
+/*! exports provided: CsvDataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CsvDataService", function() { return CsvDataService; });
+class CsvDataService {
+    static exportToCsv(filename, rows) {
+        if (!rows || !rows.length) {
+            return;
+        }
+        const separator = ';';
+        const keys = Object.keys(rows[0]);
+        var BOM = "\uFEFF";
+        const csvData = BOM +
+            keys.join(separator) +
+            '\n' +
+            rows.map(row => {
+                return keys.map(k => {
+                    let cell = row[k] === null || row[k] === undefined ? '' : row[k];
+                    cell = cell instanceof Date
+                        ? cell.toLocaleString()
+                        : cell.toString().replace(/"/g, '""');
+                    if (cell.search(/("|,|\n)/g) >= 0) {
+                        cell = `"${cell}"`;
+                    }
+                    return cell;
+                }).join(separator);
+            }).join('\n');
+        const blob = new Blob([csvData], { type: 'text/csv;charset=windows-1252;' });
+        if (navigator.msSaveBlob) { // IE 10+
+            navigator.msSaveBlob(blob, filename);
+        }
+        else {
+            const link = document.createElement('a');
+            if (link.download !== undefined) {
+                // Browsers that support HTML5 download attribute
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    }
+}
 
 
 /***/ }),
@@ -7034,6 +7250,174 @@ SesuiteprojectComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/graficos-indicadores/graficos-indicadores.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/graficos-indicadores/graficos-indicadores.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dyYWZpY29zLWluZGljYWRvcmVzL2dyYWZpY29zLWluZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/graficos-indicadores/graficos-indicadores.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/graficos-indicadores/graficos-indicadores.component.ts ***!
+  \************************************************************************/
+/*! exports provided: GraficosIndicadoresComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraficosIndicadoresComponent", function() { return GraficosIndicadoresComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../performance/performance.service */ "./src/app/performance/performance.service.ts");
+
+
+
+let GraficosIndicadoresComponent = class GraficosIndicadoresComponent {
+    constructor(performanceService) {
+        this.performanceService = performanceService;
+    }
+    ngOnInit() {
+        this.performanceService.indicadores(this.refer, this.indicador['indicadorId']).subscribe(dados => {
+            var maximo = 0;
+            for (var i = 34; i >= 0; i--) {
+                if (dados[0][i] !== '01/01') {
+                    maximo = i;
+                    break;
+                }
+            }
+            var eixo = dados[0].splice(1, maximo);
+            var atributos = this.criarArrayDeAtributos(dados, maximo);
+            this.MontarGrafico(eixo, this.indicador, atributos);
+        });
+    }
+    criarArrayDeAtributos(dados, maximo) {
+        var LinhaJson = "{";
+        for (var j = 4; j < dados.length; j++) {
+            var titulo = dados[j].splice(0, 1);
+            var corpo = '[';
+            for (var i = 0; i < maximo; i++) {
+                var dado = dados[j][i] === '1980-01-01' ? null : dados[j][i] === '-' ? null : dados[j][i];
+                var increment = i === (maximo - 1) ? ']' : ',';
+                corpo = corpo + dado + increment;
+            }
+            var increment2 = j === (dados.length - 1) ? '}' : ',';
+            LinhaJson = LinhaJson + '"' + titulo + '":' + corpo + increment2;
+        }
+        return JSON.parse(LinhaJson);
+    }
+    MontarGrafico(eixo, indicador, atributos) {
+        var dataset = [];
+        var Axes = [];
+        var left = false;
+        var right = false;
+        for (var i = 0; i < indicador.campoDoGraficoId.length; i++) {
+            dataset.push(indicador.campoDoGraficoId[i].estilo === 'Pontilhado' ?
+                {
+                    type: indicador.campoDoGraficoId[i].tipografico,
+                    yAxisID: indicador.campoDoGraficoId[i].posicao === 'right' ? 'y-axis-2' : 'y-axis-1',
+                    fill: false,
+                    pointStyle: 'circle',
+                    borderDash: [2, 2],
+                    pointRadius: 0,
+                    borderColor: indicador.campoDoGraficoId[i].coreixo,
+                    backgroundColor: indicador.campoDoGraficoId[i].coreixo,
+                    label: indicador.campoDoGraficoId[i].label,
+                    data: atributos[indicador.campoDoGraficoId[i].eixo]
+                } :
+                {
+                    type: indicador.campoDoGraficoId[i].tipografico,
+                    yAxisID: indicador.campoDoGraficoId[i].posicao === 'right' ? 'y-axis-2' : 'y-axis-1',
+                    fill: false,
+                    borderColor: indicador.campoDoGraficoId[i].coreixo,
+                    backgroundColor: indicador.campoDoGraficoId[i].coreixo,
+                    label: indicador.campoDoGraficoId[i].label,
+                    data: atributos[indicador.campoDoGraficoId[i].eixo]
+                });
+            left = indicador.campoDoGraficoId[i].posicao === 'left' ? true : left = true ? true : undefined;
+            right = indicador.campoDoGraficoId[i].posicao === 'right' ? true : right = true ? true : undefined;
+        }
+        if (left === true) {
+            Axes.push({
+                type: 'linear',
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+                gridLines: {
+                    display: true,
+                    drawborder: true,
+                    drawOnChartArea: false
+                },
+                ticks: {
+                    beginAtZero: true
+                },
+            });
+        }
+        if (right === true) {
+            Axes.push({
+                type: 'linear',
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                ticks: {
+                    beginAtZero: true
+                }
+            });
+        }
+        this.data = {
+            labels: eixo,
+            datasets: dataset
+        };
+        this.options = {
+            responsive: true,
+            stacked: false,
+            title: {
+                display: true,
+                fontSize: 16
+            },
+            gridLines: {
+                display: true,
+                drawborder: true,
+                drawOnChartArea: false
+            },
+            scales: {
+                yAxes: Axes
+            },
+            legend: {
+                position: 'bottom'
+            }
+        };
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], GraficosIndicadoresComponent.prototype, "refer", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], GraficosIndicadoresComponent.prototype, "indicador", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+], GraficosIndicadoresComponent.prototype, "comentarios", void 0);
+GraficosIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-graficos-indicadores',
+        template: __webpack_require__(/*! raw-loader!./graficos-indicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/graficos-indicadores/graficos-indicadores.component.html"),
+        styles: [__webpack_require__(/*! ./graficos-indicadores.component.css */ "./src/app/graficos-indicadores/graficos-indicadores.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_performance_performance_service__WEBPACK_IMPORTED_MODULE_2__["PerformanceService"]])
+], GraficosIndicadoresComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/graficos/graficos.component.css":
 /*!*************************************************!*\
   !*** ./src/app/graficos/graficos.component.css ***!
@@ -7057,25 +7441,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraficosComponent", function() { return GraficosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../performance/performance.service */ "./src/app/performance/performance.service.ts");
+/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../performance/performance.service */ "./src/app/performance/performance.service.ts");
 
 
 
 let GraficosComponent = class GraficosComponent {
     constructor(performanceService) {
         this.performanceService = performanceService;
-        //GRAFICOS
-        this.eixo = [];
-        this.orcado = [];
-        this.realiz = [];
-        this.orcadoDiaAc = [];
-        this.realizDiaAc = [];
-        this.tipoGrafico = [];
-        //ROTULO DOS DADOS
-        this.campo1 = "Realizado Acumulado";
-        this.campo2 = "Orçado Acumulado";
-        this.campo3 = "Δ (Realizado-Orçado)";
-        this.campo4 = "Variação Percentual";
         this.title = 'projeto';
     }
     ngOnInit() {
@@ -7084,734 +7456,41 @@ let GraficosComponent = class GraficosComponent {
         this.datasCom = [];
         this.Validador(this.element);
     }
-    // TIPOGRAPH 1 == Receitas (REALIZADO, ORÇADO, REALIZADO ACUMULADO, ORÇADO ACUMULADO)
-    // TIPOGRAPH 2 == Acumulados (REALIZADO ACUMULADO, ORÇADO ACUMULADO)
-    // TIPOGRAPH 3 == TemposMedia (REALIZADO MEDIA, ORÇADO MEDIA) Formato de HORA
     Validador(indic) {
-        this.performanceService.indicadores(this.refer, indic.indicadorId)
+        this.performanceService.indicadoresResumo(this.refer, indic.indicadorId)
             .subscribe(indicador => {
-            //Consulta endpoint que possui os nomes dos indicadores
-            //=======================================================================================
-            this.tipoindicador = indic.indicador;
-            this.tipoGraph = indic.tipoGrafico;
-            this.indicadorId = indic.indicadorId;
-            this.Tendencia = indic.tendencia;
-            //Consulta do EIXO
-            //=======================================================================================
-            this.eixo = [];
-            this.eixo = indicador[0];
-            this.eixo = this.eixo.splice(1, Number.MAX_VALUE);
-            this.eixo = this.eixo.filter(item => item !== null);
+            var IndicadorCadastro = indic;
+            var Resumo = [];
+            Resumo = indicador[3];
+            // Resumo = Resumo.splice(1, Number.MAX_VALUE)
             //ROTULOS DE COMENTARIOS
             //========================================================================================
-            this.temp1 = [];
-            this.temp1 = indicador[1];
-            this.temp1 = this.temp1.splice(1, Number.MAX_VALUE);
+            var eixo = [];
+            eixo = indicador[0];
+            eixo = eixo.splice(1, Number.MAX_VALUE);
+            eixo = eixo.filter(item => item !== null);
+            var comentarios = [];
+            comentarios = indicador[1];
+            comentarios = comentarios.splice(1, Number.MAX_VALUE);
             var responsaveis = [];
             responsaveis = indicador[2];
             responsaveis = responsaveis.splice(1, Number.MAX_VALUE);
-            this.PreencherComentarios(this.temp1, responsaveis, this.eixo);
-            //ROTULOS DE ACUMULADOS
-            //========================================================================================
-            this.temp1 = [];
-            this.temp1 = indicador[3];
-            this.RotulosAcumulados(this.tipoGraph, this.temp1);
-            var orcado = [];
-            orcado = indicador[4];
-            orcado = orcado.splice(1, Number.MAX_VALUE);
-            var realiz = [];
-            realiz = indicador[5];
-            realiz = realiz.splice(1, Number.MAX_VALUE);
-            var orcadoDiaAc = [];
-            orcadoDiaAc = indicador[6];
-            orcadoDiaAc = orcadoDiaAc.splice(1, Number.MAX_VALUE);
-            var realizDiaAc = [];
-            realizDiaAc = indicador[7];
-            realizDiaAc = realizDiaAc.splice(1, Number.MAX_VALUE);
-            var orcadoDiaMed = [];
-            orcadoDiaMed = indicador[8];
-            orcadoDiaMed = orcadoDiaMed.splice(1, Number.MAX_VALUE);
-            var realizDiaMed = [];
-            realizDiaMed = indicador[9];
-            realizDiaMed = realizDiaMed.splice(1, Number.MAX_VALUE);
-            var Minimo = [];
-            Minimo = indicador[10];
-            Minimo = Minimo.splice(1, Number.MAX_VALUE);
-            var Maximo = [];
-            Maximo = indicador[11];
-            Maximo = Maximo.splice(1, Number.MAX_VALUE);
-            var Meta = [];
-            Meta = indicador[12];
-            Meta = Meta.splice(1, Number.MAX_VALUE);
-            var MetaAcumulada = [];
-            MetaAcumulada = indicador[13];
-            MetaAcumulada = MetaAcumulada.splice(1, Number.MAX_VALUE);
-            var DentroPrazoReg = [];
-            DentroPrazoReg = indicador[14];
-            DentroPrazoReg = DentroPrazoReg.splice(1, Number.MAX_VALUE);
-            var DentroPrazo = [];
-            DentroPrazo = indicador[15];
-            DentroPrazo = DentroPrazo.splice(1, Number.MAX_VALUE);
-            this.EscolherTipoGrafico(this.tipoGraph, this.eixo, orcado, realiz, orcadoDiaAc, realizDiaAc, orcadoDiaMed, realizDiaMed, Minimo, Maximo, Meta, MetaAcumulada, DentroPrazoReg, DentroPrazo);
+            this.PreencherComentarios(eixo, responsaveis, comentarios);
+            this.CondicionalDeGraficos(IndicadorCadastro, Resumo);
         });
-    }
-    EscolherTipoGrafico(TipoGraph, eixo, orcado, realiz, orcadoDiaAc, realizDiaAc, orcadoDiaMed, realizDiaMed, Minimo, Maximo, Meta, MetaAcumulada, DentroPrazoReg, DentroPrazo) {
-        //REMOVER FINAIS DE SEMANA E ORÇADOS ZERADOS
-        //========================================================================================
-        let indice = 0;
-        // while(indice <33){     
-        //   let soma =  (realiz[indice]+orcado[indice]+Minimo[indice]+Maximo[indice]+DentroPrazoReg[indice]+DentroPrazo[indice])
-        //   if(soma==0){   
-        //     eixo.splice(indice, 1)
-        //     orcado.splice(indice, 1)
-        //     realiz.splice(indice, 1)
-        //     orcadoDiaAc.splice(indice, 1)
-        //     realizDiaAc.splice(indice, 1)
-        //     orcadoDiaMed.splice(indice, 1)
-        //     realizDiaMed.splice(indice, 1)
-        //     Minimo.splice(indice, 1)
-        //     Maximo.splice(indice, 1)
-        //     Meta.splice(indice, 1)
-        //     MetaAcumulada.splice(indice, 1)
-        //     DentroPrazoReg.splice(indice, 1)
-        //     DentroPrazo.splice(indice, 1)
-        //     indice=0
-        //   }
-        //   indice =indice+1
-        // }
-        // while(indice <34){     
-        //   let soma =  (realiz[indice]+orcado[indice]+realizDiaAc[indice]+orcadoDiaAc[indice])
-        //   if(soma==0){   
-        //     Meta.splice(indice, 1)
-        //     orcado.splice(indice, 1)
-        //     Minimo.splice(indice, 1)
-        //     Maximo.splice(indice, 1)
-        //     indice=0
-        //   }
-        //   indice =indice+1
-        // }
-        //CORTAR REALIZADOS ZERADOS ATÉ A ULTIMA ATUALIZAÇÃO
-        //========================================================================================
-        var arr;
-        arr = eixo;
-        // console.log(eixo)
-        indice = 0;
-        let maximo = 0;
-        for (var i = indice; i < 34; i++) {
-            if (i > 10) {
-                var real = arr[i];
-                if (real == "01/01") {
-                    maximo = i;
-                    break;
-                }
-                else {
-                    maximo = Number.MAX_VALUE;
-                }
-            }
-        }
-        eixo.splice(maximo, Number.MAX_VALUE);
-        orcado.splice(maximo, Number.MAX_VALUE);
-        realiz.splice(maximo, Number.MAX_VALUE);
-        orcadoDiaAc.splice(maximo, Number.MAX_VALUE);
-        realizDiaAc.splice(maximo, Number.MAX_VALUE);
-        Meta.splice(maximo, Number.MAX_VALUE);
-        MetaAcumulada.splice(maximo, Number.MAX_VALUE);
-        Minimo.splice(maximo, Number.MAX_VALUE);
-        Maximo.splice(maximo, Number.MAX_VALUE);
-        DentroPrazo.splice(maximo, Number.MAX_VALUE);
-        DentroPrazoReg.splice(maximo, Number.MAX_VALUE);
-        // console.log(eixo)
-        //SEPARAR TIPOS DE GRAFICO
-        //========================================================================================
-        //ORCADO - REALIZADO - SUM ORCADO - SUM REALIZADO 
-        if (TipoGraph == 1) {
-            this.Tipo1(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc);
-            //MESMOGRAFICO DE CIMA SÓ QUE COM ROTULOS COLADOS EM QTD SEM VIRGULA
-        }
-        else if (TipoGraph == 8) {
-            this.Tipo8(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc);
-            //SUM ORCADO - SUM REALIZADO 
-        }
-        else if (TipoGraph == 2) {
-            this.Tipo2(eixo, orcadoDiaAc, realizDiaAc);
-            //AVG ORCADO - AVG REALIZADO 
-        }
-        else if (TipoGraph == 3) {
-            this.Tipo3(eixo, orcado, realiz);
-            //AVG MAXIMO - AVG MINIMO - AVG MEDIA 
-        }
-        else if (TipoGraph == 4) {
-            this.Tipo4(eixo, Minimo, Maximo, realiz);
-            //META - DENTRO DO PRAZO - DENTRO DO PRAZO REGULADO
-        }
-        else if (TipoGraph == 5) {
-            this.Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo, realiz);
-        }
-        else if (TipoGraph == 6) {
-            this.Tipo679(eixo, orcadoDiaAc, realizDiaAc, MetaAcumulada);
-        }
-        else if (TipoGraph == 7) {
-            this.Tipo679(eixo, orcado, realiz, Meta);
-        }
-        else if (TipoGraph == 9) {
-            this.Tipo679(eixo, orcado, realiz, Meta);
-        }
-    }
-    //____________________________________________________________________________________________
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-    //TIPOS DE GRAFICOS
-    //BARLINE TIPO RECEITADIRETA
-    Tipo1(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                { type: 'line',
-                    pointStyle: 'circle',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    borderColor: '#253f93',
-                    label: 'Orçado Acumulado',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderWidth: 1,
-                    borderColor: '#253F93',
-                    backgroundColor: '#253f93',
-                    label: 'Realizado Acumulado',
-                    data: realizDiaAc
-                },
-                {
-                    label: 'Orçado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcado
-                },
-                {
-                    label: 'Realizado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#88D1D1',
-                    borderColor: '#88D1D1',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            responsive: true,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        },
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        scales: {
-                            yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                        },
-                    }],
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //GRAFICOS DE QUANTIDADES
-    Tipo8(eixo, orcado, realiz, orcadoDiaAc, realizDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                { type: 'line',
-                    pointStyle: 'circle',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    borderColor: '#253f93',
-                    label: 'Orçado Acumulado',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    yAxisID: 'y-axis-2',
-                    fill: false,
-                    borderWidth: 1,
-                    borderColor: '#253F93',
-                    backgroundColor: '#253f93',
-                    label: 'Realizado Acumulado',
-                    data: realizDiaAc
-                },
-                {
-                    label: 'Orçado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcado
-                },
-                {
-                    label: 'Realizado',
-                    yAxisID: 'y-axis-1',
-                    backgroundColor: '#88D1D1',
-                    borderColor: '#88D1D1',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            responsive: true,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        },
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        gridLines: {
-                            display: true,
-                            drawborder: true,
-                            drawOnChartArea: false
-                        },
-                        scales: {
-                            yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                        },
-                    }],
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //TIPO TMA TME 2 EIXOS
-    Tipo2(eixo, orcadoDiaAc, realizDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Orçado',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizDiaAc
-                }
-            ]
-        };
-        this.options = {
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //TIPO TMA TME
-    Tipo3(eixo, orcado, realiz) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Orçado',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcado
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //tipo maximo minimo media
-    Tipo4(eixo, minimo, maximo, realiz) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Maximo',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: maximo
-                }, {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Minimo',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: minimo
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realiz
-                }
-            ]
-        };
-        this.options = {
-            scales: {
-                yAxes: [{
-                        barPercentage: 0.5,
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            ticks: {
-                beginAtZero: true
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //tipo prazo serviços
-    Tipo5(eixo, Meta, DentroPrazoReg, DentroPrazo, realizado) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizado
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 2,
-                    label: 'Meta',
-                    borderColor: '#6C8CC7',
-                    data: Meta
-                },
-                {
-                    type: 'bar',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Regulados',
-                    backgroundColor: 'lightgreen',
-                    borderColor: 'lightgreen',
-                    data: DentroPrazoReg
-                }, {
-                    type: 'bar',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Não Regulados',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: DentroPrazo
-                }
-            ]
-        };
-        this.options = {
-            scales: {
-                yAxes: [{
-                        barPercentage: 0.5,
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //TIPO TMA TME 2 EIXOS
-    Tipo679(eixo, orcadoDiaAc, realizDiaAc, metaDiaAc) {
-        this.data = {
-            labels: this.eixo,
-            datasets: [
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Orçado',
-                    backgroundColor: '#6C8CC7',
-                    borderColor: '#6C8CC7',
-                    data: orcadoDiaAc
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    label: 'Realizado',
-                    borderWidth: 1,
-                    backgroundColor: '#253F93',
-                    borderColor: '#253F93',
-                    data: realizDiaAc
-                },
-                {
-                    type: 'line',
-                    fill: false,
-                    borderDash: [2, 2],
-                    pointRadius: 0,
-                    borderWidth: 1,
-                    label: 'Meta',
-                    backgroundColor: '#808080',
-                    borderColor: '#808080',
-                    data: metaDiaAc
-                }
-            ]
-        };
-        this.options = {
-            responsive: false,
-            stacked: false,
-            title: {
-                display: true,
-                fontSize: 16
-            },
-            gridLines: {
-                display: true,
-                drawborder: true,
-                drawOnChartArea: false
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
-    }
-    //FIM DE TIPOS DE GRAFICOS
-    //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-    RotulosAcumulados(tipoGraph, linhaDeResumo) {
-        this.CondicionalDeGraficos(tipoGraph, linhaDeResumo);
-        switch (this.Tendencia) {
-            case "MELHORPOSITIVO": {
-                if (this.RotuloDiferencaPerc < 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cor1 = "Red";
-                    this.Cor2 = "Red";
-                    this.Cor3 = "Red";
-                    this.Cor4 = "Red";
-                }
-                break;
-            }
-            case "MELHORNEGATIVO": {
-                if (this.RotuloDiferencaPerc > 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cor1 = "Red";
-                    this.Cor2 = "Red";
-                    this.Cor3 = "Red";
-                    this.Cor4 = "Red";
-                }
-                break;
-            }
-            case "MELHORENTREFAIXAS": {
-                if (this.RotuloDiferencaAcum < 0 || this.RotuloDiferencaAcum > 0) {
-                    this.Cor1 = "Red";
-                    this.Cor2 = "Red";
-                    this.Cor3 = "Red";
-                    this.Cor4 = "Red";
-                }
-                break;
-            }
-        }
-        if (tipoGraph == 5) {
-            this.RotuloDiferencaPerc = this.RotuloDiferencaPerc + "%";
-            this.RotuloDiferencaAcum = this.RotuloDiferencaAcum + "%";
-            this.RotuloOrcadoMensal = this.RotuloOrcadoMensal + "%";
-            this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal + "%";
-            this.RotuloRealizAcum = this.RotuloRealizAcum + "%";
-            this.RotuloOrcadoAcum = this.RotuloOrcadoAcum + "%";
-        }
-        else {
-            this.RotuloDiferencaPerc = "Δ% " + this.RotuloDiferencaPerc;
-            this.RotuloDiferencaAcum2 = "Δ " + this.RotuloDiferencaAcum2;
-        }
     }
     //SUPRIMIR COMENTÁRIOS VAZIOS E PREENCHER COM DATA
     //========================================================================================
-    PreencherComentarios(temp1, responsaveis, eixos) {
-        // temp2.reverse();
-        // responsaveis2.reverse();
-        // eixo.reverse();
+    PreencherComentarios(eixo, responsaveis, comentarios) {
         let indice = 0;
         var Comentarios1 = [];
         var Nomes1 = [];
         var Datas1 = [];
-        while (indice < temp1.length) {
-            if (temp1[indice] != null && temp1[indice] != "") {
-                Comentarios1.push(temp1[indice]);
+        while (indice < comentarios.length) {
+            if (comentarios[indice] != null && comentarios[indice] != "") {
+                Comentarios1.push(comentarios[indice]);
                 Nomes1.push(responsaveis[indice]);
-                Datas1.push(eixos[indice]);
+                Datas1.push(eixo[indice]);
             }
             indice = indice + 1;
         }
@@ -7826,97 +7505,127 @@ let GraficosComponent = class GraficosComponent {
         }
     }
     //MESMA CLASSE DO QUE O graficos.component.ts
-    CondicionalDeGraficos(tipoGraph, temp1) {
+    CondicionalDeGraficos(IndicadorCadastro, resumo) {
         //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
         //========================================================================================
-        let orcadoMensal = parseFloat(temp1.splice(1, 1));
-        let orcadoAcumulad = parseFloat(temp1.splice(1, 1));
-        let realizadoAcumulad = parseFloat(temp1.splice(1, 1));
-        let PrevisaoMensal = parseFloat(temp1.splice(1, 1));
-        let OrcadoMedia = parseFloat(temp1.splice(1, 1));
-        let RealMedia = parseFloat(temp1.splice(1, 1));
-        let Minimo = parseFloat(temp1.splice(1, 1));
-        let Maximo = parseFloat(temp1.splice(1, 1));
-        let Meta = parseFloat(temp1.splice(1, 1));
-        let MetaAcum = parseFloat(temp1.splice(1, 1));
-        let ReguladoDp = parseFloat(temp1.splice(1, 1));
-        let NaoReguladoDp = parseFloat(temp1.splice(1, 1));
+        let orcadoMensal = parseFloat(resumo.splice(1, 1));
+        let orcadoAcumulad = parseFloat(resumo.splice(1, 1));
+        let realizadoAcumulad = parseFloat(resumo.splice(1, 1));
+        let PrevisaoMensal = parseFloat(resumo.splice(1, 1));
+        let OrcadoMedia = parseFloat(resumo.splice(1, 1));
+        let RealMedia = parseFloat(resumo.splice(1, 1));
+        let Minimo = parseFloat(resumo.splice(1, 1));
+        let Maximo = parseFloat(resumo.splice(1, 1));
+        let Meta = parseFloat(resumo.splice(1, 1));
+        let MetaAcum = parseFloat(resumo.splice(1, 1));
+        let ReguladoDp = parseFloat(resumo.splice(1, 1));
+        let NaoReguladoDp = parseFloat(resumo.splice(1, 1));
+        let UltReal = parseFloat(resumo.splice(1, 1));
+        let UltOrcado = parseFloat(resumo.splice(1, 1));
+        //MONTAR OBJETO COM OS DADOS DO RESUMO
         //========================================================================================
-        let val1 = orcadoAcumulad;
-        let val2 = realizadoAcumulad;
-        //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
+        var ResumoDosEixos = {
+            orcadomensal: orcadoMensal,
+            orcadoacumulado: orcadoAcumulad,
+            orcadomedia: OrcadoMedia,
+            realizadoacumulado: realizadoAcumulad,
+            realizadomedia: RealMedia,
+            metaacumulada: MetaAcum,
+            meta: Meta,
+            minimo: Minimo,
+            maximo: Maximo,
+            reguladodp: ReguladoDp,
+            naoreguladodp: NaoReguladoDp,
+            ultimorealizado: UltReal,
+            ultimoorcado: UltOrcado
+        };
+        this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
+        this.RotuloPrevisaoMensal = PrevisaoMensal;
+        //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
         //========================================================================================
-        if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(0);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(0);
+        this.campo1 = IndicadorCadastro.rotulocampo1;
+        this.campo2 = IndicadorCadastro.rotulocampo2;
+        this.campo3 = IndicadorCadastro.rotulocampo3;
+        this.campo4 = IndicadorCadastro.rotulocampo4;
+        //CONSTRUIR OS CAMPOS DE CALCULO COM O CADASTRO DE INDICADORES
+        //========================================================================================
+        this.campoCalc1 = ResumoDosEixos[IndicadorCadastro.campo1];
+        this.campoCalc2 = ResumoDosEixos[IndicadorCadastro.campo2];
+        var cam3 = IndicadorCadastro.campo3 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam3 = IndicadorCadastro.campo3 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam3;
+        this.campoCalc3 = cam3;
+        var cam4 = IndicadorCadastro.campo4 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam4 = IndicadorCadastro.campo4 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam4;
+        this.campoCalc4 = cam4;
+        //SELECIONAR TENDENDCIAS DE EIXO
+        //========================================================================================
+        switch (IndicadorCadastro.tendencia) {
+            case "MELHORPOSITIVO": {
+                if (this.campoCalc2 < this.campoCalc1) {
+                    this.Cor1 = "Red";
+                }
+                break;
+            }
+            case "MELHORNEGATIVO": {
+                if (this.campoCalc2 > this.campoCalc1) {
+                    this.Cor1 = "Red";
+                }
+                break;
+            }
+            case "MELHORENTREFAIXAS": {
+                if (ResumoDosEixos['realizadomedia'] > ResumoDosEixos['maximo']
+                    || ResumoDosEixos['realizadomedia'] < ResumoDosEixos['minimo']) {
+                    this.Cor1 = "Red";
+                }
+                break;
+            }
         }
-        else if (tipoGraph == 8) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-            //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
-            //========================================================================================
+        this.Cor2 = this.Cor1;
+        this.Cor3 = this.Cor1;
+        this.Cor4 = this.Cor1;
+        //SELECIONAR TENDENDCIAS DE EIXO
+        //========================================================================================
+        switch (IndicadorCadastro.rotuloVirgula) {
+            case 1: {
+                this.campoCalc1 = converterComDecimal(this.campoCalc1);
+                this.campoCalc2 = converterComDecimal(this.campoCalc2);
+                this.campoCalc3 = converterComDecimal(this.campoCalc3);
+                this.campoCalc4 = converterComDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterComDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterComDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 2: {
+                this.campoCalc1 = converterSemDecimal(this.campoCalc1);
+                this.campoCalc2 = converterSemDecimal(this.campoCalc2);
+                this.campoCalc3 = converterSemDecimal(this.campoCalc3);
+                this.campoCalc4 = converterSemDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterSemDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterSemDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 3: {
+                this.campoCalc1 = ConverterParaHora(this.campoCalc1);
+                this.campoCalc2 = ConverterParaHora(this.campoCalc2);
+                this.RotuloOrcadoMensal = ConverterParaHora(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = ConverterParaHora(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
         }
-        else if (tipoGraph == 3) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloOrcadoAcum = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
-            this.RotuloDiferencaAcum = this.ConverterParaHora((val2 - val1));
-            this.RotuloDiferencaAcum2 = this.ConverterParaHora(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
-            this.RotuloPrevisaoMensal = this.ConverterParaHora(this.RotuloPrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
-        else if (tipoGraph == 4) {
-            val2 = RealMedia;
-            Minimo = Minimo > 60 ? parseFloat(Minimo.toFixed(0)) : Minimo;
-            Maximo = Minimo > 60 ? parseFloat(Maximo.toFixed(0)) : Maximo;
-            this.RotuloOrcadoMensal = Minimo + " - " + Maximo;
-            this.RotuloOrcadoAcum = Minimo + " - " + Maximo;
-            this.RotuloRealizAcum = RealMedia;
-            let val3 = RealMedia > Minimo ? RealMedia < Maximo ? 0 : RealMedia - Maximo : RealMedia - Minimo;
-            this.RotuloDiferencaAcum = val3.toFixed(2);
-            this.RotuloDiferencaAcum2 = val3 == 0 ? 0 : val3.toFixed(2);
-            val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
-            this.RotuloPrevisaoMensal = PrevisaoMensal;
-            this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal)) ? 0 : PrevisaoMensal;
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
-        else if (tipoGraph == 5) {
-            this.RotuloPrevisaoMensal = (Meta * 100);
-            this.RotuloOrcadoMensal = (Meta * 100);
-            this.RotuloOrcadoAcum = (Meta * 100);
-            this.RotuloRealizAcum = (RealMedia * 100);
-            this.RotuloDiferencaAcum = "-";
-            this.RotuloDiferencaAcum2 = "-";
-            this.RotuloDiferencaPerc = "-";
-        }
-        else if (tipoGraph == 7 || tipoGraph == 9) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);
-            this.RotuloOrcadoAcum = converterComDecimal(OrcadoMedia);
-            this.RotuloRealizAcum = converterComDecimal(RealMedia);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = converterComDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
+        //FUNÇÕES
+        //========================================================================================
         function converterComDecimal(z) {
             let v = z.toFixed(2);
             v = v.replace(/\D/g, ""); // permite digitar apenas numero
@@ -7936,25 +7645,25 @@ let GraficosComponent = class GraficosComponent {
             v = v.replace(/(\d{1})(\d{3})$/, "$1.$2"); // coloca ponto antes dos ultimos 7 digitos
             return v;
         }
-    }
-    ConverterParaHora(s) {
-        if (s < 0) {
-            s = s * -1;
-        }
-        function duas_casas(numero) {
-            if (numero <= 9) {
-                numero = "0" + parseInt(numero);
+        function ConverterParaHora(s) {
+            if (s < 0) {
+                s = s * -1;
             }
-            return numero;
+            function duas_casas(numero) {
+                if (numero <= 9) {
+                    numero = "0" + parseInt(numero);
+                }
+                return numero;
+            }
+            var hora = Math.trunc(s / 3600);
+            var minuto = Math.trunc(s / 60) - (hora * 60);
+            var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
+            hora = duas_casas(hora);
+            minuto = duas_casas(minuto);
+            segundo = duas_casas(segundo);
+            var formatado = hora + ":" + minuto + ":" + segundo;
+            return formatado;
         }
-        var hora = Math.trunc(s / 3600);
-        var minuto = Math.trunc(s / 60) - (hora * 60);
-        var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
-        hora = duas_casas(hora);
-        minuto = duas_casas(minuto);
-        segundo = duas_casas(segundo);
-        var formatado = hora + ":" + minuto + ":" + segundo;
-        return formatado;
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8411,6 +8120,78 @@ class Usuario {
 
 /***/ }),
 
+/***/ "./src/app/notificacoessispc/notificacoes.service.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/notificacoessispc/notificacoes.service.ts ***!
+  \***********************************************************/
+/*! exports provided: NotificacoesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacoesService", function() { return NotificacoesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+let NotificacoesService = class NotificacoesService {
+    constructor(http) {
+        this.http = http;
+    }
+    ListaDeModelos() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/notificacao`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    ListaDeModelosNovo(id, nomeTemplate, Assunto, Texto) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        var envio = { id: id, nomeDoTemplate: nomeTemplate, assunto: Assunto, texto: Texto };
+        console.log(envio);
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'PUT');
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/notificacao/${id}`, envio, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        })));
+    }
+    ListaDeletar(id) {
+        return this.http.delete(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/notificacao/${id}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    enviarNotificacao(Usuarios, Assunto, Texto) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        var envio = { usuarios: Usuarios, assunto: Assunto, texto: Texto };
+        console.log(envio);
+        headers = headers.set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/notificacao/enviarEmail`, envio, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText,
+        })));
+    }
+    UsuariosSispc() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/usuarios`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+};
+NotificacoesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], NotificacoesService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/notificacoessispc/notificacoessispc.component.css":
 /*!*******************************************************************!*\
   !*** ./src/app/notificacoessispc/notificacoessispc.component.css ***!
@@ -8434,11 +8215,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacoessispcComponent", function() { return NotificacoessispcComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _notificacoes_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notificacoes.service */ "./src/app/notificacoessispc/notificacoes.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 let NotificacoessispcComponent = class NotificacoessispcComponent {
-    constructor() { }
+    constructor(not, messageService) {
+        this.not = not;
+        this.messageService = messageService;
+        this.email = [];
+        this.carregando = false;
+        //MODELOS
+        //=================================================================================================
+        this.modelos = false;
+        //NOVO MODELO
+        //=================================================================================================
+        this.novoModeloP = false;
+    }
     ngOnInit() {
+        this.not.UsuariosSispc().subscribe(response => {
+            this.ArrEmails = response;
+        });
+    }
+    AoSalvar() {
+        this.carregando = true;
+        this.email = [];
+        for (var i = 0; i < this.OpcEmails.length; i++) {
+            this.email.push(this.OpcEmails[i]["email"]);
+        }
+        this.not.enviarNotificacao(this.email, this.Assunto, this.Texto).subscribe(response => {
+            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                detail: 'Dados enviados com sucesso!' });
+            console.log('Dados enviados com sucesso!');
+            this.Assunto = "";
+            this.Texto = "";
+            this.OpcEmails = null;
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+            console.log(error);
+        });
+        this.carregando = false;
+    }
+    Modelos() {
+        this.modelos = true;
+        this.not.ListaDeModelos().subscribe(resp => {
+            this.modelosCadastrados = resp;
+        });
+    }
+    selecionarModelo(i) {
+        this.Texto = i.texto;
+        this.Assunto = i.assunto;
+        this.modelos = false;
+    }
+    novoModelo() {
+        this.novoModeloP = true;
+    }
+    SalvarNovoModelo() {
+        this.not.ListaDeModelosNovo(0, this.NomeDoModelo, this.Assunto, this.Texto).subscribe(response => {
+            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                detail: 'Dados enviados com sucesso!' });
+            console.log('Dados enviados com sucesso!');
+            this.Assunto = "";
+            this.Texto = "";
+            this.OpcEmails = null;
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+            console.log(error);
+        });
+        this.novoModeloP = false;
+    }
+    //DELETAR MODELO
+    //=================================================================================================
+    deletarModelo(i) {
+        this.not.ListaDeletar(i.id).subscribe(response => {
+            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                detail: 'Dados enviados com sucesso!' });
+            console.log('Dados enviados com sucesso!');
+            this.Assunto = "";
+            this.Texto = "";
+            this.OpcEmails = null;
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+            console.log(error);
+        });
+        this.modelos = false;
     }
 };
 NotificacoessispcComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8447,7 +8310,7 @@ NotificacoessispcComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./notificacoessispc.component.html */ "./node_modules/raw-loader/index.js!./src/app/notificacoessispc/notificacoessispc.component.html"),
         styles: [__webpack_require__(/*! ./notificacoessispc.component.css */ "./src/app/notificacoessispc/notificacoessispc.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_notificacoes_service__WEBPACK_IMPORTED_MODULE_2__["NotificacoesService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
 ], NotificacoessispcComponent);
 
 
@@ -8591,8 +8454,9 @@ let AdminIndicadoresComponent = class AdminIndicadoresComponent {
     constructor() { }
     ngOnInit() {
         this.items = [
-            { label: 'Cadastrar Indicador' },
-            { label: 'Editar Indicadores' }
+            { label: 'Cadastrar' },
+            { label: 'Editar' },
+            { label: 'Importar' }
         ];
         this.trocadeitemIndex(0);
     }
@@ -8613,6 +8477,112 @@ AdminIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], AdminIndicadoresComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/admin-indicadores.service.ts ***!
+  \****************************************************************************/
+/*! exports provided: AdminIndicadoresService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminIndicadoresService", function() { return AdminIndicadoresService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+let AdminIndicadoresService = class AdminIndicadoresService {
+    constructor(http) {
+        this.http = http;
+    }
+    gerencias() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/gerencias`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    listaIndicadores() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadores`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    UnicoIndicadores(id) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadores/${id}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    cadastroIndicadoresInserir(bodyObj) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadores`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    cadastroIndicadoresAtt(bodyObj) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadores/${bodyObj.indicadorId}`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    atualizarCampos(bodyObj, id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadoresgraficos/${id}`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    deletarCampos(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.delete(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadoresgraficos/${id}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    indicadoresByMonth(referencia, indicador) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/pormes/${indicador}/${referencia}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    listaIndicadoresgerenc(gerenc) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadindicadores/gerencia/${gerenc}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    indicadoresAtt(bodyObj) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/${bodyObj.exeindicadorId}`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    importarIndicador(bodyObj, fkindic) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/updateCsv/${fkindic}`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    extractData(res) {
+        let body = res;
+        return body;
+    }
+    statusBots(robo) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadrpa/statusbot/${robo}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    startBot(robo) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cadrpa/startbot/${robo}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    unidades() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/unidades`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    CarregarIndicadors(indicadorid, ano, datacorte, unidadeid, dialimite) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/novoindicador/${indicadorid}/${ano}/${datacorte}/${unidadeid}/${dialimite}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+};
+AdminIndicadoresService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], AdminIndicadoresService);
 
 
 
@@ -8641,11 +8611,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CadastrarindicadorComponent", function() { return CadastrarindicadorComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 let CadastrarindicadorComponent = class CadastrarindicadorComponent {
-    constructor() { }
+    constructor(messageService) {
+        this.messageService = messageService;
+    }
     ngOnInit() {
+        this.items = [
+            { label: 'Cadastrar' }
+        ];
+        this.trocadeitemIndex(0);
+    }
+    trocadeitem(activeItem) {
+        this.activeItem = activeItem['activeItem'];
+        this.activeItemIndex = this.items.indexOf(this.activeItem);
+    }
+    trocadeitemIndex(index) {
+        this.activeItem = this.items[index];
+        this.activeItemIndex = index;
     }
 };
 CadastrarindicadorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8654,28 +8641,787 @@ CadastrarindicadorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./cadastrarindicador.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.html"),
         styles: [__webpack_require__(/*! ./cadastrarindicador.component.css */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
 ], CadastrarindicadorComponent);
 
 
 
 /***/ }),
 
-/***/ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css":
-/*!*********************************************************************************************!*\
-  !*** ./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css ***!
-  \*********************************************************************************************/
+/***/ "./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.css":
+/*!**************************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.css ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2VkaXRpbmRpY2Fkb3Jlcy9lZGl0aW5kaWNhZG9yZXMuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2NhZGFzdHJhcmluZGljYWRvci9ub3ZvLWluZGljYWRvci9ub3ZvLWluZGljYWRvci5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
-/***/ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts":
-/*!********************************************************************************************!*\
-  !*** ./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.ts ***!
-  \********************************************************************************************/
+/***/ "./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.ts":
+/*!*************************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.ts ***!
+  \*************************************************************************************************************/
+/*! exports provided: NovoIndicadorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NovoIndicadorComponent", function() { return NovoIndicadorComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+let NovoIndicadorComponent = class NovoIndicadorComponent {
+    constructor(adminindic, messageService) {
+        this.adminindic = adminindic;
+        this.messageService = messageService;
+        this.visualizargrafico = false;
+        this.FiltroListaIndicadores = [];
+        //DROPDOWNS
+        this.classificacoesLista = [];
+        this.tendenciaLista = [];
+        this.tiporotuloLista = [];
+        this.gerenciasLista = [];
+        this.editarIndicadorAtivo = false;
+    }
+    ngOnInit() {
+        this.adminindic.gerencias().subscribe(gerencias => {
+            this.gerenciasLista = gerencias;
+        });
+        this.classificacoesLista =
+            [
+                { label: "Atendimento", value: "ATENDIMENTO" },
+                { label: "Serviços Comerciais", value: "SERVCOMERCIAL" },
+                { label: "Comparativo", value: "CORPORATIVO" },
+                { label: "Energia", value: "ENERGIA" },
+                { label: "Volumes", value: "VOLUMES" },
+                { label: "Produtos Químicos", value: "PRODUTOSQU" },
+                { label: "Comerciais", value: "FATURAMENTO" },
+                { label: "Indicador Operacional", value: "INDICADOROPERACIONAL" },
+                { label: "Cobrança", value: "COBRANCA" },
+                { label: "Assertividade", value: "ASSERTIVIDADE" },
+                { label: "Produtivade", value: "PRODUTIVIDADE" },
+                { label: "Prazos", value: "PRAZOS" }
+            ];
+        this.tiporotuloLista = [
+            { label: "Com Virgula", value: 1 },
+            { label: "Sem Virgula", value: 2 },
+            { label: "Horas", value: 3 },
+            { label: "Porcentagem", value: 4 },
+        ];
+        this.tendenciaLista =
+            [
+                { label: "Melhor Positivo", value: "MELHORPOSITIVO" },
+                { label: "Melhor Negativo", value: "MELHORNEGATIVO" },
+                { label: "Melhor Entre Faixas", value: "MELHORENTREFAIXAS" }
+            ];
+    }
+    limpartudo() {
+        this.editarIndicadorNome = null;
+        this.editarIndicadorGerencia = null;
+        this.editarIndicadorTipoRotulo = null;
+        this.editarIndicadorTendencia = null;
+        this.editarIndicadorClassificacao = null;
+        this.editarIndicadorAtivo = null;
+    }
+    salvarIndicador() {
+        var indicador = {
+            indicadorId: null,
+            classificacao: this.editarIndicadorClassificacao.value,
+            indicador: this.editarIndicadorNome,
+            gerencia: this.editarIndicadorGerencia.gerenciaId,
+            ordem: 0,
+            tipoGrafico: 0,
+            tendencia: this.editarIndicadorTendencia.value,
+            produtos: [],
+            ativo: this.editarIndicadorAtivo === true ? 1 : 0,
+            campoDoGraficoId: [],
+            rotuloVirgula: this.editarIndicadorTipoRotulo.value
+        };
+        console.log(indicador);
+        this.adminindic.cadastroIndicadoresInserir(indicador).subscribe(indicadors => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + indicador['indicador'] + ' criado' });
+        }, error => {
+            this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+        });
+    }
+};
+NovoIndicadorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-novo-indicador',
+        template: __webpack_require__(/*! raw-loader!./novo-indicador.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.html"),
+        styles: [__webpack_require__(/*! ./novo-indicador.component.css */ "./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+], NovoIndicadorComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.css":
+/*!***********************************************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.css ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2VkaXRhcmluZGljYWRvcmVzL2VkaXRhcmNhZGFzdHJvaW5kaWNhZG9yZXMvZWRpdGFyY2FkYXN0cm9pbmRpY2Fkb3Jlcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.ts":
+/*!**********************************************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.ts ***!
+  \**********************************************************************************************************************************/
+/*! exports provided: EditarcadastroindicadoresComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarcadastroindicadoresComponent", function() { return EditarcadastroindicadoresComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _performance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../performance.service */ "./src/app/performance/performance.service.ts");
+
+
+
+
+
+let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponent {
+    constructor(adminindic, messageService, performanceService) {
+        this.adminindic = adminindic;
+        this.messageService = messageService;
+        this.performanceService = performanceService;
+        this.listaIndicadores = [];
+        this.gridDeLista = false;
+        //=========================================================================================================================================
+        //=========================================================================================================================================
+        //COMEÇA O PDIALOG
+        this.editarCadastro = false;
+        //DROPDOWNS
+        this.classificacoesLista = [];
+        this.tendenciaLista = [];
+        this.tiporotuloLista = [];
+        this.editargraficoseixos = [];
+        this.editartiposgraficos = [];
+        this.editarposicoes = [];
+        this.editarestilos = [];
+        this.editarcores = [];
+        //-------------.................---------------------....................---------------------...................
+        this.filtroGraficoData = new Date();
+        this.visualizarGrafico = false;
+        //===============================================================================================
+        //ALTERAR ORDEM
+        this.alteraOrdemCampos = false;
+        //===============================================================================================
+        //INSERIR E DELETAR CAMPOS DO GRAFICO
+        this.inserirUmCampo = false;
+        this.deletarUmCampo = false;
+    }
+    ngOnInit() {
+        this.listaEdicaodeGraficoEixos = [
+            { label: "orcado", value: "orcado" },
+            { label: "realizado", value: "realizado" },
+            { label: "orcadoAcumulado", value: "orcadoAcumulado" },
+            { label: "realizadoAcumulado", value: "realizadoAcumulado" },
+            { label: "orcadoMedia", value: "orcadoMedia" },
+            { label: "realizadoMedia", value: "realizadoMedia" },
+            { label: "Valor Retido", value: "valorretido" },
+            { label: "Meta", value: "Meta" },
+            { label: "Minimo", value: "Minimo" },
+            { label: "Maximo", value: "Maximo" },
+            { label: "Forecast", value: "forecast" },
+            { label: "Forecast 2", value: "forecast2" },
+            { label: "Forecast 3", value: "forecast3" },
+            { label: "MetaAcumulada", value: "MetaAcumulada" },
+            { label: "DentrodoPrazoReg", value: "DentrodoPrazoReg" },
+            { label: "DentrodoPrazoNreg", value: "DentrodoPrazoNreg" }
+        ];
+        this.listaEdicaodeGraficoTipos = [
+            { label: "bar", value: "bar" },
+            { label: "line", value: "line" }
+        ];
+        this.listaEdicaodeGraficoPosicoes = [
+            { label: "left", value: "left" },
+            { label: "right", value: "right" }
+        ];
+        this.listaEdicaodeGraficoCores = [
+            { label: '#273eac', value: '273eac' },
+            { label: '#253f93', value: '253f93' },
+            { label: '#007859', value: '007859' },
+            { label: '#00aaad', value: '00aaad' },
+            { label: '#00928d', value: '00928d' },
+            { label: '#1d71b9', value: '1d71b9' },
+            { label: '#6c8cc7', value: '6c8cc7' },
+            { label: '#ba2025', value: 'ba2025' },
+            { label: '#dc7528', value: 'dc7528' },
+            { label: '#ffc20e', value: 'ffc20e' },
+            { label: '#88d1d1', value: '88d1d1' }
+        ];
+        this.listaDeCamposParaRotulos = [
+            { label: "Último Orçado", value: "ultimoorcado" },
+            { label: "Orçado Acumulado", value: "orcadoacumulado" },
+            { label: "Orçado Média", value: "orcadomedia" },
+            { label: "Último Realizado", value: "ultimorealizado" },
+            { label: "Realizado Acumulado", value: "realizadoacumulado" },
+            { label: "Realizado Média", value: "realizadomedia" },
+            { label: "Meta Média", value: "meta" },
+            { label: "Meta Acumulada", value: "metaacumulada" },
+            { label: "Mínimo Média", value: "minimo" },
+            { label: "Máximo Média", value: "maximo" },
+            { label: "Regulados DP", value: "reguladodp" },
+            { label: "Não Regulados DP", value: "naoreguladodp" },
+            { label: "Diferença = Campo2-Campo1", value: "diferenca" },
+            { label: "Variação = 1-(Campo2/Campo1)", value: "variacao" },
+        ];
+        this.listaDeCamposParaRotulosMensal = [
+            { label: "Orçado Mensal", value: "orcadomensal" },
+            { label: "Último Orçado", value: "ultimoorcado" },
+            { label: "Orçado Acumulado", value: "orcadoacumulado" },
+            { label: "Orçado Média", value: "orcadomedia" },
+            { label: "Mínimo Média", value: "minimo" },
+            { label: "Máximo Média", value: "maximo" },
+        ];
+        this.classificacoesLista =
+            [
+                { label: "Atendimento", value: "ATENDIMENTO" },
+                { label: "Serviços Comerciais", value: "SERVCOMERCIAL" },
+                { label: "Comparativo", value: "CORPORATIVO" },
+                { label: "Energia", value: "ENERGIA" },
+                { label: "Faturamento", value: "FATURAMENTO" },
+                { label: "Volumes", value: "VOLUMES" },
+                { label: "Produtos Químicos", value: "PRODUTOSQUÍMICOS" },
+                { label: "Comerciais", value: "FATURAMENTO" },
+                { label: "Indicador Operacional", value: "INDICADOROPERACIONAL" },
+                { label: "Cobrança", value: "COBRANCA" },
+                { label: "Assertividade", value: "ASSERTIVIDADE" },
+                { label: "Produtivade", value: "PRODUTIVIDADE" },
+                { label: "Prazos", value: "PRAZOS" }
+            ];
+        this.tiporotuloLista = [
+            { label: "Com Virgula", value: 1 },
+            { label: "Sem Virgula", value: 2 },
+            { label: "Horas", value: 3 },
+            { label: "Porcentagem", value: 4 },
+        ];
+        this.tendenciaLista =
+            [
+                { label: "Melhor Positivo", value: "MELHORPOSITIVO" },
+                { label: "Melhor Negativo", value: "MELHORNEGATIVO" },
+                { label: "Melhor Entre Faixas", value: "MELHORENTREFAIXAS" }
+            ];
+        this.adminindic.gerencias().subscribe(gerencias => {
+            this.FiltroListaGerencia = gerencias;
+        });
+    }
+    //=========================================================================================================================================
+    //=========================================================================================================================================
+    //SOBRE A CONSULTA E REORDENAÇÃO 
+    consultar() {
+        this.listaIndicadores = [];
+        this.adminindic.listaIndicadoresgerenc(this.FiltroGerenciaSelecionada.gerenciaId).subscribe(indicador => {
+            if (indicador.length > 0) {
+                this.listaIndicadores = indicador;
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Carregado com Sucesso' });
+            }
+            else {
+                this.messageService.add({ severity: 'info', summary: 'Informação', detail: 'Sem indicadores para essa gerência.' });
+            }
+        });
+    }
+    ajustarOrdem() {
+        console.log(this.listaIndicadores);
+        for (var i = 0; i < this.listaIndicadores.length; i++) {
+            //CODIGO DE UPDATE COMEÇA AQUI
+            var objetoDaVez = this.listaIndicadores[i];
+            objetoDaVez['ordem'] = i + 1;
+            this.adminindic.cadastroIndicadoresAtt(objetoDaVez).subscribe(indicador => {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + objetoDaVez.indicador + ' atualizado' });
+            }, erro => {
+                this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'Erro' });
+            });
+        }
+    }
+    fechalista() {
+        this.listaIndicadores = [];
+        this.gridDeLista = false;
+    }
+    aoFecharODialog() {
+        this.visualizarGrafico = false;
+        this.atualizarDadosdoArray();
+        this.fecharvisualizacao();
+        this.data = [];
+        this.options = [];
+        this.NovoCampo = [];
+        this.editarCadastro = false;
+        this.visualizarGrafico = false;
+        this.consultar();
+    }
+    abrirDialog(indic) {
+        this.indicadorSelecionado = indic;
+        this.editarCadastro = true;
+        for (var i = 0; i < this.tiporotuloLista.length; i++) {
+            if (this.tiporotuloLista[i].value === this.indicadorSelecionado.rotuloVirgula) {
+                this.editarIndicadorTipoRotulo = this.tiporotuloLista[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.classificacoesLista.length; i++) {
+            if (this.classificacoesLista[i].value === this.indicadorSelecionado.classificacao) {
+                this.editarIndicadorClassificacao = this.classificacoesLista[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.tendenciaLista.length; i++) {
+            if (this.tendenciaLista[i].value === this.indicadorSelecionado.tendencia) {
+                this.editarIndicadorTendencia = this.tendenciaLista[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.FiltroListaGerencia.length; i++) {
+            if (this.FiltroListaGerencia[i].gerenciaId === this.indicadorSelecionado.gerencia) {
+                this.editarIndicadorGerencia = this.FiltroListaGerencia[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo1) {
+                this.editarIndicadorCampo1 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo2) {
+                this.editarIndicadorCampo2 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo3) {
+                this.editarIndicadorCampo3 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulos.length; i++) {
+            if (this.listaDeCamposParaRotulos[i].value === this.indicadorSelecionado.campo4) {
+                this.editarIndicadorCampo4 = this.listaDeCamposParaRotulos[i];
+                break;
+            }
+        }
+        for (var i = 0; i < this.listaDeCamposParaRotulosMensal.length; i++) {
+            if (this.listaDeCamposParaRotulosMensal[i].value === this.indicadorSelecionado.campoMensal) {
+                this.editarIndicadorCampoMensal = this.listaDeCamposParaRotulosMensal[i];
+                break;
+            }
+        }
+        this.reloadArrays();
+    }
+    atualizarDadosdoArray() {
+        this.indicadorSelecionado['classificacao'] = this.editarIndicadorClassificacao['value'];
+        this.indicadorSelecionado['tendencia'] = this.editarIndicadorTendencia['value'];
+        this.indicadorSelecionado['rotuloVirgula'] = this.editarIndicadorTipoRotulo['value'];
+        this.indicadorSelecionado['campo1'] = this.editarIndicadorCampo1['value'];
+        this.indicadorSelecionado['campo2'] = this.editarIndicadorCampo2['value'];
+        this.indicadorSelecionado['campo3'] = this.editarIndicadorCampo3['value'];
+        this.indicadorSelecionado['campo4'] = this.editarIndicadorCampo4['value'];
+        this.indicadorSelecionado['campoMensal'] = this.editarIndicadorCampoMensal['value'];
+        this.indicadorSelecionado['gerencia'] = this.editarIndicadorGerencia['gerenciaId'];
+        console.log(this.indicadorSelecionado);
+        console.log(this.editargraficoseixos);
+        for (var i = 0; i < this.editarposicoes.length; i++) {
+            this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value'];
+            this.indicadorSelecionado.campoDoGraficoId[i]['eixo'] = this.editargraficoseixos[i]['value'];
+            this.indicadorSelecionado.campoDoGraficoId[i]['posicao'] = this.editarposicoes[i]['value'];
+            this.indicadorSelecionado.campoDoGraficoId[i]['estilo'] = this.editarestilos[i] === true ? "Pontilhado" : null;
+        }
+    }
+    reloadArrays() {
+        this.editargraficoseixos = [];
+        this.editartiposgraficos = [];
+        this.editarposicoes = [];
+        this.editarestilos = [];
+        this.editarcores = [];
+        this.adminindic.UnicoIndicadores(this.indicadorSelecionado.indicadorId).subscribe(indicador => {
+            this.indicadorSelecionado.campoDoGraficoId = indicador['campoDoGraficoId'];
+            for (var i = 0; i < this.indicadorSelecionado.campoDoGraficoId.length; i++) {
+                for (var j = 0; j < this.listaEdicaodeGraficoEixos.length; j++) {
+                    console.log(this.indicadorSelecionado.campoDoGraficoId[i].eixo);
+                    if (this.listaEdicaodeGraficoEixos[j].value === this.indicadorSelecionado.campoDoGraficoId[i].eixo) {
+                        this.editargraficoseixos.push(this.listaEdicaodeGraficoEixos[j]);
+                        break;
+                    }
+                }
+                for (var j = 0; j < this.listaEdicaodeGraficoTipos.length; j++) {
+                    if (this.listaEdicaodeGraficoTipos[j].value === this.indicadorSelecionado.campoDoGraficoId[i].tipografico) {
+                        this.editartiposgraficos.push(this.listaEdicaodeGraficoTipos[j]);
+                        break;
+                    }
+                }
+                for (var j = 0; j < this.listaEdicaodeGraficoPosicoes.length; j++) {
+                    if (this.listaEdicaodeGraficoPosicoes[j].value === this.indicadorSelecionado.campoDoGraficoId[i].posicao) {
+                        this.editarposicoes.push(this.listaEdicaodeGraficoPosicoes[j]);
+                        break;
+                    }
+                }
+                for (var j = 0; j < this.listaEdicaodeGraficoCores.length; j++) {
+                    if (this.listaEdicaodeGraficoCores[j].label === this.indicadorSelecionado.campoDoGraficoId[i].coreixo) {
+                        this.editarcores.push(this.listaEdicaodeGraficoCores[j].value);
+                        break;
+                    }
+                }
+                if (this.indicadorSelecionado.campoDoGraficoId[i].estilo === "Pontilhado") {
+                    this.editarestilos.push(true);
+                }
+                else {
+                    this.editarestilos.push(false);
+                }
+            }
+        });
+    }
+    atualizarvisualizacao() {
+        this.visualizarGrafico = false;
+        this.atualizarDadosdoArray();
+        this.data = [];
+        this.options = [];
+        this.IniciaGrafico();
+        this.visualizarGrafico = true;
+    }
+    atualizarCores(i, valor) {
+        this.data = [];
+        this.options = [];
+        this.editarcores[i] = valor;
+        this.indicadorSelecionado.campoDoGraficoId[i]['coreixo'] = "#" + valor;
+        this.IniciaGrafico();
+    }
+    carregarGrafico() {
+        this.data = [];
+        this.options = [];
+        this.atualizarDadosdoArray();
+        this.filtroGraficoData.setDate(1);
+        this.filtroGraficoDataConvertida = this.FormatarData(this.filtroGraficoData);
+        this.IniciaGrafico();
+        this.reloadArrays();
+        this.visualizarGrafico = true;
+    }
+    fecharvisualizacao() {
+        this.visualizarGrafico = false;
+    }
+    FormatarData(datareceb) {
+        var dataFinal;
+        if (datareceb.length < 20) {
+            dataFinal = datareceb;
+        }
+        else {
+            var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano2 = data.getFullYear();
+            dataFinal = ano2 + "-" + mes2 + "-" + dia2;
+        }
+        return dataFinal;
+    }
+    SalvarTudo(indicadorSelec) {
+        console.log(indicadorSelec);
+        this.atualizarDadosdoArray();
+        for (var i = 0; i < indicadorSelec.campoDoGraficoId.length; i++) {
+            var id = indicadorSelec.campoDoGraficoId[i].campoDoGraficoId;
+            this.NovoCampo = indicadorSelec.campoDoGraficoId[i];
+            this.NovoCampo.ordem = i;
+            this.NovoCampo.indicadorId = {
+                indicadorId: indicadorSelec.indicadorId
+            };
+            console.log(this.NovoCampo);
+            this.SalvarCampoDoGrafico(id, this.NovoCampo);
+            this.NovoCampo = [];
+        }
+        indicadorSelec.ativo = indicadorSelec.ativo === false ? 0 : 1;
+        this.adminindic.cadastroIndicadoresAtt(indicadorSelec).subscribe(indicador => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + indicadorSelec.indicador + ' atualizado' });
+        });
+        this.aoFecharODialog();
+    }
+    AlteraOrdemDosCampos() {
+        this.alteraOrdemCampos = true;
+        this.gridDeLista = true;
+    }
+    ajustarOrdemDosCampos() {
+        for (var i = 0; i < this.indicadorSelecionado.campoDoGraficoId.length; i++) {
+            var id = this.indicadorSelecionado.campoDoGraficoId[i].campoDoGraficoId;
+            this.NovoCampo = this.indicadorSelecionado.campoDoGraficoId[i];
+            this.NovoCampo.ordem = i;
+            this.NovoCampo.indicadorId = {
+                indicadorId: this.indicadorSelecionado.indicadorId
+            };
+            this.SalvarCampoDoGrafico(id, this.NovoCampo);
+            this.NovoCampo = [];
+        }
+    }
+    fecharLista() {
+        this.editargraficoseixos = [];
+        this.editartiposgraficos = [];
+        this.editarposicoes = [];
+        this.editarestilos = [];
+        this.editarcores = [];
+        this.listaIndicadores = [];
+        this.gridDeLista = false;
+        this.FiltroGerenciaSelecionada = null;
+    }
+    selectcor(cor) {
+        this.NovoCampoCor = cor;
+    }
+    inserirnovoCampo() {
+        this.NovoCampoTipo = { label: "bar", value: "bar" };
+        this.inserirUmCampo = true;
+    }
+    inserirnovoCampoOk() {
+        this.NovoCampo = {
+            estilo: this.NovoCampoEstilo === true ? "Pontilhado" : null,
+            label: this.NovoCampoLabel,
+            tipografico: this.NovoCampoTipo['value'],
+            coreixo: "#" + this.NovoCampoCor == undefined ? "#273eac" : "#" + this.NovoCampoCor,
+            eixo: this.NovoCampoEixo['value'],
+            posicao: this.NovoCampoPosicao['value'],
+            ordem: 100,
+            campoDoGraficoId: null,
+            indicadorId: {
+                indicadorId: this.indicadorSelecionado.indicadorId
+            }
+        };
+        this.SalvarCampoDoGrafico(0, this.NovoCampo);
+        this.inserirUmCampo = false;
+        this.NovoCampo = [];
+        this.NovoCampoLabel = null;
+        this.NovoCampoEixo = null;
+        this.NovoCampoTipo = null;
+        this.NovoCampoEstilo = null;
+        this.NovoCampoPosicao = null;
+        this.NovoCampoCor = null;
+        this.reloadArrays();
+        this.atualizarvisualizacao();
+    }
+    SalvarCampoDoGrafico(id, campo) {
+        this.adminindic.atualizarCampos(campo, id).subscribe(indicador => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Rotulo ' + campo.label + ' atualizado' });
+        });
+    }
+    deletarCampo(id) {
+        this.adminindic.deletarCampos(id).subscribe(indicador => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Campo ' + id + ' deletado' });
+            this.fecharvisualizacao();
+            this.reloadArrays();
+        });
+    }
+    atualizarCampo(i) {
+        this.atualizarDadosdoArray();
+        this.NovoCampo = this.indicadorSelecionado.campoDoGraficoId[i];
+        this.NovoCampo.indicadorId = {
+            indicadorId: this.indicadorSelecionado.indicadorId
+        };
+        console.log(this.NovoCampo);
+        this.adminindic.atualizarCampos(this.NovoCampo, this.indicadorSelecionado.campoDoGraficoId[i].campoDoGraficoId).subscribe(indicador => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Campo ' + this.indicadorSelecionado.campoDoGraficoId[i].campoDoGraficoId + ' Atualizado' });
+            this.reloadArrays();
+        });
+        this.NovoCampo = [];
+    }
+    //=============================================================================================
+    //GRAFICOS
+    IniciaGrafico() {
+        console.log(this.filtroGraficoDataConvertida);
+        this.performanceService.indicadores(this.filtroGraficoDataConvertida, this.indicadorSelecionado.indicadorId).subscribe(dados => {
+            var maximo = 0;
+            console.log(dados);
+            for (var i = 34; i >= 0; i--) {
+                if (dados[0][i] !== '01/01') {
+                    maximo = i;
+                    break;
+                }
+            }
+            var eixo = dados[0].splice(1, maximo);
+            var atributos = this.criarArrayDeAtributos(dados, maximo);
+            this.MontarGrafico(eixo, atributos);
+        });
+    }
+    criarArrayDeAtributos(dados, maximo) {
+        var LinhaJson = "{";
+        for (var j = 4; j < dados.length; j++) {
+            var titulo = dados[j].splice(0, 1);
+            var corpo = '[';
+            for (var i = 0; i < maximo; i++) {
+                var dado = dados[j][i] === '1980-01-01' ? null : dados[j][i] === '-' ? null : dados[j][i];
+                var increment = i === (maximo - 1) ? ']' : ',';
+                corpo = corpo + dado + increment;
+            }
+            var increment2 = j === (dados.length - 1) ? '}' : ',';
+            LinhaJson = LinhaJson + '"' + titulo + '":' + corpo + increment2;
+        }
+        return JSON.parse(LinhaJson);
+    }
+    MontarGrafico(eixo, atributos) {
+        var dataset = [];
+        var Axes = [];
+        var left = false;
+        var right = false;
+        for (var i = 0; i < this.indicadorSelecionado.campoDoGraficoId.length; i++) {
+            dataset.push(this.indicadorSelecionado.campoDoGraficoId[i].estilo === 'Pontilhado' ?
+                {
+                    type: this.indicadorSelecionado.campoDoGraficoId[i].tipografico,
+                    yAxisID: this.indicadorSelecionado.campoDoGraficoId[i].posicao === 'right' ? 'y-axis-2' : 'y-axis-1',
+                    fill: false,
+                    pointStyle: 'circle',
+                    borderDash: [2, 2],
+                    pointRadius: 0,
+                    borderColor: this.indicadorSelecionado.campoDoGraficoId[i].coreixo,
+                    backgroundColor: this.indicadorSelecionado.campoDoGraficoId[i].coreixo,
+                    label: this.indicadorSelecionado.campoDoGraficoId[i].label,
+                    data: atributos[this.indicadorSelecionado.campoDoGraficoId[i].eixo]
+                } :
+                {
+                    type: this.indicadorSelecionado.campoDoGraficoId[i].tipografico,
+                    yAxisID: this.indicadorSelecionado.campoDoGraficoId[i].posicao === 'right' ? 'y-axis-2' : 'y-axis-1',
+                    fill: false,
+                    borderColor: this.indicadorSelecionado.campoDoGraficoId[i].coreixo,
+                    backgroundColor: this.indicadorSelecionado.campoDoGraficoId[i].coreixo,
+                    label: this.indicadorSelecionado.campoDoGraficoId[i].label,
+                    data: atributos[this.indicadorSelecionado.campoDoGraficoId[i].eixo]
+                });
+            left = this.indicadorSelecionado.campoDoGraficoId[i].posicao === 'left' ? true : left = true ? true : undefined;
+            right = this.indicadorSelecionado.campoDoGraficoId[i].posicao === 'right' ? true : right = true ? true : undefined;
+        }
+        if (left === true) {
+            Axes.push({
+                type: 'linear',
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+                gridLines: {
+                    display: true,
+                    drawborder: true,
+                    drawOnChartArea: false
+                },
+                ticks: {
+                    beginAtZero: true
+                },
+            });
+        }
+        if (right === true) {
+            Axes.push({
+                type: 'linear',
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                ticks: {
+                    beginAtZero: true
+                }
+            });
+        }
+        this.data = {
+            labels: eixo,
+            datasets: dataset
+        };
+        this.options = {
+            responsive: true,
+            stacked: false,
+            title: {
+                display: true,
+                fontSize: 16
+            },
+            gridLines: {
+                display: true,
+                drawborder: true,
+                drawOnChartArea: false
+            },
+            scales: {
+                yAxes: Axes
+            },
+            legend: {
+                position: 'bottom'
+            }
+        };
+    }
+};
+EditarcadastroindicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-editarcadastroindicadores',
+        template: __webpack_require__(/*! raw-loader!./editarcadastroindicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.html"),
+        styles: [__webpack_require__(/*! ./editarcadastroindicadores.component.css */ "./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"], _performance_service__WEBPACK_IMPORTED_MODULE_4__["PerformanceService"]])
+], EditarcadastroindicadoresComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.css":
+/*!*************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.css ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2VkaXRhcmluZGljYWRvcmVzL2VkaXRhcmluZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.ts":
+/*!************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.ts ***!
+  \************************************************************************************************/
+/*! exports provided: EditarindicadoresComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarindicadoresComponent", function() { return EditarindicadoresComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let EditarindicadoresComponent = class EditarindicadoresComponent {
+    constructor() { }
+    ngOnInit() {
+        this.items = [
+            { label: 'Editar Cadastro' },
+            { label: 'Editar Orçados' }
+        ];
+        this.trocadeitemIndex(0);
+    }
+    trocadeitem(activeItem) {
+        this.activeItem = activeItem['activeItem'];
+        this.activeItemIndex = this.items.indexOf(this.activeItem);
+    }
+    trocadeitemIndex(index) {
+        this.activeItem = this.items[index];
+        this.activeItemIndex = index;
+    }
+};
+EditarindicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-editarindicadores',
+        template: __webpack_require__(/*! raw-loader!./editarindicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.html"),
+        styles: [__webpack_require__(/*! ./editarindicadores.component.css */ "./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], EditarindicadoresComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.ts":
+/*!**************************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.ts ***!
+  \**************************************************************************************************************/
 /*! exports provided: EditindicadoresComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8684,21 +9430,451 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditindicadoresComponent", function() { return EditindicadoresComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 let EditindicadoresComponent = class EditindicadoresComponent {
-    constructor() { }
+    constructor(adminindic, messageService) {
+        this.adminindic = adminindic;
+        this.messageService = messageService;
+        this.editing = false;
+        this.ListaOk = false;
+        this.ListaParaEnviar = false;
+        this.CarregarVisible = false;
+        this.porcentagemconcluido = 0;
+        this.listaAlterada = [];
+    }
     ngOnInit() {
+        this.adminindic.listaIndicadores().subscribe(indicador => {
+            this.filtroListaIndicador = indicador;
+        });
+    }
+    onDialogHide() {
+        this.ListaOk = false;
+        this.listaCompleta = [];
+        this.listaAlterada = [];
+        this.editing = false;
+    }
+    atualizar() {
+        this.adminindic.indicadoresByMonth(this.FormatarData(this.filtroData), this.filtroIndicador.indicadorId)
+            .subscribe(indicador => {
+            this.listaCompleta = indicador;
+            this.ListaOk = true;
+            this.atualizar2();
+        });
+    }
+    atualizar2() {
+        this.listaCompletaImutavel = [];
+        this.adminindic.indicadoresByMonth(this.FormatarData(this.filtroData), this.filtroIndicador.indicadorId)
+            .subscribe(indicador => {
+            this.listaCompletaImutavel = indicador;
+        });
+    }
+    FormatarData(datareceb) {
+        var dataFinal;
+        if (datareceb.length < 20) {
+            dataFinal = datareceb;
+        }
+        else {
+            var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano2 = data.getFullYear();
+            dataFinal = ano2 + "-" + mes2 + "-" + dia2;
+        }
+        return dataFinal;
+    }
+    SolicitarAlteracao() {
+        this.listaAlterada = [];
+        for (var i = 0; i < this.listaCompletaImutavel.length; i++) {
+            console.log(this.listaCompleta[i]);
+            console.log(this.listaCompletaImutavel[i]);
+            if (this.listaCompletaImutavel[i].datareferencia !== this.FormatarData(this.listaCompleta[i].datareferencia) ||
+                this.listaCompletaImutavel[i].orcado !== this.listaCompleta[i].orcado ||
+                this.listaCompletaImutavel[i].realizado !== this.listaCompleta[i].realizado ||
+                this.listaCompletaImutavel[i].forecast !== this.listaCompleta[i].forecast ||
+                this.listaCompletaImutavel[i].forecast2 !== this.listaCompleta[i].forecast2 ||
+                this.listaCompletaImutavel[i].forecast3 !== this.listaCompleta[i].forecast3 ||
+                this.listaCompletaImutavel[i].minimo !== this.listaCompleta[i].minimo ||
+                this.listaCompletaImutavel[i].maximo !== this.listaCompleta[i].maximo ||
+                this.listaCompletaImutavel[i].meta !== this.listaCompleta[i].meta ||
+                this.listaCompletaImutavel[i].valorretido !== this.listaCompleta[i].valorretido ||
+                this.listaCompletaImutavel[i].dentroprazoreg !== this.listaCompleta[i].dentroprazoreg ||
+                this.listaCompletaImutavel[i].previsao !== this.listaCompleta[i].previsao ||
+                this.listaCompletaImutavel[i].dentroprazo !== this.listaCompleta[i].dentroprazo) {
+                this.listaCompleta[i].datareferencia = this.FormatarData(this.listaCompleta[i].datareferencia);
+                this.listaAlterada.push(this.listaCompleta[i]);
+            }
+        }
+        this.ListaOk = false;
+        // this.listaAlterada=this.listaCompleta
+        if (this.listaAlterada.length > 0) {
+            this.ListaParaEnviar = true;
+        }
+        this.listaCompleta = [];
+        this.atualizar2();
+    }
+    AprovarAlteracoes() {
+        this.CarregarVisible = true;
+        for (var i = 0; i < this.listaAlterada.length; i++) {
+            this.porcentagemconcluido = Math.floor(((i + 1) / this.listaAlterada.length) * 100);
+            //CODIGO DE INSERT COMEÇA AQUI
+            //============================================================================================
+            var objetoDaVez = this.listaAlterada[i];
+            this.adminindic.indicadoresAtt(objetoDaVez).subscribe(indicador => {
+                this.messageService.add({ severity: 'info', summary: 'Success', detail: 'Linha de Indicadores ' + objetoDaVez.exeindicadorId + ' alterado' });
+            });
+            //============================================================================================
+            if (this.porcentagemconcluido >= 100) {
+                this.porcentagemconcluido = 100;
+                this.messageService.add({ severity: 'info', summary: 'Success', detail: 'Process Completed' });
+            }
+        }
+        this.listaAlterada = [];
+        this.ListaParaEnviar = false;
+        this.CarregarVisible = false;
+    }
+    CancelarAlteracoes() {
+        this.onDialogHide();
     }
 };
 EditindicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-editindicadores',
-        template: __webpack_require__(/*! raw-loader!./editindicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.html"),
-        styles: [__webpack_require__(/*! ./editindicadores.component.css */ "./src/app/performance/admin-indicadores/editindicadores/editindicadores.component.css")]
+        template: __webpack_require__(/*! raw-loader!./editindicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.html"),
+        styles: ["\n        .old-car {\n            background-color: #1CA979 !important;\n            color: #ffffff !important;\n        }\n\n        .very-old-car {\n            background-color: #2CA8B1 !important;\n            color: #ffffff !important;\n        }\n    "]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
 ], EditindicadoresComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.css":
+/*!**************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.css ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2ltcG9ydGFyL2ltcG9ydGFyLWJvdHMvaW1wb3J0YXItYm90cy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.ts":
+/*!*************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.ts ***!
+  \*************************************************************************************************/
+/*! exports provided: ImportarBotsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImportarBotsComponent", function() { return ImportarBotsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var src_app_app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/app.component */ "./src/app/app.component.ts");
+
+
+
+
+
+let ImportarBotsComponent = class ImportarBotsComponent {
+    constructor(adminindic, messageService, comp) {
+        this.adminindic = adminindic;
+        this.messageService = messageService;
+        this.comp = comp;
+        this.bots = [];
+        this.botsLista = [];
+        this.displayDialog = false;
+        this.diadecortereferencia = 30;
+        this.diadecorteciclo = 0;
+        this.habilitaCorteMes = true;
+        this.habilitaCorteCiclo = true;
+    }
+    ngOnInit() {
+        this.adminindic.listaIndicadores().subscribe(indicador => {
+            this.filtroListaIndicador = indicador;
+        });
+        this.adminindic.unidades().subscribe(indicador => {
+            this.filtroUnidade = indicador;
+        });
+        this.bots = [
+            { label: "Inserir Orçados", value: 1, funcao: "Carregar orçados.", status: this.comp.statusbot }
+        ];
+        this.botsLista = this.bots;
+        console.log(this.botsLista);
+    }
+    SelecionarBot(bot) {
+        this.botselecionado = bot;
+        this.displayDialog = true;
+    }
+    StartBot() {
+        this.messageService.add({ severity: 'info', summary: 'Iniciando Tarefa', detail: 'Tarefa Iniciada .. Informaremos quando terminar' });
+        this.adminindic.CarregarIndicadors(this.indicadorselecionado.indicadorId, this.anodoimport, this.diadecortereferencia, this.unidadeselecionada.unidadeId, this.diadecorteciclo).subscribe();
+        this.comp.statusbot = "Executando";
+        this.botselecionado.status = "Executando";
+        this.botselecionado.status = this.comp.resolveAfter5Seconds();
+    }
+    onDialogHide() {
+        this.displayDialog = false;
+        this.botselecionado = null;
+    }
+    aoAlterardiaDeCorteRef($event) {
+    }
+    aoAlterardiaDeCorteCiclo($event) {
+    }
+    naoseaplicadiaDeCorteMes() {
+        if (this.habilitaCorteMes === true) {
+            this.diadecortereferencia = 30;
+        }
+        else {
+            this.diadecortereferencia = 0;
+            this.diadecorteciclo = 0;
+            this.habilitaCorteCiclo = true;
+        }
+    }
+    naoseaplicadiaDeCorteCiclo() {
+        if (this.habilitaCorteCiclo === true) {
+            this.diadecorteciclo = 0;
+        }
+        else {
+            this.diadecorteciclo = 0;
+            this.diadecortereferencia = 30;
+            this.habilitaCorteMes = true;
+        }
+    }
+};
+ImportarBotsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-importar-bots',
+        template: __webpack_require__(/*! raw-loader!./importar-bots.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.html"),
+        styles: [__webpack_require__(/*! ./importar-bots.component.css */ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_2__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"], src_app_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]])
+], ImportarBotsComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.css":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.css ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2ltcG9ydGFyL2ltcG9ydGFyLW9yY2Fkb3MvaW1wb3J0YXItb3JjYWRvcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.ts":
+/*!*******************************************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.ts ***!
+  \*******************************************************************************************************/
+/*! exports provided: ImportarOrcadosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImportarOrcadosComponent", function() { return ImportarOrcadosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _admin_indicadores_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+
+
+
+// import {RefletOrdre} from "../../shared/refletordre";
+// import {RefletordreService} from "../../services/refletordre.service";
+
+
+let ImportarOrcadosComponent = class ImportarOrcadosComponent {
+    constructor(adminindic, router, messageService) {
+        this.adminindic = adminindic;
+        this.router = router;
+        this.messageService = messageService;
+        // refletordreService: RefletordreService = new RefletordreService();
+        this.uploadedFiles = [];
+        this.fileBuffer = "";
+        this.fileLines = [];
+        this.refletOrdres = new Array();
+        this.debug = "";
+        this.listaCompleta = [];
+        this.filtroListaIndicador = [];
+        //===========================================================================================
+        //TABLE
+        this.Listaindicadores = [];
+        this.tableactive = false;
+    }
+    ngOnInit() {
+        this.adminindic.listaIndicadores().subscribe(indicador => {
+            this.filtroListaIndicador = indicador;
+        });
+    }
+    //===========================================================================================
+    //UPLOADER
+    myUploader(event) {
+        this.tableactive = false;
+        this.fileBuffer = "";
+        this.readFile(event.files[0]);
+    }
+    readFile(file) {
+        var reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = () => {
+            this.Listaindicadores = [];
+            this.fileBuffer += reader.result;
+            this.fileLines = this.fileBuffer.split("\n");
+            this.preencherTabela(this.fileLines);
+        };
+        this.tableactive = true;
+    }
+    preencherTabela(fileLines) {
+        var data;
+        var orcado;
+        var meta;
+        var minimo;
+        var maximo;
+        var forecast;
+        var forecast2;
+        var forecast3;
+        var previsao;
+        var fileCols = fileLines[0].split(';');
+        for (var i = 0; i < fileCols.length; i++) {
+            var c = fileCols[i].toLocaleLowerCase().replace(' ', '').replace('ç', 'c').replace('í', 'i').replace('ã', 'a').replace('á', 'a');
+            data = c.includes('data') ? i : data;
+            orcado = c.includes('orcado') ? i : orcado;
+            meta = c.includes('meta') ? i : meta;
+            minimo = c.includes('minimo') ? i : minimo;
+            maximo = c.includes('maximo') ? i : maximo;
+            forecast = c.includes('forecast') ? i : forecast;
+            forecast2 = c.includes('forecast2') ? i : forecast2;
+            forecast3 = c.includes('forecast3') ? i : forecast3;
+            previsao = c.includes('previsao') ? i : previsao;
+        }
+        orcado = orcado == undefined ? '-' : orcado;
+        meta = meta == undefined ? '-' : meta;
+        minimo = minimo == undefined ? '-' : minimo;
+        maximo = maximo == undefined ? '-' : maximo;
+        forecast = forecast == undefined ? '-' : forecast;
+        forecast2 = forecast2 == undefined ? '-' : forecast2;
+        forecast3 = forecast3 == undefined ? '-' : forecast3;
+        previsao = previsao == undefined ? '-' : previsao;
+        console.log(orcado + ' - ' + meta + ' - ' + minimo + ' - ' + maximo + ' - ' + forecast + ' - ' + forecast2 + ' - ' + forecast3 + ' - ' + previsao);
+        for (var i = 1; i < fileLines.length; i++) {
+            var fileCol = fileLines[i].split(';');
+            var dataconvertida = fileCol[data].substring(6, 10) + '-' + fileCol[data].substring(3, 5) + '-' + fileCol[data].substring(0, 2);
+            this.Listaindicadores.push({
+                dataindicador: dataconvertida,
+                orcado: orcado == '-' ? 0 : fileCol[orcado].replace(".", "").replace(",", ".") * 1,
+                meta: meta == '-' ? 0 : fileCol[meta].replace(".", "").replace(",", ".") * 1,
+                minimo: minimo == '-' ? 0 : fileCol[minimo].replace(".", "").replace(",", ".") * 1,
+                maximo: maximo == '-' ? 0 : fileCol[maximo].replace(".", "").replace(",", ".") * 1,
+                forecast: forecast == '-' ? 0 : fileCol[forecast].replace(".", "").replace(",", ".") * 1,
+                forecast2: forecast2 == '-' ? 0 : fileCol[forecast2].replace(".", "").replace(",", ".") * 1,
+                forecast3: forecast3 == '-' ? 0 : fileCol[forecast3].replace(".", "").replace(",", ".") * 1,
+                previsao: previsao == '-' ? 0 : fileCol[previsao].replace(".", "").replace(",", ".") * 1
+            });
+        }
+    }
+    resetar() {
+        this.tableactive = false;
+        this.Listaindicadores = [];
+    }
+    enviarDados() {
+        if (this.IndicadorSelecionado == null) {
+            this.messageService.add({ severity: 'info', summary: 'Informação', detail: 'Selecione o Indicador.' });
+        }
+        else {
+            for (var i = 0; i < this.Listaindicadores.length; i = i) {
+                this.adminindic.importarIndicador(this.Listaindicadores[i], this.IndicadorSelecionado.indicadorId).subscribe(ind => {
+                }, erro => {
+                    this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'Erro' });
+                });
+                this.Listaindicadores.splice(i, 1);
+            }
+            if (this.Listaindicadores.length === 0) {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + this.IndicadorSelecionado.indicador + ' atualizado' });
+            }
+            else {
+                this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'Erro' });
+            }
+        }
+    }
+};
+ImportarOrcadosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-importar-orcados',
+        template: __webpack_require__(/*! raw-loader!./importar-orcados.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.html"),
+        styles: [__webpack_require__(/*! ./importar-orcados.component.css */ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_4__["AdminIndicadoresService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+], ImportarOrcadosComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/importar/importar.component.css":
+/*!*******************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/importar/importar.component.css ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZvcm1hbmNlL2FkbWluLWluZGljYWRvcmVzL2ltcG9ydGFyL2ltcG9ydGFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/performance/admin-indicadores/importar/importar.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/performance/admin-indicadores/importar/importar.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: ImportarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImportarComponent", function() { return ImportarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let ImportarComponent = class ImportarComponent {
+    onstructor() { }
+    ngOnInit() {
+        this.items = [
+            { label: 'Importar Orçados' },
+            { label: 'Importar Dados para o Ano' }
+        ];
+        this.trocadeitemIndex(1);
+    }
+    trocadeitem(activeItem) {
+        this.activeItem = activeItem['activeItem'];
+        this.activeItemIndex = this.items.indexOf(this.activeItem);
+    }
+    trocadeitemIndex(index) {
+        this.activeItem = this.items[index];
+        this.activeItemIndex = index;
+    }
+};
+ImportarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-importar',
+        template: __webpack_require__(/*! raw-loader!./importar.component.html */ "./node_modules/raw-loader/index.js!./src/app/performance/admin-indicadores/importar/importar.component.html"),
+        styles: [__webpack_require__(/*! ./importar.component.css */ "./src/app/performance/admin-indicadores/importar/importar.component.css")]
+    })
+], ImportarComponent);
 
 
 
@@ -8763,6 +9939,9 @@ let InputindicadoresComponent = class InputindicadoresComponent {
             //console.log(this.idgerenciasretornado)
         });
     }
+    onChangeTime(event) {
+        this.refer = this.referencia.toISOString().substr(0, 10);
+    }
     ngOnInit() {
         this.date = this.ontem;
         this.cols = [
@@ -8786,11 +9965,14 @@ let InputindicadoresComponent = class InputindicadoresComponent {
             { label: 'Realizado', valor: this.realizado },
             { label: 'Pecld', valor: this.pecld },
             { label: 'Forecast', valor: this.forecast },
+            { label: 'Forecast2', valor: this.forecast2 },
+            { label: 'Forecast3', valor: this.forecast3 },
             { label: 'Mínimo', valor: this.minimo },
             { label: 'Máximo', valor: this.maximo },
             { label: 'Meta', valor: this.meta },
             { label: 'Previsão', valor: this.previsao },
             { label: 'DP', valor: this.dentroprazo },
+            { label: 'VlRet', valor: this.vlrretido },
             { label: 'FP', valor: this.foraprazo },
             { label: 'DP Reguladas', valor: this.dentroprazoreg },
             { label: 'FP Reguladas', valor: this.foraprazoreg },
@@ -8903,10 +10085,13 @@ let InputindicadoresComponent = class InputindicadoresComponent {
         this.realizado = 0;
         this.pecld = 0;
         this.forecast = 0;
+        this.forecast2 = 0;
+        this.forecast3 = 0;
         this.minimo = 0;
         this.maximo = 0;
         this.meta = 0;
         this.dentroprazo = 0;
+        this.vlrretido = 0;
         this.foraprazo = 0;
         this.dentroprazoreg = 0;
         this.foraprazoreg = 0;
@@ -8937,10 +10122,13 @@ let InputindicadoresComponent = class InputindicadoresComponent {
             //this.realizadokg = indicadores['realizadokg'].toLocaleString(),
             this.pecld = indicadores['pecld'] === null ? indicadores['pecld'] : indicadores['pecld'].toLocaleString(),
                 this.forecast = indicadores['forecast'] === null ? indicadores['forecast'] : indicadores['forecast'].toLocaleString(),
+                this.forecast2 = indicadores['forecast2'] === null ? indicadores['forecast2'] : indicadores['forecast2'].toLocaleString(),
+                this.forecast3 = indicadores['forecast3'] === null ? indicadores['forecast3'] : indicadores['forecast3'].toLocaleString(),
                 this.minimo = indicadores['minimo'] === null ? indicadores['minimo'] : indicadores['minimo'].toLocaleString(),
                 this.maximo = indicadores['maximo'] === null ? indicadores['maximo'] : indicadores['maximo'].toLocaleString(),
                 this.meta = indicadores['meta'] === null ? indicadores['meta'] : indicadores['meta'].toLocaleString(),
                 this.dentroprazo = indicadores['dentroprazo'] === null ? indicadores['dentroprazo'] : indicadores['dentroprazo'].toLocaleString(),
+                this.vlrretido = indicadores['valorretido'] === null ? indicadores['valorretido'] : indicadores['valorretido'].toLocaleString(),
                 this.foraprazo = indicadores['foraprazo'] === null ? indicadores['foraprazo'] : indicadores['foraprazo'].toLocaleString(),
                 this.dentroprazoreg = indicadores['dentroprazoreg'] === null ? indicadores['dentroprazoreg'] : indicadores['dentroprazoreg'].toLocaleString(),
                 this.foraprazoreg = indicadores['foraprazoreg'] === null ? indicadores['foraprazoreg'] : indicadores['foraprazoreg'].toLocaleString(),
@@ -8999,15 +10187,18 @@ let InputindicadoresComponent = class InputindicadoresComponent {
         //this.realizadokg = this.recebeDados(this.realizadokg)
         this.pecld = this.pecld.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.forecast = this.forecast.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
+        this.forecast2 = this.forecast2.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
+        this.forecast3 = this.forecast3.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.minimo = this.minimo.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.maximo = this.maximo.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.meta = this.meta.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.dentroprazo = this.dentroprazo.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
+        this.vlrretido = this.vlrretido.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.foraprazo = this.foraprazo.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.previsao = this.previsao.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.dentroprazoreg = this.dentroprazoreg.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
         this.foraprazoreg = this.foraprazoreg.replace(/([\u0300-\u036f]|[^0-9,])/g, '').replace(/\D/g, '.');
-        this.performanceService.indicadoresAtt(this.exeindicadorId, this.datareferencia, this.dataindicador, this.ciclo, this.orcado, this.realizado, this.pecld, this.atendente, this.atendimento, this.comentario, this.forecast, this.minimo, this.maximo, this.meta, this.previsao, this.dentroprazo, this.foraprazo, this.dentroprazoreg, this.foraprazoreg, this.acao, this.analise, sessionStorage.getItem('nome'), this.indicadorId, this.undcodigo)
+        this.performanceService.indicadoresAtt(this.exeindicadorId, this.datareferencia, this.dataindicador, this.ciclo, this.orcado, this.realizado, this.pecld, this.atendente, this.atendimento, this.comentario, this.forecast, this.minimo, this.maximo, this.meta, this.previsao, this.dentroprazo, this.foraprazo, this.dentroprazoreg, this.foraprazoreg, this.acao, this.analise, sessionStorage.getItem('nome'), this.indicadorId, this.undcodigo, this.vlrretido, this.forecast2, this.forecast3)
             .subscribe(response => {
             if (response === null) {
                 //console.log("OK!!!!!!"),
@@ -9083,7 +10274,7 @@ let PerformanceService = class PerformanceService {
         return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/${indicador}/${referencia}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     }
-    indicadoresAtt(exeindicadorId, datareferencia, dataindicador, ciclo, orcado, realizado, pdd, atendente, atendimento, coment, forecast, minimo, maximo, meta, previsao, dentroprazo, foraprazo, dentroprazoreg, foraprazoreg, acao, analise, colaborador, indicadorId, unidadeId) {
+    indicadoresAtt(exeindicadorId, datareferencia, dataindicador, ciclo, orcado, realizado, pdd, atendente, atendimento, coment, forecast, minimo, maximo, meta, previsao, dentroprazo, foraprazo, dentroprazoreg, foraprazoreg, acao, analise, colaborador, indicadorId, unidadeId, vlrretido, forecast2, forecast3) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
             .set("Content-Type", "application/json");
         let bodyObj = {
@@ -9097,10 +10288,13 @@ let PerformanceService = class PerformanceService {
             "relizadokg": 0.0,
             "pecld": pdd,
             "forecast": forecast,
+            "forecast2": forecast2,
+            "forecast3": forecast3,
             "minimo": minimo,
             "maximo": maximo,
             "meta": meta,
             "previsao": previsao,
+            "valorretido": vlrretido,
             "dentroprazo": dentroprazo,
             "foraprazo": foraprazo,
             "dentroprazoreg": dentroprazoreg,
@@ -9192,7 +10386,7 @@ let CapaComponent = class CapaComponent {
     MontarArrayDeIndicadores(indicador) {
         this.performanceService.classindicadores(indicador)
             .subscribe(Indicadores => {
-            this.ind = Indicadores;
+            this.ind = Indicadores.filter(el => el.ativo == 1);
         });
     }
 };
@@ -9247,7 +10441,6 @@ __webpack_require__.r(__webpack_exports__);
 let ResumoIndicadoresComponent = class ResumoIndicadoresComponent {
     constructor(indicadoresService) {
         this.indicadoresService = indicadoresService;
-        this.Cora = "black";
     }
     ngOnInit() {
         this.Validador(this.element, this.refer);
@@ -9255,144 +10448,147 @@ let ResumoIndicadoresComponent = class ResumoIndicadoresComponent {
     Validador(indic, referencia) {
         this.indicadoresService.indicadoresResumo(referencia, indic.indicadorId)
             .subscribe(indicador => {
-            let var1;
-            this.temp1 = indicador[0];
-            this.tipoGraph = indic.tipoGrafico;
-            this.Tendencia = indic.tendencia;
-            this.RotulosAcumulados(this.tipoGraph, this.temp1);
-            // console.log("========================")
-            // console.log(this.Tendencia)
-            // console.log(this.Cora)
+            var IndicadorCadastro = indic;
+            var Resumo = [];
+            Resumo = indicador[3];
+            // Resumo = Resumo.splice(1, Number.MAX_VALUE)
+            //ROTULOS DE COMENTARIOS
+            //========================================================================================
+            var eixo = [];
+            eixo = indicador[0];
+            eixo = eixo.splice(1, Number.MAX_VALUE);
+            eixo = eixo.filter(item => item !== null);
+            var comentarios = [];
+            comentarios = indicador[1];
+            comentarios = comentarios.splice(1, Number.MAX_VALUE);
+            var responsaveis = [];
+            responsaveis = indicador[2];
+            responsaveis = responsaveis.splice(1, Number.MAX_VALUE);
+            this.CondicionalDeGraficos(IndicadorCadastro, Resumo);
         });
     }
-    RotulosAcumulados(tipoGraph, linhaDeResumo) {
-        this.CondicionalDeGraficos(tipoGraph, linhaDeResumo);
-        // console.log(this.RotuloDiferencaPerc)
-        switch (this.Tendencia) {
+    //MESMA CLASSE DO QUE O graficos.component.ts
+    CondicionalDeGraficos(IndicadorCadastro, resumo) {
+        //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
+        //========================================================================================
+        let orcadoMensal = parseFloat(resumo.splice(1, 1));
+        let orcadoAcumulad = parseFloat(resumo.splice(1, 1));
+        let realizadoAcumulad = parseFloat(resumo.splice(1, 1));
+        let PrevisaoMensal = parseFloat(resumo.splice(1, 1));
+        let OrcadoMedia = parseFloat(resumo.splice(1, 1));
+        let RealMedia = parseFloat(resumo.splice(1, 1));
+        let Minimo = parseFloat(resumo.splice(1, 1));
+        let Maximo = parseFloat(resumo.splice(1, 1));
+        let Meta = parseFloat(resumo.splice(1, 1));
+        let MetaAcum = parseFloat(resumo.splice(1, 1));
+        let ReguladoDp = parseFloat(resumo.splice(1, 1));
+        let NaoReguladoDp = parseFloat(resumo.splice(1, 1));
+        let UltReal = parseFloat(resumo.splice(1, 1));
+        let UltOrcado = parseFloat(resumo.splice(1, 1));
+        //MONTAR OBJETO COM OS DADOS DO RESUMO
+        //========================================================================================
+        var ResumoDosEixos = {
+            orcadomensal: orcadoMensal,
+            orcadoacumulado: orcadoAcumulad,
+            orcadomedia: OrcadoMedia,
+            realizadoacumulado: realizadoAcumulad,
+            realizadomedia: RealMedia,
+            metaacumulada: MetaAcum,
+            meta: Meta,
+            minimo: Minimo,
+            maximo: Maximo,
+            reguladodp: ReguladoDp,
+            naoreguladodp: NaoReguladoDp,
+            ultimorealizado: UltReal,
+            ultimoorcado: UltOrcado
+        };
+        this.RotuloOrcadoMensal = ResumoDosEixos[IndicadorCadastro.campoMensal];
+        this.RotuloPrevisaoMensal = PrevisaoMensal;
+        //CONSTRUIR OS CAMPOS DE ROTULOS COM O CADASTRO DE INDICADORES
+        //========================================================================================
+        this.campo1 = IndicadorCadastro.rotulocampo1;
+        this.campo2 = IndicadorCadastro.rotulocampo2;
+        this.campo3 = IndicadorCadastro.rotulocampo3;
+        this.campo4 = IndicadorCadastro.rotulocampo4;
+        //CONSTRUIR OS CAMPOS DE CALCULO COM O CADASTRO DE INDICADORES
+        //========================================================================================
+        this.campoCalc1 = ResumoDosEixos[IndicadorCadastro.campo1];
+        this.campoCalc2 = ResumoDosEixos[IndicadorCadastro.campo2];
+        var cam3 = IndicadorCadastro.campo3 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam3 = IndicadorCadastro.campo3 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam3;
+        this.campoCalc3 = cam3;
+        var cam4 = IndicadorCadastro.campo4 === 'variacao'
+            ? this.campoCalc1 === 0
+                ? 0
+                : ((-(1 - (this.campoCalc1 / this.campoCalc2))) * 100).toFixed(2)
+            : ResumoDosEixos[IndicadorCadastro.campo4];
+        cam4 = IndicadorCadastro.campo4 === 'diferenca'
+            ? (this.campoCalc2 - this.campoCalc1).toFixed(2)
+            : cam4;
+        this.campoCalc4 = cam4;
+        //SELECIONAR TENDENDCIAS DE EIXO
+        //========================================================================================
+        switch (IndicadorCadastro.tendencia) {
             case "MELHORPOSITIVO": {
-                if (this.RotuloDiferencaPerc < 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cora = "red";
+                if (this.campoCalc2 < this.campoCalc1) {
+                    this.Cor1 = "Red";
                 }
                 break;
             }
             case "MELHORNEGATIVO": {
-                if (this.RotuloDiferencaPerc > 0 && this.RotuloDiferencaPerc != "") {
-                    this.Cora = "red";
+                if (this.campoCalc2 > this.campoCalc1) {
+                    this.Cor1 = "Red";
                 }
                 break;
             }
             case "MELHORENTREFAIXAS": {
-                if (this.RotuloDiferencaAcum < 0 || this.RotuloDiferencaAcum > 0) {
-                    this.Cora = "red";
+                if (ResumoDosEixos['realizadomedia'] > ResumoDosEixos['maximo']
+                    || ResumoDosEixos['realizadomedia'] < ResumoDosEixos['minimo']) {
+                    this.Cor1 = "Red";
                 }
                 break;
             }
         }
-        if (tipoGraph == 5) {
-            this.RotuloDiferencaPerc = this.RotuloDiferencaPerc + "%";
-            this.RotuloDiferencaAcum = this.RotuloDiferencaAcum + "%";
-            this.RotuloOrcadoMensal = this.RotuloOrcadoMensal + "%";
-            this.RotuloPrevisaoMensal = this.RotuloPrevisaoMensal + "%";
-            this.RotuloRealizAcum = this.RotuloRealizAcum + "%";
-            this.RotuloOrcadoAcum = this.RotuloOrcadoAcum + "%";
-        }
-        else {
-            this.RotuloDiferencaPerc = "Δ% " + this.RotuloDiferencaPerc;
-            this.RotuloDiferencaAcum2 = "Δ " + this.RotuloDiferencaAcum2;
-        }
-    }
-    //MESMA CLASSE DO QUE O graficos.component.ts
-    CondicionalDeGraficos(tipoGraph, temp1) {
-        //RETIRAR DA PRIMEIRA LINHA OS ROTULOS
+        this.Cor2 = this.Cor1;
+        this.Cor3 = this.Cor1;
+        this.Cor4 = this.Cor1;
+        //SELECIONAR TENDENDCIAS DE EIXO
         //========================================================================================
-        let orcadoMensal = parseFloat(temp1.splice(1, 1));
-        let orcadoAcumulad = parseFloat(temp1.splice(1, 1));
-        let realizadoAcumulad = parseFloat(temp1.splice(1, 1));
-        let PrevisaoMensal = parseFloat(temp1.splice(1, 1));
-        let OrcadoMedia = parseFloat(temp1.splice(1, 1));
-        let RealMedia = parseFloat(temp1.splice(1, 1));
-        let Minimo = parseFloat(temp1.splice(1, 1));
-        let Maximo = parseFloat(temp1.splice(1, 1));
-        let Meta = parseFloat(temp1.splice(1, 1));
-        let MetaAcum = parseFloat(temp1.splice(1, 1));
-        let ReguladoDp = parseFloat(temp1.splice(1, 1));
-        let NaoReguladoDp = parseFloat(temp1.splice(1, 1));
+        switch (IndicadorCadastro.rotuloVirgula) {
+            case 1: {
+                this.campoCalc1 = converterComDecimal(this.campoCalc1);
+                this.campoCalc2 = converterComDecimal(this.campoCalc2);
+                this.campoCalc3 = converterComDecimal(this.campoCalc3);
+                this.campoCalc4 = converterComDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterComDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterComDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 2: {
+                this.campoCalc1 = converterSemDecimal(this.campoCalc1);
+                this.campoCalc2 = converterSemDecimal(this.campoCalc2);
+                this.campoCalc3 = converterSemDecimal(this.campoCalc3);
+                this.campoCalc4 = converterSemDecimal(this.campoCalc4);
+                this.RotuloOrcadoMensal = converterSemDecimal(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = converterSemDecimal(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+            case 3: {
+                this.campoCalc1 = ConverterParaHora(this.campoCalc1);
+                this.campoCalc2 = ConverterParaHora(this.campoCalc2);
+                this.RotuloOrcadoMensal = ConverterParaHora(this.RotuloOrcadoMensal * 1);
+                this.RotuloPrevisaoMensal = ConverterParaHora(this.RotuloPrevisaoMensal * 1);
+                break;
+            }
+        }
+        //FUNÇÕES
         //========================================================================================
-        let val1 = orcadoAcumulad;
-        let val2 = realizadoAcumulad;
-        //SEPARAR GRAFICOS 01 E 02 COM SOMATÓRIOS
-        //========================================================================================
-        if (tipoGraph == 1 || tipoGraph == 2 || tipoGraph == 6) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(0);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : converterSemDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(0);
-        }
-        else if (tipoGraph == 8) {
-            val1 = orcadoAcumulad;
-            val2 = realizadoAcumulad;
-            this.RotuloOrcadoMensal = converterSemDecimal(orcadoMensal);
-            this.RotuloOrcadoAcum = converterSemDecimal(orcadoAcumulad);
-            this.RotuloRealizAcum = converterSemDecimal(realizadoAcumulad);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterSemDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-            //SEPARAR GRAFICO 03 COM MÉDIAS E CONVERTER PARA HORA
-            //========================================================================================
-        }
-        else if (tipoGraph == 3) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloOrcadoAcum = this.ConverterParaHora(OrcadoMedia);
-            this.RotuloRealizAcum = this.ConverterParaHora(RealMedia);
-            this.RotuloDiferencaAcum = this.ConverterParaHora((val2 - val1));
-            this.RotuloDiferencaAcum2 = this.ConverterParaHora(val2 - val1);
-            this.RotuloPrevisaoMensal = isNaN(PrevisaoMensal) ? 0 : (PrevisaoMensal.toFixed(0).toString());
-            this.RotuloPrevisaoMensal = this.ConverterParaHora(this.RotuloPrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
-        else if (tipoGraph == 4) {
-            val2 = RealMedia;
-            Minimo = Minimo > 60 ? parseFloat(Minimo.toFixed(0)) : Minimo;
-            Maximo = Minimo > 60 ? parseFloat(Maximo.toFixed(0)) : Maximo;
-            this.RotuloOrcadoMensal = Minimo + " - " + Maximo;
-            this.RotuloOrcadoAcum = Minimo + " - " + Maximo;
-            this.RotuloRealizAcum = RealMedia;
-            let val3 = RealMedia > Minimo ? RealMedia < Maximo ? 0 : RealMedia - Maximo : RealMedia - Minimo;
-            this.RotuloDiferencaAcum = val3.toFixed(2);
-            this.RotuloDiferencaAcum2 = val3 == 0 ? 0 : val3.toFixed(2);
-            val1 = val3 > -1 ? val3 == 0 ? 0 : Maximo : Minimo;
-            this.RotuloPrevisaoMensal = PrevisaoMensal;
-            this.RotuloPrevisaoMensal = (isNaN(PrevisaoMensal)) ? 0 : PrevisaoMensal;
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
-        else if (tipoGraph == 5) {
-            this.RotuloPrevisaoMensal = (Meta * 100);
-            this.RotuloOrcadoMensal = (Meta * 100);
-            this.RotuloOrcadoAcum = (Meta * 100);
-            this.RotuloRealizAcum = RealMedia;
-            this.RotuloDiferencaAcum = "-";
-            this.RotuloDiferencaAcum2 = "-";
-            this.RotuloDiferencaPerc = "-";
-        }
-        else if (tipoGraph == 7 || tipoGraph == 9) {
-            val1 = OrcadoMedia;
-            val2 = RealMedia;
-            this.RotuloOrcadoMensal = converterComDecimal(OrcadoMedia);
-            this.RotuloOrcadoAcum = converterComDecimal(OrcadoMedia);
-            this.RotuloRealizAcum = converterComDecimal(RealMedia);
-            this.RotuloDiferencaAcum = ((val2 - val1)).toFixed(2);
-            this.RotuloDiferencaAcum2 = converterComDecimal(val2 - val1);
-            this.RotuloPrevisaoMensal = converterComDecimal(PrevisaoMensal);
-            this.RotuloDiferencaPerc = val1 == 0 ? 0 : ((-(1 - (val2 / val1))) * 100).toFixed(2);
-        }
         function converterComDecimal(z) {
             let v = z.toFixed(2);
             v = v.replace(/\D/g, ""); // permite digitar apenas numero
@@ -9412,25 +10608,25 @@ let ResumoIndicadoresComponent = class ResumoIndicadoresComponent {
             v = v.replace(/(\d{1})(\d{3})$/, "$1.$2"); // coloca ponto antes dos ultimos 7 digitos
             return v;
         }
-    }
-    ConverterParaHora(s) {
-        if (s < 0) {
-            s = s * -1;
-        }
-        function duas_casas(numero) {
-            if (numero <= 9) {
-                numero = "0" + parseInt(numero);
+        function ConverterParaHora(s) {
+            if (s < 0) {
+                s = s * -1;
             }
-            return numero;
+            function duas_casas(numero) {
+                if (numero <= 9) {
+                    numero = "0" + parseInt(numero);
+                }
+                return numero;
+            }
+            var hora = Math.trunc(s / 3600);
+            var minuto = Math.trunc(s / 60) - (hora * 60);
+            var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
+            hora = duas_casas(hora);
+            minuto = duas_casas(minuto);
+            segundo = duas_casas(segundo);
+            var formatado = hora + ":" + minuto + ":" + segundo;
+            return formatado;
         }
-        var hora = Math.trunc(s / 3600);
-        var minuto = Math.trunc(s / 60) - (hora * 60);
-        var segundo = Math.trunc(s) - (hora * 3600) - (minuto * 60);
-        hora = duas_casas(hora);
-        minuto = duas_casas(minuto);
-        segundo = duas_casas(segundo);
-        var formatado = hora + ":" + minuto + ":" + segundo;
-        return formatado;
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9499,7 +10695,7 @@ let IndicadoresComponent = class IndicadoresComponent {
     MontarArrayDeIndicadores(indicador) {
         this.indicadoresService.classindicadores(indicador)
             .subscribe(Indicadores => {
-            this.ind = Indicadores;
+            this.ind = Indicadores.filter(el => el.ativo == 1);
             this.totalpaginas = this.ind.length + 1;
         });
     }
@@ -10488,7 +11684,7 @@ let AgendarVeiculoComponent = class AgendarVeiculoComponent {
         }
         else {
             if (this.OpcDe < this.OpcAte) {
-                // this.SalvarAgendamento()
+                this.SalvarAgendamento();
                 this.messageService.add({ sticky: true, severity: 'info', summary: 'Solicitação Enviada!',
                     detail: "Soliciação enviada com sucesso." });
             }
@@ -10967,6 +12163,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../transporte.service */ "./src/app/transporte/transporte.service.ts");
+/* harmony import */ var _csv_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../csv-data.service */ "./src/app/csv-data.service.ts");
+
 
 
 
@@ -11017,6 +12215,9 @@ let ListaAgendamentosComponent = class ListaAgendamentosComponent {
         var data = datareceb, dia2 = data.getDate().toString().padStart(2, '0'), mes2 = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
         ano2 = data.getFullYear(), hora2 = data.getHours(), minuto2 = data.getMinutes();
         return ano2 + "-" + mes2 + "-" + dia2;
+    }
+    salvarCSV() {
+        _csv_data_service__WEBPACK_IMPORTED_MODULE_3__["CsvDataService"].exportToCsv('test.csv', this.Agendamentos);
     }
 };
 ListaAgendamentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -11381,10 +12582,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardsComponent", function() { return DashboardsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _transporte_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../transporte.service */ "./src/app/transporte/transporte.service.ts");
+
 
 
 let DashboardsComponent = class DashboardsComponent {
-    constructor() { }
+    constructor(transporteService) {
+        this.transporteService = transporteService;
+    }
     ngOnInit() {
         this.Gerencias = [
             { label: '', value: 0 },
@@ -11422,71 +12627,21 @@ let DashboardsComponent = class DashboardsComponent {
             { indice: 9, placa: 'HFE6717', condutor: 'José da Silva', nome: 'José da Silva', gerencia: 'Serviços', departamento: 'Manutenção' },
             { indice: 10, placa: 'HFE6718', condutor: 'NÃO IDENTIFICADO', nome: 'José das Couves', gerencia: 'Operacional Água', departamento: 'Automação' }
         ];
-    }
-    exportCSV() {
-        function convertToCSV(objArray) {
-            var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-            var str = '';
-            for (var i = 0; i < array.length; i++) {
-                var line = '';
-                for (var index in array[i]) {
-                    if (line != '')
-                        line += ';';
-                    line += array[i][index];
-                }
-                str += line + '\r\n';
-            }
-            return str;
-        }
-        function exportCSVFile(headers, items, fileTitle) {
-            if (headers) {
-                items.unshift(headers);
-            }
-            // Convert Object to JSON
-            var jsonObject = JSON.stringify(items);
-            var csv = convertToCSV(jsonObject);
-            var exportedFilenmae = fileTitle + '.csv' || false;
-            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            if (navigator.msSaveBlob) { // IE 10+
-                navigator.msSaveBlob(blob, exportedFilenmae);
-            }
-            else {
-                var link = document.createElement("a");
-                if (link.download !== undefined) { // feature detection
-                    // Browsers that support HTML5 download attribute
-                    var url = URL.createObjectURL(blob);
-                    link.setAttribute("href", url);
-                    link.setAttribute("download", exportedFilenmae);
-                    link.style.visibility = 'hidden';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }
-            }
-        }
-        var headers = {
-            indice: 'Indice',
-            placa: "Placa",
-            condutor: "Condutor",
-            nome: "Responsavel",
-            gerencia: "Gerencia",
-            departamento: "Departamento",
-        };
-        var itemsNotFormatted = this.ranking1;
-        var itemsFormatted = [];
-        // format the data
-        itemsNotFormatted.forEach((item) => {
-            itemsFormatted.push({
-                indice: item.indice,
-                placa: item.placa,
-                condutor: item.condutor,
-                nome: item.nome,
-                gerencia: item.gerencia,
-                departamento: item.departamento
-            });
+        this.transporteService.ParaAprovar()
+            .subscribe(Agendamento => {
+            console.log(Agendamento);
+            this.agendamentospendentes = Agendamento.length;
         });
-        var fileTitle = 'orders'; // or 'my-unique-title'
-        exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+        this.transporteService.Aprovados()
+            .subscribe(Agendamento => {
+            console.log(Agendamento);
+            this.agendamentosregistrados = Agendamento.length;
+        });
+        this.transporteService.Aprovados()
+            .subscribe(Agendamento => {
+            console.log(Agendamento);
+            this.agendamentosaprovados = Agendamento.filter(item => item.aprovacao === 1).length;
+        });
     }
 };
 DashboardsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -11495,7 +12650,7 @@ DashboardsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./dashboards.component.html */ "./node_modules/raw-loader/index.js!./src/app/transporte/dashboards/dashboards.component.html"),
         styles: [__webpack_require__(/*! ./dashboards.component.css */ "./src/app/transporte/dashboards/dashboards.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_transporte_service__WEBPACK_IMPORTED_MODULE_2__["TransporteService"]])
 ], DashboardsComponent);
 
 
@@ -11891,7 +13046,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc\Sispc2.0\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects\Sispc2.0\src\main.ts */"./src/main.ts");
 
 
 /***/ })

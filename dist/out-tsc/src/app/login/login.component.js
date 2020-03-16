@@ -16,15 +16,19 @@ let LoginComponent = class LoginComponent {
     }
     alterarsenha() {
         if (this.novasenha === this.novasenhaconfirm) {
-            this.authService.senhaUpdate(this.authService.userDados()[0].valor, this.novasenha)
-                .subscribe(response => {
-                if (response === null) {
-                    this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Senha alterada corretamente!!!', life: 5000 });
-                    this.senhapad = false;
-                }
-            }, error => {
-                this.messageService.add({ severity: 'error', summary: "Senha não alterada!", detail: error.message, life: 5000 });
-                console.log(error);
+            var id;
+            this.authService.usuario(sessionStorage.getItem('email'))
+                .subscribe(res => {
+                this.authService.senhaUpdate(res['usuarioId'], this.novasenha)
+                    .subscribe(response => {
+                    if (response === null) {
+                        this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Senha alterada corretamente!!!', life: 5000 });
+                        this.senhapad = false;
+                    }
+                }, error => {
+                    this.messageService.add({ severity: 'error', summary: "Senha não alterada!", detail: error.message, life: 5000 });
+                    console.log(error);
+                });
             });
             this.senhapad = false;
         }
@@ -33,6 +37,7 @@ let LoginComponent = class LoginComponent {
         }
     }
     logar() {
+        sessionStorage.clear;
         this.authService.fazerLogin(this.usuario)
             .subscribe(resp => {
             const keys = resp.data.get('Authorization');

@@ -2,6 +2,19 @@
   <div class="ui-g-12">
       <div class="card card-w-title">
           <h1>Performance {{setor}}</h1>
+          
+            <div Style="padding-left: 10px !important;">
+                <h2>Data</h2>
+                <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+                yearRange="2000:2030" 
+                [(ngModel)]="referencia" 
+                [readonlyInput]="true"
+                (onSelect)="onChangeTime($event)">
+                </p-calendar>
+    
+                <br>
+                <br>
+            </div>
           <p-accordion  (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
                 <div class="card">
               <p-accordionTab  *ngFor="let classificao of classificacoes" header="{{classificao}}" >
@@ -39,8 +52,6 @@
                       <p-overlayPanel #op2 [showCloseIcon]="true" [dismissable]="false" >
                             <span class="ui-overlaypanel-close-icon pi pi-times"></span>
 
-                            
-                          
                             <div class="card"  style="padding-bottom: 20px;"> 
                                 <div class="ui-g">
                                     <div class ="ui-g-6"><b>{{indi}}</b></div>
@@ -80,7 +91,19 @@
                                     <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
                                         <span class="md-inputfield">
                                             <input id="input" [(ngModel)]="forecast" type="text" size="37" pInputText/>
-                                            <label>Forecast Diário</label>
+                                            <label>Forecast1 Diário</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="forecast2" type="text" size="37" pInputText/>
+                                            <label>Forecast2 Diário</label>
+                                        </span>
+                                    </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="forecast3" type="text" size="37" pInputText/>
+                                            <label>Forecast3 Diário</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
@@ -143,6 +166,12 @@
                                             <label>Atendimento</label>
                                         </span>
                                     </div>
+                                    <div class="ui-g-6" style="text-align: center;padding-bottom: 20px;">
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="vlrretido" type="text" size="37" pInputText />
+                                            <label>Valor Retido</label>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -168,6 +197,8 @@
                       </p-overlayPanel>
 
             <!--############################# Chamada do Gráfico #############################################-->
+            
+                    <app-graficos-indicadores [indicador]="ind" [refer]="refer" ></app-graficos-indicadores>
                     <app-graficos [element]= "ind" [refer]= "refer" ></app-graficos>
                 </div> 
             </div>

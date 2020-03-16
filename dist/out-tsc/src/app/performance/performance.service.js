@@ -20,11 +20,15 @@ let PerformanceService = class PerformanceService {
         return this.http.get(`${API_CONFIG}/indicadores/grafico/${referencia}/${indicadorId}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
+    indicadoresResumo(referencia, indicadorId) {
+        return this.http.get(`${API_CONFIG}/indicadores/graficoResumo/${referencia}/${indicadorId}`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
     indicadoresByDay(indicador, referencia) {
         return this.http.get(`${API_CONFIG}/indicadores/${indicador}/${referencia}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
-    indicadoresAtt(exeindicadorId, datareferencia, dataindicador, ciclo, orcado, realizado, pdd, atendente, atendimento, coment, forecast, minimo, maximo, meta, previsao, dentroprazo, foraprazo, dentroprazoreg, foraprazoreg, acao, analise, colaborador, indicadorId, unidadeId) {
+    indicadoresAtt(exeindicadorId, datareferencia, dataindicador, ciclo, orcado, realizado, pdd, atendente, atendimento, coment, forecast, minimo, maximo, meta, previsao, dentroprazo, foraprazo, dentroprazoreg, foraprazoreg, acao, analise, colaborador, indicadorId, unidadeId, vlrretido, forecast2, forecast3) {
         const headers = new HttpHeaders()
             .set("Content-Type", "application/json");
         let bodyObj = {
@@ -35,12 +39,16 @@ let PerformanceService = class PerformanceService {
             "periodicidade": "DIARIO",
             "orcado": orcado,
             "realizado": realizado,
+            "relizadokg": 0.0,
             "pecld": pdd,
             "forecast": forecast,
+            "forecast2": forecast2,
+            "forecast3": forecast3,
             "minimo": minimo,
             "maximo": maximo,
             "meta": meta,
             "previsao": previsao,
+            "valorretido": vlrretido,
             "dentroprazo": dentroprazo,
             "foraprazo": foraprazo,
             "dentroprazoreg": dentroprazoreg,

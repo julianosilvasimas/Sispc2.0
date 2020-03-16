@@ -1,5 +1,11 @@
 
+export interface Bots{
+    label: string,
+    funcao: string,
+    value: number,
+    status: string
 
+}
 export interface Indicadores{
     exeindicadorId: number,
     datareferencia: Date,
@@ -11,9 +17,12 @@ export interface Indicadores{
     realizadokg: number,
     pecld: number,
     forecast: number,
+    forecast2: number,
+    forecast3: number,
     minimo: number,
     maximo: number,
     meta: number,
+    valorretido: number,
     previsao: number,
     dentroprazo: number,
     foraprazo: number,

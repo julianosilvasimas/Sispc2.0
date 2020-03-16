@@ -15,8 +15,9 @@ export class AdminIndicadoresComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      {label: 'Cadastrar Indicador'},
-      {label: 'Editar Indicadores'}
+      {label: 'Cadastrar'},
+      {label: 'Editar'},
+      {label: 'Importar'}
     ];
     this.trocadeitemIndex(0);
   }

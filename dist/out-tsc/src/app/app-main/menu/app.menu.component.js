@@ -9,8 +9,54 @@ let AppMenuComponent = class AppMenuComponent {
     constructor(app, performanceService) {
         this.app = app;
         this.performanceService = performanceService;
+        this.permissoes = [];
+        this.usuPerformance = false;
+        this.usuComissao = false;
+        this.usuTransporte = false;
+        this.usuJuridicoPagamentos = false;
+        this.usuProjetos = false;
+        this.admSispc = false;
+        this.admPerformance = false;
+        this.usuJuridicoPagamentosAprovacao = false;
     }
     ngOnInit() {
+        //Preencehendo array de permissoes e liberando acessos
+        let i = 0;
+        while (sessionStorage.getItem("permissao " + i) != null) {
+            let permissao = sessionStorage.getItem("permissao " + i);
+            this.permissoes.push(permissao);
+            //Liberando acessos
+            if (permissao === "ROLE_ADMIN") {
+                this.usuPerformance = true;
+                this.usuComissao = true;
+                this.usuTransporte = true;
+            }
+            else if (permissao === "ROLE_USER_COMISSAO") {
+                this.usuComissao = true;
+            }
+            else if (permissao === "ROLE_USER_FROTAS") {
+                this.usuTransporte = true;
+            }
+            else if (permissao === "ROLE_ADMIN_INDICADOR") {
+                this.usuPerformance = true;
+                this.admPerformance = true;
+            }
+            else if (permissao === "ROLE_USER_INDICADOR") {
+                this.usuPerformance = true;
+            }
+            else if (permissao === "ROLE_ADMIN_PROJETOS") {
+                this.usuProjetos = true;
+            }
+            else if (permissao === "ROLE_ADMIN_SISPC") {
+                this.admSispc = true;
+            }
+            else if (permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO") > 0) {
+                this.usuJuridicoPagamentos = true;
+            }
+            i++;
+        }
+        console.log(this.usuPerformance);
+        // console.log(this.permissoes)
         this.performanceService.classindicadores(6)
             .subscribe(response => {
             this.indicadores = response;
@@ -19,25 +65,58 @@ let AppMenuComponent = class AppMenuComponent {
         this.performanceService.gerencias()
             .subscribe(response => {
             this.gerencias = response.splice(2, Number.MAX_VALUE);
-            this.model = [
-                {
+            this.model = [];
+            //Começando a construção do Menu
+            //Performance
+            if (this.usuPerformance === true) {
+                this.model.push({
                     label: 'Performance', icon: 'timeline',
-                    items: [
-                        {
-                            label: 'Acompanhamento', icon: 'subject',
-                            items: this.gerencias
-                        },
-                        {
-                            label: 'Fechamento', icon: 'subject',
-                            items: [
-                                { label: 'Relatórios por área', icon: 'subject' },
-                                { label: 'Arquivamento', icon: 'subject' }
+                    items: this.permissoes[1] === "ROLE_DESENVOLVIMENTO" ? //DEntro do operador o que ainda será construído
+                        [
+                            {
+                                label: 'Acompanhamento', icon: 'subject',
+                                items: this.gerencias
+                            },
+                            {
+                                label: 'Fechamento', icon: 'subject',
+                                items: [
+                                    { label: 'Relatórios por área', icon: 'subject' },
+                                    { label: 'Arquivamento', icon: 'subject' }
+                                ]
+                            },
+                            {
+                                label: 'Configurações', icon: 'subject',
+                                items: [
+                                    { label: 'Indicadores', icon: 'subject', routerLink: '/indicadoresAdmin' }
+                                ]
+                            }
+                        ] :
+                        this.admPerformance === true ? //DEntro do operador o que ainda será construído
+                            [
+                                {
+                                    label: 'Acompanhamento', icon: 'subject',
+                                    items: this.gerencias
+                                },
+                                {
+                                    label: 'Configurações', icon: 'settings',
+                                    items: [
+                                        { label: 'Indicadores', icon: 'build', routerLink: '/indicadoresAdmin' }
+                                    ]
+                                }
+                            ] :
+                            [
+                                {
+                                    label: 'Acompanhamento', icon: 'subject',
+                                    items: this.gerencias
+                                }
                             ]
-                        }
-                    ],
-                },
-                { label: 'Planejamento', icon: 'equalizer',
+                });
+            }
+            //Em Construção...
+            if (this.permissoes[1] === "ROLE_DESENVOLVIMENTO") { // usado temporariamente esse perfil por estar ain
+                this.model.push({ label: 'Planejamento', icon: 'equalizer',
                     items: [
+                        { label: 'Informativos', icon: 'envelope', routerLink: '/email' },
                         { label: 'Capex', icon: 'subject' },
                         { label: 'Opex', icon: 'subject' },
                         { label: 'DRE', icon: 'subject' },
@@ -48,30 +127,18 @@ let AppMenuComponent = class AppMenuComponent {
                                 { label: 'Processos', icon: 'call_split' }
                             ]
                         },
+                        { label: 'RPA', icon: 'pi-android',
+                            items: [
+                                { label: 'Robos', icon: '', routerLink: '/rpa' }
+                            ]
+                        },
                     ]
-                },
-                { label: 'Diretoria', icon: 'business_center',
+                }, { label: 'Diretoria', icon: 'business_center',
                     items: [
                         { label: 'Indicadores', icon: 'subject' },
                         { label: 'Projetos', icon: 'subject' }
                     ]
-                },
-                { label: 'Comercial', icon: 'monetization_on',
-                    items: [
-                        {
-                            label: 'Comissão de Fraudes', icon: 'subject',
-                            items: [
-                                { label: 'Gestão de deliberações', icon: 'subject' },
-                                { label: 'Controle de fraudes', icon: 'subject' }
-                            ]
-                        },
-                        { label: 'Receita', icon: 'subject' },
-                        { label: 'Cobrança', icon: 'subject' },
-                        { label: 'Atendimento', icon: 'subject' },
-                        { label: 'Cadastro', icon: 'subject' }
-                    ]
-                },
-                { label: 'Operacional', icon: 'invert_colors',
+                }, { label: 'Operacional', icon: 'invert_colors',
                     items: [
                         { label: 'Operação Água', icon: 'subject' },
                         { label: 'Operação Esgoto', icon: 'subject' },
@@ -82,38 +149,86 @@ let AppMenuComponent = class AppMenuComponent {
                             ]
                         },
                     ]
-                },
-                { label: 'Administrativo', icon: 'domain',
+                }, { label: 'Administrativo', icon: 'domain',
                     items: [
                         { label: 'Contratos', icon: 'subject' },
                         { label: 'Facilities', icon: 'subject' },
                         { label: 'Compras', icon: 'subject' }
                     ]
-                },
-                { label: 'Serviços', icon: 'build',
+                }, { label: 'Serviços', icon: 'build',
                     items: []
-                },
-                { label: 'Comunicação', icon: 'videocam',
+                }, { label: 'Comunicação', icon: 'videocam',
                     items: []
-                },
-                { label: 'Jurídico', icon: 'gavel',
+                }, { label: 'Jurídico', icon: 'gavel',
                     items: [
+                        { label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject' },
                         { label: 'Processos', icon: 'subject' },
                         { label: 'Regulatório', icon: 'subject' }
                     ]
-                },
-                { label: 'Recursos Humanos', icon: 'people',
+                }, { label: 'Recursos Humanos', icon: 'people',
                     items: []
-                },
-                { label: 'EHS', icon: 'local_florist',
+                }, { label: 'EHS', icon: 'local_florist',
                     items: [
                         { label: 'Planejamento', icon: 'subject' },
                         { label: 'Gestão', icon: 'subject' }
                     ]
-                },
-            ];
+                });
+            }
+            if (this.usuJuridicoPagamentos === true) {
+                this.model.push({ label: 'Jurídico', icon: 'gavel',
+                    items: [
+                        { label: 'Controle de Pagamentos', routerLink: '/cpjuridico', icon: 'subject' },
+                    ]
+                });
+            }
+            if (this.usuProjetos === true) {
+                this.model.push({ label: 'Planejamento', icon: 'equalizer',
+                    items: [
+                        { label: 'GPP', icon: 'view_list',
+                            items: [
+                                { label: 'Projetos', icon: 'subject', routerLink: '/projetos' }
+                            ]
+                        }
+                    ]
+                });
+            }
+            //Comissão
+            if (this.usuComissao === true) {
+                this.model.push({ label: 'Comercial', icon: 'monetization_on',
+                    items: [
+                        {
+                            label: 'Comissão de Fraudes', icon: 'subject',
+                            items: [
+                                { label: 'Gestão de deliberações', icon: 'subject', routerLink: '/painelprocess' } /*,
+                                {label: 'Controle de fraudes', icon: 'subject'}   */
+                            ]
+                        } /*,
+                        {label: 'Receita', icon: 'subject'},
+                        {label: 'Cobrança', icon: 'subject'},
+                        {label: 'Atendimento', icon: 'subject'},
+                        {label: 'Cadastro', icon: 'subject'}*/
+                    ]
+                });
+            }
+            // GLobal com pequena alteração para usuários transportes
+            this.model.push({ label: 'Transporte', icon: 'directions_car',
+                items: [
+                    //Operador ternário controle usuario
+                    this.usuTransporte === true ?
+                        { label: 'Gestão de Frotas', icon: 'subject', routerLink: '/transporte' } :
+                        { label: 'Agendamento', icon: 'subject', routerLink: '/agendamento' }
+                ]
+            });
+            if (this.admSispc === true) {
+                this.model.push({ label: 'Administrador', icon: 'settings',
+                    items: [
+                        { label: 'Acessos', routerLink: '/admin', icon: 'person' },
+                        { label: 'Notificações', routerLink: '/email', icon: 'notifications' }
+                    ]
+                });
+            }
         });
-    }
+    } //fechando subscribe de gerencia
 };
 AppMenuComponent = tslib_1.__decorate([
     Component({

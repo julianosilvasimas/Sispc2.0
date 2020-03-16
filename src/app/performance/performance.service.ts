@@ -40,8 +40,8 @@ export class PerformanceService{
      }
 
      indicadoresAtt(exeindicadorId: any,  datareferencia: Date,  dataindicador: Date, ciclo: Number, orcado: Number, realizado: Number, pdd: Number, atendente: Number, atendimento: Number, coment: string, 
-        forecast: Number, minimo: number, maximo:number, meta: number, previsao: number, dentroprazo: number, foraprazo: number,
-        dentroprazoreg: number, foraprazoreg: number, acao: string, analise, colaborador: string, indicadorId: number, unidadeId: number): Observable<any[]>{
+        forecast: Number, minimo: number, maximo:number, meta: number, previsao: number,   dentroprazo: number, foraprazo: number,
+        dentroprazoreg: number, foraprazoreg: number, acao: string, analise, colaborador: string, indicadorId: number, unidadeId: number, vlrretido: number, forecast2: number, forecast3: number): Observable<any[]>{
             const headers = new HttpHeaders()
             .set("Content-Type", "application/json",
             );
@@ -56,10 +56,13 @@ export class PerformanceService{
                         "relizadokg":0.0,
                         "pecld": pdd,
                         "forecast": forecast,
+                        "forecast2": forecast2,
+                        "forecast3": forecast3,
                         "minimo": minimo,
                         "maximo": maximo,
                         "meta": meta,
                         "previsao": previsao,
+                        "valorretido": vlrretido,
                         "dentroprazo": dentroprazo,
                         "foraprazo": foraprazo,
                         "dentroprazoreg": dentroprazoreg,

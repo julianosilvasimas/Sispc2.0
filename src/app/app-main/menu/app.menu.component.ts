@@ -55,6 +55,7 @@ export class AppMenuComponent implements OnInit {
                 this.usuTransporte = true
 
             }else if(permissao === "ROLE_ADMIN_INDICADOR"){
+                this.usuPerformance = true
                 this.admPerformance = true
 
             }else if(permissao === "ROLE_USER_INDICADOR"){
@@ -110,7 +111,7 @@ export class AppMenuComponent implements OnInit {
                             {
                                 label: 'Configurações', icon: 'subject',
                                 items: [
-                                    {label: 'Indicadores', icon: 'subject', routerLink: 'indicadoresAdmin'}
+                                    {label: 'Indicadores', icon: 'subject', routerLink: '/indicadoresAdmin'}
                                 ]
                             }
                         ] :
@@ -124,7 +125,7 @@ export class AppMenuComponent implements OnInit {
                             {
                                 label: 'Configurações', icon: 'settings',
                                 items: [
-                                    {label: 'Indicadores', icon: 'build', routerLink: 'indicadoresAdmin'}
+                                    {label: 'Indicadores', icon: 'build', routerLink: '/indicadoresAdmin'}
                                 ]
                             }
                         ] :

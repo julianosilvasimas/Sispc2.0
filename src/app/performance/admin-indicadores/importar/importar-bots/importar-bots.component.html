@@ -1,0 +1,76 @@
+<div class="card card-title ui-g">
+  <h1>Status de Bot's</h1>
+  <div class="ui-g-12">
+    <div class="card ui-g-3"  *ngFor="let b of botsLista, let i of index">
+      <img class="ui-g-4" style="width: 90px; height: 120px;" src="assets/layout/images/rpa/robo.png">
+      <div class="ui-g-8">
+        <div style="font-weight: bold;" class="ui-g-12">{{ b.label }}</div>
+        <div class="ui-g-12">{{ b.funcao }}</div>
+        <div class="ui-g-6"  >
+          <button *ngIf="b.status=='Executando'" [disabled]="true" pButton type="button"  label="Executando" class="ui-button-danger"></button>
+          <button *ngIf="b.status=='Pronto'" [disabled]="true" pButton type="button"  label="Disponível" class="ui-button-success"></button>
+          <button *ngIf="b.status=='Falha'" [disabled]="true" pButton type="button"  label="Sem Informação" class="ui-button-secondary"></button>
+        </div>
+        <div class="ui-g-6" style="text-align: right;" >
+          <button pButton type="button" class="pi pi-chevron-circle-right" (click)="SelecionarBot(b)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-dialog header="Detalhe Bot" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%', height: '60%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="displayDialog">
+    <div class="ui-g-12" style="text-align:left;font-size: 20px; font-weight: bold;">
+      <div class="ui-g-12">Bot: {{botselecionado.label}}</div>
+    </div>
+    
+    <div class="ui-g-12" style="margin-top: 20px;">
+      <div class="ui-g-6" style="text-align:left">
+        <div class="ui-g-4">Indicador: </div>
+        <div class="ui-g-8">
+          <p-dropdown  class="ui-g-12" [options]="filtroListaIndicador" [(ngModel)]="indicadorselecionado" 
+          placeholder="Selecione o Indicador" [autoWidth]="true" filter="true"  
+          styleClass = "drop95" optionLabel="indicador"></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-g-6" style="text-align:left">
+        <div class="ui-g-4">Unidade: </div>
+        <div class="ui-g-8">
+          <p-dropdown  class="ui-g-12" [options]="filtroUnidade" [(ngModel)]="unidadeselecionada" 
+          placeholder="Selecione a Unidade" [autoWidth]="true" filter="true"  
+          styleClass = "drop95" optionLabel="unidade"></p-dropdown>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 20px;">
+      <div class="ui-g-4" style="text-align: center;">
+        <span class="md-inputfield">
+          <input id="input" class="ui-g-12"  [(ngModel)]="anodoimport" type="text" pInputText/>
+          <label>Ano</label>
+        </span>
+      </div>
+      <div class="ui-g-4" style="text-align: center;">
+        <span class="md-inputfield">
+          <input id="input" class="ui-g-12" [disabled]="habilitaCorteMes" [(ngModel)]="diadecortereferencia" (keydown)="aoAlterardiaDeCorteRef($event)" type="text" pInputText/>
+          <label>Dia de Corte (Referência)</label>
+        </span>
+      </div>
+      <div class="ui-g-4" style="text-align: center;">
+        <span class="md-inputfield">
+          <input id="input" class="ui-g-12" [disabled]="habilitaCorteCiclo" [(ngModel)]="diadecorteciclo" (keydown)="aoAlterardiaDeCorteCiclo($event)" type="text" pInputText/>
+          <label>Dia de Corte (Ciclo)</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 0px;">
+      <div class="ui-g-4"></div>
+      <div class="ui-g-4"><p-checkbox (onChange)="naoseaplicadiaDeCorteMes()" binary="true" name="group1"  label="Não se Aplica" [(ngModel)]="habilitaCorteMes" ></p-checkbox></div>
+      <div class="ui-g-4"><p-checkbox (onChange)="naoseaplicadiaDeCorteCiclo()" binary="true" name="group2" label="Não se Aplica" [(ngModel)]="habilitaCorteCiclo" ></p-checkbox></div>
+    </div>
+    <div class="ui-g-12" style="text-align: right;margin-top: 100px;" >
+      <button pButton type="button" label="Salvar Indicador" (click)="StartBot()"></button>
+    </div>
+  </div>
+</p-dialog>

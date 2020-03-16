@@ -96,6 +96,7 @@ let AuthService = class AuthService {
         }
         this.dados.push({ key: 'usuarioId', valor: tokenDecode.jti, lista: [] });
         //console.log('Id: '+ tokenDecode.jti)
+        sessionStorage.setItem('id', tokenDecode.jti);
         sessionStorage.setItem('email', tokenDecode.sub.substring(1, (tokenDecode.sub.length - 1)));
         //console.log(sessionStorage.getItem('email'))
         this.dados.push({ key: 'email', valor: tokenDecode.sub, lista: [] });
@@ -109,8 +110,10 @@ let AuthService = class AuthService {
         //console.log('Data Login: '+ dateIni);
         //console.log('Data Validade: '+ dateExp);
         // Verificando permissões
-        tokenDecode.roles.forEach(element => {
+        tokenDecode.roles.forEach((element, index) => {
             this.auth.push(element['authority']);
+            sessionStorage.setItem("permissao " + index, element['authority']);
+            console.log(element);
         });
         return this.dados;
     }

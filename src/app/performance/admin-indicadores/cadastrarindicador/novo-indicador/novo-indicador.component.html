@@ -1,0 +1,42 @@
+<div class="card" style="width: 99.5%; margin-left: 3px;" >
+  <div class="ui-g">
+    <div class="ui-g-12"><h4>CRIAÇÃO DE INDICADOR</h4></div>
+    <div class="ui-g-12" style="text-align: center;padding-bottom: 20px;">
+        <span class="md-inputfield">
+            <input id="input" class="ui-g-12"  [(ngModel)]="editarIndicadorNome" type="text" pInputText/>
+            <label>Nome do Indicador</label>
+        </span>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="classificacoesLista" [(ngModel)]="editarIndicadorClassificacao" 
+        placeholder="Selecione a Classificação" [autoWidth]="true" filter="true"  
+        styleClass = "drop95" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="tendenciaLista" [(ngModel)]="editarIndicadorTendencia"
+        placeholder="Selecione a Tendência" [autoWidth]="true" filter="true"
+        styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="tiporotuloLista" [(ngModel)]="editarIndicadorTipoRotulo" 
+        placeholder="Selecione o Tipo do Rótulo" [autoWidth]="true" filter="true"  
+        styleClass = "drop95" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="ui-g-6">
+        <p-dropdown  class="ui-g-12" [options]="gerenciasLista" [(ngModel)]="editarIndicadorGerencia"
+        placeholder="Selecione a Gerência" [autoWidth]="true" filter="true"
+        styleClass = "drop95" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-6" style="text-align: left">
+      <p-checkbox [(ngModel)]="editarIndicadorAtivo" label="Indicador Ativo"  binary="true"></p-checkbox>
+    </div>
+    <div class="ui-g-12" style="text-align: center">
+      <button type="button" pButton iconPos="right" label="Criar Indicador" (click)="salvarIndicador()" class="ui-button-raised ui-button-success" style="margin-right: 0.5em;"></button>
+    </div>
+  </div>
+</div>
+

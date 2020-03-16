@@ -10,6 +10,7 @@ export interface Permissoes{
     perfilId: number,
     perfil: string,
     permissao: string,
+    descricao: string,
     authority: string
 }
 
