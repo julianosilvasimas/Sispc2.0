@@ -175,6 +175,12 @@ import { ImportarComponent } from './performance/admin-indicadores/importar/impo
 import { ImportarOrcadosComponent } from './performance/admin-indicadores/importar/importar-orcados/importar-orcados.component';
 import { ImportarBotsComponent } from './performance/admin-indicadores/importar/importar-bots/importar-bots.component';
 import { NotificacoesService } from './notificacoessispc/notificacoes.service';
+import { EnergiaComponent } from './energia/energia.component';
+import { EnergiaService } from './energia/energia.service';
+import { EquipamentosComponent } from './energia/equipamentos/equipamentos.component';
+import { ForecastComponent } from './energia/forecast/forecast.component';
+import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergiaagua/forecastenergiaagua.component';
+import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
 
 
 @NgModule({
@@ -334,6 +340,11 @@ import { NotificacoesService } from './notificacoessispc/notificacoes.service';
         ImportarComponent,
         ImportarOrcadosComponent,
         ImportarBotsComponent,
+        EnergiaComponent,
+        EquipamentosComponent,
+        ForecastComponent,
+        ForecastenergiaaguaComponent,
+        ForecastenergiaesgotoComponent,
 
     ],
     providers: [
@@ -350,7 +361,8 @@ import { NotificacoesService } from './notificacoessispc/notificacoes.service';
         ControledepagamentosjuridicoService,
         AdminService,
         AdminIndicadoresService,
-        NotificacoesService
+        NotificacoesService,
+        EnergiaService
     ],
     bootstrap: [AppComponent]
 })

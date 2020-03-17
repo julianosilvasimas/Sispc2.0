@@ -1,0 +1,12 @@
+<p-tabMenu #tab [model]="items" id="menu" [activeItem]="activeItem" (click)="trocadeitem(tab)"></p-tabMenu>
+
+<!--Cadastrar Indicadores-->
+<div   *ngIf="activeItemIndex==0">
+  <app-forecastenergiaagua></app-forecastenergiaagua>
+</div>
+  
+  
+  <!--Editar Cadastro dos Indicadores-->
+<div  *ngIf="activeItemIndex==1">
+    <app-forecastenergiaesgoto></app-forecastenergiaesgoto>
+</div>
