@@ -26,9 +26,14 @@ export class EnergiaService {
     catchError(ErrorHandler.handleError))
   }
   
- statusMedidores(id){
-   return this.http.get(`${API_CONFIG}/energia/item/paraaprovar/${id}`) 
-   .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  statusMedidores(id){
+    return this.http.get(`${API_CONFIG}/energia/item/paraaprovar/${id}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
+  realizadoKw(dataini, datafim, id){
+    return this.http.get(`${API_CONFIG}/energia/data/${dataini}/${datafim}/${id}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
 
   statusMedidoresAtualizar(bodyObj): Observable<any[]>{
@@ -38,6 +43,12 @@ export class EnergiaService {
     catchError(ErrorHandler.handleError))
   }
 
+  InserirStatus(bodyObj): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.post(`${API_CONFIG}/energia/item`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
   
   private extractData(res: Response[]) {
     let body = res;

@@ -60,6 +60,10 @@ export class AdminIndicadoresService {
   }
 
 
+  indicadoresByRange(data1 : string,data2 : string,indicador : number): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/indicadores/porrange/${indicador}/${data1}/${data2}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
   indicadoresByMonth(referencia : string,indicador : number): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/indicadores/pormes/${indicador}/${referencia}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
