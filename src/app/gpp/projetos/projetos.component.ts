@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Car, Projetos } from '../../demo/domain/car';
 import { SelectItem, MessageService } from 'primeng/api';
-import { CarService } from '../../demo/service/carservice';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { ProjetosService } from './projetos.service';
+import {  ProjCompletos } from './projetos.model';
+
 
 @Component({
   selector: 'app-projetos',
@@ -11,22 +13,43 @@ import { RouterLink } from '@angular/router';
 export class ProjetosComponent implements OnInit {
 
   cars: Projetos[];
+  
+  stat: any;
+  nomeProject: any;
+  local: any;
+  setor: any;
+  radar: any; 
+  valUrgencia: any;
+  valGravidade: any;
+  valTendencia: any;
 
+  inserir: any 
+
+  projetos: ProjCompletos[];
     cols: any[];
 
     nome: SelectItem[];
-
+ 
     yearFilter: number;
 
     yearTimeout: any;
 
     data: any;
 
+    dialogVisible: boolean;
     selectedCar1: SelectItem[];
+    selectedProjeto: SelectItem[];
     municipio: SelectItem[];
     status:SelectItem[];
+    localidades: { label: string; value: string; }[];
+    stats: { label: string; value: string; }[];
+    area: { label: string; value: string; }[];
+    rad: { label: string; value: number; }[];
+    indice: { label: string; value: number; }[];
+    indices: { label: string; value: number; }[];
+    nomeProj: any;
 
-  constructor(private carService: CarService, private messageService: MessageService) {  
+  constructor(private projetosService: ProjetosService, private messageService: MessageService, private router: Router) {  
     
     this.data = {
       datasets: [{
@@ -56,11 +79,57 @@ export class ProjetosComponent implements OnInit {
       ]*/
   }
 
-  }
+  this.localidades = [
+        { label: 'Todos', value: null },
+        { label: 'Arraial do Cabo', value: 'Arraial do Cabo' },
+        { label: 'Cabo Frio', value: 'Cabo Frio' },
+        { label: 'Iguaba Grande', value: 'Iguaba Grande' },
+        { label: 'São Pedro da Aldeia', value: 'São Pedro' },
+        { label: 'Armação dos Búzios', value: 'Búzios' },
+        { label: 'ETA', value: 'ETA' }
+    ];
 
+    this.stats = [
+        { label: 'Não Iniciado', value: 'Não Iniciado'},
+        { label: 'Em Andamento', value: 'Em Andamento' },
+        { label: 'Concluído', value: 'Concluído' },
+        { label: 'Paralisado', value: 'Paralisado' },
+        { label: 'Não se Aplica', value: 'Não se Aplica' },
+    ];
+
+    this.area = [
+        { label: 'Comercial', value: 'Comercial' },
+        { label: 'Operacional', value: 'Operacional' },
+        { label: 'Servicos', value: 'Servicos' },
+        { label: 'Planejamento', value: 'Planejamento' }
+    ]
+
+    this.rad = [
+        { label: '2019', value: 2019 },
+        { label: '2020', value: 2020 },
+        { label: '2021', value: 2021 },
+        { label: '2022', value: 2022 }
+    ]
+
+    this.indices = [
+        { label: '01', value: 1 },
+        { label: '02', value: 2 },
+        { label: '03', value: 3 },
+        { label: '04', value: 4 },
+        { label: '05', value: 5 },
+    ];
+
+  }
   ngOnInit() {
+      sessionStorage.removeItem('idProjeto')
+      sessionStorage.removeItem('nomeProjeto')
     
-    this.carService.getProjetos().then(cars => this.cars = cars);
+    
+    this.projetosService.projetos()
+    .subscribe(res => {
+        console.log(res)
+        this.projetos = res
+    });
 
     this.municipio = [
         { label: 'Todos', value: null },
@@ -69,7 +138,7 @@ export class ProjetosComponent implements OnInit {
         { label: 'Iguaba Grande', value: 'Iguaba Grande' },
         { label: 'São Pedro da Aldeia', value: 'São Pedro' },
         { label: 'Armação dos Búzios', value: 'Búzios' },
-        { label: 'ETA', value: 'Mercedes' }
+        { label: 'ETA', value: 'ETA' }
     ];
 
     this.status = [
@@ -80,18 +149,91 @@ export class ProjetosComponent implements OnInit {
     ];
 
     this.cols = [
-        { field: 'nProjeto', header: 'N° Projeto' },
-        { field: 'nome', header: 'Nome' },
-        { field: 'status', header: 'Status' },
-        { field: 'tipo', header: 'Tipo' },
-        { field: 'segmento', header: 'Segmento' },
-        { field: 'municipio', header: 'Município' },
-        { field: 'marco', header: 'Marco' }
+        { field: 'projetoId', header: 'N° Projeto' },
+        { field: 'projeto', header: 'Nome' },
+        { field: 'statusgloblal', header: 'Status' },
+        { field: 'setor', header: 'Setor' },
+        //{ field: 'responsavel', header: 'Responsavel' },
+        //{ field: 'localidade', header: 'Município' }, 
+        { field: 'radar', header: 'Marco' }
     ]; 
   }
 
   abrir(){
-      window.open("/mainprojeto")
+      sessionStorage.setItem('idProjeto',this.selectedProjeto['projetoId'])
+      sessionStorage.setItem('nomeProjeto',this.selectedProjeto['projeto'])
+      this.router.navigate(['/mainprojeto']);
+  }
+
+  enviar(){
+
+        
+        this.inserir = {
+            projetoId: null,
+            projeto: this.nomeProject,
+            localidade: this.local,
+            setor: this.setor,
+            responsavel: null,
+            statusgloblal: this.stat,
+            radar: this.radar,
+            gravidade: this.valGravidade,
+            urgencia: this.valUrgencia,
+            tendencia: this.valTendencia,
+            inicioprevisto: null,
+            inicioreplanejado: null,
+            iniciorealizado: null,
+            terminoprevisto: null,
+            terminoreplanejado: null,
+            terminorealizado: null,
+            financeiro: {},
+            contratacao: {},
+            obra: {},
+            comissionamento: {},
+            comprovacao: {},
+            licoes: {},
+            sesuite: {
+                sesuiteId: null,
+                cognosid: null,
+                nprojeto: null,
+                unidade: null,
+                escopo: null,
+                justificativa: null,
+                premissas: null,
+                nvengenharia: null,
+                responsavel: null,
+                preenchimento: null,
+                area: null,
+                email: null,
+                tel: null,
+                teveinvestimento: null,
+                envolve: null,
+                tipo: null,
+                corebusiness: null,
+                negocioexistente: null,
+                principalmotivacao: null,
+                melhoraempresa: null,
+                delineado: null,
+                beneficios: {},
+                direcionamento: { },
+                licenca: {},
+                riscoscontratual: {},
+                riscosoperacionais: {}
+            }
+        };
+
+      this.projetosService.projetosAdd(this.inserir)
+      .subscribe(res=>{console.log(res)
+        this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!', 
+                    detail:'Dados enviados com sucesso!'});
+                    this.dialogVisible = false
+                    //this.router.navigate(['/inputindicadores']);
+                    location.reload();
+        },
+        error =>  { 
+            this.messageService.add({severity:'error', summary: "Dados não Enviados!", 
+            detail:error.message, life: 5000});
+            console.log(error)
+        })
   }
 
   onYearChange(event, dt) {

@@ -11,6 +11,10 @@
                         <div class="item"><p-multiSelect [options]="municipio" defaultLabel="Engenharia(Projeto)" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect  [options]="municipio" defaultLabel="Financeiro(Capex)" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect [options]="municipio" defaultLabel="Licenciamentos" ></p-multiSelect></div>
+                        </section>
+                    </div>
+                    <div style="text-align: center; padding-top: 15px">
+                        <section class="grid grid-auto-flow-1">
                         <div class="item"><p-multiSelect  [options]="municipio" defaultLabel="Contratação" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect [options]="municipio" defaultLabel="Engenharia(Obra)" ></p-multiSelect></div>
                         <div class="item"><p-multiSelect  [options]="municipio" defaultLabel="Comissionamento" ></p-multiSelect></div>
@@ -20,12 +24,13 @@
                 </p-panel>
               <h1>Portfólio</h1>
                 
-                  <p-table #dt [columns]="cols" [value]="cars"  [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="selectedCar1" dataKey="nProjeto">
+                  <p-table #dt [columns]="cols" [value]="projetos"  [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="selectedProjeto" dataKey="projetoId">
                       <ng-template pTemplate="caption">
                           <div style="text-align: right; height: 30px;">       
                               <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                               <input type="text" pInputText size="40" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto; margin-top: 10px;margin-right: 15px">
                               <button type="button" pButton icon="ui-icon-receipt" iconPos="left" label="Exportar Dados" (click)="dt.exportCSV({selectionOnly:true})" style="float:right;background: #1B82D7;"></button>
+                              <button type="button" label="Novo Projeto" icon="ui-icon-open-in-new" (click)="dialogVisible=true" style="float:right;background: #1B82D7;margin-right: 10px" pButton></button>
                           </div>
                       </ng-template>
                       <ng-template pTemplate="header" let-columns>
@@ -58,9 +63,9 @@
                       <ng-template pTemplate="summary">
                           
                             <div style="text-align: left">
-                                Projeto selecionado: {{selectedCar1 ? selectedCar1.nProjeto + ' - ' + selectedCar1.nome + ' - ' + selectedCar1.status + ' - ' + selectedCar1.municipio: 'none'}}
+                                Projeto selecionado: {{selectedProjeto ? selectedProjeto.projetoId + ' - ' + selectedProjeto.projeto : 'Nenhum projeto selecionado'}}
                             </div>
-                            <button type="button"  routerLink="/mainprojeto"  pButton icon="ui-icon-receipt" iconPos="left" label="Abrir Projeto"  style="float:right;background: #1B82D7;margin-top: -25px;"></button>
+                            <button type="button"  (click)="abrir()"  pButton icon="ui-icon-receipt" iconPos="left" label="Abrir Projeto"  style="float:right;background: #1B82D7;margin-top: -25px;"></button>
                         </ng-template>
                     </div>
                     
@@ -70,4 +75,114 @@
                   
         </div>
     </div>
+
+    <!--Box de Cadastro-->
+    <p-dialog header="Cadastro" [resizable]="true" responsive="true" [(visible)]="dialogVisible">
+        <div class="ui-g">
+            <div  div class="ui-g-12">
+              <div class="card card-w-title" >
+                  <div  style="margin-top: 20px; margin-bottom: 50px;">
+                      <span class="md-inputfield">
+                          <input id="input"[(ngModel)]="nomeProject" type="text" size="60" pInputText/>
+                          <label>Nome do Projeto</label>
+                      </span>
+               </div>
+              <section class="grid grid-auto-flow-1">
+                
+                <div class="item" >
+                  <span class="md-inputfield">
+                  <p-dropdown [options]="localidades"  [(ngModel)]="local" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                  <label >Localidade</label>
+                  </span>
+                </div>
+                <div class="item" >
+                    <span class="md-inputfield">
+                    <p-dropdown [options]="area"  [(ngModel)]= "setor" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                    <label >Área Responsável</label>
+                    </span>
+                </div>
+                <!--<div class="item" >
+                    <span class="md-inputfield">
+                    <p-multiSelect [options]="localidades"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                    <label >Responsável</label>
+                    </span>
+                  </div>-->
+              </section>
+            </div>
+
+            <div class="card card-w-title" >
+
+                <section class="grid grid-auto-flow-1">
+                <div class="item" style="margin-top: 20px" >
+                    <span class="md-inputfield">
+                    <p-dropdown [options]="stats"  [(ngModel)]="stat" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                    <label >Status Global</label>
+                    </span>
+                  </div>
+                  <div class="item" style="margin-top: 20px" >
+                      <span class="md-inputfield">
+                      <p-dropdown [options]="rad"  [(ngModel)]="radar" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                      <label >Radar</label>
+                      </span>
+                  </div>
+                </section>
+ 
+                <section class="grid grid-auto-flow-1">
+                    <div class="item" style="margin-top: 40px" >
+                        <span class="md-inputfield">
+                        <p-dropdown [options]="indices"  [(ngModel)]="valGravidade" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                        <label >Gravidade</label>
+                        </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                          <p-dropdown [options]="indices" [(ngModel)]="valUrgencia" defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                          <label >Urgência</label>
+                          </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                          <p-dropdown [options]="indices" [(ngModel)]="valTendencia"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-dropdown>
+                          <label >Tendência</label>
+                          </span>
+                      </div>
+                    </section>
+
+                <br>
+                <!--
+                <hr>
+                <div class="card card-w-title">
+                    <h2>Objetivo</h2>
+                    <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                </div>
+                <div class="card card-w-title">
+                    <h2>Descrição</h2>
+                    <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                </div>
+                <div class="card card-w-title">
+                    <h2>Premissas</h2>
+                    <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                </div>
+                <div class="card card-w-title">
+                    <h2>Restrições</h2>
+                    <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                </div>
+                <div class="card card-w-title">
+                    <h2>Riscos</h2>
+                    <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
+                </div>-->
+
+
+            </div>
+
+            </div></div>
+
+
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" label="Salvar" icon="ui-icon-save" (click)="enviar()" pButton></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+
 </div>
