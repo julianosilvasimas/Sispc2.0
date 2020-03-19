@@ -1,0 +1,220 @@
+<div class="ui-g">
+
+  <div class="card ui-g-12">
+    
+    <div class="ui-g-3" style="margin-top: 25px;">
+      <span class="md-inputfield">
+        <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+        yearRange="2000:2030" 
+        [(ngModel)]="referencia" 
+        [readonlyInput]="true"
+        (onSelect)="onChangeTime($event)">
+        </p-calendar>
+        <label>Data Referência</label>
+      </span>
+    </div>
+    
+    <div class="ui-g-3" style="margin-top: 25px;">
+      <span class="md-inputfield">
+          <input id="input" class="ui-g-4"  [(ngModel)]="aumento"  type="number" pInputText/>
+          <label>% de aumento</label>
+      </span>
+    </div>
+    
+    <div class="ui-g-3" style="margin-top: 25px;">
+      <span class="md-inputfield">
+          <input id="input" class="ui-g-4"  [(ngModel)]="tarifa"  type="number" pInputText/>
+          <label>Tarifa</label>
+      </span>
+    </div>
+
+    <div  class="ui-g-3" style="text-align: right;">
+      <button pButton type="button" icon="pi pi-search" (click)="consultar()"></button>
+    </div>
+  </div>
+</div>    
+
+
+  <p-table #dt [value]="indicadoresKWHAgua"  selectionMode="single">
+    <ng-template pTemplate="caption">
+      <div class="ui-helper-clearfix" style="text-align: left">
+          <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr style="font-weight: bold !important; font-size: 15px;">
+          <th style="width: 20px;"></th>
+          <th>Data</th>
+          <th style="background-color: rgba(176, 196, 222, 0.431);">Volume Orçado</th>
+          <th style="background-color: rgba(176, 196, 222, 0.431);">Volume Realizado</th>
+          <th style="width: 1px;"></th>
+          <th style="background-color: lightsteelblue;">Orçado kW</th>
+          <th style="background-color: lightsteelblue;">Real. kW Ind.</th>
+          <th style="background-color: lightsteelblue;">Real. kW Gestal</th>
+          <th style="background-color: lightsteelblue;">Real. kW + %</th>
+          <th style="background-color: lightsteelblue;">Orçado. kW/m³</th>
+          <th style="background-color: lightsteelblue;">Real. kW/m³</th>
+          <th style="width: 1px;"></th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Orçado R$</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ Ind.</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ Gestal</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ + %</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Orçado R$/m³</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$/m³</th>
+          <!-- <th></th> -->
+        </tr>
+    </ng-template>
+    <ng-template let-linha  let-i="rowIndex" pTemplate="body">
+      <tr [pSelectableRow]="linha"  style="font-size: 13px;">
+        <td>
+          <button label="..." (click)="destrinchar(linha.dataindicador, (indicadoresKWHAguaGestalTotal[i] * aumento))"></button>
+        </td>
+        <td>{{linha.dataindicador}}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.431);">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].orcado.toFixed(2) : 0 }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.431);">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].realizado.toFixed(2) : 0 }}</td>
+        <td></td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.orcado.toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.realizado.toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length == 0 ? 0 : indicadoresKWHAguaGestalTotal[i].toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * aumento).toFixed(2) }}</td>
+        <th style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>
+        <th style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>
+        <th></th> 
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ (linha.orcado * tarifa).toFixed(2) }}</td>
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ (linha.realizado * tarifa).toFixed(2) }}</td>
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * tarifa).toFixed(2) }}</td>
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i]  * aumento * tarifa).toFixed(2) }}</td>
+        <th style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>
+        <th style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento * tarifa)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>
+      </tr>
+    </ng-template>
+  </p-table>
+
+<!-- EDITAR CADASTRO DO BOT -->
+<p-dialog header="Lista de Lançamentos" [(visible)]="dialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="indicadoresKWHAguaGestalFiltrados" >
+    <div class="ui-g-12" style="text-align: right;">
+      <button pButton type="button" icon="pi pi-plus" (click)="inserirRegistro()"></button>
+    </div>
+    <p-table #dt [value]="indicadoresKWHAguaGestalFiltrados" selectionMode="single">
+      <ng-template pTemplate="header">
+          <tr style="font-weight: bold !important; font-size: 15px;">
+            <th>Data</th>
+            <th>Nome Local</th>
+            <th>Consumo kWh</th>
+            <th></th>
+          </tr>
+      </ng-template>
+      <ng-template let-linha  let-i="rowIndex" pTemplate="body">
+        <tr [pSelectableRow]="linha"  style="font-size: 13px;">
+            <td>{{linha.dataIndicador}}</td>
+            <td>{{linha.unidade.nomeDoEquipamento}}</td>
+            <td>{{linha.ativoConsumido.toFixed(2)}}</td>
+            <td>
+              <button pButton type="button" icon="pi pi-check" (click)="abrirpraeditarlinha(linha)"></button>
+            </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+</p-dialog>
+
+<p-dialog header="Novo Registro" [(visible)]="crud" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}">
+  <div class="ui-g" *ngIf="crud" >
+
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <p-dropdown [autoWidth]="true" filter="true" optionLabel="nomeDoEquipamento"  [(ngModel)]="NovoRegistroMedidor" styleClass = "drop95" [options]="listaDeMedidores"></p-dropdown>
+        <label >Medidor</label>
+      </span>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 25px;">
+      <span class="md-inputfield">
+        <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+        yearRange="2000:2030" 
+        [(ngModel)]="NovoRegistroData" 
+        [readonlyInput]="true"
+        (onSelect)="onChangeTime($event)"
+        [disabled]="true">
+        </p-calendar>
+        <label>Data Referência</label>
+      </span>
+    </div>
+
+
+    <div class="ui-g-12" style="margin-top: 25px;">
+      <span class="md-inputfield">
+          <input id="input" class="ui-g-4"  [(ngModel)]="NovoRegistroConsumo"  type="number" pInputText/>
+          <label>Consumo</label>
+      </span>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 25px; text-align: right;">
+      <button pButton type="button" icon="pi pi-check" (click)="inserirRegistroSalvar()"></button>
+    </div>
+
+  </div>
+</p-dialog>
+
+
+
+<p-dialog header="Editar Registro" [(visible)]="edicaoDeRegistrosGestal" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}">
+  <div class="ui-g" *ngIf="edicaoDeRegistrosGestal" >
+
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <p-dropdown [autoWidth]="true" filter="true" optionLabel="nomeDoEquipamento"  [(ngModel)]="linhaSelecionada.unidade" styleClass = "drop95" [options]="listaDeMedidores"></p-dropdown>
+        <label >Medidor</label>
+      </span>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 25px;">
+      <span class="md-inputfield">
+        <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+        yearRange="2000:2030" 
+        [(ngModel)]="linhaSelecionada.dataIndicador" 
+        [readonlyInput]="true"
+        (onSelect)="onChangeTime($event)"
+        [disabled]="true">
+        </p-calendar>
+        <label>Data Referência</label>
+      </span>
+    </div>
+
+
+    <div class="ui-g-12" style="margin-top: 25px;">
+      <span class="md-inputfield">
+          <input id="input" class="ui-g-4"  [(ngModel)]="linhaSelecionada.ativoConsumido"  type="number" pInputText/>
+          <label>Consumo</label>
+      </span>
+    </div>
+    
+    <div class="ui-g-12" style="margin-top: 25px; text-align: right;">
+      <button pButton type="button" icon="pi pi-check" (click)="editarRegistroDoGestal()"></button>
+    </div>
+
+    <p-table #dt [value]="linhaSelecionada.historicLog" selectionMode="single" [paginator]="true" [rows]="5" > 
+      <ng-template pTemplate="header">
+        <tr style="font-weight: bold !important; font-size: 15px;">
+          <th>DataAlteracao</th>
+          <th>Data</th>
+          <th>Alterador</th>
+          <th>Valor Antigo</th>
+          <th>Valor Atual</th>
+        </tr>
+      </ng-template>
+      <ng-template let-hist  let-i="rowIndex" pTemplate="body">
+        <tr [pSelectableRow]="linha"  style="font-size: 12px;">
+            <td>{{hist.timestamp}}</td>
+            <td>{{hist.dataIndicador}}</td>
+            <td>{{hist.usuario}}</td>
+            <td>{{hist.ativoConsumidoAntigo.toFixed(2)}}</td>
+            <td>{{hist.ativoConsumidoNovo.toFixed(2)}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+</p-dialog>

@@ -32,6 +32,7 @@ export class AppMenuComponent implements OnInit {
     usuProjetos: boolean = false;
     admSispc: boolean = false;
     admPerformance: boolean = false;
+    admEnergia: boolean = false;
     usuJuridicoPagamentosAprovacao: boolean = false;
 
     
@@ -57,6 +58,9 @@ export class AppMenuComponent implements OnInit {
             }else if(permissao === "ROLE_ADMIN_INDICADOR"){
                 this.usuPerformance = true
                 this.admPerformance = true
+
+            }else if(permissao === "ROLE_ADMIN_ENERGIA"){
+                this.admEnergia = true
 
             }else if(permissao === "ROLE_USER_INDICADOR"){
                 this.usuPerformance = true
@@ -258,7 +262,27 @@ export class AppMenuComponent implements OnInit {
                 });
             }
 
-            
+
+            //Energia
+            if(this.admEnergia === true){
+                this.model.push(
+                    {label: 'Energia', icon: 'wb_incandescent',
+                    items: [
+                        {
+                            label: 'Gestão de Energia', icon: 'wb_incandescent',
+                            items: [
+                                {label: 'Gestal e Forecast', icon: 'wb_incandescent' , routerLink: '/energia'}/*,
+                                {label: 'Controle de fraudes', icon: 'subject'}   */
+                            ]
+                        }/*,
+                        {label: 'Receita', icon: 'subject'},
+                        {label: 'Cobrança', icon: 'subject'},
+                        {label: 'Atendimento', icon: 'subject'},
+                        {label: 'Cadastro', icon: 'subject'}*/
+                        ]
+                    });
+                }
+
             // GLobal com pequena alteração para usuários transportes
             this.model.push(
                 {label: 'Transporte', icon: 'directions_car',

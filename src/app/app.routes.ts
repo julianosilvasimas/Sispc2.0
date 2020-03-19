@@ -41,6 +41,7 @@ import { AdminIndicadoresComponent } from './performance/admin-indicadores/admin
 import { NotificacoessispcComponent } from './notificacoessispc/notificacoessispc.component'
 import { controledepagamentosjuridicoComponent } from './controledepagamentosjuridico/controledepagamentosjuridico.component'
 import { AdminComponent } from './admin/admin.component';
+import { EnergiaComponent } from './energia/energia.component';
 
 
 
@@ -81,8 +82,8 @@ export const routes: Routes = [
             { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
             { path: 'cpjuridico', component: controledepagamentosjuridicoComponent, canActivate: [AuthGuard]},
             { path: 'indicadoresAdmin', component: AdminIndicadoresComponent, canActivate: [AuthGuard] },
+            { path: 'energia', component: EnergiaComponent},
             { path: 'rpa', component: RpaComponent},
-            // { path: 'graficos', component: RpaComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
             
         ]
