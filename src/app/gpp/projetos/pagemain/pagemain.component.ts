@@ -66,7 +66,7 @@ export class PagemainComponent implements OnInit {
   idProjeto: number;
   projeto: string;
 
-  clonedCars: { [s: string]: Engenharia; } = {};
+  clonedLines: { [s: string]: Engenharia; } = {};
   municipio: SelectItem[];
   status:SelectItem[];
 
@@ -88,6 +88,9 @@ export class PagemainComponent implements OnInit {
     fluxos: any[] = [];
     aprov: boolean;
     descrevendo: any = null;
+    delib: any[];
+    clonedLine: any;
+    selectedTipo: any;
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -184,6 +187,9 @@ export class PagemainComponent implements OnInit {
                 this.selectedFluxo = res[res.length - 1]['fluxoinvestimento']
                 
                 this.idRevisao = res.length - 1
+                console.log('capturaando numero da revisao => '+ res[res.length - 1]['regulatorioId'])
+                    this.projetosService.delibregulatorios(this.idRevisao)
+                    .subscribe(res => console.log('tentando aqui ó => '+ res))
 
                 console.log("tentei aqui => "+ this.selectedFluxo)
                 
@@ -265,10 +271,13 @@ export class PagemainComponent implements OnInit {
     ];
 
     this.cols2 = [                                                                                                                         
-      { field: 'nProcesso', header: 'Numero do Processo' },
-      { field: 'responsavel', header: 'Responsável' },
+      { field: 'ndeliberacao', header: 'Cod Deliberacao' },
+      { field: 'assunto', header: 'Assunto' },
+      { field: 'tipo', header: 'Tipo' },
       { field: 'envio', header: 'Envio' },
       { field: 'retorno', header: 'Retorno' },
+      { field: 'aprovado', header: 'Aprovação' },
+      { field: 'link', header: 'Link SeSuite' }
   ];
 
     this.cols3 = [
@@ -287,6 +296,7 @@ export class PagemainComponent implements OnInit {
   aprovarRev(){
     this.oFluxo['aprovacao'] ='Aprovada'
     //console.log(this.oFluxo)
+    
     this.atualizarRegulatorio()
   }
 
@@ -305,7 +315,7 @@ export class PagemainComponent implements OnInit {
     .subscribe(res => {
         let aux = []
         res.forEach(flu=>aux.push(flu['fluxoinvestimento']))
-        console.log('olhe aqui => '+ aux)
+        //console.log('olhe aqui => '+ aux)
         this.oFluxo = res[aux.indexOf(fluxo, 0)]
         this.selectedFluxo = this.oFluxo['fluxoinvestimento']
         this.selectedMoedaReg = this.oFluxo['moeda']
@@ -314,10 +324,11 @@ export class PagemainComponent implements OnInit {
         }else{
             this.aprov = true
         }
+        if(this.oFluxo.inicio === null){}else{
         //===============================================================//
         // * Aqui melhorar esse condicional para as diversas hipóteses * //
         //===============================================================//
-        if(this.regFimAno=null){}else{
+        if(this.regFimAno === null){}else{
             this.regIniDia =  this.oFluxo.inicio.dayOfMonth < 10 ? "0"+this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString()
             this.regIniMes =  this.oFluxo.inicio.monthValue < 10 ? "0"+this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString()
             this.regIniAno =  this.oFluxo.inicio.year.toString()
@@ -325,7 +336,25 @@ export class PagemainComponent implements OnInit {
             this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
             this.regFimAno =  this.oFluxo.termino.year.toString()
         }
-    })
+    }
+        console.log('capturaando numero da revisao => '+ this.oFluxo['regulatorioId'])
+                   this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
+                    .subscribe(res => {
+                        //console.log('tentando aqui ó => '+ res)
+                        this.delib = res
+                        this.delib.forEach(dl=>{
+                            dl.envio =this.parseResumoDate(dl.envio)
+                            dl.aprovado =this.parseResumoDate(dl.aprovado)
+                            dl.retorno =this.parseResumoDate(dl.retorno)
+                        })
+                        console.log('mudando data =>'+this.delib)
+                    }
+                    )
+
+    });
+
+    
+
   }
 
   enviarReg(cad){
@@ -340,7 +369,7 @@ export class PagemainComponent implements OnInit {
         "moeda": null,
         "projetoId": {
             "projetoId": this.idProjeto}
-    }
+    } 
 
       this.projetosService.regulatoriosAdd(this.attFluxo)
     .subscribe(
@@ -388,6 +417,7 @@ export class PagemainComponent implements OnInit {
     .subscribe(
         response => {
             if(response === null){
+                console.log(this.arrProjeto)
               this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
               detail:'Dados enviados com sucesso!'});
               console.log('Dados enviados com sucesso!')
@@ -452,6 +482,22 @@ export class PagemainComponent implements OnInit {
         return value;
       }
 
+      parseResumoDate(value){
+        if(value===null){}else{
+             let year = value.year
+             let month = value.monthValue
+             if(month < 10){
+             month = "0"+month
+             }
+             let day = value.dayOfMonth
+             if(day < 10){
+             day = "0"+day
+             } 
+             value = day+"/"+month+"/"+year
+         }
+         return value;
+       }
+
     modelaData(dia, mes, ano, discriminador){
         let vdia 
         let vmes
@@ -485,24 +531,39 @@ export class PagemainComponent implements OnInit {
         }
     }
     
+    toDate(dateStr) {
+        var parts = dateStr.split("/")
+        return new Date(parts[2], parts[1] - 1, parts[0])
+    }
     
-    onRowEditInit(car: Engenharia) {
-        this.clonedCars[car.nomeEmpresa] = {...car};
+    onRowEditInit(dados: any) {
+        this.clonedLines[dados.ndeliberacao] = {...dados};
+
     }
 
-    onRowEditSave(car: Engenharia) {
-        if (car.nomeEmpresa != null) {
-            delete this.clonedCars[car.nomeEmpresa];
-            this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
+    onRowEditSave(dados: any) {
+        
+        if (dados.ndeliberacao!= null || dados.ndeliberacao!= '' ) {
+            
+            dados.envio = this.toDate(dados.envio)
+            dados.retorno = this.toDate(dados.retorno)
+            dados.aprovado = this.toDate(dados.aprovado)
+            dados.tipo = this.selectedTipo
+
+            console.log(dados)
+            this.projetosService.delibregulatoriosAtt(dados,dados.deliberacaoId)
+
+            delete this.clonedLines[dados.ndeliberacao];
+            this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
         }
         else {
-            this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
+            this.messageService.add({severity:'error', summary: 'Error', detail:'O código da deliberação é obrigatório!'});
         }
     }
 
-    onRowEditCancel(car: Engenharia, index: number) {
-        this.cars[index] = this.clonedCars[car.nomeEmpresa];
-        delete this.clonedCars[car.nomeEmpresa];
+    onRowEditCancel(dados: any, index: number) {
+        this.cars[index] = this.clonedLines[dados.nomeEmpresa];
+        delete this.clonedLines[dados.nomeEmpresa];
     }
 
     onTabOpen($event){
