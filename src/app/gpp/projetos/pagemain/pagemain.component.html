@@ -1,11 +1,11 @@
 <div class="ui-g">
     <div class="ui-g-12">
         <div class="card card-w-title" style="text-align: center; height: 70px; background:#303C89; color:white;">
-            <h1>Projeto PRJ - {{idProjeto}} - {{projeto}}</h1>
+            <h1>Projeto PRJ - {{idProjeto}} - {{arrProjeto.projeto}}</h1>
         </div>
        </div> 
 
-        
+         
             <div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
                 <div class="ui-g">
                 <div class="ui-g-4">
@@ -55,7 +55,7 @@
                         <div class="card card-w-title" >
                             <div  style="margin-top: 20px; margin-bottom: 50px;">
                                 <span class="md-inputfield">
-                                    <input  type="text" size="60" [(ngModel)]="projeto" pInputText/>
+                                    <input  type="text" size="60" [(ngModel)]="arrProjeto.projeto" pInputText/>
                                     <label>Nome do Projeto</label>
                                 </span>
                          </div>
@@ -302,14 +302,16 @@
                             <div  div class="ui-g-12">
                                 
                                 <br>
-                                <p-table [columns]="cols2" [value]="processos" dataKey="nProcesso" editMode="row">
+                                <p-table [columns]="cols2" [value]="delib" dataKey="nProcesso" editMode="row"  >
                                     <ng-template pTemplate="caption">
                                     </ng-template>
-                                    <ng-template pTemplate="header" let-columns>
+                                    <ng-template pTemplate="header" let-columns [ngStyle]="{'width': '100%'}">
                                         <tr> 
-                                            <th *ngFor="let col of columns">
+                                            
+                                            <th  *ngFor="let col of columns">
                                                 {{col.header}}
                                             </th>
+                                            
                                             <th style="width:8em; text-align: center;">
                                                 <button type="button" icon="ui-icon-add" pButton></button>
                                             </th>
@@ -317,15 +319,99 @@
                                     </ng-template>
                                     <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
                                         <tr [pEditableRow]="rowData">
-                                            <td *ngFor="let col of columns">
+                                            
+                                            
+                                          <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <input pInputText type="text" [(ngModel)]="rowData['ndeliberacao']" >
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            {{rowData['ndeliberacao']}}
+                                                    </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+
+                                          
+
+                                            <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <input pInputText type="text" [(ngModel)]="rowData['assunto']" >
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            {{rowData['assunto']}}
+                                                    </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+
+                                          
+
+                                            <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                                {label:'', value:null},
+                                                                {label:'Informativo', value:'Informativo'},
+                                                                {label:'Deliberativo', value:'Deliberativo'}
+                                                                ]" 
+                                                                [(ngModel)]="selectedTipo" [style]="{width: '95%', height: '25px'}" >
+                                                            </p-dropdown>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            {{rowData['tipo']}}
+                                                    </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+
+                                          
+
+                                          <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['envio']"></p-calendar>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            {{rowData['envio']}}
+                                                    </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+
+                                          
+
+                                            <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['aprovado']"  ></p-calendar>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            {{rowData['aprovado']}}
+                                                    </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+
+                                          
+
+                                          <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['retorno']"  ></p-calendar>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            {{rowData['retorno']}}
+                                                    </ng-template>
+                                                </p-cellEditor>
+                                              </td>
+
+                                          <td>
                                             <p-cellEditor>
-                                                <ng-template pTemplate="input" *ngFor="let col of columns">
-                                                    <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                                                <ng-template pTemplate="input"  >
+                                                    <input pInputText type="text" [(ngModel)]="rowData['link']" >
                                                 </ng-template>
-                                              <ng-template pTemplate="output">
-                                                    {{rowData[col.field]}}
-                                              </ng-template>
-                                            </p-cellEditor>
+                                            <ng-template pTemplate="output">
+                                                    <a href="{{rowData['link']}}"><img src="assets/images/sesuite.png" style="width: 50px; margin-right: 1em; vertical-align: middle;"></a>
+                                            </ng-template>
+                                          </p-cellEditor>
                                           </td>
       
                                             <td style="text-align:center;">
