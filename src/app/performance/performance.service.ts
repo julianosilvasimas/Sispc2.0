@@ -34,62 +34,71 @@ export class PerformanceService{
         .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
      }
 
-     indicadoresByDay(indicador : number, referencia : string): Observable<Indicadores[]>{
-        return  this.http.get(`${API_CONFIG}/indicadores/${indicador}/${referencia}`) 
+     indicadoresByDay(indicador : number, dataindicador : string): Observable<Indicadores[]>{
+        return  this.http.get(`${API_CONFIG}/indicadores/${indicador}/${dataindicador}`) 
         .pipe(map((res : Indicadores[]) => res, catchError(ErrorHandler.handleError)))
      }
 
-     indicadoresAtt(exeindicadorId: any,  datareferencia: Date,  dataindicador: Date, ciclo: Number, orcado: Number, realizado: Number, pdd: Number, atendente: Number, atendimento: Number, coment: string, 
+    indicadoresAtt(exeindicadorId: any,  datareferencia: Date,  dataindicador: Date, ciclo: Number, orcado: Number, realizado: Number, pdd: Number, atendente: Number, atendimento: Number, coment: string, 
         forecast: Number, minimo: number, maximo:number, meta: number, previsao: number,   dentroprazo: number, foraprazo: number,
         dentroprazoreg: number, foraprazoreg: number, acao: string, analise, colaborador: string, indicadorId: number, unidadeId: number, vlrretido: number, forecast2: number, forecast3: number): Observable<any[]>{
             const headers = new HttpHeaders()
             .set("Content-Type", "application/json",
             );
             let bodyObj = {
-                        "exeindicadorId": exeindicadorId,
-                        "datareferencia": datareferencia,
-                        "dataindicador": dataindicador,
-                        "ciclo": ciclo,
-                        "periodicidade": "DIARIO",
-                        "orcado": orcado,
-                        "realizado": realizado,
-                        "relizadokg":0.0,
-                        "pecld": pdd,
-                        "forecast": forecast,
-                        "forecast2": forecast2,
-                        "forecast3": forecast3,
-                        "minimo": minimo,
-                        "maximo": maximo,
-                        "meta": meta,
-                        "previsao": previsao,
-                        "valorretido": vlrretido,
-                        "dentroprazo": dentroprazo,
-                        "foraprazo": foraprazo,
-                        "dentroprazoreg": dentroprazoreg,
-                        "foraprazoreg": foraprazoreg,
-                        "atendente": atendente,
-                        "atendimento": atendimento,
-                        "comentario": coment,
-                        "analise": analise,
-                        "acao": acao,
-                        "colaborador": colaborador,
-                        "indicadorId": {
-                            "indicadorId": indicadorId
-                        },
-                        "undcodigo": {
-                            "unidadeId": unidadeId
-                        }
-              };
+                "exeindicadorId": exeindicadorId,
+                "datareferencia": datareferencia,
+                "dataindicador": dataindicador,
+                "ciclo": ciclo,
+                "periodicidade": "DIARIO",
+                "orcado": orcado,
+                "realizado": realizado,
+                "relizadokg":0.0,
+                "pecld": pdd,
+                "forecast": forecast,
+                "forecast2": forecast2,
+                "forecast3": forecast3,
+                "minimo": minimo,
+                "maximo": maximo,
+                "meta": meta,
+                "previsao": previsao,
+                "valorretido": vlrretido,
+                "dentroprazo": dentroprazo,
+                "foraprazo": foraprazo,
+                "dentroprazoreg": dentroprazoreg,
+                "foraprazoreg": foraprazoreg,
+                "atendente": atendente,
+                "atendimento": atendimento,
+                "comentario": coment,
+                "analise": analise,
+                "acao": acao,
+                "colaborador": colaborador,
+                "indicadorId": {
+                    "indicadorId": indicadorId
+                },
+                "undcodigo": {
+                    "unidadeId": unidadeId
+                }
+            };
            
         return this.http.put(`${API_CONFIG}/indicadores/${exeindicadorId}`,JSON.stringify(bodyObj) , {headers},)
-                            .pipe(map(this.extractData),
-                            catchError(ErrorHandler.handleError))
-          }
+            .pipe(map(this.extractData),
+            catchError(ErrorHandler.handleError))
+    }
+
+    indicadoresAtt2(Indicador: any): Observable<any[]>{
+        const headers = new HttpHeaders()
+            .set("Content-Type", "application/json",
+            );
+        return this.http.put(`${API_CONFIG}/indicadores/${Indicador.exeindicadorId}`,JSON.stringify(Indicador) , {headers},)
+            .pipe(map(this.extractData),
+            catchError(ErrorHandler.handleError))
+    }
 
     private extractData(res: Response[]) {
         let body = res;
         return body;
-        }
+    }
     /*
      indicadoresAtt(indicadores: Indicadores[]): Observable<Indicadores[]>{
             const headers = new HttpHeaders()

@@ -20,7 +20,7 @@ export interface UsuarioDTO{
     nome: string,
     email: string,
     login: string
-    ativo: boolean,
+    ativo: any,
     senha: string,
     gerenciaId: any[],
     supervisaoId: any[],

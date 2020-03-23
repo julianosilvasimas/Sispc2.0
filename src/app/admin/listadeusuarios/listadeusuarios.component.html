@@ -123,12 +123,11 @@
       <ng-template let-perfil pTemplate="item">
         <div class="ui-helper-clearfix">
           <div class="ui-g">
-            <div class="ui-g-3" >
-              <button pButton type="button" label="!" class="ui-button-rounded ui-button-info"></button>
-            </div>
-            <div class="ui-g-9">
+            <!-- <div class="ui-g-3" >
+              <button pButton type="button"   label="!" class="ui-button-rounded ui-button-info" ></button>
+            </div> -->
+            <div class="ui-g-9"  pTooltip="{{perfil.descricao}}" tooltipPosition="bottom">
               {{perfil.perfil}}
-              
             </div>
           </div>
         </div>

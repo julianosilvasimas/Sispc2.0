@@ -50,6 +50,42 @@ export class EnergiaService {
     catchError(ErrorHandler.handleError))
   }
   
+
+
+//CENARIOS
+
+  LerCenario(id){
+    return this.http.get(`${API_CONFIG}/cenariosenergia/${id}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+  LerCenarios(){
+    return this.http.get(`${API_CONFIG}/cenariosenergia`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
+  InserirCenario(bodyObj): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.post(`${API_CONFIG}/cenariosenergia`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
+
+  UpdateCenario(bodyObj): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.put(`${API_CONFIG}/cenariosenergia/${bodyObj.id}`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
+
+  atualizarIndicadores(bodyObj, idkw, idrs, idkwm3, idrsm3): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.put(`${API_CONFIG}/cenariosenergia/atualizarIndicadores/${idkw}/${idrs}/${idkwm3}/${idrsm3}`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
+
+
+
   private extractData(res: Response[]) {
     let body = res;
     return body;

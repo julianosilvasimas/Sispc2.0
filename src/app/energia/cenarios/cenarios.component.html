@@ -1,0 +1,173 @@
+<!-- EDITAR CADASTRO DO BOT -->
+<p-dialog header="Lista de Cenários" [(visible)]="dialogSelectCenario" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '80%', height: '80%'}"  (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="dialogSelectCenario" >
+    
+    
+    <p-table #dt [value]="listaCenarios"  selectionMode="single"  [paginator]="true" [rows]="10">
+
+      <ng-template pTemplate="header" let-columns>
+          <tr style="font-weight: bold !important; font-size: 15px;">
+            <th>Id</th>
+            <th>Data</th>
+            <th>Nome do Cenário</th>
+            <th>Usuário</th>
+            <th>Tarifa</th>
+            <th>% de Aumento</th>
+            <th></th>
+          </tr>
+      </ng-template>
+
+      <ng-template let-linha  let-i="rowIndex" pTemplate="body">
+        <tr [pSelectableRow]="linha"  style="font-size: 13px;">
+          <td>{{linha.id}}</td> 
+          <td>{{linha.importadoParaIndicadores}}</td>
+          <td>{{linha.nomeDoCenario}}</td>
+          <td>{{linha.usuario}}</td>
+          <td>{{linha.tarifa}}</td>
+          <td>{{linha.aumento}}</td>
+          <td>
+            <button pButton type="button" label="Selecionar Cenário"  (click)="secionarCenario(linha)"></button>
+          </td>
+        </tr>
+
+      </ng-template>
+
+    </p-table>
+  </div>
+</p-dialog>
+
+<p-progressBar *ngIf="carregando===true" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
+
+<!-- =================================================================================================================================================[] -->
+<!-- DADOS DE CENÁRIOS -->
+<div class="ui-g"  *ngIf="dialogSelectTabela"> 
+  <div class="card ui-g-12">
+    <div class="ui-g-12" >
+      <div class="ui-g-3">
+        <h1>{{ selecionadoCenario.nomeDoCenario }}</h1>
+      </div>
+      <div class="ui-g-3" style="font-size: 15px; margin-top: 10px;">
+        Salvo por: {{ selecionadoCenario.usuario }}
+      </div>
+      <div class="ui-g-3" style="font-size: 15px; margin-top: 10px;">
+        Data do Salvamento: {{ selecionadoCenario.importadoParaIndicadores }}
+      </div>
+      <div class="ui-g-3" style="font-size: 15px; margin-top: 10px;">
+        Classificação: {{ selecionadoCenario.classificacao === 1 ? "Água" : "Esgoto" }}
+      </div>
+    </div>
+    <div class="ui-g-3" style="margin-top: 25px;">
+      <span class="md-inputfield">
+        <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+        yearRange="2000:2030" 
+        [(ngModel)]="selecionadoCenario.dataReferencia" 
+        [readonlyInput]="true"
+        (onSelect)="onChangeTime($event)">
+        </p-calendar>
+        <label>Data Referência</label>
+      </span>
+    </div>
+    
+    <div class="ui-g-3" style="margin-top: 25px;">
+      <span class="md-inputfield">
+          <input id="input" class="ui-g-4"  [(ngModel)]="selecionadoCenario.aumento"  type="number" pInputText/>
+          <label>% de aumento</label>
+      </span>
+    </div>
+    
+    <div class="ui-g-2" style="margin-top: 25px;">
+      <span class="md-inputfield">
+          <input id="input" class="ui-g-4"  [(ngModel)]="selecionadoCenario.tarifa"  type="number" pInputText/>
+          <label>Tarifa</label>
+      </span>
+    </div>    
+    
+    <div  class="ui-g-2" style="margin-top: 25px;">
+      <button pButton type="button" icon="pi pi-check" label="Selecionar outro Cenário" (click)="outroCenario()"></button>
+    </div>
+
+    <div  class="ui-g-2" style="margin-top: 25px;">
+      <button pButton type="button" icon="pi pi-check" label="Enviar para Indicadores" (click)="enviarParaIndicadores()"></button>
+    </div>
+  </div>
+</div>    
+
+<!-- ============================================================================================================================================================== -->
+<!-- TABELA -->
+  <p-table #dt [value]="selecionadoCenario.cenariosLinhas"  selectionMode="single"  *ngIf="dialogSelectTabela" >
+    <ng-template pTemplate="caption">
+      <div class="ui-helper-clearfix" style="text-align: left">
+          <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr style="font-weight: bold !important; font-size: 15px;">
+          <th style="width: 20px;"></th>
+          <th>Data</th>
+          <th style="background-color: rgba(176, 196, 222, 0.431);">Volume Orçado</th>
+          <th style="background-color: rgba(176, 196, 222, 0.431);">Volume Realizado</th>
+          <th style="width: 1px;"></th>
+          <th style="background-color: lightsteelblue;">Orçado kWh</th>
+          <th style="background-color: lightsteelblue;">Real. kWh Ind.</th>
+          <th style="background-color: lightsteelblue;">Real. kWh Gestal</th>
+          <th style="background-color: lightsteelblue;">Real. kWh + %</th>
+          <th style="background-color: lightsteelblue;">Orçado. kWh/m³</th>
+          <th style="background-color: lightsteelblue;">Real. kWh/m³</th>
+          <th style="width: 1px;"></th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Orçado R$</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ Ind.</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ Gestal</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ + %</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Orçado R$/m³</th>
+          <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$/m³</th>
+          <!-- <th></th> -->
+        </tr>
+    </ng-template>
+    <ng-template let-linha pTemplate="body">
+      <tr [pSelectableRow]="linha"  style="font-size: 13px;">
+        <td>
+          <button label="..." (click)="destrinchar(linha.unidades)"></button>
+        </td>
+        <td>{{linha.dataIndicador}}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.431);">{{ linha.volumeOrcado.toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.431);">{{ linha.volumeRealizado.toFixed(2) }}</td>
+        <td></td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.orcadoIndkWh === null ? "-" : linha.orcadoIndkWh.toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.realIndkWh === null ? "-" : linha.realIndkWh.toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.realGestalkWh === null ? "-" : linha.realGestalkWh.toFixed(2) }}</td>
+        <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.realGestalPorcentagemkWh === null ? "-" : linha.realGestalPorcentagemkWh.toFixed(2) }}</td>
+        <th style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.orcadokWhM3 === null ? "-" : linha.orcadokWhM3.toFixed(2) }}</th>
+        <th style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.realizadokWhM3 === null ? "-" : linha.realizadokWhM3.toFixed(2) }}</th>
+        <th></th> 
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ linha.orcadoIndRS ===null ? "-" : linha.orcadoIndRS.toFixed(2) }}</td>
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ linha.realIndRS ===null ? "-" : linha.realIndRS.toFixed(2) }}</td>
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ linha.realGestalRS ===null ? "-" : linha.realGestalRS.toFixed(2) }}</td>
+        <td style="background-color: rgba(211, 211, 211, 0.541);">{{ linha.realGestalPorcentagemRS ===null ? "-" : linha.realGestalPorcentagemRS.toFixed(2) }}</td>
+        <th style="background-color: rgba(211, 211, 211, 0.541);">{{ linha.orcadoRSM3 ===null ? "-" : linha.orcadoRSM3.toFixed(2) }}</th>
+        <th style="background-color: rgba(211, 211, 211, 0.541);">{{ linha.realizadoRSM3 ===null ? "-" : linha.realizadoRSM3.toFixed(2) }}</th>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <!-- VER REGISTROS QUE COMPOEM O VALOR TOTAL -->
+  <p-dialog header="Lista de Lançamentos" [(visible)]="dialogSelectUnidade" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}">
+    <div class="ui-g" *ngIf="listaUnidadesDoCenario" >
+      <p-table #dt [value]="listaUnidadesDoCenario" selectionMode="single">
+        <ng-template pTemplate="header">
+            <tr style="font-weight: bold !important; font-size: 15px;">
+              <th>Data</th>
+              <th>Nome Local</th>
+              <th>Consumo kWhh</th>
+            </tr>
+        </ng-template>
+        <ng-template let-linha  let-i="rowIndex" pTemplate="body">
+          <tr [pSelectableRow]="linha"  style="font-size: 13px;">
+              <td>{{linha.dataIndicador}}</td>
+              <td>{{linha.nomeLocal}}</td>
+              <td>{{linha.consumo.toFixed(2)}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+  
+    </div>
+  </p-dialog>

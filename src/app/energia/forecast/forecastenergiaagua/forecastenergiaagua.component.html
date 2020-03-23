@@ -1,7 +1,5 @@
 <div class="ui-g">
-
   <div class="card ui-g-12">
-    
     <div class="ui-g-3" style="margin-top: 25px;">
       <span class="md-inputfield">
         <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
@@ -21,21 +19,25 @@
       </span>
     </div>
     
-    <div class="ui-g-3" style="margin-top: 25px;">
+    <div class="ui-g-2" style="margin-top: 25px;">
       <span class="md-inputfield">
           <input id="input" class="ui-g-4"  [(ngModel)]="tarifa"  type="number" pInputText/>
           <label>Tarifa</label>
       </span>
     </div>
 
-    <div  class="ui-g-3" style="text-align: right;">
+    <div  class="ui-g-2" style="text-align: right;">
       <button pButton type="button" icon="pi pi-search" (click)="consultar()"></button>
     </div>
+    <div  class="ui-g-2" style="text-align: right;" *ngIf="carregando===false">
+      <button pButton type="button" icon="pi pi-check" label="Salvar Cenario" (click)="AbrirSalvamentoDeCenarios()"></button>
+    </div>
+    
   </div>
 </div>    
+  <p-progressBar *ngIf="carregando===true" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
 
-
-  <p-table #dt [value]="indicadoresKWHAgua"  selectionMode="single">
+  <p-table #dt [value]="indicadoresKWHAgua" *ngIf="carregando===false"  selectionMode="single"  (onRowSelect)="destrinchar($event, (indicadoresKWHAguaGestalTotal[i] * aumento))" >
     <ng-template pTemplate="caption">
       <div class="ui-helper-clearfix" style="text-align: left">
           <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
@@ -48,12 +50,12 @@
           <th style="background-color: rgba(176, 196, 222, 0.431);">Volume Orçado</th>
           <th style="background-color: rgba(176, 196, 222, 0.431);">Volume Realizado</th>
           <th style="width: 1px;"></th>
-          <th style="background-color: lightsteelblue;">Orçado kW</th>
-          <th style="background-color: lightsteelblue;">Real. kW Ind.</th>
-          <th style="background-color: lightsteelblue;">Real. kW Gestal</th>
-          <th style="background-color: lightsteelblue;">Real. kW + %</th>
-          <th style="background-color: lightsteelblue;">Orçado. kW/m³</th>
-          <th style="background-color: lightsteelblue;">Real. kW/m³</th>
+          <th style="background-color: lightsteelblue;">Orçado kWh</th>
+          <th style="background-color: lightsteelblue;">Real. kWh Ind.</th>
+          <th style="background-color: lightsteelblue;">Real. kWh Gestal</th>
+          <th style="background-color: lightsteelblue;">Real. kWh + %</th>
+          <th style="background-color: lightsteelblue;">Orçado. kWh/m³</th>
+          <th style="background-color: lightsteelblue;">Real. kWh/m³</th>
           <th style="width: 1px;"></th>
           <th style="background-color: rgba(119, 136, 153, 0.726);">Orçado R$</th>
           <th style="background-color: rgba(119, 136, 153, 0.726);">Real. R$ Ind.</th>
@@ -77,20 +79,20 @@
         <td style="background-color: rgba(176, 196, 222, 0.65);">{{ linha.realizado.toFixed(2) }}</td>
         <td style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length == 0 ? 0 : indicadoresKWHAguaGestalTotal[i].toFixed(2) }}</td>
         <td style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * aumento).toFixed(2) }}</td>
-        <th style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>
+        <th style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 :indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>
         <th style="background-color: rgba(176, 196, 222, 0.65);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>
         <th></th> 
         <td style="background-color: rgba(211, 211, 211, 0.541);">{{ (linha.orcado * tarifa).toFixed(2) }}</td>
         <td style="background-color: rgba(211, 211, 211, 0.541);">{{ (linha.realizado * tarifa).toFixed(2) }}</td>
         <td style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * tarifa).toFixed(2) }}</td>
         <td style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i]  * aumento * tarifa).toFixed(2) }}</td>
-        <th style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>
+        <th style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 :indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>
         <th style="background-color: rgba(211, 211, 211, 0.541);">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento * tarifa)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>
       </tr>
     </ng-template>
   </p-table>
 
-<!-- EDITAR CADASTRO DO BOT -->
+<!-- VER REGISTROS QUE COMPOEM O VALOR TOTAL -->
 <p-dialog header="Lista de Lançamentos" [(visible)]="dialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '50%'}"  (onAfterHide)="onDialogHide()">
   <div class="ui-g" *ngIf="indicadoresKWHAguaGestalFiltrados" >
     <div class="ui-g-12" style="text-align: right;">
@@ -101,7 +103,7 @@
           <tr style="font-weight: bold !important; font-size: 15px;">
             <th>Data</th>
             <th>Nome Local</th>
-            <th>Consumo kWh</th>
+            <th>Consumo kWhh</th>
             <th></th>
           </tr>
       </ng-template>
@@ -120,6 +122,8 @@
   </div>
 </p-dialog>
 
+
+<!-- INSERIR NOVO REGISTRO POR UNIDADE, CASO JA TENHA O BACKEND ALTERA O REGISTRO E SALVA NO LOG -->
 <p-dialog header="Novo Registro" [(visible)]="crud" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}">
   <div class="ui-g" *ngIf="crud" >
 
@@ -160,6 +164,7 @@
 
 
 
+<!-- EDITAR REGISTRO POR UNIDADE -->
 <p-dialog header="Editar Registro" [(visible)]="edicaoDeRegistrosGestal" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}">
   <div class="ui-g" *ngIf="edicaoDeRegistrosGestal" >
 
@@ -216,5 +221,36 @@
       </ng-template>
     </p-table>
 
+  </div>
+</p-dialog>
+
+
+<!-- CENÁRIOS -->
+<p-dialog header="Cadastro de Cenário/Importacao para Indicadores" [(visible)]="criacaoDeCenarios" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '30%'}">
+  <div class="ui-g" *ngIf="criacaoDeCenarios" >
+
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <input id="input" class="ui-g-12"  [(ngModel)]="NomeCenario"  type="text" pInputText/>
+        <label >Nome do Cenário</label>
+      </span>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 25px;">
+      <span class="md-inputfield">
+        <p-calendar view="month" dateFormat="yy-mm-dd" [yearNavigator]="true"
+        yearRange="2000:2030" 
+        [(ngModel)]="DataReferencia" 
+        [readonlyInput]="true"
+        (onSelect)="onChangeTime($event)"
+        [disabled]="true">
+        </p-calendar>
+        <label>Data Referência</label>
+      </span>
+    </div>
+
+    <div class="ui-g-12" style="margin-top: 25px; text-align: center;">
+      <button pButton type="button" icon="pi pi-check" label="Salvar Cenário" (click)="SalvarCenario()"></button>
+    </div>
   </div>
 </p-dialog>
