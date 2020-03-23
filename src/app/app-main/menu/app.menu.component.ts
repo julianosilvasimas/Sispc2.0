@@ -25,6 +25,9 @@ export class AppMenuComponent implements OnInit {
 
     indicadores: any[];
     gerencias: any[];
+
+    usuDesenvolvimento: boolean = false
+
     usuPerformance: boolean = false;
     usuComissao: boolean = false;
     usuTransporte: boolean = false;
@@ -36,7 +39,6 @@ export class AppMenuComponent implements OnInit {
     usuJuridicoPagamentosAprovacao: boolean = false;
 
     
-
     ngOnInit() {
 
         //Preencehendo array de permissoes e liberando acessos
@@ -49,6 +51,11 @@ export class AppMenuComponent implements OnInit {
                 this.usuPerformance = true
                 this.usuComissao = true
                 this.usuTransporte = true
+                this.admEnergia = true
+
+            }else if(permissao === "ROLE_DESENVOLVIMENTO"){
+                this.usuDesenvolvimento = true
+
             }else if(permissao === "ROLE_USER_COMISSAO"){
                 this.usuComissao = true
 
@@ -144,7 +151,7 @@ export class AppMenuComponent implements OnInit {
             }
            
             //Em Construção...
-            if(this.permissoes[1] === "ROLE_DESENVOLVIMENTO"){ // usado temporariamente esse perfil por estar ain
+            if(this.usuDesenvolvimento = true){ // usado temporariamente esse perfil por estar ain
                 this.model.push( 
                     {label: 'Planejamento', icon: 'equalizer',
                         items: [
@@ -269,9 +276,16 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Energia', icon: 'wb_incandescent',
                     items: [
                         {
-                            label: 'Gestão de Energia', icon: 'wb_incandescent',
+                            label: 'Equipamentos', icon: 'wb_incandescent', routerLink: '/energiaGestal'
+                        },
+                        {
+                            label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
+                        },
+                        {
+                            label: 'Forecast', icon: 'monetization_on',
                             items: [
-                                {label: 'Gestal e Forecast', icon: 'wb_incandescent' , routerLink: '/energia'}/*,
+                                {label: 'Forecast Agua', icon: 'monetization_on' , routerLink: '/forecastAgua'},
+                                {label: 'Forecast Esgoto', icon: 'monetization_on' , routerLink: '/forecastEsgoto'}/*,
                                 {label: 'Controle de fraudes', icon: 'subject'}   */
                             ]
                         }/*,

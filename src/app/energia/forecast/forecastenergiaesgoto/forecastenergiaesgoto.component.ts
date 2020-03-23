@@ -13,22 +13,18 @@ import { CsvDataService } from 'src/app/csv-data.service';
 export class ForecastenergiaesgotoComponent implements OnInit {
 
   constructor(private messageService: MessageService,private service: AdminIndicadoresService, private service2: EnergiaService) { }
-
+  
+  carregando:boolean = false
   referencia
   UnidadesDaClasse
   classificacao =2
   classificacaoXindicadorkW = this.classificacao== 1 ? 12 : 13
 
-
   ngOnInit() {
-      // this.referencia = '2020-03-01'
-      // this.consultar()
   }
 
   onChangeTime(event){
     this.referencia = this.referencia.toISOString().substr(0,10)
-    // console.log(this.referencia)
-    
   }
 
   //TODAS AS EEATS 12 kwh
@@ -47,6 +43,7 @@ export class ForecastenergiaesgotoComponent implements OnInit {
   tarifa = 0.84
 
   consultar(){
+    this.carregando = true
     this.indicadoresVolume = []
     this.indicadoresKWHAgua = []
     this.indicadoresKWHAguaGestalFiltrados = []
@@ -65,6 +62,7 @@ export class ForecastenergiaesgotoComponent implements OnInit {
         this.service2.realizadoKw(dateini,datefim,this.classificacao).subscribe(
           response=>{
             this.MontarArraySomandoKwPorDia(this.indicadoresKWHAgua, response);
+            this.carregando = false
           }
         )
       }
@@ -99,6 +97,7 @@ export class ForecastenergiaesgotoComponent implements OnInit {
   }
 
   salvarCSV(){
+    this.carregando = true
     this.ArrayGigante = []
     for(var i =0;i<this.indicadoresKWHAgua.length;i++){
 
@@ -126,6 +125,7 @@ export class ForecastenergiaesgotoComponent implements OnInit {
     }
     
     CsvDataService.exportToCsv('test.csv', this.ArrayGigante);
+    this.carregando = false
   }
 
 
@@ -135,7 +135,8 @@ export class ForecastenergiaesgotoComponent implements OnInit {
   listaDeMedidores
 
   destrinchar(data, valorTotal){
-    if(valorTotal>0){
+    console.log(data)
+    if(this.indicadoresKWHAguaGestal.length>0){
       this.indicadoresKWHAguaGestalFiltrados = []
       this.indicadoresKWHAguaGestalFiltrados = this.indicadoresKWHAguaGestal.filter((unidades) => {
         return unidades.dataIndicador.substring(0,10) === data;
@@ -247,11 +248,130 @@ export class ForecastenergiaesgotoComponent implements OnInit {
         this.messageService.add({severity: 'danger', summary: 'Erro', detail: 'Ocorreu algum problema'});
       }
     )
-
   }
 
+  //====================================================================================================================================
+  //ÁREA DE MANIPULAÇÃO DE CENÁRIOS
+    criacaoDeCenarios: boolean = false
+    NomeCenario
+    DataReferencia
+    CadCenario:any
+    CenarioLinhas:any[] = []
+
+
+    AbrirSalvamentoDeCenarios(){
+      this.DataReferencia = this.referencia
+      this.criacaoDeCenarios = true
+    }
+
+    SalvarCenario(){
+      this.carregando = true
+      var reference: string = this.referencia
+      this.criacaoDeCenarios = false
+      this.CadCenario={
+        id: null,
+        importadoParaIndicadores: null,
+        dataReferencia: reference,
+        nomeDoCenario: this.NomeCenario,
+        tarifa: this.tarifa,
+        aumento: this.aumento,
+        usuario: sessionStorage.getItem('nome'),
+        classificacao: this.classificacao 
+      }
+      console.log(this.CadCenario)
+
+      this.service2.InserirCenario(this.CadCenario).subscribe(
+        response=>{
+
+          this.CadCenario = response
+
+          for(var i =0;i<this.indicadoresKWHAgua.length;i++){
+            var linha = this.indicadoresKWHAgua[i]
+
+            var unidades = []
+            var valortotal = (this.indicadoresKWHAguaGestalTotal[i] * this.aumento)
+          
+            var unidadesBruto =  this.carregarUnidades(linha.dataindicador, valortotal)
+            // console.log(unidadesBruto)
+
+            for(var j =0;j<unidadesBruto.length;j++){
+              unidades.push(
+                {
+                  id:null,
+                  dataIndicador: linha.dataindicador,
+                  nomeLocal: unidadesBruto[j].unidade.nomeDoEquipamento,
+                  consumo: unidadesBruto[j].ativoConsumido
+
+                }
+              )
+            }
+            this.CenarioLinhas.push(
+              {
+                id: null,
+                dataIndicador: linha.dataindicador,
+
+                volumeOrcado: this.indicadoresVolume[i].orcado.toFixed(4),
+                volumeRealizado: this.indicadoresVolume[i].realizado.toFixed(4), 
+
+                orcadoIndkWh: linha.orcado.toFixed(4), 
+                realIndkWh: linha.realizado.toFixed(4), 
+                realGestalkWh: this.indicadoresKWHAguaGestalTotal[i].toFixed(4), 
+                realGestalPorcentagemkWh: (this.indicadoresKWHAguaGestalTotal[i] * this.aumento).toFixed(4), 
+
+                orcadoIndRS: (linha.orcado * this.tarifa) === 0 ? 0 : (linha.orcado * this.tarifa).toFixed(4), 
+                realIndRS: (linha.realizado * this.tarifa) === Infinity ? 0 : (linha.realizado * this.tarifa).toFixed(4), 
+                realGestalRS: (this.indicadoresKWHAguaGestalTotal[i] * this.tarifa) === Infinity ? 0 : (this.indicadoresKWHAguaGestalTotal[i] * this.tarifa).toFixed(4), 
+                realGestalPorcentagemRS: (this.indicadoresKWHAguaGestalTotal[i]  * this.aumento * this.tarifa) === Infinity ? 0 : (this.indicadoresKWHAguaGestalTotal[i]  * this.aumento * this.tarifa).toFixed(4), 
+
+                orcadokWhM3: ((linha.orcado)/this.indicadoresVolume[i].orcado) === Infinity ? 0 : ((linha.orcado)/this.indicadoresVolume[i].orcado).toFixed(4), 
+                realizadokWhM3: ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento)/this.indicadoresVolume[i].realizado) === Infinity ? 0 : ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento)/this.indicadoresVolume[i].realizado).toFixed(4), 
+                orcadoRSM3:  ((linha.orcado * this.tarifa)/this.indicadoresVolume[i].orcado) === Infinity ? 0 : ((linha.orcado * this.tarifa)/this.indicadoresVolume[i].orcado).toFixed(4), 
+                realizadoRSM3: ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa)/this.indicadoresVolume[i].realizado) === Infinity ? 0 : ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa)/this.indicadoresVolume[i].realizado).toFixed(4), 
+                
+                unidades: unidades
+              }
+            )
+          }
+          this.CadCenario.cenariosLinhas = this.CenarioLinhas
+          console.log(this.CadCenario)
+          this.service2.UpdateCenario(this.CadCenario).subscribe(
+            response=>{
+              this.messageService.add({severity: 'success', summary: 'Sucesso', detail: 'Dados enviados com Sucesso'});
+              this.indicadoresVolume = []
+              this.indicadoresKWHAgua = []
+              this.criacaoDeCenarios = false
+              this.carregando = false
+            },
+            erro=>{
+              this.messageService.add({severity: 'danger', summary: 'Erro', detail: 'ERRO'});
+              this.carregando = false
+            }
+          )
+        }
+      )
+    }
+    carregarUnidades(data, valorTotal):any[]{
+      var indicadoresKWHAguaGestalFiltrados: any[] = []
+      indicadoresKWHAguaGestalFiltrados = this.indicadoresKWHAguaGestal.filter((unidades) => {
+        return unidades.dataIndicador.substring(0,10) === data;
+      })
+      for(var i = 0;i<indicadoresKWHAguaGestalFiltrados.length;i++){
+        valorTotal = valorTotal- indicadoresKWHAguaGestalFiltrados[i].ativoConsumido
+      }
+      indicadoresKWHAguaGestalFiltrados.push(
+        {
+          dataIndicador: data,
+          unidade: {
+            nomeDoEquipamento: "% das outras unidades"
+          },
+          ativoConsumido: valorTotal,
+        }
+      )
+      return indicadoresKWHAguaGestalFiltrados;
+    }
+
+  //====================================================================================================================================
 }
 // this.UnidadesDaClasse = response.filter((unidades) => {
 //   return unidades.classificacao === this.classificacao;
 // })
-

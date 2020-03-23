@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuarios, Permissoes } from "../usuarios.model";
+import { Usuarios, Permissoes, UsuarioDTO } from "../usuarios.model";
 import { AdminService } from './../Admin.service';
 import {MessageService} from 'primeng/api';
 
@@ -73,7 +73,9 @@ export class ListadeusuariosComponent implements OnInit {
 
   //====================================================================================
 
-  updateUser(usuario: Usuarios){
+  updateUser(usuario: UsuarioDTO){
+    console.log(usuario)
+    usuario.ativo = usuario.ativo === true ? 1 : 0;
     this.adminserv.updateUsers(usuario).subscribe(
       response => {
         if(response === null){
@@ -133,6 +135,7 @@ export class ListadeusuariosComponent implements OnInit {
       supervisaoId: this.UsuarioEditarPermissoes.supervisaoId,
       perfis: newpermissoes
     }
+    console.log(usuarioupdatePerms)
     this.adminserv.updateUser(usuarioupdatePerms).subscribe(
       response => {
         if(response === null){
@@ -192,5 +195,9 @@ export class ListadeusuariosComponent implements OnInit {
 
   Mensagem(dado, perfil){
     this.messageService.add({sticky: true, severity:'info', summary: perfil, detail:dado, life: 500});
+  }
+  
+  mostrarInfoPerfil(perfil){
+    this.messageService.add({sticky: true, severity:'info', summary: perfil.perfil, detail:perfil.descricao, life: 5});
   }
 }

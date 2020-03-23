@@ -183,6 +183,7 @@ import { ForecastComponent } from './energia/forecast/forecast.component';
 import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergiaagua/forecastenergiaagua.component';
 import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
 import { ProjetosService } from './gpp/projetos/projetos.service';
+import { CenariosComponent } from './energia/cenarios/cenarios.component';
 
 
 
@@ -348,6 +349,7 @@ import { ProjetosService } from './gpp/projetos/projetos.service';
         ForecastComponent,
         ForecastenergiaaguaComponent,
         ForecastenergiaesgotoComponent,
+        CenariosComponent,
 
     ],
     providers: [

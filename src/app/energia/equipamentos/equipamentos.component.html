@@ -11,7 +11,7 @@
     <br><br><br>
     <div  class="ui-g-12" style="text-align: center;">SmGateMHist{{ med.baseDeDados }}.db</div>
     <br>
-    <div  class="ui-g-12">Id do indicador de kW:{{ med.indicadorKw }}</div>
+    <div  class="ui-g-12">Id do indicador de kWh:{{ med.indicadorKw }}</div>
     <div  class="ui-g-12" style="margin-top: 10px;text-align: right;">
       <button pButton type="button" icon="pi pi-plus" (click)="AbrirMedidor(med)"></button>
     </div>
@@ -157,7 +157,7 @@
     <div class="ui-g-3" style="margin-top: 45px;">
       <span class="md-inputfield">
           <input id="input" class="ui-g-12"  [(ngModel)]="selectMedidor.indicadorKw" type="number" pInputText/>
-          <label>Indicador de kW</label>
+          <label>Indicador de kWh</label>
       </span>
     </div>
     <div class="ui-g-3" style="margin-top: 45px;">
@@ -169,7 +169,7 @@
     <div class="ui-g-3" style="margin-top: 45px;">
       <span class="md-inputfield">
           <input id="input" class="ui-g-12"  [(ngModel)]="selectMedidor.indicadorkwm3" type="number" pInputText/>
-          <label>Indicador de kW/m³</label>
+          <label>Indicador de kWh/m³</label>
       </span>
     </div>
     <div class="ui-g-3" style="margin-top: 45px;">
