@@ -32,7 +32,7 @@
                                     </div>
                                   </div>
                             </div>
-                    </div>
+                    </div> 
 
                     <div class="ui-g-12">
                         <p-steps [model]="fasesProjetos"></p-steps>
@@ -313,7 +313,7 @@
                                             </th>
                                             
                                             <th style="width:8em; text-align: center;">
-                                                <button type="button" icon="ui-icon-add" pButton></button>
+                                                <button type="button" icon="ui-icon-add" (click)= "cadDelibVisible=true" pButton></button>
                                             </th>
                                         </tr>
                                     </ng-template>
@@ -432,6 +432,94 @@
                     
 
                     </div>
+
+
+
+                    <!--Box de Cadastro-->
+    <p-dialog header="Cadastro de deliberação" [resizable]="true" responsive="true" [(visible)]="cadDelibVisible">
+        <div class="ui-g">
+
+            <div  div class="ui-g-12">
+
+                     
+
+              <div class="card card-w-title" >
+                    <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
+                    <div class="item" >
+                            <span class="md-inputfield">
+                                <input id="input" [(ngModel)]="novaDelib.ndeliberacao" type="text" size="25" pInputText/>
+                            <label >Cód. deliberação</label>
+                            </span>
+                          </div>
+                          <div class="item" >
+                              <span class="md-inputfield">
+                                    <input id="input" [(ngModel)]="novaDelib.assunto" type="text" size="25" pInputText/>
+                              <label >Assunto</label>
+                              </span>
+                          </div> 
+                        </section>
+                  <div  style="margin-top: 20px; margin-bottom: 50px;">
+                      <span class="md-inputfield">
+                          <input id="input" [(ngModel)]="novaDelib.link" type="text" size="60" pInputText/>
+                          <label>Link para SeSuite</label>
+                      </span>
+               </div>
+               
+              <section class="grid grid-auto-flow-1">
+                
+                <div class="item" >
+                  <span class="md-inputfield">
+                  <p-dropdown [options]="[
+                  {label:'', value:null},
+                  {label:'Informativo', value:'Informativo'},
+                  {label:'Deliberativo', value:'Deliberativo'}
+                  ]" 
+                  [(ngModel)]="novaDelib.tipo" [style]="{width: '95%', height: '25px'}" >
+                  </p-dropdown>
+                  <label >Tipo de Deliberação</label>
+                  </span>
+                </div>
+               
+              </section>
+            </div>
+
+            <div class="card card-w-title" >
+
+                <section class="grid grid-auto-flow-1">
+                    <div class="item" style="margin-top: 40px" >
+                        <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.envio"  ></p-calendar>
+                        <label >Envio</label>
+                        </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.retorno" ></p-calendar>
+                          <label >Retorno</label>
+                          </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.aprovado" ></p-calendar>
+                          <label >Aprovação</label>
+                          </span>
+                      </div>
+                    </section>
+
+                <br>
+
+
+            </div>
+
+            </div></div>
+
+
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" label="Salvar" icon="ui-icon-save" (click)="insereDelib()" pButton></button>
+            </div>
+        </p-footer>
+    </p-dialog>
 
 
 
