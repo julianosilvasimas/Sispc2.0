@@ -150,11 +150,12 @@ export class ProjetosComponent implements OnInit {
 
     this.cols = [
         { field: 'projetoId', header: 'N° Projeto' },
+        //{ field: "sesuite.sesuiteId", header: 'N° Cognos' },
         { field: 'projeto', header: 'Nome' },
         { field: 'statusgloblal', header: 'Status' },
-        { field: 'setor', header: 'Setor' },
+        //{ field: 'setor', header: 'Setor' },
         //{ field: 'responsavel', header: 'Responsavel' },
-        //{ field: 'localidade', header: 'Município' }, 
+        { field: 'localidade', header: 'Localidade' }, 
         { field: 'radar', header: 'Marco' }
     ]; 
   }

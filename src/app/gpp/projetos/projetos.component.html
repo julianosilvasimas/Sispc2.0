@@ -43,7 +43,7 @@
                               <th *ngFor="let col of columns" [ngSwitch]="col.field">
                                   <input *ngSwitchCase="'nProjeto'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
                                   <div *ngSwitchCase="'marco'">
-                                      Marco < {{yearFilter}}
+                                      Marco < {{yearFilter}} 
                                       <i class="fa fa-close" (click)="yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)" style="cursor:pointer" *ngIf="yearFilter"></i>
                                       <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010" (onChange)="onYearChange($event, dt)"></p-slider>
                                   </div>

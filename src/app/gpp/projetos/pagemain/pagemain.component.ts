@@ -20,7 +20,7 @@ export class PagemainComponent implements OnInit {
   fasesProjetos: MenuItem[];
   oFluxo: any; 
   attFluxo: any; 
-  
+   
   cars: Engenharia[];
   processos: Processos[];
   localidades: { label: string; value: string; }[];
@@ -91,6 +91,7 @@ export class PagemainComponent implements OnInit {
     delib: any[];
     clonedLine: any;
     selectedTipo: any;
+    novaDelib: any = null
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -131,6 +132,18 @@ export class PagemainComponent implements OnInit {
             "projetoId": {
                 "projetoId": this.idProjeto}
             };
+
+        this.novaDelib = {
+            "deliberacaoId": null,
+            "ndeliberacao": null,
+            "assunto": null,
+            "tipo": null, 
+            "envio": null,
+            "retorno": null,
+            "aprovado": null,
+            "link": null,
+            "regulatorio": {"regulatorioId": null}
+        }
     
    }
 
@@ -353,7 +366,27 @@ export class PagemainComponent implements OnInit {
 
     });
 
-    
+  }
+
+  insereDelib(){
+
+    this.novaDelib.regulatorio['regulatorioId'] = this.oFluxo['regulatorioId']
+    console.log(this.novaDelib)
+    this.projetosService.delibregulatoriosAdd(this.novaDelib)
+    .subscribe(
+        response => {
+            if(response === null){
+              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+              detail:'Dados enviados com sucesso!'});
+              console.log('Dados enviados com sucesso!')
+            }
+        },
+        error =>  { 
+          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+          detail:error.message, life: 5000});
+          console.log(error)
+        } 
+    )
 
   }
 
@@ -387,6 +420,40 @@ export class PagemainComponent implements OnInit {
         } 
     )
 
+  }
+
+
+  atualizarRegulatorio(){
+
+    this.attFluxo = {
+        "regulatorioId": this.oFluxo.regulatorioId,
+        "fluxoinvestimento": this.oFluxo.fluxoinvestimento,
+        "inicio": this.oFluxo.inicio,
+        "termino": this.oFluxo.termino,
+        "valorprojeto": this.oFluxo.valorprojeto,
+        "descricao": this.oFluxo.descricao,
+        "aprovacao": this.oFluxo.aprovacao,
+        "moeda": this.oFluxo.moeda,
+        "projetoId": {
+            "projetoId": this.idProjeto}
+    }
+    console.log(this.attFluxo)
+
+      this.projetosService.regulatoriosAtt(this.attFluxo, this.oFluxo.regulatorioId)
+    .subscribe(
+        response => {
+            if(response === null){
+              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+              detail:'Dados enviados com sucesso!'});
+              console.log('Dados enviados com sucesso!')
+            }
+        },
+        error =>  { 
+          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+          detail:error.message, life: 5000});
+          console.log(error)
+        } 
+    )
   }
 
   salvarGerais(){
@@ -432,38 +499,9 @@ export class PagemainComponent implements OnInit {
     
   }
 
-  atualizarRegulatorio(){
-
-    this.attFluxo = {
-        "regulatorioId": this.oFluxo.regulatorioId,
-        "fluxoinvestimento": this.oFluxo.fluxoinvestimento,
-        "inicio": this.oFluxo.inicio,
-        "termino": this.oFluxo.termino,
-        "valorprojeto": this.oFluxo.valorprojeto,
-        "descricao": this.oFluxo.descricao,
-        "aprovacao": this.oFluxo.aprovacao,
-        "moeda": this.oFluxo.moeda,
-        "projetoId": {
-            "projetoId": this.idProjeto}
-    }
-    console.log(this.attFluxo)
-
-      this.projetosService.regulatoriosAtt(this.attFluxo, this.oFluxo.regulatorioId)
-    .subscribe(
-        response => {
-            if(response === null){
-              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
-              detail:'Dados enviados com sucesso!'});
-              console.log('Dados enviados com sucesso!')
-            }
-        },
-        error =>  { 
-          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
-          detail:error.message, life: 5000});
-          console.log(error)
-        } 
-    )
-  }
+  //====================================================================================================//
+  //================================= * Métodos Auxiliares * ===========================================//
+  //====================================================================================================//
 
     //Método que transforma data formato Json para date
     parseDate(value){
@@ -544,14 +582,53 @@ export class PagemainComponent implements OnInit {
     onRowEditSave(dados: any) {
         
         if (dados.ndeliberacao!= null || dados.ndeliberacao!= '' ) {
-            
+            dados.regulatorio = null
+            dados.regulatorio = {regulatorioId :this.oFluxo['regulatorioId'] } 
+            try{
             dados.envio = this.toDate(dados.envio)
             dados.retorno = this.toDate(dados.retorno)
             dados.aprovado = this.toDate(dados.aprovado)
             dados.tipo = this.selectedTipo
 
             console.log(dados)
+            console.log(dados.deliberacaoId)
+            
             this.projetosService.delibregulatoriosAtt(dados,dados.deliberacaoId)
+            .subscribe(
+                response => {
+                    if(response === null){
+                      this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+                      detail:'Dados enviados com sucesso!'});
+                      console.log('Dados enviados com sucesso!')
+                    }
+                },
+                error =>  { 
+                  this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+                  detail:error.message, life: 5000});
+                  console.log(error)
+                } 
+            )
+            }catch{
+                console.log(dados)
+                console.log(dados.deliberacaoId)
+                
+                this.projetosService.delibregulatoriosAtt(dados,dados.deliberacaoId)
+            .subscribe(
+                response => {
+                    if(response === null){
+                      this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+                      detail:'Dados enviados com sucesso!'});
+                      console.log('Dados enviados com sucesso!')
+                    }
+                },
+                error =>  { 
+                  this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+                  detail:error.message, life: 5000});
+                  console.log(error)
+                } 
+            )
+                
+            }
 
             delete this.clonedLines[dados.ndeliberacao];
             this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
