@@ -12,17 +12,21 @@ let NotificacoesService = class NotificacoesService {
         return this.http.get(`${API_CONFIG}/notificacao`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
-    ListaDeModelosNovo(nomeTemplate, Usuarios, Assunto, Texto) {
+    ListaDeModelosNovo(id, nomeTemplate, Assunto, Texto) {
         let headers = new HttpHeaders();
-        var envio = { id: null, nomeDoTemplate: nomeTemplate, usuarios: Usuarios, assunto: Assunto, texto: Texto };
+        var envio = { id: id, nomeDoTemplate: nomeTemplate, assunto: Assunto, texto: Texto };
         console.log(envio);
         headers = headers.set('Content-Type', 'application/json');
-        headers.append('Access-Control-Allow-Methods', 'POST');
-        return this.http.post(`${API_CONFIG}/notificacao`, envio, { observe: 'response' })
+        headers.append('Access-Control-Allow-Methods', 'PUT');
+        return this.http.put(`${API_CONFIG}/notificacao/${id}`, envio, { observe: 'response' })
             .pipe(map((response) => ({ data: response.headers,
             status: response.status,
             statusTexto: response.statusText,
         })));
+    }
+    ListaDeletar(id) {
+        return this.http.delete(`${API_CONFIG}/notificacao/${id}`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
     enviarNotificacao(Usuarios, Assunto, Texto) {
         let headers = new HttpHeaders();

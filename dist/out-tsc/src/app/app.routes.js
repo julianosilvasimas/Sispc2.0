@@ -38,6 +38,10 @@ import { AdminIndicadoresComponent } from './performance/admin-indicadores/admin
 import { NotificacoessispcComponent } from './notificacoessispc/notificacoessispc.component';
 import { controledepagamentosjuridicoComponent } from './controledepagamentosjuridico/controledepagamentosjuridico.component';
 import { AdminComponent } from './admin/admin.component';
+import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergiaagua/forecastenergiaagua.component';
+import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
+import { EquipamentosComponent } from './energia/equipamentos/equipamentos.component';
+import { CenariosComponent } from './energia/cenarios/cenarios.component';
 export const routes = [
     /*  {
           path: 'tarefas',
@@ -63,19 +67,22 @@ export const routes = [
             { path: 'utils', component: UtilsDemoComponent, canActivate: [AuthGuard] },
             { path: 'documentation', component: DocumentationComponent, canActivate: [AuthGuard] },
             { path: 'inputindicadores', component: InputindicadoresComponent, canActivate: [AuthGuard] },
-            { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
-            { path: 'mainprojeto', component: PagemainComponent, canActivate: [AuthGuard] },
+            { path: 'projetos', component: ProjetosComponent },
+            { path: 'mainprojeto', component: PagemainComponent },
             { path: 'cadastrar', component: CadastrarComponent, canActivate: [AuthGuard] },
             { path: 'relatorio', component: TelaImpressaoRelatorioComponent, canActivate: [AuthGuard] },
             { path: 'painelprocess', component: PainelprocessoComponent, canActivate: [AuthGuard] },
             { path: 'agendamento', component: AgendarVeiculoComponent, canActivate: [AuthGuard] },
             { path: 'transporte', component: TransporteComponent, canActivate: [AuthGuard] },
-            { path: 'email', component: NotificacoessispcComponent },
+            { path: 'email', component: NotificacoessispcComponent, canActivate: [AuthGuard] },
             { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
             { path: 'cpjuridico', component: controledepagamentosjuridicoComponent, canActivate: [AuthGuard] },
             { path: 'indicadoresAdmin', component: AdminIndicadoresComponent, canActivate: [AuthGuard] },
+            { path: 'energiaGestal', component: EquipamentosComponent },
+            { path: 'forecastAgua', component: ForecastenergiaaguaComponent },
+            { path: 'forecastEsgoto', component: ForecastenergiaesgotoComponent },
+            { path: 'cenarios', component: CenariosComponent },
             { path: 'rpa', component: RpaComponent },
-            // { path: 'graficos', component: RpaComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
         ]
     },

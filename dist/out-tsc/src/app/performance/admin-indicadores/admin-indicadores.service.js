@@ -40,6 +40,10 @@ let AdminIndicadoresService = class AdminIndicadoresService {
         return this.http.delete(`${API_CONFIG}/cadindicadoresgraficos/${id}`)
             .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
     }
+    indicadoresByRange(data1, data2, indicador) {
+        return this.http.get(`${API_CONFIG}/indicadores/porrange/${indicador}/${data1}/${data2}`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
     indicadoresByMonth(referencia, indicador) {
         return this.http.get(`${API_CONFIG}/indicadores/pormes/${indicador}/${referencia}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));

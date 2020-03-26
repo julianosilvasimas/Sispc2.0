@@ -10,6 +10,7 @@ let AppMenuComponent = class AppMenuComponent {
         this.app = app;
         this.performanceService = performanceService;
         this.permissoes = [];
+        this.usuDesenvolvimento = false;
         this.usuPerformance = false;
         this.usuComissao = false;
         this.usuTransporte = false;
@@ -17,6 +18,7 @@ let AppMenuComponent = class AppMenuComponent {
         this.usuProjetos = false;
         this.admSispc = false;
         this.admPerformance = false;
+        this.admEnergia = false;
         this.usuJuridicoPagamentosAprovacao = false;
     }
     ngOnInit() {
@@ -30,6 +32,10 @@ let AppMenuComponent = class AppMenuComponent {
                 this.usuPerformance = true;
                 this.usuComissao = true;
                 this.usuTransporte = true;
+                this.admEnergia = true;
+            }
+            else if (permissao === "ROLE_DESENVOLVIMENTO") {
+                this.usuDesenvolvimento = true;
             }
             else if (permissao === "ROLE_USER_COMISSAO") {
                 this.usuComissao = true;
@@ -41,6 +47,9 @@ let AppMenuComponent = class AppMenuComponent {
                 this.usuPerformance = true;
                 this.admPerformance = true;
             }
+            else if (permissao === "ROLE_ADMIN_ENERGIA") {
+                this.admEnergia = true;
+            }
             else if (permissao === "ROLE_USER_INDICADOR") {
                 this.usuPerformance = true;
             }
@@ -49,6 +58,18 @@ let AppMenuComponent = class AppMenuComponent {
             }
             else if (permissao === "ROLE_ADMIN_SISPC") {
                 this.admSispc = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_ESGOTO") {
+                this.usuOperacional = true;
+                this.usuOperacionalEsgoto = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_AGUA") {
+                this.usuOperacional = true;
+                this.usuOperacionalAgua = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_ELETROMECANICA") {
+                this.usuOperacional = true;
+                this.usuEletromecanica = true;
             }
             else if (permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO") > 0) {
                 this.usuJuridicoPagamentos = true;
@@ -113,7 +134,7 @@ let AppMenuComponent = class AppMenuComponent {
                 });
             }
             //Em Construção...
-            if (this.permissoes[1] === "ROLE_DESENVOLVIMENTO") { // usado temporariamente esse perfil por estar ain
+            if (this.usuDesenvolvimento = true) { // usado temporariamente esse perfil por estar ain
                 this.model.push({ label: 'Planejamento', icon: 'equalizer',
                     items: [
                         { label: 'Informativos', icon: 'envelope', routerLink: '/email' },
@@ -137,17 +158,6 @@ let AppMenuComponent = class AppMenuComponent {
                     items: [
                         { label: 'Indicadores', icon: 'subject' },
                         { label: 'Projetos', icon: 'subject' }
-                    ]
-                }, { label: 'Operacional', icon: 'invert_colors',
-                    items: [
-                        { label: 'Operação Água', icon: 'subject' },
-                        { label: 'Operação Esgoto', icon: 'subject' },
-                        { label: 'Eletromecânica', icon: 'settings_input_component',
-                            items: [
-                                { label: 'Preventivas/Corretivas', icon: 'subject' },
-                                { label: 'Inventário', icon: 'subject' }
-                            ]
-                        },
                     ]
                 }, { label: 'Administrativo', icon: 'domain',
                     items: [
@@ -192,6 +202,30 @@ let AppMenuComponent = class AppMenuComponent {
                     ]
                 });
             }
+            if (this.usuOperacional === true) {
+                var operesg = this.usuOperacionalEsgoto === true ?
+                    { label: 'Operação Esgoto', icon: 'subject' }
+                    : null;
+                var operagu = this.usuOperacionalAgua === true ?
+                    { label: 'Operação Água', icon: 'subject' }
+                    : null;
+                var operEle = this.usuEletromecanica === true ?
+                    { label: 'Eletromecânica', icon: 'settings_input_component',
+                        items: [
+                            { label: 'Preventivas/Corretivas', icon: 'subject' },
+                            { label: 'Inventário', icon: 'subject' }
+                        ]
+                    }
+                    : null;
+                var oper = { label: 'Operacional', icon: 'invert_colors',
+                    items: [
+                        operesg,
+                        operagu,
+                        operEle
+                    ]
+                };
+                this.model.push(oper);
+            }
             //Comissão
             if (this.usuComissao === true) {
                 this.model.push({ label: 'Comercial', icon: 'monetization_on',
@@ -200,6 +234,31 @@ let AppMenuComponent = class AppMenuComponent {
                             label: 'Comissão de Fraudes', icon: 'subject',
                             items: [
                                 { label: 'Gestão de deliberações', icon: 'subject', routerLink: '/painelprocess' } /*,
+                                {label: 'Controle de fraudes', icon: 'subject'}   */
+                            ]
+                        } /*,
+                        {label: 'Receita', icon: 'subject'},
+                        {label: 'Cobrança', icon: 'subject'},
+                        {label: 'Atendimento', icon: 'subject'},
+                        {label: 'Cadastro', icon: 'subject'}*/
+                    ]
+                });
+            }
+            //Energia
+            if (this.admEnergia === true) {
+                this.model.push({ label: 'Energia', icon: 'wb_incandescent',
+                    items: [
+                        {
+                            label: 'Equipamentos', icon: 'wb_incandescent', routerLink: '/energiaGestal'
+                        },
+                        {
+                            label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
+                        },
+                        {
+                            label: 'Forecast', icon: 'monetization_on',
+                            items: [
+                                { label: 'Forecast Agua', icon: 'monetization_on', routerLink: '/forecastAgua' },
+                                { label: 'Forecast Esgoto', icon: 'monetization_on', routerLink: '/forecastEsgoto' } /*,
                                 {label: 'Controle de fraudes', icon: 'subject'}   */
                             ]
                         } /*,

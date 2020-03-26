@@ -45,6 +45,7 @@ import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergia
 import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
 import { EquipamentosComponent } from './energia/equipamentos/equipamentos.component';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
+import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
 
 
 
@@ -60,6 +61,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: HomeComponent, canActivate: [AuthGuard] },
             { path: 'dash', component: DashboardDemoComponent },
+            { path: 'appEtes', component: AplicativoEtesComponent },
             { path: 'sample', component: SampleDemoComponent, canActivate: [AuthGuard] },
             { path: 'forms', component: FormsDemoComponent, canActivate: [AuthGuard] },
             { path: 'data', component: DataDemoComponent, canActivate: [AuthGuard] },
@@ -85,10 +87,10 @@ export const routes: Routes = [
             { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
             { path: 'cpjuridico', component: controledepagamentosjuridicoComponent, canActivate: [AuthGuard]},
             { path: 'indicadoresAdmin', component: AdminIndicadoresComponent, canActivate: [AuthGuard] },
-            { path: 'energiaGestal', component: EquipamentosComponent},
-            { path: 'forecastAgua', component: ForecastenergiaaguaComponent},
-            { path: 'forecastEsgoto', component: ForecastenergiaesgotoComponent},
-            { path: 'cenarios', component: CenariosComponent},
+            { path: 'energiaGestal', component: EquipamentosComponent, canActivate: [AuthGuard]},
+            { path: 'forecastAgua', component: ForecastenergiaaguaComponent, canActivate: [AuthGuard]},
+            { path: 'forecastEsgoto', component: ForecastenergiaesgotoComponent, canActivate: [AuthGuard]},
+            { path: 'cenarios', component: CenariosComponent, canActivate: [AuthGuard]},
             { path: 'rpa', component: RpaComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
             

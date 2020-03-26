@@ -167,6 +167,17 @@ import { ImportarComponent } from './performance/admin-indicadores/importar/impo
 import { ImportarOrcadosComponent } from './performance/admin-indicadores/importar/importar-orcados/importar-orcados.component';
 import { ImportarBotsComponent } from './performance/admin-indicadores/importar/importar-bots/importar-bots.component';
 import { NotificacoesService } from './notificacoessispc/notificacoes.service';
+import { EnergiaComponent } from './energia/energia.component';
+import { EnergiaService } from './energia/energia.service';
+import { EquipamentosComponent } from './energia/equipamentos/equipamentos.component';
+import { ForecastComponent } from './energia/forecast/forecast.component';
+import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergiaagua/forecastenergiaagua.component';
+import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
+import { ProjetosService } from './gpp/projetos/projetos.service';
+import { CenariosComponent } from './energia/cenarios/cenarios.component';
+import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
+import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
+import { OperacionalComponent } from './operacional/operacional.component';
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -327,6 +338,14 @@ AppModule = tslib_1.__decorate([
             ImportarComponent,
             ImportarOrcadosComponent,
             ImportarBotsComponent,
+            EnergiaComponent,
+            EquipamentosComponent,
+            ForecastComponent,
+            ForecastenergiaaguaComponent,
+            ForecastenergiaesgotoComponent,
+            CenariosComponent,
+            OperacionalEsgotoComponent,
+            OperacionalComponent,
         ],
         providers: [
             { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -342,7 +361,10 @@ AppModule = tslib_1.__decorate([
             ControledepagamentosjuridicoService,
             AdminService,
             AdminIndicadoresService,
-            NotificacoesService
+            NotificacoesService,
+            EnergiaService,
+            ProjetosService,
+            OperacionalEsgotoService
         ],
         bootstrap: [AppComponent]
     })
