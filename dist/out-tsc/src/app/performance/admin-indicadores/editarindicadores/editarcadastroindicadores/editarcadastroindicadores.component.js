@@ -43,6 +43,7 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
             { label: "orcadoMedia", value: "orcadoMedia" },
             { label: "realizadoMedia", value: "realizadoMedia" },
             { label: "Valor Retido", value: "valorretido" },
+            { label: "Meta", value: "Meta" },
             { label: "Minimo", value: "Minimo" },
             { label: "Maximo", value: "Maximo" },
             { label: "Forecast", value: "forecast" },
@@ -93,7 +94,9 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
             { label: "Orçado Mensal", value: "orcadomensal" },
             { label: "Último Orçado", value: "ultimoorcado" },
             { label: "Orçado Acumulado", value: "orcadoacumulado" },
-            { label: "Orçado Média", value: "orcadomedia" }
+            { label: "Orçado Média", value: "orcadomedia" },
+            { label: "Mínimo Média", value: "minimo" },
+            { label: "Máximo Média", value: "maximo" },
         ];
         this.classificacoesLista =
             [
@@ -101,8 +104,9 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
                 { label: "Serviços Comerciais", value: "SERVCOMERCIAL" },
                 { label: "Comparativo", value: "CORPORATIVO" },
                 { label: "Energia", value: "ENERGIA" },
+                { label: "Faturamento", value: "FATURAMENTO" },
                 { label: "Volumes", value: "VOLUMES" },
-                { label: "Produtos Químicos", value: "PRODUTOSQU" },
+                { label: "Produtos Químicos", value: "PRODUTOSQUÍMICOS" },
                 { label: "Comerciais", value: "FATURAMENTO" },
                 { label: "Indicador Operacional", value: "INDICADOROPERACIONAL" },
                 { label: "Cobrança", value: "COBRANCA" },
@@ -142,6 +146,7 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
         });
     }
     ajustarOrdem() {
+        console.log(this.listaIndicadores);
         for (var i = 0; i < this.listaIndicadores.length; i++) {
             //CODIGO DE UPDATE COMEÇA AQUI
             var objetoDaVez = this.listaIndicadores[i];
@@ -237,13 +242,14 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
         this.indicadorSelecionado['campo4'] = this.editarIndicadorCampo4['value'];
         this.indicadorSelecionado['campoMensal'] = this.editarIndicadorCampoMensal['value'];
         this.indicadorSelecionado['gerencia'] = this.editarIndicadorGerencia['gerenciaId'];
+        console.log(this.indicadorSelecionado);
+        console.log(this.editargraficoseixos);
         for (var i = 0; i < this.editarposicoes.length; i++) {
             this.indicadorSelecionado.campoDoGraficoId[i]['tipografico'] = this.editartiposgraficos[i]['value'];
             this.indicadorSelecionado.campoDoGraficoId[i]['eixo'] = this.editargraficoseixos[i]['value'];
             this.indicadorSelecionado.campoDoGraficoId[i]['posicao'] = this.editarposicoes[i]['value'];
             this.indicadorSelecionado.campoDoGraficoId[i]['estilo'] = this.editarestilos[i] === true ? "Pontilhado" : null;
         }
-        console.log(this.indicadorSelecionado);
     }
     reloadArrays() {
         this.editargraficoseixos = [];
@@ -255,6 +261,7 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
             this.indicadorSelecionado.campoDoGraficoId = indicador['campoDoGraficoId'];
             for (var i = 0; i < this.indicadorSelecionado.campoDoGraficoId.length; i++) {
                 for (var j = 0; j < this.listaEdicaodeGraficoEixos.length; j++) {
+                    console.log(this.indicadorSelecionado.campoDoGraficoId[i].eixo);
                     if (this.listaEdicaodeGraficoEixos[j].value === this.indicadorSelecionado.campoDoGraficoId[i].eixo) {
                         this.editargraficoseixos.push(this.listaEdicaodeGraficoEixos[j]);
                         break;
@@ -275,7 +282,6 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
                 for (var j = 0; j < this.listaEdicaodeGraficoCores.length; j++) {
                     if (this.listaEdicaodeGraficoCores[j].label === this.indicadorSelecionado.campoDoGraficoId[i].coreixo) {
                         this.editarcores.push(this.listaEdicaodeGraficoCores[j].value);
-                        console.log(this.listaEdicaodeGraficoCores[j].value);
                         break;
                     }
                 }
@@ -307,6 +313,7 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
         this.data = [];
         this.options = [];
         this.atualizarDadosdoArray();
+        this.filtroGraficoData.setDate(1);
         this.filtroGraficoDataConvertida = this.FormatarData(this.filtroGraficoData);
         this.IniciaGrafico();
         this.reloadArrays();
@@ -434,8 +441,10 @@ let EditarcadastroindicadoresComponent = class EditarcadastroindicadoresComponen
     //=============================================================================================
     //GRAFICOS
     IniciaGrafico() {
+        console.log(this.filtroGraficoDataConvertida);
         this.performanceService.indicadores(this.filtroGraficoDataConvertida, this.indicadorSelecionado.indicadorId).subscribe(dados => {
             var maximo = 0;
+            console.log(dados);
             for (var i = 34; i >= 0; i--) {
                 if (dados[0][i] !== '01/01') {
                     maximo = i;

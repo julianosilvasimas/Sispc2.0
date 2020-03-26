@@ -24,8 +24,8 @@ let PerformanceService = class PerformanceService {
         return this.http.get(`${API_CONFIG}/indicadores/graficoResumo/${referencia}/${indicadorId}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
-    indicadoresByDay(indicador, referencia) {
-        return this.http.get(`${API_CONFIG}/indicadores/${indicador}/${referencia}`)
+    indicadoresByDay(indicador, dataindicador) {
+        return this.http.get(`${API_CONFIG}/indicadores/${indicador}/${dataindicador}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
     indicadoresAtt(exeindicadorId, datareferencia, dataindicador, ciclo, orcado, realizado, pdd, atendente, atendimento, coment, forecast, minimo, maximo, meta, previsao, dentroprazo, foraprazo, dentroprazoreg, foraprazoreg, acao, analise, colaborador, indicadorId, unidadeId, vlrretido, forecast2, forecast3) {
@@ -67,6 +67,12 @@ let PerformanceService = class PerformanceService {
             }
         };
         return this.http.put(`${API_CONFIG}/indicadores/${exeindicadorId}`, JSON.stringify(bodyObj), { headers })
+            .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
+    }
+    indicadoresAtt2(Indicador) {
+        const headers = new HttpHeaders()
+            .set("Content-Type", "application/json");
+        return this.http.put(`${API_CONFIG}/indicadores/${Indicador.exeindicadorId}`, JSON.stringify(Indicador), { headers })
             .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
     }
     extractData(res) {

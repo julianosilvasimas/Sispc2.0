@@ -23,36 +23,6 @@ let CarService = class CarService {
             .then(res => res.data)
             .then(data => data);
     }
-    getEngenharia() {
-        return this.http.get('assets/demo/data/projetosEngenharia.json')
-            .toPromise()
-            .then(res => res.data)
-            .then(data => data);
-    }
-    getProjetos() {
-        return this.http.get('assets/demo/data/projetos.json')
-            .toPromise()
-            .then(res => res.data)
-            .then(data => data);
-    }
-    getProcessos() {
-        return this.http.get('assets/demo/data/processos.json')
-            .toPromise()
-            .then(res => res.data)
-            .then(data => data);
-    }
-    getLicencas() {
-        return this.http.get('assets/demo/data/licencas.json')
-            .toPromise()
-            .then(res => res.data)
-            .then(data => data);
-    }
-    getIndicadores() {
-        return this.http.get('assets/demo/data/demoindicadores.json')
-            .toPromise()
-            .then(res => res.data)
-            .then(data => data);
-    }
 };
 CarService = tslib_1.__decorate([
     Injectable(),

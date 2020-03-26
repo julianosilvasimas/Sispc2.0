@@ -184,6 +184,9 @@ import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergia
 import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
 import { ProjetosService } from './gpp/projetos/projetos.service';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
+import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
+import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
+import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
 
 
 
@@ -350,6 +353,8 @@ import { CenariosComponent } from './energia/cenarios/cenarios.component';
         ForecastenergiaaguaComponent,
         ForecastenergiaesgotoComponent,
         CenariosComponent,
+        OperacionalEsgotoComponent,
+        AplicativoEtesComponent,
 
     ],
     providers: [
@@ -368,7 +373,8 @@ import { CenariosComponent } from './energia/cenarios/cenarios.component';
         AdminIndicadoresService,
         NotificacoesService,
         EnergiaService,
-        ProjetosService
+        ProjetosService,
+        OperacionalEsgotoService
     ],
     bootstrap: [AppComponent]
 })

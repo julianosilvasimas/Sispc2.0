@@ -38,6 +38,10 @@ export class AppMenuComponent implements OnInit {
     admEnergia: boolean = false;
     usuJuridicoPagamentosAprovacao: boolean = false;
 
+    usuOperacional
+    usuOperacionalAgua
+    usuOperacionalEsgoto
+    usuEletromecanica
     
     ngOnInit() {
 
@@ -77,6 +81,16 @@ export class AppMenuComponent implements OnInit {
 
             }else if(permissao === "ROLE_ADMIN_SISPC"){
                 this.admSispc = true
+
+            }else if(permissao === "ROLE_OPERACIONAL_ESGOTO"){
+                this.usuOperacional = true
+                this.usuOperacionalEsgoto = true
+            }else if(permissao === "ROLE_OPERACIONAL_AGUA"){
+                this.usuOperacional = true
+                this.usuOperacionalAgua = true
+            }else if(permissao === "ROLE_OPERACIONAL_ELETROMECANICA"){
+                this.usuOperacional = true
+                this.usuEletromecanica = true
 
             }else if(permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO")>0){
                 this.usuJuridicoPagamentos= true
@@ -166,11 +180,6 @@ export class AppMenuComponent implements OnInit {
                                     {label: 'Processos', icon: 'call_split'}
                                 ]
                             },
-                            {label: 'RPA', icon: 'pi-android',
-                            items: [
-                                    {label: 'Robos', icon: '', routerLink: '/rpa'}
-                                   ]
-                            },
                         ]
                         },
                         {label: 'Diretoria', icon: 'business_center',
@@ -179,18 +188,7 @@ export class AppMenuComponent implements OnInit {
                             {label: 'Projetos', icon: 'subject'}
                         ]
                         }
-                        ,{label: 'Operacional', icon: 'invert_colors',
-                        items: [
-                            {label: 'Operação Água', icon: 'subject'},
-                            {label: 'Operação Esgoto', icon: 'subject'},
-                            {label: 'Eletromecânica', icon: 'settings_input_component',
-                                items: [
-                                    {label: 'Preventivas/Corretivas', icon: 'subject'},
-                                    {label: 'Inventário', icon: 'subject'}
-                                ]
-                            },
-                        ]
-                        },
+                        ,
                         {label: 'Administrativo', icon: 'domain',
                         items: [
                             {label: 'Contratos', icon: 'subject'},
@@ -249,6 +247,7 @@ export class AppMenuComponent implements OnInit {
                         },
                 )
             }
+
             //Comissão
             if(this.usuComissao === true){
             this.model.push(
@@ -282,10 +281,10 @@ export class AppMenuComponent implements OnInit {
                             label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
                         },
                         {
-                            label: 'Forecast', icon: 'monetization_on',
+                            label: 'Forecast', icon: 'attach_money',
                             items: [
-                                {label: 'Forecast Agua', icon: 'monetization_on' , routerLink: '/forecastAgua'},
-                                {label: 'Forecast Esgoto', icon: 'monetization_on' , routerLink: '/forecastEsgoto'}/*,
+                                {label: 'Forecast Agua', icon: 'attach_money' , routerLink: '/forecastAgua'},
+                                {label: 'Forecast Esgoto', icon: 'attach_money' , routerLink: '/forecastEsgoto'}/*,
                                 {label: 'Controle de fraudes', icon: 'subject'}   */
                             ]
                         }/*,
@@ -320,6 +319,40 @@ export class AppMenuComponent implements OnInit {
                         ]
                     }
                 )
+            }
+
+            
+        
+            if(this.usuOperacional===true){
+                var operesg = this.usuOperacionalEsgoto===true ? 
+                {label: 'Operação Esgoto', icon: 'subject',
+                    items: [
+                        {label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink:'/appEtes'}
+                    ]
+                } 
+                : ""
+
+                var operagu = this.usuOperacionalAgua===true ? 
+                {label: 'Operação Água', icon: 'subject'} 
+                : ""
+
+                var operEle = this.usuEletromecanica===true ? 
+                {label: 'Eletromecânica', icon: 'settings_input_component',
+                    items: [
+                        {label: 'Preventivas/Corretivas', icon: 'subject'},
+                        {label: 'Inventário', icon: 'subject'}
+                    ]
+                } 
+                : ""
+
+                var oper = {label: 'Operacional', icon: 'invert_colors',
+                items: [
+                    operesg,
+                    operagu,
+                    operEle
+                    ]
+                }
+                this.model.push(oper)
             }
             
        

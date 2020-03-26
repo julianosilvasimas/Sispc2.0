@@ -50,14 +50,11 @@ let NotificacoessispcComponent = class NotificacoessispcComponent {
         this.Assunto = i.assunto;
         this.modelos = false;
     }
-    deletarModelo(i) {
-    }
     novoModelo() {
         this.novoModeloP = true;
     }
     SalvarNovoModelo() {
-        this.novoModeloP = true;
-        this.not.ListaDeModelosNovo(this.NomeDoModelo, this.email, this.Assunto, this.Texto).subscribe(response => {
+        this.not.ListaDeModelosNovo(0, this.NomeDoModelo, this.Assunto, this.Texto).subscribe(response => {
             this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
                 detail: 'Dados enviados com sucesso!' });
             console.log('Dados enviados com sucesso!');
@@ -68,6 +65,23 @@ let NotificacoessispcComponent = class NotificacoessispcComponent {
             this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
             console.log(error);
         });
+        this.novoModeloP = false;
+    }
+    //DELETAR MODELO
+    //=================================================================================================
+    deletarModelo(i) {
+        this.not.ListaDeletar(i.id).subscribe(response => {
+            this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                detail: 'Dados enviados com sucesso!' });
+            console.log('Dados enviados com sucesso!');
+            this.Assunto = "";
+            this.Texto = "";
+            this.OpcEmails = null;
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!", detail: error.message, life: 500 });
+            console.log(error);
+        });
+        this.modelos = false;
     }
 };
 NotificacoessispcComponent = tslib_1.__decorate([

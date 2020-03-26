@@ -40,6 +40,8 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
     }
     //====================================================================================
     updateUser(usuario) {
+        console.log(usuario);
+        usuario.ativo = usuario.ativo === true ? 1 : 0;
         this.adminserv.updateUsers(usuario).subscribe(response => {
             if (response === null) {
                 this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -86,6 +88,7 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
             supervisaoId: this.UsuarioEditarPermissoes.supervisaoId,
             perfis: newpermissoes
         };
+        console.log(usuarioupdatePerms);
         this.adminserv.updateUser(usuarioupdatePerms).subscribe(response => {
             if (response === null) {
                 this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -133,6 +136,9 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
     }
     Mensagem(dado, perfil) {
         this.messageService.add({ sticky: true, severity: 'info', summary: perfil, detail: dado, life: 500 });
+    }
+    mostrarInfoPerfil(perfil) {
+        this.messageService.add({ sticky: true, severity: 'info', summary: perfil.perfil, detail: perfil.descricao, life: 5 });
     }
 };
 ListadeusuariosComponent = tslib_1.__decorate([
