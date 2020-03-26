@@ -801,6 +801,28 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>ENVIAR EMAIL DE NO
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-table #dt [value]=\"ListaDeUnidades\" *ngIf=\"VisibleListaDeUnidades\"  selectionMode=\"single\" >\r\n  <ng-template pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n        <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n        <th>Identificador</th>\r\n        <th>Data da Criação</th>\r\n        <th>Unidade</th>\r\n        <th>Tipo de Tratamento</th>\r\n        <th style=\"width: 10% !important;\"></th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n    <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n      <td>{{linha.id}}</td>\r\n      <td>{{linha.dataDaCriacao}}</td>\r\n      <td>{{linha.unidade}}</td>\r\n      <td>{{linha.tipoDeTratamento}}</td>\r\n      <td >\r\n        <button pButton type=\"button\" (click)=\"selectEte(linha)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n          <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n            last_page\r\n          </span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n<div class=\"ui-g ui-md\" *ngIf=\"VisibleUnidadeSelecionada\" >\r\n  <div class=\"card ui-g-12 ui-md-12\" style=\"margin-top: 10px;\">\r\n    <div class=\"ui-g-12 ui-md-6\" >\r\n      <h1>{{UnidadeSelecionada.unidade}}</h1>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-6\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" (click)=\"voltar()\" style=\"text-align: center;border-radius: 50% 50% 50% 50%;\">\r\n        <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n          arrow_back_ios\r\n        </span>\r\n      </button>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n        De:\r\n        <p-calendar class=\"ui-g-12\" [(ngModel)]=\"DATA1\" [locale]=\"ptbr\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n        Até:\r\n        <p-calendar class=\"ui-g-12\" [(ngModel)]=\"DATA2\" [minDate]=\"DATA1\" [locale]=\"ptbr\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-g-12 ui-md-2\" *ngFor=\"let med of ListaOpcoes\">\r\n    <div class=\"card\" style=\" margin-top: 5px; height:120px;\" [ngStyle]=\"med.selected === 0 ? null : { 'background-color': '#42f593' }\">\r\n      <div class=\"ui-g-2\">\r\n        <span class=\"material-icons\" >\r\n          {{med.icon}}\r\n        </span>\r\n      </div>\r\n      <div style=\"font-weight: bold;\" class=\"ui-g-10\">{{ med.label }}</div>\r\n      <div  class=\"ui-g-12\" style=\"margin-top: 10px;text-align: right;\" >\r\n        <button pButton type=\"button\"  (click)=\"selecioanarIndicador(med)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n          <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n            remove_red_eye\r\n          </span>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n<p-table #dt [columns]=\"cols\" [value]=\"ListaDeIndicadores\" *ngIf=\"VisibleListaDeIndicadores\" [paginator]=\"true\" [rows]=\"20\">\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\">\r\n              {{col.header}}\r\n          </th>\r\n      </tr>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\" [ngSwitch]=\"col.field\">\r\n              <input *ngSwitchCase=\"'vin'\" pInputText type=\"text\" (input)=\"dt.filter($event.target.value, col.field, 'contains')\">\r\n              <div *ngSwitchCase=\"'year'\">\r\n                  Value > {{yearFilter}}\r\n                  <i class=\"pi pi-times\" (click)=\"yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)\" style=\"cursor:pointer\" *ngIf=\"yearFilter\"></i>\r\n                  <p-slider [style]=\"{'width':'100%','margin-top':'8px'}\" [(ngModel)]=\"yearFilter\" [min]=\"1970\" [max]=\"2010\" (onChange)=\"onYearChange($event, dt)\"></p-slider>\r\n              </div>\r\n              <p-dropdown *ngSwitchCase=\"'usuario'\" [options]=\"ListaFiltroUsuario\" [style]=\"{'width':'100%'}\" (onChange)=\"dt.filter($event.value, col.field, 'equals')\"></p-dropdown>\r\n              <p-dropdown *ngSwitchCase=\"'indicador'\" [options]=\"ListaFiltroindicador\" [style]=\"{'width':'100%'}\" (onChange)=\"dt.filter($event.value, col.field, 'equals')\"></p-dropdown>\r\n              <p-multiSelect *ngSwitchCase=\"'color'\" [options]=\"colors\" defaultLabel=\"All Colors\" (onChange)=\"dt.filter($event.value, col.field, 'in')\"></p-multiSelect>\r\n              <input *ngSwitchCase=\"'price'\" pInputText type=\"text\" placeholder=\"Custom - Greater Than\" (input)=\"dt.filter($event.target.value, col.field, 'custom')\">\r\n          </th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n      <tr [pSelectableRow]=\"rowData\">\r\n          <td *ngFor=\"let col of columns\">\r\n              {{rowData[col.field]}}\r\n          </td>\r\n      </tr>\r\n  </ng-template>\r\n</p-table>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/operacional-esgoto.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/operacional-esgoto.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  operacional-esgoto works!\r\n</p>\r\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/pages/app.accessdenied.component.html":
 /*!*********************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/pages/app.accessdenied.component.html ***!
@@ -1951,6 +1973,18 @@ let AppMenuComponent = class AppMenuComponent {
             else if (permissao === "ROLE_ADMIN_SISPC") {
                 this.admSispc = true;
             }
+            else if (permissao === "ROLE_OPERACIONAL_ESGOTO") {
+                this.usuOperacional = true;
+                this.usuOperacionalEsgoto = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_AGUA") {
+                this.usuOperacional = true;
+                this.usuOperacionalAgua = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_ELETROMECANICA") {
+                this.usuOperacional = true;
+                this.usuEletromecanica = true;
+            }
             else if (permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO") > 0) {
                 this.usuJuridicoPagamentos = true;
             }
@@ -2028,27 +2062,11 @@ let AppMenuComponent = class AppMenuComponent {
                                 { label: 'Processos', icon: 'call_split' }
                             ]
                         },
-                        { label: 'RPA', icon: 'pi-android',
-                            items: [
-                                { label: 'Robos', icon: '', routerLink: '/rpa' }
-                            ]
-                        },
                     ]
                 }, { label: 'Diretoria', icon: 'business_center',
                     items: [
                         { label: 'Indicadores', icon: 'subject' },
                         { label: 'Projetos', icon: 'subject' }
-                    ]
-                }, { label: 'Operacional', icon: 'invert_colors',
-                    items: [
-                        { label: 'Operação Água', icon: 'subject' },
-                        { label: 'Operação Esgoto', icon: 'subject' },
-                        { label: 'Eletromecânica', icon: 'settings_input_component',
-                            items: [
-                                { label: 'Preventivas/Corretivas', icon: 'subject' },
-                                { label: 'Inventário', icon: 'subject' }
-                            ]
-                        },
                     ]
                 }, { label: 'Administrativo', icon: 'domain',
                     items: [
@@ -2122,10 +2140,10 @@ let AppMenuComponent = class AppMenuComponent {
                             label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
                         },
                         {
-                            label: 'Forecast', icon: 'monetization_on',
+                            label: 'Forecast', icon: 'attach_money',
                             items: [
-                                { label: 'Forecast Agua', icon: 'monetization_on', routerLink: '/forecastAgua' },
-                                { label: 'Forecast Esgoto', icon: 'monetization_on', routerLink: '/forecastEsgoto' } /*,
+                                { label: 'Forecast Agua', icon: 'attach_money', routerLink: '/forecastAgua' },
+                                { label: 'Forecast Esgoto', icon: 'attach_money', routerLink: '/forecastEsgoto' } /*,
                                 {label: 'Controle de fraudes', icon: 'subject'}   */
                             ]
                         } /*,
@@ -2152,6 +2170,34 @@ let AppMenuComponent = class AppMenuComponent {
                         { label: 'Notificações', routerLink: '/email', icon: 'notifications' }
                     ]
                 });
+            }
+            if (this.usuOperacional === true) {
+                var operesg = this.usuOperacionalEsgoto === true ?
+                    { label: 'Operação Esgoto', icon: 'subject',
+                        items: [
+                            { label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink: '/appEtes' }
+                        ]
+                    }
+                    : "";
+                var operagu = this.usuOperacionalAgua === true ?
+                    { label: 'Operação Água', icon: 'subject' }
+                    : "";
+                var operEle = this.usuEletromecanica === true ?
+                    { label: 'Eletromecânica', icon: 'settings_input_component',
+                        items: [
+                            { label: 'Preventivas/Corretivas', icon: 'subject' },
+                            { label: 'Inventário', icon: 'subject' }
+                        ]
+                    }
+                    : "";
+                var oper = { label: 'Operacional', icon: 'invert_colors',
+                    items: [
+                        operesg,
+                        operagu,
+                        operEle
+                    ]
+                };
+                this.model.push(oper);
             }
         });
     } //fechando subscribe de gerencia
@@ -3152,6 +3198,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_173__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
 /* harmony import */ var _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__ = __webpack_require__(/*! ./gpp/projetos/projetos.service */ "./src/app/gpp/projetos/projetos.service.ts");
 /* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_175__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_176__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.component */ "./src/app/operacional-esgoto/operacional-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_177__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_178__ = __webpack_require__(/*! ./operacional-esgoto/aplicativo-etes/aplicativo-etes.component */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts");
+
+
+
 
 
 
@@ -3495,6 +3547,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_172__["ForecastenergiaaguaComponent"],
             _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_173__["ForecastenergiaesgotoComponent"],
             _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_175__["CenariosComponent"],
+            _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_176__["OperacionalEsgotoComponent"],
+            _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_178__["AplicativoEtesComponent"],
         ],
         providers: [
             { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
@@ -3512,7 +3566,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"],
             _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__["NotificacoesService"],
             _energia_energia_service__WEBPACK_IMPORTED_MODULE_169__["EnergiaService"],
-            _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__["ProjetosService"]
+            _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__["ProjetosService"],
+            _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_177__["OperacionalEsgotoService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
     })
@@ -3578,6 +3633,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
 /* harmony import */ var _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./energia/equipamentos/equipamentos.component */ "./src/app/energia/equipamentos/equipamentos.component.ts");
 /* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
+/* harmony import */ var _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./operacional-esgoto/aplicativo-etes/aplicativo-etes.component */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts");
+
 
 
 
@@ -3633,6 +3690,7 @@ const routes = [
         children: [
             { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_21__["HomeComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"] },
+            { path: 'appEtes', component: _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_44__["AplicativoEtesComponent"] },
             { path: 'sample', component: _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_4__["SampleDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'forms', component: _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_5__["FormsDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'data', component: _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_6__["DataDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
@@ -3658,10 +3716,10 @@ const routes = [
             { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'energiaGestal', component: _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_42__["EquipamentosComponent"] },
-            { path: 'forecastAgua', component: _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_40__["ForecastenergiaaguaComponent"] },
-            { path: 'forecastEsgoto', component: _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_41__["ForecastenergiaesgotoComponent"] },
-            { path: 'cenarios', component: _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_43__["CenariosComponent"] },
+            { path: 'energiaGestal', component: _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_42__["EquipamentosComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'forecastAgua', component: _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_40__["ForecastenergiaaguaComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'forecastEsgoto', component: _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_41__["ForecastenergiaesgotoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'cenarios', component: _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_43__["CenariosComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
             { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
         ]
@@ -10399,6 +10457,261 @@ NotificacoessispcComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_notificacoes_service__WEBPACK_IMPORTED_MODULE_2__["NotificacoesService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
 ], NotificacoessispcComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css":
+/*!**********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9hcGxpY2F0aXZvLWV0ZXMvYXBsaWNhdGl2by1ldGVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: AplicativoEtesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AplicativoEtesComponent", function() { return AplicativoEtesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+let AplicativoEtesComponent = class AplicativoEtesComponent {
+    constructor(esg, messageService) {
+        this.esg = esg;
+        this.messageService = messageService;
+        this.VisibleListaDeUnidades = false;
+        this.ptbr = {
+            firstDayOfWeek: 1,
+            dayNames: ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"],
+            dayNamesShort: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
+            dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S"],
+            monthNames: ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
+            monthNamesShort: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
+            today: 'Hoje',
+            clear: 'Limpar'
+        };
+        //===================================================================================================================================
+        //SELECIONAR TIPO DE INDICADOR
+        this.ListaOpcoes = [];
+        this.DATA1 = null;
+        this.DATA2 = null;
+        this.VisibleUnidadeSelecionada = false;
+        this.VisibleListaDeIndicadores = false;
+        this.cols = [
+            { field: 'usuario', header: 'usuario' },
+            { field: 'dataIndicador', header: 'dataIndicador' },
+            { field: 'indicador', header: 'indicador' },
+            { field: 'valor', header: 'valor' },
+            { field: 'observacao', header: 'observacao' },
+        ];
+        this.ListaFiltroUsuario = [];
+        this.ListaFiltro2Usuario = [];
+        this.ListaFiltroindicador = [];
+        this.ListaFiltro2indicador = [];
+    }
+    ngOnInit() {
+        this.getOpcoes();
+        this.esg.getunidades().subscribe(response => {
+            this.ListaDeUnidades = response;
+            this.VisibleListaDeUnidades = true;
+            // ===============================
+            // Descomentar depois do teste
+            // this.UnidadeSelecionada = this.ListaDeUnidades[1]
+            // this.VisibleListaDeUnidades = false
+            // this.VisibleUnidadeSelecionada = true
+            // this.DATA1 = new Date(2020,2,10)
+            // this.DATA2 = new Date(2020,2,14)
+            // this.selecioanarIndicador(this.ListaOpcoes[1]);
+            // ===============================
+        });
+    }
+    voltar() {
+        this.VisibleListaDeUnidades = true;
+        this.VisibleUnidadeSelecionada = false;
+        this.VisibleListaDeIndicadores = false;
+        for (var i = 0; i < this.ListaOpcoes.length; i++) {
+            this.ListaOpcoes[i].selected = 0;
+        }
+        this.DATA1 = null;
+        this.DATA2 = null;
+    }
+    getOpcoes() {
+        this.ListaOpcoes = [];
+        this.ListaOpcoes = [
+            { value: 1, selected: 0, label: "Produtos Químicos", icon: "subject" },
+            // {value:2, selected: 0, label:"Uso de Produtos Químicos",  icon:"" },
+            { value: 3, selected: 0, label: "Controle Diário", icon: "insert_chart" },
+            { value: 4, selected: 0, label: "Qualidade do Efluente", icon: "thumb_up_alt" },
+            { value: 5, selected: 0, label: "Resíduos Sólidos", icon: "bubble_chart" },
+            { value: 6, selected: 0, label: "Consumo da ETE", icon: "subject" },
+            { value: 7, selected: 0, label: "Energia", icon: "flash_on" },
+        ];
+    }
+    selectEte(ete) {
+        this.UnidadeSelecionada = ete;
+        this.VisibleListaDeUnidades = false;
+        this.VisibleUnidadeSelecionada = true;
+        this.DATA1 = null;
+        this.DATA2 = null;
+    }
+    //===================================================================================================================================
+    //DADOS DO INDICADOR
+    converterdata(date) {
+        var ano = date.getFullYear();
+        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        return ano + "-" + mes + "-" + dia;
+    }
+    selecioanarIndicador(indicador) {
+        this.VisibleListaDeIndicadores = false;
+        for (var i = 0; i < this.ListaOpcoes.length; i++) {
+            this.ListaOpcoes[i].selected = 0;
+        }
+        if (this.DATA1 === null || this.DATA2 === null) {
+            this.messageService.add({ severity: 'info', summary: 'info', detail: 'Preencha as Datas' });
+        }
+        else {
+            indicador.selected = 1;
+            //=======================================================================
+            console.log("============================================================");
+            console.log(this.UnidadeSelecionada.unidade);
+            console.log(this.converterdata(this.DATA1));
+            console.log(this.converterdata(this.DATA2));
+            console.log(indicador.value);
+            this.esg.getIndicadoresUnidade(this.UnidadeSelecionada.unidade, this.converterdata(this.DATA1), this.converterdata(this.DATA2), indicador.value).subscribe(response => {
+                console.log(response);
+                this.ListaDeIndicadores = response;
+                this.ListaFiltroUsuario = [];
+                this.ListaFiltro2Usuario = [];
+                this.ListaFiltroindicador = [];
+                this.ListaFiltro2indicador = [];
+                for (var i = 0; i < response.length; i++) {
+                    if (this.ListaFiltro2indicador.indexOf(response[i].indicador) < 0) {
+                        this.ListaFiltroindicador.push({ label: response[i].indicador, value: response[i].indicador });
+                        this.ListaFiltro2indicador.push(response[i].indicador);
+                    }
+                    if (this.ListaFiltro2Usuario.indexOf(response[i].usuario) < 0) {
+                        this.ListaFiltroUsuario.push({ label: response[i].usuario, value: response[i].usuario });
+                        this.ListaFiltro2Usuario.push(response[i].usuario);
+                    }
+                }
+                this.VisibleListaDeIndicadores = true;
+            });
+        }
+    }
+};
+AplicativoEtesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-aplicativo-etes',
+        template: __webpack_require__(/*! raw-loader!./aplicativo-etes.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html"),
+        styles: [__webpack_require__(/*! ./aplicativo-etes.component.css */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+], AplicativoEtesComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/operacional-esgoto.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/operacional-esgoto/operacional-esgoto.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9vcGVyYWNpb25hbC1lc2dvdG8uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/operacional-esgoto.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/operacional-esgoto/operacional-esgoto.component.ts ***!
+  \********************************************************************/
+/*! exports provided: OperacionalEsgotoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperacionalEsgotoComponent", function() { return OperacionalEsgotoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let OperacionalEsgotoComponent = class OperacionalEsgotoComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+OperacionalEsgotoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-operacional-esgoto',
+        template: __webpack_require__(/*! raw-loader!./operacional-esgoto.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/operacional-esgoto.component.html"),
+        styles: [__webpack_require__(/*! ./operacional-esgoto.component.css */ "./src/app/operacional-esgoto/operacional-esgoto.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], OperacionalEsgotoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/operacional-esgoto.service.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/operacional-esgoto/operacional-esgoto.service.ts ***!
+  \******************************************************************/
+/*! exports provided: OperacionalEsgotoService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperacionalEsgotoService", function() { return OperacionalEsgotoService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+let OperacionalEsgotoService = class OperacionalEsgotoService {
+    constructor(http) {
+        this.http = http;
+    }
+    getunidades() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/appesgoto/unidades`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    getIndicadoresUnidade(Unidade, de, ate, classi) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/appesgoto/unidades/${Unidade}/${de}/${ate}/${classi}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+};
+OperacionalEsgotoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], OperacionalEsgotoService);
 
 
 
