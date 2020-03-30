@@ -1,3 +1,75 @@
-<p>
-  operacional-esgoto works!
-</p>
+<p-table [columns]="cols" [value]="ListaDeUnidades" selectionMode="single" [(selection)]="UnidadeSelected" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="15">
+  <ng-template pTemplate="caption">
+      List of Cars
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+          </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+      <div style="text-align:left">
+          <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
+      </div>
+  </ng-template>    
+</p-table>
+
+<p-dialog header="Car Details" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+  <div class="ui-g ui-fluid" *ngIf="UnidadeSelected">
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="color">{{  cols [4].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+            <p-dropdown id="{{  cols[4].field  }}" filterBy="UnidadeSelected[cols[4].field],indicador.indicadorId"  [filter]="true" [options]="volumes" [showClear]="true" [(ngModel)]="UnidadeSelected[cols[4].field]" [style]="{'width':'100%'}" optionLabel="indicador"></p-dropdown>
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="vin">{{  cols[0].field }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[0].field  }}" [(ngModel)]="UnidadeSelected[cols[0].field]" [disabled]="true" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="year">{{  cols[1].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[1].field  }}" [(ngModel)]="UnidadeSelected[cols[1].field]" [disabled]="true" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="brand">{{  cols[2].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[2].field  }}" [(ngModel)]="UnidadeSelected[cols[2].field]"  autofocus/>
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="color">{{  cols [3].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[3].field  }}" [(ngModel)]="UnidadeSelected[cols[3].field]" />
+          </div>
+      </div>
+  </div>
+  <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="button" pButton icon="pi pi-check" (click)="save()" label="Save"></button>
+      </div>
+  </p-footer>
+</p-dialog>

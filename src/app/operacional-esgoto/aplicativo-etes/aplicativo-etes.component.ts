@@ -33,12 +33,12 @@ export class AplicativoEtesComponent implements OnInit {
 
         // ===============================
         // Descomentar depois do teste
-          // this.UnidadeSelecionada = this.ListaDeUnidades[1]
-          // this.VisibleListaDeUnidades = false
-          // this.VisibleUnidadeSelecionada = true
-          // this.DATA1 = new Date(2020,2,10)
-          // this.DATA2 = new Date(2020,2,14)
-          // this.selecioanarIndicador(this.ListaOpcoes[1]);
+          this.UnidadeSelecionada = this.ListaDeUnidades[1]
+          this.VisibleListaDeUnidades = false
+          this.VisibleUnidadeSelecionada = true
+          this.DATA1 = new Date(2020,2,10)
+          this.DATA2 = new Date(2020,2,14)
+          this.selecioanarIndicador(this.ListaOpcoes[0])
         // ===============================
       }
     )
@@ -60,16 +60,16 @@ export class AplicativoEtesComponent implements OnInit {
   DATA2 = null
   getOpcoes(){
     this.ListaOpcoes=[]
-    this.ListaOpcoes=[
-      {value:1, selected: 0, label:"Produtos Químicos",         icon:"subject" },
-      // {value:2, selected: 0, label:"Uso de Produtos Químicos",  icon:"" },
-      {value:3, selected: 0, label:"Controle Diário",           icon:"insert_chart" },
-      {value:4, selected: 0, label:"Qualidade do Efluente",     icon:"thumb_up_alt" },
-      {value:5, selected: 0, label:"Resíduos Sólidos",          icon:"bubble_chart" },
-      {value:6, selected: 0, label:"Consumo da ETE",            icon:"subject" },
-      {value:7, selected: 0, label:"Energia",                   icon:"flash_on" },
-    ]
+    this.esg.getclassificacoes().subscribe(
+      response=>{
+        this.ListaOpcoes = response
+        for(var i = 0; i< response.length; i++){
+          this.ListaOpcoes[i].selected = 0
+        }
+      }
+    );
   }
+
   UnidadeSelecionada
   VisibleUnidadeSelecionada: boolean = false
   selectEte(ete){
@@ -90,12 +90,14 @@ export class AplicativoEtesComponent implements OnInit {
     return ano+"-"+mes+"-"+dia
   }
 
+  ListaDeIndicadoresImodificada
   ListaDeIndicadores
   VisibleListaDeIndicadores: boolean = false
   cols= [
+    { field: 'nome', header: 'nome' },
+    { field: 'tagIndicador', header: 'tagIndicador' },
     { field: 'usuario', header: 'usuario' },
     { field: 'dataIndicador', header: 'dataIndicador' },
-    { field: 'indicador', header: 'indicador' },
     { field: 'valor', header: 'valor' },
     { field: 'observacao', header: 'observacao' },
   ];
@@ -118,23 +120,20 @@ export class AplicativoEtesComponent implements OnInit {
 
       indicador.selected = 1;
       //=======================================================================
-      console.log("============================================================")
-      console.log(this.UnidadeSelecionada.unidade)
-      console.log(this.converterdata(this.DATA1))
-      console.log(this.converterdata(this.DATA2))
-      console.log(indicador.value)
-      this.esg.getIndicadoresUnidade(this.UnidadeSelecionada.unidade,this.converterdata(this.DATA1),this.converterdata(this.DATA2),indicador.value).subscribe(
+      this.esg.getIndicadoresUnidade(this.UnidadeSelecionada.id,this.converterdata(this.DATA1),this.converterdata(this.DATA2),indicador.id).subscribe(
         response=>{
           console.log(response)
           this.ListaDeIndicadores = response
+          this.ListaDeIndicadoresImodificada = response
           this.ListaFiltroUsuario = []
           this.ListaFiltro2Usuario = []
           this.ListaFiltroindicador = []
           this.ListaFiltro2indicador = []
+
           for(var i = 0 ; i<response.length;i++){ 
-            if(this.ListaFiltro2indicador.indexOf(response[i].indicador)<0){
-              this.ListaFiltroindicador.push({label: response[i].indicador, value: response[i].indicador})
-              this.ListaFiltro2indicador.push(response[i].indicador)
+            if(this.ListaFiltro2indicador.indexOf(response[i].indicador.tagIndicador)<0){
+              this.ListaFiltroindicador.push(response[i].indicador)
+              this.ListaFiltro2indicador.push(response[i].indicador.tagIndicador)
             }
             if(this.ListaFiltro2Usuario.indexOf(response[i].usuario)<0){
               this.ListaFiltroUsuario.push({label: response[i].usuario, value: response[i].usuario})
@@ -145,6 +144,13 @@ export class AplicativoEtesComponent implements OnInit {
         }
       )
     }
+  }
+
+  pesquisar(ind,coluna){
+    this.ListaDeIndicadores = this.ListaDeIndicadoresImodificada
+    this.ListaDeIndicadores = this.ListaDeIndicadores.filter((animal) => {
+      return animal.indicador[coluna] === ind[coluna];
+    })
   }
 
 }

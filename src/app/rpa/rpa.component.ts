@@ -43,27 +43,26 @@ export class RpaComponent implements OnInit {
     this.status = [];
     this.rpaservice.cadastroBots().subscribe(
       cadastro =>{
-        this.rpaservice.statusBots().subscribe(
-          status =>{
-            for(var i =0; i<cadastro.length; i++){
+        for(var i =0; i<cadastro.length; i++){
+
+          this.rpaservice.statusBots(cadastro[i].idCad).subscribe(
+            status =>{
               this.bot.push(
                 {
-                  nomebot: cadastro[i].nomebot,
-                  status: cadastro[i].status,
-                  descricao: cadastro[i].descricao,
-                  historico: this.FiltroBot(cadastro[i].idCad, status)
-                } 
-              )
-            }
-            console.log(this.bot)
-          }
-        )
+                  nomebot: status[0].bot.nomebot,
+                  status: status[0].status,
+                  descricao: status[0].bot.descricao,
+                  historico: status
+                }
+              );
+            } 
+          )
+        }
       }
     );
-    
   }
   // PreencherBots(cadastro, status){
-    
+  // 
   //     console.log(
   //       {
   //         nomebot: cadastro[i].nomebot,
@@ -77,22 +76,13 @@ export class RpaComponent implements OnInit {
 
   FiltroBot(Bot, status){
     var statusbot = [];
-    for(var i=0; i<status.length;i++){
+    for(var i=0; i<status.length && statusbot.length<20;i++){
       if(status[i]["bot"]["idCad"] === Bot){
         statusbot.push(status[i])
       }
     }
     statusbot = statusbot.reverse();
     return statusbot;
-  }
-  async f3() {
-    // try {
-    //   var z = await 30;
-    //   this.Arrayas();
-    //   console.log("atualizado")
-    // } catch(e) {
-    //   console.log(e); // 30
-    // }
   }
 }
 

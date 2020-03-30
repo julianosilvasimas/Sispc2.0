@@ -46,6 +46,8 @@ import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenerg
 import { EquipamentosComponent } from './energia/equipamentos/equipamentos.component';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
+import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
+import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 
 
 
@@ -61,7 +63,11 @@ export const routes: Routes = [
         children: [
             { path: '', component: HomeComponent, canActivate: [AuthGuard] },
             { path: 'dash', component: DashboardDemoComponent },
+
             { path: 'appEtes', component: AplicativoEtesComponent },
+            { path: 'indicEtes', component: IndicadoresAplicativosComponent },
+            { path: 'unidadesEtes', component: OperacionalEsgotoComponent },
+
             { path: 'sample', component: SampleDemoComponent, canActivate: [AuthGuard] },
             { path: 'forms', component: FormsDemoComponent, canActivate: [AuthGuard] },
             { path: 'data', component: DataDemoComponent, canActivate: [AuthGuard] },

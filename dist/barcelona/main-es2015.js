@@ -368,7 +368,7 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Nome\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label *ngIf=\"UsuarioSelect.ativo === true\" >Ativo</label>\r\n            <label *ngIf=\"UsuarioSelect.ativo === false\" >Inativo</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.cargo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Cargo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.foto\" class=\"ui-g-12\" pInputText/>\r\n            <label >Foto</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Disponíveis\" targetHeader=\"Acessos\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <div class=\"ui-g-3\" >\r\n              <button pButton type=\"button\" label=\"!\" class=\"ui-button-rounded ui-button-info\" (click)=\"mostrarInfoPerfil(perfil)\"></button>\r\n            </div>\r\n            <div class=\"ui-g-9\">\r\n              {{perfil.perfil}}\r\n              \r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Nome\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label *ngIf=\"UsuarioSelect.ativo === true\" >Ativo</label>\r\n            <label *ngIf=\"UsuarioSelect.ativo === false\" >Inativo</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.cargo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Cargo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.foto\" class=\"ui-g-12\" pInputText/>\r\n            <label >Foto</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Disponíveis\" targetHeader=\"Acessos\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <!-- <div class=\"ui-g-3\" >\r\n              <button pButton type=\"button\"   label=\"!\" class=\"ui-button-rounded ui-button-info\" ></button>\r\n            </div> -->\r\n            <div class=\"ui-g-9\"  pTooltip=\"{{perfil.descricao}}\" tooltipPosition=\"bottom\">\r\n              {{perfil.perfil}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -614,6 +614,17 @@ module.exports = "<div class=\"ui-g\">\r\n    <div class=\"ui-g-12\">\r\n       
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/energia/cenarios/cenarios.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/energia/cenarios/cenarios.component.html ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- EDITAR CADASTRO DO BOT -->\r\n<p-dialog header=\"Lista de Cenários\" [(visible)]=\"dialogSelectCenario\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '80%', height: '80%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"dialogSelectCenario\" >\r\n    \r\n    \r\n    <p-table #dt [value]=\"listaCenarios\"  selectionMode=\"single\"  [paginator]=\"true\" [rows]=\"10\">\r\n\r\n      <ng-template pTemplate=\"header\" let-columns>\r\n          <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n            <th>Id</th>\r\n            <th>Data</th>\r\n            <th>Nome do Cenário</th>\r\n            <th>Usuário</th>\r\n            <th>Tarifa</th>\r\n            <th>% de Aumento</th>\r\n            <th></th>\r\n          </tr>\r\n      </ng-template>\r\n\r\n      <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n          <td>{{linha.id}}</td> \r\n          <td>{{linha.importadoParaIndicadores}}</td>\r\n          <td>{{linha.nomeDoCenario}}</td>\r\n          <td>{{linha.usuario}}</td>\r\n          <td>{{linha.tarifa}}</td>\r\n          <td>{{linha.aumento}}</td>\r\n          <td>\r\n            <button pButton type=\"button\" label=\"Selecionar Cenário\"  (click)=\"secionarCenario(linha)\"></button>\r\n          </td>\r\n        </tr>\r\n\r\n      </ng-template>\r\n\r\n    </p-table>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-progressBar *ngIf=\"carregando===true\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n\r\n<!-- =================================================================================================================================================[] -->\r\n<!-- DADOS DE CENÁRIOS -->\r\n<div class=\"ui-g\"  *ngIf=\"dialogSelectTabela\"> \r\n  <div class=\"card ui-g-12\">\r\n    <div class=\"ui-g-12\" >\r\n      <div class=\"ui-g-3\">\r\n        <h1>{{ selecionadoCenario.nomeDoCenario }}</h1>\r\n      </div>\r\n      <div class=\"ui-g-3\" style=\"font-size: 15px; margin-top: 10px;\">\r\n        Salvo por: {{ selecionadoCenario.usuario }}\r\n      </div>\r\n      <div class=\"ui-g-3\" style=\"font-size: 15px; margin-top: 10px;\">\r\n        Data do Salvamento: {{ selecionadoCenario.importadoParaIndicadores }}\r\n      </div>\r\n      <div class=\"ui-g-3\" style=\"font-size: 15px; margin-top: 10px;\">\r\n        Classificação: {{ selecionadoCenario.classificacao === 1 ? \"Água\" : \"Esgoto\" }}\r\n      </div>\r\n    </div>\r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"selecionadoCenario.dataReferencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"selecionadoCenario.aumento\"  type=\"number\" pInputText/>\r\n          <label>% de aumento</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-2\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"selecionadoCenario.tarifa\"  type=\"number\" pInputText/>\r\n          <label>Tarifa</label>\r\n      </span>\r\n    </div>    \r\n    \r\n    <div  class=\"ui-g-2\" style=\"margin-top: 25px;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" label=\"Selecionar outro Cenário\" (click)=\"outroCenario()\"></button>\r\n    </div>\r\n\r\n    <div  class=\"ui-g-2\" style=\"margin-top: 25px;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" label=\"Enviar para Indicadores\" (click)=\"enviarParaIndicadores()\"></button>\r\n    </div>\r\n  </div>\r\n</div>    \r\n\r\n<!-- ============================================================================================================================================================== -->\r\n<!-- TABELA -->\r\n  <p-table #dt [value]=\"selecionadoCenario.cenariosLinhas\"  selectionMode=\"single\"  *ngIf=\"dialogSelectTabela\" >\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th style=\"width: 20px;\"></th>\r\n          <th>Data</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Orçado</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Realizado</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado kWh</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Ind.</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Gestal</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh + %</th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado. kWh/m³</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh/m³</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Ind.</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Gestal</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ + %</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$/m³</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$/m³</th>\r\n          <!-- <th></th> -->\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-linha pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n        <td>\r\n          <button label=\"...\" (click)=\"destrinchar(linha.unidades)\"></button>\r\n        </td>\r\n        <td>{{linha.dataIndicador}}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ linha.volumeOrcado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ linha.volumeRealizado.toFixed(2) }}</td>\r\n        <td></td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.orcadoIndkWh === null ? \"-\" : linha.orcadoIndkWh.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realIndkWh === null ? \"-\" : linha.realIndkWh.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realGestalkWh === null ? \"-\" : linha.realGestalkWh.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realGestalPorcentagemkWh === null ? \"-\" : linha.realGestalPorcentagemkWh.toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.orcadokWhM3 === null ? \"-\" : linha.orcadokWhM3.toFixed(2) }}</th>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realizadokWhM3 === null ? \"-\" : linha.realizadokWhM3.toFixed(2) }}</th>\r\n        <th></th> \r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ linha.orcadoIndRS ===null ? \"-\" : linha.orcadoIndRS.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ linha.realIndRS ===null ? \"-\" : linha.realIndRS.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ linha.realGestalRS ===null ? \"-\" : linha.realGestalRS.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ linha.realGestalPorcentagemRS ===null ? \"-\" : linha.realGestalPorcentagemRS.toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ linha.orcadoRSM3 ===null ? \"-\" : linha.orcadoRSM3.toFixed(2) }}</th>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ linha.realizadoRSM3 ===null ? \"-\" : linha.realizadoRSM3.toFixed(2) }}</th>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n\r\n  <!-- VER REGISTROS QUE COMPOEM O VALOR TOTAL -->\r\n  <p-dialog header=\"Lista de Lançamentos\" [(visible)]=\"dialogSelectUnidade\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\">\r\n    <div class=\"ui-g\" *ngIf=\"listaUnidadesDoCenario\" >\r\n      <p-table #dt [value]=\"listaUnidadesDoCenario\" selectionMode=\"single\">\r\n        <ng-template pTemplate=\"header\">\r\n            <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n              <th>Data</th>\r\n              <th>Nome Local</th>\r\n              <th>Consumo kWhh</th>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n          <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n              <td>{{linha.dataIndicador}}</td>\r\n              <td>{{linha.nomeLocal}}</td>\r\n              <td>{{linha.consumo.toFixed(2)}}</td>\r\n          </tr>\r\n        </ng-template>\r\n      </p-table>\r\n  \r\n    </div>\r\n  </p-dialog>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/energia/energia.component.html":
 /*!**************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/energia/energia.component.html ***!
@@ -654,7 +665,7 @@ module.exports = "<p-tabMenu #tab [model]=\"items\" id=\"menu\" [activeItem]=\"a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n\r\n  <div class=\"card ui-g-12\">\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"referencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"aumento\"  type=\"number\" pInputText/>\r\n          <label>% de aumento</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"tarifa\"  type=\"number\" pInputText/>\r\n          <label>Tarifa</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div  class=\"ui-g-3\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>    \r\n\r\n\r\n  <p-table #dt [value]=\"indicadoresKWHAgua\"  selectionMode=\"single\">\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th style=\"width: 20px;\"></th>\r\n          <th>Data</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Orçado</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Realizado</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado kWh</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Ind.</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Gestal</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh + %</th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado. kWh/m³</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh/m³</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Ind.</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Gestal</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ + %</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$/m³</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$/m³</th>\r\n          <!-- <th></th> -->\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n        <td>\r\n          <button label=\"...\" (click)=\"destrinchar(linha.dataindicador, (indicadoresKWHAguaGestalTotal[i] * aumento))\"></button>\r\n        </td>\r\n        <td>{{linha.dataindicador}}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].orcado.toFixed(2) : 0 }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].realizado.toFixed(2) : 0 }}</td>\r\n        <td></td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.orcado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realizado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length == 0 ? 0 : indicadoresKWHAguaGestalTotal[i].toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * aumento).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n        <th></th> \r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.orcado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.realizado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i]  * aumento * tarifa).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento * tarifa)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n\r\n<!-- EDITAR CADASTRO DO BOT -->\r\n<p-dialog header=\"Lista de Lançamentos\" [(visible)]=\"dialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"indicadoresKWHAguaGestalFiltrados\" >\r\n    <div class=\"ui-g-12\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"inserirRegistro(indicadoresKWHAguaGestalFiltrados)\"></button>\r\n    </div>\r\n    <p-table #dt [value]=\"indicadoresKWHAguaGestalFiltrados\" selectionMode=\"single\">\r\n      <ng-template pTemplate=\"header\">\r\n          <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n            <th>Data</th>\r\n            <th>Nome Local</th>\r\n            <th>Consumo kWhh</th>\r\n            <th></th>\r\n          </tr>\r\n      </ng-template>\r\n      <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n            <td>{{linha.dataIndicador}}</td>\r\n            <td>{{linha.unidade.nomeDoEquipamento}}</td>\r\n            <td>{{linha.ativoConsumido.toFixed(2)}}</td>\r\n            <td>\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"abrirpraeditarlinha(linha)\"></button>\r\n            </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Novo Registro\" [(visible)]=\"crud\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"crud\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"NovoRegistroMedidor\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"NovoRegistroData\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"NovoRegistroConsumo\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"inserirRegistroSalvar()\"></button>\r\n    </div>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar Registro\" [(visible)]=\"edicaoDeRegistrosGestal\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"edicaoDeRegistrosGestal\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"linhaSelecionada.unidade\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"linhaSelecionada.dataIndicador\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"linhaSelecionada.ativoConsumido\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"editarRegistroDoGestal()\"></button>\r\n    </div>\r\n\r\n    <p-table #dt [value]=\"linhaSelecionada.historicLog\" selectionMode=\"single\" [paginator]=\"true\" [rows]=\"5\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th>DataAlteracao</th>\r\n          <th>Data</th>\r\n          <th>Alterador</th>\r\n          <th>Valor Antigo</th>\r\n          <th>Valor Atual</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template let-hist  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 12px;\">\r\n            <td>{{hist.timestamp}}</td>\r\n            <td>{{hist.dataIndicador}}</td>\r\n            <td>{{hist.usuario}}</td>\r\n            <td>{{hist.ativoConsumidoAntigo.toFixed(2)}}</td>\r\n            <td>{{hist.ativoConsumidoNovo.toFixed(2)}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"card ui-g-12\">\r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"referencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"aumento\"  type=\"number\" pInputText/>\r\n          <label>% de aumento</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-2\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"tarifa\"  type=\"number\" pInputText/>\r\n          <label>Tarifa</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div  class=\"ui-g-2\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar()\"></button>\r\n    </div>\r\n    <div  class=\"ui-g-2\" style=\"text-align: right;\" *ngIf=\"carregando===false\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" label=\"Salvar Cenario\" (click)=\"AbrirSalvamentoDeCenarios()\"></button>\r\n    </div>\r\n    \r\n  </div>\r\n</div>    \r\n  <p-progressBar *ngIf=\"carregando===true\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n\r\n  <p-table #dt [value]=\"indicadoresKWHAgua\" *ngIf=\"carregando===false\"  selectionMode=\"single\">\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n          <button type=\"button\" class=\"ui-button-rounded ui-button-success\" pButton iconPos=\"left\" label=\"CSV Forecast\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n          <button type=\"button\" class=\"ui-button-rounded ui-button-success\" pButton iconPos=\"left\" label=\"CSV Detalhado\" (click)=\"salvarCSV2()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th style=\"width: 20px;\"></th>\r\n          <th>Data</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Orçado</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Realizado</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado kWh</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Ind.</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Gestal</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh + %</th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado. kWh/m³</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh/m³</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Ind.</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Gestal</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ + %</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$/m³</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$/m³</th>\r\n          <!-- <th></th> -->\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n        <td>\r\n          <button label=\"...\" (click)=\"destrinchar(linha.dataindicador, (indicadoresKWHAguaGestalTotal[i] * aumento))\"></button>\r\n        </td>\r\n        <td>{{linha.dataindicador}}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].orcado.toFixed(2) : 0 }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].realizado.toFixed(2) : 0 }}</td>\r\n        <td></td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.orcado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realizado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length == 0 ? 0 : indicadoresKWHAguaGestalTotal[i].toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * aumento).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 :indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n        <th></th> \r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.orcado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.realizado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i]  * aumento * tarifa).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 :indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento * tarifa)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n\r\n<!-- VER REGISTROS QUE COMPOEM O VALOR TOTAL -->\r\n<p-dialog header=\"Lista de Lançamentos\" [(visible)]=\"dialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"indicadoresKWHAguaGestalFiltrados\" >\r\n    <div class=\"ui-g-12\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"inserirRegistro(indicadoresKWHAguaGestalFiltrados)\"></button>\r\n    </div>\r\n    <p-table #dt [value]=\"indicadoresKWHAguaGestalFiltrados\" selectionMode=\"single\">\r\n      <ng-template pTemplate=\"header\">\r\n          <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n            <th>Data</th>\r\n            <th>Nome Local</th>\r\n            <th>Consumo kWhh</th>\r\n            <th></th>\r\n          </tr>\r\n      </ng-template>\r\n      <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n            <td>{{linha.dataIndicador}}</td>\r\n            <td>{{linha.unidade.nomeDoEquipamento}}</td>\r\n            <td>{{linha.ativoConsumido.toFixed(2)}}</td>\r\n            <td>\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"abrirpraeditarlinha(linha)\"></button>\r\n            </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n<!-- INSERIR NOVO REGISTRO POR UNIDADE, CASO JA TENHA O BACKEND ALTERA O REGISTRO E SALVA NO LOG -->\r\n<p-dialog header=\"Novo Registro\" [(visible)]=\"crud\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"crud\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"NovoRegistroMedidor\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"NovoRegistroData\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"NovoRegistroConsumo\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"inserirRegistroSalvar()\"></button>\r\n    </div>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<!-- EDITAR REGISTRO POR UNIDADE -->\r\n<p-dialog header=\"Editar Registro\" [(visible)]=\"edicaoDeRegistrosGestal\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"edicaoDeRegistrosGestal\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"linhaSelecionada.unidade\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"linhaSelecionada.dataIndicador\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"linhaSelecionada.ativoConsumido\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"editarRegistroDoGestal()\"></button>\r\n    </div>\r\n\r\n    <p-table #dt [value]=\"linhaSelecionada.historicLog\" selectionMode=\"single\" [paginator]=\"true\" [rows]=\"5\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th>DataAlteracao</th>\r\n          <th>Data</th>\r\n          <th>Alterador</th>\r\n          <th>Valor Antigo</th>\r\n          <th>Valor Atual</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template let-hist  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 12px;\">\r\n            <td>{{hist.timestamp}}</td>\r\n            <td>{{hist.dataIndicador}}</td>\r\n            <td>{{hist.usuario}}</td>\r\n            <td>{{hist.ativoConsumidoAntigo.toFixed(2)}}</td>\r\n            <td>{{hist.ativoConsumidoNovo.toFixed(2)}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n<!-- CENÁRIOS -->\r\n<p-dialog header=\"Cadastro de Cenário/Importacao para Indicadores\" [(visible)]=\"criacaoDeCenarios\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"criacaoDeCenarios\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"NomeCenario\"  type=\"text\" pInputText/>\r\n        <label >Nome do Cenário</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"DataReferencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: center;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" label=\"Salvar Cenário\" (click)=\"SalvarCenario()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -665,7 +676,7 @@ module.exports = "<div class=\"ui-g\">\r\n\r\n  <div class=\"card ui-g-12\">\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n\r\n  <div class=\"card ui-g-12\">\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"referencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"aumento\"  type=\"number\" pInputText/>\r\n          <label>% de aumento</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"tarifa\"  type=\"number\" pInputText/>\r\n          <label>Tarifa</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div  class=\"ui-g-3\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>    \r\n\r\n\r\n  <p-table #dt [value]=\"indicadoresKWHAgua\"  selectionMode=\"single\">\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th style=\"width: 20px;\"></th>\r\n          <th>Data</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Orçado</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Realizado</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado kWh</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Ind.</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Gestal</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh + %</th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado. kWh/m³</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh/m³</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Ind.</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Gestal</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ + %</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$/m³</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$/m³</th>\r\n          <!-- <th></th> -->\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n        <td>\r\n          <button label=\"...\" (click)=\"destrinchar(linha.dataindicador, (indicadoresKWHAguaGestalTotal[i] * aumento))\"></button>\r\n        </td>\r\n        <td>{{linha.dataindicador}}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].orcado.toFixed(2) : 0 }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].realizado.toFixed(2) : 0 }}</td>\r\n        <td></td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.orcado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realizado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length == 0 ? 0 : indicadoresKWHAguaGestalTotal[i].toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * aumento).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n        <th></th> \r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.orcado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.realizado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i]  * aumento * tarifa).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento * tarifa)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n\r\n<!-- EDITAR CADASTRO DO BOT -->\r\n<p-dialog header=\"Lista de Lançamentos\" [(visible)]=\"dialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"indicadoresKWHAguaGestalFiltrados\" >\r\n    <div class=\"ui-g-12\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"inserirRegistro()\"></button>\r\n    </div>\r\n    <p-table #dt [value]=\"indicadoresKWHAguaGestalFiltrados\" selectionMode=\"single\">\r\n      <ng-template pTemplate=\"header\">\r\n          <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n            <th>Data</th>\r\n            <th>Nome Local</th>\r\n            <th>Consumo kWhh</th>\r\n            <th></th>\r\n          </tr>\r\n      </ng-template>\r\n      <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n            <td>{{linha.dataIndicador}}</td>\r\n            <td>{{linha.unidade.nomeDoEquipamento}}</td>\r\n            <td>{{linha.ativoConsumido.toFixed(2)}}</td>\r\n            <td>\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"abrirpraeditarlinha(linha)\"></button>\r\n            </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Novo Registro\" [(visible)]=\"crud\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"crud\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"NovoRegistroMedidor\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"NovoRegistroData\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"NovoRegistroConsumo\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"inserirRegistroSalvar()\"></button>\r\n    </div>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar Registro\" [(visible)]=\"edicaoDeRegistrosGestal\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"edicaoDeRegistrosGestal\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"linhaSelecionada.unidade\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"linhaSelecionada.dataIndicador\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"linhaSelecionada.ativoConsumido\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"editarRegistroDoGestal()\"></button>\r\n    </div>\r\n\r\n    <p-table #dt [value]=\"linhaSelecionada.historicLog\" selectionMode=\"single\" [paginator]=\"true\" [rows]=\"5\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th>DataAlteracao</th>\r\n          <th>Data</th>\r\n          <th>Alterador</th>\r\n          <th>Valor Antigo</th>\r\n          <th>Valor Atual</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template let-hist  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 12px;\">\r\n            <td>{{hist.timestamp}}</td>\r\n            <td>{{hist.dataIndicador}}</td>\r\n            <td>{{hist.usuario}}</td>\r\n            <td>{{hist.ativoConsumidoAntigo.toFixed(2)}}</td>\r\n            <td>{{hist.ativoConsumidoNovo.toFixed(2)}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"card ui-g-12\">\r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"referencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"aumento\"  type=\"number\" pInputText/>\r\n          <label>% de aumento</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-2\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"tarifa\"  type=\"number\" pInputText/>\r\n          <label>Tarifa</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div  class=\"ui-g-2\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar()\"></button>\r\n    </div>\r\n    <div  class=\"ui-g-2\" style=\"text-align: right;\" *ngIf=\"carregando===false\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" label=\"Salvar Cenario\" (click)=\"AbrirSalvamentoDeCenarios()\"></button>\r\n    </div>\r\n    \r\n  </div>\r\n</div>    \r\n  <p-progressBar *ngIf=\"carregando===true\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n\r\n  <p-table #dt [value]=\"indicadoresKWHAgua\" *ngIf=\"carregando===false\"  selectionMode=\"single\">\r\n    <ng-template pTemplate=\"caption\">\r\n      <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n        <button type=\"button\" class=\"ui-button-rounded ui-button-success\" pButton iconPos=\"left\" label=\"CSV Forecast\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n        <button type=\"button\" class=\"ui-button-rounded ui-button-success\" pButton iconPos=\"left\" label=\"CSV Detalhado\" (click)=\"salvarCSV2()\" style=\"margin-right: 0.5em;\"></button>\r\n      </div>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th style=\"width: 20px;\"></th>\r\n          <th>Data</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Orçado</th>\r\n          <th style=\"background-color: rgba(176, 196, 222, 0.431);\">Volume Realizado</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado kWh</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Ind.</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh Gestal</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh + %</th>\r\n          <th style=\"background-color: lightsteelblue;\">Orçado. kWh/m³</th>\r\n          <th style=\"background-color: lightsteelblue;\">Real. kWh/m³</th>\r\n          <th style=\"width: 1px;\"></th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Ind.</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ Gestal</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$ + %</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Orçado R$/m³</th>\r\n          <th style=\"background-color: rgba(119, 136, 153, 0.726);\">Real. R$/m³</th>\r\n          <!-- <th></th> -->\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n        <td>\r\n          <button label=\"...\" (click)=\"destrinchar(linha.dataindicador, (indicadoresKWHAguaGestalTotal[i] * aumento))\"></button>\r\n        </td>\r\n        <td>{{linha.dataindicador}}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].orcado.toFixed(2) : 0 }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.431);\">{{ indicadoresVolume.length > 0 ? indicadoresVolume[i].realizado.toFixed(2) : 0 }}</td>\r\n        <td></td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.orcado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ linha.realizado.toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length == 0 ? 0 : indicadoresKWHAguaGestalTotal[i].toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * aumento).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 :indicadoresVolume[i].orcado > 0 ? ((linha.orcado)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(176, 196, 222, 0.65);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n        <th></th> \r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.orcado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ (linha.realizado * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i] * tarifa).toFixed(2) }}</td>\r\n        <td style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : (indicadoresKWHAguaGestalTotal[i]  * aumento * tarifa).toFixed(2) }}</td>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 :indicadoresVolume[i].orcado > 0 ? ((linha.orcado * tarifa)/indicadoresVolume[i].orcado).toFixed(2) : 0 }}</th>\r\n        <th style=\"background-color: rgba(211, 211, 211, 0.541);\">{{ indicadoresKWHAguaGestalTotal.length  == 0 ? 0 : indicadoresVolume[i].realizado > 0 ? ((indicadoresKWHAguaGestalTotal[i] * aumento * tarifa)/indicadoresVolume[i].realizado).toFixed(2) : 0 }}</th>\r\n      </tr>\r\n    </ng-template>\r\n  </p-table>\r\n\r\n<!-- VER REGISTROS QUE COMPOEM O VALOR TOTAL -->\r\n<p-dialog header=\"Lista de Lançamentos\" [(visible)]=\"dialog\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '50%'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"indicadoresKWHAguaGestalFiltrados\" >\r\n    <div class=\"ui-g-12\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-plus\" (click)=\"inserirRegistro(indicadoresKWHAguaGestalFiltrados)\"></button>\r\n    </div>\r\n    <p-table #dt [value]=\"indicadoresKWHAguaGestalFiltrados\" selectionMode=\"single\">\r\n      <ng-template pTemplate=\"header\">\r\n          <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n            <th>Data</th>\r\n            <th>Nome Local</th>\r\n            <th>Consumo kWhh</th>\r\n            <th></th>\r\n          </tr>\r\n      </ng-template>\r\n      <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n            <td>{{linha.dataIndicador}}</td>\r\n            <td>{{linha.unidade.nomeDoEquipamento}}</td>\r\n            <td>{{linha.ativoConsumido.toFixed(2)}}</td>\r\n            <td>\r\n              <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"abrirpraeditarlinha(linha)\"></button>\r\n            </td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n<!-- INSERIR NOVO REGISTRO POR UNIDADE, CASO JA TENHA O BACKEND ALTERA O REGISTRO E SALVA NO LOG -->\r\n<p-dialog header=\"Novo Registro\" [(visible)]=\"crud\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"crud\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"NovoRegistroMedidor\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"NovoRegistroData\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"NovoRegistroConsumo\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"inserirRegistroSalvar()\"></button>\r\n    </div>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n\r\n<!-- EDITAR REGISTRO POR UNIDADE -->\r\n<p-dialog header=\"Editar Registro\" [(visible)]=\"edicaoDeRegistrosGestal\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"edicaoDeRegistrosGestal\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" filter=\"true\" optionLabel=\"nomeDoEquipamento\"  [(ngModel)]=\"linhaSelecionada.unidade\" styleClass = \"drop95\" [options]=\"listaDeMedidores\"></p-dropdown>\r\n        <label >Medidor</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"linhaSelecionada.dataIndicador\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n          <input id=\"input\" class=\"ui-g-4\"  [(ngModel)]=\"linhaSelecionada.ativoConsumido\"  type=\"number\" pInputText/>\r\n          <label>Consumo</label>\r\n      </span>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" (click)=\"editarRegistroDoGestal()\"></button>\r\n    </div>\r\n\r\n    <p-table #dt [value]=\"linhaSelecionada.historicLog\" selectionMode=\"single\" [paginator]=\"true\" [rows]=\"5\" > \r\n      <ng-template pTemplate=\"header\">\r\n        <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n          <th>DataAlteracao</th>\r\n          <th>Data</th>\r\n          <th>Alterador</th>\r\n          <th>Valor Antigo</th>\r\n          <th>Valor Atual</th>\r\n        </tr>\r\n      </ng-template>\r\n      <ng-template let-hist  let-i=\"rowIndex\" pTemplate=\"body\">\r\n        <tr [pSelectableRow]=\"linha\"  style=\"font-size: 12px;\">\r\n            <td>{{hist.timestamp}}</td>\r\n            <td>{{hist.dataIndicador}}</td>\r\n            <td>{{hist.usuario}}</td>\r\n            <td>{{hist.ativoConsumidoAntigo.toFixed(2)}}</td>\r\n            <td>{{hist.ativoConsumidoNovo.toFixed(2)}}</td>\r\n        </tr>\r\n      </ng-template>\r\n    </p-table>\r\n\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n<!-- CENÁRIOS -->\r\n<p-dialog header=\"Cadastro de Cenário/Importacao para Indicadores\" [(visible)]=\"criacaoDeCenarios\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '30%'}\">\r\n  <div class=\"ui-g\" *ngIf=\"criacaoDeCenarios\" >\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"NomeCenario\"  type=\"text\" pInputText/>\r\n        <label >Nome do Cenário</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n        yearRange=\"2000:2030\" \r\n        [(ngModel)]=\"DataReferencia\" \r\n        [readonlyInput]=\"true\"\r\n        (onSelect)=\"onChangeTime($event)\"\r\n        [disabled]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px; text-align: center;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-check\" label=\"Salvar Cenário\" (click)=\"SalvarCenario()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -787,6 +798,28 @@ module.exports = "<p-toast [style]=\"{marginTop: '80px'}\"></p-toast>\r\n<div cl
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>ENVIAR EMAIL DE NOTIFICAÇÃO</h4>\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g ui-md\">\r\n\r\n    <div class=\"ui-g-12 ui-md-5\">\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" type=\"text\" [(ngModel)]=\"Assunto\" class=\"ui-g-12\" pInputText/>\r\n        <label>Assunto</label>\r\n      </span>\r\n    </div>\r\n  \r\n    <div class=\"ui-g-12 ui-md-6\" >\r\n        <p-multiSelect class=\"ui-g-12\" [options]=\"ArrEmails\" optionLabel=\"nome\" [(ngModel)]=\"OpcEmails\" [style]=\"{width: '100%'}\" [panelStyle]=\"{minWidth:'120px'}\"></p-multiSelect>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-1\" style=\"text-align: right;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Enviar\"  (click)=\"AoSalvar()\"></button>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12  ui-md-12\">\r\n      <p-editor [(ngModel)]=\"Texto\" [style]=\"{'height':'320px'}\"></p-editor>\r\n    </div>\r\n    <div class=\"ui-g-12  ui-md-12\" style=\"text-align: right;\">\r\n      <div class=\"ui-g-12  ui-md-10\" style=\"text-align: right;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar novo Modelo\"  (click)=\"novoModelo()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-12  ui-md-2\" style=\"text-align: right;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Modelos\"  (click)=\"Modelos()\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<p-dialog [(visible)]=\"carregando\" [style]=\"{width: '1%',height: '1%'}\">\r\n  <div class=\"splash-screen\" style=\"margin-top:-180px; margin-left:-180px;height:20%;width:20%; border-radius: 15px;\" >\r\n    <div class=\"splash-loader\">\r\n        <img src=\"assets/layout/images/SISPCpng.png\">\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog [(visible)]=\"novoModeloP\" [style]=\"{width: '30%',height: '20%'}\">\r\n  <div class=\"ui-g ui-md\">\r\n    <div class=\"ui-g-12 ui-md-6\">\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" type=\"text\" [(ngModel)]=\"NomeDoModelo\" class=\"ui-g-12\" pInputText/>\r\n        <label>Nome do Modelo</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12  ui-md-6\" style=\"text-align: right;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"SalvarNovoModelo()\"></button>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog [(visible)]=\"modelos\" [style]=\"{width: '50%',height: '50%'}\">\r\n  <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g ui-md\">\r\n    <p-table [value]=\"modelosCadastrados\">\r\n        <ng-template pTemplate=\"header\">\r\n            <tr>\r\n                <th>NomeDoTemplate</th>\r\n                <th>Assunto</th>\r\n                <th>Selecionar</th>\r\n                <th>Selecionar</th>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-car>\r\n            <tr>\r\n                <td>{{car.nomeDoTemplate}}</td>\r\n                <td>{{car.assunto}}</td>\r\n                <td>\r\n                  <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Selecionar\" (click)=\"selecionarModelo(car)\">\r\n                    \r\n\r\n                  </button>\r\n                </td>\r\n                <td>\r\n                  <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Deletar\" (click)=\"deletarModelo(car)\">\r\n\r\n\r\n                  </button>\r\n                </td>\r\n            </tr>\r\n        </ng-template>\r\n    </p-table>\r\n  </div>\r\n</p-dialog>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-table #dt [value]=\"ListaDeUnidades\" *ngIf=\"VisibleListaDeUnidades\"  selectionMode=\"single\" >\r\n  <ng-template pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n        <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n        <th>Identificador</th>\r\n        <th>Data da Criação</th>\r\n        <th>Unidade</th>\r\n        <th>Tipo de Tratamento</th>\r\n        <th style=\"width: 10% !important;\"></th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n    <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n      <td>{{linha.id}}</td>\r\n      <td>{{linha.dataDaCriacao}}</td>\r\n      <td>{{linha.unidade}}</td>\r\n      <td>{{linha.tipoDeTratamento}}</td>\r\n      <td >\r\n        <button pButton type=\"button\" (click)=\"selectEte(linha)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n          <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n            last_page\r\n          </span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n<div class=\"ui-g ui-md\" *ngIf=\"VisibleUnidadeSelecionada\" >\r\n  <div class=\"card ui-g-12 ui-md-12\" style=\"margin-top: 10px;\">\r\n    <div class=\"ui-g-12 ui-md-6\" >\r\n      <h1>{{UnidadeSelecionada.unidade}}</h1>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-6\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" (click)=\"voltar()\" style=\"text-align: center;border-radius: 50% 50% 50% 50%;\">\r\n        <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n          arrow_back_ios\r\n        </span>\r\n      </button>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n        De:\r\n        <p-calendar class=\"ui-g-12\" [(ngModel)]=\"DATA1\" [locale]=\"ptbr\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n        Até:\r\n        <p-calendar class=\"ui-g-12\" [(ngModel)]=\"DATA2\" [minDate]=\"DATA1\" [locale]=\"ptbr\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-g-12 ui-md-2\" *ngFor=\"let med of ListaOpcoes\">\r\n    <div class=\"card\" style=\" margin-top: 5px; height:120px;\" [ngStyle]=\"med.selected === 0 ? null : { 'background-color': '#42f593' }\">\r\n      <div class=\"ui-g-2\">\r\n        <span class=\"material-icons\" >\r\n          {{med.icon}}\r\n        </span>\r\n      </div>\r\n      <div style=\"font-weight: bold;\" class=\"ui-g-10\">{{ med.label }}</div>\r\n      <div  class=\"ui-g-12\" style=\"margin-top: 10px;text-align: right;\" >\r\n        <button pButton type=\"button\"  (click)=\"selecioanarIndicador(med)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n          <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n            remove_red_eye\r\n          </span>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n<p-table #dt [columns]=\"cols\" [value]=\"ListaDeIndicadores\" *ngIf=\"VisibleListaDeIndicadores\" [paginator]=\"true\" [rows]=\"20\">\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\">\r\n              {{col.header}}\r\n          </th>\r\n      </tr>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\" [ngSwitch]=\"col.field\">\r\n              <input *ngSwitchCase=\"'vin'\" pInputText type=\"text\" (input)=\"dt.filter($event.target.value, col.field, 'contains')\">\r\n              <div *ngSwitchCase=\"'year'\">\r\n                  Value > {{yearFilter}}\r\n                  <i class=\"pi pi-times\" (click)=\"yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)\" style=\"cursor:pointer\" *ngIf=\"yearFilter\"></i>\r\n                  <p-slider [style]=\"{'width':'100%','margin-top':'8px'}\" [(ngModel)]=\"yearFilter\" [min]=\"1970\" [max]=\"2010\" (onChange)=\"onYearChange($event, dt)\"></p-slider>\r\n              </div>\r\n              <p-dropdown *ngSwitchCase=\"'usuario'\" [options]=\"ListaFiltroUsuario\" [style]=\"{'width':'100%'}\" (onChange)=\"dt.filter($event.value, col.field, 'equals')\"></p-dropdown>\r\n              <p-dropdown *ngSwitchCase=\"'indicador'\" [options]=\"ListaFiltroindicador\" [style]=\"{'width':'100%'}\" (onChange)=\"dt.filter($event.value, col.field, 'equals')\"></p-dropdown>\r\n              <p-multiSelect *ngSwitchCase=\"'color'\" [options]=\"colors\" defaultLabel=\"All Colors\" (onChange)=\"dt.filter($event.value, col.field, 'in')\"></p-multiSelect>\r\n              <input *ngSwitchCase=\"'price'\" pInputText type=\"text\" placeholder=\"Custom - Greater Than\" (input)=\"dt.filter($event.target.value, col.field, 'custom')\">\r\n          </th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n      <tr [pSelectableRow]=\"rowData\">\r\n          <td *ngFor=\"let col of columns\">\r\n              {{rowData[col.field]}}\r\n          </td>\r\n      </tr>\r\n  </ng-template>\r\n</p-table>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/operacional-esgoto.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/operacional-esgoto.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  operacional-esgoto works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -1463,6 +1496,8 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
     }
     //====================================================================================
     updateUser(usuario) {
+        console.log(usuario);
+        usuario.ativo = usuario.ativo === true ? 1 : 0;
         this.adminserv.updateUsers(usuario).subscribe(response => {
             if (response === null) {
                 this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -1509,6 +1544,7 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
             supervisaoId: this.UsuarioEditarPermissoes.supervisaoId,
             perfis: newpermissoes
         };
+        console.log(usuarioupdatePerms);
         this.adminserv.updateUser(usuarioupdatePerms).subscribe(response => {
             if (response === null) {
                 this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -1558,7 +1594,7 @@ let ListadeusuariosComponent = class ListadeusuariosComponent {
         this.messageService.add({ sticky: true, severity: 'info', summary: perfil, detail: dado, life: 500 });
     }
     mostrarInfoPerfil(perfil) {
-        this.messageService.add({ sticky: true, severity: 'info', summary: perfil.perfil, detail: perfil.descricao, life: 500 });
+        this.messageService.add({ sticky: true, severity: 'info', summary: perfil.perfil, detail: perfil.descricao, life: 5 });
     }
 };
 ListadeusuariosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1888,6 +1924,7 @@ let AppMenuComponent = class AppMenuComponent {
         this.app = app;
         this.performanceService = performanceService;
         this.permissoes = [];
+        this.usuDesenvolvimento = false;
         this.usuPerformance = false;
         this.usuComissao = false;
         this.usuTransporte = false;
@@ -1909,6 +1946,10 @@ let AppMenuComponent = class AppMenuComponent {
                 this.usuPerformance = true;
                 this.usuComissao = true;
                 this.usuTransporte = true;
+                this.admEnergia = true;
+            }
+            else if (permissao === "ROLE_DESENVOLVIMENTO") {
+                this.usuDesenvolvimento = true;
             }
             else if (permissao === "ROLE_USER_COMISSAO") {
                 this.usuComissao = true;
@@ -1931,6 +1972,18 @@ let AppMenuComponent = class AppMenuComponent {
             }
             else if (permissao === "ROLE_ADMIN_SISPC") {
                 this.admSispc = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_ESGOTO") {
+                this.usuOperacional = true;
+                this.usuOperacionalEsgoto = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_AGUA") {
+                this.usuOperacional = true;
+                this.usuOperacionalAgua = true;
+            }
+            else if (permissao === "ROLE_OPERACIONAL_ELETROMECANICA") {
+                this.usuOperacional = true;
+                this.usuEletromecanica = true;
             }
             else if (permissao === "ROLE_JURIDICO_PAGAMENTOS" || permissao.indexOf("JURIDICO_APROVACAO") > 0) {
                 this.usuJuridicoPagamentos = true;
@@ -1995,7 +2048,7 @@ let AppMenuComponent = class AppMenuComponent {
                 });
             }
             //Em Construção...
-            if (this.permissoes[1] === "ROLE_DESENVOLVIMENTO") { // usado temporariamente esse perfil por estar ain
+            if (this.usuDesenvolvimento = true) { // usado temporariamente esse perfil por estar ain
                 this.model.push({ label: 'Planejamento', icon: 'equalizer',
                     items: [
                         { label: 'Informativos', icon: 'envelope', routerLink: '/email' },
@@ -2009,27 +2062,11 @@ let AppMenuComponent = class AppMenuComponent {
                                 { label: 'Processos', icon: 'call_split' }
                             ]
                         },
-                        { label: 'RPA', icon: 'pi-android',
-                            items: [
-                                { label: 'Robos', icon: '', routerLink: '/rpa' }
-                            ]
-                        },
                     ]
                 }, { label: 'Diretoria', icon: 'business_center',
                     items: [
                         { label: 'Indicadores', icon: 'subject' },
                         { label: 'Projetos', icon: 'subject' }
-                    ]
-                }, { label: 'Operacional', icon: 'invert_colors',
-                    items: [
-                        { label: 'Operação Água', icon: 'subject' },
-                        { label: 'Operação Esgoto', icon: 'subject' },
-                        { label: 'Eletromecânica', icon: 'settings_input_component',
-                            items: [
-                                { label: 'Preventivas/Corretivas', icon: 'subject' },
-                                { label: 'Inventário', icon: 'subject' }
-                            ]
-                        },
                     ]
                 }, { label: 'Administrativo', icon: 'domain',
                     items: [
@@ -2097,9 +2134,16 @@ let AppMenuComponent = class AppMenuComponent {
                 this.model.push({ label: 'Energia', icon: 'wb_incandescent',
                     items: [
                         {
-                            label: 'Gestão de Energia', icon: 'wb_incandescent',
+                            label: 'Equipamentos', icon: 'wb_incandescent', routerLink: '/energiaGestal'
+                        },
+                        {
+                            label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
+                        },
+                        {
+                            label: 'Forecast', icon: 'attach_money',
                             items: [
-                                { label: 'Gestal e Forecast', icon: 'wb_incandescent', routerLink: '/energia' } /*,
+                                { label: 'Forecast Agua', icon: 'attach_money', routerLink: '/forecastAgua' },
+                                { label: 'Forecast Esgoto', icon: 'attach_money', routerLink: '/forecastEsgoto' } /*,
                                 {label: 'Controle de fraudes', icon: 'subject'}   */
                             ]
                         } /*,
@@ -2126,6 +2170,34 @@ let AppMenuComponent = class AppMenuComponent {
                         { label: 'Notificações', routerLink: '/email', icon: 'notifications' }
                     ]
                 });
+            }
+            if (this.usuOperacional === true) {
+                var operesg = this.usuOperacionalEsgoto === true ?
+                    { label: 'Operação Esgoto', icon: 'subject',
+                        items: [
+                            { label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink: '/appEtes' }
+                        ]
+                    }
+                    : "";
+                var operagu = this.usuOperacionalAgua === true ?
+                    { label: 'Operação Água', icon: 'subject' }
+                    : "";
+                var operEle = this.usuEletromecanica === true ?
+                    { label: 'Eletromecânica', icon: 'settings_input_component',
+                        items: [
+                            { label: 'Preventivas/Corretivas', icon: 'subject' },
+                            { label: 'Inventário', icon: 'subject' }
+                        ]
+                    }
+                    : "";
+                var oper = { label: 'Operacional', icon: 'invert_colors',
+                    items: [
+                        operesg,
+                        operagu,
+                        operEle
+                    ]
+                };
+                this.model.push(oper);
             }
         });
     } //fechando subscribe de gerencia
@@ -3125,6 +3197,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_172__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaagua/forecastenergiaagua.component */ "./src/app/energia/forecast/forecastenergiaagua/forecastenergiaagua.component.ts");
 /* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_173__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
 /* harmony import */ var _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__ = __webpack_require__(/*! ./gpp/projetos/projetos.service */ "./src/app/gpp/projetos/projetos.service.ts");
+/* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_175__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_176__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.component */ "./src/app/operacional-esgoto/operacional-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_177__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_178__ = __webpack_require__(/*! ./operacional-esgoto/aplicativo-etes/aplicativo-etes.component */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts");
+
+
+
+
 
 
 
@@ -3466,6 +3546,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _energia_forecast_forecast_component__WEBPACK_IMPORTED_MODULE_171__["ForecastComponent"],
             _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_172__["ForecastenergiaaguaComponent"],
             _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_173__["ForecastenergiaesgotoComponent"],
+            _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_175__["CenariosComponent"],
+            _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_176__["OperacionalEsgotoComponent"],
+            _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_178__["AplicativoEtesComponent"],
         ],
         providers: [
             { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
@@ -3483,7 +3566,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"],
             _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__["NotificacoesService"],
             _energia_energia_service__WEBPACK_IMPORTED_MODULE_169__["EnergiaService"],
-            _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__["ProjetosService"]
+            _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__["ProjetosService"],
+            _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_177__["OperacionalEsgotoService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
     })
@@ -3545,7 +3629,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./notificacoessispc/notificacoessispc.component */ "./src/app/notificacoessispc/notificacoessispc.component.ts");
 /* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.component */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts");
 /* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
-/* harmony import */ var _energia_energia_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./energia/energia.component */ "./src/app/energia/energia.component.ts");
+/* harmony import */ var _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaagua/forecastenergiaagua.component */ "./src/app/energia/forecast/forecastenergiaagua/forecastenergiaagua.component.ts");
+/* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
+/* harmony import */ var _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./energia/equipamentos/equipamentos.component */ "./src/app/energia/equipamentos/equipamentos.component.ts");
+/* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
+/* harmony import */ var _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./operacional-esgoto/aplicativo-etes/aplicativo-etes.component */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts");
+
+
+
+
 
 
 
@@ -3598,6 +3690,7 @@ const routes = [
         children: [
             { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_21__["HomeComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"] },
+            { path: 'appEtes', component: _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_44__["AplicativoEtesComponent"] },
             { path: 'sample', component: _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_4__["SampleDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'forms', component: _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_5__["FormsDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'data', component: _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_6__["DataDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
@@ -3623,7 +3716,10 @@ const routes = [
             { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'cpjuridico', component: _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_38__["controledepagamentosjuridicoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'indicadoresAdmin', component: _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_36__["AdminIndicadoresComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
-            { path: 'energia', component: _energia_energia_component__WEBPACK_IMPORTED_MODULE_40__["EnergiaComponent"] },
+            { path: 'energiaGestal', component: _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_42__["EquipamentosComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'forecastAgua', component: _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_40__["ForecastenergiaaguaComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'forecastEsgoto', component: _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_41__["ForecastenergiaesgotoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'cenarios', component: _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_43__["CenariosComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'rpa', component: _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_35__["RpaComponent"] },
             { path: 'sesuiteproject', component: _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_26__["SesuiteprojectComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
         ]
@@ -5880,6 +5976,111 @@ UtilsDemoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/energia/cenarios/cenarios.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/energia/cenarios/cenarios.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VuZXJnaWEvY2VuYXJpb3MvY2VuYXJpb3MuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/energia/cenarios/cenarios.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/energia/cenarios/cenarios.component.ts ***!
+  \********************************************************/
+/*! exports provided: CenariosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CenariosComponent", function() { return CenariosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _energia_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../energia.service */ "./src/app/energia/energia.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../performance/performance.service */ "./src/app/performance/performance.service.ts");
+
+
+
+
+
+let CenariosComponent = class CenariosComponent {
+    constructor(messageService, medServ, perf) {
+        this.messageService = messageService;
+        this.medServ = medServ;
+        this.perf = perf;
+        this.carregando = false;
+        this.dialogSelectCenario = false;
+        this.listaCenarios = [];
+        this.selecionadoCenario = null;
+        this.dialogSelectTabela = false;
+        this.dialogSelectUnidade = false;
+    }
+    ngOnInit() {
+        this.carregar();
+    }
+    carregar() {
+        this.listaCenarios = [];
+        this.carregando = true;
+        this.medServ.LerCenarios().subscribe(lista => {
+            this.listaCenarios = lista;
+            this.carregando = false;
+            this.dialogSelectTabela = false;
+            this.selecionadoCenario = null;
+            this.listaUnidadesDoCenario = null;
+            this.dialogSelectUnidade = false;
+            this.dialogSelectCenario = true;
+        });
+    }
+    secionarCenario(cenario) {
+        this.carregando = true;
+        this.dialogSelectCenario = false;
+        this.selecionadoCenario = cenario;
+        this.medServ.LerCenario(this.selecionadoCenario.id).subscribe(cenario => {
+            this.selecionadoCenario = cenario;
+            this.dialogSelectTabela = true;
+            this.carregando = false;
+        });
+    }
+    destrinchar(unidades) {
+        this.listaUnidadesDoCenario = unidades;
+        this.dialogSelectUnidade = true;
+    }
+    outroCenario() {
+        this.carregar();
+    }
+    //===================================================================================================================================================
+    enviarParaIndicadores() {
+        this.messageService.add({ severity: 'info', summary: 'Aguarde', detail: 'Aguarde a mensagem de confirmação' });
+        this.carregando = true;
+        this.dialogSelectTabela = false;
+        var indicadroDeKw = this.selecionadoCenario.classificacao === 1 ? 12 : 13;
+        var indicadroDeRS = this.selecionadoCenario.classificacao === 1 ? 14 : 15;
+        var indicadroDeKwM3 = this.selecionadoCenario.classificacao === 1 ? 74 : 78;
+        var indicadroDeRSM3 = this.selecionadoCenario.classificacao === 1 ? 75 : 79;
+        this.medServ.atualizarIndicadores(this.selecionadoCenario, indicadroDeKw, indicadroDeRS, indicadroDeKwM3, indicadroDeRSM3).subscribe(resp => {
+            this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Dados enviados com Sucesso' });
+            this.carregar();
+        });
+    }
+};
+CenariosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-cenarios',
+        template: __webpack_require__(/*! raw-loader!./cenarios.component.html */ "./node_modules/raw-loader/index.js!./src/app/energia/cenarios/cenarios.component.html"),
+        styles: [__webpack_require__(/*! ./cenarios.component.css */ "./src/app/energia/cenarios/cenarios.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"], _energia_service__WEBPACK_IMPORTED_MODULE_2__["EnergiaService"], _performance_performance_service__WEBPACK_IMPORTED_MODULE_4__["PerformanceService"]])
+], CenariosComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/energia/energia.component.css":
 /*!***********************************************!*\
   !*** ./src/app/energia/energia.component.css ***!
@@ -5987,6 +6188,30 @@ let EnergiaService = class EnergiaService {
     InserirStatus(bodyObj) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
         return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/energia/item`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    //CENARIOS
+    LerCenario(id) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cenariosenergia/${id}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    LerCenarios() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cenariosenergia`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    InserirCenario(bodyObj) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.post(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cenariosenergia`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    UpdateCenario(bodyObj) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cenariosenergia/${bodyObj.id}`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    atualizarIndicadores(bodyObj, idkw, idrs, idkwm3, idrsm3) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/cenariosenergia/atualizarIndicadores/${idkw}/${idrs}/${idkwm3}/${idrsm3}`, JSON.stringify(bodyObj), { headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
     }
     extractData(res) {
@@ -6291,6 +6516,7 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
         this.messageService = messageService;
         this.service = service;
         this.service2 = service2;
+        this.carregando = false;
         this.classificacao = 1;
         this.classificacaoXindicadorkW = this.classificacao == 1 ? 12 : 13;
         this.indicadoresKWHAguaGestalTotal = [];
@@ -6305,16 +6531,18 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
         //=========================================================================
         //EDITAR UMA LINHA DO GESTAL
         this.edicaoDeRegistrosGestal = false;
+        //====================================================================================================================================
+        //ÁREA DE MANIPULAÇÃO DE CENÁRIOS
+        this.criacaoDeCenarios = false;
+        this.CenarioLinhas = [];
     }
     ngOnInit() {
-        // this.referencia = '2020-03-01'
-        // this.consultar()
     }
     onChangeTime(event) {
         this.referencia = this.referencia.toISOString().substr(0, 10);
-        // console.log(this.referencia)
     }
     consultar() {
+        this.carregando = true;
         this.indicadoresVolume = [];
         this.indicadoresKWHAgua = [];
         this.indicadoresKWHAguaGestalFiltrados = [];
@@ -6328,6 +6556,7 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
             });
             this.service2.realizadoKw(dateini, datefim, this.classificacao).subscribe(response => {
                 this.MontarArraySomandoKwPorDia(this.indicadoresKWHAgua, response);
+                this.carregando = false;
             });
         });
     }
@@ -6349,6 +6578,7 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
         }
     }
     salvarCSV() {
+        this.carregando = true;
         this.ArrayGigante = [];
         for (var i = 0; i < this.indicadoresKWHAgua.length; i++) {
             this.ArrayGigante.push({
@@ -6369,10 +6599,27 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
                 RealRSm3: this.indicadoresVolume[i].realizado > 0 ? ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado).toFixed(2).replace("\.", "\,") : 0,
             });
         }
-        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_5__["CsvDataService"].exportToCsv('test.csv', this.ArrayGigante);
+        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_5__["CsvDataService"].exportToCsv('ForecastEnergia.csv', this.ArrayGigante);
+        this.carregando = false;
+    }
+    salvarCSV2() {
+        this.carregando = true;
+        this.ArrayGigante = [];
+        for (var i = 0; i < this.indicadoresKWHAguaGestal.length; i++) {
+            this.ArrayGigante.push({
+                data: this.indicadoresKWHAguaGestal[i].dataIndicador,
+                unidade: this.indicadoresKWHAguaGestal[i].unidade.nomeDoEquipamento,
+                ativoConsumido: this.indicadoresKWHAguaGestal[i].ativoConsumido.toFixed(2),
+                reativo: this.indicadoresKWHAguaGestal[i].reativo.toFixed(2),
+                modificacao: this.indicadoresKWHAguaGestal[i].aprovador
+            });
+        }
+        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_5__["CsvDataService"].exportToCsv('Relatorio_Detalhado.csv', this.ArrayGigante);
+        this.carregando = false;
     }
     destrinchar(data, valorTotal) {
-        if (valorTotal > 0) {
+        console.log(data);
+        if (this.indicadoresKWHAguaGestal.length > 0) {
             this.indicadoresKWHAguaGestalFiltrados = [];
             this.indicadoresKWHAguaGestalFiltrados = this.indicadoresKWHAguaGestal.filter((unidades) => {
                 return unidades.dataIndicador.substring(0, 10) === data;
@@ -6452,6 +6699,92 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
         }, erro => {
             this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'Ocorreu algum problema' });
         });
+    }
+    AbrirSalvamentoDeCenarios() {
+        this.DataReferencia = this.referencia;
+        this.criacaoDeCenarios = true;
+    }
+    SalvarCenario() {
+        this.carregando = true;
+        var reference = this.referencia;
+        this.criacaoDeCenarios = false;
+        this.CadCenario = {
+            id: null,
+            importadoParaIndicadores: null,
+            dataReferencia: reference,
+            nomeDoCenario: this.NomeCenario,
+            tarifa: this.tarifa,
+            aumento: this.aumento,
+            usuario: sessionStorage.getItem('nome'),
+            classificacao: this.classificacao
+        };
+        console.log(this.CadCenario);
+        this.service2.InserirCenario(this.CadCenario).subscribe(response => {
+            this.CadCenario = response;
+            for (var i = 0; i < this.indicadoresKWHAgua.length; i++) {
+                var linha = this.indicadoresKWHAgua[i];
+                var unidades = [];
+                var valortotal = (this.indicadoresKWHAguaGestalTotal[i] * this.aumento);
+                var unidadesBruto = this.carregarUnidades(linha.dataindicador, valortotal);
+                // console.log(unidadesBruto)
+                for (var j = 0; j < unidadesBruto.length; j++) {
+                    unidades.push({
+                        id: null,
+                        dataIndicador: linha.dataindicador,
+                        nomeLocal: unidadesBruto[j].unidade.nomeDoEquipamento,
+                        consumo: unidadesBruto[j].ativoConsumido
+                    });
+                }
+                this.CenarioLinhas.push({
+                    id: null,
+                    dataIndicador: linha.dataindicador,
+                    volumeOrcado: this.indicadoresVolume[i].orcado.toFixed(4),
+                    volumeRealizado: this.indicadoresVolume[i].realizado.toFixed(4),
+                    orcadoIndkWh: linha.orcado.toFixed(4),
+                    realIndkWh: linha.realizado.toFixed(4),
+                    realGestalkWh: this.indicadoresKWHAguaGestalTotal[i].toFixed(4),
+                    realGestalPorcentagemkWh: (this.indicadoresKWHAguaGestalTotal[i] * this.aumento).toFixed(4),
+                    orcadoIndRS: (linha.orcado * this.tarifa) === 0 ? 0 : (linha.orcado * this.tarifa).toFixed(4),
+                    realIndRS: (linha.realizado * this.tarifa) === Infinity ? 0 : (linha.realizado * this.tarifa).toFixed(4),
+                    realGestalRS: (this.indicadoresKWHAguaGestalTotal[i] * this.tarifa) === Infinity ? 0 : (this.indicadoresKWHAguaGestalTotal[i] * this.tarifa).toFixed(4),
+                    realGestalPorcentagemRS: (this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) === Infinity ? 0 : (this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa).toFixed(4),
+                    orcadokWhM3: ((linha.orcado) / this.indicadoresVolume[i].orcado) === Infinity ? 0 : ((linha.orcado) / this.indicadoresVolume[i].orcado).toFixed(4),
+                    realizadokWhM3: ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento) / this.indicadoresVolume[i].realizado) === Infinity ? 0 : ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento) / this.indicadoresVolume[i].realizado).toFixed(4),
+                    orcadoRSM3: ((linha.orcado * this.tarifa) / this.indicadoresVolume[i].orcado) === Infinity ? 0 : ((linha.orcado * this.tarifa) / this.indicadoresVolume[i].orcado).toFixed(4),
+                    realizadoRSM3: ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado) === Infinity ? 0 : ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado).toFixed(4),
+                    unidades: unidades
+                });
+            }
+            this.CadCenario.cenariosLinhas = this.CenarioLinhas;
+            console.log(this.CadCenario);
+            this.service2.UpdateCenario(this.CadCenario).subscribe(response => {
+                this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Dados enviados com Sucesso' });
+                this.indicadoresVolume = [];
+                this.indicadoresKWHAgua = [];
+                this.criacaoDeCenarios = false;
+                this.carregando = false;
+            }, erro => {
+                this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'ERRO' });
+                this.carregando = false;
+            });
+        });
+    }
+    carregarUnidades(data, valorTotal) {
+        var indicadoresKWHAguaGestalFiltrados = [];
+        indicadoresKWHAguaGestalFiltrados = this.indicadoresKWHAguaGestal.filter((unidades) => {
+            return unidades.dataIndicador.substring(0, 10) === data;
+        });
+        for (var i = 0; i < indicadoresKWHAguaGestalFiltrados.length; i++) {
+            valorTotal = valorTotal - indicadoresKWHAguaGestalFiltrados[i].ativoConsumido;
+        }
+        indicadoresKWHAguaGestalFiltrados.push({
+            dataIndicador: data,
+            unidade: {
+                nomeDoEquipamento: "% das outras unidades"
+            },
+            ativoConsumido: valorTotal,
+        });
+        return indicadoresKWHAguaGestalFiltrados;
     }
 };
 ForecastenergiaaguaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -6509,6 +6842,7 @@ let ForecastenergiaesgotoComponent = class ForecastenergiaesgotoComponent {
         this.messageService = messageService;
         this.service = service;
         this.service2 = service2;
+        this.carregando = false;
         this.classificacao = 2;
         this.classificacaoXindicadorkW = this.classificacao == 1 ? 12 : 13;
         this.indicadoresKWHAguaGestalTotal = [];
@@ -6523,16 +6857,18 @@ let ForecastenergiaesgotoComponent = class ForecastenergiaesgotoComponent {
         //=========================================================================
         //EDITAR UMA LINHA DO GESTAL
         this.edicaoDeRegistrosGestal = false;
+        //====================================================================================================================================
+        //ÁREA DE MANIPULAÇÃO DE CENÁRIOS
+        this.criacaoDeCenarios = false;
+        this.CenarioLinhas = [];
     }
     ngOnInit() {
-        // this.referencia = '2020-03-01'
-        // this.consultar()
     }
     onChangeTime(event) {
         this.referencia = this.referencia.toISOString().substr(0, 10);
-        // console.log(this.referencia)
     }
     consultar() {
+        this.carregando = true;
         this.indicadoresVolume = [];
         this.indicadoresKWHAgua = [];
         this.indicadoresKWHAguaGestalFiltrados = [];
@@ -6546,6 +6882,7 @@ let ForecastenergiaesgotoComponent = class ForecastenergiaesgotoComponent {
             });
             this.service2.realizadoKw(dateini, datefim, this.classificacao).subscribe(response => {
                 this.MontarArraySomandoKwPorDia(this.indicadoresKWHAgua, response);
+                this.carregando = false;
             });
         });
     }
@@ -6567,6 +6904,7 @@ let ForecastenergiaesgotoComponent = class ForecastenergiaesgotoComponent {
         }
     }
     salvarCSV() {
+        this.carregando = true;
         this.ArrayGigante = [];
         for (var i = 0; i < this.indicadoresKWHAgua.length; i++) {
             this.ArrayGigante.push({
@@ -6587,10 +6925,27 @@ let ForecastenergiaesgotoComponent = class ForecastenergiaesgotoComponent {
                 RealRSm3: this.indicadoresVolume[i].realizado > 0 ? ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado).toFixed(2).replace("\.", "\,") : 0,
             });
         }
-        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_5__["CsvDataService"].exportToCsv('test.csv', this.ArrayGigante);
+        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_5__["CsvDataService"].exportToCsv('ForecastEnergia.csv', this.ArrayGigante);
+        this.carregando = false;
+    }
+    salvarCSV2() {
+        this.carregando = true;
+        this.ArrayGigante = [];
+        for (var i = 0; i < this.indicadoresKWHAguaGestal.length; i++) {
+            this.ArrayGigante.push({
+                data: this.indicadoresKWHAguaGestal[i].dataIndicador,
+                unidade: this.indicadoresKWHAguaGestal[i].unidade.nomeDoEquipamento,
+                ativoConsumido: this.indicadoresKWHAguaGestal[i].ativoConsumido.toFixed(2),
+                reativo: this.indicadoresKWHAguaGestal[i].reativo.toFixed(2),
+                modificacao: this.indicadoresKWHAguaGestal[i].aprovador
+            });
+        }
+        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_5__["CsvDataService"].exportToCsv('Relatorio_Detalhado.csv', this.ArrayGigante);
+        this.carregando = false;
     }
     destrinchar(data, valorTotal) {
-        if (valorTotal > 0) {
+        console.log(data);
+        if (this.indicadoresKWHAguaGestal.length > 0) {
             this.indicadoresKWHAguaGestalFiltrados = [];
             this.indicadoresKWHAguaGestalFiltrados = this.indicadoresKWHAguaGestal.filter((unidades) => {
                 return unidades.dataIndicador.substring(0, 10) === data;
@@ -6670,6 +7025,92 @@ let ForecastenergiaesgotoComponent = class ForecastenergiaesgotoComponent {
         }, erro => {
             this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'Ocorreu algum problema' });
         });
+    }
+    AbrirSalvamentoDeCenarios() {
+        this.DataReferencia = this.referencia;
+        this.criacaoDeCenarios = true;
+    }
+    SalvarCenario() {
+        this.carregando = true;
+        var reference = this.referencia;
+        this.criacaoDeCenarios = false;
+        this.CadCenario = {
+            id: null,
+            importadoParaIndicadores: null,
+            dataReferencia: reference,
+            nomeDoCenario: this.NomeCenario,
+            tarifa: this.tarifa,
+            aumento: this.aumento,
+            usuario: sessionStorage.getItem('nome'),
+            classificacao: this.classificacao
+        };
+        console.log(this.CadCenario);
+        this.service2.InserirCenario(this.CadCenario).subscribe(response => {
+            this.CadCenario = response;
+            for (var i = 0; i < this.indicadoresKWHAgua.length; i++) {
+                var linha = this.indicadoresKWHAgua[i];
+                var unidades = [];
+                var valortotal = (this.indicadoresKWHAguaGestalTotal[i] * this.aumento);
+                var unidadesBruto = this.carregarUnidades(linha.dataindicador, valortotal);
+                // console.log(unidadesBruto)
+                for (var j = 0; j < unidadesBruto.length; j++) {
+                    unidades.push({
+                        id: null,
+                        dataIndicador: linha.dataindicador,
+                        nomeLocal: unidadesBruto[j].unidade.nomeDoEquipamento,
+                        consumo: unidadesBruto[j].ativoConsumido
+                    });
+                }
+                this.CenarioLinhas.push({
+                    id: null,
+                    dataIndicador: linha.dataindicador,
+                    volumeOrcado: this.indicadoresVolume[i].orcado.toFixed(4),
+                    volumeRealizado: this.indicadoresVolume[i].realizado.toFixed(4),
+                    orcadoIndkWh: linha.orcado.toFixed(4),
+                    realIndkWh: linha.realizado.toFixed(4),
+                    realGestalkWh: this.indicadoresKWHAguaGestalTotal[i].toFixed(4),
+                    realGestalPorcentagemkWh: (this.indicadoresKWHAguaGestalTotal[i] * this.aumento).toFixed(4),
+                    orcadoIndRS: (linha.orcado * this.tarifa) === 0 ? 0 : (linha.orcado * this.tarifa).toFixed(4),
+                    realIndRS: (linha.realizado * this.tarifa) === Infinity ? 0 : (linha.realizado * this.tarifa).toFixed(4),
+                    realGestalRS: (this.indicadoresKWHAguaGestalTotal[i] * this.tarifa) === Infinity ? 0 : (this.indicadoresKWHAguaGestalTotal[i] * this.tarifa).toFixed(4),
+                    realGestalPorcentagemRS: (this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) === Infinity ? 0 : (this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa).toFixed(4),
+                    orcadokWhM3: ((linha.orcado) / this.indicadoresVolume[i].orcado) === Infinity ? 0 : ((linha.orcado) / this.indicadoresVolume[i].orcado).toFixed(4),
+                    realizadokWhM3: ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento) / this.indicadoresVolume[i].realizado) === Infinity ? 0 : ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento) / this.indicadoresVolume[i].realizado).toFixed(4),
+                    orcadoRSM3: ((linha.orcado * this.tarifa) / this.indicadoresVolume[i].orcado) === Infinity ? 0 : ((linha.orcado * this.tarifa) / this.indicadoresVolume[i].orcado).toFixed(4),
+                    realizadoRSM3: ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado) === Infinity ? 0 : ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado).toFixed(4),
+                    unidades: unidades
+                });
+            }
+            this.CadCenario.cenariosLinhas = this.CenarioLinhas;
+            console.log(this.CadCenario);
+            this.service2.UpdateCenario(this.CadCenario).subscribe(response => {
+                this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Dados enviados com Sucesso' });
+                this.indicadoresVolume = [];
+                this.indicadoresKWHAgua = [];
+                this.criacaoDeCenarios = false;
+                this.carregando = false;
+            }, erro => {
+                this.messageService.add({ severity: 'danger', summary: 'Erro', detail: 'ERRO' });
+                this.carregando = false;
+            });
+        });
+    }
+    carregarUnidades(data, valorTotal) {
+        var indicadoresKWHAguaGestalFiltrados = [];
+        indicadoresKWHAguaGestalFiltrados = this.indicadoresKWHAguaGestal.filter((unidades) => {
+            return unidades.dataIndicador.substring(0, 10) === data;
+        });
+        for (var i = 0; i < indicadoresKWHAguaGestalFiltrados.length; i++) {
+            valorTotal = valorTotal - indicadoresKWHAguaGestalFiltrados[i].ativoConsumido;
+        }
+        indicadoresKWHAguaGestalFiltrados.push({
+            dataIndicador: data,
+            unidade: {
+                nomeDoEquipamento: "% das outras unidades"
+            },
+            ativoConsumido: valorTotal,
+        });
+        return indicadoresKWHAguaGestalFiltrados;
     }
 };
 ForecastenergiaesgotoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -9917,6 +10358,261 @@ NotificacoessispcComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css":
+/*!**********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9hcGxpY2F0aXZvLWV0ZXMvYXBsaWNhdGl2by1ldGVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: AplicativoEtesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AplicativoEtesComponent", function() { return AplicativoEtesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+let AplicativoEtesComponent = class AplicativoEtesComponent {
+    constructor(esg, messageService) {
+        this.esg = esg;
+        this.messageService = messageService;
+        this.VisibleListaDeUnidades = false;
+        this.ptbr = {
+            firstDayOfWeek: 1,
+            dayNames: ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"],
+            dayNamesShort: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
+            dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S"],
+            monthNames: ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
+            monthNamesShort: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
+            today: 'Hoje',
+            clear: 'Limpar'
+        };
+        //===================================================================================================================================
+        //SELECIONAR TIPO DE INDICADOR
+        this.ListaOpcoes = [];
+        this.DATA1 = null;
+        this.DATA2 = null;
+        this.VisibleUnidadeSelecionada = false;
+        this.VisibleListaDeIndicadores = false;
+        this.cols = [
+            { field: 'usuario', header: 'usuario' },
+            { field: 'dataIndicador', header: 'dataIndicador' },
+            { field: 'indicador', header: 'indicador' },
+            { field: 'valor', header: 'valor' },
+            { field: 'observacao', header: 'observacao' },
+        ];
+        this.ListaFiltroUsuario = [];
+        this.ListaFiltro2Usuario = [];
+        this.ListaFiltroindicador = [];
+        this.ListaFiltro2indicador = [];
+    }
+    ngOnInit() {
+        this.getOpcoes();
+        this.esg.getunidades().subscribe(response => {
+            this.ListaDeUnidades = response;
+            this.VisibleListaDeUnidades = true;
+            // ===============================
+            // Descomentar depois do teste
+            // this.UnidadeSelecionada = this.ListaDeUnidades[1]
+            // this.VisibleListaDeUnidades = false
+            // this.VisibleUnidadeSelecionada = true
+            // this.DATA1 = new Date(2020,2,10)
+            // this.DATA2 = new Date(2020,2,14)
+            // this.selecioanarIndicador(this.ListaOpcoes[1]);
+            // ===============================
+        });
+    }
+    voltar() {
+        this.VisibleListaDeUnidades = true;
+        this.VisibleUnidadeSelecionada = false;
+        this.VisibleListaDeIndicadores = false;
+        for (var i = 0; i < this.ListaOpcoes.length; i++) {
+            this.ListaOpcoes[i].selected = 0;
+        }
+        this.DATA1 = null;
+        this.DATA2 = null;
+    }
+    getOpcoes() {
+        this.ListaOpcoes = [];
+        this.ListaOpcoes = [
+            { value: 1, selected: 0, label: "Produtos Químicos", icon: "subject" },
+            // {value:2, selected: 0, label:"Uso de Produtos Químicos",  icon:"" },
+            { value: 3, selected: 0, label: "Controle Diário", icon: "insert_chart" },
+            { value: 4, selected: 0, label: "Qualidade do Efluente", icon: "thumb_up_alt" },
+            { value: 5, selected: 0, label: "Resíduos Sólidos", icon: "bubble_chart" },
+            { value: 6, selected: 0, label: "Consumo da ETE", icon: "subject" },
+            { value: 7, selected: 0, label: "Energia", icon: "flash_on" },
+        ];
+    }
+    selectEte(ete) {
+        this.UnidadeSelecionada = ete;
+        this.VisibleListaDeUnidades = false;
+        this.VisibleUnidadeSelecionada = true;
+        this.DATA1 = null;
+        this.DATA2 = null;
+    }
+    //===================================================================================================================================
+    //DADOS DO INDICADOR
+    converterdata(date) {
+        var ano = date.getFullYear();
+        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        return ano + "-" + mes + "-" + dia;
+    }
+    selecioanarIndicador(indicador) {
+        this.VisibleListaDeIndicadores = false;
+        for (var i = 0; i < this.ListaOpcoes.length; i++) {
+            this.ListaOpcoes[i].selected = 0;
+        }
+        if (this.DATA1 === null || this.DATA2 === null) {
+            this.messageService.add({ severity: 'info', summary: 'info', detail: 'Preencha as Datas' });
+        }
+        else {
+            indicador.selected = 1;
+            //=======================================================================
+            console.log("============================================================");
+            console.log(this.UnidadeSelecionada.unidade);
+            console.log(this.converterdata(this.DATA1));
+            console.log(this.converterdata(this.DATA2));
+            console.log(indicador.value);
+            this.esg.getIndicadoresUnidade(this.UnidadeSelecionada.unidade, this.converterdata(this.DATA1), this.converterdata(this.DATA2), indicador.value).subscribe(response => {
+                console.log(response);
+                this.ListaDeIndicadores = response;
+                this.ListaFiltroUsuario = [];
+                this.ListaFiltro2Usuario = [];
+                this.ListaFiltroindicador = [];
+                this.ListaFiltro2indicador = [];
+                for (var i = 0; i < response.length; i++) {
+                    if (this.ListaFiltro2indicador.indexOf(response[i].indicador) < 0) {
+                        this.ListaFiltroindicador.push({ label: response[i].indicador, value: response[i].indicador });
+                        this.ListaFiltro2indicador.push(response[i].indicador);
+                    }
+                    if (this.ListaFiltro2Usuario.indexOf(response[i].usuario) < 0) {
+                        this.ListaFiltroUsuario.push({ label: response[i].usuario, value: response[i].usuario });
+                        this.ListaFiltro2Usuario.push(response[i].usuario);
+                    }
+                }
+                this.VisibleListaDeIndicadores = true;
+            });
+        }
+    }
+};
+AplicativoEtesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-aplicativo-etes',
+        template: __webpack_require__(/*! raw-loader!./aplicativo-etes.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html"),
+        styles: [__webpack_require__(/*! ./aplicativo-etes.component.css */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+], AplicativoEtesComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/operacional-esgoto.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/operacional-esgoto/operacional-esgoto.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9vcGVyYWNpb25hbC1lc2dvdG8uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/operacional-esgoto.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/operacional-esgoto/operacional-esgoto.component.ts ***!
+  \********************************************************************/
+/*! exports provided: OperacionalEsgotoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperacionalEsgotoComponent", function() { return OperacionalEsgotoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let OperacionalEsgotoComponent = class OperacionalEsgotoComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+OperacionalEsgotoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-operacional-esgoto',
+        template: __webpack_require__(/*! raw-loader!./operacional-esgoto.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/operacional-esgoto.component.html"),
+        styles: [__webpack_require__(/*! ./operacional-esgoto.component.css */ "./src/app/operacional-esgoto/operacional-esgoto.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], OperacionalEsgotoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/operacional-esgoto.service.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/operacional-esgoto/operacional-esgoto.service.ts ***!
+  \******************************************************************/
+/*! exports provided: OperacionalEsgotoService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperacionalEsgotoService", function() { return OperacionalEsgotoService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _app_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.api */ "./src/app/app.api.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/app.error-handler */ "./src/app/app.error-handler.ts");
+
+
+
+
+
+
+let OperacionalEsgotoService = class OperacionalEsgotoService {
+    constructor(http) {
+        this.http = http;
+    }
+    getunidades() {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/appesgoto/unidades`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+    getIndicadoresUnidade(Unidade, de, ate, classi) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/appesgoto/unidades/${Unidade}/${de}/${ate}/${classi}`)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    }
+};
+OperacionalEsgotoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], OperacionalEsgotoService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/app.accessdenied.component.ts":
 /*!*****************************************************!*\
   !*** ./src/app/pages/app.accessdenied.component.ts ***!
@@ -11874,8 +12570,8 @@ let PerformanceService = class PerformanceService {
         return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/graficoResumo/${referencia}/${indicadorId}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     }
-    indicadoresByDay(indicador, referencia) {
-        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/${indicador}/${referencia}`)
+    indicadoresByDay(indicador, dataindicador) {
+        return this.http.get(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/${indicador}/${dataindicador}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((res) => res, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     }
     indicadoresAtt(exeindicadorId, datareferencia, dataindicador, ciclo, orcado, realizado, pdd, atendente, atendimento, coment, forecast, minimo, maximo, meta, previsao, dentroprazo, foraprazo, dentroprazoreg, foraprazoreg, acao, analise, colaborador, indicadorId, unidadeId, vlrretido, forecast2, forecast3) {
@@ -11917,6 +12613,12 @@ let PerformanceService = class PerformanceService {
             }
         };
         return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/${exeindicadorId}`, JSON.stringify(bodyObj), { headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    }
+    indicadoresAtt2(Indicador) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+            .set("Content-Type", "application/json");
+        return this.http.put(`${_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"]}/indicadores/${Indicador.exeindicadorId}`, JSON.stringify(Indicador), { headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
     }
     extractData(res) {

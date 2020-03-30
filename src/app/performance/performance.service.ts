@@ -15,6 +15,11 @@ export class PerformanceService{
 
     constructor(private http: HttpClient){}
 
+    cadindicadores(): Observable<any[]>{
+        return  this.http.get(`${API_CONFIG}/cadindicadores/nomesIndicadores`) 
+        .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+     }
+
      classindicadores(gerencia : number): Observable<any[]>{
         return  this.http.get(`${API_CONFIG}/cadindicadores/gerencia/${gerencia}`) 
         .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
