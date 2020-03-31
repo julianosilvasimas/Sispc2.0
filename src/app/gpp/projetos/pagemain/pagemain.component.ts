@@ -92,6 +92,7 @@ export class PagemainComponent implements OnInit {
     clonedLine: any;
     selectedTipo: any;
     novaDelib: any = null
+    engenharia: any[];
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -215,6 +216,10 @@ export class PagemainComponent implements OnInit {
  
     });
  
+    this.projetosService.engenharia(this.idProjeto)
+    .subscribe(response => this.engenharia = response)
+
+    console.log(this.engenharia)
 
   this.indices = [
     { label: '01', value: 1 },
@@ -272,15 +277,15 @@ export class PagemainComponent implements OnInit {
     ];
 
     this.cols = [
-        { field: 'nomeEmpresa', header: 'Empresa' },
-        { field: 'respEmpresa', header: 'Responsável' },
+        { field: 'empresa', header: 'Empresa' },
+        { field: 'responsavel', header: 'Responsável' },
         { field: 'status', header: 'Status' },
         { field: 'tipo', header: 'Tipo do Projeto' },
         { field: 'previsto', header: 'Previsto' },
         { field: 'replanejado', header: 'Replanejado' },
         { field: 'realizado', header: 'Realizado' },
-        { field: 'realizado', header: 'Contrato Físico' },
-        { field: 'realizado', header: 'Contrato Sistêmico' }
+        { field: 'contfisico', header: 'Contrato Físico' },
+        { field: 'contsistemico', header: 'Contrato Sistêmico' }
     ];
 
     this.cols2 = [                                                                                                                         
@@ -303,7 +308,8 @@ export class PagemainComponent implements OnInit {
         { field: 'inicio', header: 'Início' },
         { field: 'termino', header: 'Término' }
     ];
-      
+    
+
   }
 
   aprovarRev(){

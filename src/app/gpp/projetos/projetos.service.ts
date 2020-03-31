@@ -85,6 +85,11 @@ export class ProjetosService{
        .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
     }
 
+    engenharia(projetosId : number): Observable<any[]>{
+      return  this.http.get(`${API_CONFIG}/projetos/${projetosId}/engenharia`) 
+      .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+    }
+
     regulatorios(projetosId : number): Observable<any[]>{
       return  this.http.get(`${API_CONFIG}/projetos/${projetosId}/regulatorios`) 
       .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -94,6 +99,7 @@ export class ProjetosService{
       return  this.http.get(`${API_CONFIG}/regulatorios/${revisaoId}/delibregulatorios`) 
       .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
     }
+
 
     partesInteressadas(): Observable<any[]>{
       return  this.http.get(`${API_CONFIG}/partesinteressadas`) 
