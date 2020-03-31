@@ -44,7 +44,7 @@ export class NovoIndicadorComponent implements OnInit {
       {label: "Comparativo", value: "CORPORATIVO"},
       {label: "Energia", value: "ENERGIA"},
       {label: "Volumes", value: "VOLUMES"},
-      {label: "Produtos Químicos", value: "PRODUTOSQU"},
+      {label: "Produtos Químicos", value: "PRODUTOSQUÍMICOS"},
       {label: "Comerciais", value: "FATURAMENTO"},
       {label: "Indicador Operacional", value: "INDICADOROPERACIONAL"},
       {label: "Cobrança", value: "COBRANCA"},
