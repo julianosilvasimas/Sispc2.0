@@ -187,6 +187,7 @@ import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
 import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
+import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
 
 
 
@@ -355,6 +356,7 @@ import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/ap
         CenariosComponent,
         OperacionalEsgotoComponent,
         AplicativoEtesComponent,
+        IndicadoresAplicativosComponent,
 
     ],
     providers: [

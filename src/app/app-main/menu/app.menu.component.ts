@@ -273,28 +273,24 @@ export class AppMenuComponent implements OnInit {
             if(this.admEnergia === true){
                 this.model.push(
                     {label: 'Energia', icon: 'wb_incandescent',
-                    items: [
-                        {
-                            label: 'Equipamentos', icon: 'wb_incandescent', routerLink: '/energiaGestal'
-                        },
-                        {
-                            label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
-                        },
-                        {
-                            label: 'Forecast', icon: 'attach_money',
-                            items: [
-                                {label: 'Forecast Agua', icon: 'attach_money' , routerLink: '/forecastAgua'},
-                                {label: 'Forecast Esgoto', icon: 'attach_money' , routerLink: '/forecastEsgoto'}/*,
-                                {label: 'Controle de fraudes', icon: 'subject'}   */
-                            ]
-                        }/*,
-                        {label: 'Receita', icon: 'subject'},
-                        {label: 'Cobrança', icon: 'subject'},
-                        {label: 'Atendimento', icon: 'subject'},
-                        {label: 'Cadastro', icon: 'subject'}*/
+                        items: [
+                            {
+                                label: 'Equipamentos', icon: 'wb_incandescent', routerLink: '/energiaGestal'
+                            },
+                            {
+                                label: 'Forecast', icon: 'attach_money',
+                                items: [
+                                    {label: 'Forecast Agua', icon: 'attach_money' , routerLink: '/forecastAgua'},
+                                    {label: 'Forecast Esgoto', icon: 'attach_money' , routerLink: '/forecastEsgoto'}
+                                ]
+                            },
+                            {
+                                label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
+                            }
                         ]
-                    });
-                }
+                    }
+                );
+            }
 
             // GLobal com pequena alteração para usuários transportes
             this.model.push(
@@ -327,7 +323,8 @@ export class AppMenuComponent implements OnInit {
                 var operesg = this.usuOperacionalEsgoto===true ? 
                 {label: 'Operação Esgoto', icon: 'subject',
                     items: [
-                        {label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink:'/appEtes'}
+                        {label: 'Indicadores das ETEs', icon: 'show_chart', routerLink:'/indicEtes'},
+                        {label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink:'/appEtes'},
                     ]
                 } 
                 : ""

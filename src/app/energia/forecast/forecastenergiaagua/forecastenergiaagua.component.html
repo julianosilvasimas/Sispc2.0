@@ -37,10 +37,11 @@
 </div>    
   <p-progressBar *ngIf="carregando===true" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
 
-  <p-table #dt [value]="indicadoresKWHAgua" *ngIf="carregando===false"  selectionMode="single"  (onRowSelect)="destrinchar($event, (indicadoresKWHAguaGestalTotal[i] * aumento))" >
+  <p-table #dt [value]="indicadoresKWHAgua" *ngIf="carregando===false"  selectionMode="single">
     <ng-template pTemplate="caption">
       <div class="ui-helper-clearfix" style="text-align: left">
-          <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
+          <button type="button" class="ui-button-rounded ui-button-success" pButton iconPos="left" label="CSV Forecast" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
+          <button type="button" class="ui-button-rounded ui-button-success" pButton iconPos="left" label="CSV Detalhado" (click)="salvarCSV2()" style="margin-right: 0.5em;"></button>
       </div>
     </ng-template>
     <ng-template pTemplate="header" let-columns>
