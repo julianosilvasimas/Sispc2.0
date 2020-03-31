@@ -182,6 +182,24 @@ export class IndicadoresAplicativosComponent implements OnInit {
   }
   //==============================================================================================================================================================
   
+  displayDialog: boolean = false
+  arrayDeUnidade: any[] = []
+
+  onRowSelect(event) {
+    this.arrayDeUnidade = []
+    for(var j = 3; j<this.cols2.length; j++){ 
+      var coluna = this.cols2[j].header
+      var objarr = event.data[coluna].array
+      for(var k = 0; k<objarr.length; k++){
+        this.arrayDeUnidade.push(objarr[k])
+      }
+    }
+    this.displayDialog = true;
+  }
+
+
+
+  //==============================================================================================================================================================
   converterdata(date:Date){
     var ano = date.getFullYear() 
     var mes = (date.getMonth()+1) < 10 ? "0"+(date.getMonth()+1) : (date.getMonth()+1) 
