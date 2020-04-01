@@ -594,7 +594,7 @@
                                             {{col.header}}
                                         </th>
                                         <th style="width:8em; text-align: center;">
-                                            <button type="button" icon="ui-icon-add" pButton></button>
+                                            <button type="button" icon="ui-icon-add" (click) = "cadengenharia = true" pButton></button>
                                         </th>
                                     </tr>
                                 </ng-template>
@@ -624,6 +624,102 @@
 
                   </div>
                 </div>
+
+                                <!--Box de Cadastro-->
+    <p-dialog header="Cadastro de deliberação" [resizable]="true" responsive="true" [(visible)]="cadengenharia">
+        <div class="ui-g">
+
+            <div  div class="ui-g-12">
+
+                     
+
+              <div class="card card-w-title" >
+                    <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
+                    <div class="item" >
+                            <span class="md-inputfield">
+                                <input id="input" [(ngModel)]="novaengenha.empresa" type="text" size="25" pInputText/>
+                            <label >Empresa</label>
+                            </span>
+                          </div>
+                          <div class="item" >
+                              <span class="md-inputfield">
+                                    <input id="input" [(ngModel)]="novaDelib.assunto" type="text" size="25" pInputText/>
+                              <label >Responsável</label>
+                              </span>
+                          </div> 
+                        </section>
+                  <div  style="margin-top: 20px; margin-bottom: 50px;">
+                    <div class="item" >
+                        <span class="md-inputfield">
+                        <p-dropdown [options]="[
+                        {label:'', value:null},
+                        {label:'Projeto Executivo', value:'Projeto Executivo'},
+                        {label:'Projeto Básico', value:'Projeto Básico'},
+                        {label:'Projeto Preliminar', value:'Projeto Preliminar'},
+                        {label:'Base de Projeto', value:'Base de Projeto'}
+                        ]" 
+                        [(ngModel)]="novaDelib.tipo" [style]="{width: '95%', height: '25px'}" >
+                        </p-dropdown>
+                        <label >Tipo de Projeto</label>
+                        </span>
+                      </div>
+               </div>
+               
+              <section class="grid grid-auto-flow-1">
+                
+                <div class="item" >
+                  <span class="md-inputfield">
+                  <p-dropdown [options]="[
+                  {label:'', value:null},
+                  {label:'Informativo', value:'Informativo'},
+                  {label:'Deliberativo', value:'Deliberativo'}
+                  ]" 
+                  [(ngModel)]="novaDelib.tipo" [style]="{width: '95%', height: '25px'}" >
+                  </p-dropdown>
+                  <label >Tipo de Deliberação</label>
+                  </span>
+                </div>
+               
+              </section>
+            </div>
+
+            <div class="card card-w-title" >
+
+                <section class="grid grid-auto-flow-1">
+                    <div class="item" style="margin-top: 40px" >
+                        <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.envio"  ></p-calendar>
+                        <label >Envio</label>
+                        </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.retorno" ></p-calendar>
+                          <label >Retorno</label>
+                          </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.aprovado" ></p-calendar>
+                          <label >Aprovação</label>
+                          </span>
+                      </div>
+                    </section>
+
+                <br>
+
+
+            </div>
+
+            </div></div>
+
+
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" label="Salvar" icon="ui-icon-save" (click)="insereDelib()" pButton></button>
+            </div>
+        </p-footer>
+    </p-dialog>
 
                   
                 </p-accordionTab>

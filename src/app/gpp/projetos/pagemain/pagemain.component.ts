@@ -91,8 +91,9 @@ export class PagemainComponent implements OnInit {
     delib: any[];
     clonedLine: any;
     selectedTipo: any;
-    novaDelib: any = null
-    engenharia: any[];
+    novaDelib: any = null;
+    novaengenha : any = null;
+    engenharia: any;
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -145,15 +146,26 @@ export class PagemainComponent implements OnInit {
             "link": null,
             "regulatorio": {"regulatorioId": null}
         }
+
+        this.novaengenha = {
+            "engenhariaId": null,
+            "empresa": null,
+            "tipo": null,
+            "responsavel": null,
+            "status": null,
+            "previsto": null,
+            "replanejado": null,
+            "realizado": null,
+            "contsistemico": null,
+            "contfisico": null,
+            "projetoId": {
+                "projetoId": this.idProjeto}
+          }
     
    }
 
   ngOnInit() {
-    
-    
-    
 
-    
     this.projetosService.projetosId(this.idProjeto)
     .subscribe(res => {
         //console.log(res)
@@ -201,11 +213,11 @@ export class PagemainComponent implements OnInit {
                 this.selectedFluxo = res[res.length - 1]['fluxoinvestimento']
                 
                 this.idRevisao = res.length - 1
-                console.log('capturaando numero da revisao => '+ res[res.length - 1]['regulatorioId'])
-                    this.projetosService.delibregulatorios(this.idRevisao)
-                    .subscribe(res => console.log('tentando aqui ó => '+ res))
+                //console.log('capturaando numero da revisao => '+ res[res.length - 1]['regulatorioId'])
+                    /*this.projetosService.delibregulatorios(this.idRevisao)
+                    .subscribe(res => console.log('tentando aqui ó => '+ res))*/
 
-                console.log("tentei aqui => "+ this.selectedFluxo)
+                //console.log("tentei aqui => "+ this.selectedFluxo)
                 
                 this.atualizarRevisao(this.selectedFluxo)
                 
@@ -217,9 +229,17 @@ export class PagemainComponent implements OnInit {
     });
  
     this.projetosService.engenharia(this.idProjeto)
-    .subscribe(response => this.engenharia = response)
-
-    console.log(this.engenharia)
+    .subscribe(response => {
+        this.engenharia = response
+        console.log(this.engenharia[0])
+        this.engenharia.forEach(eng=>{
+            eng.previsto =this.parseResumoDate(eng.previsto)
+            eng.replanejado =this.parseResumoDate(eng.replanejado)
+            eng.realizado =this.parseResumoDate(eng.realizado)
+            eng.contsistemico =this.parseResumoDate(eng.contsistemico)
+            eng.contfisico =this.parseResumoDate(eng.contfisico)
+        })
+    })
 
   this.indices = [
     { label: '01', value: 1 },
@@ -312,6 +332,10 @@ export class PagemainComponent implements OnInit {
 
   }
 
+  novaeng(){
+      
+  }
+
   aprovarRev(){
     this.oFluxo['aprovacao'] ='Aprovada'
     //console.log(this.oFluxo)
@@ -333,8 +357,10 @@ export class PagemainComponent implements OnInit {
     this.projetosService.regulatorios(this.idProjeto)
     .subscribe(res => {
         let aux = []
+        //==================================================================//
+        // * Definindo que só apareça revisões cadastradas para o projeto * //
+        //==================================================================//
         res.forEach(flu=>aux.push(flu['fluxoinvestimento']))
-        //console.log('olhe aqui => '+ aux)
         this.oFluxo = res[aux.indexOf(fluxo, 0)]
         this.selectedFluxo = this.oFluxo['fluxoinvestimento']
         this.selectedMoedaReg = this.oFluxo['moeda']
@@ -343,7 +369,8 @@ export class PagemainComponent implements OnInit {
         }else{
             this.aprov = true
         }
-        if(this.oFluxo.inicio === null){}else{
+        console.log(this.oFluxo)
+        if(this.oFluxo.inicio === null && this.oFluxo.termino === null){}else{
         //===============================================================//
         // * Aqui melhorar esse condicional para as diversas hipóteses * //
         //===============================================================//
@@ -356,7 +383,9 @@ export class PagemainComponent implements OnInit {
             this.regFimAno =  this.oFluxo.termino.year.toString()
         }
     }
-        console.log('capturaando numero da revisao => '+ this.oFluxo['regulatorioId'])
+        //===============================================================//
+        //============ * chamando endpoint de deliberações * ============//
+        //===============================================================//
                    this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
                     .subscribe(res => {
                         //console.log('tentando aqui ó => '+ res)
@@ -366,9 +395,9 @@ export class PagemainComponent implements OnInit {
                             dl.aprovado =this.parseResumoDate(dl.aprovado)
                             dl.retorno =this.parseResumoDate(dl.retorno)
                         })
-                        console.log('mudando data =>'+this.delib)
-                    }
-                    )
+                        //console.log('mudando data =>'+this.delib)
+                    });
+
 
     });
 
