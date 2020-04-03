@@ -250,22 +250,22 @@
                                 <p-dropdown [options]="fluxos"  [(ngModel)]="selectedFluxo" defaultLabel="" [style]="{width: '100%', height: '25px'}" (onChange)="atualizarRevisao(selectedFluxo)" ></p-dropdown> 
                                
                                 
-                                <label>Fluxo de investimento</label>
+                                <label>Nº Revisão Quinquenal</label>
                             </span></div><!-- *ngIf="aprov"-->
                             <div div class="ui-g-4" *ngIf="aprov"><!--(click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()"-->
                                     <button pButton type="button" label="Aprovar" (click)="modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()"
                                      style="width:100%"  icon="ui-icon-thumb-up" ></button>
                             </div>
                             <div div class="ui-g-12">
-                            <h2>Descrição</h2><!--[(ngModel)]="oFluxo.descricao"-->
-                                <textarea  style="width: 100%; padding-bottom: 18px"  [(ngModel)]="oFluxo.descricao" pInputTextarea autoResize="autoResize"></textarea>
+                            <h2>Observação</h2><!--[(ngModel)]="oFluxo.descricao"-->
+                                <textarea  style="width: 100%"  [(ngModel)]="oFluxo.descricao" pInputTextarea rows="1" autoResize="autoResize"></textarea>
                             </div>
                          </div>
                       </div>
                     </div>
                       <div div class="ui-g-6">
                             <button type="button" icon="ui-icon-add" pButton (click)="dialogVisible=true" ></button>
-                            <span><b> Adicionar uma nova revisão</b></span>
+                            <span><b> Adicionar uma nova revisão quinquenal</b></span>
                           <div class="card card-w-title" style="width:100%">
                                   <h2>Marco Contratual</h2>
                                   <div class="ui-g">
@@ -291,7 +291,7 @@
                             <div  div class="ui-g-6" style="margin-top: 20px;">
                                 <span class="md-inputfield"><!--[(ngModel)]="oFluxo.valorprojeto" -->
                                     <input  type="text"  [(ngModel)]="oFluxo.valorprojeto" size="60" pInputText/>
-                                    <p-dropdown  [options]="anos" [(ngModel)]="selectedMoedaReg" placeholder="Moeda"  ></p-dropdown><!--[(ngModel)]="selectedMoedaReg" -->
+                                    <p-dropdown  [options]="anos" [(ngModel)]="oFluxo.moeda" placeholder="Moeda"  ></p-dropdown><!--[(ngModel)]="selectedMoedaReg" -->
                                     <label>Valor do Projeto/moeda</label>
                                 </span>
                             </div>
@@ -448,7 +448,7 @@
                     <div class="item" >
                             <span class="md-inputfield">
                                 <input id="input" [(ngModel)]="novaDelib.ndeliberacao" type="text" size="25" pInputText/>
-                            <label >Cód. deliberação</label>
+                            <label >Nº Documento</label>
                             </span>
                           </div>
                           <div class="item" >
@@ -523,14 +523,14 @@
 
 
 
-    <p-dialog header="Cadastro" [resizable]="true" responsive="true" [(visible)]="dialogVisible">
+    <p-dialog header="Nova Revisão Quinquenal" [resizable]="true" responsive="true" [(visible)]="dialogVisible">
             <div class="ui-g">
                     <div class="ui-g-12">
                     <span class="md-inputfield" style="margin-top: 20px;">
                             <p-dropdown [options]="fluxoInvest"  [(ngModel)]="selectedCadFluxo" defaultLabel="" [style]="{width: '100%', height: '25px'}" ></p-dropdown> 
                            
                             
-                            <label>Fluxo de investimento</label>
+                            <label>Nº Revisão</label>
                         </span>
                         </div>
                 <div  div class="ui-g-12">
@@ -538,7 +538,7 @@
                       <div  style="margin-top: 20px; margin-bottom: 50px;">
                           <span class="md-inputfield">
                               <input id="input" [(ngModel)]="descrevendo" type="text" size="60" pInputText/>
-                              <label>Descrição</label>
+                              <label>Observação</label>
                           </span>
                    </div>
                  </div>
@@ -559,28 +559,46 @@
                 </p-accordionTab>  
 
                 <!--Aqui da Engenharia(Projeto)-->
-                <p-accordionTab header="Engenharia(Projeto)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ; color:white;">Status da fase: Em Andamento</div><br>
+                <p-accordionTab header="Engenharia(Projeto)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ; color:white;">Status da fase: {{arrProjeto.statusengenharia}}</div><br>
                   <div class="ui-g">
                     <div class="card card-w-title" style="width:100%">
                       <div  div class="ui-g-12">
-                          <div class="ui-g-3" style="margin-top: 20px;">
+                          <div class="ui-g-3" style="margin-top: 3px;">
                               <span class="md-inputfield">
-                                  <input  type="text" size="40" pInputText/>
+                                  <input  type="text" [(ngModel)]="arrProjeto.pepengenharia" size="30" pInputText/>
                                   <label>PEP do Projeto</label>
                               </span>
                           </div>
                           
-                          <div class="ui-g-3"></div>
+                          <div class="ui-g-3">
+                                <span class="md-inputfield">
+                                <p-dropdown [options]="[
+                                  {label:'', value:null},
+                                  {label:'Não Iniciado', value:'Não Iniciado'},
+                                  {label:'Em Andamento', value:'Em Andadmento'},
+                                  {label:'Concluído', value:'Concluído'},
+                                  {label:'Paralisado', value:'Paralisado'},
+                                  {label:'Não se aplica', value:'Não se aplica'}
+                                  ]" 
+                                [(ngModel)]="arrProjeto.statusengenharia" [style]="{width: '95%', height: '25px'}" >
+                                </p-dropdown>
+                                <label >Status da fase</label>
+                                </span>
+                          </div>
                           <div class="ui-g-3"> </div>
 
                           <div class="ui-g-3">
-                              <div style=" width:230px; position:relative !important; margin-left: 20%;">
+                              <div style=" width:230px; position:relative !important; margin-left: 20%; margin-top: -25px">
                                   <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
                                       <b><span class="overview-box-name">Andamento:</span>
                                       <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
                                   </div>
                               </div>
                             </div>
+                      </div>
+
+                      <div class="ui-g-12">
+                        <button pButton type="button" style="width:100%"label="Salvar" (click)="salvainfoEngenharia()" icon="ui-icon-save" ></button>
                       </div>
 
                       <div  div class="ui-g-12">
@@ -594,12 +612,31 @@
                                             {{col.header}}
                                         </th>
                                         <th style="width:8em; text-align: center;">
-                                            <button type="button" icon="ui-icon-add" pButton></button>
+                                            <button type="button" icon="ui-icon-add" (click) = "cadengenharia = true" pButton></button>
                                         </th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                                   
                                     <tr [pEditableRow]="rowData">
+                                        <!--
+                                            <td>
+                                                    <p-cellEditor>
+                                                        <ng-template pTemplate="input"  >
+                                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                                {label:'', value:null},
+                                                                {label:'Informativo', value:'Informativo'},
+                                                                {label:'Deliberativo', value:'Deliberativo'}
+                                                                ]" 
+                                                                [(ngModel)]="selectedTipo" [style]="{width: '95%', height: '25px'}" >
+                                                            </p-dropdown>
+                                                        </ng-template>
+                                                        <ng-template pTemplate="output">
+                                                             {{rowData['tipo']}}
+                                                        </ng-template>
+                                                    </p-cellEditor>                       
+                                                </td>
+                                                -->
                                         <td *ngFor="let col of columns">
                                         <p-cellEditor>
                                             <ng-template pTemplate="input" *ngFor="let col of columns">
@@ -624,6 +661,124 @@
 
                   </div>
                 </div>
+
+                                <!--Box de Cadastro-->
+    <p-dialog header="Cadastro de projetos" [resizable]="true" responsive="true" [(visible)]="cadengenharia">
+        <div class="ui-g">
+
+            <div  div class="ui-g-12">
+
+                     
+
+              <div class="card card-w-title" >
+                    <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
+                    <div class="item" >
+                            <span class="md-inputfield">
+                                <input id="input" [(ngModel)]="novaengenha.empresa" type="text" size="25" pInputText/>
+                            <label >Empresa</label>
+                            </span>
+                          </div>
+                          <div class="item" >
+                              <span class="md-inputfield">
+                                    <input id="input" [(ngModel)]="novaengenha.responsavel" type="text" size="25" pInputText/>
+                              <label >Responsável</label>
+                              </span>
+                          </div> 
+                        </section>
+                  <div  style="margin-top: 20px; margin-bottom: 50px;">
+                    <div class="item" >
+                        <span class="md-inputfield">
+                        <p-dropdown [options]="[
+                            {label:'', value:null},
+                            {label:'Projeto Executivo', value:'Projeto Executivo'},
+                            {label:'Projeto Básico', value:'Projeto Básico'},
+                            {label:'Projeto Preliminar', value:'Projeto Preliminar'},
+                            {label:'Base de Projeto', value:'Base de Projeto'}
+                            ]" 
+                        [(ngModel)]="novaengenha.tipo" [style]="{width: '95%', height: '25px'}" >
+                        </p-dropdown>
+                        <label >Tipo de Projeto</label>
+                        </span>
+                      </div>
+               </div>
+               
+              <section class="grid grid-auto-flow-1">
+                
+                <div class="item" >
+                  <span class="md-inputfield">
+                  <p-dropdown [options]="[
+                    {label:'', value:null},
+                    {label:'Não Iniciado', value:'Não Iniciado'},
+                    {label:'Em Andamento', value:'Em Andadmento'},
+                    {label:'Concluído', value:'Concluído'},
+                    {label:'Paralisado', value:'Paralisado'},
+                    {label:'Não se aplica', value:'Não se aplica'}
+                    ]" 
+                  [(ngModel)]="novaengenha.status" [style]="{width: '95%', height: '25px'}" >
+                  </p-dropdown>
+                  <label >Status</label>
+                  </span>
+                </div>
+               
+              </section>
+            </div>
+
+            <div class="card card-w-title" >
+
+                <section class="grid grid-auto-flow-1">
+                    <div class="item" style="margin-top: 40px" >
+                        <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.previsto"  ></p-calendar>
+                        <label >Previsto</label>
+                        </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.replanejado" ></p-calendar>
+                          <label >Replanejado</label>
+                          </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.realizado" ></p-calendar>
+                          <label >Realizado</label>
+                          </span>
+                      </div>
+                    </section>
+
+            </div>
+
+            <div class="card card-w-title" >
+
+                <section class="grid grid-auto-flow-1">
+                    <div class="item" style="margin-top: 40px" >
+                        <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.contsistemico"  ></p-calendar>
+                        <label >Contrato Sistêmico</label>
+                        </span>
+                      </div>
+                      <div class="item" style="margin-top: 40px" >
+                          <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.contfisico" ></p-calendar>
+                          <label >Contrato Físico</label>
+                          </span>
+                      </div>
+                    </section>
+
+                <br>
+
+
+            </div>
+
+            </div></div>
+
+
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" label="Salvar" icon="ui-icon-save" (click)="insereengenharia()" pButton></button>
+            </div>
+        </p-footer>
+    </p-dialog>
 
                   
                 </p-accordionTab>

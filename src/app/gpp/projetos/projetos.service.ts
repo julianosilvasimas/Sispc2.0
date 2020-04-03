@@ -178,13 +178,30 @@ delibregulatoriosAdd(dados: any[]): Observable<any>{
 );
 }
 
+engenhariaAdd(dados: any[]): Observable<any>{
+  let headers = new HttpHeaders();
+  headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+  headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    console.log(dados)
+  return this.http.post<any[]>(`${API_CONFIG}/engenharia`,
+  dados,
+  { observe: 'response'})
+  .pipe(
+    map((response) => ({data: response.headers, 
+                        status: response.status,
+                        statusTexto: response.statusText
+                        })
+                        , catchError(ErrorHandler.handleError)) 
+);
+}
+
   regulatoriosAtt(arrProjeto: any[], id: number): Observable<any[]>{
     const headers = new HttpHeaders()
     .set("Content-Type", "application/json",
     );
     let bodyObj = arrProjeto;
    
-return this.http.put(`${API_CONFIG}/regulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
+    return this.http.put(`${API_CONFIG}/regulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
                     .pipe(map(this.extractData),
                     catchError(ErrorHandler.handleError))
   }
@@ -195,7 +212,18 @@ return this.http.put(`${API_CONFIG}/regulatorios/${id}`,JSON.stringify(bodyObj) 
     );
     let bodyObj = arrProjeto;
    
-return this.http.put(`${API_CONFIG}/delibregulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
+    return this.http.put(`${API_CONFIG}/delibregulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
+                    .pipe(map(this.extractData),
+                    catchError(ErrorHandler.handleError))
+  }
+
+  engenhariaAtt(arrProjeto: any[], id: number): Observable<any[]>{
+    const headers = new HttpHeaders()
+    .set("Content-Type", "application/json",
+    );
+    let bodyObj = arrProjeto;
+   
+    return this.http.put(`${API_CONFIG}/delibregulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
                     .pipe(map(this.extractData),
                     catchError(ErrorHandler.handleError))
   }

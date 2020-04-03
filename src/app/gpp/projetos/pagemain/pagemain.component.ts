@@ -91,8 +91,11 @@ export class PagemainComponent implements OnInit {
     delib: any[];
     clonedLine: any;
     selectedTipo: any;
-    novaDelib: any = null
-    engenharia: any[];
+    novaDelib: any = null;
+    novaengenha : any = null;
+    engenharia: any;
+    cadDelibVisible: boolean;
+    cadengenharia: boolean;
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -145,15 +148,26 @@ export class PagemainComponent implements OnInit {
             "link": null,
             "regulatorio": {"regulatorioId": null}
         }
+
+        this.novaengenha = {
+            "engenhariaId": null,
+            "empresa": null,
+            "tipo": null,
+            "responsavel": null,
+            "status": null,
+            "previsto": null,
+            "replanejado": null,
+            "realizado": null,
+            "contsistemico": null,
+            "contfisico": null,
+            "projetoId": {
+                "projetoId": this.idProjeto}
+          }
     
    }
 
   ngOnInit() {
-    
-    
-    
 
-    
     this.projetosService.projetosId(this.idProjeto)
     .subscribe(res => {
         //console.log(res)
@@ -201,11 +215,11 @@ export class PagemainComponent implements OnInit {
                 this.selectedFluxo = res[res.length - 1]['fluxoinvestimento']
                 
                 this.idRevisao = res.length - 1
-                console.log('capturaando numero da revisao => '+ res[res.length - 1]['regulatorioId'])
-                    this.projetosService.delibregulatorios(this.idRevisao)
-                    .subscribe(res => console.log('tentando aqui ó => '+ res))
+                //console.log('capturaando numero da revisao => '+ res[res.length - 1]['regulatorioId'])
+                    /*this.projetosService.delibregulatorios(this.idRevisao)
+                    .subscribe(res => console.log('tentando aqui ó => '+ res))*/
 
-                console.log("tentei aqui => "+ this.selectedFluxo)
+                //console.log("tentei aqui => "+ this.selectedFluxo)
                 
                 this.atualizarRevisao(this.selectedFluxo)
                 
@@ -217,9 +231,17 @@ export class PagemainComponent implements OnInit {
     });
  
     this.projetosService.engenharia(this.idProjeto)
-    .subscribe(response => this.engenharia = response)
-
-    console.log(this.engenharia)
+    .subscribe(response => {
+        this.engenharia = response
+        console.log(this.engenharia[0])
+        this.engenharia.forEach(eng=>{
+            eng.previsto =this.parseResumoDate(eng.previsto)
+            eng.replanejado =this.parseResumoDate(eng.replanejado)
+            eng.realizado =this.parseResumoDate(eng.realizado)
+            eng.contsistemico =this.parseResumoDate(eng.contsistemico)
+            eng.contfisico =this.parseResumoDate(eng.contfisico)
+        })
+    })
 
   this.indices = [
     { label: '01', value: 1 },
@@ -289,13 +311,13 @@ export class PagemainComponent implements OnInit {
     ];
 
     this.cols2 = [                                                                                                                         
-      { field: 'ndeliberacao', header: 'Cod Deliberacao' },
+      { field: 'ndeliberacao', header: 'Nº Documento' },
       { field: 'assunto', header: 'Assunto' },
       { field: 'tipo', header: 'Tipo' },
       { field: 'envio', header: 'Envio' },
       { field: 'retorno', header: 'Retorno' },
       { field: 'aprovado', header: 'Aprovação' },
-      { field: 'link', header: 'Link SeSuite' }
+      { field: 'link', header: 'Link Documento' }
   ];
 
     this.cols3 = [
@@ -311,6 +333,7 @@ export class PagemainComponent implements OnInit {
     
 
   }
+
 
   aprovarRev(){
     this.oFluxo['aprovacao'] ='Aprovada'
@@ -333,8 +356,10 @@ export class PagemainComponent implements OnInit {
     this.projetosService.regulatorios(this.idProjeto)
     .subscribe(res => {
         let aux = []
+        //==================================================================//
+        // * Definindo que só apareça revisões cadastradas para o projeto * //
+        //==================================================================//
         res.forEach(flu=>aux.push(flu['fluxoinvestimento']))
-        //console.log('olhe aqui => '+ aux)
         this.oFluxo = res[aux.indexOf(fluxo, 0)]
         this.selectedFluxo = this.oFluxo['fluxoinvestimento']
         this.selectedMoedaReg = this.oFluxo['moeda']
@@ -343,20 +368,32 @@ export class PagemainComponent implements OnInit {
         }else{
             this.aprov = true
         }
-        if(this.oFluxo.inicio === null){}else{
+        console.log(this.oFluxo)
+        if(this.oFluxo.inicio === null && this.oFluxo.termino === null){}else{
+            console.log(this.oFluxo.inicio)
         //===============================================================//
         // * Aqui melhorar esse condicional para as diversas hipóteses * //
         //===============================================================//
-        if(this.regFimAno === null){}else{
-            this.regIniDia =  this.oFluxo.inicio.dayOfMonth < 10 ? "0"+this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString()
-            this.regIniMes =  this.oFluxo.inicio.monthValue < 10 ? "0"+this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString()
-            this.regIniAno =  this.oFluxo.inicio.year.toString()
-            this.regFimDia =  this.oFluxo.termino.dayOfMonth < 10 ? "0"+this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString()
-            this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
-            this.regFimAno =  this.oFluxo.termino.year.toString()
+            try{
+                this.regIniDia =  this.oFluxo.inicio.dayOfMonth < 10 ? "0"+this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString()
+                this.regIniMes =  this.oFluxo.inicio.monthValue < 10 ? "0"+this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString()
+                this.regIniAno =  this.oFluxo.inicio.year.toString()
+                this.regFimDia =  this.oFluxo.termino.dayOfMonth < 10 ? "0"+this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString()
+                this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
+                this.regFimAno =  this.oFluxo.termino.year.toString()
+            }catch{
+                this.regIniDia = null
+                this.regIniMes = null
+                this.regIniAno = null
+                this.regFimDia = null
+                this.regFimMes = null
+                this.regFimAno = null
+            }
+
         }
-    }
-        console.log('capturaando numero da revisao => '+ this.oFluxo['regulatorioId'])
+        //===============================================================//
+        //============ * chamando endpoint de deliberações * ============//
+        //===============================================================//
                    this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
                     .subscribe(res => {
                         //console.log('tentando aqui ó => '+ res)
@@ -366,9 +403,9 @@ export class PagemainComponent implements OnInit {
                             dl.aprovado =this.parseResumoDate(dl.aprovado)
                             dl.retorno =this.parseResumoDate(dl.retorno)
                         })
-                        console.log('mudando data =>'+this.delib)
-                    }
-                    )
+                        //console.log('mudando data =>'+this.delib)
+                    });
+
 
     });
 
@@ -377,14 +414,26 @@ export class PagemainComponent implements OnInit {
   insereDelib(){
 
     this.novaDelib.regulatorio['regulatorioId'] = this.oFluxo['regulatorioId']
-    console.log(this.novaDelib)
+    //console.log(this.novaDelib)
     this.projetosService.delibregulatoriosAdd(this.novaDelib)
     .subscribe(
-        response => {
-            if(response === null){
+        response => {//console.log(response)  
+            if(response.status === 201){
               this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
               detail:'Dados enviados com sucesso!'});
               console.log('Dados enviados com sucesso!')
+              this.cadDelibVisible = false
+              this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
+                    .subscribe(res => {
+                        //console.log('tentando aqui ó => '+ res)
+                        this.delib = res
+                        this.delib.forEach(dl=>{
+                            dl.envio =this.parseResumoDate(dl.envio)
+                            dl.aprovado =this.parseResumoDate(dl.aprovado)
+                            dl.retorno =this.parseResumoDate(dl.retorno)
+                        })
+                        //console.log('mudando data =>'+this.delib)
+                    });
             }
         },
         error =>  { 
@@ -394,6 +443,44 @@ export class PagemainComponent implements OnInit {
         } 
     )
 
+
+
+  }
+
+  insereengenharia(){
+      this.novaengenha.projetoId =  {"projetoId": this.idProjeto}
+      //console.log(this.novaengenha)
+
+      this.projetosService.engenhariaAdd(this.novaengenha)
+    .subscribe(
+        response => {//console.log(response)  
+            if(response.status === 201){
+              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+              detail:'Dados enviados com sucesso!'});
+              console.log('Dados enviados com sucesso!')
+              this.cadengenharia = false
+
+              this.projetosService.engenharia(this.idProjeto)
+                .subscribe(response => {
+                    this.engenharia = response
+                    console.log(this.engenharia[0])
+                    this.engenharia.forEach(eng=>{
+                        eng.previsto =this.parseResumoDate(eng.previsto)
+                        eng.replanejado =this.parseResumoDate(eng.replanejado)
+                        eng.realizado =this.parseResumoDate(eng.realizado)
+                        eng.contsistemico =this.parseResumoDate(eng.contsistemico)
+                        eng.contfisico =this.parseResumoDate(eng.contfisico)
+        })
+                })
+              
+            }
+        },
+        error =>  { 
+          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+          detail:error.message, life: 5000});
+          console.log(error)
+        } 
+    )
   }
 
   enviarReg(cad){
@@ -413,10 +500,11 @@ export class PagemainComponent implements OnInit {
       this.projetosService.regulatoriosAdd(this.attFluxo)
     .subscribe(
         response => {
-            if(response === null){
+            if(response.status === 201){
               this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
               detail:'Dados enviados com sucesso!'});
               console.log('Dados enviados com sucesso!')
+              //this.atualizarRevisao(this.oFluxo)
             }
         },
         error =>  { 
@@ -428,6 +516,34 @@ export class PagemainComponent implements OnInit {
 
   }
 
+  salvainfoEngenharia(){
+
+    let pep = this.arrProjeto['pepengenharia'] 
+    let status = this.arrProjeto['statusengenharia'] 
+    
+    this.projetosService.projetosId(this.idProjeto)
+    .subscribe(res => {
+        this.arrProjeto = res
+        this.arrProjeto['pepengenharia'] = pep
+        this.arrProjeto['statusengenharia'] = status
+
+        this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
+            .subscribe(
+                response => {
+                    if(response === null){
+                    this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+                    detail:'Dados enviados com sucesso!'});
+                    console.log('Dados enviados com sucesso!')
+                    }
+                },
+                error =>  { 
+                this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+                detail:error.message, life: 5000});
+                console.log(error)
+                } 
+            )
+    });
+  }
 
   atualizarRegulatorio(){
 
@@ -590,11 +706,12 @@ export class PagemainComponent implements OnInit {
         if (dados.ndeliberacao!= null || dados.ndeliberacao!= '' ) {
             dados.regulatorio = null
             dados.regulatorio = {regulatorioId :this.oFluxo['regulatorioId'] } 
+            dados.tipo = this.selectedTipo
             try{
             dados.envio = this.toDate(dados.envio)
             dados.retorno = this.toDate(dados.retorno)
             dados.aprovado = this.toDate(dados.aprovado)
-            dados.tipo = this.selectedTipo
+            }catch{ console.log('Data sem alteração pois é nula')}
 
             console.log(dados)
             console.log(dados.deliberacaoId)
@@ -603,8 +720,21 @@ export class PagemainComponent implements OnInit {
             .subscribe(
                 response => {
                     if(response === null){
-                      this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
-                      detail:'Dados enviados com sucesso!'});
+                        delete this.clonedLines[dados.ndeliberacao];
+                        this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
+                        this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
+                    .subscribe(res => {
+                        //console.log('tentando aqui ó => '+ res)
+                        this.delib = res
+                        this.delib.forEach(dl=>{
+                            dl.envio =this.parseResumoDate(dl.envio)
+                            dl.aprovado =this.parseResumoDate(dl.aprovado)
+                            dl.retorno =this.parseResumoDate(dl.retorno)
+                        })
+                        //console.log('mudando data =>'+this.delib)
+                    });
+            
+                      
                       console.log('Dados enviados com sucesso!')
                     }
                 },
@@ -614,30 +744,8 @@ export class PagemainComponent implements OnInit {
                   console.log(error)
                 } 
             )
-            }catch{
-                console.log(dados)
-                console.log(dados.deliberacaoId)
-                
-                this.projetosService.delibregulatoriosAtt(dados,dados.deliberacaoId)
-            .subscribe(
-                response => {
-                    if(response === null){
-                      this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
-                      detail:'Dados enviados com sucesso!'});
-                      console.log('Dados enviados com sucesso!')
-                    }
-                },
-                error =>  { 
-                  this.messageService.add({severity:'error', summary: "Dados não Enviados!",
-                  detail:error.message, life: 5000});
-                  console.log(error)
-                } 
-            )
-                
-            }
 
-            delete this.clonedLines[dados.ndeliberacao];
-            this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
+            
         }
         else {
             this.messageService.add({severity:'error', summary: 'Error', detail:'O código da deliberação é obrigatório!'});
