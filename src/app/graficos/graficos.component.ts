@@ -237,26 +237,26 @@ export class GraficosComponent implements OnInit {
       //========================================================================================
       switch(IndicadorCadastro.rotuloVirgula){
         case 1:{
-          this.campoCalc1 = converterComDecimal(this.campoCalc1)
-          this.campoCalc2 = converterComDecimal(this.campoCalc2)
-          this.campoCalc3 = converterComDecimal(this.campoCalc3)
-          this.campoCalc4 = converterComDecimal(this.campoCalc4)
+          this.campoCalc1 = converterComDecimal(this.campoCalc1*1)
+          this.campoCalc2 = converterComDecimal(this.campoCalc2*1)
+          this.campoCalc3 = converterComDecimal(this.campoCalc3*1)
+          this.campoCalc4 = converterComDecimal(this.campoCalc4*1)
           this.RotuloOrcadoMensal = converterComDecimal(this.RotuloOrcadoMensal*1);
           this.RotuloPrevisaoMensal = converterComDecimal(this.RotuloPrevisaoMensal*1);
           break;
         }
         case 2:{
-          this.campoCalc1 = converterSemDecimal(this.campoCalc1)
-          this.campoCalc2 = converterSemDecimal(this.campoCalc2)
-          this.campoCalc3 = converterSemDecimal(this.campoCalc3)
-          this.campoCalc4 = converterSemDecimal(this.campoCalc4)
+          this.campoCalc1 = converterSemDecimal(this.campoCalc1*1)
+          this.campoCalc2 = converterSemDecimal(this.campoCalc2*1)
+          this.campoCalc3 = converterSemDecimal(this.campoCalc3*1)
+          this.campoCalc4 = converterSemDecimal(this.campoCalc4*1)
           this.RotuloOrcadoMensal = converterSemDecimal(this.RotuloOrcadoMensal*1);
           this.RotuloPrevisaoMensal = converterSemDecimal(this.RotuloPrevisaoMensal*1);
           break;
         }
         case 3:{
-          this.campoCalc1 = ConverterParaHora(this.campoCalc1)
-          this.campoCalc2 = ConverterParaHora(this.campoCalc2)
+          this.campoCalc1 = ConverterParaHora(this.campoCalc1*1)
+          this.campoCalc2 = ConverterParaHora(this.campoCalc2*1)
           this.RotuloOrcadoMensal = ConverterParaHora(this.RotuloOrcadoMensal*1);
           this.RotuloPrevisaoMensal = ConverterParaHora(this.RotuloPrevisaoMensal*1);
           break;
