@@ -232,9 +232,9 @@ export class InputindicadoresComponent implements OnInit {
                     .subscribe(
                       Indicadores  =>  {
                 
-                        this.realacum = parseFloat(Indicadores[0][3]).toLocaleString(),     //'pt-BR', { style: 'currency', currency: 'BRL' }),
-                        this.orcadoacum = parseFloat(Indicadores[0][2]).toLocaleString(),
-                        this.previsao = parseFloat(Indicadores[0][4]).toLocaleString(),
+                        this.realacum = parseFloat(Indicadores[3][3]).toLocaleString(),     //'pt-BR', { style: 'currency', currency: 'BRL' }),
+                        this.orcadoacum = parseFloat(Indicadores[3][2]).toLocaleString(),
+                        this.previsao = parseFloat(Indicadores[3][4]).toLocaleString(),
                         
                         this.resumo.push({
                           'vin': res['indicador'],
