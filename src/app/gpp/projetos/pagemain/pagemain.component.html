@@ -597,8 +597,8 @@
                             </div>
                       </div>
 
-                      <div class="ui-g-12">
-                        <button pButton type="button" style="width:100%"label="Salvar" (click)="salvainfoEngenharia()" icon="ui-icon-save" ></button>
+                      <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                        <button pButton type="button" style="width:30%"label="Salvar" (click)="salvainfoEngenharia()" icon="ui-icon-save" ></button>
                       </div>
 
                       <div  div class="ui-g-12">
@@ -608,6 +608,10 @@
                                 </ng-template>
                                 <ng-template pTemplate="header" let-columns>
                                     <tr> 
+                                        <th>Empresa</th>
+                                        <th>Responsável</th>
+                                        <th>Status</th>
+                                        <th>Tipo</th>
                                         <th *ngFor="let col of columns">
                                             {{col.header}}
                                         </th>
@@ -619,24 +623,72 @@
                                 <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
                                    
                                     <tr [pEditableRow]="rowData">
-                                        <!--
+
                                             <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                <input id="input" [(ngModel)]="novaengenha.empresa" type="text" size="25" pInputText/>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['empresa']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                            </td>
+                                            <td>
+                                                    <p-cellEditor>
+                                                        <ng-template pTemplate="input"  >
+                                                                <span class="md-inputfield">
+                                                                    <input id="input" [(ngModel)]="novaengenha.responsavel" type="text" size="25" pInputText/>
+                                                                </span>
+                                                        </ng-template>
+                                                        <ng-template pTemplate="output">
+                                                                 {{rowData['responsavel']}}
+                                                        </ng-template>
+                                                     </p-cellEditor>                       
+                                                </td>
+
+                                             <td>
                                                     <p-cellEditor>
                                                         <ng-template pTemplate="input"  >
                                                             <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
                                                                 {label:'', value:null},
-                                                                {label:'Informativo', value:'Informativo'},
-                                                                {label:'Deliberativo', value:'Deliberativo'}
+                                                                {label:'Não Iniciado', value:'Não Iniciado'},
+                                                                {label:'Em Andamento', value:'Em Andadmento'},
+                                                                {label:'Concluído', value:'Concluído'},
+                                                                {label:'Paralisado', value:'Paralisado'},
+                                                                {label:'Não se aplica', value:'Não se aplica'}
                                                                 ]" 
                                                                 [(ngModel)]="selectedTipo" [style]="{width: '95%', height: '25px'}" >
                                                             </p-dropdown>
                                                         </ng-template>
                                                         <ng-template pTemplate="output">
-                                                             {{rowData['tipo']}}
+                                                             {{rowData['status']}}
                                                         </ng-template>
                                                     </p-cellEditor>                       
                                                 </td>
-                                                -->
+
+                                                <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <p-dropdown [options]="[
+                                                                    {label:'', value:null},
+                                                                    {label:'Projeto Executivo', value:'Projeto Executivo'},
+                                                                    {label:'Projeto Básico', value:'Projeto Básico'},
+                                                                    {label:'Projeto Preliminar', value:'Projeto Preliminar'},
+                                                                    {label:'Base de Projeto', value:'Base de Projeto'}
+                                                                    ]" 
+                                                                [(ngModel)]="novaengenha.tipo" [style]="{width: '95%', height: '25px'}" >
+                                                                </p-dropdown>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                 {{rowData['tipo']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>                       
+                                                    </td>
+                                          
+      
                                         <td *ngFor="let col of columns">
                                         <p-cellEditor>
                                             <ng-template pTemplate="input" *ngFor="let col of columns">
@@ -1375,13 +1427,13 @@
                 </p-accordionTab>
 
                 <!--Aqui trato da Comprovação-->
-                <p-accordionTab header="Comprovação"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                <p-accordionTab header="Comprovação"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{arrProjeto['comprovacao'].status}}</div><br>
                     <div class="ui-g">
                             <div class="card card-w-title" style="width:100%">
                                 <div  div class="ui-g-12">
                                         <div class="ui-g-8" style="margin-top: 20px;">
                                             <span class="md-inputfield">
-                                                <input  type="text" size="60" pInputText/>
+                                                <input  type="text" size="60" [(ngModel)]="arrProjeto['comprovacao'].nprocesso" pInputText />
                                                 <label>Número do Processo</label>
                                             </span>
                                         </div>
@@ -1394,33 +1446,49 @@
                                             </div>
                                         </div>
 
-                                        <div class="ui-g-3" style="margin-top: 20px;">
+                                        <div class="ui-g-2" style="margin-top: 20px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" [(ngModel)]="arrProjeto['comprovacao'].envio" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                                 <label >Data Envio</label>
                                             </span>
                                         </div>
                                         
-                                        <div class="ui-g-3">
+                                        <div class="ui-g-2">
                                             <span class="md-inputfield"  style="margin-top: 20px;">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" [(ngModel)]="arrProjeto['comprovacao'].retorno" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                                 <label >Data Retorno</label>
                                             </span>
                                         </div>
     
-                                        <div class="ui-g-3" style="margin-top: 5px;">
+                                        <div class="ui-g-2" style="margin-top: 16px;">
                                             <span class="md-inputfield">
-                                                <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
+                                                <p-dropdown [options]="status"  [(ngModel)]="arrProjeto['comprovacao'].status" defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-dropdown>
                                                 <label >Status</label>
                                             </span>
                                         </div>
-                                        <div class="ui-g-3">
+                                        <div class="ui-g-2">
                                             <span class="md-inputfield" style="margin-top: 20px;">
-                                                <input  type="text" size="30" pInputText/>
+                                                <input  type="text" [(ngModel)]="arrProjeto['comprovacao'].valorcomprovado" pInputText/>
                                                 <label>Valor Comprovado</label>
                                             </span>
                                         </div>
+                                        <div class="ui-g-2">
+                                                <span class="md-inputfield" style="margin-top: 16px;">
+                                                    <p-dropdown  [options]="anos" [(ngModel)]="arrProjeto['comprovacao'].moeda" placeholder="Moeda"  ></p-dropdown>
+                                                    <label>Moeda</label>
+                                                </span>
+                                        </div>
+                                        <div class="ui-g-2">
+                                                <span class="md-inputfield" style="margin-top: 20px;">
+                                                        <input  type="text" [(ngModel)]="arrProjeto['comprovacao'].valoratualizado" pInputText/>
+                                                        <label>Valor Atualizado</label>
+                                                    </span>
+                                        </div>
                                 </div>
+                            </div>
+                            <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                                <button pButton type="button" style="width:30%;"
+                                label="Salvar" (click)="salvarComprovacao()" icon="ui-icon-save" ></button>
                             </div>
                             
                              
@@ -1429,18 +1497,175 @@
                                     <h2>Arquivos de Comprovação</h2>
                                     <p-growl [value]="msgs"></p-growl>
                                                 
-                                    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" 
-                                        multiple="multiple" accept="image/*" maxFileSize="1000000"
-                                        chooseLabel="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar"> 
-                                        <ng-template pTemplate="content">
-                                            <ul *ngIf="uploadedFiles.length">
-                                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                                            </ul>
-                                        </ng-template>    
-                                    </p-fileUpload>
+                                    
+                                    <p-table [columns]="colsarqcomp" [value]="comprovacaoarquivos" dataKey="comprovacaoarquivoId" editMode="row"  >
+                                            <ng-template pTemplate="caption">
+                                            </ng-template>
+                                            <ng-template pTemplate="header" let-columns [ngStyle]="{'width': '100%'}">
+                                                <tr> 
+                                                    
+                                                    <th  *ngFor="let col of columns">
+                                                        {{col.header}}
+                                                    </th>
+                                                    
+                                                    <th style="width:8em; text-align: center;">
+                                                        <button type="button" icon="ui-icon-add" (click)= "cadArqComp=true" pButton></button>
+                                                    </th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                                                <tr [pEditableRow]="rowData">
+                                                    
+                                                    
+                                                  <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <input pInputText type="text" [(ngModel)]="rowData['nomearquivo']" >
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                    {{rowData['nomearquivo']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                </td>
+        
+                                                  
+        
+                                                  
+        
+                                                    <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                                        {label:'', value:null},
+                                                                        {label:'Excel', value:'excel'},
+                                                                        {label:'Word', value:'word'},
+                                                                        {label:'Power Point', value:'powerpoint'},
+                                                                        {label:'PDF', value:'pdf'},
+                                                                        {label:'Imagem', value:'img'}
+                                                                        ]" 
+                                                                        [(ngModel)]="rowData['tipoarquivo']" [style]="{width: '95%', height: '25px'}" >
+                                                                    </p-dropdown>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                    {{rowData['tipoarquivo']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                      </td>
+        
+                                                  
+        
+                                                  <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['envio']"></p-calendar>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                    {{rowData['envio']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                      </td>
+        
+        
+                                                  <td>
+                                                    <p-cellEditor>
+                                                        <ng-template pTemplate="input"  >
+                                                            <input pInputText type="text" [(ngModel)]="rowData['caminho']" >
+                                                        </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                            <a href="{{rowData['caminho']}}"><img src="assets/images/sesuite.png" style="width: 50px; margin-right: 1em; vertical-align: middle;"></a>
+                                                    </ng-template>
+                                                  </p-cellEditor>
+                                                  </td>
+              
+                                                    <td style="text-align:center;">
+                                                        <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInitArq(rowData)"><i class="material-icons">mode_edit</i></button>
+                                                        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSaveArq(rowData)"></button>
+                                                        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+
+
                                 </div>
                             </div>
                             </div>
+
+
+
+                            <!--Box de Cadastro-->
+    <p-dialog header="Cadastro de arquivos" [resizable]="true" responsive="true" [(visible)]="cadArqComp">
+            <div class="ui-g">
+    
+                <div  div class="ui-g-12">
+
+                        <div class="card card-w-title" >
+    
+                            <section class="grid grid-auto-flow-1">
+                                <div class="item" style="justify-content: center;align-items: center;display: flex;flex-direction: column" >
+                                    <span class="md-inputfield">
+                                        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novacomprovacao.envio"  ></p-calendar>
+                                        <label >Data de envio</label>
+                                    </span>
+                                </div>
+                            </section>
+                
+                        </div>
+    
+                         
+    
+                  <div class="card card-w-title" >
+                        <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
+                        <div class="item" >
+                                <span class="md-inputfield">
+                                    <input id="input" [(ngModel)]="novacomprovacao.nomearquivo" type="text" size="25" pInputText/>
+                                <label >Nome do arquivo</label>
+                                </span>
+                              </div>
+                              
+                            </section>
+                      <div  style="margin-top: 20px; margin-bottom: 50px;">
+                          <span class="md-inputfield">
+                              <input id="input" [(ngModel)]="novacomprovacao.caminho" type="text" size="60" pInputText/>
+                              <label>Link para o arquivo</label>
+                          </span>
+                   </div>
+                   
+                  <section class="grid grid-auto-flow-1">
+                    
+                    <div class="item" >
+                      <span class="md-inputfield">
+                      <p-dropdown [options]="[
+                        {label:'', value:null},
+                        {label:'Excel', value:'excel'},
+                        {label:'Word', value:'word'},
+                        {label:'Power Point', value:'powerpoint'},
+                        {label:'PDF', value:'pdf'},
+                        {label:'Imagem', value:'img'}
+                        ]" 
+                      [(ngModel)]="novacomprovacao.tipoarquivo" [style]="{width: '95%', height: '25px'}" >
+                      </p-dropdown>
+                      <label >Tipo de arquivo</label>
+                      </span>
+                    </div>
+                   
+                  </section>
+                  
+                </div>
+    
+                
+    
+                </div></div>
+    
+    
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                    <button type="button" label="Salvar" icon="ui-icon-save" (click)="insereComprovacaoArq()" pButton></button>
+                </div>
+            </p-footer>
+        </p-dialog>
+
+                            
                               
                 </p-accordionTab>
 

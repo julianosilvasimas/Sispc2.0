@@ -96,6 +96,10 @@ export class PagemainComponent implements OnInit {
     engenharia: any;
     cadDelibVisible: boolean;
     cadengenharia: boolean;
+    comprovacaoarquivos: any[];
+    colsarqcomp: { field: string; header: string; }[];
+    cadArqComp: boolean;
+    novacomprovacao: any = null;
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -149,7 +153,17 @@ export class PagemainComponent implements OnInit {
             "regulatorio": {"regulatorioId": null}
         }
 
-        this.novaengenha = {
+        this.novacomprovacao = {
+            "comprovacaoarquivoId": null,
+            "nomearquivo": null,
+            "caminho": null,
+            "tipoarquivo": null,
+            "envio": null,
+            "comprovacaoId": {
+                "comprovacaoId": this.idProjeto}
+          }
+
+          this.novaengenha = {
             "engenhariaId": null,
             "empresa": null,
             "tipo": null,
@@ -163,6 +177,17 @@ export class PagemainComponent implements OnInit {
             "projetoId": {
                 "projetoId": this.idProjeto}
           }
+
+        this.novacomprovacao = {
+            "comprovacaoarquivoId": null,
+            "nomearquivo": null,
+            "caminho": null,
+            "tipoarquivo": null,
+            "envio": null,
+            "comprovacaoId": {
+                "comprovacaoId": this.idProjeto}
+          }
+
     
    }
 
@@ -188,6 +213,11 @@ export class PagemainComponent implements OnInit {
         this.terminoreplanejado = this.parseDate(this.arrProjeto['terminoreplanejado'])
         this.terminorealizado = this.parseDate(this.arrProjeto['terminorealizado'])
         this.partesInteressadas = this.arrProjeto['partestinteressadas']
+
+        //em outros forms
+        this.arrProjeto['comprovacao'].envio = this.parseDate(this.arrProjeto['comprovacao'].envio)
+        this.arrProjeto['comprovacao'].retorno = this.parseDate(this.arrProjeto['comprovacao'].retorno)
+        this.arrProjeto['comprovacao'].moeda = this.arrProjeto['comprovacao'].moeda.toString()
         
             this.projetosService.partesInteressadas()
             .subscribe(response => {
@@ -215,11 +245,6 @@ export class PagemainComponent implements OnInit {
                 this.selectedFluxo = res[res.length - 1]['fluxoinvestimento']
                 
                 this.idRevisao = res.length - 1
-                //console.log('capturaando numero da revisao => '+ res[res.length - 1]['regulatorioId'])
-                    /*this.projetosService.delibregulatorios(this.idRevisao)
-                    .subscribe(res => console.log('tentando aqui ó => '+ res))*/
-
-                //console.log("tentei aqui => "+ this.selectedFluxo)
                 
                 this.atualizarRevisao(this.selectedFluxo)
                 
@@ -233,7 +258,7 @@ export class PagemainComponent implements OnInit {
     this.projetosService.engenharia(this.idProjeto)
     .subscribe(response => {
         this.engenharia = response
-        console.log(this.engenharia[0])
+        //console.log(this.engenharia[0])
         this.engenharia.forEach(eng=>{
             eng.previsto =this.parseResumoDate(eng.previsto)
             eng.replanejado =this.parseResumoDate(eng.replanejado)
@@ -242,6 +267,18 @@ export class PagemainComponent implements OnInit {
             eng.contfisico =this.parseResumoDate(eng.contfisico)
         })
     })
+
+    this.projetosService.comprovacaoarquivos(this.idProjeto)
+    .subscribe(response => {
+        this.comprovacaoarquivos = response
+        console.log(this.comprovacaoarquivos[0])
+        
+        this.comprovacaoarquivos.forEach(arq=>{
+            arq.envio =this.parseResumoDate(arq.envio)
+        })
+    })
+
+
 
   this.indices = [
     { label: '01', value: 1 },
@@ -299,10 +336,6 @@ export class PagemainComponent implements OnInit {
     ];
 
     this.cols = [
-        { field: 'empresa', header: 'Empresa' },
-        { field: 'responsavel', header: 'Responsável' },
-        { field: 'status', header: 'Status' },
-        { field: 'tipo', header: 'Tipo do Projeto' },
         { field: 'previsto', header: 'Previsto' },
         { field: 'replanejado', header: 'Replanejado' },
         { field: 'realizado', header: 'Realizado' },
@@ -319,6 +352,13 @@ export class PagemainComponent implements OnInit {
       { field: 'aprovado', header: 'Aprovação' },
       { field: 'link', header: 'Link Documento' }
   ];
+  
+    this.colsarqcomp = [                                                                                                                         
+        { field: 'nomearquivo', header: 'Nome do arquivo' },
+        { field: 'tipoarquivo', header: 'Tipo do arquivo' },
+        { field: 'envio', header: 'Data de envio' },
+        { field: 'link', header: 'Link Documento' }
+    ];
 
     this.cols3 = [
         { field: 'numeroLicenca', header: 'Número' },
@@ -368,9 +408,9 @@ export class PagemainComponent implements OnInit {
         }else{
             this.aprov = true
         }
-        console.log(this.oFluxo)
+       //console.log(this.oFluxo)
         if(this.oFluxo.inicio === null && this.oFluxo.termino === null){}else{
-            console.log(this.oFluxo.inicio)
+            //console.log(this.oFluxo.inicio)
         //===============================================================//
         // * Aqui melhorar esse condicional para as diversas hipóteses * //
         //===============================================================//
@@ -434,6 +474,38 @@ export class PagemainComponent implements OnInit {
                         })
                         //console.log('mudando data =>'+this.delib)
                     });
+            }
+        },
+        error =>  { 
+          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+          detail:error.message, life: 5000});
+          console.log(error)
+        } 
+    )
+
+  }
+
+  insereComprovacaoArq(){
+    this.novacomprovacao['comprovacaoId'].comprovacaoId =  this.idProjeto
+
+    this.projetosService.comprovacaoarquivosAdd(this.novacomprovacao)
+    .subscribe(
+        response => {//console.log(response)  
+            if(response.status === 201){
+              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+              detail:'Dados enviados com sucesso!'});
+              console.log('Dados enviados com sucesso!')
+              this.cadArqComp = false
+
+              this.projetosService.comprovacaoarquivos(this.idProjeto)
+                .subscribe(response => {
+                this.comprovacaoarquivos = response
+        
+                 this.comprovacaoarquivos.forEach(arq=>{
+                arq.envio =this.parseResumoDate(arq.envio)
+        })
+    })
+              
             }
         },
         error =>  { 
@@ -523,7 +595,7 @@ export class PagemainComponent implements OnInit {
     
     this.projetosService.projetosId(this.idProjeto)
     .subscribe(res => {
-        this.arrProjeto = res
+        this.arrProjeto = res // Acho que Gatilho abaixo é pq quando invoco aqui sobrescrevo as informações que já estão no formulário, dá pra melhorar
         this.arrProjeto['pepengenharia'] = pep
         this.arrProjeto['statusengenharia'] = status
 
@@ -576,6 +648,27 @@ export class PagemainComponent implements OnInit {
           console.log(error)
         } 
     )
+  }
+
+  salvarComprovacao(){
+
+    this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
+    .subscribe(
+        response => {
+            if(response === null){
+                console.log(this.arrProjeto)
+              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+              detail:'Dados enviados com sucesso!'});
+              console.log('Dados enviados com sucesso!')
+            }
+        },
+        error =>  { 
+          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+          detail:error.message, life: 5000});
+          console.log(error)
+        } 
+    )
+
   }
 
   salvarGerais(){
@@ -700,6 +793,10 @@ export class PagemainComponent implements OnInit {
         this.clonedLines[dados.ndeliberacao] = {...dados};
 
     }
+    onRowEditInitArq(dados: any) {
+        this.clonedLines[dados.comprovacaoarquivoId] = {...dados};
+
+    }
 
     onRowEditSave(dados: any) {
         
@@ -712,9 +809,6 @@ export class PagemainComponent implements OnInit {
             dados.retorno = this.toDate(dados.retorno)
             dados.aprovado = this.toDate(dados.aprovado)
             }catch{ console.log('Data sem alteração pois é nula')}
-
-            console.log(dados)
-            console.log(dados.deliberacaoId)
             
             this.projetosService.delibregulatoriosAtt(dados,dados.deliberacaoId)
             .subscribe(
@@ -749,6 +843,50 @@ export class PagemainComponent implements OnInit {
         }
         else {
             this.messageService.add({severity:'error', summary: 'Error', detail:'O código da deliberação é obrigatório!'});
+        }
+    }
+
+    onRowEditSaveArq(dados: any) {
+        console.log(dados)
+        dados.comprovacaoId = {comprovacaoId : dados['comprovacaoId'].comprovacaoId } 
+        
+        if (dados.nomearquivo!= null || dados.nomearquivo!= '' ) {
+            try{
+            dados.envio = this.toDate(dados.envio)
+            }catch{ console.log('Data sem alteração pois é nula')}
+
+            
+            this.projetosService.comprovacaoarquivosAtt(dados,dados.comprovacaoarquivoId)
+            .subscribe(
+                response => {
+                    if(response === null){
+                        delete this.clonedLines[dados.comprovacaoarquivoId];
+                        this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
+
+                        this.projetosService.comprovacaoarquivos(this.idProjeto)
+                        .subscribe(response => {
+                            this.comprovacaoarquivos = response
+                            
+                            this.comprovacaoarquivos.forEach(arq=>{
+                                arq.envio =this.parseResumoDate(arq.envio)
+                            })
+                        })
+            
+                      
+                      console.log('Dados enviados com sucesso!')
+                    }
+                },
+                error =>  { 
+                  this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+                  detail:error.message, life: 5000});
+                  console.log(error)
+                } 
+            )
+
+            
+        }
+        else {
+            this.messageService.add({severity:'error', summary: 'Error', detail:'O nome do arquivo é obrigatório!'});
         }
     }
 

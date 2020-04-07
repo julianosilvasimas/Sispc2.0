@@ -90,6 +90,11 @@ export class ProjetosService{
       .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
     }
 
+    comprovacaoarquivos(projetosId : number): Observable<any[]>{
+      return  this.http.get(`${API_CONFIG}/projetos/${projetosId}/comprovacaoarquivos`) 
+      .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+    }
+
     regulatorios(projetosId : number): Observable<any[]>{
       return  this.http.get(`${API_CONFIG}/projetos/${projetosId}/regulatorios`) 
       .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -178,6 +183,23 @@ delibregulatoriosAdd(dados: any[]): Observable<any>{
 );
 }
 
+comprovacaoarquivosAdd(dados: any[]): Observable<any>{
+  let headers = new HttpHeaders();
+  headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+  headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    console.log(dados)
+  return this.http.post<any[]>(`${API_CONFIG}/comprovacaoarquivos`,
+  dados,
+  { observe: 'response'})
+  .pipe(
+    map((response) => ({data: response.headers, 
+                        status: response.status,
+                        statusTexto: response.statusText
+                        })
+                        , catchError(ErrorHandler.handleError)) 
+);
+}
+
 engenhariaAdd(dados: any[]): Observable<any>{
   let headers = new HttpHeaders();
   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
@@ -224,6 +246,17 @@ engenhariaAdd(dados: any[]): Observable<any>{
     let bodyObj = arrProjeto;
    
     return this.http.put(`${API_CONFIG}/delibregulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
+                    .pipe(map(this.extractData),
+                    catchError(ErrorHandler.handleError))
+  }
+
+  comprovacaoarquivosAtt(arrProjeto: any[], id: number): Observable<any[]>{
+    const headers = new HttpHeaders()
+    .set("Content-Type", "application/json",
+    );
+    let bodyObj = arrProjeto;
+   
+    return this.http.put(`${API_CONFIG}/comprovacaoarquivos/${id}`,JSON.stringify(bodyObj) , {headers},)
                     .pipe(map(this.extractData),
                     catchError(ErrorHandler.handleError))
   }
