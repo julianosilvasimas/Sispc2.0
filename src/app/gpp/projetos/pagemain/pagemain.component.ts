@@ -100,6 +100,8 @@ export class PagemainComponent implements OnInit {
     colsarqcomp: { field: string; header: string; }[];
     cadArqComp: boolean;
     novacomprovacao: any = null;
+    novalicenca: any =null;
+    licenciamentos: any[];
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -178,6 +180,19 @@ export class PagemainComponent implements OnInit {
                 "projetoId": this.idProjeto}
           }
 
+          this.novalicenca = {
+            "licencaId": null,
+            "licenca": null,
+            "descricao": null,
+            "tipo": null,
+            "orgao": null,
+            "status": null,
+            "protocolo": null,
+            "inicio": null,
+            "termino": null,
+            "projetoId": {"projetoId": 1}
+          }
+
         this.novacomprovacao = {
             "comprovacaoarquivoId": null,
             "nomearquivo": null,
@@ -195,10 +210,10 @@ export class PagemainComponent implements OnInit {
 
     this.projetosService.projetosId(this.idProjeto)
     .subscribe(res => {
-        //console.log(res)
+        
         this.arrProjeto = res
    
-    
+        console.log(this.arrProjeto)
     
         this.selectedLocal = this.arrProjeto['localidade']
         this.selectedRadar = this.arrProjeto['radar']
@@ -254,6 +269,16 @@ export class PagemainComponent implements OnInit {
             }catch{this.atualizarRevisao(this.attFluxo)}  
  
     });
+
+    this.projetosService.licenciamentos(this.idProjeto)
+    .subscribe(response => {//console.log(response)
+        this.licenciamentos = response
+        
+        this.licenciamentos.forEach(lic=>{
+            lic.inicio =this.parseResumoDate(lic.inicio)
+            lic.termino =this.parseResumoDate(lic.termino)
+        })
+    });
  
     this.projetosService.engenharia(this.idProjeto)
     .subscribe(response => {
@@ -271,7 +296,7 @@ export class PagemainComponent implements OnInit {
     this.projetosService.comprovacaoarquivos(this.idProjeto)
     .subscribe(response => {
         this.comprovacaoarquivos = response
-        console.log(this.comprovacaoarquivos[0])
+        //console.log(this.comprovacaoarquivos[0])
         
         this.comprovacaoarquivos.forEach(arq=>{
             arq.envio =this.parseResumoDate(arq.envio)
@@ -361,8 +386,8 @@ export class PagemainComponent implements OnInit {
     ];
 
     this.cols3 = [
-        { field: 'numeroLicenca', header: 'Número' },
-        { field: 'tipoLicenca', header: 'Tipo' },
+        { field: 'licenca', header: 'Licença' },
+        { field: 'tipo', header: 'Tipo' },
         { field: 'status', header: 'Status' },
         { field: 'orgao', header: 'Orgão' },
         { field: 'descricao', header: 'Descrição' },
@@ -515,7 +540,37 @@ export class PagemainComponent implements OnInit {
         } 
     )
 
+  }
+  insereLicenciamento(){
+    this.novalicenca['projetoId'].projetoId =  this.idProjeto
 
+    this.projetosService.licenciamentosAdd(this.novalicenca)
+    .subscribe(
+        response => {//console.log(response)  
+            if(response.status === 201){
+              this.messageService.add({sticky: true, severity:'success', summary: 'Dados Salvos!',
+              detail:'Dados enviados com sucesso!'});
+              console.log('Dados enviados com sucesso!')
+              this.cadArqComp = false
+
+              this.projetosService.licenciamentos(this.idProjeto)
+                .subscribe(response => {
+                this.licenciamentos = response
+        
+                 this.licenciamentos.forEach(lic=>{
+                    lic.inicio =this.parseResumoDate(lic.inicio)
+                    lic.termino =this.parseResumoDate(lic.termino)
+        })
+    })
+              
+            }
+        },
+        error =>  { 
+          this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+          detail:error.message, life: 5000});
+          console.log(error)
+        } 
+    )
 
   }
 
@@ -648,6 +703,10 @@ export class PagemainComponent implements OnInit {
           console.log(error)
         } 
     )
+  }
+
+  salvainfoLicenca(){
+
   }
 
   salvarComprovacao(){
@@ -793,8 +852,14 @@ export class PagemainComponent implements OnInit {
         this.clonedLines[dados.ndeliberacao] = {...dados};
 
     }
+
     onRowEditInitArq(dados: any) {
         this.clonedLines[dados.comprovacaoarquivoId] = {...dados};
+
+    }
+
+    onRowEditInitLic(dados: any) {
+        this.clonedLines[dados.licencaId] = {...dados};
 
     }
 
@@ -869,6 +934,52 @@ export class PagemainComponent implements OnInit {
                             
                             this.comprovacaoarquivos.forEach(arq=>{
                                 arq.envio =this.parseResumoDate(arq.envio)
+                            })
+                        })
+            
+                      
+                      console.log('Dados enviados com sucesso!')
+                    }
+                },
+                error =>  { 
+                  this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+                  detail:error.message, life: 5000});
+                  console.log(error)
+                } 
+            )
+
+            
+        }
+        else {
+            this.messageService.add({severity:'error', summary: 'Error', detail:'O nome do arquivo é obrigatório!'});
+        }
+    }
+
+    onRowEditSaveLic(dados: any) {
+        console.log(dados)
+        dados.projetoId = {projetoId : dados['projetoId'].projetoId } 
+        
+        if (dados.licenca != null || dados.licenca!= '' ) {
+            try{
+            dados.inicio = this.toDate(dados.inicio)
+            dados.termino = this.toDate(dados.termino)
+            }catch{ console.log('Data sem alteração pois é nula')}
+
+            
+            this.projetosService.licenciamentosAtt(dados,dados.licencaId)
+            .subscribe(
+                response => {
+                    if(response === null){
+                        delete this.clonedLines[dados.licencaId];
+                        this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
+
+                        this.projetosService.licenciamentos(this.idProjeto)
+                        .subscribe(response => {
+                            this.licenciamentos = response
+                            
+                            this.licenciamentos.forEach(lic=>{
+                                lic.inicio =this.parseResumoDate(lic.inicio)
+                                lic.termino =this.parseResumoDate(lic.termino)
                             })
                         })
             

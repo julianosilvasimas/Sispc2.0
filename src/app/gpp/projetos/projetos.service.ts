@@ -100,6 +100,11 @@ export class ProjetosService{
       .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
     }
 
+    licenciamentos(projetosId : number): Observable<any[]>{
+      return  this.http.get(`${API_CONFIG}/projetos/${projetosId}/licenciamentos`) 
+      .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+    }
+
     delibregulatorios(revisaoId : number): Observable<any[]>{
       return  this.http.get(`${API_CONFIG}/regulatorios/${revisaoId}/delibregulatorios`) 
       .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -200,6 +205,23 @@ comprovacaoarquivosAdd(dados: any[]): Observable<any>{
 );
 }
 
+licenciamentosAdd(dados: any[]): Observable<any>{
+  let headers = new HttpHeaders();
+  headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+  headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    console.log(dados)
+  return this.http.post<any[]>(`${API_CONFIG}/licenciamentos`,
+  dados,
+  { observe: 'response'})
+  .pipe(
+    map((response) => ({data: response.headers, 
+                        status: response.status,
+                        statusTexto: response.statusText
+                        })
+                        , catchError(ErrorHandler.handleError)) 
+);
+}
+
 engenhariaAdd(dados: any[]): Observable<any>{
   let headers = new HttpHeaders();
   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
@@ -239,13 +261,24 @@ engenhariaAdd(dados: any[]): Observable<any>{
                     catchError(ErrorHandler.handleError))
   }
 
+  licenciamentosAtt(arrProjeto: any[], id: number): Observable<any[]>{
+    const headers = new HttpHeaders()
+    .set("Content-Type", "application/json",
+    );
+    let bodyObj = arrProjeto;
+   
+    return this.http.put(`${API_CONFIG}/licenciamentos/${id}`,JSON.stringify(bodyObj) , {headers},)
+                    .pipe(map(this.extractData),
+                    catchError(ErrorHandler.handleError))
+  }
+
   engenhariaAtt(arrProjeto: any[], id: number): Observable<any[]>{
     const headers = new HttpHeaders()
     .set("Content-Type", "application/json",
     );
     let bodyObj = arrProjeto;
    
-    return this.http.put(`${API_CONFIG}/delibregulatorios/${id}`,JSON.stringify(bodyObj) , {headers},)
+    return this.http.put(`${API_CONFIG}/engenharia/${id}`,JSON.stringify(bodyObj) , {headers},)
                     .pipe(map(this.extractData),
                     catchError(ErrorHandler.handleError))
   }

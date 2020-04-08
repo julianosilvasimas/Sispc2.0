@@ -1048,14 +1048,23 @@
                 </p-accordionTab>
 
                 <!--Aqui trato do Licenciamento-->
-                <p-accordionTab header="Licenciamentos"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                <p-accordionTab header="Licenciamentos"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{arrProjeto['statuslicenciamentos']}}</div><br>
                     
                     <div class="ui-g">
                             <div class="card card-w-title" style="width:100%">
                               <div  div class="ui-g-12">
                                   <div class="ui-g-3" style="margin-top: 20px;">
                                       <span class="md-inputfield">
-                                          <input  type="text" size="40" pInputText/>
+                                            <p-dropdown [options]="[
+                                            {label:'', value:null},
+                                            {label:'Não Iniciado', value:'Não Iniciado'},
+                                            {label:'Em Andamento', value:'Em Andadmento'},
+                                            {label:'Concluído', value:'Concluído'},
+                                            {label:'Paralisado', value:'Paralisado'},
+                                            {label:'Não se aplica', value:'Não se aplica'}
+                                              ]" 
+                                            [(ngModel)]="arrProjeto['statuslicenciamentos']" [style]="{width: '95%', height: '25px'}" >
+                                        </p-dropdown>
                                           <label>Status Geral</label>
                                       </span>
                                   </div>
@@ -1072,10 +1081,14 @@
                                       </div>
                                     </div>
                               </div>
+
+                              <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                                    <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
+                             </div>
         
                               <div  div class="ui-g-12">
                                     <br>
-                                    <p-table [columns]="cols3" [value]="licencas" dataKey="numeroLicenca" editMode="row">
+                                    <p-table [columns]="cols3" [value]="licenciamentos" dataKey="licencaId" editMode="row">
                                         <ng-template pTemplate="caption">
                                         </ng-template>
                                         <ng-template pTemplate="header" let-columns>
@@ -1084,26 +1097,127 @@
                                                     {{col.header}}
                                                 </th>
                                                 <th style="width:8em; text-align: center;">
-                                                    <button type="button" icon="ui-icon-add" pButton></button>
+                                                    <button type="button" icon="ui-icon-add" (click)="cadLicenciamentos=true" pButton></button>
                                                 </th>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="body" let-rowData  let-columns="columns" let-editing="editing" let-ri="rowIndex">
                                             <tr [pEditableRow]="rowData">
-                                                <td *ngFor="let col of columns">
+                                                <td>
                                                 <p-cellEditor>
-                                                    <ng-template pTemplate="input" *ngFor="let col of columns">
-                                                        <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                <input id="input" [(ngModel)]="rowData['licenca']" type="text" pInputText/>
+                                                            </span>
                                                     </ng-template>
-                                                  <ng-template pTemplate="output">
-                                                        {{rowData[col.field]}}
-                                                  </ng-template>
-                                                </p-cellEditor>
-                                              </td>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['licenca']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                    <p-dropdown [options]="[
+                                                                    {label:'', value:null},
+                                                                    {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},
+                                                                    {label:'Licenciamento de Obras ', value:'Licenciamento de Obras'}
+                                                                    ]" 
+                                                                  [(ngModel)]="rowData['tipo']" [style]="{width: '95%', height: '25px'}" >
+                                                                  </p-dropdown>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['tipo']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                    <p-dropdown [options]="[
+                                                                    {label:'', value:null},
+                                                                    {label:'Não Iniciado', value:'Não Iniciado'},
+                                                                    {label:'Em Andamento', value:'Em Andadmento'},
+                                                                    {label:'Concluído', value:'Concluído'},
+                                                                    {label:'Paralisado', value:'Paralisado'},
+                                                                    {label:'Não se aplica', value:'Não se aplica'}
+                                                                      ]" 
+                                                                    [(ngModel)]="rowData['status']" [style]="{width: '95%', height: '25px'}" >
+                                                                </p-dropdown>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['status']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                <input id="input" [(ngModel)]="rowData['orgao']" type="text"  pInputText/>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['orgao']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                <input id="input" [(ngModel)]="rowData['descricao']" type="text" pInputText/>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['descricao']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                <input id="input" [(ngModel)]="rowData['protocolo']" type="text" pInputText/>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['protocolo']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['inicio']"  ></p-calendar>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['inicio']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
+                                                <td>
+                                                <p-cellEditor>
+                                                    <ng-template pTemplate="input"  >
+                                                            <span class="md-inputfield">
+                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['termino']"  ></p-calendar>
+                                                            </span>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="output">
+                                                             {{rowData['termino']}}
+                                                    </ng-template>
+                                                 </p-cellEditor>                       
+                                                </td>
         
                                                 <td style="text-align:center;">
-                                                    <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInit(rowData)"><i class="material-icons">mode_edit</i></button>
-                                                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                                                    <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInitLic(rowData)"><i class="material-icons">mode_edit</i></button>
+                                                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSaveLic(rowData)"></button>
                                                     <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
                                                 </td>
                                             </tr>
@@ -1114,6 +1228,113 @@
         
                           </div>
                         </div>
+
+
+                        <!--Box de Cadastro-->
+    <p-dialog header="Cadastro de Licenciamentos" [resizable]="true" responsive="true" [(visible)]="cadLicenciamentos">
+            <div class="ui-g">
+    
+                <div  div class="ui-g-12">
+
+                        <div class="card card-w-title" >
+    
+                            <section class="grid grid-auto-flow-1">
+                                <div class="item" style="justify-content: center;align-items: center;display: flex;flex-direction: column" >
+                                    <span class="md-inputfield">
+                                        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novalicenca.inicio"  ></p-calendar>
+                                        <label >Data de Início</label>
+                                    </span>
+                                </div>
+                                <div class="item" style="justify-content: center;align-items: center;display: flex;flex-direction: column" >
+                                    <span class="md-inputfield">
+                                        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novalicenca.termino"  ></p-calendar>
+                                        <label >Data de Término</label>
+                                    </span>
+                                </div>
+                            </section>
+                
+                        </div>
+    
+                         
+    
+                  <div class="card card-w-title" >
+                        <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
+                        <div class="item" >
+                            <span class="md-inputfield">
+                                <input id="input" [(ngModel)]="novalicenca.licenca" type="text" size="25" pInputText/>
+                                <label >Licenca</label>
+                            </span>
+                        </div>
+                              
+                            </section>
+                        <div  style="margin-top: 20px; margin-bottom: 50px;">
+                          <span class="md-inputfield">
+                              <input id="input" [(ngModel)]="novalicenca.descricao" type="text" size="60" pInputText/>
+                              <label>Descrição</label>
+                          </span>
+                        </div>
+                   
+                  <section class="grid grid-auto-flow-1">
+                    
+                    <div class="item" >
+                      <span class="md-inputfield">
+                      <p-dropdown [options]="[
+                        {label:'', value:null},
+                        {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},
+                        {label:'Licenciamento de Obras ', value:'Licenciamento de Obras'}
+                        ]" 
+                      [(ngModel)]="novalicenca.tipo" [style]="{width: '95%', height: '25px'}" >
+                      </p-dropdown>
+                      <label >tipo de licenciamento</label>
+                      </span>
+                    </div>
+
+                    <div class="item" >
+                        <span class="md-inputfield">
+                        <p-dropdown [options]="[
+                            {label:'', value:null},
+                            {label:'Não Iniciado', value:'Não Iniciado'},
+                            {label:'Em Andamento', value:'Em Andadmento'},
+                            {label:'Concluído', value:'Concluído'},
+                            {label:'Paralisado', value:'Paralisado'},
+                            {label:'Não se aplica', value:'Não se aplica'}
+                              ]" 
+                            [(ngModel)]="novalicenca.status" [style]="{width: '95%', height: '25px'}" >
+                        </p-dropdown>
+                        <label >Status</label>
+                        </span>
+                    </div>
+                   
+                  </section>
+                  <section class="grid grid-auto-flow-1" style="margin-top: 30px">
+                        <div class="item" >
+                            <span class="md-inputfield">
+                                <input id="input" [(ngModel)]="novalicenca.orgao" type="text" pInputText/>
+                                <label >Orgão</label>
+                            </span>
+                        </div>
+                        <div class="item" >
+                            <span class="md-inputfield">
+                                <input id="input" [(ngModel)]="novalicenca.protocolo" type="text"  pInputText/>
+                                <label >Protocolo</label>
+                            </span>
+                        </div>
+                  </section>
+                  
+                </div>
+    
+                
+    
+                </div></div>
+    
+    
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                    <button type="button" label="Salvar" icon="ui-icon-save" (click)="insereLicenciamento()" pButton></button>
+                </div>
+            </p-footer>
+        </p-dialog>
+
 
                       
                 </p-accordionTab>
