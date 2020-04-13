@@ -49,12 +49,7 @@ let ProjetosComponent = class ProjetosComponent {
             { label: 'Servicos', value: 'Servicos' },
             { label: 'Planejamento', value: 'Planejamento' }
         ];
-        this.rad = [
-            { label: '2019', value: 2019 },
-            { label: '2020', value: 2020 },
-            { label: '2021', value: 2021 },
-            { label: '2022', value: 2022 }
-        ];
+        this.projetosService.getAnos().then(data => this.rad = data);
         this.indices = [
             { label: '01', value: 1 },
             { label: '02', value: 2 },
@@ -88,11 +83,12 @@ let ProjetosComponent = class ProjetosComponent {
         ];
         this.cols = [
             { field: 'projetoId', header: 'N° Projeto' },
+            //{ field: "sesuite.sesuiteId", header: 'N° Cognos' },
             { field: 'projeto', header: 'Nome' },
             { field: 'statusgloblal', header: 'Status' },
-            { field: 'setor', header: 'Setor' },
+            //{ field: 'setor', header: 'Setor' },
             //{ field: 'responsavel', header: 'Responsavel' },
-            //{ field: 'localidade', header: 'Município' }, 
+            { field: 'localidade', header: 'Localidade' },
             { field: 'radar', header: 'Marco' }
         ];
     }

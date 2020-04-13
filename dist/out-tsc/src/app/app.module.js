@@ -177,7 +177,8 @@ import { ProjetosService } from './gpp/projetos/projetos.service';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
-import { OperacionalComponent } from './operacional/operacional.component';
+import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
+import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -345,7 +346,8 @@ AppModule = tslib_1.__decorate([
             ForecastenergiaesgotoComponent,
             CenariosComponent,
             OperacionalEsgotoComponent,
-            OperacionalComponent,
+            AplicativoEtesComponent,
+            IndicadoresAplicativosComponent,
         ],
         providers: [
             { provide: LocationStrategy, useClass: HashLocationStrategy },

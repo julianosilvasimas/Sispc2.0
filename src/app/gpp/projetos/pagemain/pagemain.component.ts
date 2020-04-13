@@ -170,12 +170,14 @@ export class PagemainComponent implements OnInit {
             "empresa": null,
             "tipo": null,
             "responsavel": null,
+            "representanteempresa": null,
             "status": null,
             "previsto": null,
             "replanejado": null,
             "realizado": null,
             "contsistemico": null,
             "contfisico": null,
+            "link": null,
             "projetoId": {
                 "projetoId": this.idProjeto}
           }
@@ -190,6 +192,7 @@ export class PagemainComponent implements OnInit {
             "protocolo": null,
             "inicio": null,
             "termino": null,
+            "link": null,
             "projetoId": {"projetoId": 1}
           }
 
@@ -232,7 +235,10 @@ export class PagemainComponent implements OnInit {
         //em outros forms
         this.arrProjeto['comprovacao'].envio = this.parseDate(this.arrProjeto['comprovacao'].envio)
         this.arrProjeto['comprovacao'].retorno = this.parseDate(this.arrProjeto['comprovacao'].retorno)
-        this.arrProjeto['comprovacao'].moeda = this.arrProjeto['comprovacao'].moeda.toString()
+        this.arrProjeto['comprovacao'].moeda = this.arrProjeto['comprovacao'].moeda  === null ? this.arrProjeto['comprovacao'].moeda : this.arrProjeto['comprovacao'].moeda.toString()
+        this.arrProjeto['comissionamento'].previsto = this.parseDate(this.arrProjeto['comissionamento'].previsto)
+        this.arrProjeto['comissionamento'].replanejado = this.parseDate(this.arrProjeto['comissionamento'].replanejado)
+        this.arrProjeto['comissionamento'].realizado = this.parseDate(this.arrProjeto['comissionamento'].realizado)
         
             this.projetosService.partesInteressadas()
             .subscribe(response => {
@@ -245,6 +251,7 @@ export class PagemainComponent implements OnInit {
                     this.partes[parte['orgaoId']] = true
                    })
             });
+
             try{
             this.projetosService.regulatorios(this.idProjeto)
             .subscribe(res => {
@@ -288,8 +295,6 @@ export class PagemainComponent implements OnInit {
             eng.previsto =this.parseResumoDate(eng.previsto)
             eng.replanejado =this.parseResumoDate(eng.replanejado)
             eng.realizado =this.parseResumoDate(eng.realizado)
-            eng.contsistemico =this.parseResumoDate(eng.contsistemico)
-            eng.contfisico =this.parseResumoDate(eng.contfisico)
         })
     })
 
@@ -361,11 +366,17 @@ export class PagemainComponent implements OnInit {
     ];
 
     this.cols = [
+        { field: 'empresa', header: 'Empresa' },
+        { field: 'representanteempresa', header: 'Representante' },
+        { field: 'responsavel', header: 'Responsável Preenchimento' },
+        { field: 'tipo', header: 'Tipo' },
+        { field: 'status', header: 'Status' },
         { field: 'previsto', header: 'Previsto' },
         { field: 'replanejado', header: 'Replanejado' },
         { field: 'realizado', header: 'Realizado' },
-        { field: 'contfisico', header: 'Contrato Físico' },
-        { field: 'contsistemico', header: 'Contrato Sistêmico' }
+        { field: 'contfisico', header: 'Contrato Jurídico' },
+        { field: 'contsistemico', header: 'Contrato Sistêmico' },
+        { field: 'link', header: 'Link' }
     ];
 
     this.cols2 = [                                                                                                                         
@@ -393,7 +404,8 @@ export class PagemainComponent implements OnInit {
         { field: 'descricao', header: 'Descrição' },
         { field: 'protocolo', header: 'Protocolo' },
         { field: 'inicio', header: 'Início' },
-        { field: 'termino', header: 'Término' }
+        { field: 'termino', header: 'Término' },
+        { field: 'link', header: 'Link' }
     ];
     
 
@@ -420,6 +432,7 @@ export class PagemainComponent implements OnInit {
 
     this.projetosService.regulatorios(this.idProjeto)
     .subscribe(res => {
+        //console.log(res)
         let aux = []
         //==================================================================//
         // * Definindo que só apareça revisões cadastradas para o projeto * //
@@ -443,14 +456,18 @@ export class PagemainComponent implements OnInit {
                 this.regIniDia =  this.oFluxo.inicio.dayOfMonth < 10 ? "0"+this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString()
                 this.regIniMes =  this.oFluxo.inicio.monthValue < 10 ? "0"+this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString()
                 this.regIniAno =  this.oFluxo.inicio.year.toString()
-                this.regFimDia =  this.oFluxo.termino.dayOfMonth < 10 ? "0"+this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString()
-                this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
-                this.regFimAno =  this.oFluxo.termino.year.toString()
             }catch{
                 this.regIniDia = null
                 this.regIniMes = null
                 this.regIniAno = null
-                this.regFimDia = null
+            }
+
+            try{
+                this.regFimDia =  this.oFluxo.termino.dayOfMonth < 10 ? "0"+this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString()
+                this.regFimMes =  this.oFluxo.termino.monthValue < 10 ? "0"+this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString()
+                this.regFimAno =  this.oFluxo.termino.year.toString()
+            }catch{
+                 this.regFimDia = null
                 this.regFimMes = null
                 this.regFimAno = null
             }
@@ -541,6 +558,7 @@ export class PagemainComponent implements OnInit {
     )
 
   }
+
   insereLicenciamento(){
     this.novalicenca['projetoId'].projetoId =  this.idProjeto
 
@@ -595,8 +613,6 @@ export class PagemainComponent implements OnInit {
                         eng.previsto =this.parseResumoDate(eng.previsto)
                         eng.replanejado =this.parseResumoDate(eng.replanejado)
                         eng.realizado =this.parseResumoDate(eng.realizado)
-                        eng.contsistemico =this.parseResumoDate(eng.contsistemico)
-                        eng.contfisico =this.parseResumoDate(eng.contfisico)
         })
                 })
               
@@ -645,15 +661,6 @@ export class PagemainComponent implements OnInit {
 
   salvainfoEngenharia(){
 
-    let pep = this.arrProjeto['pepengenharia'] 
-    let status = this.arrProjeto['statusengenharia'] 
-    
-    this.projetosService.projetosId(this.idProjeto)
-    .subscribe(res => {
-        this.arrProjeto = res // Acho que Gatilho abaixo é pq quando invoco aqui sobrescrevo as informações que já estão no formulário, dá pra melhorar
-        this.arrProjeto['pepengenharia'] = pep
-        this.arrProjeto['statusengenharia'] = status
-
         this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
             .subscribe(
                 response => {
@@ -669,7 +676,7 @@ export class PagemainComponent implements OnInit {
                 console.log(error)
                 } 
             )
-    });
+    
   }
 
   atualizarRegulatorio(){
@@ -753,7 +760,8 @@ export class PagemainComponent implements OnInit {
     this.arrProjeto['terminoreplanejado'] = this.terminoreplanejado
     this.arrProjeto['terminorealizado'] = this.terminorealizado
     this.arrProjeto['partestinteressadas'] = this.partesInteressadas
-
+    console.log(this.arrProjeto)
+ 
     this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
     .subscribe(
         response => {
@@ -860,6 +868,11 @@ export class PagemainComponent implements OnInit {
 
     onRowEditInitLic(dados: any) {
         this.clonedLines[dados.licencaId] = {...dados};
+
+    }
+
+    onRowEditInitEng(dados: any) {
+        this.clonedLines[dados.engenhariaId] = {...dados};
 
     }
 
@@ -980,6 +993,54 @@ export class PagemainComponent implements OnInit {
                             this.licenciamentos.forEach(lic=>{
                                 lic.inicio =this.parseResumoDate(lic.inicio)
                                 lic.termino =this.parseResumoDate(lic.termino)
+                            })
+                        })
+            
+                      
+                      console.log('Dados enviados com sucesso!')
+                    }
+                },
+                error =>  { 
+                  this.messageService.add({severity:'error', summary: "Dados não Enviados!",
+                  detail:error.message, life: 5000});
+                  console.log(error)
+                } 
+            )
+
+            
+        }
+        else {
+            this.messageService.add({severity:'error', summary: 'Error', detail:'O nome do arquivo é obrigatório!'});
+        }
+    }
+
+    onRowEditSaveEng(dados: any) {
+        console.log(dados)
+        dados.projetoId = {projetoId : dados['projetoId'].projetoId } 
+        
+        if (dados.licenca != null || dados.licenca!= '' ) {
+            try{
+            dados.previsto = this.toDate(dados.previsto)
+            dados.replanejado = this.toDate(dados.replanejado)
+            dados.realizado = this.toDate(dados.realizado)
+            }catch{ console.log('Data sem alteração pois é nula')}
+
+            
+            this.projetosService.engenhariaAtt(dados,dados.engenhariaId)
+            .subscribe(
+                response => {
+                    if(response === null){
+                        delete this.clonedLines[dados.engenhariaId];
+                        this.messageService.add({severity:'success', summary: 'Success', detail:'Os dados foram atualizados!'});
+
+                        this.projetosService.engenharia(this.idProjeto)
+                        .subscribe(response => {
+                            this.engenharia = response
+                            
+                            this.engenharia.forEach(eng=>{
+                                eng.previsto =this.parseResumoDate(eng.previsto)
+                                eng.replanejado =this.parseResumoDate(eng.replanejado)
+                                eng.realizado =this.parseResumoDate(eng.realizado)
                             })
                         })
             

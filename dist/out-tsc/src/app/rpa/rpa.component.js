@@ -26,20 +26,20 @@ let RpaComponent = class RpaComponent {
         this.cadastro = [];
         this.status = [];
         this.rpaservice.cadastroBots().subscribe(cadastro => {
-            this.rpaservice.statusBots().subscribe(status => {
-                for (var i = 0; i < cadastro.length; i++) {
+            for (var i = 0; i < cadastro.length; i++) {
+                this.rpaservice.statusBots(cadastro[i].idCad).subscribe(status => {
                     this.bot.push({
-                        nomebot: cadastro[i].nomebot,
-                        status: cadastro[i].status,
-                        descricao: cadastro[i].descricao,
-                        historico: this.FiltroBot(cadastro[i].idCad, status)
+                        nomebot: status[0].bot.nomebot,
+                        status: status[0].status,
+                        descricao: status[0].bot.descricao,
+                        historico: status
                     });
-                }
-                console.log(this.bot);
-            });
+                });
+            }
         });
     }
     // PreencherBots(cadastro, status){
+    // 
     //     console.log(
     //       {
     //         nomebot: cadastro[i].nomebot,
@@ -52,24 +52,13 @@ let RpaComponent = class RpaComponent {
     // }
     FiltroBot(Bot, status) {
         var statusbot = [];
-        for (var i = 0; i < status.length; i++) {
+        for (var i = 0; i < status.length && statusbot.length < 20; i++) {
             if (status[i]["bot"]["idCad"] === Bot) {
                 statusbot.push(status[i]);
             }
         }
         statusbot = statusbot.reverse();
         return statusbot;
-    }
-    f3() {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            // try {
-            //   var z = await 30;
-            //   this.Arrayas();
-            //   console.log("atualizado")
-            // } catch(e) {
-            //   console.log(e); // 30
-            // }
-        });
     }
 };
 RpaComponent = tslib_1.__decorate([
