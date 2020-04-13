@@ -8,14 +8,30 @@ let OperacionalEsgotoService = class OperacionalEsgotoService {
     constructor(http) {
         this.http = http;
     }
-    classindicadores(gerencia) {
-        return this.http.get(`${API_CONFIG}/cadindicadores/gerencia/${gerencia}`)
+    getunidades() {
+        return this.http.get(`${API_CONFIG}/appunidadesesgoto`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
-    indicadoresAtt2(Indicador) {
+    getclassificacoes() {
+        return this.http.get(`${API_CONFIG}/appclassificacoesesgoto`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    getindicadorporclassificaco(id) {
+        return this.http.get(`${API_CONFIG}/appclassificacoesesgoto/porclassficacao/${id}`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    getindicadores() {
+        return this.http.get(`${API_CONFIG}/appclassificacoesesgoto`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    getIndicadoresUnidade(Unidade, de, ate, classi) {
+        return this.http.get(`${API_CONFIG}/appesgoto/unidades/${Unidade}/${de}/${ate}/${classi}`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    updateunidade(unidade) {
         const headers = new HttpHeaders()
             .set("Content-Type", "application/json");
-        return this.http.put(`${API_CONFIG}/indicadores/${Indicador.exeindicadorId}`, JSON.stringify(Indicador), { headers })
+        return this.http.put(`${API_CONFIG}/appunidadesesgoto/${unidade.id}`, JSON.stringify(unidade), { headers })
             .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
     }
     extractData(res) {

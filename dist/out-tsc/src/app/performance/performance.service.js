@@ -8,6 +8,10 @@ let PerformanceService = class PerformanceService {
     constructor(http) {
         this.http = http;
     }
+    cadindicadores() {
+        return this.http.get(`${API_CONFIG}/cadindicadores/nomesIndicadores`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
     classindicadores(gerencia) {
         return this.http.get(`${API_CONFIG}/cadindicadores/gerencia/${gerencia}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));

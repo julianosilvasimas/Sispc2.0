@@ -45,10 +45,8 @@
                     <div class="card card-w-title">
         <div class="card" >
             <p-accordion [multiple]="true" (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
-                <p-accordionTab header="Informações do Projeto" [selected]="true"><br>
-                    
                 <!--Aqui trato das Informações básicas-->
-
+                <p-accordionTab header="Informações do Projeto" [selected]="false"><br>
                   <div class="ui-g">
                       <div class="ui-g-8 ui-g-nopad">
                       <div  div class="ui-g-12">
@@ -215,7 +213,6 @@
                         </div>
                     -->
 
-                    <!-- Construir comunicação com banco-->
                         <div class="card card-w-title" >
                           <h2>Partes Interessadas</h2>
                           <div *ngFor="let parte of partesInt">
@@ -409,7 +406,7 @@
                                                     <input pInputText type="text" [(ngModel)]="rowData['link']" >
                                                 </ng-template>
                                             <ng-template pTemplate="output">
-                                                    <a href="{{rowData['link']}}"><img src="assets/images/sesuite.png" style="width: 50px; margin-right: 1em; vertical-align: middle;"></a>
+                                                    <a href="{{rowData['link']}}"><img src="assets/images/sesuite.png" style="width: 35px; margin-right: 1em; vertical-align: middle;"></a>
                                             </ng-template>
                                           </p-cellEditor>
                                           </td>
@@ -608,10 +605,6 @@
                                 </ng-template>
                                 <ng-template pTemplate="header" let-columns>
                                     <tr> 
-                                        <th>Empresa</th>
-                                        <th>Responsável</th>
-                                        <th>Status</th>
-                                        <th>Tipo</th>
                                         <th *ngFor="let col of columns">
                                             {{col.header}}
                                         </th>
@@ -628,7 +621,7 @@
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
                                                             <span class="md-inputfield">
-                                                                <input id="input" [(ngModel)]="novaengenha.empresa" type="text" size="25" pInputText/>
+                                                                <input id="input" [(ngModel)]="rowData['empresa']" type="text" size="25" pInputText/>
                                                             </span>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
@@ -636,11 +629,25 @@
                                                     </ng-template>
                                                  </p-cellEditor>                       
                                             </td>
+
+                                            <td>
+                                                    <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <span class="md-inputfield">
+                                                                        <input id="input" [(ngModel)]="rowData['representanteempresa']" type="text" size="25" pInputText/>
+                                                                    </span>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                     {{rowData['representanteempresa']}}
+                                                            </ng-template>
+                                                         </p-cellEditor>  
+                                            </td>
+
                                             <td>
                                                     <p-cellEditor>
                                                         <ng-template pTemplate="input"  >
                                                                 <span class="md-inputfield">
-                                                                    <input id="input" [(ngModel)]="novaengenha.responsavel" type="text" size="25" pInputText/>
+                                                                    <input id="input" [(ngModel)]="rowData['responsavel']" type="text" size="25" pInputText/>
                                                                 </span>
                                                         </ng-template>
                                                         <ng-template pTemplate="output">
@@ -648,6 +655,25 @@
                                                         </ng-template>
                                                      </p-cellEditor>                       
                                                 </td>
+
+                                                <td>
+                                                        <p-cellEditor>   
+                                                            <ng-template pTemplate="input"  >
+                                                                    <p-dropdown [options]="[
+                                                                    {label:'', value:null},
+                                                                    {label:'Projeto Executivo', value:'Projeto Executivo'},
+                                                                    {label:'Projeto Básico', value:'Projeto Básico'},
+                                                                    {label:'Estudo de Concepção', value:'Estudo de Concepção'},
+                                                                    {label:'Estudos Ambientais', value:'Estudos Ambientais'}
+                                                                    ]" 
+                                                                [(ngModel)]="rowData['tipo']" [style]="{width: '95%', height: '25px'}" >
+                                                                </p-dropdown>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                 {{rowData['tipo']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>                       
+                                                    </td>
 
                                              <td>
                                                     <p-cellEditor>
@@ -660,7 +686,7 @@
                                                                 {label:'Paralisado', value:'Paralisado'},
                                                                 {label:'Não se aplica', value:'Não se aplica'}
                                                                 ]" 
-                                                                [(ngModel)]="selectedTipo" [style]="{width: '95%', height: '25px'}" >
+                                                                [(ngModel)]="rowData['status']" [style]="{width: '95%', height: '25px'}" >
                                                             </p-dropdown>
                                                         </ng-template>
                                                         <ng-template pTemplate="output">
@@ -669,40 +695,81 @@
                                                     </p-cellEditor>                       
                                                 </td>
 
-                                                <td>
+                                                    
+                                                    <td>
                                                         <p-cellEditor>
-                                                            <ng-template pTemplate="input"  >
-                                                                    <p-dropdown [options]="[
-                                                                    {label:'', value:null},
-                                                                    {label:'Projeto Executivo', value:'Projeto Executivo'},
-                                                                    {label:'Projeto Básico', value:'Projeto Básico'},
-                                                                    {label:'Projeto Preliminar', value:'Projeto Preliminar'},
-                                                                    {label:'Base de Projeto', value:'Base de Projeto'}
-                                                                    ]" 
-                                                                [(ngModel)]="novaengenha.tipo" [style]="{width: '95%', height: '25px'}" >
-                                                                </p-dropdown>
+                                                             <ng-template pTemplate="input"  >
+                                                                    <span class="md-inputfield">
+                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['previsto']"  ></p-calendar>
+                                                                    </span>
                                                             </ng-template>
                                                             <ng-template pTemplate="output">
-                                                                 {{rowData['tipo']}}
+                                                                {{rowData['previsto']}}
                                                             </ng-template>
-                                                        </p-cellEditor>                       
+                                                        </p-cellEditor> 
                                                     </td>
-                                          
-      
-                                        <td *ngFor="let col of columns">
-                                        <p-cellEditor>
-                                            <ng-template pTemplate="input" *ngFor="let col of columns">
-                                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
-                                            </ng-template>
-                                          <ng-template pTemplate="output">
-                                                {{rowData[col.field]}}
-                                          </ng-template>
-                                        </p-cellEditor>
-                                      </td>
+                                                    <td>
+                                                        <p-cellEditor>
+                                                             <ng-template pTemplate="input"  >
+                                                                    <span class="md-inputfield">
+                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['replanejado']"  ></p-calendar>
+                                                                    </span>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                {{rowData['replanejado']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                    </td>
+                                                    <td>
+                                                        <p-cellEditor>
+                                                             <ng-template pTemplate="input"  >
+                                                                    <span class="md-inputfield">
+                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['realizado']"  ></p-calendar>
+                                                                    </span>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                {{rowData['realizado']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                    </td>
+                                                    <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <span class="md-inputfield">
+                                                                        <input id="input" [(ngModel)]="rowData['contfisico']" type="text" size="25" pInputText/>
+                                                                    </span>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                    {{rowData['responsavel']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                    </td>
+                                                    <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                    <span class="md-inputfield">
+                                                                        <input id="input" [(ngModel)]="rowData['contsistemico']" type="text" size="25" pInputText/>
+                                                                    </span>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                    {{rowData['contsistemico']}}
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                    </td>
+                                                    <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                <input pInputText type="text" [(ngModel)]="rowData['link']" >
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                <a href="{{rowData['link']}}"><img src="assets/images/sesuite.png" style="width: 35px; margin-right: 1em; vertical-align: middle;"></a>
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                    </td>
 
                                         <td style="text-align:center;">
-                                            <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInit(rowData)"><i class="material-icons">mode_edit</i></button>
-                                            <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                                            <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInitEng(rowData)"><i class="material-icons">mode_edit</i></button>
+                                            <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSaveEng(rowData)"></button>
                                             <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
                                         </td>
                                     </tr>
@@ -732,20 +799,35 @@
                           </div>
                           <div class="item" >
                               <span class="md-inputfield">
-                                    <input id="input" [(ngModel)]="novaengenha.responsavel" type="text" size="25" pInputText/>
-                              <label >Responsável</label>
+                                    <input id="input" [(ngModel)]="novaengenha.representanteempresa" type="text" size="25" pInputText/>
+                              <label >Representante Empresa</label>
                               </span>
                           </div> 
+                         
+                        </section>
+                        <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
+                                <div class="item" >
+                                        <span class="md-inputfield">
+                                            <input id="input" [(ngModel)]="novaengenha.responsavel" type="text" size="25" pInputText/>
+                                        <label >Responsável Preenchimento</label>
+                                        </span>
+                                      </div>
+                                      <div class="item" >
+                                          <span class="md-inputfield">
+                                                <input id="input" [(ngModel)]="novaengenha.link" type="text" size="25" pInputText/>
+                                          <label >Link </label>
+                                          </span>
+                                      </div>
                         </section>
                   <div  style="margin-top: 20px; margin-bottom: 50px;">
                     <div class="item" >
                         <span class="md-inputfield">
                         <p-dropdown [options]="[
-                            {label:'', value:null},
-                            {label:'Projeto Executivo', value:'Projeto Executivo'},
-                            {label:'Projeto Básico', value:'Projeto Básico'},
-                            {label:'Projeto Preliminar', value:'Projeto Preliminar'},
-                            {label:'Base de Projeto', value:'Base de Projeto'}
+                        {label:'', value:null},
+                        {label:'Projeto Executivo', value:'Projeto Executivo'},
+                        {label:'Projeto Básico', value:'Projeto Básico'},
+                        {label:'Estudo de Concepção', value:'Estudo de Concepção'},
+                        {label:'Estudos Ambientais', value:'Estudos Ambientais'}
                             ]" 
                         [(ngModel)]="novaengenha.tipo" [style]="{width: '95%', height: '25px'}" >
                         </p-dropdown>
@@ -805,14 +887,14 @@
                 <section class="grid grid-auto-flow-1">
                     <div class="item" style="margin-top: 40px" >
                         <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.contsistemico"  ></p-calendar>
+                                <input id="input" [(ngModel)]="novaengenha.contsistemico" type="text" size="25" pInputText/>
                         <label >Contrato Sistêmico</label>
                         </span>
                       </div>
                       <div class="item" style="margin-top: 40px" >
                           <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaengenha.contfisico" ></p-calendar>
-                          <label >Contrato Físico</label>
+                                <input id="input" [(ngModel)]="novaengenha.contfisico" type="text" size="25" pInputText/>
+                          <label >Contrato Jurídico</label>
                           </span>
                       </div>
                     </section>
@@ -1060,8 +1142,7 @@
                                             {label:'Não Iniciado', value:'Não Iniciado'},
                                             {label:'Em Andamento', value:'Em Andadmento'},
                                             {label:'Concluído', value:'Concluído'},
-                                            {label:'Paralisado', value:'Paralisado'},
-                                            {label:'Não se aplica', value:'Não se aplica'}
+                                            {label:'Paralisado', value:'Paralisado'}
                                               ]" 
                                             [(ngModel)]="arrProjeto['statuslicenciamentos']" [style]="{width: '95%', height: '25px'}" >
                                         </p-dropdown>
@@ -1107,8 +1188,16 @@
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
                                                             <span class="md-inputfield">
-                                                                <input id="input" [(ngModel)]="rowData['licenca']" type="text" pInputText/>
-                                                            </span>
+                                                                <p-dropdown [options]="[
+                                                                    {label:'', value:null},
+                                                                    {label:'Autorização DER', value:'Autorização DER'},
+                                                                    {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},
+                                                                    {label:'Licenciamento de Obras', value:'Licenciamento de Obras'},
+                                                                    {label:'Outras Licenças', value:'Outras Licenças'}
+                                                                    ]" 
+                                                                    [(ngModel)]="rowData['licenca']" [style]="{width: '95%', height: '25px'}" >
+                                                                  </p-dropdown>
+                                                             </span>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
                                                              {{rowData['licenca']}}
@@ -1121,8 +1210,17 @@
                                                             <span class="md-inputfield">
                                                                     <p-dropdown [options]="[
                                                                     {label:'', value:null},
-                                                                    {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},
-                                                                    {label:'Licenciamento de Obras ', value:'Licenciamento de Obras'}
+                                                                    {label:'Anuência/Autorização', value:'Anuência/Autorização'},
+                                                                    {label:'Autorização Ambiental', value:'Autorização Ambiental'},
+                                                                    {label:'Autorização/Licença de Obras', value:'Autorização/Licença de Obras'},
+                                                                    {label:'Certidão Ambiental', value:'Certidão Ambiental'},
+                                                                    {label:'Certidão de Inexigibilidade Ambiental', value:'Certidão de Inexigibilidade Ambiental'},
+                                                                    {label:'Licença Ambiental Simplificada', value:'Licença Ambiental Simplificada'},
+                                                                    {label:'Licença de Instalação', value:'Licença de Instalação'},
+                                                                    {label:'Licença de Instalação e Operação', value:'Licença de Instalação e Operação'},
+                                                                    {label:'Licença de Operação', value:'Licença de Operação'},
+                                                                    {label:'Licença Prévia e Instalação', value:'Licença Prévia e Instalação'},
+                                                                    {label:'Nada Opor', value:'Nada Opor'}
                                                                     ]" 
                                                                   [(ngModel)]="rowData['tipo']" [style]="{width: '95%', height: '25px'}" >
                                                                   </p-dropdown>
@@ -1142,8 +1240,7 @@
                                                                     {label:'Não Iniciado', value:'Não Iniciado'},
                                                                     {label:'Em Andamento', value:'Em Andadmento'},
                                                                     {label:'Concluído', value:'Concluído'},
-                                                                    {label:'Paralisado', value:'Paralisado'},
-                                                                    {label:'Não se aplica', value:'Não se aplica'}
+                                                                    {label:'Paralisado', value:'Paralisado'}
                                                                       ]" 
                                                                     [(ngModel)]="rowData['status']" [style]="{width: '95%', height: '25px'}" >
                                                                 </p-dropdown>
@@ -1214,6 +1311,17 @@
                                                     </ng-template>
                                                  </p-cellEditor>                       
                                                 </td>
+
+                                                 <td>
+                                                        <p-cellEditor>
+                                                            <ng-template pTemplate="input"  >
+                                                                <input pInputText type="text" [(ngModel)]="rowData['link']" >
+                                                            </ng-template>
+                                                            <ng-template pTemplate="output">
+                                                                <a href="{{rowData['link']}}"><img src="assets/images/sesuite.png" style="width: 35px; margin-right: 1em; vertical-align: middle;"></a>
+                                                            </ng-template>
+                                                        </p-cellEditor>
+                                                </td>
         
                                                 <td style="text-align:center;">
                                                     <button *ngIf="!editing" pButton type="button" pInitEditableRow  class="ui-button-info" (click)="onRowEditInitLic(rowData)"><i class="material-icons">mode_edit</i></button>
@@ -1251,6 +1359,7 @@
                                         <label >Data de Término</label>
                                     </span>
                                 </div>
+                               
                             </section>
                 
                         </div>
@@ -1261,7 +1370,15 @@
                         <section class="grid grid-auto-flow-1" style="margin-top: 10px;padding-bottom: 15px">
                         <div class="item" >
                             <span class="md-inputfield">
-                                <input id="input" [(ngModel)]="novalicenca.licenca" type="text" size="25" pInputText/>
+                                    <p-dropdown [options]="[
+                                    {label:'', value:null},
+                                    {label:'Autorização DER', value:'Autorização DER'},
+                                    {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},
+                                    {label:'Licenciamento de Obras', value:'Licenciamento de Obras'},
+                                    {label:'Outras Licenças', value:'Outras Licenças'}
+                                    ]" 
+                                    [(ngModel)]="novalicenca.licenca" [style]="{width: '95%', height: '25px'}" >
+                                  </p-dropdown>
                                 <label >Licenca</label>
                             </span>
                         </div>
@@ -1280,8 +1397,17 @@
                       <span class="md-inputfield">
                       <p-dropdown [options]="[
                         {label:'', value:null},
-                        {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},
-                        {label:'Licenciamento de Obras ', value:'Licenciamento de Obras'}
+                        {label:'Anuência/Autorização', value:'Anuência/Autorização'},
+                        {label:'Autorização Ambiental', value:'Autorização Ambiental'},
+                        {label:'Autorização/Licença de Obras', value:'Autorização/Licença de Obras'},
+                        {label:'Certidão Ambiental', value:'Certidão Ambiental'},
+                        {label:'Certidão de Inexigibilidade Ambiental', value:'Certidão de Inexigibilidade Ambiental'},
+                        {label:'Licença Ambiental Simplificada', value:'Licença Ambiental Simplificada'},
+                        {label:'Licença de Instalação', value:'Licença de Instalação'},
+                        {label:'Licença de Instalação e Operação', value:'Licença de Instalação e Operação'},
+                        {label:'Licença de Operação', value:'Licença de Operação'},
+                        {label:'Licença Prévia e Instalação', value:'Licença Prévia e Instalação'},
+                        {label:'Nada Opor', value:'Nada Opor'}
                         ]" 
                       [(ngModel)]="novalicenca.tipo" [style]="{width: '95%', height: '25px'}" >
                       </p-dropdown>
@@ -1296,8 +1422,7 @@
                             {label:'Não Iniciado', value:'Não Iniciado'},
                             {label:'Em Andamento', value:'Em Andadmento'},
                             {label:'Concluído', value:'Concluído'},
-                            {label:'Paralisado', value:'Paralisado'},
-                            {label:'Não se aplica', value:'Não se aplica'}
+                            {label:'Paralisado', value:'Paralisado'}
                               ]" 
                             [(ngModel)]="novalicenca.status" [style]="{width: '95%', height: '25px'}" >
                         </p-dropdown>
@@ -1319,6 +1444,12 @@
                                 <label >Protocolo</label>
                             </span>
                         </div>
+                        <div class="item" >
+                                <span class="md-inputfield">
+                                      <input id="input" [(ngModel)]="novalicenca.link" type="text" size="25" pInputText/>
+                                <label >Link </label>
+                                </span>
+                            </div>
                   </section>
                   
                 </div>
@@ -1563,7 +1694,7 @@
                                 <div  div class="ui-g-12">
                                         <div class="ui-g-3" style="margin-top: 20px;">
                                             <span class="md-inputfield">
-                                                <input  type="text" size="35" pInputText/>
+                                                <input  type="text" [(ngModel)]="arrProjeto['comissionamento'].avancofisico" size="35" pInputText/>
                                                 <label>Avanço Físico</label>
                                             </span>
                                         </div>
@@ -1586,6 +1717,8 @@
                                         </div>
                                 </div>
                             </div>
+
+                            <!-- Verificado necessidade data inicio e termino no backend-->
     
                             <div class="ui-g-4">
                                 <div class="card card-w-title" style="width:100%">
@@ -1612,7 +1745,7 @@
                                     <div class="ui-g">
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].replanejado" ></p-calendar>
                                                 <label >Início</label>
                                             </span>
                                         </div>
@@ -1644,7 +1777,11 @@
                                     </div>
                                 </div> 
                             </div>
+                            <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                                    <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
+                             </div>
                         </div>  
+                        
                 </p-accordionTab>
 
                 <!--Aqui trato da Comprovação-->
@@ -1793,7 +1930,7 @@
                                                             <input pInputText type="text" [(ngModel)]="rowData['caminho']" >
                                                         </ng-template>
                                                     <ng-template pTemplate="output">
-                                                            <a href="{{rowData['caminho']}}"><img src="assets/images/sesuite.png" style="width: 50px; margin-right: 1em; vertical-align: middle;"></a>
+                                                            <a href="{{rowData['caminho']}}"><img src="assets/images/sesuite.png" style="width: 35px; margin-right: 1em; vertical-align: middle;"></a>
                                                     </ng-template>
                                                   </p-cellEditor>
                                                   </td>

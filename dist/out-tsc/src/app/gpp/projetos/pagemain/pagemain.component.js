@@ -19,7 +19,7 @@ let PagemainComponent = class PagemainComponent {
         this.terminoprevisto = null;
         this.terminoreplanejado = null;
         this.terminorealizado = null;
-        this.clonedCars = {};
+        this.clonedLines = {};
         this.uploadedFiles = [];
         this.cols3 = [{ field: null, header: null }];
         this.licencas = [];
@@ -33,6 +33,10 @@ let PagemainComponent = class PagemainComponent {
         this.partes = [];
         this.fluxos = [];
         this.descrevendo = null;
+        this.novaDelib = null;
+        this.novaengenha = null;
+        this.novacomprovacao = null;
+        this.novalicenca = null;
         this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'));
         this.projeto = sessionStorage.getItem('nomeProjeto');
         this.projetosService.getFluxoInvestimento().then(data => this.fluxoInvest = data);
@@ -70,12 +74,70 @@ let PagemainComponent = class PagemainComponent {
                 "projetoId": this.idProjeto
             }
         };
+        this.novaDelib = {
+            "deliberacaoId": null,
+            "ndeliberacao": null,
+            "assunto": null,
+            "tipo": null,
+            "envio": null,
+            "retorno": null,
+            "aprovado": null,
+            "link": null,
+            "regulatorio": { "regulatorioId": null }
+        };
+        this.novacomprovacao = {
+            "comprovacaoarquivoId": null,
+            "nomearquivo": null,
+            "caminho": null,
+            "tipoarquivo": null,
+            "envio": null,
+            "comprovacaoId": {
+                "comprovacaoId": this.idProjeto
+            }
+        };
+        this.novaengenha = {
+            "engenhariaId": null,
+            "empresa": null,
+            "tipo": null,
+            "responsavel": null,
+            "status": null,
+            "previsto": null,
+            "replanejado": null,
+            "realizado": null,
+            "contsistemico": null,
+            "contfisico": null,
+            "projetoId": {
+                "projetoId": this.idProjeto
+            }
+        };
+        this.novalicenca = {
+            "licencaId": null,
+            "licenca": null,
+            "descricao": null,
+            "tipo": null,
+            "orgao": null,
+            "status": null,
+            "protocolo": null,
+            "inicio": null,
+            "termino": null,
+            "projetoId": { "projetoId": 1 }
+        };
+        this.novacomprovacao = {
+            "comprovacaoarquivoId": null,
+            "nomearquivo": null,
+            "caminho": null,
+            "tipoarquivo": null,
+            "envio": null,
+            "comprovacaoId": {
+                "comprovacaoId": this.idProjeto
+            }
+        };
     }
     ngOnInit() {
         this.projetosService.projetosId(this.idProjeto)
             .subscribe(res => {
-            //console.log(res)
             this.arrProjeto = res;
+            console.log(this.arrProjeto);
             this.selectedLocal = this.arrProjeto['localidade'];
             this.selectedRadar = this.arrProjeto['radar'];
             this.selectedStatusGlobal = this.arrProjeto['statusgloblal'];
@@ -89,6 +151,10 @@ let PagemainComponent = class PagemainComponent {
             this.terminoreplanejado = this.parseDate(this.arrProjeto['terminoreplanejado']);
             this.terminorealizado = this.parseDate(this.arrProjeto['terminorealizado']);
             this.partesInteressadas = this.arrProjeto['partestinteressadas'];
+            //em outros forms
+            this.arrProjeto['comprovacao'].envio = this.parseDate(this.arrProjeto['comprovacao'].envio);
+            this.arrProjeto['comprovacao'].retorno = this.parseDate(this.arrProjeto['comprovacao'].retorno);
+            this.arrProjeto['comprovacao'].moeda = this.arrProjeto['comprovacao'].moeda.toString();
             this.projetosService.partesInteressadas()
                 .subscribe(response => {
                 this.partesInt = response;
@@ -111,13 +177,38 @@ let PagemainComponent = class PagemainComponent {
                     });
                     this.selectedFluxo = res[res.length - 1]['fluxoinvestimento'];
                     this.idRevisao = res.length - 1;
-                    console.log("tentei aqui => " + this.selectedFluxo);
                     this.atualizarRevisao(this.selectedFluxo);
                 });
             }
             catch (_a) {
                 this.atualizarRevisao(this.attFluxo);
             }
+        });
+        this.projetosService.licenciamentos(this.idProjeto)
+            .subscribe(response => {
+            this.licenciamentos = response;
+            this.licenciamentos.forEach(lic => {
+                lic.inicio = this.parseResumoDate(lic.inicio);
+                lic.termino = this.parseResumoDate(lic.termino);
+            });
+        });
+        this.projetosService.engenharia(this.idProjeto)
+            .subscribe(response => {
+            this.engenharia = response;
+            console.log(this.engenharia[0]);
+            this.engenharia.forEach(eng => {
+                eng.previsto = this.parseResumoDate(eng.previsto);
+                eng.replanejado = this.parseResumoDate(eng.replanejado);
+                eng.realizado = this.parseResumoDate(eng.realizado);
+            });
+        });
+        this.projetosService.comprovacaoarquivos(this.idProjeto)
+            .subscribe(response => {
+            this.comprovacaoarquivos = response;
+            //console.log(this.comprovacaoarquivos[0])
+            this.comprovacaoarquivos.forEach(arq => {
+                arq.envio = this.parseResumoDate(arq.envio);
+            });
         });
         this.indices = [
             { label: '01', value: 1 },
@@ -171,25 +262,35 @@ let PagemainComponent = class PagemainComponent {
             { label: 'Blue', value: 'Blue' }
         ];
         this.cols = [
-            { field: 'nomeEmpresa', header: 'Empresa' },
-            { field: 'respEmpresa', header: 'Responsável' },
-            { field: 'status', header: 'Status' },
-            { field: 'tipo', header: 'Tipo do Projeto' },
+            { field: 'previsto', header: 'Previsto' },
+            { field: 'previsto', header: 'Previsto' },
+            { field: 'previsto', header: 'Previsto' },
+            { field: 'previsto', header: 'Previsto' },
+            { field: 'previsto', header: 'Previsto' },
             { field: 'previsto', header: 'Previsto' },
             { field: 'replanejado', header: 'Replanejado' },
             { field: 'realizado', header: 'Realizado' },
-            { field: 'realizado', header: 'Contrato Físico' },
-            { field: 'realizado', header: 'Contrato Sistêmico' }
+            { field: 'contfisico', header: 'Contrato Físico' },
+            { field: 'contsistemico', header: 'Contrato Sistêmico' }
         ];
         this.cols2 = [
-            { field: 'nProcesso', header: 'Numero do Processo' },
-            { field: 'responsavel', header: 'Responsável' },
+            { field: 'ndeliberacao', header: 'Nº Documento' },
+            { field: 'assunto', header: 'Assunto' },
+            { field: 'tipo', header: 'Tipo' },
             { field: 'envio', header: 'Envio' },
             { field: 'retorno', header: 'Retorno' },
+            { field: 'aprovado', header: 'Aprovação' },
+            { field: 'link', header: 'Link Documento' }
+        ];
+        this.colsarqcomp = [
+            { field: 'nomearquivo', header: 'Nome do arquivo' },
+            { field: 'tipoarquivo', header: 'Tipo do arquivo' },
+            { field: 'envio', header: 'Data de envio' },
+            { field: 'link', header: 'Link Documento' }
         ];
         this.cols3 = [
-            { field: 'numeroLicenca', header: 'Número' },
-            { field: 'tipoLicenca', header: 'Tipo' },
+            { field: 'licenca', header: 'Licença' },
+            { field: 'tipo', header: 'Tipo' },
             { field: 'status', header: 'Status' },
             { field: 'orgao', header: 'Orgão' },
             { field: 'descricao', header: 'Descrição' },
@@ -214,8 +315,10 @@ let PagemainComponent = class PagemainComponent {
         this.projetosService.regulatorios(this.idProjeto)
             .subscribe(res => {
             let aux = [];
+            //==================================================================//
+            // * Definindo que só apareça revisões cadastradas para o projeto * //
+            //==================================================================//
             res.forEach(flu => aux.push(flu['fluxoinvestimento']));
-            console.log('olhe aqui => ' + aux);
             this.oFluxo = res[aux.indexOf(fluxo, 0)];
             this.selectedFluxo = this.oFluxo['fluxoinvestimento'];
             this.selectedMoedaReg = this.oFluxo['moeda'];
@@ -225,18 +328,146 @@ let PagemainComponent = class PagemainComponent {
             else {
                 this.aprov = true;
             }
-            //===============================================================//
-            // * Aqui melhorar esse condicional para as diversas hipóteses * //
-            //===============================================================//
-            if (this.regFimAno = null) { }
+            //console.log(this.oFluxo)
+            if (this.oFluxo.inicio === null && this.oFluxo.termino === null) { }
             else {
-                this.regIniDia = this.oFluxo.inicio.dayOfMonth < 10 ? "0" + this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString();
-                this.regIniMes = this.oFluxo.inicio.monthValue < 10 ? "0" + this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString();
-                this.regIniAno = this.oFluxo.inicio.year.toString();
-                this.regFimDia = this.oFluxo.termino.dayOfMonth < 10 ? "0" + this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString();
-                this.regFimMes = this.oFluxo.termino.monthValue < 10 ? "0" + this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString();
-                this.regFimAno = this.oFluxo.termino.year.toString();
+                //console.log(this.oFluxo.inicio)
+                //===============================================================//
+                // * Aqui melhorar esse condicional para as diversas hipóteses * //
+                //===============================================================//
+                try {
+                    this.regIniDia = this.oFluxo.inicio.dayOfMonth < 10 ? "0" + this.oFluxo.inicio.dayOfMonth : this.oFluxo.inicio.dayOfMonth.toString();
+                    this.regIniMes = this.oFluxo.inicio.monthValue < 10 ? "0" + this.oFluxo.inicio.monthValue : this.oFluxo.inicio.monthValue.toString();
+                    this.regIniAno = this.oFluxo.inicio.year.toString();
+                    this.regFimDia = this.oFluxo.termino.dayOfMonth < 10 ? "0" + this.oFluxo.termino.dayOfMonth : this.oFluxo.termino.dayOfMonth.toString();
+                    this.regFimMes = this.oFluxo.termino.monthValue < 10 ? "0" + this.oFluxo.termino.monthValue : this.oFluxo.termino.monthValue.toString();
+                    this.regFimAno = this.oFluxo.termino.year.toString();
+                }
+                catch (_a) {
+                    this.regIniDia = null;
+                    this.regIniMes = null;
+                    this.regIniAno = null;
+                    this.regFimDia = null;
+                    this.regFimMes = null;
+                    this.regFimAno = null;
+                }
             }
+            //===============================================================//
+            //============ * chamando endpoint de deliberações * ============//
+            //===============================================================//
+            this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
+                .subscribe(res => {
+                //console.log('tentando aqui ó => '+ res)
+                this.delib = res;
+                this.delib.forEach(dl => {
+                    dl.envio = this.parseResumoDate(dl.envio);
+                    dl.aprovado = this.parseResumoDate(dl.aprovado);
+                    dl.retorno = this.parseResumoDate(dl.retorno);
+                });
+                //console.log('mudando data =>'+this.delib)
+            });
+        });
+    }
+    insereDelib() {
+        this.novaDelib.regulatorio['regulatorioId'] = this.oFluxo['regulatorioId'];
+        //console.log(this.novaDelib)
+        this.projetosService.delibregulatoriosAdd(this.novaDelib)
+            .subscribe(response => {
+            if (response.status === 201) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                this.cadDelibVisible = false;
+                this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
+                    .subscribe(res => {
+                    //console.log('tentando aqui ó => '+ res)
+                    this.delib = res;
+                    this.delib.forEach(dl => {
+                        dl.envio = this.parseResumoDate(dl.envio);
+                        dl.aprovado = this.parseResumoDate(dl.aprovado);
+                        dl.retorno = this.parseResumoDate(dl.retorno);
+                    });
+                    //console.log('mudando data =>'+this.delib)
+                });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    }
+    insereComprovacaoArq() {
+        this.novacomprovacao['comprovacaoId'].comprovacaoId = this.idProjeto;
+        this.projetosService.comprovacaoarquivosAdd(this.novacomprovacao)
+            .subscribe(response => {
+            if (response.status === 201) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                this.cadArqComp = false;
+                this.projetosService.comprovacaoarquivos(this.idProjeto)
+                    .subscribe(response => {
+                    this.comprovacaoarquivos = response;
+                    this.comprovacaoarquivos.forEach(arq => {
+                        arq.envio = this.parseResumoDate(arq.envio);
+                    });
+                });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    }
+    insereLicenciamento() {
+        this.novalicenca['projetoId'].projetoId = this.idProjeto;
+        this.projetosService.licenciamentosAdd(this.novalicenca)
+            .subscribe(response => {
+            if (response.status === 201) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                this.cadArqComp = false;
+                this.projetosService.licenciamentos(this.idProjeto)
+                    .subscribe(response => {
+                    this.licenciamentos = response;
+                    this.licenciamentos.forEach(lic => {
+                        lic.inicio = this.parseResumoDate(lic.inicio);
+                        lic.termino = this.parseResumoDate(lic.termino);
+                    });
+                });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    }
+    insereengenharia() {
+        this.novaengenha.projetoId = { "projetoId": this.idProjeto };
+        //console.log(this.novaengenha)
+        this.projetosService.engenhariaAdd(this.novaengenha)
+            .subscribe(response => {
+            if (response.status === 201) {
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                this.cadengenharia = false;
+                this.projetosService.engenharia(this.idProjeto)
+                    .subscribe(response => {
+                    this.engenharia = response;
+                    console.log(this.engenharia[0]);
+                    this.engenharia.forEach(eng => {
+                        eng.previsto = this.parseResumoDate(eng.previsto);
+                        eng.replanejado = this.parseResumoDate(eng.replanejado);
+                        eng.realizado = this.parseResumoDate(eng.realizado);
+                    });
+                });
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
         });
     }
     enviarReg(cad) {
@@ -255,10 +486,11 @@ let PagemainComponent = class PagemainComponent {
         };
         this.projetosService.regulatoriosAdd(this.attFluxo)
             .subscribe(response => {
-            if (response === null) {
+            if (response.status === 201) {
                 this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
                     detail: 'Dados enviados com sucesso!' });
                 console.log('Dados enviados com sucesso!');
+                //this.atualizarRevisao(this.oFluxo)
             }
         }, error => {
             this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
@@ -266,28 +498,7 @@ let PagemainComponent = class PagemainComponent {
             console.log(error);
         });
     }
-    salvarGerais() {
-        //console.log(this.partes)
-        this.partesInteressadas = [];
-        this.partes.forEach((parte, index) => {
-            if (parte === true) {
-                this.partesInteressadas.push(this.partesInt[index - 1]);
-            }
-        });
-        //console.log(this.partesInteressadas)
-        this.arrProjeto['radar'] = this.selectedRadar;
-        this.arrProjeto['statusgloblal'] = this.selectedStatusGlobal;
-        this.arrProjeto['tendencia'] = this.selectedGravidade;
-        this.arrProjeto['gravidade'] = this.selectedTendencia;
-        this.arrProjeto['urgencia'] = this.selectedUrgencia;
-        this.arrProjeto['localidade'] = this.selectedLocal;
-        this.arrProjeto['inicioprevisto'] = this.inicioprevisto;
-        this.arrProjeto['inicioreplanejado'] = this.inicioreplanejado;
-        this.arrProjeto['iniciorealizado'] = this.iniciorealizado;
-        this.arrProjeto['terminoprevisto'] = this.terminoprevisto;
-        this.arrProjeto['terminoreplanejado'] = this.terminoreplanejado;
-        this.arrProjeto['terminorealizado'] = this.terminorealizado;
-        this.arrProjeto['partestinteressadas'] = this.partesInteressadas;
+    salvainfoEngenharia() {
         this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
             .subscribe(response => {
             if (response === null) {
@@ -329,6 +540,63 @@ let PagemainComponent = class PagemainComponent {
             console.log(error);
         });
     }
+    salvainfoLicenca() {
+    }
+    salvarComprovacao() {
+        this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
+            .subscribe(response => {
+            if (response === null) {
+                console.log(this.arrProjeto);
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    }
+    salvarGerais() {
+        //console.log(this.partes)
+        this.partesInteressadas = [];
+        this.partes.forEach((parte, index) => {
+            if (parte === true) {
+                this.partesInteressadas.push(this.partesInt[index - 1]);
+            }
+        });
+        //console.log(this.partesInteressadas)
+        this.arrProjeto['radar'] = this.selectedRadar;
+        this.arrProjeto['statusgloblal'] = this.selectedStatusGlobal;
+        this.arrProjeto['tendencia'] = this.selectedGravidade;
+        this.arrProjeto['gravidade'] = this.selectedTendencia;
+        this.arrProjeto['urgencia'] = this.selectedUrgencia;
+        this.arrProjeto['localidade'] = this.selectedLocal;
+        this.arrProjeto['inicioprevisto'] = this.inicioprevisto;
+        this.arrProjeto['inicioreplanejado'] = this.inicioreplanejado;
+        this.arrProjeto['iniciorealizado'] = this.iniciorealizado;
+        this.arrProjeto['terminoprevisto'] = this.terminoprevisto;
+        this.arrProjeto['terminoreplanejado'] = this.terminoreplanejado;
+        this.arrProjeto['terminorealizado'] = this.terminorealizado;
+        this.arrProjeto['partestinteressadas'] = this.partesInteressadas;
+        console.log(this.arrProjeto);
+        this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
+            .subscribe(response => {
+            if (response === null) {
+                console.log(this.arrProjeto);
+                this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+            }
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    }
+    //====================================================================================================//
+    //================================= * Métodos Auxiliares * ===========================================//
+    //====================================================================================================//
     //Método que transforma data formato Json para date
     parseDate(value) {
         if (value === null) { }
@@ -343,6 +611,22 @@ let PagemainComponent = class PagemainComponent {
                 day = "0" + day;
             }
             value = new Date(year + "-" + month + "-" + day + "T00:00:00");
+        }
+        return value;
+    }
+    parseResumoDate(value) {
+        if (value === null) { }
+        else {
+            let year = value.year;
+            let month = value.monthValue;
+            if (month < 10) {
+                month = "0" + month;
+            }
+            let day = value.dayOfMonth;
+            if (day < 10) {
+                day = "0" + day;
+            }
+            value = day + "/" + month + "/" + year;
         }
         return value;
     }
@@ -380,21 +664,133 @@ let PagemainComponent = class PagemainComponent {
             this.oFluxo.termino = resultado;
         }
     }
-    onRowEditInit(car) {
-        this.clonedCars[car.nomeEmpresa] = Object.assign({}, car);
+    toDate(dateStr) {
+        var parts = dateStr.split("/");
+        return new Date(parts[2], parts[1] - 1, parts[0]);
     }
-    onRowEditSave(car) {
-        if (car.nomeEmpresa != null) {
-            delete this.clonedCars[car.nomeEmpresa];
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Car is updated' });
+    onRowEditInit(dados) {
+        this.clonedLines[dados.ndeliberacao] = Object.assign({}, dados);
+    }
+    onRowEditInitArq(dados) {
+        this.clonedLines[dados.comprovacaoarquivoId] = Object.assign({}, dados);
+    }
+    onRowEditInitLic(dados) {
+        this.clonedLines[dados.licencaId] = Object.assign({}, dados);
+    }
+    onRowEditSave(dados) {
+        if (dados.ndeliberacao != null || dados.ndeliberacao != '') {
+            dados.regulatorio = null;
+            dados.regulatorio = { regulatorioId: this.oFluxo['regulatorioId'] };
+            dados.tipo = this.selectedTipo;
+            try {
+                dados.envio = this.toDate(dados.envio);
+                dados.retorno = this.toDate(dados.retorno);
+                dados.aprovado = this.toDate(dados.aprovado);
+            }
+            catch (_a) {
+                console.log('Data sem alteração pois é nula');
+            }
+            this.projetosService.delibregulatoriosAtt(dados, dados.deliberacaoId)
+                .subscribe(response => {
+                if (response === null) {
+                    delete this.clonedLines[dados.ndeliberacao];
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    this.projetosService.delibregulatorios(this.oFluxo['regulatorioId'])
+                        .subscribe(res => {
+                        //console.log('tentando aqui ó => '+ res)
+                        this.delib = res;
+                        this.delib.forEach(dl => {
+                            dl.envio = this.parseResumoDate(dl.envio);
+                            dl.aprovado = this.parseResumoDate(dl.aprovado);
+                            dl.retorno = this.parseResumoDate(dl.retorno);
+                        });
+                        //console.log('mudando data =>'+this.delib)
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, error => {
+                this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
         }
         else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Year is required' });
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O código da deliberação é obrigatório!' });
         }
     }
-    onRowEditCancel(car, index) {
-        this.cars[index] = this.clonedCars[car.nomeEmpresa];
-        delete this.clonedCars[car.nomeEmpresa];
+    onRowEditSaveArq(dados) {
+        console.log(dados);
+        dados.comprovacaoId = { comprovacaoId: dados['comprovacaoId'].comprovacaoId };
+        if (dados.nomearquivo != null || dados.nomearquivo != '') {
+            try {
+                dados.envio = this.toDate(dados.envio);
+            }
+            catch (_a) {
+                console.log('Data sem alteração pois é nula');
+            }
+            this.projetosService.comprovacaoarquivosAtt(dados, dados.comprovacaoarquivoId)
+                .subscribe(response => {
+                if (response === null) {
+                    delete this.clonedLines[dados.comprovacaoarquivoId];
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    this.projetosService.comprovacaoarquivos(this.idProjeto)
+                        .subscribe(response => {
+                        this.comprovacaoarquivos = response;
+                        this.comprovacaoarquivos.forEach(arq => {
+                            arq.envio = this.parseResumoDate(arq.envio);
+                        });
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, error => {
+                this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
+        }
+        else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O nome do arquivo é obrigatório!' });
+        }
+    }
+    onRowEditSaveLic(dados) {
+        console.log(dados);
+        dados.projetoId = { projetoId: dados['projetoId'].projetoId };
+        if (dados.licenca != null || dados.licenca != '') {
+            try {
+                dados.inicio = this.toDate(dados.inicio);
+                dados.termino = this.toDate(dados.termino);
+            }
+            catch (_a) {
+                console.log('Data sem alteração pois é nula');
+            }
+            this.projetosService.licenciamentosAtt(dados, dados.licencaId)
+                .subscribe(response => {
+                if (response === null) {
+                    delete this.clonedLines[dados.licencaId];
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    this.projetosService.licenciamentos(this.idProjeto)
+                        .subscribe(response => {
+                        this.licenciamentos = response;
+                        this.licenciamentos.forEach(lic => {
+                            lic.inicio = this.parseResumoDate(lic.inicio);
+                            lic.termino = this.parseResumoDate(lic.termino);
+                        });
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, error => {
+                this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
+        }
+        else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O nome do arquivo é obrigatório!' });
+        }
+    }
+    onRowEditCancel(dados, index) {
+        this.cars[index] = this.clonedLines[dados.nomeEmpresa];
+        delete this.clonedLines[dados.nomeEmpresa];
     }
     onTabOpen($event) {
         if ($event.index === 4) {

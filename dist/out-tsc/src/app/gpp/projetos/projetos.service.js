@@ -66,8 +66,24 @@ let ProjetosService = class ProjetosService {
         return this.http.get(`${API_CONFIG}/projetos`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
+    engenharia(projetosId) {
+        return this.http.get(`${API_CONFIG}/projetos/${projetosId}/engenharia`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    comprovacaoarquivos(projetosId) {
+        return this.http.get(`${API_CONFIG}/projetos/${projetosId}/comprovacaoarquivos`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
     regulatorios(projetosId) {
         return this.http.get(`${API_CONFIG}/projetos/${projetosId}/regulatorios`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    licenciamentos(projetosId) {
+        return this.http.get(`${API_CONFIG}/projetos/${projetosId}/licenciamentos`)
+            .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
+    }
+    delibregulatorios(revisaoId) {
+        return this.http.get(`${API_CONFIG}/regulatorios/${revisaoId}/delibregulatorios`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
     partesInteressadas() {
@@ -111,11 +127,83 @@ let ProjetosService = class ProjetosService {
             statusTexto: response.statusText
         }), catchError(ErrorHandler.handleError)));
     }
+    delibregulatoriosAdd(dados) {
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(`${API_CONFIG}/delibregulatorios`, dados, { observe: 'response' })
+            .pipe(map((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }), catchError(ErrorHandler.handleError)));
+    }
+    comprovacaoarquivosAdd(dados) {
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(`${API_CONFIG}/comprovacaoarquivos`, dados, { observe: 'response' })
+            .pipe(map((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }), catchError(ErrorHandler.handleError)));
+    }
+    licenciamentosAdd(dados) {
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(`${API_CONFIG}/licenciamentos`, dados, { observe: 'response' })
+            .pipe(map((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }), catchError(ErrorHandler.handleError)));
+    }
+    engenhariaAdd(dados) {
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(`${API_CONFIG}/engenharia`, dados, { observe: 'response' })
+            .pipe(map((response) => ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }), catchError(ErrorHandler.handleError)));
+    }
     regulatoriosAtt(arrProjeto, id) {
         const headers = new HttpHeaders()
             .set("Content-Type", "application/json");
         let bodyObj = arrProjeto;
         return this.http.put(`${API_CONFIG}/regulatorios/${id}`, JSON.stringify(bodyObj), { headers })
+            .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
+    }
+    delibregulatoriosAtt(arrProjeto, id) {
+        const headers = new HttpHeaders()
+            .set("Content-Type", "application/json");
+        let bodyObj = arrProjeto;
+        return this.http.put(`${API_CONFIG}/delibregulatorios/${id}`, JSON.stringify(bodyObj), { headers })
+            .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
+    }
+    licenciamentosAtt(arrProjeto, id) {
+        const headers = new HttpHeaders()
+            .set("Content-Type", "application/json");
+        let bodyObj = arrProjeto;
+        return this.http.put(`${API_CONFIG}/licenciamentos/${id}`, JSON.stringify(bodyObj), { headers })
+            .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
+    }
+    engenhariaAtt(arrProjeto, id) {
+        const headers = new HttpHeaders()
+            .set("Content-Type", "application/json");
+        let bodyObj = arrProjeto;
+        return this.http.put(`${API_CONFIG}/engenharia/${id}`, JSON.stringify(bodyObj), { headers })
+            .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
+    }
+    comprovacaoarquivosAtt(arrProjeto, id) {
+        const headers = new HttpHeaders()
+            .set("Content-Type", "application/json");
+        let bodyObj = arrProjeto;
+        return this.http.put(`${API_CONFIG}/comprovacaoarquivos/${id}`, JSON.stringify(bodyObj), { headers })
             .pipe(map(this.extractData), catchError(ErrorHandler.handleError));
     }
 };

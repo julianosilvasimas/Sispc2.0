@@ -12,8 +12,8 @@ let RpaService = class RpaService {
         return this.http.get(`${API_CONFIG}/cadrpa`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
-    statusBots() {
-        return this.http.get(`${API_CONFIG}/statusbot`)
+    statusBots(id) {
+        return this.http.get(`${API_CONFIG}/statusbot/bot/${id}`)
             .pipe(map((res) => res, catchError(ErrorHandler.handleError)));
     }
 };
