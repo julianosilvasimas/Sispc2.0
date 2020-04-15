@@ -1,0 +1,39 @@
+<div class="ui-g-12">
+  <div class="card card-title ui-g-12">
+    <div class="ui-g-6" style="text-align: left;" >
+      <h1>{{  ETE.unidade }}</h1>
+    </div>
+    <div class="ui-g-6" style="text-align: right;" >
+      <button pButton type="button" label="Voltar" class="ui-button-rounded" (click)="voltar()"></button>
+    </div>
+  </div>
+  <div class="card ui-g-12" style="margin-top: 5px; background-color: lightgray;" *ngFor="let b of arrayDeClassificacoes">
+    <div style="font-weight: bold;" class="ui-g-6">{{ b.nome }}</div>
+    <div class="ui-g-6">
+      <div class="ui-g-12" style="text-align: right;" >
+        <button pButton type="button"  icon="pi pi-chevron-right"  (click)="verIndicadores(b)" ></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-sidebar [(visible)]="visibleSidebar" *ngIf="visibleSidebar" [fullScreen]="true" [baseZIndex]="10000">
+    <h1 style="font-weight:normal">{{ Classificacao.nome }}</h1>
+    <button pButton type="button" (click)="salvar(Classificacao.indicador)" label="Save" class="ui-button-success"></button>
+    <button pButton type="button" (click)="visibleSidebar = false" label="Cancel" class="ui-button-secondary"></button>
+
+    <div class="ui-g" style="margin-top: 40px;">
+      <div class="ui-g-12">
+        <span class="md-inputfield">
+          <p-calendar [(ngModel)]="horario" [timeOnly]="true" dateFormat="dd/mm/yy"></p-calendar>
+          <label >Horario</label>
+        </span>
+    </div>
+      <div class="ui-g-4" *ngFor="let b of Classificacao.indicador" style="margin-top: 20px;">
+        <span class="md-inputfield"  style="margin-left: 20px;">
+          <input  class="ui-g-12" [(ngModel)]="b.valor" [step]="0.25" precision="2" type="number" ng-style="{'background-color': 'red'}"  (ngModelChange)="validarnumero(b)" pInputText/>
+          <label >{{ b.nome }}  .....  ({{ b.minimo }} - {{ b.maximo }})</label>
+        </span>
+      </div>
+    </div>
+</p-sidebar>

@@ -1,75 +1,68 @@
-<p-table [columns]="cols" [value]="ListaDeUnidades" selectionMode="single" [(selection)]="UnidadeSelected" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="15">
-  <ng-template pTemplate="caption">
-      List of Cars
-  </ng-template>
-  <ng-template pTemplate="header" let-columns>
-      <tr>
-          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-              {{col.header}}
-              <p-sortIcon [field]="col.field"></p-sortIcon>
-          </th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <tr [pSelectableRow]="rowData">
-          <td *ngFor="let col of columns">
-              {{rowData[col.field]}}
-          </td>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="summary" let-rowData>
-      <div style="text-align:left">
-          <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
-      </div>
-  </ng-template>    
-</p-table>
 
-<p-dialog header="Car Details" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
-  <div class="ui-g ui-fluid" *ngIf="UnidadeSelected">
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="color">{{  cols [4].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-            <p-dropdown id="{{  cols[4].field  }}" filterBy="UnidadeSelected[cols[4].field],indicador.indicadorId"  [filter]="true" [options]="volumes" [showClear]="true" [(ngModel)]="UnidadeSelected[cols[4].field]" [style]="{'width':'100%'}" optionLabel="indicador"></p-dropdown>
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="vin">{{  cols[0].field }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[0].field  }}" [(ngModel)]="UnidadeSelected[cols[0].field]" [disabled]="true" />
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="year">{{  cols[1].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[1].field  }}" [(ngModel)]="UnidadeSelected[cols[1].field]" [disabled]="true" />
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="brand">{{  cols[2].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[2].field  }}" [(ngModel)]="UnidadeSelected[cols[2].field]"  autofocus/>
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="color">{{  cols [3].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[3].field  }}" [(ngModel)]="UnidadeSelected[cols[3].field]" />
-          </div>
-      </div>
-  </div>
-  <p-footer>
-      <div class="ui-dialog-buttonpane ui-helper-clearfix">
-          <button type="button" pButton icon="pi pi-check" (click)="save()" label="Save"></button>
-      </div>
-  </p-footer>
-</p-dialog>
+<div class="ui-g dashboard">
+    <div class="ui-g-12 ui-lg-4">
+        <div class="user-card ui-shadow-content">
+            <div class="user-card-header">
+            </div>
+            <div class="user-card-content">
+                <div class="user-card-name">
+                    <span>{{ Usuario }}</span>
+                </div>
+
+                <!-- <div class="user-detail">
+                   <ul>
+                     <li class="clearfix">
+                         <div class="project-progressbar">
+                             <div class="project-progressbar-value" style="width: 50%"></div>
+                         </div>
+                         <i class="material-icons">list</i>
+                         <span class="project-title">Tasks</span>
+                         <span class="project-detail">3 open</span>
+                     </li>
+                     <li class="clearfix">
+                         <div class="project-progressbar">
+                             <div class="project-progressbar-value" style="width: 20%"></div>
+                         </div>
+                         <i class="material-icons">attach_money</i>
+                         <span class="project-title">Revenue</span>
+                         <span class="project-detail">+20%</span>
+                     </li>
+                     <li class="clearfix">
+                         <div class="project-progressbar">
+                             <div class="project-progressbar-value" style="width: 65%"></div>
+                         </div>
+                         <i class="material-icons">credit_card</i>
+                         <span class="project-title">Payments</span>
+                         <span class="project-detail">24 new</span>
+
+                     </li>
+                     <li class="clearfix">
+                         <div class="project-progressbar">
+                             <div class="project-progressbar-value" style="width: 80%"></div>
+                         </div>
+                         <i class="material-icons">face</i>
+                         <span class="project-title">Clients</span>
+                         <span class="project-detail">+80%</span>
+                     </li>
+                   </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-lg-8">
+        <p-panel header="Livro de Ocorrências" styleClass="ui-shadow-content">
+        </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-lg-4">
+        <p-panel header="Editar Unidades" styleClass="ui-shadow-content">
+            <app-editar-unidades></app-editar-unidades>
+        </p-panel>
+    </div>
+    <div class="ui-g-12 ui-lg-4">
+        <p-panel header="Editar Indicadores" styleClass="ui-shadow-content">
+            <app-editar-indicadores></app-editar-indicadores>
+        </p-panel>
+    </div>
+</div>

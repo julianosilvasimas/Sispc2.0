@@ -74,6 +74,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TreeModule } from 'primeng/tree';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import {SidebarModule} from 'primeng/sidebar';
 
 import { AppComponent} from './app.component';
 import { AppMainComponent } from './app-main/app.main.component';
@@ -186,10 +187,10 @@ import { ProjetosService } from './gpp/projetos/projetos.service';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
-import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
-import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
-
-
+import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-etes/preenchimento-etes.component';
+import { PreencheIndicadoresComponent } from './operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component';
+import { EditarUnidadesComponent } from './operacional-esgoto/editar-unidades/editar-unidades.component';
+import { EditarIndicadoresComponent } from './operacional-esgoto/editar-indicadores/editar-indicadores.component';
 
 @NgModule({
     imports: [
@@ -266,7 +267,9 @@ import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadore
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        TriStateCheckboxModule
+        TriStateCheckboxModule,
+        SidebarModule
+
     ],
     declarations: [
         AppComponent,
@@ -355,8 +358,10 @@ import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadore
         ForecastenergiaesgotoComponent,
         CenariosComponent,
         OperacionalEsgotoComponent,
-        AplicativoEtesComponent,
-        IndicadoresAplicativosComponent,
+        PreenchimentoEtesComponent,
+        PreencheIndicadoresComponent,
+        EditarUnidadesComponent,
+        EditarIndicadoresComponent,
 
     ],
     providers: [

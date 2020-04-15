@@ -1,0 +1,108 @@
+<p-table [columns]="cols" [value]="ListaDeUnidades" selectionMode="single" [(selection)]="UnidadeSelected" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="7">
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th style="width: 30px;">
+              id
+          </th>
+          <th>
+              Unidade
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData >
+      <tr [pSelectableRow]="rowData">
+          <td >
+              {{rowData['id']}}
+          </td>
+          <td >
+              {{rowData['unidade']}}
+          </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+      <div style="text-align:left">
+          <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
+      </div>
+  </ng-template>    
+</p-table>
+
+<p-dialog header="Carregando" [(visible)]="displayOperadoresCarregando"  [focusOnShow]="true" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+    <p-progressBar *ngIf="displayOperadoresCarregando" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
+</p-dialog>
+
+<p-dialog header="Gerenciar Operadores" [(visible)]="displayOperadores" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+    <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
+      
+        <p-pickList [source]="Disponiveis2" [target]="Operaveis" sourceHeader="Disponíveis" targetHeader="Operáveis" [responsive]="true" filterBy="nome" 
+        dragdrop="true" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
+        <ng-template let-perfil pTemplate="item">
+            <div class="ui-helper-clearfix">
+                <div class="ui-g">
+                    {{perfil.nome}}
+                </div>
+            </div>
+        </ng-template>
+        </p-pickList>
+        <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+        <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="salvarOperadores()"></button>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog header="Editar Unidade" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+  <div class="ui-g ui-fluid" *ngIf="UnidadeSelected">
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="vin">{{  cols[0].field }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[0].field  }}" [(ngModel)]="UnidadeSelected[cols[0].field]" [disabled]="true" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="brand">{{  cols[2].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[2].field  }}" [(ngModel)]="UnidadeSelected[cols[2].field]"  autofocus/>
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="year">{{  cols[1].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[1].field  }}" [(ngModel)]="UnidadeSelected[cols[1].field]" [disabled]="true" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="color">{{  cols [3].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="{{  cols[3].field  }}" [(ngModel)]="UnidadeSelected[cols[3].field]" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label for="color">{{  cols [4].field  }}</label>
+          </div>
+          <div class="ui-g-8">
+            <input pInputText id="{{  cols[4].field  }}" [(ngModel)]="UnidadeSelected[cols[4].field]" [disabled]="false" />
+          </div>
+      </div>
+  </div>
+  <p-footer>
+      <div class="ui-g" style="text-align: center;">
+        <div class="ui-g-4">
+            <button type="button" pButton icon="pi pi-check" class="ui-button-danger" (click)="deleteUnidade()" label="Deletar"></button>
+        </div>
+        <div class="ui-g-4">
+            <button type="button" pButton icon="pi pi-check" (click)="gerenciarOperadores()" label="Gerenciar Operadores"></button>
+        </div>
+        <div class="ui-g-4">
+            <button type="button" pButton icon="pi pi-check" (click)="save()" label="Salvar"></button>
+        </div>
+    </div>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,147 @@
+<div  *ngIf="VisibleListaDeUnidades">
+  
+  <div class="ui-g">
+    <div class="ui-g-3">
+      <p-panel header="Gerenciamento de ETE's" styleClass="ui-shadow-content">
+        <p-table #dt [value]="ListaDeUnidades"  selectionMode="single" >
+          <!-- <ng-template pTemplate="caption">
+            <div class="ui-helper-clearfix" style="text-align: left">
+                <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="salvarCSV()" style="margin-right: 0.5em;"></button>
+            </div>
+          </ng-template> -->
+          <ng-template pTemplate="header" let-columns>
+              <tr style="font-weight: bold !important; font-size: 13px;">
+                <th>Unidade</th>
+                <th style="width: 100px !important;"></th>
+              </tr>
+          </ng-template>
+          <ng-template let-linha  let-i="rowIndex" pTemplate="body">
+            <tr [pSelectableRow]="linha"  style="font-size: 12px;">
+              <td>{{linha.unidade}}</td>
+              <td >
+                <button pButton type="button" (click)="selectEte(linha)" style="text-align: center; border-radius: 50% 50% 50% 50%;">
+                  <span class="material-icons" style="margin-top: 5px;">
+                    last_page
+                  </span>
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-panel>
+    </div>
+    <div class="ui-g-9">
+      
+      <p-progressBar *ngIf="carregando" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
+      <p-panel header="Lançamentos" *ngIf="carregando===false" styleClass="ui-shadow-content">
+        <p-table #dt [value]="listaDeLancamentos"  selectionMode="single" [paginator]="true" [rows]="10">
+          <ng-template pTemplate="caption">
+            <div class="ui-g"> 
+              <div class="ui-g-6"  style="text-align: left;">
+                <button pButton type="button" (click)="Lancamentos()" class="ui-button-success">
+                  <span class="material-icons" style="margin-top: 5px;">
+                    sync
+                  </span>
+                </button>
+              </div>
+              <div class="ui-g-6"  style="text-align: right;">
+                <button pButton type="button" (click)="EnviarLancamentos()" class="ui-button-success">
+                  <span class="material-icons" style="margin-top: 5px;">
+                    send
+                  </span>
+                </button>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr style="font-weight: bold !important; font-size: 13px;">
+              <th>Unidade</th>
+              <th>Dt. Lancamento</th>
+              <th>Dt. Medicao</th>
+              <th>Usuario</th>
+              <th>Indicador</th>
+              <th style="width: 100px !important;">Valor</th>
+              <th style="width: 70px !important;"></th>
+              <th style="width: 70px !important;"></th>
+            </tr>
+          </ng-template>
+          <ng-template let-linha  let-i="rowIndex" pTemplate="body">
+            <tr [pSelectableRow]="linha"  style="font-size: 13px;">
+              <td>{{linha.unidade.unidade}}</td>
+              <td>{{linha.dataDaImportacao}}</td>
+              <td>{{linha.dataIndicador}}</td>
+              <td>{{linha.usuario}}</td>
+              <td>{{linha.indicador.nome}}</td>
+              <td>{{linha.valor}}</td>
+              <td >
+                <button pButton type="button" (click)="OpenEditar(linha)" style="text-align: center; border-radius: 50% 50% 50% 50%;" class="ui-button-info">
+                  <span class="material-icons" style="margin-top: 5px;">
+                    create
+                  </span>
+                </button>
+              </td>
+              <td>
+                <button pButton type="button" (click)="Deletar(linha)" style="text-align: center; border-radius: 50% 50% 50% 50%;" class="ui-button-danger">
+                  <span class="material-icons" style="margin-top: 5px;">
+                    delete_sweep
+                  </span>
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+      </p-panel>
+    </div>
+  </div>
+</div>
+<app-preenche-indicadores  *ngIf="VisibleListaDeIndicadores" [ETE]="Ete"></app-preenche-indicadores>
+
+<p-dialog header="CRUD" [(visible)]="visibleCrud" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '600px'}">
+  <div class="ui-g" *ngIf="Lancamento">
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <input id="input" class="ui-g-12"  [(ngModel)]="Lancamento.unidade.unidade"  type="text" [disabled]="true" pInputText/>
+        <label >Unidade</label>
+      </span>
+    </div>
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <input id="input" class="ui-g-12"  [(ngModel)]="Lancamento.indicador.nome"  type="text" [disabled]="true" pInputText/>
+        <label >Indicador</label>
+      </span>
+    </div>
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <input id="input" class="ui-g-12"  [(ngModel)]="Lancamento.dataDaImportacao"  type="text" [disabled]="true" pInputText/>
+        <label >Data do Lancamento</label>
+      </span>
+    </div>
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <input id="input" class="ui-g-12"  [(ngModel)]="Lancamento.dataIndicador"  type="text" [disabled]="true" pInputText/>
+        <label >Data do Indicador</label>
+      </span>
+    </div>
+    <div class="ui-g-12" style="margin-top: 25px;" >
+      <span class="md-inputfield">
+        <input id="input" class="ui-g-12"  [(ngModel)]="Lancamento.valor"  type="number" pInputText/>
+        <label >Valor {{ Lancamento.indicador.minimo }} - {{ Lancamento.indicador.maximo }}</label>
+      </span>
+    </div>
+    <div class="ui-g-6" style="margin-top: 25px; text-align: center;" >
+      <button pButton type="button" (click)="Deletar(Lancamento)" style="text-align: center; border-radius: 50% 50% 50% 50%;" class="ui-button-danger">
+        <span class="material-icons" style="margin-top: 5px;">
+          delete_sweep
+        </span>
+      </button> 
+    </div>
+    <div class="ui-g-6" style="margin-top: 25px; text-align: center;" >
+      <button pButton type="button" (click)="Editar(Lancamento)" style="text-align: center; border-radius: 50% 50% 50% 50%;" class="ui-button-info">
+        <span class="material-icons" style="margin-top: 5px;">
+          send
+        </span>
+      </button>
+    </div>
+  </div>
+</p-dialog>

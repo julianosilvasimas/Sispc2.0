@@ -45,11 +45,10 @@ import { ForecastenergiaaguaComponent } from './energia/forecast/forecastenergia
 import { ForecastenergiaesgotoComponent } from './energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component';
 import { EquipamentosComponent } from './energia/equipamentos/equipamentos.component';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
-import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
-import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
+import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-etes/preenchimento-etes.component';
 
-
+PreenchimentoEtesComponent
 
 
 export const routes: Routes = [
@@ -64,9 +63,8 @@ export const routes: Routes = [
             { path: '', component: HomeComponent, canActivate: [AuthGuard] },
             { path: 'dash', component: DashboardDemoComponent },
 
-            { path: 'appEtes', component: AplicativoEtesComponent },
-            { path: 'indicEtes', component: IndicadoresAplicativosComponent },
-            { path: 'unidadesEtes', component: OperacionalEsgotoComponent },
+            { path: 'adminEtes', component: OperacionalEsgotoComponent },
+            { path: 'preenchimentoetes', component: PreenchimentoEtesComponent },
 
             { path: 'sample', component: SampleDemoComponent, canActivate: [AuthGuard] },
             { path: 'forms', component: FormsDemoComponent, canActivate: [AuthGuard] },
@@ -99,6 +97,7 @@ export const routes: Routes = [
             { path: 'cenarios', component: CenariosComponent, canActivate: [AuthGuard]},
             { path: 'rpa', component: RpaComponent},
             { path: 'sesuiteproject', component: SesuiteprojectComponent, canActivate: [AuthGuard] },
+
             
         ]
     },

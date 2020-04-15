@@ -1,0 +1,158 @@
+<p-table [columns]="cols" [value]="ListaDeClassificacoes" selectionMode="single" [(selection)]="ClassificacaoSelected" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="7">
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th style="width: 30px;">
+              id
+          </th>
+          <th>
+              Classificacao
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData >
+      <tr [pSelectableRow]="rowData">
+          <td >
+              {{rowData['id']}}
+          </td>
+          <td >
+              {{rowData['nome']}}
+          </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+      <div style="text-align:left">
+          <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
+      </div>
+  </ng-template>    
+</p-table>
+
+<p-dialog header="Carregando" [(visible)]="displayCarregando" (onHide)="onGerenciarIndicadoresHide()" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+    <p-progressBar *ngIf="displayCarregando" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
+</p-dialog>
+
+
+<p-dialog header="Editar Indicadores" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+  <div class="ui-g ui-fluid" *ngIf="ClassificacaoSelected">
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label >Id</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="Id" [(ngModel)]="ClassificacaoSelected['id']" [disabled]="true" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label >Data da Criação</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="DataCriacao" [(ngModel)]="ClassificacaoSelected['dataDaCriacao']" [disabled]="true" />
+          </div>
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label>Classificação</label>
+          </div>
+          <div class="ui-g-8">
+              <input pInputText id="nome" [(ngModel)]="ClassificacaoSelected['nome']"  autofocus/>
+          </div>
+      </div>
+  </div>
+  <p-footer>
+      <div class="ui-g" style="text-align: center;">
+        <div class="ui-g-4">
+            <button type="button" pButton icon="pi pi-check" class="ui-button-danger" (click)="deleteClassificacao()" label="Deletar"></button>
+        </div>
+        <div class="ui-g-4">
+            <button type="button" pButton icon="pi pi-check" (click)="gerenciarIndicadores()" label="Gerenciar Indicadores"></button>
+        </div>
+        <div class="ui-g-4">
+            <button type="button" pButton icon="pi pi-check" (click)="saveClassificacao()" label="Salvar"></button>
+        </div>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Gerenciar Indicadores" [(visible)]="displayIndicadores" (onHide)="onGerenciarIndicadoresHide()" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+    <p-table [value]="ArrayDeIndicadores" selectionMode="single" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="width: 30px;">
+                    id
+                </th>
+                <th>
+                    Indicador
+                </th>
+                <th>
+                    Cálculo
+                </th>
+                <th style="width: 150px;"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData >
+            <tr [pSelectableRow]="rowData">
+                <td >
+                    {{rowData['id']}}
+                </td>
+                <td >
+                    {{rowData['nome']}}
+                </td>
+                <td >
+                    {{ rowData['calculo'] === null ? null : calculos[rowData['calculo']-1].label }}
+                </td>
+                <td >
+                    <button type="button" pButton (click)="editarIndicador(rowData)" label="Editar"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary" let-rowData>
+            <div style="text-align:left">
+                <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
+            </div>
+        </ng-template>  
+    </p-table>
+</p-dialog>
+
+<p-dialog header="Editar Indicador" [(visible)]="displayEditarIndicador" [focusOnShow]="true" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+    <div class="ui-g" *ngIf="displayEditarIndicador">
+
+        <div class="ui-g-12" style="text-align: center;padding-bottom: 30px;">
+            <span class="md-inputfield">
+                <input id="input" class="ui-g-12" [(ngModel)]="IndicadorASerEditado.nome" type="text" pInputText/>
+                <label>Indicador</label>
+            </span>
+        </div>
+        <div class="ui-g-12"  style="text-align: left;padding-bottom: 30px;">
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" class="ui-g-12" filter="true" placeholder="Selecione o Tipo de Cálculo" [(ngModel)]="IndicadorASerEditado.calculo" styleClass = "drop95" [options]="calculos"></p-dropdown>
+              <label >Cálculo</label>
+            </span>
+        </div>
+        <div class="ui-g-12"  style="text-align: left;padding-bottom: 30px;">
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" class="ui-g-12" filter="true" [(ngModel)]="ClassificacaoSelecionada" optionLabel="nome" styleClass = "drop95" [options]="ListaDeClassificacoes"></p-dropdown>
+              <label >Classificação</label>
+            </span>
+        </div>
+        <div class="ui-g-6" style="text-align: center;padding-bottom: 30px;">
+            <span class="md-inputfield">
+                <input id="input" class="ui-g-12" [(ngModel)]="IndicadorASerEditado.minimo" type="number" pInputText/>
+                <label>Mínimo</label>
+            </span>
+        </div>
+        <div class="ui-g-6" style="text-align: center;padding-bottom: 30px;">
+            <span class="md-inputfield">
+                <input id="input" class="ui-g-12" [(ngModel)]="IndicadorASerEditado.maximo" type="number" pInputText/>
+                <label>Máximo</label>
+            </span>
+        </div>
+        <div class="ui-g-12" style="text-align: center;margin-top: 50px;">
+            <div class="ui-g-6">
+                <button type="button" pButton icon="pi pi-check" class="ui-button-danger" (click)="delIndicador()" label="Deletar"></button>
+            </div>
+            <div class="ui-g-6">
+                <button type="button" pButton icon="pi pi-check" class="ui-button-success" (click)="saveIndicador()" label="Salvar"></button>
+            </div>
+        </div>
+    </div>
+</p-dialog>

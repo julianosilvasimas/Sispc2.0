@@ -323,8 +323,8 @@ export class AppMenuComponent implements OnInit {
                 var operesg = this.usuOperacionalEsgoto===true ? 
                 {label: 'Operação Esgoto', icon: 'subject',
                     items: [
-                        {label: 'Indicadores das ETEs', icon: 'show_chart', routerLink:'/indicEtes'},
-                        {label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink:'/appEtes'},
+                        {label: 'Administrador', icon: 'show_chart', routerLink:'/adminEtes'},
+                        {label: 'Preenchimentos', icon: 'stay_current_portrait', routerLink:'/preenchimentoetes'},
                     ]
                 } 
                 : ""

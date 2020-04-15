@@ -118,24 +118,24 @@
   <div class="ui-g" *ngIf="PermissoesSelect" >
     <div  style="margin-left: 20px; margin-right: 40px;" class="ui-g">
       
-    <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Disponíveis" targetHeader="Acessos" [responsive]="true" filterBy="perfil" 
-    dragdrop="true" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
-      <ng-template let-perfil pTemplate="item">
-        <div class="ui-helper-clearfix">
-          <div class="ui-g">
-            <!-- <div class="ui-g-3" >
-              <button pButton type="button"   label="!" class="ui-button-rounded ui-button-info" ></button>
-            </div> -->
-            <div class="ui-g-9"  pTooltip="{{perfil.descricao}}" tooltipPosition="bottom">
-              {{perfil.perfil}}
+      <p-pickList [source]="sourcePermissoes" [target]="targetPermissoes" sourceHeader="Disponíveis" targetHeader="Acessos" [responsive]="true" filterBy="perfil" 
+      dragdrop="true" [sourceStyle]="{'height':'300px', 'width': '300px'}" [targetStyle]="{'height':'300px', 'width': '300px'}">
+        <ng-template let-perfil pTemplate="item">
+          <div class="ui-helper-clearfix">
+            <div class="ui-g">
+              <!-- <div class="ui-g-3" >
+                <button pButton type="button"   label="!" class="ui-button-rounded ui-button-info" ></button>
+              </div> -->
+              <div class="ui-g-9"  pTooltip="{{perfil.descricao}}" tooltipPosition="bottom">
+                {{perfil.perfil}}
+              </div>
             </div>
           </div>
-        </div>
-      </ng-template>
-    </p-pickList>
-    <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
-      <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="editarPermissoes()"></button>
-    </div>
+        </ng-template>
+      </p-pickList>
+      <div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+        <button type="button" pButton icon="pi pi-save" label="Salvar"  (click)="editarPermissoes()"></button>
+      </div>
     </div>
   </div>
 </p-dialog>
