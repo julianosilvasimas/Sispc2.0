@@ -102,6 +102,7 @@ export class PagemainComponent implements OnInit {
     novacomprovacao: any = null;
     novalicenca: any =null;
     licenciamentos: any[];
+    pt: { firstDayOfWeek: number; dayNames: string[]; dayNamesShort: string[]; dayNamesMin: string[]; monthNames: string[]; monthNamesShort: string[]; today: string; clear: string; dateFormat: string; weekHeader: string; };
   
   constructor(private messageService: MessageService, private projetosService: ProjetosService) {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
@@ -211,6 +212,19 @@ export class PagemainComponent implements OnInit {
 
   ngOnInit() {
 
+    this.pt = {
+        firstDayOfWeek: 0,
+        dayNames: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+        dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+        dayNamesMin: ["Su","Mo","Tu","We","Th","Fr","Sa"],
+        monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
+        monthNamesShort: [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun","Jul", "Ago", "Set", "Out", "Nov", "Dez" ],
+        today: 'Hoje',
+        clear: 'Limpar',
+        dateFormat: 'dd/mm/yy',
+        weekHeader: 'Wk'
+    };
+
     this.projetosService.projetosId(this.idProjeto)
     .subscribe(res => {
         
@@ -236,9 +250,18 @@ export class PagemainComponent implements OnInit {
         this.arrProjeto['comprovacao'].envio = this.parseDate(this.arrProjeto['comprovacao'].envio)
         this.arrProjeto['comprovacao'].retorno = this.parseDate(this.arrProjeto['comprovacao'].retorno)
         this.arrProjeto['comprovacao'].moeda = this.arrProjeto['comprovacao'].moeda  === null ? this.arrProjeto['comprovacao'].moeda : this.arrProjeto['comprovacao'].moeda.toString()
-        this.arrProjeto['comissionamento'].previsto = this.parseDate(this.arrProjeto['comissionamento'].previsto)
-        this.arrProjeto['comissionamento'].replanejado = this.parseDate(this.arrProjeto['comissionamento'].replanejado)
-        this.arrProjeto['comissionamento'].realizado = this.parseDate(this.arrProjeto['comissionamento'].realizado)
+        this.arrProjeto['comissionamento'].inicioprevisto = this.parseDate(this.arrProjeto['comissionamento'].inicioprevisto)
+        this.arrProjeto['comissionamento'].inicioreplanejado = this.parseDate(this.arrProjeto['comissionamento'].inicioreplanejado)
+        this.arrProjeto['comissionamento'].iniciorealizado = this.parseDate(this.arrProjeto['comissionamento'].iniciorealizado)
+        this.arrProjeto['comissionamento'].terminoprevisto = this.parseDate(this.arrProjeto['comissionamento'].terminoprevisto)
+        this.arrProjeto['comissionamento'].terminoreplanejado = this.parseDate(this.arrProjeto['comissionamento'].terminoreplanejado)
+        this.arrProjeto['comissionamento'].terminorealizado = this.parseDate(this.arrProjeto['comissionamento'].terminorealizado)
+        this.arrProjeto['obra'].previsto = this.parseDate(this.arrProjeto['obra'].previsto)
+        this.arrProjeto['obra'].replanejado = this.parseDate(this.arrProjeto['obra'].replanejado)
+        this.arrProjeto['obra'].realizado = this.parseDate(this.arrProjeto['obra'].realizado)
+        this.arrProjeto['obra'].inicioprevisto = this.parseDate(this.arrProjeto['obra'].inicioprevisto)
+        this.arrProjeto['obra'].inicioreplanejado = this.parseDate(this.arrProjeto['obra'].inicioreplanejado)
+        this.arrProjeto['obra'].iniciorealizado = this.parseDate(this.arrProjeto['obra'].iniciorealizado)
         
             this.projetosService.partesInteressadas()
             .subscribe(response => {
@@ -246,10 +269,10 @@ export class PagemainComponent implements OnInit {
                 this.partesInt = response
                 for (var i = 0; i < response.length+1; i++) {
                     this.partes.push(false);
-                 }
-                 this.partesInteressadas.forEach((parte, index)=> {
+                }
+                this.partesInteressadas.forEach((parte, index)=> {
                     this.partes[parte['orgaoId']] = true
-                   })
+                })
             });
 
             try{
@@ -782,8 +805,40 @@ export class PagemainComponent implements OnInit {
   }
 
   //====================================================================================================//
-  //================================= * Métodos Auxiliares * ===========================================//
+  //================================= * Funções Auxiliares * ===========================================//
   //====================================================================================================//
+
+
+    formatoMoeda(num){
+        var numFormat = new Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(num);
+        console.log(num)
+        console.log(this.verificaDecimal(num))
+        return numFormat;
+    }
+
+    verificaDecimal(num){
+        var verificar
+        var verificado = []
+        verificar = num.toString().split("")
+        verificar = verificar.reverse()
+        for (let value in verificar) {
+            if(verificar.indexOf(value)<=2){
+                verificado.push(value)
+            }else{
+                if(value!="."){verificado.push(value);  console.log(value)}
+            }
+        }
+        verificado.reverse().toString()
+
+        /*
+        if(num.toString().indexOf(",") === -1){
+            verificado = num.toString().split("")
+        }else{
+            verificado = "Achei uma vígula aqui!!!!"
+        }*/
+        
+        return verificado
+    }
 
     //Método que transforma data formato Json para date
     parseDate(value){
