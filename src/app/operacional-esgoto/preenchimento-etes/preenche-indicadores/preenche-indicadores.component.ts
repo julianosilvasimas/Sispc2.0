@@ -18,37 +18,46 @@ export class PreencheIndicadoresComponent implements OnInit {
 
   arrayDeClassificacoes:any[] = []
   ngOnInit() {
-    var indicadores = this.ETE.indicadores
-    for(var i = 0; i<indicadores.length; i++){
-      var qualificador = true;
-
-      for(var j=0 ; j<this.arrayDeClassificacoes.length ; j++){
-        if(this.arrayDeClassificacoes[j].id === indicadores[i].classificacao.id){
-          qualificador =false;
-          break;
+    this.esg.getindicadorporUnidade(this.ETE.id).subscribe(
+      resp=>{
+        console.log(resp)
+        var indicadores = resp
+        for(var i = 0; i<indicadores.length; i++){
+          var qualificador = true;
+    
+          for(var j=0 ; j<this.arrayDeClassificacoes.length ; j++){
+            if(this.arrayDeClassificacoes[j].id === indicadores[i].classificacao.id){
+              qualificador =false;
+              break;
+            }
+          }
+    
+          if(qualificador){
+            this.arrayDeClassificacoes.push(indicadores[i].classificacao)
+          }
+    
+        }
+    
+        for(var i = 0; i<this.arrayDeClassificacoes.length; i++){
+          this.arrayDeClassificacoes[i].indicador = []
+          
+          for(var j=0;j<indicadores.length;j++){
+            if(indicadores[j].classificacao.id == this.arrayDeClassificacoes[i].id){
+              this.arrayDeClassificacoes[i].indicador.push(indicadores[j])
+            }
+          }
         }
       }
+    )
 
-      if(qualificador){
-        this.arrayDeClassificacoes.push(indicadores[i].classificacao)
-      }
 
-    }
-
-    for(var i = 0; i<this.arrayDeClassificacoes.length; i++){
-      this.arrayDeClassificacoes[i].indicador = []
-      
-      for(var j=0;j<indicadores.length;j++){
-        if(indicadores[j].classificacao.id == this.arrayDeClassificacoes[i].id){
-          this.arrayDeClassificacoes[i].indicador.push(indicadores[j])
-        }
-      }
-    }
+    
     // console.log(this.arrayDeClassificacoes)
 
     //=============================================
     // this.Classificacao = this.arrayDeClassificacoes[0]  
     // this.visibleSidebar = true
+    // this.visibleNotificacoes=true
     //=============================================
   }
 
@@ -146,7 +155,6 @@ export class PreencheIndicadoresComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar'});
       }
     )
-
   }
 
   
@@ -158,5 +166,52 @@ export class PreencheIndicadoresComponent implements OnInit {
     var minuto = date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes() 
     var segundo = date.getSeconds() < 10 ? "0"+date.getSeconds() : date.getSeconds() 
     return ano+"-"+mes+"-"+dia + " "+hora+":"+minuto+":"+segundo;
+  }
+
+  //=====================================================================================================================
+  //enviar notificacoes
+  visibleNotificacoes:boolean=false
+  NotificacaoTexto
+
+
+  AbrirMural(){
+    this.Notificacoes()
+    this.visibleNotificacoes = true
+    this.NotificacaoTexto = null
+  }
+
+  SalvarNotificacao(){
+    var novoarray =
+    {
+      id: null,
+      dataDaCriacao: null,
+      unidade: this.ETE.unidade,
+      admin: 0,
+      usuario: sessionStorage.getItem('nome'),
+      texto: this.NotificacaoTexto
+    } 
+    console.log(novoarray)
+    this.esg.InserirNotificacao(novoarray).subscribe(
+      resp=>{
+        this.messageService.add({severity: 'success', summary: "Salvo", detail: 'Salvo com sucesso'});
+        this.visibleNotificacoes = false
+        
+      },
+      error=>{
+        this.messageService.add({severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar'});
+      }
+    )
+  }
+
+  ListaDeNotificacoes
+  Notificacoes() {
+    this.esg.getNotificacao().subscribe(
+      resp=>{
+        this.ListaDeNotificacoes = resp.map(function(obj) {
+          obj.dataDaCriacao = obj.dataDaCriacao.substr(8,2)+"/"+obj.dataDaCriacao.substr(5,2)+"/"+obj.dataDaCriacao.substr(2,2)+" "+obj.dataDaCriacao.substr(11,8)
+          return obj
+        });
+      }
+    )
   }
 }

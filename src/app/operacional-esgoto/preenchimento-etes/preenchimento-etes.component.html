@@ -30,8 +30,8 @@
         </p-table>
       </p-panel>
     </div>
+    
     <div class="ui-g-9">
-      
       <p-progressBar *ngIf="carregando" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
       <p-panel header="Lançamentos" *ngIf="carregando===false" styleClass="ui-shadow-content">
         <p-table #dt [value]="listaDeLancamentos"  selectionMode="single" [paginator]="true" [rows]="10">
@@ -90,7 +90,6 @@
             </tr>
           </ng-template>
         </p-table>
-
       </p-panel>
     </div>
   </div>

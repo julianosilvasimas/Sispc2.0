@@ -12,7 +12,7 @@ import { Classificacao } from './classificacao-indicadores.model';
 })
 export class EditarIndicadoresComponent implements OnInit {
 
-  constructor(private esg:OperacionalEsgotoService, private adminServ:AdminService, private messageService: MessageService) { }
+  constructor(private esg:OperacionalEsgotoService, private messageService: MessageService) { }
   volumes 
 
   ngOnInit() {

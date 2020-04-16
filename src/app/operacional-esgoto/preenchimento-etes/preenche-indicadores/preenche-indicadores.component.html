@@ -1,12 +1,22 @@
 <div class="ui-g-12">
   <div class="card card-title ui-g-12">
-    <div class="ui-g-6" style="text-align: left;" >
+    <div class="ui-g-8" style="text-align: left;" >
       <h1>{{  ETE.unidade }}</h1>
     </div>
-    <div class="ui-g-6" style="text-align: right;" >
-      <button pButton type="button" label="Voltar" class="ui-button-rounded" (click)="voltar()"></button>
+    <div class="ui-g-4" style="text-align: right;" >
+      <div class="ui-g-6" style="text-align: right;" >
+        <button pButton type="button" label="Mural de Notificações" class="ui-button-rounded ui-button-info" (click)="AbrirMural()"></button>
+      </div>
+      <div class="ui-g-6" style="text-align: right;" >
+        <button pButton type="button" label="Voltar" class="ui-button-rounded" (click)="voltar()"></button>
+      </div>
     </div>
   </div>
+  
+  <!-- MURAL DE NOTIFICAÇÕES -->
+
+
+
   <div class="card ui-g-12" style="margin-top: 5px; background-color: lightgray;" *ngFor="let b of arrayDeClassificacoes">
     <div style="font-weight: bold;" class="ui-g-6">{{ b.nome }}</div>
     <div class="ui-g-6">
@@ -16,6 +26,49 @@
     </div>
   </div>
 </div>
+
+<p-dialog header="Mural de Notificações" [(visible)]="visibleNotificacoes" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+  <div class="ui-g-12 dashboard">
+    <div class="ui-g-12" style="text-align: center ;color: black;">
+      <h2>MURAL DE NOTIFICAÇÕES</h2>
+    </div>  
+
+    <div class="ui-g-12 ui-lg-12 chat">
+      <p-panel header="Livro de Ocorrências" styleClass="ui-shadow-content">
+          <ul>
+              <p-scrollPanel [style]="{width: '100%', height: '375px'}" scrollTop="1000000">
+                <div *ngFor="let not of ListaDeNotificacoes">
+                    <li class="clearfix message-from" style="margin-left: 12px;" *ngIf="not.admin==0">
+                        <span>
+                            <div style="font-size: 12px;"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>
+                            <div style="font-size: 11px;">{{ not.dataDaCriacao }} - {{ not.texto }}</div>
+                        </span>
+                    </li>
+                    <li class="clearfix message-own" style="margin-left: 12px;"  *ngIf="not.admin==1">
+                        <span>
+                            <div style="font-size: 12px;"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>
+                            <div style="font-size: 11px;">{{ not.dataDaCriacao }} - {{ not.texto }}</div>
+                        </span>
+                    </li>
+                </div>
+              </p-scrollPanel>
+          </ul>
+          <div class="new-message">
+              <div class="message-attachment">
+                  <i class="material-icons">message</i>
+              </div>
+              <div class="message-input">
+                  <input type="text" [(ngModel)]="NotificacaoTexto" pInputText placeholder="Escreva sua mensagem" />
+              </div>
+              <div class="message-attachment" style="margin-left: 15px !important; margin-top: -350px !important;">
+                  <button type="button" pButton icon="pi pi-caret-right"  (click)="SalvarNotificacao()"></button>
+              </div>
+          </div>
+      </p-panel>
+    </div>
+  </div>
+</p-dialog>
+
 
 <p-sidebar [(visible)]="visibleSidebar" *ngIf="visibleSidebar" [fullScreen]="true" [baseZIndex]="10000">
     <h1 style="font-weight:normal">{{ Classificacao.nome }}</h1>

@@ -40,6 +40,11 @@ export class OperacionalEsgotoService {
   //===============================================================================================================================
   //INDICADORES
   
+  getindicadorporUnidade(id): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/appindicadoresesgoto/porunidade/${id}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
   getindicadorporclassificaco(id:any): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/appclassificacoesesgoto/porclassficacao/${id}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -141,4 +146,19 @@ export class OperacionalEsgotoService {
       return body;
   }
 
+
+  //===========================================================================================================================
+  //NOTIFICAÇÕES
+
+  getNotificacao(): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/appesgotoocorrencias/findlimit`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+  InserirNotificacao(bodyObj): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.post(`${API_CONFIG}/appesgotoocorrencias`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
+  
 }

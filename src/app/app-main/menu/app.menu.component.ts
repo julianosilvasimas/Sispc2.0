@@ -5,6 +5,9 @@ import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/primeng';
 import {AppMainComponent} from '../app.main.component';
 import { PerformanceService } from './../../performance/performance.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AppComponent } from 'src/app/app.component';
+
 
 @Component({
     selector: 'app-menu',
@@ -19,7 +22,7 @@ export class AppMenuComponent implements OnInit {
     public model: any[];
     public permissoes: any[] = []; 
 
-    constructor(public app: AppMainComponent, private performanceService: PerformanceService) {
+    constructor(public app: AppMainComponent, private component: AppComponent,private performanceService: PerformanceService) {
         
     }
 
@@ -39,10 +42,12 @@ export class AppMenuComponent implements OnInit {
     usuJuridicoPagamentosAprovacao: boolean = false;
 
     usuOperacional
-    usuOperacionalAgua
-    usuOperacionalEsgoto
     usuEletromecanica
+    usuOperacionalAgua
     
+    usuOperacionalEsgoto
+    admOperacionalEsgoto
+
     ngOnInit() {
 
         //Preencehendo array de permissoes e liberando acessos
@@ -82,9 +87,14 @@ export class AppMenuComponent implements OnInit {
             }else if(permissao === "ROLE_ADMIN_SISPC"){
                 this.admSispc = true
 
-            }else if(permissao === "ROLE_OPERACIONAL_ESGOTO"){
+            }else if(permissao === "ROLE_USER_OPERACIONAL_ESGOTO"){
                 this.usuOperacional = true
                 this.usuOperacionalEsgoto = true
+            }else if(permissao === "ROLE_ADMIN_OPERACIONAL_ESGOTO"){
+                this.usuOperacional = true
+                this.admOperacionalEsgoto = true
+
+                
             }else if(permissao === "ROLE_OPERACIONAL_AGUA"){
                 this.usuOperacional = true
                 this.usuOperacionalAgua = true
@@ -322,12 +332,16 @@ export class AppMenuComponent implements OnInit {
             if(this.usuOperacional===true){
                 var operesg = this.usuOperacionalEsgoto===true ? 
                 {label: 'Operação Esgoto', icon: 'subject',
-                    items: [
-                        {label: 'Administrador', icon: 'show_chart', routerLink:'/adminEtes'},
-                        {label: 'Preenchimentos', icon: 'stay_current_portrait', routerLink:'/preenchimentoetes'},
-                    ]
+                    items: []
                 } 
                 : ""
+                if(this.admOperacionalEsgoto===true){
+                    this.component.AtualizarUsuarios();
+                    operesg["items"].push({label: 'Administrador', icon: 'show_chart', routerLink:'/adminEtes'});
+                }
+                this.usuOperacionalEsgoto === true ? operesg["items"].push({label: 'Preenchimentos', icon: 'stay_current_portrait', routerLink:'/preenchimentoetes'}) : null;
+                
+
 
                 var operagu = this.usuOperacionalAgua===true ? 
                 {label: 'Operação Água', icon: 'subject'} 

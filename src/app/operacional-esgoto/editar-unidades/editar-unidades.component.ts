@@ -4,6 +4,7 @@ import { PerformanceService } from 'src/app/performance/performance.service';
 import { MessageService } from 'primeng/api';
 import { AdminService } from 'src/app/admin/Admin.service';
 import { Unidades } from '../editar-indicadores/classificacao-indicadores.model';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-editar-unidades',
@@ -12,12 +13,11 @@ import { Unidades } from '../editar-indicadores/classificacao-indicadores.model'
 })
 export class EditarUnidadesComponent implements OnInit {
 
-  constructor(private esg:OperacionalEsgotoService, private adminServ:AdminService, private messageService: MessageService) { }
+  constructor(private esg:OperacionalEsgotoService, private adminServ:AppComponent, private messageService: MessageService) { }
   volumes 
 
   ngOnInit() {
     this.AtualizarUnidades();
-    this.AtualizarUsuarios();
     this.cols = [
       { field: 'id', header: 'id' },
       { field: 'dataDaCriacao', header: 'Criacao' },
@@ -27,17 +27,6 @@ export class EditarUnidadesComponent implements OnInit {
     ];
   }
 
-  AtualizarUsuarios(){
-    console.log("Carregando")
-    this.adminServ.listusers2().subscribe(
-      resp=>{
-        this.Disponiveis = resp['content']
-        console.log(resp)
-        console.log(this.Disponiveis)
-        this.displayOperadoresCarregando = false
-      }
-    );
-  }
   AtualizarUnidades(){
     this.esg.getunidades().subscribe(
       response=>{
@@ -110,18 +99,22 @@ export class EditarUnidadesComponent implements OnInit {
   
   displayOperadores:boolean =false
   displayOperadoresCarregando:boolean =false
-  Disponiveis =[]
+  // Disponiveis =[]
   Disponiveis2 =[]
   Operaveis =[]
   gerenciarOperadores(){
-    console.log(this.Disponiveis)
-    if(this.Disponiveis.length===0){
+    this.Disponiveis2 = this.adminServ.Disponiveis.map(function( elem ) {return elem;});
+    if(this.adminServ.Disponiveis.length===0){
       this.displayOperadoresCarregando = true
+
     }else{
       this.displayOperadores = true
-      this.Disponiveis2 = this.Disponiveis.map( 
+      this.Disponiveis2 = this.Operaveis.map( 
         function( elem ) {
-          console.log(elem)
+          if(this.Disponiveis2.indexOf(elem)>=0){
+            console.log(elem)
+            this.Disponiveis.splice(elem)
+          }
           return elem;
         }
       )

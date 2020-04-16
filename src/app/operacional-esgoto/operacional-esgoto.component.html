@@ -9,49 +9,60 @@
                     <span>{{ Usuario }}</span>
                 </div>
 
-                <!-- <div class="user-detail">
+                 <div class="user-detail">
                    <ul>
                      <li class="clearfix">
-                         <div class="project-progressbar">
-                             <div class="project-progressbar-value" style="width: 50%"></div>
-                         </div>
-                         <i class="material-icons">list</i>
-                         <span class="project-title">Tasks</span>
-                         <span class="project-detail">3 open</span>
+                         <i class="material-icons">insert_drive_file</i>
+                         <span class="project-title">Relatórios</span>
                      </li>
                      <li class="clearfix">
-                         <div class="project-progressbar">
-                             <div class="project-progressbar-value" style="width: 20%"></div>
-                         </div>
-                         <i class="material-icons">attach_money</i>
-                         <span class="project-title">Revenue</span>
-                         <span class="project-detail">+20%</span>
+                         <i class="material-icons">blur_on</i>
+                         <span class="project-title">Produtos Químicos</span>
                      </li>
                      <li class="clearfix">
-                         <div class="project-progressbar">
-                             <div class="project-progressbar-value" style="width: 65%"></div>
+                         <i class="material-icons">timeline</i>
+                         <span class="project-title">Indicadores Diários</span>
+                         <div class="message-attachment" style="margin-left: 15px !important; margin-top: -350px !important;">
+                             <button type="button" pButton icon="pi pi-caret-right"  (click)="SalvarNotificacao()"></button>
                          </div>
-                         <i class="material-icons">credit_card</i>
-                         <span class="project-title">Payments</span>
-                         <span class="project-detail">24 new</span>
-
-                     </li>
-                     <li class="clearfix">
-                         <div class="project-progressbar">
-                             <div class="project-progressbar-value" style="width: 80%"></div>
-                         </div>
-                         <i class="material-icons">face</i>
-                         <span class="project-title">Clients</span>
-                         <span class="project-detail">+80%</span>
                      </li>
                    </ul>
-                </div> -->
+                </div> 
             </div>
         </div>
     </div>
 
-    <div class="ui-g-12 ui-lg-8">
+    <div class="ui-g-12 ui-lg-8 chat">
         <p-panel header="Livro de Ocorrências" styleClass="ui-shadow-content">
+            <ul>
+                <p-scrollPanel [style]="{width: '100%', height: '375px'}" scrollTop="1000000">
+                    <div *ngFor="let not of ListaDeNotificacoes">
+                        <li class="clearfix message-from" style="margin-left: 12px;" *ngIf="not.admin==0">
+                            <span>
+                                <div style="font-size: 12px;"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>
+                                <div style="font-size: 11px;">{{ not.dataDaCriacao }} - {{ not.texto }}</div>
+                            </span>
+                        </li>
+                        <li class="clearfix message-own" style="margin-left: 12px;"  *ngIf="not.admin==1">
+                            <span>
+                                <div style="font-size: 12px;"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>
+                                <div style="font-size: 11px;">{{ not.dataDaCriacao }} - {{ not.texto }}</div>
+                            </span>
+                        </li>
+                    </div>
+                </p-scrollPanel>
+            </ul>
+            <div class="new-message">
+                <div class="message-attachment">
+                    <i class="material-icons">message</i>
+                </div>
+                <div class="message-input">
+                    <input type="text" [(ngModel)]="NotificacaoTexto" pInputText placeholder="Escreva sua mensagem" />
+                </div>
+                <div class="message-attachment" style="margin-left: 15px !important; margin-top: -350px !important;">
+                    <button type="button" pButton icon="pi pi-caret-right"  (click)="SalvarNotificacao()"></button>
+                </div>
+            </div>
         </p-panel>
     </div>
 
