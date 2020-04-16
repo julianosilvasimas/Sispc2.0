@@ -149,19 +149,19 @@
                             <h2>Início</h2>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="inicioprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="inicioprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Previsto</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="inicioreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="inicioreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Replanejado</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="iniciorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="iniciorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Realizado</label>
                                 </span>
                             </div>
@@ -170,19 +170,19 @@
                           <h2>Término</h2>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="terminoprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="terminoprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Previsto</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px; padding-bottom: 20px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="terminoreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="terminoreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Replanejado</label>
                                 </span>
                             </div>
                             <div class="item" style="padding-top: 10px;">
                                 <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="terminorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="terminorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                 <label >Realizado</label>
                                 </span>
                             </div>
@@ -235,7 +235,7 @@
                 <app-sesuiteproject></app-sesuiteproject>
                 </p-accordionTab>
 
-                <!--Aqui trato do Regulatório--> <!--{{oFluxo.aprovacao}}-->
+                <!--Aqui trato do Regulatório-->
                 <p-accordionTab header="Regulatório"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{oFluxo.aprovacao}}</div><br>
                   <div class="ui-g">
                       
@@ -366,7 +366,7 @@
                                           <td>
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
-                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['envio']"></p-calendar>
+                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['envio']"></p-calendar>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
                                                             {{rowData['envio']}}
@@ -379,7 +379,7 @@
                                             <td>
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
-                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['aprovado']"  ></p-calendar>
+                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['aprovado']"  ></p-calendar>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
                                                             {{rowData['aprovado']}}
@@ -392,7 +392,7 @@
                                           <td>
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
-                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['retorno']"  ></p-calendar>
+                                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['retorno']"  ></p-calendar>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
                                                             {{rowData['retorno']}}
@@ -485,19 +485,19 @@
                 <section class="grid grid-auto-flow-1">
                     <div class="item" style="margin-top: 40px" >
                         <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.envio"  ></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"  [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="novaDelib.envio"  ></p-calendar>
                         <label >Envio</label>
                         </span>
                       </div>
                       <div class="item" style="margin-top: 40px" >
                           <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.retorno" ></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="novaDelib.retorno" ></p-calendar>
                           <label >Retorno</label>
                           </span>
                       </div>
                       <div class="item" style="margin-top: 40px" >
                           <span class="md-inputfield">
-                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="novaDelib.aprovado" ></p-calendar>
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="novaDelib.aprovado" ></p-calendar>
                           <label >Aprovação</label>
                           </span>
                       </div>
@@ -700,7 +700,7 @@
                                                         <p-cellEditor>
                                                              <ng-template pTemplate="input"  >
                                                                     <span class="md-inputfield">
-                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['previsto']"  ></p-calendar>
+                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['previsto']"  ></p-calendar>
                                                                     </span>
                                                             </ng-template>
                                                             <ng-template pTemplate="output">
@@ -712,7 +712,7 @@
                                                         <p-cellEditor>
                                                              <ng-template pTemplate="input"  >
                                                                     <span class="md-inputfield">
-                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['replanejado']"  ></p-calendar>
+                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['replanejado']"  ></p-calendar>
                                                                     </span>
                                                             </ng-template>
                                                             <ng-template pTemplate="output">
@@ -724,7 +724,7 @@
                                                         <p-cellEditor>
                                                              <ng-template pTemplate="input"  >
                                                                     <span class="md-inputfield">
-                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['realizado']"  ></p-calendar>
+                                                                         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['realizado']"  ></p-calendar>
                                                                     </span>
                                                             </ng-template>
                                                             <ng-template pTemplate="output">
@@ -921,44 +921,171 @@
                 <p-accordionTab header="Financeiro(Capex)" ><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Aprovado</div><br>
                   <div class="ui-g">
                     <div class="card card-w-title" style="width:100%">
-                        <div  div class="ui-g-12">
-                            <div class="ui-g-3" style="margin-top: 20px;">
-                                <span class="md-inputfield">
-                                    <input  type="text" size="35" pInputText/>
-                                    <label>Número do Projeto Cognos</label>
-                                </span>
-                            </div>
-                            
-                            <div class="ui-g-3">
-                                <span class="md-inputfield" style="margin-top: 20px;margin-left: 10%;">
-                                    <input  type="text" size="30" pInputText/>
-                                    <label>Valor Total do Projeto</label>
-                                </span>
-                            </div>
-                            <div class="ui-g-3" style="margin-top: 5px;">
-                                <span class="md-inputfield">
-                                    <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
-                                    <label >Status</label>
-                                </span>
-                            </div>
-                            <div class="ui-g-3">
-                                <div style=" width:230px; position:relative !important; margin-left: 20%;">
-                                    <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
-                                        <b><span class="overview-box-name">Andamento:</span>
-                                        <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                        <!--Informações de capex do Cognos-->
+                        <div  div class="ui-g-6">
+                                <div class="card card-w-title" style="width:100%">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12">
+                                          <h2>Informações Cognos</h2>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'Considerado', value:'Considerado'},
+                                                  {label:'Não Considerado', value:'Não Considerado'}
+                                                ]" 
+                                                [(ngModel)]="arrProjeto['financeiro'].considerarprojcog"></p-dropdown>
+                                              <label style="padding-bottom: 20px">Considerar Projeto</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'Ampliação de Cobertura Água', value: 'Ampliação de Cobertura Água'},
+                                                  {label:'Ampliação de Cobertura Esgoto', value: 'Ampliação de Cobertura Esgoto'},
+                                                  {label:'Continuidade Operacional', value: 'Continuidade Operacional'},
+                                                  {label:'Corte e Religação', value: 'Corte e Religação'},
+                                                  {label:'Crescimento Vegetativo Água', value: 'Crescimento Vegetativo Água'},
+                                                  {label:'Crescimento Vegetativo Esgoto', value: 'Crescimento Vegetativo Esgoto'},
+                                                  {label:'Eficiência Energética', value: 'Eficiência Energética'},
+                                                  {label:'Fiscalização', value: 'Fiscalização'},
+                                                  {label:'Outros Projetos', value: 'Outros Projetos'},
+                                                  {label:'Produção de Água', value: 'Produção de Água'},
+                                                  {label:'Projetos Engenharia', value: 'Projetos Engenharia'},
+                                                  {label:'Redução de Perdas', value: 'Redução de Perdas'},
+                                                  {label:'Segurança Operacional', value: 'Segurança Operacional'},
+                                                  {label:'Tratamento de Esgoto', value: 'Tratamento de Esgoto'}
+                                                ]" 
+                                                [(ngModel)]="arrProjeto['financeiro'].tipoprojcognos"></p-dropdown>
+                                              <label style="padding-bottom: 20px">Tipo de Projeto</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'Projeto em andamento', value: 'Projeto em andamento'},
+                                                  {label:'Projeto a iniciar', value: 'Projeto a iniciar'}
+                                                ]" 
+                                                [(ngModel)]="arrProjeto['financeiro'].status"></p-dropdown>
+                                              <label style="padding-bottom: 20px">Status Projeto</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'Sim', value:'Sim'},
+                                                  {label:'Não', value:'Não'}
+                                                ]" 
+                                                [(ngModel)]="arrProjeto['financeiro'].perpetuidadeprojcognos"></p-dropdown>
+                                              <label style="padding-bottom: 20px">Perpetuidade</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                    <input  [(ngModel)]="arrProjeto['financeiro'].inicioprojcognos"  type="text" size="30px"  pInputText  />
+                                                    <label style="padding-bottom: 20px">Inicio do projeto</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                    <input  [(ngModel)]="arrProjeto['financeiro'].prazopagprojcognos"  type="text" size="30px"  pInputText  />
+                                                    <label style="padding-bottom: 20px">Prazo de pagamento</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:30px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                    <input  [(ngModel)]="arrProjeto['financeiro'].prazoamorprojcognos"  type="text" size="30px"  pInputText  />
+                                                    <label style="padding-bottom: 20px">Prazo de amortização</label>
+                                              </span>
+                                            </div>
+                                        </div>
+                                        <div  class="ui-g-6"style= "margin-top:20px;">
+                                          <div class="item" >
+                                              <span class="md-inputfield">
+                                                  <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                  {label:'', value:null},
+                                                  {label:'Sim', value:'Sim'},
+                                                  {label:'Não', value:'Não'}
+                                                ]" 
+                                                [(ngModel)]="arrProjeto['financeiro'].gerareceitaprojcognos"></p-dropdown>
+                                              <label style="padding-bottom: 20px">Gera Receita?</label>
+                                              </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>        
+
+                        </div>
+
+                        <div  div class="ui-g-6">
+                            <div class="ui-g">
+
+                                <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+                                    <div style=" width:230px; margin-top: -25px ">
+                                        <div class="ui-g card overview-box overview-box-4" style="background: #F5F6F7; ">
+                                            <b><span class="overview-box-name">Andamento:</span>
+                                            <input style="border:0px;background: #F5F6F7;" size="10" value="80%"/></b>
+                                        </div>
                                     </div>
                                 </div>
 
+                                <div class="ui-g-6">
+                                    <span class="md-inputfield">
+                                        <input [(ngModel)]="arrProjeto['financeiro'].nprojetocognos" type="text" pInputText/>
+                                        <label>Número do Projeto Cognos</label>
+                                    </span>
+                                </div>
+                                
+                                <div class="ui-g-6">
+                                    <span class="md-inputfield" style="margin-left: 10%;">
+                                        <input [(ngModel)]="arrProjeto['financeiro'].valortotal" type="text" pInputText/>
+                                        <label>Valor Total do Projeto</label>
+                                    </span>
+                                </div>
+                                <div class="ui-g-12" style="margin-top: 20px;">
+                                    <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                            {label:'', value:null},
+                                            {label:'Projeto em andamento', value: 'Projeto em andamento'},
+                                            {label:'Projeto a iniciar', value: 'Projeto a iniciar'}
+                                          ]" 
+                                          [(ngModel)]="arrProjeto['financeiro'].status"></p-dropdown>
+                                        <label >Status</label>
+                                    </span>
+                                </div>
+                                <div div class="ui-g-12">
+                                    <label >Descrição</label>
+                                    <textarea  style="width: 100%" [(ngModel)]="arrProjeto['financeiro'].descricao"  pInputTextarea rows="1" autoResize="autoResize"></textarea>
+                                </div>
+                                <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column; padding-top: 30px">
+                                        <button pButton type="button" style="width:60%;"
+                                        label="Salvar" (click)="salvarComprovacao()" icon="ui-icon-save" ></button>
+                                    </div>
                             </div>
-                            
                         </div>
+                        
                     </div>
                       
                     <div class="card card-w-title" style="width:100%">
-                          <div class="ui-g-12">
-                            <h2>Descrição</h2>
-                            <textarea  style="width: 100%" pInputTextarea  autoResize="autoResize"></textarea>
-                          </div>
+                          
                           <div style="text-align: right; margin-top: 5px" *ngIf="selected">
                             <button type="button" icon="ui-icon-add" pButton ></button>
                             <span style="position: absolute;margin-top: 5px;margin-left: -135px;">Incluir + 1 ano</span>
@@ -1291,7 +1418,7 @@
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
                                                             <span class="md-inputfield">
-                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['inicio']"  ></p-calendar>
+                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['inicio']"  ></p-calendar>
                                                             </span>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
@@ -1303,7 +1430,7 @@
                                                 <p-cellEditor>
                                                     <ng-template pTemplate="input"  >
                                                             <span class="md-inputfield">
-                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [(ngModel)]="rowData['termino']"  ></p-calendar>
+                                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="rowData['termino']"  ></p-calendar>
                                                             </span>
                                                     </ng-template>
                                                     <ng-template pTemplate="output">
@@ -1471,7 +1598,7 @@
                 </p-accordionTab>
 
                 <!--Aqui trato do Contratação-->
-                <p-accordionTab header="Contratação"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                <p-accordionTab header="Contratação"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{arrProjeto['contratacao'].status}}</div><br>
 
                     <div class="ui-g">
 
@@ -1480,38 +1607,38 @@
                                         <div class="ui-g">
                                                 <div class="ui-g-6" style="margin-top: 10px;">
                                                         <span class="md-inputfield" style="margin-top: 10px;">
-                                                            <input  type="text" size="60" pInputText/>
+                                                            <input  type="text" [(ngModel)]="arrProjeto['contratacao'].npedido" size="60" pInputText/>
                                                             <label>Número do Pedido</label>
                                                         </span>
                                                       </div>
                                                       <div class="ui-g-6" style="margin-top: 10px;">
                                                           <span class="md-inputfield" style="margin-top: 10px;">
-                                                              <input  type="text" size="60" pInputText/>
+                                                              <input  type="text" [(ngModel)]="arrProjeto['contratacao'].requisicao" size="60" pInputText/>
                                                               <label>Requisição</label>
                                                           </span>
                                                       </div>
                                     
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input  type="text" size="30" pInputText/>
+                                            <input  type="text" [(ngModel)]="arrProjeto['contratacao'].contratosistemico" size="30" pInputText/>
                                             <label>Contrato Sistêmico</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input  type="text" size="30" pInputText/>
+                                            <input  type="text" [(ngModel)]="arrProjeto['contratacao'].contratofisico" vsize="30" pInputText/>
                                             <label>Contrato Físico</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input  type="text" size="30" pInputText/>
+                                            <input  type="text" [(ngModel)]="arrProjeto['contratacao'].nomeempresa" size="30" pInputText/>
                                             <label>Nome da Empresa</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield" style="margin-top: 20px;">
-                                            <input  type="text" size="30" pInputText/>
+                                            <input  type="text" [(ngModel)]="arrProjeto['contratacao'].responsavel" size="30" pInputText/>
                                             <label>Nome do Responsável</label>
                                         </span>
                                     </div>
@@ -1528,25 +1655,25 @@
                                 <div class="ui-g">
                                 <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;">
                                     <div class="ui-g-12"><b>Início</b></div>
-                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
-                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
-                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
+                                    <div class="ui-g-4 "><p-dropdown  [options]="dias" placeholder="dia"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" placeholder="mês"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" placeholder="ano"  ></p-dropdown> </div>
                                 </div>
                                 <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
                                     <div class="ui-g-12"><b>Término</b></div>
-                                    <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
-                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
-                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
+                                    <div class="ui-g-4 "><p-dropdown  [options]="dias" placeholder="dia"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" placeholder="mês"  ></p-dropdown> </div>
+                                    <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" placeholder="ano"  ></p-dropdown> </div>
                                 </div>
                                 <div class="ui-g-6" style="margin-top: 15px;">
                                         <span class="md-inputfield" style="margin-top: 15px;">
-                                            <input  type="text" size="30" pInputText/>
+                                            <input  type="text" size="30" [(ngModel)]="arrProjeto['contratacao'].valorcontratado" pInputText/>
                                             <label>Valor Contratado</label>
                                         </span>
                                     </div>
                                 <div class="ui-g-6" style="margin-top: 15px;">
                                     <span class="md-inputfield">
-                                        <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '95%', height: '25px'}"></p-multiSelect>
+                                        <p-dropdown [options]="status"  [(ngModel)]="arrProjeto['contratacao'].status" defaultLabel=""  [style]="{width: '95%', height: '25px'}"></p-dropdown>
                                         <label >Status</label>
                                     </span>
                                 </div>
@@ -1563,19 +1690,19 @@
                                   <div class="ui-g">
                                   <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;">
                                       <div class="ui-g-12"><b>Início</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dias" placeholder="dia"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" placeholder="mês"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" placeholder="ano"  ></p-dropdown> </div>
                                   </div>
                                   <div class="ui-g-6" style="border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;">
                                       <div class="ui-g-12"><b>Término</b></div>
-                                      <div class="ui-g-4 "><p-dropdown  [options]="dia" placeholder="dia"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="mes" placeholder="mês"  ></p-dropdown> </div>
-                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="ano" placeholder="ano"  ></p-dropdown> </div>
+                                      <div class="ui-g-4 "><p-dropdown  [options]="dias" placeholder="dia"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 5px;"><p-dropdown  [options]="meses" placeholder="mês"  ></p-dropdown> </div>
+                                      <div class="ui-g-4" style="padding-left: 10px;"><p-dropdown  [options]="anos" placeholder="ano"  ></p-dropdown> </div>
                                   </div>
                                   <div class="ui-g-12" style="margin-top: 15px;">
                                     <span class="md-inputfield" style="margin-top: 15px;">
-                                        <input  type="text" size="60" pInputText/>
+                                        <input  type="text" size="60" [(ngModel)]="arrProjeto['contratacao'].valorcontratadoaditivo"  pInputText/>
                                         <label>Valor Contratado</label>
                                     </span>
                                   </div>
@@ -1586,9 +1713,13 @@
                         <div  div class="ui-g-12" >
                                 <div class="card card-w-title" style="width:100%">
                                     <h2>Escopo</h2>
-                                    <textarea  style="width: 100%; padding-bottom: 18px" pInputTextarea  autoResize="autoResize"></textarea>
+                                    <textarea  style="width: 100%; padding-bottom: 18px" pInputTextarea [(ngModel)]="arrProjeto['contratacao'].escopo" autoResize="autoResize"></textarea>
                                 </div>
+                                <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                                        <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
+                                 </div>
                              </div>
+
                         
                     </div>
 
@@ -1596,22 +1727,34 @@
                 </p-accordionTab>
 
                 <!--Aqui trato da Obra-->
-                <p-accordionTab header="Engenharia(Obra)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: Em Andamento</div><br>
+                <p-accordionTab header="Engenharia(Obra)"><div style="margin-left: 70%; margin-top:-40px; position:absolute ;color:white;">Status da fase: {{arrProjeto['obra'].status}}</div><br>
                     <div class="ui-g">
                         <div class="card card-w-title" style="width:100%">
                             <div  div class="ui-g-12">
                                     <div class="ui-g-3" style="margin-top: 20px;">
                                         <span class="md-inputfield">
-                                            <input  type="text" size="35" pInputText/>
+                                            <input  type="text" [(ngModel)]="arrProjeto['obra'].avancofisico" size="35" pInputText/>
                                             <label>Avanço Físico</label>
                                         </span>
                                     </div>
                                     
-                                    <div class="ui-g-3"></div>
-
-                                    <div class="ui-g-3" style="margin-top: 5px;">
+                                    
+                                    <div class="ui-g-3" style="margin-top: 10px;">
                                         <span class="md-inputfield">
-                                            <p-multiSelect [options]="status"  defaultLabel="" [style]="{width: '90%', height: '25px'}"></p-multiSelect>
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                              {label:'', value:null},
+                                              {label:'Engenharia', value:'Engenharia'},
+                                              {label:'Unidade', value:'Unidade'}
+                                            ]" 
+                                            [(ngModel)]="arrProjeto['obra'].execucao"></p-dropdown>
+                                            <label >Executado por</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="ui-g-3" style="margin-top: 10px;">
+                                        <span class="md-inputfield">
+                                            <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="status" 
+                                            [(ngModel)]="arrProjeto['obra'].status"></p-dropdown>
                                             <label >Status</label>
                                         </span>
                                     </div>
@@ -1632,13 +1775,13 @@
                                 <div class="ui-g">
                                     <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                         <span class="md-inputfield">
-                                            <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="arrProjeto['obra'].inicioprevisto" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                             <label >Início</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="arrProjeto['obra'].previsto" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                                 <label >Término</label>
                                             </span>
                                     </div>
@@ -1651,13 +1794,13 @@
                                 <div class="ui-g">
                                     <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                         <span class="md-inputfield">
-                                            <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="arrProjeto['obra'].inicioreplanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                             <label >Início</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="arrProjeto['obra'].replanejado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                                 <label >Término</label>
                                             </span>
                                     </div>
@@ -1670,19 +1813,23 @@
                                 <div class="ui-g">
                                     <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                         <span class="md-inputfield">
-                                            <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="arrProjeto['obra'].iniciorealizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                             <label >Início</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" [locale]="pt" [monthNavigator]="true" [yearNavigator]="true" yearRange="2008:2041" [(ngModel)]="arrProjeto['obra'].realizado" [style]="{width: '100%', height: '25px'}"></p-calendar>
                                                 <label >Término</label>
                                             </span>
                                     </div>
                                 </div>
                             </div> 
+                            
                         </div>
+                        <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                                <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
+                         </div>
                     </div>
                       
                 </p-accordionTab>
@@ -1717,8 +1864,7 @@
                                         </div>
                                 </div>
                             </div>
-
-                            <!-- Verificado necessidade data inicio e termino no backend-->
+                            
     
                             <div class="ui-g-4">
                                 <div class="card card-w-title" style="width:100%">
@@ -1726,13 +1872,13 @@
                                     <div class="ui-g">
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"  [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].inicioprevisto"></p-calendar>
                                                 <label >Início</label>
                                             </span>
                                         </div>
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                                 <span class="md-inputfield">
-                                                    <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"  [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].terminoprevisto"></p-calendar>
                                                     <label >Término</label>
                                                 </span>
                                         </div>
@@ -1745,13 +1891,13 @@
                                     <div class="ui-g">
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].replanejado" ></p-calendar>
+                                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"  [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].inicioreplanejado" ></p-calendar>
                                                 <label >Início</label>
                                             </span>
                                         </div>
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                                 <span class="md-inputfield">
-                                                    <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                    <p-calendar [showIcon]="true"  dateFormat="dd/mm/yy" [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].terminoreplanejado"></p-calendar>
                                                     <label >Término</label>
                                                 </span>
                                         </div>
@@ -1764,13 +1910,13 @@
                                     <div class="ui-g">
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                             <span class="md-inputfield">
-                                                <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"  [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].iniciorealizado"></p-calendar>
                                                 <label >Início</label>
                                             </span>
                                         </div>
                                         <div class="ui-g-6" style="padding-top: 10px; padding-bottom: 5px;">
                                                 <span class="md-inputfield">
-                                                    <p-calendar [showIcon]="true" [style]="{width: '100%', height: '25px'}"></p-calendar>
+                                                    <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"  [style]="{width: '100%', height: '25px'}" [(ngModel)]="arrProjeto['comissionamento'].terminorealizado"></p-calendar>
                                                     <label >Término</label>
                                                 </span>
                                         </div>
@@ -1778,8 +1924,8 @@
                                 </div> 
                             </div>
                             <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
-                                    <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
-                             </div>
+                                <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
+                            </div>
                         </div>  
                         
                 </p-accordionTab>
@@ -1844,6 +1990,16 @@
                                         </div>
                                 </div>
                             </div>
+                            <!--#######################################################################################################################################
+                                ########################### Testando conversões de formato número/moeda universal #####################################################
+                                #######################################################################################################################################
+
+                            <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                                    <button pButton type="button" style="width:30%;"
+                                    label="Testando" (click)="formatoMoeda('3.658,36')" icon="ui-icon-save" ></button>
+                                </div>
+                            -->
+
                             <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
                                 <button pButton type="button" style="width:30%;"
                                 label="Salvar" (click)="salvarComprovacao()" icon="ui-icon-save" ></button>
@@ -2037,25 +2193,45 @@
                                 <div class="ui-g" style="margin-top: 15px;">
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input  type="text" size="35" pInputText/>
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'Sim', value:'Sim'},
+                                                {label:'Não', value:'Não'}
+                                              ]" 
+                                              [(ngModel)]="arrProjeto['licoes'].objetivosatendidos"></p-dropdown>
                                             <label>Os objetivos foram atingidos?</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input  type="text" size="35" pInputText/>
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'Sim', value:'Sim'},
+                                                {label:'Não', value:'Não'}
+                                              ]" 
+                                              [(ngModel)]="arrProjeto['licoes'].entreguenoprazo"></p-dropdown>
                                             <label>Projeto foi entregue no prazo?</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input  type="text" size="35" pInputText/>
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'Sim', value:'Sim'},
+                                                {label:'Não', value:'Não'}
+                                              ]" 
+                                              [(ngModel)]="arrProjeto['licoes'].noorcamento"></p-dropdown>
                                             <label>No orçamento?</label>
                                         </span>
                                     </div>
                                     <div class="ui-g-3">
                                         <span class="md-inputfield">
-                                            <input  type="text" size="35" pInputText/>
+                                                <p-dropdown [autoWidth]="false" styleClass = "drop95" [options]="[
+                                                {label:'', value:null},
+                                                {label:'Sim', value:'Sim'},
+                                                {label:'Não', value:'Não'}
+                                              ]" 
+                                              [(ngModel)]="arrProjeto['licoes'].atendeuescopo"></p-dropdown>
                                             <label>Atendeu o escopo?</label>
                                         </span>
                                     </div>
@@ -2066,19 +2242,29 @@
 
                                 
                                 <h4>Pontos fortes</h4>
-                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+                                <textarea  style="width: 100%;" pInputTextarea [(ngModel)]="arrProjeto['licoes'].pfortes" autoResize="autoResize"></textarea>
                                 <h4>Pontos fracos</h4>
-                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+                                <textarea  style="width: 100%;" pInputTextarea [(ngModel)]="arrProjeto['licoes'].pfracos" autoResize="autoResize"></textarea>
 
                                 <h2>Questões do projeto</h2>
                                 <div style="font-size: 10px; margin-top: -25px">[Comente os pontos mais relevantes]</div>
-                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+                                <textarea  style="width: 100%;" pInputTextarea  [(ngModel)]="arrProjeto['licoes'].questoes" autoResize="autoResize"></textarea>
 
                                 <h2>Recomendações a serem adotadas para os próximos projetos</h2>
                                 <div style="font-size: 10px; margin-top: -25px">[Indique as recomendações e as lições serem aprendidas mais relevantes]</div>
-                                <textarea  style="width: 100%;" pInputTextarea  autoResize="autoResize"></textarea>
+                                <textarea  style="width: 100%;" pInputTextarea  [(ngModel)]="arrProjeto['licoes'].recomendacoes" autoResize="autoResize"></textarea>
                                 
                             </div>
+                        </div>
+                        <div class="card card-w-title" style="width:100%">
+                            <div  div class="ui-g-12">
+                                <h2><b>Referências Técnicas do Projeto *</b></h2>
+                                <div style="font-size: 10px; margin-top: -25px">[Indique informações técnicas relevantes do projeto]</div>
+                                <textarea  style="width: 100%;" pInputTextarea  [(ngModel)]="arrProjeto['licoes'].reftecnicas" autoResize="autoResize"></textarea>
+                            </div>
+                        </div>
+                        <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+                            <button pButton type="button" style="width:30%"label="Salvar" (click)="salvarGerais()" icon="ui-icon-save" ></button>
                         </div>
                     </div>
                   
