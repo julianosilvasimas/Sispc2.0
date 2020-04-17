@@ -191,6 +191,7 @@ import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-e
 import { PreencheIndicadoresComponent } from './operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component';
 import { EditarUnidadesComponent } from './operacional-esgoto/editar-unidades/editar-unidades.component';
 import { EditarIndicadoresComponent } from './operacional-esgoto/editar-indicadores/editar-indicadores.component';
+import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component';
 
 @NgModule({
     imports: [
@@ -362,6 +363,8 @@ import { EditarIndicadoresComponent } from './operacional-esgoto/editar-indicado
         PreencheIndicadoresComponent,
         EditarUnidadesComponent,
         EditarIndicadoresComponent,
+        RelatoriosEsgotoComponent,
+        
 
     ],
     providers: [
@@ -381,7 +384,8 @@ import { EditarIndicadoresComponent } from './operacional-esgoto/editar-indicado
         NotificacoesService,
         EnergiaService,
         ProjetosService,
-        OperacionalEsgotoService
+        OperacionalEsgotoService,
+        EditarUnidadesComponent
     ],
     bootstrap: [AppComponent]
 })

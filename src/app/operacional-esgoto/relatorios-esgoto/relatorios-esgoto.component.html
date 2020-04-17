@@ -1,0 +1,68 @@
+<div class="ui-g dashboard">
+  <div class="card card-title ui-g-12">
+    <div class="ui-g-10" style="text-align: left;" >
+      <h1>Relatórios</h1>
+    </div>
+    <div class="ui-g-2" style="text-align: right;" >
+      <div class="ui-g-12" style="text-align: right;" >
+        <button pButton type="button" label="Voltar" class="ui-button-rounded"  routerLink="/adminEtes"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui-g-12 ui-lg-6">
+    <p-panel header="Livro de Ocorrências" styleClass="ui-shadow-content">
+      <div class="ui-g" style="margin-top: 20px;">
+        <div class="ui-g-6" style="margin-top: 15px;">
+          <span class="md-inputfield">
+            <p-calendar class="ui-g-12" (click)="datamax2()" [(ngModel)]="Data11" dateFormat="yy-mm-dd"></p-calendar>
+            <label >Início</label>
+          </span>
+        </div>
+        <div class="ui-g-6"  style="margin-top: 15px;">
+          <span class="md-inputfield">
+            <p-calendar class="ui-g-12" [minDate]="Data11" [maxDate]="DataMax1" [(ngModel)]="Data21" dateFormat="yy-mm-dd"></p-calendar>
+            <label >Fim</label>
+          </span>
+        </div>
+        
+        <p-progressBar class="ui-g-12 item"s *ngIf="carregarocorrencia" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
+        <div class="ui-g-12 item" *ngIf="carregarocorrencia==false" style="margin-top: 40px; text-align: center;">
+          <button type="button" (click)="pesquisarOcorrencia()" pButton label="Extrair"></button>
+        </div>
+      </div>
+
+    </p-panel>
+</div>
+<div class="ui-g-12 ui-lg-6">
+  <p-panel header="Relatório de Utilização" styleClass="ui-shadow-content" >
+    <div class="ui-g" style="margin-top: 20px;">
+      
+      <div class="ui-g-12" >
+        <span class="md-inputfield">
+          <p-dropdown [autoWidth]="true"  filter="true"  optionLabel="unidade" placeholder="." [(ngModel)]="unidadeSelecionadaUtilizacao" styleClass = "drop95" [options]="Unidades"></p-dropdown>
+          <label >Unidade</label>
+        </span>
+      </div>
+      <div class="ui-g-6" style="margin-top: 15px;">
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12" (click)="datamax()" [(ngModel)]="Data1" dateFormat="dd/mm/yy"></p-calendar>
+          <label >Início</label>
+        </span>
+      </div>
+      <div class="ui-g-6"  style="margin-top: 15px;">
+        <span class="md-inputfield">
+          <p-calendar class="ui-g-12" [minDate]="Data1" [maxDate]="DataMax" [(ngModel)]="Data2" dateFormat="dd/mm/yy"></p-calendar>
+          <label >Fim</label>
+        </span>
+      </div>
+
+      <p-progressBar class="ui-g-12 item"s *ngIf="carregarutilizacao" mode="indeterminate" [style]="{'height': '15px'}"></p-progressBar>
+      <div class="ui-g-12 item" *ngIf="carregarutilizacao==false" style="margin-top: 40px; text-align: center;">
+        <button type="button" (click)="pesquisarUtilizacao()" pButton label="Extrair"></button>
+      </div>
+    </div>
+  </p-panel>
+  
+</div>

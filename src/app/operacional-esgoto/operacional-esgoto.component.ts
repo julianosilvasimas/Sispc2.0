@@ -24,10 +24,12 @@ export class OperacionalEsgotoComponent implements OnInit {
   CarregarNotificacoes(){
     this.esg.getNotificacao().subscribe(
       resp=>{
-        this.ListaDeNotificacoes = resp.map(function(obj) {
-          obj.dataDaCriacao = obj.dataDaCriacao.substr(8,2)+"/"+obj.dataDaCriacao.substr(5,2)+"/"+obj.dataDaCriacao.substr(2,2)+" "+obj.dataDaCriacao.substr(11,8)
-          return obj
-        });
+        this.ListaDeNotificacoes = resp.map(
+          function(obj) {
+            obj.dataDaCriacao = obj.dataDaCriacao.substr(8,2)+"/"+obj.dataDaCriacao.substr(5,2)+"/"+obj.dataDaCriacao.substr(2,2)+" "+obj.dataDaCriacao.substr(11,8)
+            return obj
+          }
+        );
       }
     )
   }

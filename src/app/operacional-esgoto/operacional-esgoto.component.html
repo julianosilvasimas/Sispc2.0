@@ -5,8 +5,9 @@
             <div class="user-card-header">
             </div>
             <div class="user-card-content">
-                <div class="user-card-name">
-                    <span>{{ Usuario }}</span>
+                <div style="margin-left: 15px; font-size: 20px;" class="user-card-name">
+                    <i class="material-icons">face</i>
+                    <span style="margin-left: 15px;">Administrador {{ Usuario }}</span>
                 </div>
 
                  <div class="user-detail">
@@ -14,17 +15,17 @@
                      <li class="clearfix">
                          <i class="material-icons">insert_drive_file</i>
                          <span class="project-title">Relatórios</span>
+                         <button class="project-title" type="button" pButton icon="pi pi-caret-right" style="width: 10px; height: 30px; margin-top: 1px"  routerLink="/relatoriosetes"></button>
                      </li>
                      <li class="clearfix">
                          <i class="material-icons">blur_on</i>
                          <span class="project-title">Produtos Químicos</span>
+                         <button class="project-title" type="button" pButton icon="pi pi-caret-right" style="width: 10px; height: 30px; margin-top: 1px"></button>
                      </li>
                      <li class="clearfix">
                          <i class="material-icons">timeline</i>
                          <span class="project-title">Indicadores Diários</span>
-                         <div class="message-attachment" style="margin-left: 15px !important; margin-top: -350px !important;">
-                             <button type="button" pButton icon="pi pi-caret-right"  (click)="SalvarNotificacao()"></button>
-                         </div>
+                         <button class="project-title" type="button" pButton icon="pi pi-caret-right" style="width: 10px; height: 30px; margin-top: 1px"></button>
                      </li>
                    </ul>
                 </div> 
@@ -35,7 +36,7 @@
     <div class="ui-g-12 ui-lg-8 chat">
         <p-panel header="Livro de Ocorrências" styleClass="ui-shadow-content">
             <ul>
-                <p-scrollPanel [style]="{width: '100%', height: '375px'}" scrollTop="1000000">
+                <p-scrollPanel [style]="{width: '100%', height: '335px'}" scrollTop="1000000">
                     <div *ngFor="let not of ListaDeNotificacoes">
                         <li class="clearfix message-from" style="margin-left: 12px;" *ngIf="not.admin==0">
                             <span>
@@ -59,7 +60,7 @@
                 <div class="message-input">
                     <input type="text" [(ngModel)]="NotificacaoTexto" pInputText placeholder="Escreva sua mensagem" />
                 </div>
-                <div class="message-attachment" style="margin-left: 15px !important; margin-top: -350px !important;">
+                <div  style="margin-right: 8px !important; margin-top: -34px !important; text-align: right;">
                     <button type="button" pButton icon="pi pi-caret-right"  (click)="SalvarNotificacao()"></button>
                 </div>
             </div>

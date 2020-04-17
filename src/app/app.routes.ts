@@ -47,6 +47,7 @@ import { EquipamentosComponent } from './energia/equipamentos/equipamentos.compo
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-etes/preenchimento-etes.component';
+import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component';
 
 PreenchimentoEtesComponent
 
@@ -65,6 +66,7 @@ export const routes: Routes = [
 
             { path: 'adminEtes', component: OperacionalEsgotoComponent },
             { path: 'preenchimentoetes', component: PreenchimentoEtesComponent },
+            { path: 'relatoriosetes', component: RelatoriosEsgotoComponent },
 
             { path: 'sample', component: SampleDemoComponent, canActivate: [AuthGuard] },
             { path: 'forms', component: FormsDemoComponent, canActivate: [AuthGuard] },

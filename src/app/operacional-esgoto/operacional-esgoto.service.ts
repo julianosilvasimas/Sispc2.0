@@ -76,6 +76,11 @@ export class OperacionalEsgotoService {
   //===============================================================================================================================
   //LANÇAMENTOS
   
+  PesquisarLancamento(unidadeid, de,ate): Observable<any[]>{
+    console.log(`${API_CONFIG}/appesgoto/relatorio/${unidadeid}/${de}/${ate}`)
+    return  this.http.get(`${API_CONFIG}/appesgoto/relatorio/${unidadeid}/${de}/${ate}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
   InserirLancamento(bodyObj): Observable<any[]>{
     const headers = new HttpHeaders().set("Content-Type", "application/json",);
     return this.http.post(`${API_CONFIG}/appesgoto`,JSON.stringify(bodyObj) , {headers},)
@@ -104,10 +109,10 @@ export class OperacionalEsgotoService {
   //===============================================================================================================================
   //UNIDADES
 
-  getIndicadoresUnidade(Unidade, de, ate, usuario:string): Observable<any[]>{
-    return  this.http.get(`${API_CONFIG}/appesgoto/unidades/${Unidade}/${de}/${ate}/${usuario}`) 
-    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
-  }
+  // getIndicadoresUnidade(Unidade, de, ate, usuario:string): Observable<any[]>{
+  //   return  this.http.get(`${API_CONFIG}/appesgoto/unidades/${Unidade}/${de}/${ate}/${usuario}`) 
+  //   .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  // }
 
   getunidades(): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/appunidadesesgoto`) 
@@ -150,6 +155,10 @@ export class OperacionalEsgotoService {
   //===========================================================================================================================
   //NOTIFICAÇÕES
 
+  getNotificacaoData(de,ate): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/appesgotoocorrencias/relatorio/${de}/${ate}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
   getNotificacao(): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/appesgotoocorrencias/findlimit`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))

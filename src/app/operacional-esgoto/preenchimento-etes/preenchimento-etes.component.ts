@@ -157,7 +157,7 @@ export class PreenchimentoEtesComponent implements OnInit {
       var lanc = this.listaDeLancamentos[i]
       lanc.dataDaImportacao = lanc.dataDaImportacao.substr(6,4)+"-"+lanc.dataDaImportacao.substr(3,2)+"-"+lanc.dataDaImportacao.substr(0,2)+" "+lanc.dataDaImportacao.substr(11,8)
       lanc.dataIndicador = lanc.dataIndicador.substr(6,4)+"-"+lanc.dataIndicador.substr(3,2)+"-"+lanc.dataIndicador.substr(0,2)+" "+lanc.dataIndicador.substr(11,8)
-      console.log(lanc)
+      // console.log(lanc)
       this.esg.AprovarLancamento(lanc).subscribe(
         resp=>{
           this.messageService.add({severity: 'success', summary: lanc.nome, detail: 'Salvo com sucesso'});

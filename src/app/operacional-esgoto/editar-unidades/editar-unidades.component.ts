@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { OperacionalEsgotoService } from '../operacional-esgoto.service';
 import { PerformanceService } from 'src/app/performance/performance.service';
 import { MessageService } from 'primeng/api';

@@ -20,7 +20,7 @@ export class PreencheIndicadoresComponent implements OnInit {
   ngOnInit() {
     this.esg.getindicadorporUnidade(this.ETE.id).subscribe(
       resp=>{
-        console.log(resp)
+        // console.log(resp)
         var indicadores = resp
         for(var i = 0; i<indicadores.length; i++){
           var qualificador = true;
@@ -71,7 +71,7 @@ export class PreencheIndicadoresComponent implements OnInit {
   visibleSidebar:boolean = false
   verIndicadores(classificacao){
     this.Classificacao = classificacao
-    console.log(classificacao)
+    // console.log(classificacao)
     this.visibleSidebar = true
   }
 
@@ -190,7 +190,7 @@ export class PreencheIndicadoresComponent implements OnInit {
       usuario: sessionStorage.getItem('nome'),
       texto: this.NotificacaoTexto
     } 
-    console.log(novoarray)
+    // console.log(novoarray)
     this.esg.InserirNotificacao(novoarray).subscribe(
       resp=>{
         this.messageService.add({severity: 'success', summary: "Salvo", detail: 'Salvo com sucesso'});
