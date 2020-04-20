@@ -48,6 +48,8 @@ import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-etes/preenchimento-etes.component';
 import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component';
+import { ProdutosQuimicosComponent } from './operacional-esgoto/produtos-quimicos/produtos-quimicos.component';
+import { IndicadoresDiariosComponent } from './operacional-esgoto/indicadores-diarios/indicadores-diarios.component';
 
 PreenchimentoEtesComponent
 
@@ -67,6 +69,8 @@ export const routes: Routes = [
             { path: 'adminEtes', component: OperacionalEsgotoComponent },
             { path: 'preenchimentoetes', component: PreenchimentoEtesComponent },
             { path: 'relatoriosetes', component: RelatoriosEsgotoComponent },
+            { path: 'produtosquimicosetes', component: ProdutosQuimicosComponent },
+            { path: 'indicadoresdiariosetes', component: IndicadoresDiariosComponent },
 
             { path: 'sample', component: SampleDemoComponent, canActivate: [AuthGuard] },
             { path: 'forms', component: FormsDemoComponent, canActivate: [AuthGuard] },

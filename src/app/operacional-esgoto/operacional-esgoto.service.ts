@@ -77,26 +77,34 @@ export class OperacionalEsgotoService {
   //LANÇAMENTOS
   
   PesquisarLancamento(unidadeid, de,ate): Observable<any[]>{
-    console.log(`${API_CONFIG}/appesgoto/relatorio/${unidadeid}/${de}/${ate}`)
     return  this.http.get(`${API_CONFIG}/appesgoto/relatorio/${unidadeid}/${de}/${ate}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
+
+  PesquisarLancamentoProdutoQuimico(unidadeid): Observable<any[]>{
+    return  this.http.get(`${API_CONFIG}/appesgoto/produtoquimico/${unidadeid}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
   InserirLancamento(bodyObj): Observable<any[]>{
     const headers = new HttpHeaders().set("Content-Type", "application/json",);
     return this.http.post(`${API_CONFIG}/appesgoto`,JSON.stringify(bodyObj) , {headers},)
     .pipe(map(this.extractData),
     catchError(ErrorHandler.handleError))
   }
+
   EditarLancamento(bodyObj): Observable<any[]>{
     const headers = new HttpHeaders().set("Content-Type", "application/json",);
     return this.http.put(`${API_CONFIG}/appesgoto/${bodyObj.id}`,JSON.stringify(bodyObj) , {headers},)
     .pipe(map(this.extractData),
     catchError(ErrorHandler.handleError))
   }
+
   DeleteLancamento(id): Observable<any[]>{
     return  this.http.delete(`${API_CONFIG}/appesgoto/${id}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
+  
   AprovarLancamento(bodyObj): Observable<any[]>{
     const headers = new HttpHeaders().set("Content-Type", "application/json",);
     return this.http.put(`${API_CONFIG}/appesgoto/aprovarLancamento/${bodyObj.id}`,JSON.stringify(bodyObj) , {headers},)

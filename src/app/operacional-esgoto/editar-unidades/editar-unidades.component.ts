@@ -28,11 +28,7 @@ export class EditarUnidadesComponent implements OnInit {
   }
 
   AtualizarUnidades(){
-    this.esg.getunidades().subscribe(
-      response=>{
-        this.ListaDeUnidades = response
-      }
-    )
+    this.ListaDeUnidades = this.adminServ.Unidades;
   }
 
   ListaDeUnidades
@@ -103,17 +99,19 @@ export class EditarUnidadesComponent implements OnInit {
   Disponiveis2 =[]
   Operaveis =[]
   gerenciarOperadores(){
-    this.Disponiveis2 = this.adminServ.Disponiveis.map(function( elem ) {return elem;});
+    this.Disponiveis2 = this.adminServ.Disponiveis;
     if(this.adminServ.Disponiveis.length===0){
       this.displayOperadoresCarregando = true
 
     }else{
       this.displayOperadores = true
-      this.Disponiveis2 = this.Operaveis.map( 
+      this.Disponiveis2 = this.Disponiveis2.map( 
         function( elem ) {
-          if(this.Disponiveis2.indexOf(elem)>=0){
-            console.log(elem)
-            this.Disponiveis.splice(elem)
+          for(var i =0;i<this.Operaveis.length; i++){
+            if(this.Operaveis[i].nome.equal(elem.nome)){
+              console.log(this.Operaveis[i])
+              break;
+            }
           }
           return elem;
         }

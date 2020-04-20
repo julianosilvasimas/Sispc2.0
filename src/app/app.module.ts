@@ -192,6 +192,9 @@ import { PreencheIndicadoresComponent } from './operacional-esgoto/preenchimento
 import { EditarUnidadesComponent } from './operacional-esgoto/editar-unidades/editar-unidades.component';
 import { EditarIndicadoresComponent } from './operacional-esgoto/editar-indicadores/editar-indicadores.component';
 import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component';
+import { ProdutosQuimicosComponent } from './operacional-esgoto/produtos-quimicos/produtos-quimicos.component';
+import { IndicadoresDiariosComponent } from './operacional-esgoto/indicadores-diarios/indicadores-diarios.component';
+import { GraphComponent } from './operacional-esgoto/produtos-quimicos/graph/graph.component';
 
 @NgModule({
     imports: [
@@ -364,6 +367,9 @@ import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgot
         EditarUnidadesComponent,
         EditarIndicadoresComponent,
         RelatoriosEsgotoComponent,
+        ProdutosQuimicosComponent,
+        IndicadoresDiariosComponent,
+        GraphComponent,
         
 
     ],

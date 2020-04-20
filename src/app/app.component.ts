@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { AdminService } from 'src/app/admin/Admin.service';
-
+import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
 @Component({
     selector: 'app-root',
     template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
-    constructor( private messageService: MessageService, private adminServ:AdminService){
-        
-    }
+    constructor( private messageService: MessageService, private adminServ:AdminService,private esg:OperacionalEsgotoService
+    ){}
     Disponiveis=[]
+    Unidades=[]
     CarregarLista:boolean = false
     AtualizarUsuarios(){
         if(this.CarregarLista===false){
@@ -19,10 +19,17 @@ export class AppComponent {
             this.adminServ.listusers2().subscribe(
                 resp=>{
                 this.Disponiveis = resp['content']
-                this.messageService.add({severity: 'success', summary: 'info', detail: 'Lista de usuarios carregada'});
+                this.messageService.add({severity: 'info', summary: 'info', detail: 'Lista de usuarios carregada'});
                 }
             );
+            this.esg.getunidades().subscribe(
+                response=>{
+                  this.Unidades = response
+                  this.messageService.add({severity: 'info', summary: 'info', detail: 'Lista de unidades carregada'});
+                }
+              )
         }
+        
     }
 
     statusbot = "Pronto";
