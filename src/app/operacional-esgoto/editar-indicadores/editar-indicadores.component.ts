@@ -4,6 +4,7 @@ import { PerformanceService } from 'src/app/performance/performance.service';
 import { MessageService } from 'primeng/api';
 import { AdminService } from 'src/app/admin/Admin.service';
 import { Classificacao } from './classificacao-indicadores.model';
+import { IndicadoresDiariosComponent } from '../indicadores-diarios/indicadores-diarios.component';
 
 @Component({
   selector: 'app-editar-indicadores',
@@ -12,11 +13,12 @@ import { Classificacao } from './classificacao-indicadores.model';
 })
 export class EditarIndicadoresComponent implements OnInit {
 
-  constructor(private esg:OperacionalEsgotoService, private messageService: MessageService) { }
+  constructor(private esg:OperacionalEsgotoService, private messageService: MessageService, private perf: PerformanceService) { }
   volumes 
 
   ngOnInit() {
     this.AtualizarUnidades();
+    this.AtualizarIndDiarios();
   }
 
   AtualizarUnidades(){
@@ -27,8 +29,18 @@ export class EditarIndicadoresComponent implements OnInit {
     )
   }
 
+  AtualizarIndDiarios(){
+    this.perf.cadindicadores().subscribe(
+      response=>{
+        this.ListaDeIndDiarios = response
+      }
+    )
+  }
+
+
   ListaDeClassificacoes
   ClassificacaoSelected: Classificacao
+
   novaUnidade
   cols
   displayDialog: boolean = false
@@ -106,6 +118,9 @@ export class EditarIndicadoresComponent implements OnInit {
   //===================================================================================================================================
   //Editar Indicadores
 
+  ListaDeIndDiariosSelecionada
+  ListaDeIndDiarios: any = []
+
   IndicadorASerEditado
   ClassificacaoSelecionada
   displayEditarIndicador: boolean = false
@@ -119,9 +134,18 @@ export class EditarIndicadoresComponent implements OnInit {
   ]
   
 
+  disabled: boolean = true
   editarIndicador(Linha){
     this.IndicadorASerEditado=Linha
     this.ClassificacaoSelecionada = this.IndicadorASerEditado.classificacao
+
+    this.disabled = Linha.indicadoresDiarios === null ? true : false
+    for(var i =0;i<this.ListaDeIndDiarios.length;i++){
+      if(this.ListaDeIndDiarios[i].id === Linha.indicadoresDiarios){
+        this.ListaDeIndDiariosSelecionada = this.ListaDeIndDiarios[i]
+        break;
+      }
+    }
     this.displayEditarIndicador = true
   }
   novoIndicador(Linha){
@@ -131,6 +155,7 @@ export class EditarIndicadoresComponent implements OnInit {
   }
   saveIndicador(){
     this.IndicadorASerEditado.classificacao = this.ClassificacaoSelecionada
+    this.IndicadorASerEditado.indicadoresDiarios = this.disabled === true ? null : this.ListaDeIndDiariosSelecionada.indicadorId
     this.esg.EditarIndicador(this.IndicadorASerEditado).subscribe(
       indicadors  =>  {
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'Indicador '+this.IndicadorASerEditado['nome']+' Alterado'});

@@ -81,6 +81,12 @@ export class OperacionalEsgotoService {
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
   }
 
+  PesquisarLancamentoUnidadeIndicador(unidadeid,indicadorid, de,ate): Observable<any[]>{
+    console.log(`${API_CONFIG}/appesgoto/relatoriounidadeindicador/${unidadeid}/${indicadorid}/${de}/${ate}`)
+    return  this.http.get(`${API_CONFIG}/appesgoto/relatoriounidadeindicador/${unidadeid}/${indicadorid}/${de}/${ate}`) 
+    .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+  }
+
   PesquisarLancamentoProdutoQuimico(unidadeid): Observable<any[]>{
     return  this.http.get(`${API_CONFIG}/appesgoto/produtoquimico/${unidadeid}`) 
     .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
@@ -92,7 +98,7 @@ export class OperacionalEsgotoService {
     .pipe(map(this.extractData),
     catchError(ErrorHandler.handleError))
   }
-
+  
   EditarLancamento(bodyObj): Observable<any[]>{
     const headers = new HttpHeaders().set("Content-Type", "application/json",);
     return this.http.put(`${API_CONFIG}/appesgoto/${bodyObj.id}`,JSON.stringify(bodyObj) , {headers},)
@@ -112,7 +118,19 @@ export class OperacionalEsgotoService {
     catchError(ErrorHandler.handleError))
   }
 
+  AlterarLancamento(bodyObj,id): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.put(`${API_CONFIG}/appesgoto/atualizarvalor/${id}`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
 
+  EnviarPraIndDiario(bodyObj): Observable<any[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json",);
+    return this.http.put(`${API_CONFIG}/appesgoto/atualizarIndicadoresDiarios`,JSON.stringify(bodyObj) , {headers},)
+    .pipe(map(this.extractData),
+    catchError(ErrorHandler.handleError))
+  }
 
   //===============================================================================================================================
   //UNIDADES

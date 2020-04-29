@@ -195,6 +195,7 @@ import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgot
 import { ProdutosQuimicosComponent } from './operacional-esgoto/produtos-quimicos/produtos-quimicos.component';
 import { IndicadoresDiariosComponent } from './operacional-esgoto/indicadores-diarios/indicadores-diarios.component';
 import { GraphComponent } from './operacional-esgoto/produtos-quimicos/graph/graph.component';
+import { ConsolidadoComponent } from './operacional-esgoto/indicadores-diarios/consolidado/consolidado.component';
 
 @NgModule({
     imports: [
@@ -370,6 +371,7 @@ import { GraphComponent } from './operacional-esgoto/produtos-quimicos/graph/gra
         ProdutosQuimicosComponent,
         IndicadoresDiariosComponent,
         GraphComponent,
+        ConsolidadoComponent,
         
 
     ],

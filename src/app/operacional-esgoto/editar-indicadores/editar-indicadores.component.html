@@ -1,6 +1,7 @@
 <p-table [columns]="cols" [value]="ListaDeClassificacoes" selectionMode="single" [(selection)]="ClassificacaoSelected" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="7">
   <ng-template pTemplate="header" let-columns>
       <tr>
+          
           <th style="width: 30px;">
               id
           </th>
@@ -127,6 +128,15 @@
               <p-dropdown [autoWidth]="true" class="ui-g-12" filter="true" placeholder="Selecione o Tipo de Cálculo" [(ngModel)]="IndicadorASerEditado.calculo" styleClass = "drop95" [options]="calculos"></p-dropdown>
               <label >Cálculo</label>
             </span>
+        </div>
+        <div class="ui-g-9"  style="text-align: left;padding-bottom: 30px;">
+            <span class="md-inputfield">
+              <p-dropdown [autoWidth]="true" [disabled]="disabled" class="ui-g-12" filter="true" [(ngModel)]="ListaDeIndDiariosSelecionada" optionLabel="indicador" styleClass = "drop95" [options]="ListaDeIndDiarios"></p-dropdown>
+              <label >Indicador Diário</label>
+            </span>
+        </div>
+        <div class="ui-g-3"  style="text-align: left;padding-bottom: 30px;">
+            <p-checkbox [(ngModel)]="disabled" binary="true"></p-checkbox>
         </div>
         <div class="ui-g-12"  style="text-align: left;padding-bottom: 30px;">
             <span class="md-inputfield">

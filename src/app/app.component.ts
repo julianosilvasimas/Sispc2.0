@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { AdminService } from 'src/app/admin/Admin.service';
 import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
+import { PerformanceService } from './performance/performance.service';
 @Component({
     selector: 'app-root',
     template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
-    constructor( private messageService: MessageService, private adminServ:AdminService,private esg:OperacionalEsgotoService
+    constructor( private messageService: MessageService, private perf: PerformanceService,private adminServ:AdminService,private esg:OperacionalEsgotoService
     ){}
     Disponiveis=[]
     Unidades=[]
+    ListaDeIndicadoresDiarios =[]
     CarregarLista:boolean = false
     AtualizarUsuarios(){
         if(this.CarregarLista===false){
@@ -28,6 +30,13 @@ export class AppComponent {
                   this.messageService.add({severity: 'info', summary: 'info', detail: 'Lista de unidades carregada'});
                 }
               )
+            this.perf.cadindicadores().subscribe(
+                response=>{
+                    this.messageService.add({severity: 'info', summary: 'info', detail: 'Lista de Indicadores carregada'});
+                    this.ListaDeIndicadoresDiarios = response
+                }
+            )
+  
         }
         
     }
