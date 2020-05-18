@@ -92,7 +92,22 @@ let ForecastenergiaaguaComponent = class ForecastenergiaaguaComponent {
                 RealRSm3: this.indicadoresVolume[i].realizado > 0 ? ((this.indicadoresKWHAguaGestalTotal[i] * this.aumento * this.tarifa) / this.indicadoresVolume[i].realizado).toFixed(2).replace("\.", "\,") : 0,
             });
         }
-        CsvDataService.exportToCsv('test.csv', this.ArrayGigante);
+        CsvDataService.exportToCsv('ForecastEnergia.csv', this.ArrayGigante);
+        this.carregando = false;
+    }
+    salvarCSV2() {
+        this.carregando = true;
+        this.ArrayGigante = [];
+        for (var i = 0; i < this.indicadoresKWHAguaGestal.length; i++) {
+            this.ArrayGigante.push({
+                data: this.indicadoresKWHAguaGestal[i].dataIndicador,
+                unidade: this.indicadoresKWHAguaGestal[i].unidade.nomeDoEquipamento,
+                ativoConsumido: this.indicadoresKWHAguaGestal[i].ativoConsumido.toFixed(2),
+                reativo: this.indicadoresKWHAguaGestal[i].reativo.toFixed(2),
+                modificacao: this.indicadoresKWHAguaGestal[i].aprovador
+            });
+        }
+        CsvDataService.exportToCsv('Relatorio_Detalhado.csv', this.ArrayGigante);
         this.carregando = false;
     }
     destrinchar(data, valorTotal) {

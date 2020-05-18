@@ -196,6 +196,11 @@ import { ProdutosQuimicosComponent } from './operacional-esgoto/produtos-quimico
 import { IndicadoresDiariosComponent } from './operacional-esgoto/indicadores-diarios/indicadores-diarios.component';
 import { GraphComponent } from './operacional-esgoto/produtos-quimicos/graph/graph.component';
 import { ConsolidadoComponent } from './operacional-esgoto/indicadores-diarios/consolidado/consolidado.component';
+import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
+import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
+import { ControleprodComponent } from './produtividade/controleprod/controleprod.component';
+import { ProdutividadeService } from './produtividade/produtividade.service';
+
 
 @NgModule({
     imports: [
@@ -372,7 +377,10 @@ import { ConsolidadoComponent } from './operacional-esgoto/indicadores-diarios/c
         IndicadoresDiariosComponent,
         GraphComponent,
         ConsolidadoComponent,
-        
+        AplicativoEtesComponent,
+        IndicadoresAplicativosComponent,
+        ControleprodComponent
+
 
     ],
     providers: [
@@ -393,7 +401,8 @@ import { ConsolidadoComponent } from './operacional-esgoto/indicadores-diarios/c
         EnergiaService,
         ProjetosService,
         OperacionalEsgotoService,
-        EditarUnidadesComponent
+        EditarUnidadesComponent,
+        ProdutividadeService
     ],
     bootstrap: [AppComponent]
 })

@@ -50,7 +50,7 @@ import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-e
 import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component';
 import { ProdutosQuimicosComponent } from './operacional-esgoto/produtos-quimicos/produtos-quimicos.component';
 import { IndicadoresDiariosComponent } from './operacional-esgoto/indicadores-diarios/indicadores-diarios.component';
-
+import { ControleprodComponent } from './produtividade/controleprod/controleprod.component';
 PreenchimentoEtesComponent
 
 
@@ -86,6 +86,7 @@ export const routes: Routes = [
             { path: 'utils', component: UtilsDemoComponent, canActivate: [AuthGuard] },
             { path: 'documentation', component: DocumentationComponent, canActivate: [AuthGuard] },
             { path: 'inputindicadores', component: InputindicadoresComponent, canActivate: [AuthGuard] },
+            { path: 'produtividade', component: ControleprodComponent },
             { path: 'projetos', component: ProjetosComponent },
             { path: 'mainprojeto', component: PagemainComponent },
             { path: 'cadastrar', component: CadastrarComponent, canActivate: [AuthGuard] },

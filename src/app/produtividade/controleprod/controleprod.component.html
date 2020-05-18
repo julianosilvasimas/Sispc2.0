@@ -1,0 +1,132 @@
+<!--SCROOOL DE CARROS-->
+<div class="ui-g dashboard">
+    <div class="ui-g-12">
+        <h2>Painel de Produtividade</h2>
+          <div class="ui-g-6 ui-md-2 ui-lg-2">
+              <div class="ui-g card overview-box overview-box-1">
+                    <span class="overview-box-name"  >OS's Executadas</span>
+                    <span class="overview-box-count" >35</span>
+                    <!-- <span class="overview-box-badge">+30%</span> -->
+                    <img src="assets/layout/images/dashboard/chart-1.svg" />
+                  </div>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-lg-2">
+              <div class="ui-g card overview-box overview-box-1">
+                    <span class="overview-box-name"  >OS's canceladas</span>
+                    <span class="overview-box-count" >12</span>
+                    <!-- <span class="overview-box-badge">+30%</span> -->
+                    <img src="assets/layout/images/dashboard/chart-1.svg" />
+                  </div>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-lg-2" >
+              <div class="ui-g card overview-box overview-box-3">
+                  <span class="overview-box-name">Tempo médio de Execução(TME)</span>
+                  <span class="overview-box-count">16,4 min.</span>
+                  <!-- <span class="overview-box-badge">-75%</span> -->
+                  <img src="assets/layout/images/dashboard/chart-3.svg" />
+              </div>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-lg-2" >
+              <div class="ui-g card overview-box overview-box-2" >
+                  <span class="overview-box-name" >Tempo Produtivo</span>
+                  <span class="overview-box-count" >65%</span>
+                  <!-- <span class="overview-box-badge">+30%</span> -->
+                  <img src="assets/layout/images/dashboard/chart-4.svg" />
+              </div>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-lg-2" >
+              <div class="ui-g card overview-box overview-box-2" >
+                  <span class="overview-box-name" >Deslocamento</span>
+                  <span class="overview-box-count" >25%</span>
+                  <!-- <span class="overview-box-badge">+30%</span> -->
+                  <img src="assets/layout/images/dashboard/chart-4.svg" />
+              </div>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-lg-2" >
+              <div class="ui-g card overview-box overview-box-2" >
+                  <span class="overview-box-name" >Improdutivo</span>
+                  <span class="overview-box-count" >10%</span>
+                  <!-- <span class="overview-box-badge">+30%</span> -->
+                  <img src="assets/layout/images/dashboard/chart-4.svg" />
+              </div>
+          </div>
+      </div>
+
+ 
+</div>
+
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;">
+    <div class="ui-g">
+        <h4>Filtros</h4>
+        <div class="ui-g-12">
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true"  (onChange)="onChange($event)" styleClass = "drop95" ></p-dropdown> <!-- [(ngModel)]="gerencSelect" [options]="Gerencias" -->
+                    <label >Gerência</label>
+                  </span>
+            </div>
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" (onChange)="onChange($event)" styleClass = "drop95" ></p-dropdown> <!-- [options]="Supervisoes"-->
+                    <label >Setor</label>
+                  </span>
+            </div>
+            <div class="ui-g-4" style="text-align: center;padding-bottom: 20px;">
+                <span class="md-inputfield">
+                    <p-dropdown [autoWidth]="true" (onChange)="onChange($event)" styleClass = "drop95"></p-dropdown>
+                    <label >Equipe</label>
+                  </span>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="ui-g">
+        <div class="ui-g-12" style="justify-content: center;align-items:flex-end;display: flex;flex-direction: column">
+            Quantidade de equipes: 11
+        </div>
+    <p-table [columns]="colsresumo" [value]="resumao" dataKey="servico" [paginator]="true"
+    [rows]="4"  [rowsPerPageOptions]="[4,8,12]" currentPageReportTemplate="Mostrando {first} até {last} de {totalRecords} linhas">
+        <ng-template pTemplate="caption">
+          Resumo
+        </ng-template>
+        <ng-template pTemplate="header" let-columns [ngStyle]="{'width': '100%'}">
+            <tr> 
+              <th pSortableColumn="resumao.servico">Servicos <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">TME Renoir <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">Qtd. Prevista <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">Tempo Previsto <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">TME Apontado <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">Qtd. Executada <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">Qtd. Cancelada <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">Tempo Execução <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+              <th pSortableColumn="resumao.servico">Tempo Deslocamento <p-sortIcon field="resumao.servico"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div class="ui-g-12" style="justify-content: center;align-items: center;display: flex;flex-direction: column; margin-top: 10px">
+        <button pButton type="button" style="width:30%"label="Detalhar" (click)="detalhe()" icon="ui-icon-find-in-page" ></button>
+    </div>
+  </div>
+
+</div>
+
+<div class="card card-w-title" style="width: 99.5%; margin-left: 3px;" *ngIf="detalhar">
+    <h4>Detalhado</h4>
+    <p-fieldset legend="Quantitativo" [toggleable]="true" [collapsed]="true"> 
+        Aqui irá o Conteúdo...
+    </p-fieldset>
+    <p-fieldset legend="Performance" [toggleable]="true" [collapsed]="true"> 
+        Aqui irá o Conteúdo...
+    </p-fieldset>
+    <p-fieldset legend="Produtividade" [toggleable]="true" [collapsed]="true">
+        Aqui irá o Conteúdo... 
+    </p-fieldset>
+</div> 

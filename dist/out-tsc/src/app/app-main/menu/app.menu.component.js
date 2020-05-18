@@ -148,11 +148,6 @@ let AppMenuComponent = class AppMenuComponent {
                                 { label: 'Processos', icon: 'call_split' }
                             ]
                         },
-                        { label: 'RPA', icon: 'pi-android',
-                            items: [
-                                { label: 'Robos', icon: '', routerLink: '/rpa' }
-                            ]
-                        },
                     ]
                 }, { label: 'Diretoria', icon: 'business_center',
                     items: [
@@ -202,30 +197,6 @@ let AppMenuComponent = class AppMenuComponent {
                     ]
                 });
             }
-            if (this.usuOperacional === true) {
-                var operesg = this.usuOperacionalEsgoto === true ?
-                    { label: 'Operação Esgoto', icon: 'subject' }
-                    : null;
-                var operagu = this.usuOperacionalAgua === true ?
-                    { label: 'Operação Água', icon: 'subject' }
-                    : null;
-                var operEle = this.usuEletromecanica === true ?
-                    { label: 'Eletromecânica', icon: 'settings_input_component',
-                        items: [
-                            { label: 'Preventivas/Corretivas', icon: 'subject' },
-                            { label: 'Inventário', icon: 'subject' }
-                        ]
-                    }
-                    : null;
-                var oper = { label: 'Operacional', icon: 'invert_colors',
-                    items: [
-                        operesg,
-                        operagu,
-                        operEle
-                    ]
-                };
-                this.model.push(oper);
-            }
             //Comissão
             if (this.usuComissao === true) {
                 this.model.push({ label: 'Comercial', icon: 'monetization_on',
@@ -252,20 +223,15 @@ let AppMenuComponent = class AppMenuComponent {
                             label: 'Equipamentos', icon: 'wb_incandescent', routerLink: '/energiaGestal'
                         },
                         {
-                            label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
+                            label: 'Forecast', icon: 'attach_money',
+                            items: [
+                                { label: 'Forecast Agua', icon: 'attach_money', routerLink: '/forecastAgua' },
+                                { label: 'Forecast Esgoto', icon: 'attach_money', routerLink: '/forecastEsgoto' }
+                            ]
                         },
                         {
-                            label: 'Forecast', icon: 'monetization_on',
-                            items: [
-                                { label: 'Forecast Agua', icon: 'monetization_on', routerLink: '/forecastAgua' },
-                                { label: 'Forecast Esgoto', icon: 'monetization_on', routerLink: '/forecastEsgoto' } /*,
-                                {label: 'Controle de fraudes', icon: 'subject'}   */
-                            ]
-                        } /*,
-                        {label: 'Receita', icon: 'subject'},
-                        {label: 'Cobrança', icon: 'subject'},
-                        {label: 'Atendimento', icon: 'subject'},
-                        {label: 'Cadastro', icon: 'subject'}*/
+                            label: 'Cenarios', icon: 'subject', routerLink: '/cenarios'
+                        }
                     ]
                 });
             }
@@ -285,6 +251,35 @@ let AppMenuComponent = class AppMenuComponent {
                         { label: 'Notificações', routerLink: '/email', icon: 'notifications' }
                     ]
                 });
+            }
+            if (this.usuOperacional === true) {
+                var operesg = this.usuOperacionalEsgoto === true ?
+                    { label: 'Operação Esgoto', icon: 'subject',
+                        items: [
+                            { label: 'Indicadores das ETEs', icon: 'show_chart', routerLink: '/indicEtes' },
+                            { label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink: '/appEtes' },
+                        ]
+                    }
+                    : "";
+                var operagu = this.usuOperacionalAgua === true ?
+                    { label: 'Operação Água', icon: 'subject' }
+                    : "";
+                var operEle = this.usuEletromecanica === true ?
+                    { label: 'Eletromecânica', icon: 'settings_input_component',
+                        items: [
+                            { label: 'Preventivas/Corretivas', icon: 'subject' },
+                            { label: 'Inventário', icon: 'subject' }
+                        ]
+                    }
+                    : "";
+                var oper = { label: 'Operacional', icon: 'invert_colors',
+                    items: [
+                        operesg,
+                        operagu,
+                        operEle
+                    ]
+                };
+                this.model.push(oper);
             }
         });
     } //fechando subscribe de gerencia

@@ -145,18 +145,18 @@ export class SesuiteprojectComponent implements OnInit {
       //Carregando Informações Gerais
       this.respExecProjeto = this.sesuite['nvengenharia']
       this.nvProjEngenharia = this.sesuite['responsavel']
-      this.objetivoIndepende = this.sesuite['objetivoindepende'].toString()
-      this.investimentoRealizado = this.sesuite['teveinvestimento'].toString()
+      this.objetivoIndepende = this.sesuite['objetivoindepende'] != null ? this.sesuite['objetivoindepende'].toString() : this.sesuite['objetivoindepende']
+      this.investimentoRealizado = this.sesuite['teveinvestimento'] != null ? this.sesuite['teveinvestimento'].toString() : this.sesuite['teveinvestimento']
       this.projetoEnvolve = this.sesuite['envolve']
       this.selecaoCesta = this.sesuite['tipo']
-      this.coreBusiness = this.sesuite['corebusiness'].toString()
-      this.negocioExistente = this.sesuite['negocioexistente'].toString()
+      this.coreBusiness = this.sesuite['corebusiness'] != null ? this.sesuite['corebusiness'].toString() : this.sesuite['corebusiness']
+      this.negocioExistente = this.sesuite['negocioexistente'] != null ? this.sesuite['negocioexistente'].toString() : this.sesuite['negocioexistente']
       this.principalMotivacao = this.sesuite['principalmotivacao']
-      this.melhoraEmpresa = this.sesuite['melhoraempresa'].toString()
+      this.melhoraEmpresa = this.sesuite['melhoraempresa'] != null ? this.sesuite['melhoraempresa'].toString() : this.sesuite['melhoraempresa']
       this.delineado = this.sesuite['delineado']
       //Carregando direcionamento
-      this.impactoAgua = this.direcionamento['impactoagua'].toString()
-      this.impactoEsgoto = this.direcionamento['impactoesgoto'].toString()
+      this.impactoAgua = this.direcionamento['impactoagua'] != null ? this.direcionamento['impactoagua'].toString() : this.direcionamento['impactoagua']
+      this.impactoEsgoto = this.direcionamento['impactoesgoto'] != null ? this.direcionamento['impactoesgoto'].toString() : this.direcionamento['impactoesgoto']
       this.maturidade = this.direcionamento['maturidade']
       this.modeloMercado = this.direcionamento['modelomercado']
       this.diferencialCompetitivo = this.direcionamento['diferencialcompetitivo']
@@ -168,7 +168,7 @@ export class SesuiteprojectComponent implements OnInit {
       this.impactoMotivacao = this.beneficios['impactomotivacao']
       this.impactoSeguranca = this.beneficios['impactoseguranca']
       this.impactoSustentabilidade = this.beneficios['impactosustentabilidade']
-      this.outraMelhoria = this.beneficios['outramelhoria'].toString()
+      this.outraMelhoria = this.beneficios['outramelhoria'] != null ? this.beneficios['outramelhoria'].toString() : this.beneficios['outramelhoria']
       //Carregando licenca
       this.impactoSocial = this.licenca['impactosocial']
       this.relacionamentoPolitico = this.licenca['relacionamentopolitico']
@@ -200,7 +200,7 @@ export class SesuiteprojectComponent implements OnInit {
       this.emissaoLicenca = this.parseDate(this.riscosoperacionais['emissaolicenca'])
       this.validadeLicenca = this.parseDate(this.riscosoperacionais['validadelicenca'])
       this.prazoLicenca = this.riscosoperacionais['prazolicenca']
-      this.condicionanteLicenca = this.riscosoperacionais['condicionantelicenca'].toString()
+      this.condicionanteLicenca = this.riscosoperacionais['condicionantelicenca'] ? this.riscosoperacionais['condicionantelicenca'].toString() : this.riscosoperacionais['condicionantelicenca'] 
 
     });
 

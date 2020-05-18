@@ -133,9 +133,9 @@ let InputindicadoresComponent = class InputindicadoresComponent {
                             this.resumo = [];
                             this.performanceService.indicadoresResumo(this.refer, res['indicadorId'])
                                 .subscribe(Indicadores => {
-                                this.realacum = parseFloat(Indicadores[0][3]).toLocaleString(), //'pt-BR', { style: 'currency', currency: 'BRL' }),
-                                    this.orcadoacum = parseFloat(Indicadores[0][2]).toLocaleString(),
-                                    this.previsao = parseFloat(Indicadores[0][4]).toLocaleString(),
+                                this.realacum = parseFloat(Indicadores[3][3]).toLocaleString(), //'pt-BR', { style: 'currency', currency: 'BRL' }),
+                                    this.orcadoacum = parseFloat(Indicadores[3][2]).toLocaleString(),
+                                    this.previsao = parseFloat(Indicadores[3][4]).toLocaleString(),
                                     this.resumo.push({
                                         'vin': res['indicador'],
                                         'year': this.realacum,
