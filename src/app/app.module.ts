@@ -188,7 +188,8 @@ import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esg
 import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
 import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
 import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
-
+import { ControleprodComponent } from './produtividade/controleprod/controleprod.component';
+import { ProdutividadeService } from './produtividade/produtividade.service';
 
 
 @NgModule({
@@ -357,6 +358,7 @@ import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadore
         OperacionalEsgotoComponent,
         AplicativoEtesComponent,
         IndicadoresAplicativosComponent,
+        ControleprodComponent,
 
     ],
     providers: [
@@ -376,7 +378,8 @@ import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadore
         NotificacoesService,
         EnergiaService,
         ProjetosService,
-        OperacionalEsgotoService
+        OperacionalEsgotoService,
+        ProdutividadeService
     ],
     bootstrap: [AppComponent]
 })

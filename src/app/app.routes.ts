@@ -48,6 +48,7 @@ import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
 import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
+import { ControleprodComponent } from './produtividade/controleprod/controleprod.component';
 
 
 
@@ -82,6 +83,7 @@ export const routes: Routes = [
             { path: 'utils', component: UtilsDemoComponent, canActivate: [AuthGuard] },
             { path: 'documentation', component: DocumentationComponent, canActivate: [AuthGuard] },
             { path: 'inputindicadores', component: InputindicadoresComponent, canActivate: [AuthGuard] },
+            { path: 'produtividade', component: ControleprodComponent },
             { path: 'projetos', component: ProjetosComponent },
             { path: 'mainprojeto', component: PagemainComponent },
             { path: 'cadastrar', component: CadastrarComponent, canActivate: [AuthGuard] },

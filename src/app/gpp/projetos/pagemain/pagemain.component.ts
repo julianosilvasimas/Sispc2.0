@@ -108,7 +108,7 @@ export class PagemainComponent implements OnInit {
     this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'))
     this.projeto = sessionStorage.getItem('nomeProjeto')
 
-    this.projetosService.getFluxoInvestimento().then(data => this.fluxoInvest = data);
+    this.projetosService.getFluxoInvestimento().then(data => this.fluxoInvest = data); 
     this.projetosService.getAnos().then(data => this.anos = data);
     this.projetosService.getMeses().then(data => this.meses = data);
     this.projetosService.getDias().then(data => this.dias = data);

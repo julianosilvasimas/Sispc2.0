@@ -1,0 +1,30 @@
+{
+    "resumao":[
+        {"servico":"OPER - ESCAVACAO"                          ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},
+        {"servico":"VAZAMENTO NO CAVALETE"                     ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},   
+        {"servico":"VAZAMENTO NO RAMAL/AGUA"                   ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},   
+        {"servico":"VAZAMENTO NA REDE/AGUA"                    ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},      
+        {"servico":"ENTUPIMENTO NO RAMAL-AGUA"                 ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},    
+        {"servico":"SUBST. REGISTRO NO CAVALETE"               ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},
+        {"servico":"DANOS GERADO POR TERCEIROS - RAMAL AGUA"   ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},      
+        {"servico":"MANUTENÇÃO DESCARGA"                       ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},     
+        {"servico":"LIMPEZA DO LOCAL DO SERVICO"               ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},   
+        {"servico":"SERVICO COM CORTADOR DE PAVIMENTO"         ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},        
+        {"servico":"MANUTENCAO EMERGENCIAL - REDE AGUA"        ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},         
+        {"servico":"MANUTENCAO EMERGENCIAL - RAMAL AGUA"       ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},             
+        {"servico":"MANUTENÇÃO DE REDE"                        ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},      
+        {"servico":"APOIO A EQUIPE - MANUTENCAO"               ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},    
+        {"servico":"MANUTENÇÃO VENTOSA"                        ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},        
+        {"servico":"VAZAMENTO NO COLAR DE TOMADA"              ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},          
+        {"servico":"VERIFICACAO DE ABASTECIMENTO"              ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},           
+        {"servico":"CONSERTO DE CAVALETE"                      ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},        
+        {"servico":"INSTALAÇÃO DE V.R.P"                       ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},      
+        {"servico":"IRREGULARIDADE ENCONTRADA"                 ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},      
+        {"servico":"MANOBRA EMERGENCIAL - ABERTURA"            ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},            
+        {"servico":"PADRONIZACAO DE CAVALETE"                  ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},       
+        {"servico":"PAV PARALELO"                              ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"}, 
+        {"servico":"RELIGAÇÃO DE CORTE INTERMEDIÁRIO"          ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},    
+        {"servico":"RETIRADA DE CLANDESTINA"                   ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"},    
+        {"servico":"LIMPEZA DE VEICULO - MANUTENCAO"           ,"tmerenoir":"15,8","qtdprevista":"45","tempoprevisto":"05:20:00","tmeapont":"13,2","exec":"43","exoc":"12","tempexec":"05:25:00","tempdesloc":"08:43:00"}       
+    ]
+}
