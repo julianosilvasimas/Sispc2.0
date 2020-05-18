@@ -25,6 +25,10 @@ export class AdminService {
      return  this.http.get(`${API_CONFIG}/usuarios/page`) 
      .pipe(map((res : Usuarios[]) => res, catchError(ErrorHandler.handleError)))
   }
+  listusers2(): Observable<any[]>{
+     return  this.http.get(`${API_CONFIG}/usuarios/page2`) 
+     .pipe(map((res : Usuarios[]) => res, catchError(ErrorHandler.handleError)))
+  }
   listgerencias(): Observable<any[]>{
      return  this.http.get(`${API_CONFIG}/gerencias`) 
      .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))

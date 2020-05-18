@@ -1,75 +1,80 @@
-<p-table [columns]="cols" [value]="ListaDeUnidades" selectionMode="single" [(selection)]="UnidadeSelected" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="15">
-  <ng-template pTemplate="caption">
-      List of Cars
-  </ng-template>
-  <ng-template pTemplate="header" let-columns>
-      <tr>
-          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-              {{col.header}}
-              <p-sortIcon [field]="col.field"></p-sortIcon>
-          </th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <tr [pSelectableRow]="rowData">
-          <td *ngFor="let col of columns">
-              {{rowData[col.field]}}
-          </td>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="summary" let-rowData>
-      <div style="text-align:left">
-          <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
-      </div>
-  </ng-template>    
-</p-table>
 
-<p-dialog header="Car Details" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
-  <div class="ui-g ui-fluid" *ngIf="UnidadeSelected">
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="color">{{  cols [4].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-            <p-dropdown id="{{  cols[4].field  }}" filterBy="UnidadeSelected[cols[4].field],indicador.indicadorId"  [filter]="true" [options]="volumes" [showClear]="true" [(ngModel)]="UnidadeSelected[cols[4].field]" [style]="{'width':'100%'}" optionLabel="indicador"></p-dropdown>
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="vin">{{  cols[0].field }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[0].field  }}" [(ngModel)]="UnidadeSelected[cols[0].field]" [disabled]="true" />
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="year">{{  cols[1].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[1].field  }}" [(ngModel)]="UnidadeSelected[cols[1].field]" [disabled]="true" />
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="brand">{{  cols[2].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[2].field  }}" [(ngModel)]="UnidadeSelected[cols[2].field]"  autofocus/>
-          </div>
-      </div>
-      <div class="ui-g-12">
-          <div class="ui-g-4">
-              <label for="color">{{  cols [3].field  }}</label>
-          </div>
-          <div class="ui-g-8">
-              <input pInputText id="{{  cols[3].field  }}" [(ngModel)]="UnidadeSelected[cols[3].field]" />
-          </div>
-      </div>
-  </div>
-  <p-footer>
-      <div class="ui-dialog-buttonpane ui-helper-clearfix">
-          <button type="button" pButton icon="pi pi-check" (click)="save()" label="Save"></button>
-      </div>
-  </p-footer>
-</p-dialog>
+<div class="ui-g dashboard">
+    <div class="ui-g-12 ui-lg-4">
+        <div class="user-card ui-shadow-content">
+            <div class="user-card-header">
+            </div>
+            <div class="user-card-content">
+                <div style="margin-left: 15px; font-size: 20px;" class="user-card-name">
+                    <i class="material-icons">face</i>
+                    <span style="margin-left: 15px;">Administrador {{ Usuario }}</span>
+                </div>
+
+                 <div class="user-detail">
+                   <ul>
+                     <li class="clearfix">
+                         <i class="material-icons">insert_drive_file</i>
+                         <span class="project-title">Relatórios</span>
+                         <button class="project-title" type="button" pButton icon="pi pi-caret-right" style="width: 10px; height: 30px; margin-top: 1px"  routerLink="/relatoriosetes"></button>
+                     </li>
+                     <li class="clearfix">
+                         <i class="material-icons">blur_on</i>
+                         <span class="project-title">Produtos Químicos</span>
+                         <button class="project-title" type="button" pButton icon="pi pi-caret-right" style="width: 10px; height: 30px; margin-top: 1px" routerLink="/produtosquimicosetes"></button>
+                     </li>
+                     <li class="clearfix">
+                         <i class="material-icons">timeline</i>
+                         <span class="project-title">Indicadores Diários</span>
+                         <button class="project-title" type="button" pButton icon="pi pi-caret-right" style="width: 10px; height: 30px; margin-top: 1px" routerLink="/indicadoresdiariosetes"></button>
+                     </li>
+                   </ul>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-lg-8 chat">
+        <p-panel header="Livro de Ocorrências" styleClass="ui-shadow-content">
+            <ul>
+                <p-scrollPanel [style]="{width: '100%', height: '335px'}" scrollTop="1000000">
+                    <div *ngFor="let not of ListaDeNotificacoes">
+                        <li class="clearfix message-from" style="margin-left: 12px;" *ngIf="not.admin==0">
+                            <span>
+                                <div style="font-size: 12px;"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>
+                                <div style="font-size: 11px;">{{ not.dataDaCriacao }} - {{ not.texto }}</div>
+                            </span>
+                        </li>
+                        <li class="clearfix message-own" style="margin-left: 12px;"  *ngIf="not.admin==1">
+                            <span>
+                                <div style="font-size: 12px;"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>
+                                <div style="font-size: 11px;">{{ not.dataDaCriacao }} - {{ not.texto }}</div>
+                            </span>
+                        </li>
+                    </div>
+                </p-scrollPanel>
+            </ul>
+            <div class="new-message">
+                <div class="message-attachment">
+                    <i class="material-icons">message</i>
+                </div>
+                <div class="message-input">
+                    <input type="text" [(ngModel)]="NotificacaoTexto" pInputText placeholder="Escreva sua mensagem" />
+                </div>
+                <div  style="margin-right: 8px !important; margin-top: -34px !important; text-align: right;">
+                    <button type="button" pButton icon="pi pi-caret-right"  (click)="SalvarNotificacao()"></button>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-lg-4">
+        <p-panel header="Editar Unidades" styleClass="ui-shadow-content">
+            <app-editar-unidades></app-editar-unidades>
+        </p-panel>
+    </div>
+    <div class="ui-g-12 ui-lg-4">
+        <p-panel header="Editar Indicadores" styleClass="ui-shadow-content">
+            <app-editar-indicadores></app-editar-indicadores>
+        </p-panel>
+    </div>
+</div>

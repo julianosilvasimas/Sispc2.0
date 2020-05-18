@@ -1,0 +1,20 @@
+<div class="ui-g dashboard">
+  <div class="card card-title ui-g-12">
+    <div class="ui-g-10" style="text-align: left;" >
+      <h1>Produtos Químicos</h1>
+    </div>
+    <div class="ui-g-2" style="text-align: right;" >
+      <div class="ui-g-12" style="text-align: right;" >
+        <button pButton type="button" label="Voltar" class="ui-button-rounded"  routerLink="/adminEtes"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui-g"> 
+  <p-accordion class="ui-g-12">
+      <p-accordionTab class="ui-g-12" *ngFor="let und of Unidades" header="{{und.unidade}}">
+        <app-graph [unidade]="und" ></app-graph>
+      </p-accordionTab>
+  </p-accordion>
+  
+</div>

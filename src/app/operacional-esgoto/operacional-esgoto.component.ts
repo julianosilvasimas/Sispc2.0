@@ -12,65 +12,49 @@ export class OperacionalEsgotoComponent implements OnInit {
 
 
   constructor(private esg:OperacionalEsgotoService, private perf:PerformanceService, private messageService: MessageService) { }
-  volumes 
 
+  Usuario = sessionStorage.getItem('nome')
+
+  ListaDeNotificacoes
   ngOnInit() {
-    
-    this.perf.cadindicadores().subscribe(
-      response=>{
-        this.volumes = response
+    this.CarregarNotificacoes()
+  }
+
+
+  CarregarNotificacoes(){
+    this.esg.getNotificacao().subscribe(
+      resp=>{
+        this.ListaDeNotificacoes = resp.map(
+          function(obj) {
+            obj.dataDaCriacao = obj.dataDaCriacao.substr(8,2)+"/"+obj.dataDaCriacao.substr(5,2)+"/"+obj.dataDaCriacao.substr(2,2)+" "+obj.dataDaCriacao.substr(11,8)
+            return obj
+          }
+        );
       }
     )
-    this.esg.getunidades().subscribe(
-      response=>{
-        this.ListaDeUnidades = response
+  }
+
+
+  NotificacaoTexto
+  SalvarNotificacao(){
+    var novoarray =
+    {
+      id: null,
+      dataDaCriacao: null,
+      unidade: "Administrador",
+      admin: 1,
+      usuario: sessionStorage.getItem('nome'),
+      texto: this.NotificacaoTexto
+    } 
+    console.log(novoarray)
+    this.esg.InserirNotificacao(novoarray).subscribe(
+      resp=>{
+        this.messageService.add({severity: 'success', summary: "Salvo", detail: 'Salvo com sucesso'});
+        this.CarregarNotificacoes()
+      },
+      error=>{
+        this.messageService.add({severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar'});
       }
     )
-
-
-
-    this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'dataDaCriacao', header: 'dataDaCriacao' },
-      { field: 'unidade', header: 'unidade' },
-      { field: 'tipoDeTratamento', header: 'tipoDeTratamento' },
-      { field: 'volume', header: 'volume' },
-    ];
-  }
-
-  ListaDeUnidades
-  UnidadeSelected
-  novaUnidade
-  cols
-  displayDialog: boolean = false
-  
-  showDialogToAdd() {
-    this.novaUnidade = true;
-    this.displayDialog = true;
-  }
-
-  save() {
-    this.UnidadeSelected.volume = this.UnidadeSelected.volume.indicadorId
-    this.esg.updateunidade(this.UnidadeSelected).subscribe(
-      indicadors  =>  {
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Indicador '+this.UnidadeSelected['indicador']+' Alterado'});
-      },error=>{
-        this.messageService.add({severity: 'warn', summary: 'Erro', detail: 'Erro'});
-      }
-    )
-    this.displayDialog = false;
-  }
-
-  onRowSelect(event) {
-      this.novaUnidade = false;
-      this.displayDialog = true;
-  }
-
-  cloneCar(c: any): any {
-      let car = {};
-      for (let prop in c) {
-          car[prop] = c[prop];
-      }
-      return car;
   }
 }

@@ -74,6 +74,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TreeModule } from 'primeng/tree';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import {SidebarModule} from 'primeng/sidebar';
 
 import { AppComponent} from './app.component';
 import { AppMainComponent } from './app-main/app.main.component';
@@ -186,6 +187,15 @@ import { ProjetosService } from './gpp/projetos/projetos.service';
 import { CenariosComponent } from './energia/cenarios/cenarios.component';
 import { OperacionalEsgotoComponent } from './operacional-esgoto/operacional-esgoto.component';
 import { OperacionalEsgotoService } from './operacional-esgoto/operacional-esgoto.service';
+import { PreenchimentoEtesComponent } from './operacional-esgoto/preenchimento-etes/preenchimento-etes.component';
+import { PreencheIndicadoresComponent } from './operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component';
+import { EditarUnidadesComponent } from './operacional-esgoto/editar-unidades/editar-unidades.component';
+import { EditarIndicadoresComponent } from './operacional-esgoto/editar-indicadores/editar-indicadores.component';
+import { RelatoriosEsgotoComponent } from './operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component';
+import { ProdutosQuimicosComponent } from './operacional-esgoto/produtos-quimicos/produtos-quimicos.component';
+import { IndicadoresDiariosComponent } from './operacional-esgoto/indicadores-diarios/indicadores-diarios.component';
+import { GraphComponent } from './operacional-esgoto/produtos-quimicos/graph/graph.component';
+import { ConsolidadoComponent } from './operacional-esgoto/indicadores-diarios/consolidado/consolidado.component';
 import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
 import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
 import { ControleprodComponent } from './produtividade/controleprod/controleprod.component';
@@ -267,7 +277,9 @@ import { ProdutividadeService } from './produtividade/produtividade.service';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        TriStateCheckboxModule
+        TriStateCheckboxModule,
+        SidebarModule
+
     ],
     declarations: [
         AppComponent,
@@ -356,9 +368,19 @@ import { ProdutividadeService } from './produtividade/produtividade.service';
         ForecastenergiaesgotoComponent,
         CenariosComponent,
         OperacionalEsgotoComponent,
+        PreenchimentoEtesComponent,
+        PreencheIndicadoresComponent,
+        EditarUnidadesComponent,
+        EditarIndicadoresComponent,
+        RelatoriosEsgotoComponent,
+        ProdutosQuimicosComponent,
+        IndicadoresDiariosComponent,
+        GraphComponent,
+        ConsolidadoComponent,
         AplicativoEtesComponent,
         IndicadoresAplicativosComponent,
-        ControleprodComponent,
+        ControleprodComponent
+
 
     ],
     providers: [
@@ -379,6 +401,7 @@ import { ProdutividadeService } from './produtividade/produtividade.service';
         EnergiaService,
         ProjetosService,
         OperacionalEsgotoService,
+        EditarUnidadesComponent,
         ProdutividadeService
     ],
     bootstrap: [AppComponent]
