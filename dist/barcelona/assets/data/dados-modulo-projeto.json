@@ -8,6 +8,8 @@
         { "label": "6° Revisão", "value": "revisao 6" }
     ],
     "anos": [
+        { "label": "2008", "value": "2008" },
+        { "label": "2009", "value": "2009" },
         { "label": "2010", "value": "2010" },
         { "label": "2011", "value": "2011" },
         { "label": "2012", "value": "2012" },

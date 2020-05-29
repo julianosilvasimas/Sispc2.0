@@ -368,7 +368,7 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>CADASTRAR NOVO USU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Nome\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label *ngIf=\"UsuarioSelect.ativo === true\" >Ativo</label>\r\n            <label *ngIf=\"UsuarioSelect.ativo === false\" >Inativo</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.cargo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Cargo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.foto\" class=\"ui-g-12\" pInputText/>\r\n            <label >Foto</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n    <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Disponíveis\" targetHeader=\"Acessos\" [responsive]=\"true\" filterBy=\"perfil\" \r\n    dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n      <ng-template let-perfil pTemplate=\"item\">\r\n        <div class=\"ui-helper-clearfix\">\r\n          <div class=\"ui-g\">\r\n            <!-- <div class=\"ui-g-3\" >\r\n              <button pButton type=\"button\"   label=\"!\" class=\"ui-button-rounded ui-button-info\" ></button>\r\n            </div> -->\r\n            <div class=\"ui-g-9\"  pTooltip=\"{{perfil.descricao}}\" tooltipPosition=\"bottom\">\r\n              {{perfil.perfil}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </ng-template>\r\n    </p-pickList>\r\n    <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n      <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+module.exports = "<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" >\r\n  <h4>GESTÃO DE USUÁRIOS</h4>\r\n  <p-dataView #dv [value]=\"usuarios\" [paginator]=\"true\" [rows]=\"25\" paginatorPosition=\"both\">\r\n    <p-header>\r\n      <div class=\"ui-helper-clearfix\">\r\n        <div class=\"ui-g\">\r\n          <div class=\"ui-g-12 filter-container\">\r\n            <input class=\"ui-g-4\" type=\"search\" pInputText placeholder=\"Nome\" (keyup)=\"Filter()\" [(ngModel)]=\"VALOR1\" >\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </p-header>\r\n      <ng-template let-usuarios pTemplate=\"listItem\">\r\n        <div class=\"car-details\">\r\n          <div class=\"ui-g-11\">\r\n            <div class=\"ui-g-1\"><b>{{usuarios.usuarioId}}</b></div>\r\n            <div class=\"ui-g-1\"><p-checkbox [disabled]=\"true\" [(ngModel)]=\"usuarios.ativo\" binary=\"true\"></p-checkbox></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.nome}}</b></div>\r\n            <div class=\"ui-g-3\"><b>{{usuarios.login}}</b></div>\r\n            <div class=\"ui-g-4\"><b>{{usuarios.email}}</b></div>\r\n          </div>\r\n          <div class=\"ui-g-1\" >\r\n            <button pButton type=\"button\" icon=\"ui-icon-edit\" (click)=\"selecionar(usuarios)\"></button>\r\n          </div>\r\n        </div>\r\n      </ng-template>  \r\n  </p-dataView>\r\n</div>\r\n\r\n\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditUsuario\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{'height':'500px', width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"UsuarioSelect\" >\r\n\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.nome\" class=\"ui-g-12\" pInputText/>\r\n            <label>Nome Completo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <div class=\"ui-g-12 item\" >\r\n            <p-checkbox [disabled]=\"false\" [(ngModel)]=\"UsuarioSelect.ativo\" binary=\"true\"></p-checkbox>\r\n            <label *ngIf=\"UsuarioSelect.ativo === true\" >Ativo</label>\r\n            <label *ngIf=\"UsuarioSelect.ativo === false\" >Inativo</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-4\" >\r\n          <span class=\"md-inputfield\"> \r\n           <p-dropdown [options]=\"supervisoes\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.supervisaoId\"  placeholder=\".\"  optionLabel=\"label\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n           <label >Supervisão</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"gerencias\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.gerenciaId\"  placeholder=\".\" optionLabel=\"label\"styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-4\">\r\n          <span class=\"md-inputfield\">\r\n            <p-dropdown [options]=\"unidades\" [autoWidth]=\"true\" [(ngModel)]=\"UsuarioSelect.undcodigo\"  placeholder=\".\" optionLabel=\"unidade\" styleClass = \"drop95\" filter=\"true\" [showClear]=\"true\"></p-dropdown>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.cargo\" class=\"ui-g-12\" pInputText/>\r\n            <label>Cargo</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.foto\" class=\"ui-g-12\" pInputText/>\r\n            <label >Foto</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-12 ui-md-6\">\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.email\" class=\"ui-g-12\" pInputText/>\r\n            <label>Email</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6\" >\r\n          <span class=\"md-inputfield\">\r\n            <input id=\"input\" type=\"text\" [(ngModel)]=\"UsuarioSelect.login\" class=\"ui-g-12\" pInputText/>\r\n            <label >Login</label>\r\n          </span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"ui-g-12 ui-md-12\" style=\"margin-top: 40px;\">\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Resetar Senha\"  (click)=\"resetarSenha(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Atribuir Permissões\"  (click)=\"atribuirPermissoes(UsuarioSelect)\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\" style=\"text-align: center; margin-top: 20px;\">\r\n          <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"updateUser(UsuarioSelect)\"></button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar\" [(visible)]=\"EditPermissoes\" [responsive]=\"false\" showEffect=\"fade\" [modal]=\"true\" [style]=\"{width: '800px'}\"  (onAfterHide)=\"onDialogHide()\">\r\n  <div class=\"ui-g\" *ngIf=\"PermissoesSelect\" >\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n      <p-pickList [source]=\"sourcePermissoes\" [target]=\"targetPermissoes\" sourceHeader=\"Disponíveis\" targetHeader=\"Acessos\" [responsive]=\"true\" filterBy=\"perfil\" \r\n      dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n        <ng-template let-perfil pTemplate=\"item\">\r\n          <div class=\"ui-helper-clearfix\">\r\n            <div class=\"ui-g\">\r\n              <!-- <div class=\"ui-g-3\" >\r\n                <button pButton type=\"button\"   label=\"!\" class=\"ui-button-rounded ui-button-info\" ></button>\r\n              </div> -->\r\n              <div class=\"ui-g-9\"  pTooltip=\"{{perfil.descricao}}\" tooltipPosition=\"bottom\">\r\n                {{perfil.perfil}}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </ng-template>\r\n      </p-pickList>\r\n      <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n        <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"editarPermissoes()\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
 
 /***/ }),
 
@@ -709,7 +709,7 @@ module.exports = "\r\n<div id=\"img\">\r\n  <img id=\"imagem\" src=\"assets/imag
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n    <div class=\"ui-g-12\">\r\n        <div class=\"card card-w-title\" style=\"text-align: center; height: 70px; background:#303C89; color:white;\">\r\n            <h1>Projeto PRJ - {{idProjeto}} - {{arrProjeto.projeto}}</h1>\r\n        </div>\r\n       </div> \r\n\r\n         \r\n            <div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n                <div class=\"ui-g\">\r\n                <div class=\"ui-g-4\">\r\n                    <h4>Linha do tempo</h4>\r\n                    </div>\r\n                    <div class=\"ui-g-4\" style=\"text-align: right !important;\">\r\n                    <!--<label style=\"background:teal; color: white; font-size:18px; padding: 5px;\">Status: Concluido</label>-->\r\n                    </div>  \r\n                    \r\n                    <div class=\"ui-g-4\" style=\"text-align: right\">\r\n                        <div class=\"ui-g-4\"></div>\r\n                        <div class=\"ui-g-4\" style=\"text-align: right !important;\">\r\n                            <div style=\" width:130px; position:relative !important;text-align: right! important;\">\r\n                              <div class=\"ui-g card overview-box overview-box-4\" style=\"background:teal; \">\r\n                                <label style=\" color: white; font-size:12px;\"><b>Status: Concluido</b></label>\r\n                              </div>\r\n                            </div>\r\n                          </div>  \r\n                          \r\n                            <div class=\"ui-g-4\" style=\"text-align: right\">\r\n                                <div style=\" width:130px; position:relative !important;text-align: right! important;\">\r\n                                    <div class=\"ui-g card overview-box overview-box-4\" style=\"background:#C3002F; \">\r\n                                      <label style=\" color: white; font-size:12px;\"><b>Prioridade: Alta</b></label>\r\n                                    </div>\r\n                                  </div>\r\n                            </div>\r\n                    </div> \r\n\r\n                    <div class=\"ui-g-12\">\r\n                        <p-steps [model]=\"fasesProjetos\"></p-steps>\r\n                      </div>\r\n            </div>\r\n            </div>\r\n            <!--Aqui trato dos blocos do projeto-->\r\n\r\n                <div class=\"ui-g-12\">\r\n                    <div class=\"card card-w-title\">\r\n        <div class=\"card\" >\r\n            <p-accordion [multiple]=\"true\" (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <p-accordionTab header=\"Informações do Projeto\" [selected]=\"true\"><br>\r\n                    \r\n                <!--Aqui trato das Informações básicas-->\r\n\r\n                  <div class=\"ui-g\">\r\n                      <div class=\"ui-g-8 ui-g-nopad\">\r\n                      <div  div class=\"ui-g-12\">\r\n                        <div class=\"card card-w-title\" >\r\n                            <div  style=\"margin-top: 20px; margin-bottom: 50px;\"> \r\n                                <span class=\"md-inputfield\">\r\n                                        PR - {{arrProjeto.sesuite.cognosid}}/2019 - GPI &nbsp;<input  type=\"text\" size=\"60\" [(ngModel)]=\"arrProjeto.projeto\" pInputText/>\r\n                                    <label>Nome do Projeto</label>\r\n                                </span>\r\n                         </div>\r\n                        <section class=\"grid grid-auto-flow-1\">\r\n                          \r\n                          <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                            <p-dropdown [options]=\"localidades\"  [(ngModel)]=\"selectedLocal\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"   ></p-dropdown> \r\n                            <label >Localidade</label>\r\n                            </span>\r\n                          </div>\r\n                          \r\n                          <div class=\"item\" >\r\n                              <span class=\"md-inputfield\">\r\n                                <input  type=\"text\" size=\"60\" [(ngModel)]=\"arrProjeto.responsavel\" pInputText/>\r\n                              <label >Responsável</label>\r\n                              </span>\r\n                            </div>\r\n                        </section>\r\n                      </div>\r\n\r\n                      <div class=\"card card-w-title\" >\r\n\r\n                          <section class=\"grid grid-auto-flow-1\">\r\n                          <div class=\"item\" style=\"margin-top: 20px\" >\r\n                              <span class=\"md-inputfield\">\r\n                                <p-dropdown [options]=\"status\"  [(ngModel)]=\"selectedStatusGlobal\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                              <label >Status Global</label>\r\n                              </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"margin-top: 20px\" >\r\n                                <span class=\"md-inputfield\">\r\n                                    <p-dropdown [options]=\"anos\"  [(ngModel)]=\"selectedRadar\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                <label >Radar</label>\r\n                                </span>\r\n                            </div>\r\n                          </section>\r\n\r\n                          <section class=\"grid grid-auto-flow-1\">\r\n                              <div class=\"item\" style=\"margin-top: 40px\" >\r\n                                  <span class=\"md-inputfield\">\r\n                                    <p-dropdown [options]=\"indices\"  [(ngModel)]=\"selectedGravidade\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                  <label >Gravidade</label>\r\n                                  </span>\r\n                                </div>\r\n                                <div class=\"item\" style=\"margin-top: 40px\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-dropdown [options]=\"indices\"  [(ngModel)]=\"selectedUrgencia\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                    <label >Urgência</label>\r\n                                    </span>\r\n                                </div>\r\n                                <div class=\"item\" style=\"margin-top: 40px\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-dropdown [options]=\"indices\"  [(ngModel)]=\"selectedTendencia\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                    <label >Tendência</label>\r\n                                    </span>\r\n                                </div>\r\n                              </section>\r\n\r\n                          <br>\r\n                          <hr>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Objetivo</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea [(ngModel)]=\"arrProjeto.objetivo\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Descrição</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.descricao\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Premissas</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.premissas\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Restrições</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.restricao\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Riscos</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.riscos\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n\r\n\r\n                      </div>\r\n\r\n                      </div>\r\n\r\n                  \r\n                    </div>\r\n                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\">\r\n\r\n                          <div class=\"card card-w-title\" >\r\n                            <h2>Início</h2>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"inicioprevisto\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Previsto</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"inicioreplanejado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Replanejado</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"iniciorealizado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Realizado</label>\r\n                                </span>\r\n                            </div>\r\n                          \r\n\r\n                          <h2>Término</h2>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"terminoprevisto\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Previsto</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"terminoreplanejado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Replanejado</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"terminorealizado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Realizado</label>\r\n                                </span>\r\n                            </div>\r\n                          \r\n                            </div>\r\n\r\n<!--\r\n                          <div class=\"card card-w-title\" >\r\n                              <h2>Segmento</h2>\r\n  \r\n                              <p-accordion [multiple]=\"true\">\r\n                                  <p-accordionTab header=\"Água\">\r\n                                      \r\n                                      <p-tree [value]=\"files2\" selectionMode=\"checkbox\" [(selection)]=\"selectedNodes\" [style]=\"{width: '100%'}\"></p-tree>\r\n                                         \r\n                                      \r\n                                  </p-accordionTab>\r\n                                  <p-accordionTab header=\"Esgoto\">\r\n                                    <div class=\"card\"></div>\r\n                                    <div></div>\r\n                                  </p-accordionTab>\r\n                                  <p-accordionTab header=\"Demais Investimentos\">\r\n                                      <div class=\"card\"></div>\r\n                                  </p-accordionTab>\r\n                              </p-accordion>\r\n                            \r\n      \r\n                        </div>\r\n                    -->\r\n\r\n                    <!-- Construir comunicação com banco-->\r\n                        <div class=\"card card-w-title\" >\r\n                          <h2>Partes Interessadas</h2>\r\n                          <div *ngFor=\"let parte of partesInt\">\r\n                            <div class=\"seletor\"><p-inputSwitch [(ngModel)]=\"partes[parte.orgaoId]\" value=\"parte.orgaoId\" label=\"parte.orgao\"></p-inputSwitch>  {{parte.orgao}} </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"ui-g-12\">\r\n                            <button pButton type=\"button\" style=\"width:100%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                        </div>\r\n                      \r\n                      </div>\r\n                  \r\n                  </div>\r\n                  \r\n                  \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato das Informações SESuite-->\r\n                <p-accordionTab header=\"Informações SESuite\"><br>\r\n                <app-sesuiteproject></app-sesuiteproject>\r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Regulatório--> <!--{{oFluxo.aprovacao}}-->\r\n                <p-accordionTab header=\"Regulatório\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: {{oFluxo.aprovacao}}</div><br>\r\n                  <div class=\"ui-g\">\r\n                      \r\n                      <div div class=\"ui-g-6\">\r\n                            <div class=\"card card-w-title\" >\r\n                        <div class=\"ui-g\">\r\n                                <div div class=\"ui-g-8\">\r\n                            <span class=\"md-inputfield\" style=\"margin-top: 20px;\"><!--[(ngModel)]=\"selectedFluxo\" -->\r\n                                <p-dropdown [options]=\"fluxos\"  [(ngModel)]=\"selectedFluxo\" defaultLabel=\"\" [style]=\"{width: '100%', height: '25px'}\" (onChange)=\"atualizarRevisao(selectedFluxo)\" ></p-dropdown> \r\n                               \r\n                                \r\n                                <label>Fluxo de investimento</label>\r\n                            </span></div><!-- *ngIf=\"aprov\"-->\r\n                            <div div class=\"ui-g-4\" *ngIf=\"aprov\"><!--(click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()\"-->\r\n                                    <button pButton type=\"button\" label=\"Aprovar\" (click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()\"\r\n                                     style=\"width:100%\"  icon=\"ui-icon-thumb-up\" ></button>\r\n                            </div>\r\n                            <div div class=\"ui-g-12\">\r\n                            <h2>Descrição</h2><!--[(ngModel)]=\"oFluxo.descricao\"-->\r\n                                <textarea  style=\"width: 100%; padding-bottom: 18px\"  [(ngModel)]=\"oFluxo.descricao\" pInputTextarea autoResize=\"autoResize\"></textarea>\r\n                            </div>\r\n                         </div>\r\n                      </div>\r\n                    </div>\r\n                      <div div class=\"ui-g-6\">\r\n                            <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"dialogVisible=true\" ></button>\r\n                            <span><b> Adicionar uma nova revisão</b></span>\r\n                          <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                  <h2>Marco Contratual</h2>\r\n                                  <div class=\"ui-g\">\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:10px; background: #F5F6F7; width:46%;margin-left: 20px;\">\r\n                                      <div class=\"ui-g-12\"><b>Início</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\"  [(ngModel)]=\"regIniDia\" placeholder=\"dia\"  ></p-dropdown> </div><!--[(ngModel)]=\"regIniDia\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"meses\" [(ngModel)]=\"regIniMes\" placeholder=\"mês\"  ></p-dropdown> </div> <!--[(ngModel)]=\"regIniMes\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"anos\" [(ngModel)]=\"regIniAno\" placeholder=\"ano\"  ></p-dropdown> </div> <!--[(ngModel)]=\"regIniAno\"-->\r\n                                  </div>\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;\">\r\n                                      <div class=\"ui-g-12\"><b>Término</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\" [(ngModel)]=\"regFimDia\" placeholder=\"dia\"  ></p-dropdown> </div><!--[(ngModel)]=\"regFimDia\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [(ngModel)]=\"regFimMes\" [options]=\"meses\"  placeholder=\"mês\"  ></p-dropdown> </div><!--[(ngModel)]=\"regFimMes\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown [(ngModel)]=\"regFimAno\" [options]=\"anos\"  placeholder=\"ano\"  ></p-dropdown> </div><!--[(ngModel)]=\"regFimAno\"-->\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                      </div>\r\n\r\n                      <div class=\"ui-g-12\">\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                        <div class=\"ui-g\">\r\n                            <div  div class=\"ui-g-6\" style=\"margin-top: 20px;\">\r\n                                <span class=\"md-inputfield\"><!--[(ngModel)]=\"oFluxo.valorprojeto\" -->\r\n                                    <input  type=\"text\"  [(ngModel)]=\"oFluxo.valorprojeto\" size=\"60\" pInputText/>\r\n                                    <p-dropdown  [options]=\"anos\" [(ngModel)]=\"selectedMoedaReg\" placeholder=\"Moeda\"  ></p-dropdown><!--[(ngModel)]=\"selectedMoedaReg\" -->\r\n                                    <label>Valor do Projeto/moeda</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"ui-g-6\"><!--(click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()\" -->\r\n                                    <button pButton type=\"button\" style=\"width:100%\" label=\"Salvar\" icon=\"ui-icon-save\"\r\n                                    (click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()\" ></button>\r\n                                </div>\r\n                            <div  div class=\"ui-g-12\">\r\n                                \r\n                                <br>\r\n                                <p-table [columns]=\"cols2\" [value]=\"delib\" dataKey=\"nProcesso\" editMode=\"row\"  >\r\n                                    <ng-template pTemplate=\"caption\">\r\n                                    </ng-template>\r\n                                    <ng-template pTemplate=\"header\" let-columns [ngStyle]=\"{'width': '100%'}\">\r\n                                        <tr> \r\n                                            \r\n                                            <th  *ngFor=\"let col of columns\">\r\n                                                {{col.header}}\r\n                                            </th>\r\n                                            \r\n                                            <th style=\"width:8em; text-align: center;\">\r\n                                                <button type=\"button\" icon=\"ui-icon-add\" (click)= \"cadDelibVisible=true\" pButton></button>\r\n                                            </th>\r\n                                        </tr>\r\n                                    </ng-template>\r\n                                    <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                        <tr [pEditableRow]=\"rowData\">\r\n                                            \r\n                                            \r\n                                          <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <input pInputText type=\"text\" [(ngModel)]=\"rowData['ndeliberacao']\" >\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['ndeliberacao']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <input pInputText type=\"text\" [(ngModel)]=\"rowData['assunto']\" >\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['assunto']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                                {label:'', value:null},\r\n                                                                {label:'Informativo', value:'Informativo'},\r\n                                                                {label:'Deliberativo', value:'Deliberativo'}\r\n                                                                ]\" \r\n                                                                [(ngModel)]=\"selectedTipo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                            </p-dropdown>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['tipo']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                          <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"rowData['envio']\"></p-calendar>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['envio']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"rowData['aprovado']\"  ></p-calendar>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['aprovado']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                          <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"rowData['retorno']\"  ></p-calendar>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['retorno']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          <td>\r\n                                            <p-cellEditor>\r\n                                                <ng-template pTemplate=\"input\"  >\r\n                                                    <input pInputText type=\"text\" [(ngModel)]=\"rowData['link']\" >\r\n                                                </ng-template>\r\n                                            <ng-template pTemplate=\"output\">\r\n                                                    <a href=\"{{rowData['link']}}\"><img src=\"assets/images/sesuite.png\" style=\"width: 50px; margin-right: 1em; vertical-align: middle;\"></a>\r\n                                            </ng-template>\r\n                                          </p-cellEditor>\r\n                                          </td>\r\n      \r\n                                            <td style=\"text-align:center;\">\r\n                                                <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInit(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                                <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSave(rowData)\"></button>\r\n                                                <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                            </td>\r\n                                        </tr>\r\n                                    </ng-template>\r\n                                </p-table>\r\n                                \r\n                            </div>\r\n                        </div>\r\n                      </div> \r\n\r\n                      </div> \r\n\r\n                    \r\n\r\n                    </div>\r\n\r\n\r\n\r\n                    <!--Box de Cadastro-->\r\n    <p-dialog header=\"Cadastro de deliberação\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"cadDelibVisible\">\r\n        <div class=\"ui-g\">\r\n\r\n            <div  div class=\"ui-g-12\">\r\n\r\n                     \r\n\r\n              <div class=\"card card-w-title\" >\r\n                    <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 10px;padding-bottom: 15px\">\r\n                    <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novaDelib.ndeliberacao\" type=\"text\" size=\"25\" pInputText/>\r\n                            <label >Cód. deliberação</label>\r\n                            </span>\r\n                          </div>\r\n                          <div class=\"item\" >\r\n                              <span class=\"md-inputfield\">\r\n                                    <input id=\"input\" [(ngModel)]=\"novaDelib.assunto\" type=\"text\" size=\"25\" pInputText/>\r\n                              <label >Assunto</label>\r\n                              </span>\r\n                          </div> \r\n                        </section>\r\n                  <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                      <span class=\"md-inputfield\">\r\n                          <input id=\"input\" [(ngModel)]=\"novaDelib.link\" type=\"text\" size=\"60\" pInputText/>\r\n                          <label>Link para SeSuite</label>\r\n                      </span>\r\n               </div>\r\n               \r\n              <section class=\"grid grid-auto-flow-1\">\r\n                \r\n                <div class=\"item\" >\r\n                  <span class=\"md-inputfield\">\r\n                  <p-dropdown [options]=\"[\r\n                  {label:'', value:null},\r\n                  {label:'Informativo', value:'Informativo'},\r\n                  {label:'Deliberativo', value:'Deliberativo'}\r\n                  ]\" \r\n                  [(ngModel)]=\"novaDelib.tipo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                  </p-dropdown>\r\n                  <label >Tipo de Deliberação</label>\r\n                  </span>\r\n                </div>\r\n               \r\n              </section>\r\n            </div>\r\n\r\n            <div class=\"card card-w-title\" >\r\n\r\n                <section class=\"grid grid-auto-flow-1\">\r\n                    <div class=\"item\" style=\"margin-top: 40px\" >\r\n                        <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novaDelib.envio\"  ></p-calendar>\r\n                        <label >Envio</label>\r\n                        </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novaDelib.retorno\" ></p-calendar>\r\n                          <label >Retorno</label>\r\n                          </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novaDelib.aprovado\" ></p-calendar>\r\n                          <label >Aprovação</label>\r\n                          </span>\r\n                      </div>\r\n                    </section>\r\n\r\n                <br>\r\n\r\n\r\n            </div>\r\n\r\n            </div></div>\r\n\r\n\r\n        <p-footer>\r\n            <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"insereDelib()\" pButton></button>\r\n            </div>\r\n        </p-footer>\r\n    </p-dialog>\r\n\r\n\r\n\r\n    <p-dialog header=\"Cadastro\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"dialogVisible\">\r\n            <div class=\"ui-g\">\r\n                    <div class=\"ui-g-12\">\r\n                    <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                            <p-dropdown [options]=\"fluxoInvest\"  [(ngModel)]=\"selectedCadFluxo\" defaultLabel=\"\" [style]=\"{width: '100%', height: '25px'}\" ></p-dropdown> \r\n                           \r\n                            \r\n                            <label>Fluxo de investimento</label>\r\n                        </span>\r\n                        </div>\r\n                <div  div class=\"ui-g-12\">\r\n                  <div class=\"card card-w-title\" >\r\n                      <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                          <span class=\"md-inputfield\">\r\n                              <input id=\"input\" [(ngModel)]=\"descrevendo\" type=\"text\" size=\"60\" pInputText/>\r\n                              <label>Descrição</label>\r\n                          </span>\r\n                   </div>\r\n                 </div>\r\n                 </div>\r\n                 </div>\r\n    \r\n            <p-footer>\r\n                <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                    <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"enviarReg(selectedCadFluxo.toString())\" pButton></button>\r\n                </div>\r\n            </p-footer>\r\n        </p-dialog>\r\n\r\n\r\n\r\n\r\n                    \r\n                </p-accordionTab>  \r\n\r\n                <!--Aqui da Engenharia(Projeto)-->\r\n                <p-accordionTab header=\"Engenharia(Projeto)\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ; color:white;\">Status da fase: Em Andamento</div><br>\r\n                  <div class=\"ui-g\">\r\n                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                      <div  div class=\"ui-g-12\">\r\n                          <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                              <span class=\"md-inputfield\">\r\n                                  <input  type=\"text\" size=\"40\" pInputText/>\r\n                                  <label>PEP do Projeto</label>\r\n                              </span>\r\n                          </div>\r\n                          \r\n                          <div class=\"ui-g-3\"></div>\r\n                          <div class=\"ui-g-3\"> </div>\r\n\r\n                          <div class=\"ui-g-3\">\r\n                              <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                  <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                      <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                      <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                  </div>\r\n                              </div>\r\n                            </div>\r\n                      </div>\r\n\r\n                      <div  div class=\"ui-g-12\">\r\n                            <br>\r\n                            <p-table [columns]=\"cols\" [value]=\"engenharia\" dataKey=\"engenhariaId\" editMode=\"row\">\r\n                                <ng-template pTemplate=\"caption\">\r\n                                </ng-template>\r\n                                <ng-template pTemplate=\"header\" let-columns>\r\n                                    <tr> \r\n                                        <th *ngFor=\"let col of columns\">\r\n                                            {{col.header}}\r\n                                        </th>\r\n                                        <th style=\"width:8em; text-align: center;\">\r\n                                            <button type=\"button\" icon=\"ui-icon-add\" pButton></button>\r\n                                        </th>\r\n                                    </tr>\r\n                                </ng-template>\r\n                                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                    <tr [pEditableRow]=\"rowData\">\r\n                                        <td *ngFor=\"let col of columns\">\r\n                                        <p-cellEditor>\r\n                                            <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                                <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                                            </ng-template>\r\n                                          <ng-template pTemplate=\"output\">\r\n                                                {{rowData[col.field]}}\r\n                                          </ng-template>\r\n                                        </p-cellEditor>\r\n                                      </td>\r\n\r\n                                        <td style=\"text-align:center;\">\r\n                                            <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInit(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                            <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSave(rowData)\"></button>\r\n                                            <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                        </td>\r\n                                    </tr>\r\n                                </ng-template>\r\n                            </p-table>\r\n\r\n                      </div>\r\n\r\n                  </div>\r\n                </div>\r\n\r\n                  \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Capex-->\r\n                <p-accordionTab header=\"Financeiro(Capex)\" ><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Aprovado</div><br>\r\n                  <div class=\"ui-g\">\r\n                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                        <div  div class=\"ui-g-12\">\r\n                            <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                    <input  type=\"text\" size=\"35\" pInputText/>\r\n                                    <label>Número do Projeto Cognos</label>\r\n                                </span>\r\n                            </div>\r\n                            \r\n                            <div class=\"ui-g-3\">\r\n                                <span class=\"md-inputfield\" style=\"margin-top: 20px;margin-left: 10%;\">\r\n                                    <input  type=\"text\" size=\"30\" pInputText/>\r\n                                    <label>Valor Total do Projeto</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"ui-g-3\" style=\"margin-top: 5px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                    <p-multiSelect [options]=\"status\"  defaultLabel=\"\" [style]=\"{width: '90%', height: '25px'}\"></p-multiSelect>\r\n                                    <label >Status</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"ui-g-3\">\r\n                                <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                    <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                        <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                        <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                    </div>\r\n                                </div>\r\n\r\n                            </div>\r\n                            \r\n                        </div>\r\n                    </div>\r\n                      \r\n                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                          <div class=\"ui-g-12\">\r\n                            <h2>Descrição</h2>\r\n                            <textarea  style=\"width: 100%\" pInputTextarea  autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div style=\"text-align: right; margin-top: 5px\" *ngIf=\"selected\">\r\n                            <button type=\"button\" icon=\"ui-icon-add\" pButton ></button>\r\n                            <span style=\"position: absolute;margin-top: 5px;margin-left: -135px;\">Incluir + 1 ano</span>\r\n                          </div>  \r\n                          <div class=\"ui-g-12\">\r\n                            <p-tabView>\r\n                                <p-tabPanel header=\"Capex 2019\" leftIcon=\"ui-icon-check\">\r\n                                  <div class=\"ui-g\">\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>Valor Aprovado</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                           <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>Valor Realizado</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>Avanço Financeiro</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>1° Rolling-Forecast</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>2° Rolling-Forecast</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>3° Rolling-Forecast</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                  </div>\r\n                                </p-tabPanel>\r\n                                <p-tabPanel header=\"Capex 2020\" leftIcon=\"ui-icon-edit\">\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Aprovado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                             <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Realizado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Avanço Financeiro</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>1° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>2° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>3° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </p-tabPanel>\r\n                                <p-tabPanel header=\"Capex 2021\" leftIcon=\"ui-icon-refresh\">\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Aprovado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                             <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Realizado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Avanço Financeiro</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>1° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>2° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>3° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </p-tabPanel>\r\n                            </p-tabView>\r\n                          </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                    \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Licenciamento-->\r\n                <p-accordionTab header=\"Licenciamentos\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Em Andamento</div><br>\r\n                    \r\n                    <div class=\"ui-g\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                              <div  div class=\"ui-g-12\">\r\n                                  <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                      <span class=\"md-inputfield\">\r\n                                          <input  type=\"text\" size=\"40\" pInputText/>\r\n                                          <label>Status Geral</label>\r\n                                      </span>\r\n                                  </div>\r\n                                  \r\n                                  <div class=\"ui-g-3\"></div>\r\n                                  <div class=\"ui-g-3\"> </div>\r\n        \r\n                                  <div class=\"ui-g-3\">\r\n                                      <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                          <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                              <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                              <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                          </div>\r\n                                      </div>\r\n                                    </div>\r\n                              </div>\r\n        \r\n                              <div  div class=\"ui-g-12\">\r\n                                    <br>\r\n                                    <p-table [columns]=\"cols3\" [value]=\"licencas\" dataKey=\"numeroLicenca\" editMode=\"row\">\r\n                                        <ng-template pTemplate=\"caption\">\r\n                                        </ng-template>\r\n                                        <ng-template pTemplate=\"header\" let-columns>\r\n                                            <tr> \r\n                                                <th *ngFor=\"let col of columns\">\r\n                                                    {{col.header}}\r\n                                                </th>\r\n                                                <th style=\"width:8em; text-align: center;\">\r\n                                                    <button type=\"button\" icon=\"ui-icon-add\" pButton></button>\r\n                                                </th>\r\n                                            </tr>\r\n                                        </ng-template>\r\n                                        <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                            <tr [pEditableRow]=\"rowData\">\r\n                                                <td *ngFor=\"let col of columns\">\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\" *ngFor=\"let col of columns\">\r\n                                                        <input pInputText type=\"text\" [(ngModel)]=\"rowData[col.field]\">\r\n                                                    </ng-template>\r\n                                                  <ng-template pTemplate=\"output\">\r\n                                                        {{rowData[col.field]}}\r\n                                                  </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n        \r\n                                                <td style=\"text-align:center;\">\r\n                                                    <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInit(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                                    <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSave(rowData)\"></button>\r\n                                                    <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                                </td>\r\n                                            </tr>\r\n                                        </ng-template>\r\n                                    </p-table>\r\n        \r\n                              </div>\r\n        \r\n                          </div>\r\n                        </div>\r\n\r\n                      \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Contratação-->\r\n                <p-accordionTab header=\"Contratação\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Em Andamento</div><br>\r\n\r\n                    <div class=\"ui-g\">\r\n\r\n                            <div class=\"ui-g-12\">\r\n                                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                        <div class=\"ui-g\">\r\n                                                <div class=\"ui-g-6\" style=\"margin-top: 10px;\">\r\n                                                        <span class=\"md-inputfield\" style=\"margin-top: 10px;\">\r\n                                                            <input  type=\"text\" size=\"60\" pInputText/>\r\n                                                            <label>Número do Pedido</label>\r\n                                                        </span>\r\n                                                      </div>\r\n                                                      <div class=\"ui-g-6\" style=\"margin-top: 10px;\">\r\n                                                          <span class=\"md-inputfield\" style=\"margin-top: 10px;\">\r\n                                                              <input  type=\"text\" size=\"60\" pInputText/>\r\n                                                              <label>Requisição</label>\r\n                                                          </span>\r\n                                                      </div>\r\n                                    \r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" size=\"30\" pInputText/>\r\n                                            <label>Contrato Sistêmico</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" size=\"30\" pInputText/>\r\n                                            <label>Contrato Físico</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" size=\"30\" pInputText/>\r\n                                            <label>Nome da Empresa</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" size=\"30\" pInputText/>\r\n                                            <label>Nome do Responsável</label>\r\n                                        </span>\r\n                                    </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                      \r\n                        <div div class=\"ui-g-6\">\r\n                        <div class=\"card card-w-title\">\r\n                          <div class=\"ui-g\">\r\n                            \r\n                            <div class=\"ui-g-12\" style=\"margin-top: -15px\">\r\n                                <h2>Datas</h2>\r\n                                <div class=\"ui-g\">\r\n                                <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;\">\r\n                                    <div class=\"ui-g-12\"><b>Início</b></div>\r\n                                    <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dia\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"mes\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"ano\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                </div>\r\n                                <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;\">\r\n                                    <div class=\"ui-g-12\"><b>Término</b></div>\r\n                                    <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dia\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"mes\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"ano\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                </div>\r\n                                <div class=\"ui-g-6\" style=\"margin-top: 15px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 15px;\">\r\n                                            <input  type=\"text\" size=\"30\" pInputText/>\r\n                                            <label>Valor Contratado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                <div class=\"ui-g-6\" style=\"margin-top: 15px;\">\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-multiSelect [options]=\"status\"  defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"></p-multiSelect>\r\n                                        <label >Status</label>\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                          </div>\r\n                          </div>\r\n                        </div>\r\n\r\n                        </div>\r\n\r\n                        <div div class=\"ui-g-6\">\r\n                          <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                  <h2>Aditivo</h2>\r\n                                  <div class=\"ui-g\">\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;\">\r\n                                      <div class=\"ui-g-12\"><b>Início</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dia\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"mes\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"ano\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                  </div>\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;\">\r\n                                      <div class=\"ui-g-12\"><b>Término</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dia\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"mes\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"ano\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                  </div>\r\n                                  <div class=\"ui-g-12\" style=\"margin-top: 15px;\">\r\n                                    <span class=\"md-inputfield\" style=\"margin-top: 15px;\">\r\n                                        <input  type=\"text\" size=\"60\" pInputText/>\r\n                                        <label>Valor Contratado</label>\r\n                                    </span>\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n\r\n                        <div  div class=\"ui-g-12\" >\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Escopo</h2>\r\n                                    <textarea  style=\"width: 100%; padding-bottom: 18px\" pInputTextarea  autoResize=\"autoResize\"></textarea>\r\n                                </div>\r\n                             </div>\r\n                        \r\n                    </div>\r\n\r\n                      \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato da Obra-->\r\n                <p-accordionTab header=\"Engenharia(Obra)\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Em Andamento</div><br>\r\n                    <div class=\"ui-g\">\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                            <div  div class=\"ui-g-12\">\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input  type=\"text\" size=\"35\" pInputText/>\r\n                                            <label>Avanço Físico</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    \r\n                                    <div class=\"ui-g-3\"></div>\r\n\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-multiSelect [options]=\"status\"  defaultLabel=\"\" [style]=\"{width: '90%', height: '25px'}\"></p-multiSelect>\r\n                                            <label >Status</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                            <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                                <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                                <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div class=\"ui-g-4\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <h2>Previsto</h2>\r\n                                <div class=\"ui-g\">\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                            <label >Início</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Término</label>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>    \r\n                        </div>\r\n                        <div class=\"ui-g-4\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <h2>Replanejado</h2>\r\n                                <div class=\"ui-g\">\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                            <label >Início</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Término</label>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div> \r\n                        </div>\r\n                        <div class=\"ui-g-4\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <h2>Realizado</h2>\r\n                                <div class=\"ui-g\">\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                            <label >Início</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Término</label>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div> \r\n                        </div>\r\n                    </div>\r\n                      \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Comissionamento-->\r\n                <p-accordionTab header=\"Comissionamento\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Em Andamento</div><br>\r\n                    <div class=\"ui-g\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <div  div class=\"ui-g-12\">\r\n                                        <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <input  type=\"text\" size=\"35\" pInputText/>\r\n                                                <label>Avanço Físico</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        \r\n                                        <div class=\"ui-g-3\"></div>\r\n    \r\n                                        <div class=\"ui-g-3\" style=\"margin-top: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-multiSelect [options]=\"status\"  defaultLabel=\"\" [style]=\"{width: '90%', height: '25px'}\"></p-multiSelect>\r\n                                                <label >Status</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-3\">\r\n                                            <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                                <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                                    <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                                    <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                </div>\r\n                            </div>\r\n    \r\n                            <div class=\"ui-g-4\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Previsto</h2>\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Início</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                                <span class=\"md-inputfield\">\r\n                                                    <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                    <label >Término</label>\r\n                                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>    \r\n                            </div>\r\n                            <div class=\"ui-g-4\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Replanejado</h2>\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Início</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                                <span class=\"md-inputfield\">\r\n                                                    <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                    <label >Término</label>\r\n                                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                </div> \r\n                            </div>\r\n                            <div class=\"ui-g-4\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Realizado</h2>\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Início</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                                <span class=\"md-inputfield\">\r\n                                                    <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                    <label >Término</label>\r\n                                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                </div> \r\n                            </div>\r\n                        </div>  \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato da Comprovação-->\r\n                <p-accordionTab header=\"Comprovação\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Em Andamento</div><br>\r\n                    <div class=\"ui-g\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <div  div class=\"ui-g-12\">\r\n                                        <div class=\"ui-g-8\" style=\"margin-top: 20px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <input  type=\"text\" size=\"60\" pInputText/>\r\n                                                <label>Número do Processo</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\" style=\"margin-top: 5px;\">\r\n                                            <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                                <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                                    <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                                    <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n\r\n                                        <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Data Envio</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        \r\n                                        <div class=\"ui-g-3\">\r\n                                            <span class=\"md-inputfield\"  style=\"margin-top: 20px;\">\r\n                                                <p-calendar [showIcon]=\"true\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Data Retorno</label>\r\n                                            </span>\r\n                                        </div>\r\n    \r\n                                        <div class=\"ui-g-3\" style=\"margin-top: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-multiSelect [options]=\"status\"  defaultLabel=\"\" [style]=\"{width: '90%', height: '25px'}\"></p-multiSelect>\r\n                                                <label >Status</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-3\">\r\n                                            <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                                <input  type=\"text\" size=\"30\" pInputText/>\r\n                                                <label>Valor Comprovado</label>\r\n                                            </span>\r\n                                        </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n                             \r\n                            <div class=\"card\"  style=\"width:100%\">\r\n                                <div class=\"ui-g-12\">\r\n                                    <h2>Arquivos de Comprovação</h2>\r\n                                    <p-growl [value]=\"msgs\"></p-growl>\r\n                                                \r\n                                    <p-fileUpload name=\"demo[]\" url=\"./upload.php\" (onUpload)=\"onUpload($event)\" \r\n                                        multiple=\"multiple\" accept=\"image/*\" maxFileSize=\"1000000\"\r\n                                        chooseLabel=\"Escolher\" uploadLabel=\"Enviar\" cancelLabel=\"Cancelar\"> \r\n                                        <ng-template pTemplate=\"content\">\r\n                                            <ul *ngIf=\"uploadedFiles.length\">\r\n                                                <li *ngFor=\"let file of uploadedFiles\">{{file.name}} - {{file.size}} bytes</li>\r\n                                            </ul>\r\n                                        </ng-template>    \r\n                                    </p-fileUpload>\r\n                                </div>\r\n                            </div>\r\n                            </div>\r\n                              \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato das Lições Aprendidas-->\r\n                <p-accordionTab header=\"Lições Aprendidas\">\r\n                    <div class=\"ui-g\">\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                            <div  div class=\"ui-g-12\">\r\n                                <h2>Planejado x Realizado</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Responda as questões e comente os pontos mais relevantes]</div>\r\n                                <div class=\"ui-g\" style=\"margin-top: 15px;\">\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input  type=\"text\" size=\"35\" pInputText/>\r\n                                            <label>Os objetivos foram atingidos?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input  type=\"text\" size=\"35\" pInputText/>\r\n                                            <label>Projeto foi entregue no prazo?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input  type=\"text\" size=\"35\" pInputText/>\r\n                                            <label>No orçamento?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input  type=\"text\" size=\"35\" pInputText/>\r\n                                            <label>Atendeu o escopo?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n\r\n                                <h2>Processos de gerenciamento de projeto</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Comente os pontos mais relevantes]</div>\r\n\r\n                                \r\n                                <h4>Pontos fortes</h4>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  autoResize=\"autoResize\"></textarea>\r\n                                <h4>Pontos fracos</h4>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  autoResize=\"autoResize\"></textarea>\r\n\r\n                                <h2>Questões do projeto</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Comente os pontos mais relevantes]</div>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  autoResize=\"autoResize\"></textarea>\r\n\r\n                                <h2>Recomendações a serem adotadas para os próximos projetos</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Indique as recomendações e as lições serem aprendidas mais relevantes]</div>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  autoResize=\"autoResize\"></textarea>\r\n                                \r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                  \r\n                </p-accordionTab>\r\n            </p-accordion>\r\n        </div>\r\n        <app-pagestories></app-pagestories>\r\n    </div>\r\n</div>      \r\n"
+module.exports = "<div class=\"ui-g\">\r\n    <div class=\"ui-g-12\">\r\n        <div class=\"card card-w-title\" style=\"text-align: center; height: 70px; background:#303C89; color:white;\">\r\n            <h1>Projeto PRJ - {{idProjeto}} - {{arrProjeto.projeto}}</h1>\r\n        </div>\r\n       </div> \r\n\r\n         \r\n            <div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n                <div class=\"ui-g\">\r\n                <div class=\"ui-g-4\">\r\n                    <h4>Linha do tempo</h4>\r\n                    </div>\r\n                    <div class=\"ui-g-4\" style=\"text-align: right !important;\">\r\n                    <!--<label style=\"background:teal; color: white; font-size:18px; padding: 5px;\">Status: Concluido</label>-->\r\n                    </div>  \r\n                    \r\n                    <div class=\"ui-g-4\" style=\"text-align: right\">\r\n                        <div class=\"ui-g-4\"></div>\r\n                        <div class=\"ui-g-4\" style=\"text-align: right !important;\">\r\n                            <div style=\" width:130px; position:relative !important;text-align: right! important;\">\r\n                              <div class=\"ui-g card overview-box overview-box-4\" style=\"background:teal; \">\r\n                                <label style=\" color: white; font-size:12px;\"><b>Status: Concluido</b></label>\r\n                              </div>\r\n                            </div>\r\n                          </div>  \r\n                          \r\n                            <div class=\"ui-g-4\" style=\"text-align: right\">\r\n                                <div style=\" width:130px; position:relative !important;text-align: right! important;\">\r\n                                    <div class=\"ui-g card overview-box overview-box-4\" style=\"background:#C3002F; \">\r\n                                      <label style=\" color: white; font-size:12px;\"><b>Prioridade: Alta</b></label>\r\n                                    </div>\r\n                                  </div>\r\n                            </div>\r\n                    </div> \r\n\r\n                    <div class=\"ui-g-12\">\r\n                        <p-steps [model]=\"fasesProjetos\"></p-steps>\r\n                      </div>\r\n            </div>\r\n            </div>\r\n            <!--Aqui trato dos blocos do projeto-->\r\n\r\n                <div class=\"ui-g-12\">\r\n                    <div class=\"card card-w-title\">\r\n        <div class=\"card\" >\r\n            <p-accordion [multiple]=\"true\" (onOpen)=\"onTabOpen($event)\" (onClose)=\"onTabClose($event)\">\r\n                <!--Aqui trato das Informações básicas-->\r\n                <p-accordionTab header=\"Informações do Projeto\" [selected]=\"false\"><br>\r\n                  <div class=\"ui-g\">\r\n                      <div class=\"ui-g-8 ui-g-nopad\">\r\n                      <div  div class=\"ui-g-12\">\r\n                        <div class=\"card card-w-title\" >\r\n                            <div  style=\"margin-top: 20px; margin-bottom: 50px;\"> \r\n                                <span class=\"md-inputfield\">\r\n                                        PR - {{arrProjeto.sesuite.cognosid}}/2019 - GPI &nbsp;<input  type=\"text\" size=\"60\" [(ngModel)]=\"arrProjeto.projeto\" pInputText/>\r\n                                    <label>Nome do Projeto</label>\r\n                                </span>\r\n                         </div>\r\n                        <section class=\"grid grid-auto-flow-1\">\r\n                          \r\n                          <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                            <p-dropdown [options]=\"localidades\"  [(ngModel)]=\"selectedLocal\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"   ></p-dropdown> \r\n                            <label >Localidade</label>\r\n                            </span>\r\n                          </div>\r\n                          \r\n                          <div class=\"item\" >\r\n                              <span class=\"md-inputfield\">\r\n                                <input  type=\"text\" size=\"60\" [(ngModel)]=\"arrProjeto.responsavel\" pInputText/>\r\n                              <label >Responsável</label>\r\n                              </span>\r\n                            </div>\r\n                        </section>\r\n                      </div>\r\n\r\n                      <div class=\"card card-w-title\" >\r\n\r\n                          <section class=\"grid grid-auto-flow-1\">\r\n                          <div class=\"item\" style=\"margin-top: 20px\" >\r\n                              <span class=\"md-inputfield\">\r\n                                <p-dropdown [options]=\"status\"  [(ngModel)]=\"selectedStatusGlobal\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                              <label >Status Global</label>\r\n                              </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"margin-top: 20px\" >\r\n                                <span class=\"md-inputfield\">\r\n                                    <p-dropdown [options]=\"anos\"  [(ngModel)]=\"selectedRadar\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                <label >Radar</label>\r\n                                </span>\r\n                            </div>\r\n                          </section>\r\n\r\n                          <section class=\"grid grid-auto-flow-1\">\r\n                              <div class=\"item\" style=\"margin-top: 40px\" >\r\n                                  <span class=\"md-inputfield\">\r\n                                    <p-dropdown [options]=\"indices\"  [(ngModel)]=\"selectedGravidade\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                  <label >Gravidade</label>\r\n                                  </span>\r\n                                </div>\r\n                                <div class=\"item\" style=\"margin-top: 40px\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-dropdown [options]=\"indices\"  [(ngModel)]=\"selectedUrgencia\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                    <label >Urgência</label>\r\n                                    </span>\r\n                                </div>\r\n                                <div class=\"item\" style=\"margin-top: 40px\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-dropdown [options]=\"indices\"  [(ngModel)]=\"selectedTendencia\" defaultLabel=\"\" [style]=\"{width: '95%', height: '25px'}\"  ></p-dropdown> \r\n                                    <label >Tendência</label>\r\n                                    </span>\r\n                                </div>\r\n                              </section>\r\n\r\n                          <br>\r\n                          <hr>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Objetivo</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea [(ngModel)]=\"arrProjeto.objetivo\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Descrição</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.descricao\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Premissas</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.premissas\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Restrições</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.restricao\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n                          <div class=\"card card-w-title\">\r\n                              <h2>Riscos</h2>\r\n                              <textarea  style=\"width: 100%\" pInputTextarea  [(ngModel)]=\"arrProjeto.riscos\" autoResize=\"autoResize\"></textarea>\r\n                          </div>\r\n\r\n\r\n                      </div>\r\n\r\n                      </div>\r\n\r\n                  \r\n                    </div>\r\n                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\">\r\n\r\n                          <div class=\"card card-w-title\" >\r\n                            <h2>Início</h2>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"inicioprevisto\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Previsto</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"inicioreplanejado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Replanejado</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"iniciorealizado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Realizado</label>\r\n                                </span>\r\n                            </div>\r\n                          \r\n\r\n                          <h2>Término</h2>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"terminoprevisto\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Previsto</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px; padding-bottom: 20px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"terminoreplanejado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Replanejado</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"item\" style=\"padding-top: 10px;\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"terminorealizado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                <label >Realizado</label>\r\n                                </span>\r\n                            </div>\r\n                          \r\n                            </div>\r\n\r\n<!--\r\n                          <div class=\"card card-w-title\" >\r\n                              <h2>Segmento</h2>\r\n  \r\n                              <p-accordion [multiple]=\"true\">\r\n                                  <p-accordionTab header=\"Água\">\r\n                                      \r\n                                      <p-tree [value]=\"files2\" selectionMode=\"checkbox\" [(selection)]=\"selectedNodes\" [style]=\"{width: '100%'}\"></p-tree>\r\n                                         \r\n                                      \r\n                                  </p-accordionTab>\r\n                                  <p-accordionTab header=\"Esgoto\">\r\n                                    <div class=\"card\"></div>\r\n                                    <div></div>\r\n                                  </p-accordionTab>\r\n                                  <p-accordionTab header=\"Demais Investimentos\">\r\n                                      <div class=\"card\"></div>\r\n                                  </p-accordionTab>\r\n                              </p-accordion>\r\n                            \r\n      \r\n                        </div>\r\n                    -->\r\n\r\n                        <div class=\"card card-w-title\" >\r\n                          <h2>Partes Interessadas</h2>\r\n                          <div *ngFor=\"let parte of partesInt\">\r\n                            <div class=\"seletor\"><p-inputSwitch [(ngModel)]=\"partes[parte.orgaoId]\" value=\"parte.orgaoId\" label=\"parte.orgao\"></p-inputSwitch>  {{parte.orgao}} </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"ui-g-12\">\r\n                            <button pButton type=\"button\" style=\"width:100%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                        </div>\r\n                      \r\n                      </div>\r\n                  \r\n                  </div>\r\n                  \r\n                  \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato das Informações SESuite-->\r\n                <p-accordionTab header=\"Informações SESuite\"><br>\r\n                <app-sesuiteproject></app-sesuiteproject>\r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Regulatório-->\r\n                <p-accordionTab header=\"Regulatório\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: {{oFluxo.aprovacao}}</div><br>\r\n                  <div class=\"ui-g\">\r\n                      \r\n                      <div div class=\"ui-g-6\">\r\n                            <div class=\"card card-w-title\" >\r\n                        <div class=\"ui-g\">\r\n                                <div div class=\"ui-g-8\">\r\n                            <span class=\"md-inputfield\" style=\"margin-top: 20px;\"><!--[(ngModel)]=\"selectedFluxo\" -->\r\n                                <p-dropdown [options]=\"fluxos\"  [(ngModel)]=\"selectedFluxo\" defaultLabel=\"\" [style]=\"{width: '100%', height: '25px'}\" (onChange)=\"atualizarRevisao(selectedFluxo)\" ></p-dropdown> \r\n                               \r\n                                \r\n                                <label>Nº Revisão Quinquenal</label>\r\n                            </span></div><!-- *ngIf=\"aprov\"-->\r\n                            <div div class=\"ui-g-4\" *ngIf=\"aprov\"><!--(click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()\"-->\r\n                                    <button pButton type=\"button\" label=\"Aprovar\" (click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');aprovarRev()\"\r\n                                     style=\"width:100%\"  icon=\"ui-icon-thumb-up\" ></button>\r\n                            </div>\r\n                            <div div class=\"ui-g-12\">\r\n                            <h2>Observação</h2><!--[(ngModel)]=\"oFluxo.descricao\"-->\r\n                                <textarea  style=\"width: 100%\"  [(ngModel)]=\"oFluxo.descricao\" pInputTextarea rows=\"1\" autoResize=\"autoResize\"></textarea>\r\n                            </div>\r\n                         </div>\r\n                      </div>\r\n                    </div>\r\n                      <div div class=\"ui-g-6\">\r\n                            <button type=\"button\" icon=\"ui-icon-add\" pButton (click)=\"dialogVisible=true\" ></button>\r\n                            <span><b> Adicionar uma nova revisão quinquenal</b></span>\r\n                          <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                  <h2>Marco Contratual</h2>\r\n                                  <div class=\"ui-g\">\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:10px; background: #F5F6F7; width:46%;margin-left: 20px;\">\r\n                                      <div class=\"ui-g-12\"><b>Início</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\"  [(ngModel)]=\"regIniDia\" placeholder=\"dia\"  ></p-dropdown> </div><!--[(ngModel)]=\"regIniDia\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"meses\" [(ngModel)]=\"regIniMes\" placeholder=\"mês\"  ></p-dropdown> </div> <!--[(ngModel)]=\"regIniMes\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"anos\" [(ngModel)]=\"regIniAno\" placeholder=\"ano\"  ></p-dropdown> </div> <!--[(ngModel)]=\"regIniAno\"-->\r\n                                  </div>\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;\">\r\n                                      <div class=\"ui-g-12\"><b>Término</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\" [(ngModel)]=\"regFimDia\" placeholder=\"dia\"  ></p-dropdown> </div><!--[(ngModel)]=\"regFimDia\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [(ngModel)]=\"regFimMes\" [options]=\"meses\"  placeholder=\"mês\"  ></p-dropdown> </div><!--[(ngModel)]=\"regFimMes\"-->\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown [(ngModel)]=\"regFimAno\" [options]=\"anos\"  placeholder=\"ano\"  ></p-dropdown> </div><!--[(ngModel)]=\"regFimAno\"-->\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                      </div>\r\n\r\n                      <div class=\"ui-g-12\">\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                        <div class=\"ui-g\">\r\n                            <div  div class=\"ui-g-6\" style=\"margin-top: 20px;\">\r\n                                <span class=\"md-inputfield\"><!--[(ngModel)]=\"oFluxo.valorprojeto\" -->\r\n                                    <input  type=\"text\"  [(ngModel)]=\"oFluxo.valorprojeto\" size=\"60\" pInputText/>\r\n                                    <p-dropdown  [options]=\"anos\" [(ngModel)]=\"oFluxo.moeda\" placeholder=\"Moeda\"  ></p-dropdown><!--[(ngModel)]=\"selectedMoedaReg\" -->\r\n                                    <label>Valor do Projeto/moeda</label>\r\n                                </span>\r\n                            </div>\r\n                            <div class=\"ui-g-6\"><!--(click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()\" -->\r\n                                    <button pButton type=\"button\" style=\"width:100%\" label=\"Salvar\" icon=\"ui-icon-save\"\r\n                                    (click)=\"modelaData(regIniDia,regIniMes,regIniAno,'ri');modelaData(regFimDia,regFimMes,regFimAno,'rt');atualizarRegulatorio()\" ></button>\r\n                                </div>\r\n                            <div  div class=\"ui-g-12\">\r\n                                \r\n                                <br>\r\n                                <p-table [columns]=\"cols2\" [value]=\"delib\" dataKey=\"nProcesso\" editMode=\"row\"  >\r\n                                    <ng-template pTemplate=\"caption\">\r\n                                    </ng-template>\r\n                                    <ng-template pTemplate=\"header\" let-columns [ngStyle]=\"{'width': '100%'}\">\r\n                                        <tr> \r\n                                            \r\n                                            <th  *ngFor=\"let col of columns\">\r\n                                                {{col.header}}\r\n                                            </th>\r\n                                            \r\n                                            <th style=\"width:8em; text-align: center;\">\r\n                                                <button type=\"button\" icon=\"ui-icon-add\" (click)= \"cadDelibVisible=true\" pButton></button>\r\n                                            </th>\r\n                                        </tr>\r\n                                    </ng-template>\r\n                                    <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                        <tr [pEditableRow]=\"rowData\">\r\n                                            \r\n                                            \r\n                                          <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <input pInputText type=\"text\" [(ngModel)]=\"rowData['ndeliberacao']\" >\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['ndeliberacao']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <input pInputText type=\"text\" [(ngModel)]=\"rowData['assunto']\" >\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['assunto']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                                {label:'', value:null},\r\n                                                                {label:'Informativo', value:'Informativo'},\r\n                                                                {label:'Deliberativo', value:'Deliberativo'}\r\n                                                                ]\" \r\n                                                                [(ngModel)]=\"selectedTipo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                            </p-dropdown>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['tipo']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                          <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['envio']\"></p-calendar>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['envio']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['aprovado']\"  ></p-calendar>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['aprovado']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          \r\n\r\n                                          <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['retorno']\"  ></p-calendar>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            {{rowData['retorno']}}\r\n                                                    </ng-template>\r\n                                                </p-cellEditor>\r\n                                              </td>\r\n\r\n                                          <td>\r\n                                            <p-cellEditor>\r\n                                                <ng-template pTemplate=\"input\"  >\r\n                                                    <input pInputText type=\"text\" [(ngModel)]=\"rowData['link']\" >\r\n                                                </ng-template>\r\n                                            <ng-template pTemplate=\"output\">\r\n                                                    <a href=\"{{rowData['link']}}\"><img src=\"assets/images/sesuite.png\" style=\"width: 35px; margin-right: 1em; vertical-align: middle;\"></a>\r\n                                            </ng-template>\r\n                                          </p-cellEditor>\r\n                                          </td>\r\n      \r\n                                            <td style=\"text-align:center;\">\r\n                                                <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInit(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                                <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSave(rowData)\"></button>\r\n                                                <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                            </td>\r\n                                        </tr>\r\n                                    </ng-template>\r\n                                </p-table>\r\n                                \r\n                            </div>\r\n                        </div>\r\n                      </div> \r\n\r\n                      </div> \r\n\r\n                    \r\n\r\n                    </div>\r\n\r\n\r\n\r\n                    <!--Box de Cadastro-->\r\n    <p-dialog header=\"Cadastro de deliberação\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"cadDelibVisible\">\r\n        <div class=\"ui-g\">\r\n\r\n            <div  div class=\"ui-g-12\">\r\n\r\n                     \r\n\r\n              <div class=\"card card-w-title\" >\r\n                    <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 10px;padding-bottom: 15px\">\r\n                    <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novaDelib.ndeliberacao\" type=\"text\" size=\"25\" pInputText/>\r\n                            <label >Nº Documento</label>\r\n                            </span>\r\n                          </div>\r\n                          <div class=\"item\" >\r\n                              <span class=\"md-inputfield\">\r\n                                    <input id=\"input\" [(ngModel)]=\"novaDelib.assunto\" type=\"text\" size=\"25\" pInputText/>\r\n                              <label >Assunto</label>\r\n                              </span>\r\n                          </div> \r\n                        </section>\r\n                  <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                      <span class=\"md-inputfield\">\r\n                          <input id=\"input\" [(ngModel)]=\"novaDelib.link\" type=\"text\" size=\"60\" pInputText/>\r\n                          <label>Link para SeSuite</label>\r\n                      </span>\r\n               </div>\r\n               \r\n              <section class=\"grid grid-auto-flow-1\">\r\n                \r\n                <div class=\"item\" >\r\n                  <span class=\"md-inputfield\">\r\n                  <p-dropdown [options]=\"[\r\n                  {label:'', value:null},\r\n                  {label:'Informativo', value:'Informativo'},\r\n                  {label:'Deliberativo', value:'Deliberativo'}\r\n                  ]\" \r\n                  [(ngModel)]=\"novaDelib.tipo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                  </p-dropdown>\r\n                  <label >Tipo de Deliberação</label>\r\n                  </span>\r\n                </div>\r\n               \r\n              </section>\r\n            </div>\r\n\r\n            <div class=\"card card-w-title\" >\r\n\r\n                <section class=\"grid grid-auto-flow-1\">\r\n                    <div class=\"item\" style=\"margin-top: 40px\" >\r\n                        <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\"  [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"novaDelib.envio\"  ></p-calendar>\r\n                        <label >Envio</label>\r\n                        </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"novaDelib.retorno\" ></p-calendar>\r\n                          <label >Retorno</label>\r\n                          </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"novaDelib.aprovado\" ></p-calendar>\r\n                          <label >Aprovação</label>\r\n                          </span>\r\n                      </div>\r\n                    </section>\r\n\r\n                <br>\r\n\r\n\r\n            </div>\r\n\r\n            </div></div>\r\n\r\n\r\n        <p-footer>\r\n            <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"insereDelib()\" pButton></button>\r\n            </div>\r\n        </p-footer>\r\n    </p-dialog>\r\n\r\n\r\n\r\n    <p-dialog header=\"Nova Revisão Quinquenal\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"dialogVisible\">\r\n            <div class=\"ui-g\">\r\n                    <div class=\"ui-g-12\">\r\n                    <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                            <p-dropdown [options]=\"fluxoInvest\"  [(ngModel)]=\"selectedCadFluxo\" defaultLabel=\"\" [style]=\"{width: '100%', height: '25px'}\" ></p-dropdown> \r\n                           \r\n                            \r\n                            <label>Nº Revisão</label>\r\n                        </span>\r\n                        </div>\r\n                <div  div class=\"ui-g-12\">\r\n                  <div class=\"card card-w-title\" >\r\n                      <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                          <span class=\"md-inputfield\">\r\n                              <input id=\"input\" [(ngModel)]=\"descrevendo\" type=\"text\" size=\"60\" pInputText/>\r\n                              <label>Observação</label>\r\n                          </span>\r\n                   </div>\r\n                 </div>\r\n                 </div>\r\n                 </div>\r\n    \r\n            <p-footer>\r\n                <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                    <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"enviarReg(selectedCadFluxo.toString())\" pButton></button>\r\n                </div>\r\n            </p-footer>\r\n        </p-dialog>\r\n\r\n\r\n\r\n\r\n                    \r\n                </p-accordionTab>  \r\n\r\n                <!--Aqui da Engenharia(Projeto)-->\r\n                <p-accordionTab header=\"Engenharia(Projeto)\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ; color:white;\">Status da fase: {{arrProjeto.statusengenharia}}</div><br>\r\n                  <div class=\"ui-g\">\r\n                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                      <div  div class=\"ui-g-12\">\r\n                          <div class=\"ui-g-3\" style=\"margin-top: 3px;\">\r\n                              <span class=\"md-inputfield\">\r\n                                  <input  type=\"text\" [(ngModel)]=\"arrProjeto.pepengenharia\" size=\"30\" pInputText/>\r\n                                  <label>PEP do Projeto</label>\r\n                              </span>\r\n                          </div>\r\n                          \r\n                          <div class=\"ui-g-3\">\r\n                                <span class=\"md-inputfield\">\r\n                                <p-dropdown [options]=\"[\r\n                                  {label:'', value:null},\r\n                                  {label:'Não Iniciado', value:'Não Iniciado'},\r\n                                  {label:'Em Andamento', value:'Em Andadmento'},\r\n                                  {label:'Concluído', value:'Concluído'},\r\n                                  {label:'Paralisado', value:'Paralisado'},\r\n                                  {label:'Não se aplica', value:'Não se aplica'}\r\n                                  ]\" \r\n                                [(ngModel)]=\"arrProjeto.statusengenharia\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                </p-dropdown>\r\n                                <label >Status da fase</label>\r\n                                </span>\r\n                          </div>\r\n                          <div class=\"ui-g-3\"> </div>\r\n\r\n                          <div class=\"ui-g-3\">\r\n                              <div style=\" width:230px; position:relative !important; margin-left: 20%; margin-top: -25px\">\r\n                                  <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                      <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                      <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                  </div>\r\n                              </div>\r\n                            </div>\r\n                      </div>\r\n\r\n                      <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                        <button pButton type=\"button\" style=\"width:30%\"label=\"Salvar\" (click)=\"salvainfoEngenharia()\" icon=\"ui-icon-save\" ></button>\r\n                      </div>\r\n\r\n                      <div  div class=\"ui-g-12\">\r\n                            <br>\r\n                            <p-table [columns]=\"cols\" [value]=\"engenharia\" dataKey=\"engenhariaId\" editMode=\"row\">\r\n                                <ng-template pTemplate=\"caption\">\r\n                                </ng-template>\r\n                                <ng-template pTemplate=\"header\" let-columns>\r\n                                    <tr> \r\n                                        <th *ngFor=\"let col of columns\">\r\n                                            {{col.header}}\r\n                                        </th>\r\n                                        <th style=\"width:8em; text-align: center;\">\r\n                                            <button type=\"button\" icon=\"ui-icon-add\" (click) = \"cadengenharia = true\" pButton></button>\r\n                                        </th>\r\n                                    </tr>\r\n                                </ng-template>\r\n                                <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                   \r\n                                    <tr [pEditableRow]=\"rowData\">\r\n\r\n                                            <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                <input id=\"input\" [(ngModel)]=\"rowData['empresa']\" type=\"text\" size=\"25\" pInputText/>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['empresa']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                            </td>\r\n\r\n                                            <td>\r\n                                                    <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <span class=\"md-inputfield\">\r\n                                                                        <input id=\"input\" [(ngModel)]=\"rowData['representanteempresa']\" type=\"text\" size=\"25\" pInputText/>\r\n                                                                    </span>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                     {{rowData['representanteempresa']}}\r\n                                                            </ng-template>\r\n                                                         </p-cellEditor>  \r\n                                            </td>\r\n\r\n                                            <td>\r\n                                                    <p-cellEditor>\r\n                                                        <ng-template pTemplate=\"input\"  >\r\n                                                                <span class=\"md-inputfield\">\r\n                                                                    <input id=\"input\" [(ngModel)]=\"rowData['responsavel']\" type=\"text\" size=\"25\" pInputText/>\r\n                                                                </span>\r\n                                                        </ng-template>\r\n                                                        <ng-template pTemplate=\"output\">\r\n                                                                 {{rowData['responsavel']}}\r\n                                                        </ng-template>\r\n                                                     </p-cellEditor>                       \r\n                                                </td>\r\n\r\n                                                <td>\r\n                                                        <p-cellEditor>   \r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <p-dropdown [options]=\"[\r\n                                                                    {label:'', value:null},\r\n                                                                    {label:'Projeto Executivo', value:'Projeto Executivo'},\r\n                                                                    {label:'Projeto Básico', value:'Projeto Básico'},\r\n                                                                    {label:'Estudo de Concepção', value:'Estudo de Concepção'},\r\n                                                                    {label:'Estudos Ambientais', value:'Estudos Ambientais'}\r\n                                                                    ]\" \r\n                                                                [(ngModel)]=\"rowData['tipo']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                                </p-dropdown>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                 {{rowData['tipo']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>                       \r\n                                                    </td>\r\n\r\n                                             <td>\r\n                                                    <p-cellEditor>\r\n                                                        <ng-template pTemplate=\"input\"  >\r\n                                                            <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                                {label:'', value:null},\r\n                                                                {label:'Não Iniciado', value:'Não Iniciado'},\r\n                                                                {label:'Em Andamento', value:'Em Andadmento'},\r\n                                                                {label:'Concluído', value:'Concluído'},\r\n                                                                {label:'Paralisado', value:'Paralisado'},\r\n                                                                {label:'Não se aplica', value:'Não se aplica'}\r\n                                                                ]\" \r\n                                                                [(ngModel)]=\"rowData['status']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                            </p-dropdown>\r\n                                                        </ng-template>\r\n                                                        <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['status']}}\r\n                                                        </ng-template>\r\n                                                    </p-cellEditor>                       \r\n                                                </td>\r\n\r\n                                                    \r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                             <ng-template pTemplate=\"input\"  >\r\n                                                                    <span class=\"md-inputfield\">\r\n                                                                         <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['previsto']\"  ></p-calendar>\r\n                                                                    </span>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                {{rowData['previsto']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor> \r\n                                                    </td>\r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                             <ng-template pTemplate=\"input\"  >\r\n                                                                    <span class=\"md-inputfield\">\r\n                                                                         <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['replanejado']\"  ></p-calendar>\r\n                                                                    </span>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                {{rowData['replanejado']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                    </td>\r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                             <ng-template pTemplate=\"input\"  >\r\n                                                                    <span class=\"md-inputfield\">\r\n                                                                         <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['realizado']\"  ></p-calendar>\r\n                                                                    </span>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                {{rowData['realizado']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                    </td>\r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <span class=\"md-inputfield\">\r\n                                                                        <input id=\"input\" [(ngModel)]=\"rowData['contfisico']\" type=\"text\" size=\"25\" pInputText/>\r\n                                                                    </span>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                    {{rowData['responsavel']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                    </td>\r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <span class=\"md-inputfield\">\r\n                                                                        <input id=\"input\" [(ngModel)]=\"rowData['contsistemico']\" type=\"text\" size=\"25\" pInputText/>\r\n                                                                    </span>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                    {{rowData['contsistemico']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                    </td>\r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                <input pInputText type=\"text\" [(ngModel)]=\"rowData['link']\" >\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                <a href=\"{{rowData['link']}}\"><img src=\"assets/images/sesuite.png\" style=\"width: 35px; margin-right: 1em; vertical-align: middle;\"></a>\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                    </td>\r\n\r\n                                        <td style=\"text-align:center;\">\r\n                                            <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInitEng(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                            <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSaveEng(rowData)\"></button>\r\n                                            <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                        </td>\r\n                                    </tr>\r\n                                </ng-template>\r\n                            </p-table>\r\n\r\n                      </div>\r\n\r\n                  </div>\r\n                </div>\r\n\r\n                                <!--Box de Cadastro-->\r\n    <p-dialog header=\"Cadastro de projetos\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"cadengenharia\">\r\n        <div class=\"ui-g\">\r\n\r\n            <div  div class=\"ui-g-12\">\r\n\r\n                     \r\n\r\n              <div class=\"card card-w-title\" >\r\n                    <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 10px;padding-bottom: 15px\">\r\n                    <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novaengenha.empresa\" type=\"text\" size=\"25\" pInputText/>\r\n                            <label >Empresa</label>\r\n                            </span>\r\n                          </div>\r\n                          <div class=\"item\" >\r\n                              <span class=\"md-inputfield\">\r\n                                    <input id=\"input\" [(ngModel)]=\"novaengenha.representanteempresa\" type=\"text\" size=\"25\" pInputText/>\r\n                              <label >Representante Empresa</label>\r\n                              </span>\r\n                          </div> \r\n                         \r\n                        </section>\r\n                        <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 10px;padding-bottom: 15px\">\r\n                                <div class=\"item\" >\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input id=\"input\" [(ngModel)]=\"novaengenha.responsavel\" type=\"text\" size=\"25\" pInputText/>\r\n                                        <label >Responsável Preenchimento</label>\r\n                                        </span>\r\n                                      </div>\r\n                                      <div class=\"item\" >\r\n                                          <span class=\"md-inputfield\">\r\n                                                <input id=\"input\" [(ngModel)]=\"novaengenha.link\" type=\"text\" size=\"25\" pInputText/>\r\n                                          <label >Link </label>\r\n                                          </span>\r\n                                      </div>\r\n                        </section>\r\n                  <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                    <div class=\"item\" >\r\n                        <span class=\"md-inputfield\">\r\n                        <p-dropdown [options]=\"[\r\n                        {label:'', value:null},\r\n                        {label:'Projeto Executivo', value:'Projeto Executivo'},\r\n                        {label:'Projeto Básico', value:'Projeto Básico'},\r\n                        {label:'Estudo de Concepção', value:'Estudo de Concepção'},\r\n                        {label:'Estudos Ambientais', value:'Estudos Ambientais'}\r\n                            ]\" \r\n                        [(ngModel)]=\"novaengenha.tipo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                        </p-dropdown>\r\n                        <label >Tipo de Projeto</label>\r\n                        </span>\r\n                      </div>\r\n               </div>\r\n               \r\n              <section class=\"grid grid-auto-flow-1\">\r\n                \r\n                <div class=\"item\" >\r\n                  <span class=\"md-inputfield\">\r\n                  <p-dropdown [options]=\"[\r\n                    {label:'', value:null},\r\n                    {label:'Não Iniciado', value:'Não Iniciado'},\r\n                    {label:'Em Andamento', value:'Em Andadmento'},\r\n                    {label:'Concluído', value:'Concluído'},\r\n                    {label:'Paralisado', value:'Paralisado'},\r\n                    {label:'Não se aplica', value:'Não se aplica'}\r\n                    ]\" \r\n                  [(ngModel)]=\"novaengenha.status\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                  </p-dropdown>\r\n                  <label >Status</label>\r\n                  </span>\r\n                </div>\r\n               \r\n              </section>\r\n            </div>\r\n\r\n            <div class=\"card card-w-title\" >\r\n\r\n                <section class=\"grid grid-auto-flow-1\">\r\n                    <div class=\"item\" style=\"margin-top: 40px\" >\r\n                        <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novaengenha.previsto\"  ></p-calendar>\r\n                        <label >Previsto</label>\r\n                        </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novaengenha.replanejado\" ></p-calendar>\r\n                          <label >Replanejado</label>\r\n                          </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novaengenha.realizado\" ></p-calendar>\r\n                          <label >Realizado</label>\r\n                          </span>\r\n                      </div>\r\n                    </section>\r\n\r\n            </div>\r\n\r\n            <div class=\"card card-w-title\" >\r\n\r\n                <section class=\"grid grid-auto-flow-1\">\r\n                    <div class=\"item\" style=\"margin-top: 40px\" >\r\n                        <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novaengenha.contsistemico\" type=\"text\" size=\"25\" pInputText/>\r\n                        <label >Contrato Sistêmico</label>\r\n                        </span>\r\n                      </div>\r\n                      <div class=\"item\" style=\"margin-top: 40px\" >\r\n                          <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novaengenha.contfisico\" type=\"text\" size=\"25\" pInputText/>\r\n                          <label >Contrato Jurídico</label>\r\n                          </span>\r\n                      </div>\r\n                    </section>\r\n\r\n                <br>\r\n\r\n\r\n            </div>\r\n\r\n            </div></div>\r\n\r\n\r\n        <p-footer>\r\n            <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"insereengenharia()\" pButton></button>\r\n            </div>\r\n        </p-footer>\r\n    </p-dialog>\r\n\r\n                  \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Capex-->\r\n                <p-accordionTab header=\"Financeiro(Capex)\" ><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Aprovado</div><br>\r\n                  <div class=\"ui-g\">\r\n                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                        <!--Informações de capex do Cognos-->\r\n                        <div  div class=\"ui-g-6\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-12\">\r\n                                          <h2>Informações Cognos</h2>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                  <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                  {label:'', value:null},\r\n                                                  {label:'Considerado', value:'Considerado'},\r\n                                                  {label:'Não Considerado', value:'Não Considerado'}\r\n                                                ]\" \r\n                                                [(ngModel)]=\"arrProjeto['financeiro'].considerarprojcog\"></p-dropdown>\r\n                                              <label style=\"padding-bottom: 20px\">Considerar Projeto</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                  <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                  {label:'', value:null},\r\n                                                  {label:'Ampliação de Cobertura Água', value: 'Ampliação de Cobertura Água'},\r\n                                                  {label:'Ampliação de Cobertura Esgoto', value: 'Ampliação de Cobertura Esgoto'},\r\n                                                  {label:'Continuidade Operacional', value: 'Continuidade Operacional'},\r\n                                                  {label:'Corte e Religação', value: 'Corte e Religação'},\r\n                                                  {label:'Crescimento Vegetativo Água', value: 'Crescimento Vegetativo Água'},\r\n                                                  {label:'Crescimento Vegetativo Esgoto', value: 'Crescimento Vegetativo Esgoto'},\r\n                                                  {label:'Eficiência Energética', value: 'Eficiência Energética'},\r\n                                                  {label:'Fiscalização', value: 'Fiscalização'},\r\n                                                  {label:'Outros Projetos', value: 'Outros Projetos'},\r\n                                                  {label:'Produção de Água', value: 'Produção de Água'},\r\n                                                  {label:'Projetos Engenharia', value: 'Projetos Engenharia'},\r\n                                                  {label:'Redução de Perdas', value: 'Redução de Perdas'},\r\n                                                  {label:'Segurança Operacional', value: 'Segurança Operacional'},\r\n                                                  {label:'Tratamento de Esgoto', value: 'Tratamento de Esgoto'}\r\n                                                ]\" \r\n                                                [(ngModel)]=\"arrProjeto['financeiro'].tipoprojcognos\"></p-dropdown>\r\n                                              <label style=\"padding-bottom: 20px\">Tipo de Projeto</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                  <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                  {label:'', value:null},\r\n                                                  {label:'Projeto em andamento', value: 'Projeto em andamento'},\r\n                                                  {label:'Projeto a iniciar', value: 'Projeto a iniciar'}\r\n                                                ]\" \r\n                                                [(ngModel)]=\"arrProjeto['financeiro'].status\"></p-dropdown>\r\n                                              <label style=\"padding-bottom: 20px\">Status Projeto</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                  <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                  {label:'', value:null},\r\n                                                  {label:'Sim', value:'Sim'},\r\n                                                  {label:'Não', value:'Não'}\r\n                                                ]\" \r\n                                                [(ngModel)]=\"arrProjeto['financeiro'].perpetuidadeprojcognos\"></p-dropdown>\r\n                                              <label style=\"padding-bottom: 20px\">Perpetuidade</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                    <input  [(ngModel)]=\"arrProjeto['financeiro'].inicioprojcognos\"  type=\"text\" size=\"30px\"  pInputText  />\r\n                                                    <label style=\"padding-bottom: 20px\">Inicio do projeto</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                    <input  [(ngModel)]=\"arrProjeto['financeiro'].prazopagprojcognos\"  type=\"text\" size=\"30px\"  pInputText  />\r\n                                                    <label style=\"padding-bottom: 20px\">Prazo de pagamento</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:30px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                    <input  [(ngModel)]=\"arrProjeto['financeiro'].prazoamorprojcognos\"  type=\"text\" size=\"30px\"  pInputText  />\r\n                                                    <label style=\"padding-bottom: 20px\">Prazo de amortização</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div  class=\"ui-g-6\"style= \"margin-top:20px;\">\r\n                                          <div class=\"item\" >\r\n                                              <span class=\"md-inputfield\">\r\n                                                  <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                  {label:'', value:null},\r\n                                                  {label:'Sim', value:'Sim'},\r\n                                                  {label:'Não', value:'Não'}\r\n                                                ]\" \r\n                                                [(ngModel)]=\"arrProjeto['financeiro'].gerareceitaprojcognos\"></p-dropdown>\r\n                                              <label style=\"padding-bottom: 20px\">Gera Receita?</label>\r\n                                              </span>\r\n                                            </div>\r\n                                        </div>\r\n\r\n                                    </div>\r\n                                </div>        \r\n\r\n                        </div>\r\n\r\n                        <div  div class=\"ui-g-6\">\r\n                            <div class=\"ui-g\">\r\n\r\n                                <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column;\">\r\n                                    <div style=\" width:230px; margin-top: -25px \">\r\n                                        <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                            <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                            <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n\r\n                                <div class=\"ui-g-6\">\r\n                                    <span class=\"md-inputfield\">\r\n                                        <input [(ngModel)]=\"arrProjeto['financeiro'].nprojetocognos\" type=\"text\" pInputText/>\r\n                                        <label>Número do Projeto Cognos</label>\r\n                                    </span>\r\n                                </div>\r\n                                \r\n                                <div class=\"ui-g-6\">\r\n                                    <span class=\"md-inputfield\" style=\"margin-left: 10%;\">\r\n                                        <input [(ngModel)]=\"arrProjeto['financeiro'].valortotal\" type=\"text\" pInputText/>\r\n                                        <label>Valor Total do Projeto</label>\r\n                                    </span>\r\n                                </div>\r\n                                <div class=\"ui-g-12\" style=\"margin-top: 20px;\">\r\n                                    <span class=\"md-inputfield\">\r\n                                            <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                            {label:'', value:null},\r\n                                            {label:'Projeto em andamento', value: 'Projeto em andamento'},\r\n                                            {label:'Projeto a iniciar', value: 'Projeto a iniciar'}\r\n                                          ]\" \r\n                                          [(ngModel)]=\"arrProjeto['financeiro'].status\"></p-dropdown>\r\n                                        <label >Status</label>\r\n                                    </span>\r\n                                </div>\r\n                                <div div class=\"ui-g-12\">\r\n                                    <label >Descrição</label>\r\n                                    <textarea  style=\"width: 100%\" [(ngModel)]=\"arrProjeto['financeiro'].descricao\"  pInputTextarea rows=\"1\" autoResize=\"autoResize\"></textarea>\r\n                                </div>\r\n                                <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column; padding-top: 30px\">\r\n                                        <button pButton type=\"button\" style=\"width:60%;\"\r\n                                        label=\"Salvar\" (click)=\"salvarComprovacao()\" icon=\"ui-icon-save\" ></button>\r\n                                    </div>\r\n                            </div>\r\n                        </div>\r\n                        \r\n                    </div>\r\n                      \r\n                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                          \r\n                          <div style=\"text-align: right; margin-top: 5px\" *ngIf=\"selected\">\r\n                            <button type=\"button\" icon=\"ui-icon-add\" pButton ></button>\r\n                            <span style=\"position: absolute;margin-top: 5px;margin-left: -135px;\">Incluir + 1 ano</span>\r\n                          </div>  \r\n                          <div class=\"ui-g-12\">\r\n                            <p-tabView>\r\n                                <p-tabPanel header=\"Capex 2019\" leftIcon=\"ui-icon-check\">\r\n                                  <div class=\"ui-g\">\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>Valor Aprovado</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                           <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>Valor Realizado</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>Avanço Financeiro</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>1° Rolling-Forecast</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>2° Rolling-Forecast</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                      <div class=\"ui-g-4\">\r\n                                          <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                  <span class=\"md-inputfield\">\r\n                                                      <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                      <label>3° Rolling-Forecast</label>\r\n                                                  </span>\r\n                                           </div>\r\n                                      </div>\r\n                                  </div>\r\n                                </p-tabPanel>\r\n                                <p-tabPanel header=\"Capex 2020\" leftIcon=\"ui-icon-edit\">\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Aprovado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                             <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Realizado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Avanço Financeiro</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>1° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>2° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>3° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </p-tabPanel>\r\n                                <p-tabPanel header=\"Capex 2021\" leftIcon=\"ui-icon-refresh\">\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Aprovado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                             <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Valor Realizado</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>Avanço Financeiro</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>1° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>2° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\">\r\n                                            <div  style=\"margin-top: 20px; margin-bottom: 25px;\">\r\n                                                    <span class=\"md-inputfield\">\r\n                                                        <input  type=\"text\" size=\"45\" pInputText/>\r\n                                                        <label>3° Rolling-Forecast</label>\r\n                                                    </span>\r\n                                             </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </p-tabPanel>\r\n                            </p-tabView>\r\n                          </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                    \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Licenciamento-->\r\n                <p-accordionTab header=\"Licenciamentos\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: {{arrProjeto['statuslicenciamentos']}}</div><br>\r\n                    \r\n                    <div class=\"ui-g\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                              <div  div class=\"ui-g-12\">\r\n                                  <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                      <span class=\"md-inputfield\">\r\n                                            <p-dropdown [options]=\"[\r\n                                            {label:'', value:null},\r\n                                            {label:'Não Iniciado', value:'Não Iniciado'},\r\n                                            {label:'Em Andamento', value:'Em Andadmento'},\r\n                                            {label:'Concluído', value:'Concluído'},\r\n                                            {label:'Paralisado', value:'Paralisado'}\r\n                                              ]\" \r\n                                            [(ngModel)]=\"arrProjeto['statuslicenciamentos']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                        </p-dropdown>\r\n                                          <label>Status Geral</label>\r\n                                      </span>\r\n                                  </div>\r\n                                  \r\n                                  <div class=\"ui-g-3\"></div>\r\n                                  <div class=\"ui-g-3\"> </div>\r\n        \r\n                                  <div class=\"ui-g-3\">\r\n                                      <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                          <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                              <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                              <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                          </div>\r\n                                      </div>\r\n                                    </div>\r\n                              </div>\r\n\r\n                              <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                                    <button pButton type=\"button\" style=\"width:30%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                             </div>\r\n        \r\n                              <div  div class=\"ui-g-12\">\r\n                                    <br>\r\n                                    <p-table [columns]=\"cols3\" [value]=\"licenciamentos\" dataKey=\"licencaId\" editMode=\"row\">\r\n                                        <ng-template pTemplate=\"caption\">\r\n                                        </ng-template>\r\n                                        <ng-template pTemplate=\"header\" let-columns>\r\n                                            <tr> \r\n                                                <th *ngFor=\"let col of columns\">\r\n                                                    {{col.header}}\r\n                                                </th>\r\n                                                <th style=\"width:8em; text-align: center;\">\r\n                                                    <button type=\"button\" icon=\"ui-icon-add\" (click)=\"cadLicenciamentos=true\" pButton></button>\r\n                                                </th>\r\n                                            </tr>\r\n                                        </ng-template>\r\n                                        <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                            <tr [pEditableRow]=\"rowData\">\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                <p-dropdown [options]=\"[\r\n                                                                    {label:'', value:null},\r\n                                                                    {label:'Autorização DER', value:'Autorização DER'},\r\n                                                                    {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},\r\n                                                                    {label:'Licenciamento de Obras', value:'Licenciamento de Obras'},\r\n                                                                    {label:'Outras Licenças', value:'Outras Licenças'}\r\n                                                                    ]\" \r\n                                                                    [(ngModel)]=\"rowData['licenca']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                                  </p-dropdown>\r\n                                                             </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['licenca']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                    <p-dropdown [options]=\"[\r\n                                                                    {label:'', value:null},\r\n                                                                    {label:'Anuência/Autorização', value:'Anuência/Autorização'},\r\n                                                                    {label:'Autorização Ambiental', value:'Autorização Ambiental'},\r\n                                                                    {label:'Autorização/Licença de Obras', value:'Autorização/Licença de Obras'},\r\n                                                                    {label:'Certidão Ambiental', value:'Certidão Ambiental'},\r\n                                                                    {label:'Certidão de Inexigibilidade Ambiental', value:'Certidão de Inexigibilidade Ambiental'},\r\n                                                                    {label:'Licença Ambiental Simplificada', value:'Licença Ambiental Simplificada'},\r\n                                                                    {label:'Licença de Instalação', value:'Licença de Instalação'},\r\n                                                                    {label:'Licença de Instalação e Operação', value:'Licença de Instalação e Operação'},\r\n                                                                    {label:'Licença de Operação', value:'Licença de Operação'},\r\n                                                                    {label:'Licença Prévia e Instalação', value:'Licença Prévia e Instalação'},\r\n                                                                    {label:'Nada Opor', value:'Nada Opor'}\r\n                                                                    ]\" \r\n                                                                  [(ngModel)]=\"rowData['tipo']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                                  </p-dropdown>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['tipo']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                    <p-dropdown [options]=\"[\r\n                                                                    {label:'', value:null},\r\n                                                                    {label:'Não Iniciado', value:'Não Iniciado'},\r\n                                                                    {label:'Em Andamento', value:'Em Andadmento'},\r\n                                                                    {label:'Concluído', value:'Concluído'},\r\n                                                                    {label:'Paralisado', value:'Paralisado'}\r\n                                                                      ]\" \r\n                                                                    [(ngModel)]=\"rowData['status']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                                </p-dropdown>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['status']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                <input id=\"input\" [(ngModel)]=\"rowData['orgao']\" type=\"text\"  pInputText/>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['orgao']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                <input id=\"input\" [(ngModel)]=\"rowData['descricao']\" type=\"text\" pInputText/>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['descricao']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                <input id=\"input\" [(ngModel)]=\"rowData['protocolo']\" type=\"text\" pInputText/>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['protocolo']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                    <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['inicio']\"  ></p-calendar>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['inicio']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n                                                <td>\r\n                                                <p-cellEditor>\r\n                                                    <ng-template pTemplate=\"input\"  >\r\n                                                            <span class=\"md-inputfield\">\r\n                                                                    <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"rowData['termino']\"  ></p-calendar>\r\n                                                            </span>\r\n                                                    </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                             {{rowData['termino']}}\r\n                                                    </ng-template>\r\n                                                 </p-cellEditor>                       \r\n                                                </td>\r\n\r\n                                                 <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                <input pInputText type=\"text\" [(ngModel)]=\"rowData['link']\" >\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                <a href=\"{{rowData['link']}}\"><img src=\"assets/images/sesuite.png\" style=\"width: 35px; margin-right: 1em; vertical-align: middle;\"></a>\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                </td>\r\n        \r\n                                                <td style=\"text-align:center;\">\r\n                                                    <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInitLic(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                                    <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSaveLic(rowData)\"></button>\r\n                                                    <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                                </td>\r\n                                            </tr>\r\n                                        </ng-template>\r\n                                    </p-table>\r\n        \r\n                              </div>\r\n        \r\n                          </div>\r\n                        </div>\r\n\r\n\r\n                        <!--Box de Cadastro-->\r\n    <p-dialog header=\"Cadastro de Licenciamentos\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"cadLicenciamentos\">\r\n            <div class=\"ui-g\">\r\n    \r\n                <div  div class=\"ui-g-12\">\r\n\r\n                        <div class=\"card card-w-title\" >\r\n    \r\n                            <section class=\"grid grid-auto-flow-1\">\r\n                                <div class=\"item\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novalicenca.inicio\"  ></p-calendar>\r\n                                        <label >Data de Início</label>\r\n                                    </span>\r\n                                </div>\r\n                                <div class=\"item\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novalicenca.termino\"  ></p-calendar>\r\n                                        <label >Data de Término</label>\r\n                                    </span>\r\n                                </div>\r\n                               \r\n                            </section>\r\n                \r\n                        </div>\r\n    \r\n                         \r\n    \r\n                  <div class=\"card card-w-title\" >\r\n                        <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 10px;padding-bottom: 15px\">\r\n                        <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                                    <p-dropdown [options]=\"[\r\n                                    {label:'', value:null},\r\n                                    {label:'Autorização DER', value:'Autorização DER'},\r\n                                    {label:'Licenciamento Ambiental', value:'Licenciamento Ambiental'},\r\n                                    {label:'Licenciamento de Obras', value:'Licenciamento de Obras'},\r\n                                    {label:'Outras Licenças', value:'Outras Licenças'}\r\n                                    ]\" \r\n                                    [(ngModel)]=\"novalicenca.licenca\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                  </p-dropdown>\r\n                                <label >Licenca</label>\r\n                            </span>\r\n                        </div>\r\n                              \r\n                            </section>\r\n                        <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                          <span class=\"md-inputfield\">\r\n                              <input id=\"input\" [(ngModel)]=\"novalicenca.descricao\" type=\"text\" size=\"60\" pInputText/>\r\n                              <label>Descrição</label>\r\n                          </span>\r\n                        </div>\r\n                   \r\n                  <section class=\"grid grid-auto-flow-1\">\r\n                    \r\n                    <div class=\"item\" >\r\n                      <span class=\"md-inputfield\">\r\n                      <p-dropdown [options]=\"[\r\n                        {label:'', value:null},\r\n                        {label:'Anuência/Autorização', value:'Anuência/Autorização'},\r\n                        {label:'Autorização Ambiental', value:'Autorização Ambiental'},\r\n                        {label:'Autorização/Licença de Obras', value:'Autorização/Licença de Obras'},\r\n                        {label:'Certidão Ambiental', value:'Certidão Ambiental'},\r\n                        {label:'Certidão de Inexigibilidade Ambiental', value:'Certidão de Inexigibilidade Ambiental'},\r\n                        {label:'Licença Ambiental Simplificada', value:'Licença Ambiental Simplificada'},\r\n                        {label:'Licença de Instalação', value:'Licença de Instalação'},\r\n                        {label:'Licença de Instalação e Operação', value:'Licença de Instalação e Operação'},\r\n                        {label:'Licença de Operação', value:'Licença de Operação'},\r\n                        {label:'Licença Prévia e Instalação', value:'Licença Prévia e Instalação'},\r\n                        {label:'Nada Opor', value:'Nada Opor'}\r\n                        ]\" \r\n                      [(ngModel)]=\"novalicenca.tipo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                      </p-dropdown>\r\n                      <label >tipo de licenciamento</label>\r\n                      </span>\r\n                    </div>\r\n\r\n                    <div class=\"item\" >\r\n                        <span class=\"md-inputfield\">\r\n                        <p-dropdown [options]=\"[\r\n                            {label:'', value:null},\r\n                            {label:'Não Iniciado', value:'Não Iniciado'},\r\n                            {label:'Em Andamento', value:'Em Andadmento'},\r\n                            {label:'Concluído', value:'Concluído'},\r\n                            {label:'Paralisado', value:'Paralisado'}\r\n                              ]\" \r\n                            [(ngModel)]=\"novalicenca.status\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                        </p-dropdown>\r\n                        <label >Status</label>\r\n                        </span>\r\n                    </div>\r\n                   \r\n                  </section>\r\n                  <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 30px\">\r\n                        <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novalicenca.orgao\" type=\"text\" pInputText/>\r\n                                <label >Orgão</label>\r\n                            </span>\r\n                        </div>\r\n                        <div class=\"item\" >\r\n                            <span class=\"md-inputfield\">\r\n                                <input id=\"input\" [(ngModel)]=\"novalicenca.protocolo\" type=\"text\"  pInputText/>\r\n                                <label >Protocolo</label>\r\n                            </span>\r\n                        </div>\r\n                        <div class=\"item\" >\r\n                                <span class=\"md-inputfield\">\r\n                                      <input id=\"input\" [(ngModel)]=\"novalicenca.link\" type=\"text\" size=\"25\" pInputText/>\r\n                                <label >Link </label>\r\n                                </span>\r\n                            </div>\r\n                  </section>\r\n                  \r\n                </div>\r\n    \r\n                \r\n    \r\n                </div></div>\r\n    \r\n    \r\n            <p-footer>\r\n                <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                    <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"insereLicenciamento()\" pButton></button>\r\n                </div>\r\n            </p-footer>\r\n        </p-dialog>\r\n\r\n\r\n                      \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Contratação-->\r\n                <p-accordionTab header=\"Contratação\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: {{arrProjeto['contratacao'].status}}</div><br>\r\n\r\n                    <div class=\"ui-g\">\r\n\r\n                            <div class=\"ui-g-12\">\r\n                                    <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                        <div class=\"ui-g\">\r\n                                                <div class=\"ui-g-6\" style=\"margin-top: 10px;\">\r\n                                                        <span class=\"md-inputfield\" style=\"margin-top: 10px;\">\r\n                                                            <input  type=\"text\" [(ngModel)]=\"arrProjeto['contratacao'].npedido\" size=\"60\" pInputText/>\r\n                                                            <label>Número do Pedido</label>\r\n                                                        </span>\r\n                                                      </div>\r\n                                                      <div class=\"ui-g-6\" style=\"margin-top: 10px;\">\r\n                                                          <span class=\"md-inputfield\" style=\"margin-top: 10px;\">\r\n                                                              <input  type=\"text\" [(ngModel)]=\"arrProjeto['contratacao'].requisicao\" size=\"60\" pInputText/>\r\n                                                              <label>Requisição</label>\r\n                                                          </span>\r\n                                                      </div>\r\n                                    \r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" [(ngModel)]=\"arrProjeto['contratacao'].contratosistemico\" size=\"30\" pInputText/>\r\n                                            <label>Contrato Sistêmico</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" [(ngModel)]=\"arrProjeto['contratacao'].contratofisico\" vsize=\"30\" pInputText/>\r\n                                            <label>Contrato Físico</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" [(ngModel)]=\"arrProjeto['contratacao'].nomeempresa\" size=\"30\" pInputText/>\r\n                                            <label>Nome da Empresa</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                            <input  type=\"text\" [(ngModel)]=\"arrProjeto['contratacao'].responsavel\" size=\"30\" pInputText/>\r\n                                            <label>Nome do Responsável</label>\r\n                                        </span>\r\n                                    </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                      \r\n                        <div div class=\"ui-g-6\">\r\n                        <div class=\"card card-w-title\">\r\n                          <div class=\"ui-g\">\r\n                            \r\n                            <div class=\"ui-g-12\" style=\"margin-top: -15px\">\r\n                                <h2>Datas</h2>\r\n                                <div class=\"ui-g\">\r\n                                <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;\">\r\n                                    <div class=\"ui-g-12\"><b>Início</b></div>\r\n                                    <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"meses\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"anos\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                </div>\r\n                                <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;\">\r\n                                    <div class=\"ui-g-12\"><b>Término</b></div>\r\n                                    <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"meses\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                    <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"anos\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                </div>\r\n                                <div class=\"ui-g-6\" style=\"margin-top: 15px;\">\r\n                                        <span class=\"md-inputfield\" style=\"margin-top: 15px;\">\r\n                                            <input  type=\"text\" size=\"30\" [(ngModel)]=\"arrProjeto['contratacao'].valorcontratado\" pInputText/>\r\n                                            <label>Valor Contratado</label>\r\n                                        </span>\r\n                                    </div>\r\n                                <div class=\"ui-g-6\" style=\"margin-top: 15px;\">\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-dropdown [options]=\"status\"  [(ngModel)]=\"arrProjeto['contratacao'].status\" defaultLabel=\"\"  [style]=\"{width: '95%', height: '25px'}\"></p-dropdown>\r\n                                        <label >Status</label>\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                          </div>\r\n                          </div>\r\n                        </div>\r\n\r\n                        </div>\r\n\r\n                        <div div class=\"ui-g-6\">\r\n                          <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                  <h2>Aditivo</h2>\r\n                                  <div class=\"ui-g\">\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%;margin-left: 20px;\">\r\n                                      <div class=\"ui-g-12\"><b>Início</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"meses\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"anos\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                  </div>\r\n                                  <div class=\"ui-g-6\" style=\"border-style: outset;padding-right:3px; background: #F5F6F7; width:46%; margin-left: 6px;\">\r\n                                      <div class=\"ui-g-12\"><b>Término</b></div>\r\n                                      <div class=\"ui-g-4 \"><p-dropdown  [options]=\"dias\" placeholder=\"dia\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 5px;\"><p-dropdown  [options]=\"meses\" placeholder=\"mês\"  ></p-dropdown> </div>\r\n                                      <div class=\"ui-g-4\" style=\"padding-left: 10px;\"><p-dropdown  [options]=\"anos\" placeholder=\"ano\"  ></p-dropdown> </div>\r\n                                  </div>\r\n                                  <div class=\"ui-g-12\" style=\"margin-top: 15px;\">\r\n                                    <span class=\"md-inputfield\" style=\"margin-top: 15px;\">\r\n                                        <input  type=\"text\" size=\"60\" [(ngModel)]=\"arrProjeto['contratacao'].valorcontratadoaditivo\"  pInputText/>\r\n                                        <label>Valor Contratado</label>\r\n                                    </span>\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n\r\n                        <div  div class=\"ui-g-12\" >\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Escopo</h2>\r\n                                    <textarea  style=\"width: 100%; padding-bottom: 18px\" pInputTextarea [(ngModel)]=\"arrProjeto['contratacao'].escopo\" autoResize=\"autoResize\"></textarea>\r\n                                </div>\r\n                                <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                                        <button pButton type=\"button\" style=\"width:30%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                                 </div>\r\n                             </div>\r\n\r\n                        \r\n                    </div>\r\n\r\n                      \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato da Obra-->\r\n                <p-accordionTab header=\"Engenharia(Obra)\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: {{arrProjeto['obra'].status}}</div><br>\r\n                    <div class=\"ui-g\">\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                            <div  div class=\"ui-g-12\">\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <input  type=\"text\" [(ngModel)]=\"arrProjeto['obra'].avancofisico\" size=\"35\" pInputText/>\r\n                                            <label>Avanço Físico</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    \r\n                                    \r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 10px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                                <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                              {label:'', value:null},\r\n                                              {label:'Engenharia', value:'Engenharia'},\r\n                                              {label:'Unidade', value:'Unidade'}\r\n                                            ]\" \r\n                                            [(ngModel)]=\"arrProjeto['obra'].execucao\"></p-dropdown>\r\n                                            <label >Executado por</label>\r\n                                        </span>\r\n                                    </div>\r\n\r\n                                    <div class=\"ui-g-3\" style=\"margin-top: 10px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"status\" \r\n                                            [(ngModel)]=\"arrProjeto['obra'].status\"></p-dropdown>\r\n                                            <label >Status</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                            <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                                <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                                <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div class=\"ui-g-4\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <h2>Previsto</h2>\r\n                                <div class=\"ui-g\">\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"arrProjeto['obra'].inicioprevisto\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                            <label >Início</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"arrProjeto['obra'].previsto\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Término</label>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>    \r\n                        </div>\r\n                        <div class=\"ui-g-4\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <h2>Replanejado</h2>\r\n                                <div class=\"ui-g\">\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"arrProjeto['obra'].inicioreplanejado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                            <label >Início</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"arrProjeto['obra'].replanejado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Término</label>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div> \r\n                        </div>\r\n                        <div class=\"ui-g-4\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <h2>Realizado</h2>\r\n                                <div class=\"ui-g\">\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                        <span class=\"md-inputfield\">\r\n                                            <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"arrProjeto['obra'].iniciorealizado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                            <label >Início</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [locale]=\"pt\" [monthNavigator]=\"true\" [yearNavigator]=\"true\" yearRange=\"2008:2041\" [(ngModel)]=\"arrProjeto['obra'].realizado\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Término</label>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div> \r\n                            \r\n                        </div>\r\n                        <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                                <button pButton type=\"button\" style=\"width:30%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                         </div>\r\n                    </div>\r\n                      \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato do Comissionamento-->\r\n                <p-accordionTab header=\"Comissionamento\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: Em Andamento</div><br>\r\n                    <div class=\"ui-g\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <div  div class=\"ui-g-12\">\r\n                                        <div class=\"ui-g-3\" style=\"margin-top: 20px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <input  type=\"text\" [(ngModel)]=\"arrProjeto['comissionamento'].avancofisico\" size=\"35\" pInputText/>\r\n                                                <label>Avanço Físico</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        \r\n                                        <div class=\"ui-g-3\"></div>\r\n    \r\n                                        <div class=\"ui-g-3\" style=\"margin-top: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-multiSelect [options]=\"status\"  defaultLabel=\"\" [style]=\"{width: '90%', height: '25px'}\"></p-multiSelect>\r\n                                                <label >Status</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-3\">\r\n                                            <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                                <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                                    <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                                    <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                </div>\r\n                            </div>\r\n                            \r\n    \r\n                            <div class=\"ui-g-4\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Previsto</h2>\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\"  [style]=\"{width: '100%', height: '25px'}\" [(ngModel)]=\"arrProjeto['comissionamento'].inicioprevisto\"></p-calendar>\r\n                                                <label >Início</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                                <span class=\"md-inputfield\">\r\n                                                    <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\"  [style]=\"{width: '100%', height: '25px'}\" [(ngModel)]=\"arrProjeto['comissionamento'].terminoprevisto\"></p-calendar>\r\n                                                    <label >Término</label>\r\n                                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>    \r\n                            </div>\r\n                            <div class=\"ui-g-4\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Replanejado</h2>\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\"  [style]=\"{width: '100%', height: '25px'}\" [(ngModel)]=\"arrProjeto['comissionamento'].inicioreplanejado\" ></p-calendar>\r\n                                                <label >Início</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                                <span class=\"md-inputfield\">\r\n                                                    <p-calendar [showIcon]=\"true\"  dateFormat=\"dd/mm/yy\" [style]=\"{width: '100%', height: '25px'}\" [(ngModel)]=\"arrProjeto['comissionamento'].terminoreplanejado\"></p-calendar>\r\n                                                    <label >Término</label>\r\n                                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                </div> \r\n                            </div>\r\n                            <div class=\"ui-g-4\">\r\n                                <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                    <h2>Realizado</h2>\r\n                                    <div class=\"ui-g\">\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\"  [style]=\"{width: '100%', height: '25px'}\" [(ngModel)]=\"arrProjeto['comissionamento'].iniciorealizado\"></p-calendar>\r\n                                                <label >Início</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-6\" style=\"padding-top: 10px; padding-bottom: 5px;\">\r\n                                                <span class=\"md-inputfield\">\r\n                                                    <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\"  [style]=\"{width: '100%', height: '25px'}\" [(ngModel)]=\"arrProjeto['comissionamento'].terminorealizado\"></p-calendar>\r\n                                                    <label >Término</label>\r\n                                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                </div> \r\n                            </div>\r\n                            <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                                <button pButton type=\"button\" style=\"width:30%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                            </div>\r\n                        </div>  \r\n                        \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato da Comprovação-->\r\n                <p-accordionTab header=\"Comprovação\"><div style=\"margin-left: 70%; margin-top:-40px; position:absolute ;color:white;\">Status da fase: {{arrProjeto['comprovacao'].status}}</div><br>\r\n                    <div class=\"ui-g\">\r\n                            <div class=\"card card-w-title\" style=\"width:100%\">\r\n                                <div  div class=\"ui-g-12\">\r\n                                        <div class=\"ui-g-8\" style=\"margin-top: 20px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <input  type=\"text\" size=\"60\" [(ngModel)]=\"arrProjeto['comprovacao'].nprocesso\" pInputText />\r\n                                                <label>Número do Processo</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-4\" style=\"margin-top: 5px;\">\r\n                                            <div style=\" width:230px; position:relative !important; margin-left: 20%;\">\r\n                                                <div class=\"ui-g card overview-box overview-box-4\" style=\"background: #F5F6F7; \">\r\n                                                    <b><span class=\"overview-box-name\">Andamento:</span>\r\n                                                    <input style=\"border:0px;background: #F5F6F7;\" size=\"10\" value=\"80%\"/></b>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n\r\n                                        <div class=\"ui-g-2\" style=\"margin-top: 20px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-calendar [showIcon]=\"true\" [(ngModel)]=\"arrProjeto['comprovacao'].envio\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Data Envio</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        \r\n                                        <div class=\"ui-g-2\">\r\n                                            <span class=\"md-inputfield\"  style=\"margin-top: 20px;\">\r\n                                                <p-calendar [showIcon]=\"true\" [(ngModel)]=\"arrProjeto['comprovacao'].retorno\" [style]=\"{width: '100%', height: '25px'}\"></p-calendar>\r\n                                                <label >Data Retorno</label>\r\n                                            </span>\r\n                                        </div>\r\n    \r\n                                        <div class=\"ui-g-2\" style=\"margin-top: 16px;\">\r\n                                            <span class=\"md-inputfield\">\r\n                                                <p-dropdown [options]=\"status\"  [(ngModel)]=\"arrProjeto['comprovacao'].status\" defaultLabel=\"\" [style]=\"{width: '90%', height: '25px'}\"></p-dropdown>\r\n                                                <label >Status</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-2\">\r\n                                            <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                                <input  type=\"text\" [(ngModel)]=\"arrProjeto['comprovacao'].valorcomprovado\" pInputText/>\r\n                                                <label>Valor Comprovado</label>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-2\">\r\n                                                <span class=\"md-inputfield\" style=\"margin-top: 16px;\">\r\n                                                    <p-dropdown  [options]=\"anos\" [(ngModel)]=\"arrProjeto['comprovacao'].moeda\" placeholder=\"Moeda\"  ></p-dropdown>\r\n                                                    <label>Moeda</label>\r\n                                                </span>\r\n                                        </div>\r\n                                        <div class=\"ui-g-2\">\r\n                                                <span class=\"md-inputfield\" style=\"margin-top: 20px;\">\r\n                                                        <input  type=\"text\" [(ngModel)]=\"arrProjeto['comprovacao'].valoratualizado\" pInputText/>\r\n                                                        <label>Valor Atualizado</label>\r\n                                                    </span>\r\n                                        </div>\r\n                                </div>\r\n                            </div>\r\n                            <!--#######################################################################################################################################\r\n                                ########################### Testando conversões de formato número/moeda universal #####################################################\r\n                                #######################################################################################################################################\r\n\r\n                            <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                                    <button pButton type=\"button\" style=\"width:30%;\"\r\n                                    label=\"Testando\" (click)=\"formatoMoeda('3.658,36')\" icon=\"ui-icon-save\" ></button>\r\n                                </div>\r\n                            -->\r\n\r\n                            <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                                <button pButton type=\"button\" style=\"width:30%;\"\r\n                                label=\"Salvar\" (click)=\"salvarComprovacao()\" icon=\"ui-icon-save\" ></button>\r\n                            </div>\r\n                            \r\n                             \r\n                            <div class=\"card\"  style=\"width:100%\">\r\n                                <div class=\"ui-g-12\">\r\n                                    <h2>Arquivos de Comprovação</h2>\r\n                                    <p-growl [value]=\"msgs\"></p-growl>\r\n                                                \r\n                                    \r\n                                    <p-table [columns]=\"colsarqcomp\" [value]=\"comprovacaoarquivos\" dataKey=\"comprovacaoarquivoId\" editMode=\"row\"  >\r\n                                            <ng-template pTemplate=\"caption\">\r\n                                            </ng-template>\r\n                                            <ng-template pTemplate=\"header\" let-columns [ngStyle]=\"{'width': '100%'}\">\r\n                                                <tr> \r\n                                                    \r\n                                                    <th  *ngFor=\"let col of columns\">\r\n                                                        {{col.header}}\r\n                                                    </th>\r\n                                                    \r\n                                                    <th style=\"width:8em; text-align: center;\">\r\n                                                        <button type=\"button\" icon=\"ui-icon-add\" (click)= \"cadArqComp=true\" pButton></button>\r\n                                                    </th>\r\n                                                </tr>\r\n                                            </ng-template>\r\n                                            <ng-template pTemplate=\"body\" let-rowData  let-columns=\"columns\" let-editing=\"editing\" let-ri=\"rowIndex\">\r\n                                                <tr [pEditableRow]=\"rowData\">\r\n                                                    \r\n                                                    \r\n                                                  <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <input pInputText type=\"text\" [(ngModel)]=\"rowData['nomearquivo']\" >\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                    {{rowData['nomearquivo']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                </td>\r\n        \r\n                                                  \r\n        \r\n                                                  \r\n        \r\n                                                    <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                                        {label:'', value:null},\r\n                                                                        {label:'Excel', value:'excel'},\r\n                                                                        {label:'Word', value:'word'},\r\n                                                                        {label:'Power Point', value:'powerpoint'},\r\n                                                                        {label:'PDF', value:'pdf'},\r\n                                                                        {label:'Imagem', value:'img'}\r\n                                                                        ]\" \r\n                                                                        [(ngModel)]=\"rowData['tipoarquivo']\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                                                                    </p-dropdown>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                    {{rowData['tipoarquivo']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                      </td>\r\n        \r\n                                                  \r\n        \r\n                                                  <td>\r\n                                                        <p-cellEditor>\r\n                                                            <ng-template pTemplate=\"input\"  >\r\n                                                                    <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"rowData['envio']\"></p-calendar>\r\n                                                            </ng-template>\r\n                                                            <ng-template pTemplate=\"output\">\r\n                                                                    {{rowData['envio']}}\r\n                                                            </ng-template>\r\n                                                        </p-cellEditor>\r\n                                                      </td>\r\n        \r\n        \r\n                                                  <td>\r\n                                                    <p-cellEditor>\r\n                                                        <ng-template pTemplate=\"input\"  >\r\n                                                            <input pInputText type=\"text\" [(ngModel)]=\"rowData['caminho']\" >\r\n                                                        </ng-template>\r\n                                                    <ng-template pTemplate=\"output\">\r\n                                                            <a href=\"{{rowData['caminho']}}\"><img src=\"assets/images/sesuite.png\" style=\"width: 35px; margin-right: 1em; vertical-align: middle;\"></a>\r\n                                                    </ng-template>\r\n                                                  </p-cellEditor>\r\n                                                  </td>\r\n              \r\n                                                    <td style=\"text-align:center;\">\r\n                                                        <button *ngIf=\"!editing\" pButton type=\"button\" pInitEditableRow  class=\"ui-button-info\" (click)=\"onRowEditInitArq(rowData)\"><i class=\"material-icons\">mode_edit</i></button>\r\n                                                        <button *ngIf=\"editing\" pButton type=\"button\" pSaveEditableRow icon=\"pi pi-check\" class=\"ui-button-success\" style=\"margin-right: .5em\" (click)=\"onRowEditSaveArq(rowData)\"></button>\r\n                                                        <button *ngIf=\"editing\" pButton type=\"button\" pCancelEditableRow icon=\"pi pi-times\" class=\"ui-button-danger\" (click)=\"onRowEditCancel(rowData, ri)\"></button>\r\n                                                    </td>\r\n                                                </tr>\r\n                                            </ng-template>\r\n                                        </p-table>\r\n\r\n\r\n                                </div>\r\n                            </div>\r\n                            </div>\r\n\r\n\r\n\r\n                            <!--Box de Cadastro-->\r\n    <p-dialog header=\"Cadastro de arquivos\" [resizable]=\"true\" responsive=\"true\" [(visible)]=\"cadArqComp\">\r\n            <div class=\"ui-g\">\r\n    \r\n                <div  div class=\"ui-g-12\">\r\n\r\n                        <div class=\"card card-w-title\" >\r\n    \r\n                            <section class=\"grid grid-auto-flow-1\">\r\n                                <div class=\"item\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\" >\r\n                                    <span class=\"md-inputfield\">\r\n                                        <p-calendar [showIcon]=\"true\" dateFormat=\"dd/mm/yy\" [(ngModel)]=\"novacomprovacao.envio\"  ></p-calendar>\r\n                                        <label >Data de envio</label>\r\n                                    </span>\r\n                                </div>\r\n                            </section>\r\n                \r\n                        </div>\r\n    \r\n                         \r\n    \r\n                  <div class=\"card card-w-title\" >\r\n                        <section class=\"grid grid-auto-flow-1\" style=\"margin-top: 10px;padding-bottom: 15px\">\r\n                        <div class=\"item\" >\r\n                                <span class=\"md-inputfield\">\r\n                                    <input id=\"input\" [(ngModel)]=\"novacomprovacao.nomearquivo\" type=\"text\" size=\"25\" pInputText/>\r\n                                <label >Nome do arquivo</label>\r\n                                </span>\r\n                              </div>\r\n                              \r\n                            </section>\r\n                      <div  style=\"margin-top: 20px; margin-bottom: 50px;\">\r\n                          <span class=\"md-inputfield\">\r\n                              <input id=\"input\" [(ngModel)]=\"novacomprovacao.caminho\" type=\"text\" size=\"60\" pInputText/>\r\n                              <label>Link para o arquivo</label>\r\n                          </span>\r\n                   </div>\r\n                   \r\n                  <section class=\"grid grid-auto-flow-1\">\r\n                    \r\n                    <div class=\"item\" >\r\n                      <span class=\"md-inputfield\">\r\n                      <p-dropdown [options]=\"[\r\n                        {label:'', value:null},\r\n                        {label:'Excel', value:'excel'},\r\n                        {label:'Word', value:'word'},\r\n                        {label:'Power Point', value:'powerpoint'},\r\n                        {label:'PDF', value:'pdf'},\r\n                        {label:'Imagem', value:'img'}\r\n                        ]\" \r\n                      [(ngModel)]=\"novacomprovacao.tipoarquivo\" [style]=\"{width: '95%', height: '25px'}\" >\r\n                      </p-dropdown>\r\n                      <label >Tipo de arquivo</label>\r\n                      </span>\r\n                    </div>\r\n                   \r\n                  </section>\r\n                  \r\n                </div>\r\n    \r\n                \r\n    \r\n                </div></div>\r\n    \r\n    \r\n            <p-footer>\r\n                <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n                    <button type=\"button\" label=\"Salvar\" icon=\"ui-icon-save\" (click)=\"insereComprovacaoArq()\" pButton></button>\r\n                </div>\r\n            </p-footer>\r\n        </p-dialog>\r\n\r\n                            \r\n                              \r\n                </p-accordionTab>\r\n\r\n                <!--Aqui trato das Lições Aprendidas-->\r\n                <p-accordionTab header=\"Lições Aprendidas\">\r\n                    <div class=\"ui-g\">\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                            <div  div class=\"ui-g-12\">\r\n                                <h2>Planejado x Realizado</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Responda as questões e comente os pontos mais relevantes]</div>\r\n                                <div class=\"ui-g\" style=\"margin-top: 15px;\">\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                                <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                {label:'', value:null},\r\n                                                {label:'Sim', value:'Sim'},\r\n                                                {label:'Não', value:'Não'}\r\n                                              ]\" \r\n                                              [(ngModel)]=\"arrProjeto['licoes'].objetivosatendidos\"></p-dropdown>\r\n                                            <label>Os objetivos foram atingidos?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                                <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                {label:'', value:null},\r\n                                                {label:'Sim', value:'Sim'},\r\n                                                {label:'Não', value:'Não'}\r\n                                              ]\" \r\n                                              [(ngModel)]=\"arrProjeto['licoes'].entreguenoprazo\"></p-dropdown>\r\n                                            <label>Projeto foi entregue no prazo?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                                <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                {label:'', value:null},\r\n                                                {label:'Sim', value:'Sim'},\r\n                                                {label:'Não', value:'Não'}\r\n                                              ]\" \r\n                                              [(ngModel)]=\"arrProjeto['licoes'].noorcamento\"></p-dropdown>\r\n                                            <label>No orçamento?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                    <div class=\"ui-g-3\">\r\n                                        <span class=\"md-inputfield\">\r\n                                                <p-dropdown [autoWidth]=\"false\" styleClass = \"drop95\" [options]=\"[\r\n                                                {label:'', value:null},\r\n                                                {label:'Sim', value:'Sim'},\r\n                                                {label:'Não', value:'Não'}\r\n                                              ]\" \r\n                                              [(ngModel)]=\"arrProjeto['licoes'].atendeuescopo\"></p-dropdown>\r\n                                            <label>Atendeu o escopo?</label>\r\n                                        </span>\r\n                                    </div>\r\n                                </div>\r\n\r\n                                <h2>Processos de gerenciamento de projeto</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Comente os pontos mais relevantes]</div>\r\n\r\n                                \r\n                                <h4>Pontos fortes</h4>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea [(ngModel)]=\"arrProjeto['licoes'].pfortes\" autoResize=\"autoResize\"></textarea>\r\n                                <h4>Pontos fracos</h4>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea [(ngModel)]=\"arrProjeto['licoes'].pfracos\" autoResize=\"autoResize\"></textarea>\r\n\r\n                                <h2>Questões do projeto</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Comente os pontos mais relevantes]</div>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  [(ngModel)]=\"arrProjeto['licoes'].questoes\" autoResize=\"autoResize\"></textarea>\r\n\r\n                                <h2>Recomendações a serem adotadas para os próximos projetos</h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Indique as recomendações e as lições serem aprendidas mais relevantes]</div>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  [(ngModel)]=\"arrProjeto['licoes'].recomendacoes\" autoResize=\"autoResize\"></textarea>\r\n                                \r\n                            </div>\r\n                        </div>\r\n                        <div class=\"card card-w-title\" style=\"width:100%\">\r\n                            <div  div class=\"ui-g-12\">\r\n                                <h2><b>Referências Técnicas do Projeto *</b></h2>\r\n                                <div style=\"font-size: 10px; margin-top: -25px\">[Indique informações técnicas relevantes do projeto]</div>\r\n                                <textarea  style=\"width: 100%;\" pInputTextarea  [(ngModel)]=\"arrProjeto['licoes'].reftecnicas\" autoResize=\"autoResize\"></textarea>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column\">\r\n                            <button pButton type=\"button\" style=\"width:30%\"label=\"Salvar\" (click)=\"salvarGerais()\" icon=\"ui-icon-save\" ></button>\r\n                        </div>\r\n                    </div>\r\n                  \r\n                </p-accordionTab>\r\n            </p-accordion>\r\n        </div>\r\n        <app-pagestories></app-pagestories>\r\n    </div>\r\n</div>      \r\n"
 
 /***/ }),
 
@@ -801,25 +801,47 @@ module.exports = "<div class=\"card card-w-title\" >\r\n  <h4>ENVIAR EMAIL DE NO
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html":
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.html ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p-table [columns]=\"cols\" [value]=\"ListaDeClassificacoes\" selectionMode=\"single\" [(selection)]=\"ClassificacaoSelected\" (onRowSelect)=\"onRowSelect($event)\" [paginator]=\"true\" [rows]=\"7\">\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr>\r\n          \r\n          <th style=\"width: 30px;\">\r\n              id\r\n          </th>\r\n          <th>\r\n              Classificacao\r\n          </th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"body\" let-rowData >\r\n      <tr [pSelectableRow]=\"rowData\">\r\n          <td >\r\n              {{rowData['id']}}\r\n          </td>\r\n          <td >\r\n              {{rowData['nome']}}\r\n          </td>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"summary\" let-rowData>\r\n      <div style=\"text-align:left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-plus\" (click)=\"showDialogToAdd()\" label=\"Add\"></button>\r\n      </div>\r\n  </ng-template>    \r\n</p-table>\r\n\r\n<p-dialog header=\"Carregando\" [(visible)]=\"displayCarregando\" (onHide)=\"onGerenciarIndicadoresHide()\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n    <p-progressBar *ngIf=\"displayCarregando\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Editar Indicadores\" [(visible)]=\"displayDialog\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <div class=\"ui-g ui-fluid\" *ngIf=\"ClassificacaoSelected\">\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label >Id</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"Id\" [(ngModel)]=\"ClassificacaoSelected['id']\" [disabled]=\"true\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label >Data da Criação</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"DataCriacao\" [(ngModel)]=\"ClassificacaoSelected['dataDaCriacao']\" [disabled]=\"true\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label>Classificação</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"nome\" [(ngModel)]=\"ClassificacaoSelected['nome']\"  autofocus/>\r\n          </div>\r\n      </div>\r\n  </div>\r\n  <p-footer>\r\n      <div class=\"ui-g\" style=\"text-align: center;\">\r\n        <div class=\"ui-g-4\">\r\n            <button type=\"button\" pButton icon=\"pi pi-check\" class=\"ui-button-danger\" (click)=\"deleteClassificacao()\" label=\"Deletar\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\">\r\n            <button type=\"button\" pButton icon=\"pi pi-check\" (click)=\"gerenciarIndicadores()\" label=\"Gerenciar Indicadores\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\">\r\n            <button type=\"button\" pButton icon=\"pi pi-check\" (click)=\"saveClassificacao()\" label=\"Salvar\"></button>\r\n        </div>\r\n    </div>\r\n  </p-footer>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Gerenciar Indicadores\" [(visible)]=\"displayIndicadores\" (onHide)=\"onGerenciarIndicadoresHide()\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n    <p-table [value]=\"ArrayDeIndicadores\" selectionMode=\"single\" [paginator]=\"true\" [rows]=\"10\">\r\n        <ng-template pTemplate=\"header\" let-columns>\r\n            <tr>\r\n                <th style=\"width: 30px;\">\r\n                    id\r\n                </th>\r\n                <th>\r\n                    Indicador\r\n                </th>\r\n                <th>\r\n                    Cálculo\r\n                </th>\r\n                <th style=\"width: 150px;\"></th>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-rowData >\r\n            <tr [pSelectableRow]=\"rowData\">\r\n                <td >\r\n                    {{rowData['id']}}\r\n                </td>\r\n                <td >\r\n                    {{rowData['nome']}}\r\n                </td>\r\n                <td >\r\n                    {{ rowData['calculo'] === null ? null : calculos[rowData['calculo']-1].label }}\r\n                </td>\r\n                <td >\r\n                    <button type=\"button\" pButton (click)=\"editarIndicador(rowData)\" label=\"Editar\"></button>\r\n                </td>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"summary\" let-rowData>\r\n            <div style=\"text-align:left\">\r\n                <button type=\"button\" pButton icon=\"pi pi-plus\" (click)=\"showDialogToAdd()\" label=\"Add\"></button>\r\n            </div>\r\n        </ng-template>  \r\n    </p-table>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar Indicador\" [(visible)]=\"displayEditarIndicador\" [focusOnShow]=\"true\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n    <div class=\"ui-g\" *ngIf=\"displayEditarIndicador\">\r\n\r\n        <div class=\"ui-g-12\" style=\"text-align: center;padding-bottom: 30px;\">\r\n            <span class=\"md-inputfield\">\r\n                <input id=\"input\" class=\"ui-g-12\" [(ngModel)]=\"IndicadorASerEditado.nome\" type=\"text\" pInputText/>\r\n                <label>Indicador</label>\r\n            </span>\r\n        </div>\r\n        <div class=\"ui-g-12\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" class=\"ui-g-12\" filter=\"true\" placeholder=\"Selecione o Tipo de Cálculo\" [(ngModel)]=\"IndicadorASerEditado.calculo\" styleClass = \"drop95\" [options]=\"calculos\"></p-dropdown>\r\n              <label >Cálculo</label>\r\n            </span>\r\n        </div>\r\n        <div class=\"ui-g-9\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" [disabled]=\"disabled\" class=\"ui-g-12\" filter=\"true\" [(ngModel)]=\"ListaDeIndDiariosSelecionada\" optionLabel=\"indicador\" styleClass = \"drop95\" [options]=\"ListaDeIndDiarios\"></p-dropdown>\r\n              <label >Indicador Diário</label>\r\n            </span>\r\n        </div>\r\n        <div class=\"ui-g-3\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n            <p-checkbox [(ngModel)]=\"disabled\" binary=\"true\"></p-checkbox>\r\n        </div>\r\n        <div class=\"ui-g-12\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n            <span class=\"md-inputfield\">\r\n              <p-dropdown [autoWidth]=\"true\" class=\"ui-g-12\" filter=\"true\" [(ngModel)]=\"ClassificacaoSelecionada\" optionLabel=\"nome\" styleClass = \"drop95\" [options]=\"ListaDeClassificacoes\"></p-dropdown>\r\n              <label >Classificação</label>\r\n            </span>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 30px;\">\r\n            <span class=\"md-inputfield\">\r\n                <input id=\"input\" class=\"ui-g-12\" [(ngModel)]=\"IndicadorASerEditado.minimo\" type=\"number\" pInputText/>\r\n                <label>Mínimo</label>\r\n            </span>\r\n        </div>\r\n        <div class=\"ui-g-6\" style=\"text-align: center;padding-bottom: 30px;\">\r\n            <span class=\"md-inputfield\">\r\n                <input id=\"input\" class=\"ui-g-12\" [(ngModel)]=\"IndicadorASerEditado.maximo\" type=\"number\" pInputText/>\r\n                <label>Máximo</label>\r\n            </span>\r\n        </div>\r\n        <div class=\"ui-g-12\" style=\"text-align: center;margin-top: 50px;\">\r\n            <div class=\"ui-g-6\">\r\n                <button type=\"button\" pButton icon=\"pi pi-check\" class=\"ui-button-danger\" (click)=\"delIndicador()\" label=\"Deletar\"></button>\r\n            </div>\r\n            <div class=\"ui-g-6\">\r\n                <button type=\"button\" pButton icon=\"pi pi-check\" class=\"ui-button-success\" (click)=\"saveIndicador()\" label=\"Salvar\"></button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</p-dialog>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.html":
 /*!*************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html ***!
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.html ***!
   \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-table #dt [value]=\"ListaDeUnidades\" *ngIf=\"VisibleListaDeUnidades\"  selectionMode=\"single\" >\r\n  <!-- <ng-template pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n        <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n  </ng-template> -->\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n        <th>Identificador</th>\r\n        <th>Data da Criação</th>\r\n        <th>Unidade</th>\r\n        <th>Tipo de Tratamento</th>\r\n        <th style=\"width: 10% !important;\"></th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n    <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n      <td>{{linha.id}}</td>\r\n      <td>{{linha.dataDaCriacao}}</td>\r\n      <td>{{linha.unidade}}</td>\r\n      <td>{{linha.tipoDeTratamento}}</td>\r\n      <td >\r\n        <button pButton type=\"button\" (click)=\"selectEte(linha)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n          <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n            last_page\r\n          </span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n<div class=\"ui-g ui-md\" *ngIf=\"VisibleUnidadeSelecionada\" >\r\n  <div class=\"card ui-g-12 ui-md-12\" style=\"margin-top: 10px;\">\r\n    <div class=\"ui-g-12 ui-md-6\" >\r\n      <h1>{{UnidadeSelecionada.unidade}}</h1>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-6\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" (click)=\"voltar()\" style=\"text-align: center;border-radius: 50% 50% 50% 50%;\">\r\n        <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n          arrow_back_ios\r\n        </span>\r\n      </button>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n        De:\r\n        <p-calendar class=\"ui-g-12\" [(ngModel)]=\"DATA1\" [locale]=\"ptbr\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-md-2\">\r\n        Até:\r\n        <p-calendar class=\"ui-g-12\" [(ngModel)]=\"DATA2\" [minDate]=\"DATA1\" [locale]=\"ptbr\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-g-12 ui-md-2\" *ngFor=\"let med of ListaOpcoes\">\r\n    <div class=\"card\" style=\" margin-top: 5px; height:120px;\" [ngStyle]=\"med.selected === 0 ? null : { 'background-color': '#42f593' }\">\r\n      <div class=\"ui-g-2\">\r\n        <span class=\"material-icons\" >\r\n          {{med.icon}}\r\n        </span>\r\n      </div>\r\n      <div style=\"font-weight: bold;\" class=\"ui-g-10\">{{ med.nome }}</div>\r\n      <div  class=\"ui-g-12\" style=\"margin-top: 10px;text-align: right;\" >\r\n        <button pButton type=\"button\"  (click)=\"selecioanarIndicador(med)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n          <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n            remove_red_eye\r\n          </span>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n<p-table #dt [columns]=\"cols\" [value]=\"ListaDeIndicadores\" *ngIf=\"VisibleListaDeIndicadores\" [paginator]=\"true\" [rows]=\"20\">\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\" [ngSwitch]=\"col.field\">\r\n            <p-dropdown *ngSwitchCase=\"'nome'\" [options]=\"ListaFiltroindicador\"  optionLabel=\"nome\" [style]=\"{'width':'100%'}\" (onChange)=\"pesquisar($event.value, col.field)\"></p-dropdown>\r\n            <p-dropdown *ngSwitchCase=\"'tagIndicador'\" [options]=\"ListaFiltroindicador\"  optionLabel=\"tagIndicador\" [style]=\"{'width':'100%'}\" (onChange)=\"pesquisar($event.value, col.field)\"></p-dropdown>\r\n            <p-dropdown *ngSwitchCase=\"'usuario'\" [options]=\"ListaFiltroUsuario\" [style]=\"{'width':'100%'}\" (onChange)=\"dt.filter($event.value, col.field, 'equals')\"></p-dropdown>\r\n              <input *ngSwitchCase=\"'vin'\" pInputText type=\"text\" (input)=\"dt.filter($event.target.value, col.field, 'contains')\">\r\n              <div *ngSwitchCase=\"'year'\">\r\n                  Value > {{yearFilter}}\r\n                  <i class=\"pi pi-times\" (click)=\"yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)\" style=\"cursor:pointer\" *ngIf=\"yearFilter\"></i>\r\n                  <p-slider [style]=\"{'width':'100%','margin-top':'8px'}\" [(ngModel)]=\"yearFilter\" [min]=\"1970\" [max]=\"2010\" (onChange)=\"onYearChange($event, dt)\"></p-slider>\r\n              </div>\r\n              <p-multiSelect *ngSwitchCase=\"'color'\" [options]=\"colors\" defaultLabel=\"All Colors\" (onChange)=\"dt.filter($event.value, col.field, 'in')\"></p-multiSelect>\r\n              <input *ngSwitchCase=\"'price'\" pInputText type=\"text\" placeholder=\"Custom - Greater Than\" (input)=\"dt.filter($event.target.value, col.field, 'custom')\">\r\n          </th>\r\n      </tr>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\">\r\n              {{col.header}}\r\n          </th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n      <tr [pSelectableRow]=\"rowData\">\r\n          <td *ngFor=\"let col of columns\">\r\n              {{ col.field === 'tagIndicador' ? rowData['indicador'].tagIndicador : col.field === 'nome' ?  rowData['indicador'].nome : rowData[col.field]}}\r\n          </td>\r\n      </tr>\r\n  </ng-template>\r\n</p-table>"
+module.exports = "<p-table [columns]=\"cols\" [value]=\"ListaDeUnidades\" selectionMode=\"single\" [(selection)]=\"UnidadeSelected\" (onRowSelect)=\"onRowSelect($event)\" [paginator]=\"true\" [rows]=\"7\">\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr>\r\n          <th style=\"width: 30px;\">\r\n              id\r\n          </th>\r\n          <th>\r\n              Unidade\r\n          </th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"body\" let-rowData >\r\n      <tr [pSelectableRow]=\"rowData\">\r\n          <td >\r\n              {{rowData['id']}}\r\n          </td>\r\n          <td >\r\n              {{rowData['unidade']}}\r\n          </td>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"summary\" let-rowData>\r\n      <div style=\"text-align:left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-plus\" (click)=\"showDialogToAdd()\" label=\"Add\"></button>\r\n      </div>\r\n  </ng-template>    \r\n</p-table>\r\n\r\n<p-dialog header=\"Carregando\" [(visible)]=\"displayOperadoresCarregando\"  [focusOnShow]=\"true\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n    <p-progressBar *ngIf=\"displayOperadoresCarregando\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Gerenciar Operadores\" [(visible)]=\"displayOperadores\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n    <div  style=\"margin-left: 20px; margin-right: 40px;\" class=\"ui-g\">\r\n      \r\n        <p-pickList [source]=\"Disponiveis2\" [target]=\"Operaveis\" sourceHeader=\"Disponíveis\" targetHeader=\"Operáveis\" [responsive]=\"true\" filterBy=\"nome\" \r\n        dragdrop=\"true\" [sourceStyle]=\"{'height':'300px', 'width': '300px'}\" [targetStyle]=\"{'height':'300px', 'width': '300px'}\">\r\n        <ng-template let-perfil pTemplate=\"item\">\r\n            <div class=\"ui-helper-clearfix\">\r\n                <div class=\"ui-g\">\r\n                    {{perfil.nome}}\r\n                </div>\r\n            </div>\r\n        </ng-template>\r\n        </p-pickList>\r\n        <div class=\"ui-g-12\" style=\"text-align: center; margin-top: 20px;\">\r\n            <button type=\"button\" pButton icon=\"pi pi-save\" label=\"Salvar\"  (click)=\"salvarOperadores()\"></button>\r\n        </div>\r\n    </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Editar Unidade\" [(visible)]=\"displayDialog\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <div class=\"ui-g ui-fluid\" *ngIf=\"UnidadeSelected\">\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"vin\">{{  cols[0].field }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[0].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[0].field]\" [disabled]=\"true\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"brand\">{{  cols[2].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[2].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[2].field]\"  autofocus/>\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"year\">{{  cols[1].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[1].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[1].field]\" [disabled]=\"true\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"color\">{{  cols [3].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[3].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[3].field]\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"color\">{{  cols [4].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n            <input pInputText id=\"{{  cols[4].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[4].field]\" [disabled]=\"false\" />\r\n          </div>\r\n      </div>\r\n  </div>\r\n  <p-footer>\r\n      <div class=\"ui-g\" style=\"text-align: center;\">\r\n        <div class=\"ui-g-4\">\r\n            <button type=\"button\" pButton icon=\"pi pi-check\" class=\"ui-button-danger\" (click)=\"deleteUnidade()\" label=\"Deletar\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\">\r\n            <button type=\"button\" pButton icon=\"pi pi-check\" (click)=\"gerenciarOperadores()\" label=\"Gerenciar Operadores\"></button>\r\n        </div>\r\n        <div class=\"ui-g-4\">\r\n            <button type=\"button\" pButton icon=\"pi pi-check\" (click)=\"save()\" label=\"Salvar\"></button>\r\n        </div>\r\n    </div>\r\n  </p-footer>\r\n</p-dialog>\r\n"
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.html":
-/*!*****************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.html ***!
-  \*****************************************************************************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.html":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.html ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g\">\r\n  <div class=\"card ui-g-12\">\r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-calendar view=\"month\" dateFormat=\"yy-mm-dd\" [yearNavigator]=\"true\"\r\n          yearRange=\"2000:2030\" \r\n          [(ngModel)]=\"referencia\" \r\n          [readonlyInput]=\"true\">\r\n        </p-calendar>\r\n        <label>Data Referência</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown  [options]=\"ListaDeUnidades\"  placeholder=\"Selecione a Unidade\" [showClear]=\"true\" [(ngModel)]=\"UnidadeSelecionada\" [style]=\"{'width':'100%'}\" optionLabel=\"unidade\"></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-3\" style=\"margin-top: 25px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown  [options]=\"ListaDeClassificacoes\"  placeholder=\"Selecione a Classificação\" [showClear]=\"true\" [(ngModel)]=\"ClassificacaoSelecionada\" [style]=\"{'width':'100%'}\" optionLabel=\"nome\"></p-dropdown>\r\n      </span>\r\n    </div>\r\n    <div  class=\"ui-g-2\" style=\"text-align: right;\">\r\n      <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"consultar()\"></button>\r\n    </div>\r\n  </div>\r\n</div>    \r\n<p-progressBar *ngIf=\"carregando===true\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n\r\n<p-table #dt [columns]=\"cols2\" [value]=\"arrayZao\"  *ngIf=\"carregando===false\"  selectionMode=\"single\"  [scrollable]=\"true\"   (onRowSelect)=\"onRowSelect($event)\"  [paginator]=\"true\" [rows]=\"17\">\r\n  <ng-template pTemplate=\"caption\">\r\n    <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n      <button type=\"button\" class=\"ui-button-rounded ui-button-success\" pButton iconPos=\"left\" label=\"CSV Forecast\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n      <button type=\"button\" class=\"ui-button-rounded ui-button-success\" pButton iconPos=\"left\" label=\"CSV Detalhado\" (click)=\"salvarCSV2()\" style=\"margin-right: 0.5em;\"></button>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"colgroup\" let-columns>\r\n      <colgroup>\r\n        <col *ngFor=\"let col of columns\" style=\"width:200px\">\r\n      </colgroup>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n    <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n      <th *ngFor=\"let c of cols2\">\r\n        {{c.header}}\r\n      </th>\r\n    </tr>\r\n  </ng-template>\r\n  <ng-template let-linha  pTemplate=\"body\">\r\n    <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n      <td *ngFor=\"let c of cols2, let i=index\">\r\n        {{ i<= 2 ? linha[c.field] : linha[c.field].valor }}\r\n      </td>\r\n    </tr>\r\n  </ng-template>\r\n</p-table>\r\n\r\n\r\n<p-dialog header=\"Dados do Dia\" [(visible)]=\"displayDialog\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <p-table #dt [value]=\"arrayDeUnidade\"  selectionMode=\"single\" [paginator]=\"true\" [rows]=\"10\">\r\n\r\n    <ng-template pTemplate=\"header\" >\r\n      <tr style=\"font-weight: bold !important; font-size: 15px;\">\r\n        <th>  Data   </th>\r\n        <th>  Indicador   </th>\r\n        <th>  Responsavel   </th>\r\n        <th>  Observação   </th>\r\n        <th>  IMEI (cel)   </th>\r\n        <th>  Valor   </th>\r\n      </tr>\r\n    </ng-template>\r\n\r\n    <ng-template let-linha  pTemplate=\"body\">\r\n      <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n        <td>{{  linha.dataIndicador  }}</td>\r\n        <td>{{  linha.indicador.tagIndicador  }}</td>\r\n        <td>{{  linha.usuario  }}</td>\r\n        <td>{{  linha.observacao  }}</td>\r\n        <td>{{  linha.ncelular  }}</td>\r\n        <td>{{  linha.valor  }}</td>\r\n      </tr>\r\n    </ng-template>\r\n\r\n  </p-table>\r\n</p-dialog>\r\n"
+module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-3\">\r\n    <div class=\"ui-g-12\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n      <p-dropdown [autoWidth]=\"true\" placeholder=\"Classificação\" (click)=\"atualizaIndicadores($event)\" class=\"ui-g-12\" filter=\"true\" [(ngModel)]=\"classificacaoSelecionada\" optionLabel=\"nome\" styleClass = \"drop95\" [options]=\"listaDeClassificacoes\"></p-dropdown>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-g-3\">\r\n    <div class=\"ui-g-12\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n      <p-dropdown [autoWidth]=\"true\" placeholder=\"Unidade\" class=\"ui-g-12\" filter=\"true\" [(ngModel)]=\"unidadeSelecionada\" optionLabel=\"unidade\" styleClass = \"drop95\" [options]=\"listaDeUnidades\"></p-dropdown>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-g-3\" style=\"margin-top: 15px;\">\r\n    <span class=\"md-inputfield\">\r\n      <p-calendar class=\"ui-g-12\"  view=\"month\" (click)=\"checarBotao()\" [(ngModel)]=\"Data\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n      <label >Data</label>\r\n    </span>\r\n  </div>\r\n  <div class=\"ui-g-3\">\r\n    <div class=\"ui-g-12\"  style=\"text-align: left;padding-bottom: 30px;\">\r\n      <span class=\"md-inputfield\">\r\n        <p-dropdown [autoWidth]=\"true\" (click)=\"checarBotao()\" placeholder=\"Indicadores\" class=\"ui-g-12\" filter=\"true\" [(ngModel)]=\"IndicadorSelecionado\" optionLabel=\"nome\" styleClass = \"drop95\" [options]=\"listaDeIndicadores\"></p-dropdown>\r\n      </span>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-g-12\" style=\"margin-top: 40px; text-align: right;\">\r\n    <button type=\"button\" (click)=\"Escolher()\" pButton label=\"Pesquisar\" [disabled]=\"checkbotao\"></button>\r\n  </div>\r\n</div>\r\n\r\n<p-dialog header=\"{{ IndicadorSelecionado.nome }}\" *ngIf=\"displayIndicador\" [(visible)]=\"displayIndicador\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <p-table [value]=\"listaCriada\" *ngIf=\"displayIndicador\" selectionMode=\"single\"  (onRowSelect)=\"selecionar($event)\" [paginator]=\"true\" [rows]=\"16\">\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr>\r\n            <th>\r\n                Data\r\n            </th>\r\n            <th>\r\n                Cálculo\r\n            </th>\r\n            <th>\r\n                Valor\r\n            </th>\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"body\" let-rowData >\r\n        <tr [pSelectableRow]=\"rowData\">\r\n            <td >\r\n                {{rowData['data']}}\r\n            </td>\r\n            <td >\r\n                {{rowData['tipoDeCalculo']}}\r\n            </td>\r\n            <td >\r\n                {{rowData['calculo']}}\r\n            </td>\r\n        </tr>\r\n    </ng-template>  \r\n  </p-table>\r\n  <div class=\"ui-g-6\">\r\n     {{  IndicadorDiarioSelecionado !== null ? \"Integrado com o indicador \" + IndicadorDiarioSelecionado.indicador : null  }}\r\n  </div>\r\n  <div class=\"ui-g-6\" style=\"text-align: right;\" *ngIf=\"IndicadorDiarioSelecionado !== null\">\r\n      <button pButton type=\"button\" (click)=\"enviarparaindicadoresdiarios()\" label=\"Enviar para indicadores diários\" ></button>\r\n  </div>\r\n</p-dialog>\r\n\r\n<p-dialog header=\"Gerenciar Indicador\" [(visible)]=\"abrirRegistros\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <p-table [value]=\"RegistroSelected\" *ngIf=\"abrirRegistros\" (onRowSelect)=\"adicionareditarregistros($event)\" selectionMode=\"single\"  [paginator]=\"true\" [rows]=\"5\">\r\n    <ng-template pTemplate=\"header\" let-columns>\r\n        <tr>\r\n            <th>\r\n                Data Hora\r\n            </th>\r\n            <th>\r\n                Valor\r\n            </th>\r\n        </tr>\r\n    </ng-template>\r\n    <ng-template pTemplate=\"body\" let-rowData >\r\n        <tr [pSelectableRow]=\"rowData\">\r\n            <td >\r\n                {{rowData['dataIndicador']}}\r\n            </td>\r\n            <td >\r\n                {{rowData['valor']}}\r\n            </td>\r\n        </tr>\r\n    </ng-template>  \r\n  </p-table>\r\n  <div class=\"ui-g-12\" style=\"text-align: right;\">\r\n    <button pButton type=\"button\" (click)=\"novoregistro()\" icon=\"pi pi-plus\" ></button>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n<p-dialog header=\"Editar/Adicionar\" *ngIf=\"edicao\" [(visible)]=\"edicao\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '40%', height: '60%'}\">\r\n  <div class=\"ui-g\" style=\"height:400px;\">\r\n    <div class=\"ui-g-12\">\r\n      <p-calendar class=\"ui-g-12\" [(ngModel)]=\"objetoEditadoData\"  [showTime]=\"true\"  dateFormat=\"yy-mm-dd\"></p-calendar>\r\n    </div>\r\n    <div class=\"ui-g-12\">\r\n      <span class=\"md-inputfield\">\r\n        <input class=\"ui-g-12\" type=\"number\" [(ngModel)]=\"objetoEditadoValor\" pInputText />\r\n        <label >Digite um novo Valor</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"text-align: right;\">\r\n      <button type=\"button\" (click)=\"salvaAlteracao()\" pButton label=\"Salvar\" ></button>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"margin-top: 200px;\">.</div>\r\n  </div>\r\n</p-dialog>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.html":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.html ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g dashboard\">\r\n  <div class=\"card card-title ui-g-12\">\r\n    <div class=\"ui-g-10\" style=\"text-align: left;\" >\r\n      <h1>Indicadores Diários</h1>\r\n    </div>\r\n    <div class=\"ui-g-2\" style=\"text-align: right;\" >\r\n      <div class=\"ui-g-12\" style=\"text-align: right;\" >\r\n        <button pButton type=\"button\" label=\"Voltar\" class=\"ui-button-rounded\"  routerLink=\"/adminEtes\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ui-g-12 ui-lg-12\" *ngIf=\"appConsolidado\">\r\n  <p-panel header=\"Consolidado\" styleClass=\"ui-shadow-content\">\r\n      <app-consolidado></app-consolidado>\r\n  </p-panel>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -830,7 +852,62 @@ module.exports = "<div class=\"ui-g\">\r\n  <div class=\"card ui-g-12\">\r\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-table [columns]=\"cols\" [value]=\"ListaDeUnidades\" selectionMode=\"single\" [(selection)]=\"UnidadeSelected\" (onRowSelect)=\"onRowSelect($event)\" [paginator]=\"true\" [rows]=\"15\">\r\n  <ng-template pTemplate=\"caption\">\r\n      List of Cars\r\n  </ng-template>\r\n  <ng-template pTemplate=\"header\" let-columns>\r\n      <tr>\r\n          <th *ngFor=\"let col of columns\" [pSortableColumn]=\"col.field\">\r\n              {{col.header}}\r\n              <p-sortIcon [field]=\"col.field\"></p-sortIcon>\r\n          </th>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n      <tr [pSelectableRow]=\"rowData\">\r\n          <td *ngFor=\"let col of columns\">\r\n              {{rowData[col.field]}}\r\n          </td>\r\n      </tr>\r\n  </ng-template>\r\n  <ng-template pTemplate=\"summary\" let-rowData>\r\n      <div style=\"text-align:left\">\r\n          <button type=\"button\" pButton icon=\"pi pi-plus\" (click)=\"showDialogToAdd()\" label=\"Add\"></button>\r\n      </div>\r\n  </ng-template>    \r\n</p-table>\r\n\r\n<p-dialog header=\"Car Details\" [(visible)]=\"displayDialog\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <div class=\"ui-g ui-fluid\" *ngIf=\"UnidadeSelected\">\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"color\">{{  cols [4].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n            <p-dropdown id=\"{{  cols[4].field  }}\" filterBy=\"UnidadeSelected[cols[4].field],indicador.indicadorId\"  [filter]=\"true\" [options]=\"volumes\" [showClear]=\"true\" [(ngModel)]=\"UnidadeSelected[cols[4].field]\" [style]=\"{'width':'100%'}\" optionLabel=\"indicador\"></p-dropdown>\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"vin\">{{  cols[0].field }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[0].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[0].field]\" [disabled]=\"true\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"year\">{{  cols[1].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[1].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[1].field]\" [disabled]=\"true\" />\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"brand\">{{  cols[2].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[2].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[2].field]\"  autofocus/>\r\n          </div>\r\n      </div>\r\n      <div class=\"ui-g-12\">\r\n          <div class=\"ui-g-4\">\r\n              <label for=\"color\">{{  cols [3].field  }}</label>\r\n          </div>\r\n          <div class=\"ui-g-8\">\r\n              <input pInputText id=\"{{  cols[3].field  }}\" [(ngModel)]=\"UnidadeSelected[cols[3].field]\" />\r\n          </div>\r\n      </div>\r\n  </div>\r\n  <p-footer>\r\n      <div class=\"ui-dialog-buttonpane ui-helper-clearfix\">\r\n          <button type=\"button\" pButton icon=\"pi pi-check\" (click)=\"save()\" label=\"Save\"></button>\r\n      </div>\r\n  </p-footer>\r\n</p-dialog>\r\n"
+module.exports = "\r\n<div class=\"ui-g dashboard\">\r\n    <div class=\"ui-g-12 ui-lg-4\">\r\n        <div class=\"user-card ui-shadow-content\">\r\n            <div class=\"user-card-header\">\r\n            </div>\r\n            <div class=\"user-card-content\">\r\n                <div style=\"margin-left: 15px; font-size: 20px;\" class=\"user-card-name\">\r\n                    <i class=\"material-icons\">face</i>\r\n                    <span style=\"margin-left: 15px;\">Administrador {{ Usuario }}</span>\r\n                </div>\r\n\r\n                 <div class=\"user-detail\">\r\n                   <ul>\r\n                     <li class=\"clearfix\">\r\n                         <i class=\"material-icons\">insert_drive_file</i>\r\n                         <span class=\"project-title\">Relatórios</span>\r\n                         <button class=\"project-title\" type=\"button\" pButton icon=\"pi pi-caret-right\" style=\"width: 10px; height: 30px; margin-top: 1px\"  routerLink=\"/relatoriosetes\"></button>\r\n                     </li>\r\n                     <li class=\"clearfix\">\r\n                         <i class=\"material-icons\">blur_on</i>\r\n                         <span class=\"project-title\">Produtos Químicos</span>\r\n                         <button class=\"project-title\" type=\"button\" pButton icon=\"pi pi-caret-right\" style=\"width: 10px; height: 30px; margin-top: 1px\" routerLink=\"/produtosquimicosetes\"></button>\r\n                     </li>\r\n                     <li class=\"clearfix\">\r\n                         <i class=\"material-icons\">timeline</i>\r\n                         <span class=\"project-title\">Indicadores Diários</span>\r\n                         <button class=\"project-title\" type=\"button\" pButton icon=\"pi pi-caret-right\" style=\"width: 10px; height: 30px; margin-top: 1px\" routerLink=\"/indicadoresdiariosetes\"></button>\r\n                     </li>\r\n                   </ul>\r\n                </div> \r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12 ui-lg-8 chat\">\r\n        <p-panel header=\"Livro de Ocorrências\" styleClass=\"ui-shadow-content\">\r\n            <ul>\r\n                <p-scrollPanel [style]=\"{width: '100%', height: '335px'}\" scrollTop=\"1000000\">\r\n                    <div *ngFor=\"let not of ListaDeNotificacoes\">\r\n                        <li class=\"clearfix message-from\" style=\"margin-left: 12px;\" *ngIf=\"not.admin==0\">\r\n                            <span>\r\n                                <div style=\"font-size: 12px;\"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>\r\n                                <div style=\"font-size: 11px;\">{{ not.dataDaCriacao }} - {{ not.texto }}</div>\r\n                            </span>\r\n                        </li>\r\n                        <li class=\"clearfix message-own\" style=\"margin-left: 12px;\"  *ngIf=\"not.admin==1\">\r\n                            <span>\r\n                                <div style=\"font-size: 12px;\"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>\r\n                                <div style=\"font-size: 11px;\">{{ not.dataDaCriacao }} - {{ not.texto }}</div>\r\n                            </span>\r\n                        </li>\r\n                    </div>\r\n                </p-scrollPanel>\r\n            </ul>\r\n            <div class=\"new-message\">\r\n                <div class=\"message-attachment\">\r\n                    <i class=\"material-icons\">message</i>\r\n                </div>\r\n                <div class=\"message-input\">\r\n                    <input type=\"text\" [(ngModel)]=\"NotificacaoTexto\" pInputText placeholder=\"Escreva sua mensagem\" />\r\n                </div>\r\n                <div  style=\"margin-right: 8px !important; margin-top: -34px !important; text-align: right;\">\r\n                    <button type=\"button\" pButton icon=\"pi pi-caret-right\"  (click)=\"SalvarNotificacao()\"></button>\r\n                </div>\r\n            </div>\r\n        </p-panel>\r\n    </div>\r\n\r\n    <div class=\"ui-g-12 ui-lg-4\">\r\n        <p-panel header=\"Editar Unidades\" styleClass=\"ui-shadow-content\">\r\n            <app-editar-unidades></app-editar-unidades>\r\n        </p-panel>\r\n    </div>\r\n    <div class=\"ui-g-12 ui-lg-4\">\r\n        <p-panel header=\"Editar Indicadores\" styleClass=\"ui-shadow-content\">\r\n            <app-editar-indicadores></app-editar-indicadores>\r\n        </p-panel>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.html":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.html ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g-12\">\r\n  <div class=\"card card-title ui-g-12\">\r\n    <div class=\"ui-g-8\" style=\"text-align: left;\" >\r\n      <h1>{{  ETE.unidade }}</h1>\r\n    </div>\r\n    <div class=\"ui-g-4\" style=\"text-align: right;\" >\r\n      <div class=\"ui-g-6\" style=\"text-align: right;\" >\r\n        <button pButton type=\"button\" label=\"Mural de Notificações\" class=\"ui-button-rounded ui-button-info\" (click)=\"AbrirMural()\"></button>\r\n      </div>\r\n      <div class=\"ui-g-6\" style=\"text-align: right;\" >\r\n        <button pButton type=\"button\" label=\"Voltar\" class=\"ui-button-rounded\" (click)=\"voltar()\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <!-- MURAL DE NOTIFICAÇÕES -->\r\n\r\n\r\n\r\n  <div class=\"card ui-g-12\" style=\"margin-top: 5px; background-color: lightgray;\" *ngFor=\"let b of arrayDeClassificacoes\">\r\n    <div style=\"font-weight: bold;\" class=\"ui-g-6\">{{ b.nome }}</div>\r\n    <div class=\"ui-g-6\">\r\n      <div class=\"ui-g-12\" style=\"text-align: right;\" >\r\n        <button pButton type=\"button\"  icon=\"pi pi-chevron-right\"  (click)=\"verIndicadores(b)\" ></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<p-dialog header=\"Mural de Notificações\" [(visible)]=\"visibleNotificacoes\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '50%'}\">\r\n  <div class=\"ui-g-12 dashboard\">\r\n    <div class=\"ui-g-12\" style=\"text-align: center ;color: black;\">\r\n      <h2>MURAL DE NOTIFICAÇÕES</h2>\r\n    </div>  \r\n\r\n    <div class=\"ui-g-12 ui-lg-12 chat\">\r\n      <p-panel header=\"Livro de Ocorrências\" styleClass=\"ui-shadow-content\">\r\n          <ul>\r\n              <p-scrollPanel [style]=\"{width: '100%', height: '375px'}\" scrollTop=\"1000000\">\r\n                <div *ngFor=\"let not of ListaDeNotificacoes\">\r\n                    <li class=\"clearfix message-from\" style=\"margin-left: 12px;\" *ngIf=\"not.admin==0\">\r\n                        <span>\r\n                            <div style=\"font-size: 12px;\"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>\r\n                            <div style=\"font-size: 11px;\">{{ not.dataDaCriacao }} - {{ not.texto }}</div>\r\n                        </span>\r\n                    </li>\r\n                    <li class=\"clearfix message-own\" style=\"margin-left: 12px;\"  *ngIf=\"not.admin==1\">\r\n                        <span>\r\n                            <div style=\"font-size: 12px;\"><b>{{ not.unidade }}</b> - {{ not.usuario }}<br></div>\r\n                            <div style=\"font-size: 11px;\">{{ not.dataDaCriacao }} - {{ not.texto }}</div>\r\n                        </span>\r\n                    </li>\r\n                </div>\r\n              </p-scrollPanel>\r\n          </ul>\r\n          <div class=\"new-message\">\r\n              <div class=\"message-attachment\">\r\n                  <i class=\"material-icons\">message</i>\r\n              </div>\r\n              <div class=\"message-input\">\r\n                  <input type=\"text\" [(ngModel)]=\"NotificacaoTexto\" pInputText placeholder=\"Escreva sua mensagem\" />\r\n              </div>\r\n              <div  style=\"margin-right: 8px !important; margin-top: -34px !important; text-align: right;\">\r\n                  <button type=\"button\" pButton icon=\"pi pi-caret-right\"  (click)=\"SalvarNotificacao()\"></button>\r\n              </div>\r\n          </div>\r\n      </p-panel>\r\n    </div>\r\n  </div>\r\n</p-dialog>\r\n\r\n\r\n<p-sidebar [(visible)]=\"visibleSidebar\" *ngIf=\"visibleSidebar\" [fullScreen]=\"true\" [baseZIndex]=\"10000\">\r\n    <h1 style=\"font-weight:normal\">{{ Classificacao.nome }}</h1>\r\n    <button pButton type=\"button\" (click)=\"salvar(Classificacao.indicador)\" label=\"Save\" class=\"ui-button-success\"></button>\r\n    <button pButton type=\"button\" (click)=\"visibleSidebar = false\" label=\"Cancel\" class=\"ui-button-secondary\"></button>\r\n\r\n    <div class=\"ui-g\" style=\"margin-top: 40px;\">\r\n      <div class=\"ui-g-12\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar [(ngModel)]=\"horario\" [timeOnly]=\"true\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n          <label >Horario</label>\r\n        </span>\r\n    </div>\r\n      <div class=\"ui-g-4\" *ngFor=\"let b of Classificacao.indicador\" style=\"margin-top: 20px;\">\r\n        <span class=\"md-inputfield\"  style=\"margin-left: 20px;\">\r\n          <input  class=\"ui-g-12\" [(ngModel)]=\"b.valor\" [step]=\"0.25\" precision=\"2\" type=\"number\" ng-style=\"{'background-color': 'red'}\"  (ngModelChange)=\"validarnumero(b)\" pInputText/>\r\n          <label >{{ b.nome }}  .....  ({{ b.minimo }} - {{ b.maximo }})</label>\r\n        </span>\r\n      </div>\r\n    </div>\r\n</p-sidebar>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.html ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div  *ngIf=\"VisibleListaDeUnidades\">\r\n  \r\n  <div class=\"ui-g\">\r\n    <div class=\"ui-g-3\">\r\n      <p-panel header=\"Gerenciamento de ETE's\" styleClass=\"ui-shadow-content\">\r\n        <p-table #dt [value]=\"ListaDeUnidades\"  selectionMode=\"single\" >\r\n          <!-- <ng-template pTemplate=\"caption\">\r\n            <div class=\"ui-helper-clearfix\" style=\"text-align: left\">\r\n                <button type=\"button\" pButton icon=\"pi pi-file-o\" iconPos=\"left\" label=\"CSV\" (click)=\"salvarCSV()\" style=\"margin-right: 0.5em;\"></button>\r\n            </div>\r\n          </ng-template> -->\r\n          <ng-template pTemplate=\"header\" let-columns>\r\n              <tr style=\"font-weight: bold !important; font-size: 13px;\">\r\n                <th>Unidade</th>\r\n                <th style=\"width: 100px !important;\"></th>\r\n              </tr>\r\n          </ng-template>\r\n          <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n            <tr [pSelectableRow]=\"linha\"  style=\"font-size: 12px;\">\r\n              <td>{{linha.unidade}}</td>\r\n              <td >\r\n                <button pButton type=\"button\" (click)=\"selectEte(linha)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\">\r\n                  <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n                    last_page\r\n                  </span>\r\n                </button>\r\n              </td>\r\n            </tr>\r\n          </ng-template>\r\n        </p-table>\r\n      </p-panel>\r\n    </div>\r\n    \r\n    <div class=\"ui-g-9\">\r\n      <p-progressBar *ngIf=\"carregando\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n      <p-panel header=\"Lançamentos\" *ngIf=\"carregando===false\" styleClass=\"ui-shadow-content\">\r\n        <p-table #dt [value]=\"listaDeLancamentos\"  selectionMode=\"single\" [paginator]=\"true\" [rows]=\"10\">\r\n          <ng-template pTemplate=\"caption\">\r\n            <div class=\"ui-g\"> \r\n              <div class=\"ui-g-6\"  style=\"text-align: left;\">\r\n                <button pButton type=\"button\" (click)=\"Lancamentos()\" class=\"ui-button-success\">\r\n                  <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n                    sync\r\n                  </span>\r\n                </button>\r\n              </div>\r\n              <div class=\"ui-g-6\"  style=\"text-align: right;\">\r\n                <button pButton type=\"button\" (click)=\"EnviarLancamentos()\" class=\"ui-button-success\">\r\n                  <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n                    send\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </div>\r\n          </ng-template>\r\n          <ng-template pTemplate=\"header\" let-columns>\r\n            <tr style=\"font-weight: bold !important; font-size: 13px;\">\r\n              <th>Unidade</th>\r\n              <th>Dt. Lancamento</th>\r\n              <th>Dt. Medicao</th>\r\n              <th>Usuario</th>\r\n              <th>Indicador</th>\r\n              <th style=\"width: 100px !important;\">Valor</th>\r\n              <th style=\"width: 70px !important;\"></th>\r\n              <th style=\"width: 70px !important;\"></th>\r\n            </tr>\r\n          </ng-template>\r\n          <ng-template let-linha  let-i=\"rowIndex\" pTemplate=\"body\">\r\n            <tr [pSelectableRow]=\"linha\"  style=\"font-size: 13px;\">\r\n              <td>{{linha.unidade.unidade}}</td>\r\n              <td>{{linha.dataDaImportacao}}</td>\r\n              <td>{{linha.dataIndicador}}</td>\r\n              <td>{{linha.usuario}}</td>\r\n              <td>{{linha.indicador.nome}}</td>\r\n              <td>{{linha.valor}}</td>\r\n              <td >\r\n                <button pButton type=\"button\" (click)=\"OpenEditar(linha)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\" class=\"ui-button-info\">\r\n                  <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n                    create\r\n                  </span>\r\n                </button>\r\n              </td>\r\n              <td>\r\n                <button pButton type=\"button\" (click)=\"Deletar(linha)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\" class=\"ui-button-danger\">\r\n                  <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n                    delete_sweep\r\n                  </span>\r\n                </button>\r\n              </td>\r\n            </tr>\r\n          </ng-template>\r\n        </p-table>\r\n      </p-panel>\r\n    </div>\r\n  </div>\r\n</div>\r\n<app-preenche-indicadores  *ngIf=\"VisibleListaDeIndicadores\" [ETE]=\"Ete\"></app-preenche-indicadores>\r\n\r\n<p-dialog header=\"CRUD\" [(visible)]=\"visibleCrud\" [focusOnShow]=\"false\" [responsive]=\"true\" showEffect=\"fade\" [modal]=\"true\"  [style]=\"{width: '600px'}\">\r\n  <div class=\"ui-g\" *ngIf=\"Lancamento\">\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"Lancamento.unidade.unidade\"  type=\"text\" [disabled]=\"true\" pInputText/>\r\n        <label >Unidade</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"Lancamento.indicador.nome\"  type=\"text\" [disabled]=\"true\" pInputText/>\r\n        <label >Indicador</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"Lancamento.dataDaImportacao\"  type=\"text\" [disabled]=\"true\" pInputText/>\r\n        <label >Data do Lancamento</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"Lancamento.dataIndicador\"  type=\"text\" [disabled]=\"true\" pInputText/>\r\n        <label >Data do Indicador</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-12\" style=\"margin-top: 25px;\" >\r\n      <span class=\"md-inputfield\">\r\n        <input id=\"input\" class=\"ui-g-12\"  [(ngModel)]=\"Lancamento.valor\"  type=\"number\" pInputText/>\r\n        <label >Valor {{ Lancamento.indicador.minimo }} - {{ Lancamento.indicador.maximo }}</label>\r\n      </span>\r\n    </div>\r\n    <div class=\"ui-g-6\" style=\"margin-top: 25px; text-align: center;\" >\r\n      <button pButton type=\"button\" (click)=\"Deletar(Lancamento)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\" class=\"ui-button-danger\">\r\n        <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n          delete_sweep\r\n        </span>\r\n      </button> \r\n    </div>\r\n    <div class=\"ui-g-6\" style=\"margin-top: 25px; text-align: center;\" >\r\n      <button pButton type=\"button\" (click)=\"Editar(Lancamento)\" style=\"text-align: center; border-radius: 50% 50% 50% 50%;\" class=\"ui-button-info\">\r\n        <span class=\"material-icons\" style=\"margin-top: 5px;\">\r\n          send\r\n        </span>\r\n      </button>\r\n    </div>\r\n  </div>\r\n</p-dialog>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.html ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g\"> \r\n  <div class=\"ui-g-12 ui-md-2 card\" style=\"text-align: center;\" *ngFor=\"let pq of ProdutosQuimicos\"> \r\n    <div style=\"margin-left: 10px; margin-right: 10px;\">\r\n        <div class=\"ui-g-12 ui-md-12\" > \r\n            <b>{{pq.indicador.nome}}</b>\r\n        </div>\r\n        <img class=\"ui-g-6\" style=\"height: 70px; width: 60px;\" src=\"assets/layout/images/esgoto/{{pq.porcentagem}}.png\">\r\n        <div class=\"ui-g-6\" style=\"text-align: left; font-size: 35px;\"> \r\n            {{  ((pq.valor/pq.indicador.maximo)*100).toFixed(0)  }}%\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-12\" style=\"text-align: left;\"> \r\n            Qtd: {{pq.valor}}<br>\r\n            Máximo: {{pq.indicador.maximo}}\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-12\" style=\"font-size: 10px;text-align: left;\" > \r\n            Colaborador: {{pq.usuario}}\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-12\" style=\"font-size: 10px;text-align: left;\" > \r\n            Atualização: {{pq.dataIndicador}}\r\n        </div>\r\n    </div>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.html":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.html ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g dashboard\">\r\n  <div class=\"card card-title ui-g-12\">\r\n    <div class=\"ui-g-10\" style=\"text-align: left;\" >\r\n      <h1>Produtos Químicos</h1>\r\n    </div>\r\n    <div class=\"ui-g-2\" style=\"text-align: right;\" >\r\n      <div class=\"ui-g-12\" style=\"text-align: right;\" >\r\n        <button pButton type=\"button\" label=\"Voltar\" class=\"ui-button-rounded\"  routerLink=\"/adminEtes\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"ui-g\"> \r\n  <p-accordion class=\"ui-g-12\">\r\n      <p-accordionTab class=\"ui-g-12\" *ngFor=\"let und of Unidades\" header=\"{{und.unidade}}\">\r\n        <app-graph [unidade]=\"und\" ></app-graph>\r\n      </p-accordionTab>\r\n  </p-accordion>\r\n  \r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.html":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.html ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g dashboard\">\r\n  <div class=\"card card-title ui-g-12\">\r\n    <div class=\"ui-g-10\" style=\"text-align: left;\" >\r\n      <h1>Relatórios</h1>\r\n    </div>\r\n    <div class=\"ui-g-2\" style=\"text-align: right;\" >\r\n      <div class=\"ui-g-12\" style=\"text-align: right;\" >\r\n        <button pButton type=\"button\" label=\"Voltar\" class=\"ui-button-rounded\"  routerLink=\"/adminEtes\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ui-g-12 ui-lg-6\">\r\n    <p-panel header=\"Livro de Ocorrências\" styleClass=\"ui-shadow-content\">\r\n      <div class=\"ui-g\" style=\"margin-top: 20px;\">\r\n        <div class=\"ui-g-6\" style=\"margin-top: 15px;\">\r\n          <span class=\"md-inputfield\">\r\n            <p-calendar class=\"ui-g-12\" (click)=\"datamax2()\" [(ngModel)]=\"Data11\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n            <label >Início</label>\r\n          </span>\r\n        </div>\r\n        <div class=\"ui-g-6\"  style=\"margin-top: 15px;\">\r\n          <span class=\"md-inputfield\">\r\n            <p-calendar class=\"ui-g-12\" [minDate]=\"Data11\" [maxDate]=\"DataMax1\" [(ngModel)]=\"Data21\" dateFormat=\"yy-mm-dd\"></p-calendar>\r\n            <label >Fim</label>\r\n          </span>\r\n        </div>\r\n        \r\n        <p-progressBar class=\"ui-g-12 item\"s *ngIf=\"carregarocorrencia\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n        <div class=\"ui-g-12 item\" *ngIf=\"carregarocorrencia==false\" style=\"margin-top: 40px; text-align: center;\">\r\n          <button type=\"button\" (click)=\"pesquisarOcorrencia()\" pButton label=\"Extrair\"></button>\r\n        </div>\r\n      </div>\r\n\r\n    </p-panel>\r\n</div>\r\n<div class=\"ui-g-12 ui-lg-6\">\r\n  <p-panel header=\"Relatório de Utilização\" styleClass=\"ui-shadow-content\" >\r\n    <div class=\"ui-g\" style=\"margin-top: 20px;\">\r\n      \r\n      <div class=\"ui-g-12\" >\r\n        <span class=\"md-inputfield\">\r\n          <p-dropdown [autoWidth]=\"true\"  filter=\"true\"  optionLabel=\"unidade\" placeholder=\".\" [(ngModel)]=\"unidadeSelecionadaUtilizacao\" styleClass = \"drop95\" [options]=\"Unidades\"></p-dropdown>\r\n          <label >Unidade</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-6\" style=\"margin-top: 15px;\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" (click)=\"datamax()\" [(ngModel)]=\"Data1\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n          <label >Início</label>\r\n        </span>\r\n      </div>\r\n      <div class=\"ui-g-6\"  style=\"margin-top: 15px;\">\r\n        <span class=\"md-inputfield\">\r\n          <p-calendar class=\"ui-g-12\" [minDate]=\"Data1\" [maxDate]=\"DataMax\" [(ngModel)]=\"Data2\" dateFormat=\"dd/mm/yy\"></p-calendar>\r\n          <label >Fim</label>\r\n        </span>\r\n      </div>\r\n\r\n      <p-progressBar class=\"ui-g-12 item\"s *ngIf=\"carregarutilizacao\" mode=\"indeterminate\" [style]=\"{'height': '15px'}\"></p-progressBar>\r\n      <div class=\"ui-g-12 item\" *ngIf=\"carregarutilizacao==false\" style=\"margin-top: 40px; text-align: center;\">\r\n        <button type=\"button\" (click)=\"pesquisarUtilizacao()\" pButton label=\"Extrair\"></button>\r\n      </div>\r\n    </div>\r\n  </p-panel>\r\n  \r\n</div>"
 
 /***/ }),
 
@@ -1043,6 +1120,17 @@ module.exports = "<div class=\"ui-g\">\r\n  <div class=\"ui-g-12\">\r\n    <div 
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/produtividade/controleprod/controleprod.component.html":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/produtividade/controleprod/controleprod.component.html ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--SCROOOL DE CARROS-->\r\n<div class=\"ui-g dashboard\">\r\n    <div class=\"ui-g-12\">\r\n        <h2>Painel de Produtividade</h2>\r\n          <div class=\"ui-g-6 ui-md-2 ui-lg-2\">\r\n              <div class=\"ui-g card overview-box overview-box-1\">\r\n                    <span class=\"overview-box-name\"  >OS's Executadas</span>\r\n                    <span class=\"overview-box-count\" >35</span>\r\n                    <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                    <img src=\"assets/layout/images/dashboard/chart-1.svg\" />\r\n                  </div>\r\n          </div>\r\n          <div class=\"ui-g-6 ui-md-2 ui-lg-2\">\r\n              <div class=\"ui-g card overview-box overview-box-1\">\r\n                    <span class=\"overview-box-name\"  >OS's canceladas</span>\r\n                    <span class=\"overview-box-count\" >12</span>\r\n                    <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                    <img src=\"assets/layout/images/dashboard/chart-1.svg\" />\r\n                  </div>\r\n          </div>\r\n          <div class=\"ui-g-6 ui-md-2 ui-lg-2\" >\r\n              <div class=\"ui-g card overview-box overview-box-3\">\r\n                  <span class=\"overview-box-name\">Tempo médio de Execução(TME)</span>\r\n                  <span class=\"overview-box-count\">16,4 min.</span>\r\n                  <!-- <span class=\"overview-box-badge\">-75%</span> -->\r\n                  <img src=\"assets/layout/images/dashboard/chart-3.svg\" />\r\n              </div>\r\n          </div>\r\n          <div class=\"ui-g-6 ui-md-2 ui-lg-2\" >\r\n              <div class=\"ui-g card overview-box overview-box-2\" >\r\n                  <span class=\"overview-box-name\" >Tempo Produtivo</span>\r\n                  <span class=\"overview-box-count\" >65%</span>\r\n                  <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                  <img src=\"assets/layout/images/dashboard/chart-4.svg\" />\r\n              </div>\r\n          </div>\r\n          <div class=\"ui-g-6 ui-md-2 ui-lg-2\" >\r\n              <div class=\"ui-g card overview-box overview-box-2\" >\r\n                  <span class=\"overview-box-name\" >Deslocamento</span>\r\n                  <span class=\"overview-box-count\" >25%</span>\r\n                  <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                  <img src=\"assets/layout/images/dashboard/chart-4.svg\" />\r\n              </div>\r\n          </div>\r\n          <div class=\"ui-g-6 ui-md-2 ui-lg-2\" >\r\n              <div class=\"ui-g card overview-box overview-box-2\" >\r\n                  <span class=\"overview-box-name\" >Improdutivo</span>\r\n                  <span class=\"overview-box-count\" >10%</span>\r\n                  <!-- <span class=\"overview-box-badge\">+30%</span> -->\r\n                  <img src=\"assets/layout/images/dashboard/chart-4.svg\" />\r\n              </div>\r\n          </div>\r\n      </div>\r\n\r\n \r\n</div>\r\n\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\">\r\n    <div class=\"ui-g\">\r\n        <h4>Filtros</h4>\r\n        <div class=\"ui-g-12\">\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\"  (onChange)=\"onChange($event)\" styleClass = \"drop95\" ></p-dropdown> <!-- [(ngModel)]=\"gerencSelect\" [options]=\"Gerencias\" -->\r\n                    <label >Gerência</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" (onChange)=\"onChange($event)\" styleClass = \"drop95\" ></p-dropdown> <!-- [options]=\"Supervisoes\"-->\r\n                    <label >Setor</label>\r\n                  </span>\r\n            </div>\r\n            <div class=\"ui-g-4\" style=\"text-align: center;padding-bottom: 20px;\">\r\n                <span class=\"md-inputfield\">\r\n                    <p-dropdown [autoWidth]=\"true\" (onChange)=\"onChange($event)\" styleClass = \"drop95\"></p-dropdown>\r\n                    <label >Equipe</label>\r\n                  </span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    \r\n    <div class=\"ui-g\">\r\n        <div class=\"ui-g-12\" style=\"justify-content: center;align-items:flex-end;display: flex;flex-direction: column\">\r\n            Quantidade de equipes: 11\r\n        </div>\r\n    <p-table [columns]=\"colsresumo\" [value]=\"resumao\" dataKey=\"servico\" [paginator]=\"true\"\r\n    [rows]=\"4\"  [rowsPerPageOptions]=\"[4,8,12]\" currentPageReportTemplate=\"Mostrando {first} até {last} de {totalRecords} linhas\">\r\n        <ng-template pTemplate=\"caption\">\r\n          Resumo\r\n        </ng-template>\r\n        <ng-template pTemplate=\"header\" let-columns [ngStyle]=\"{'width': '100%'}\">\r\n            <tr> \r\n              <th pSortableColumn=\"resumao.servico\">Servicos <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">TME Renoir <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">Qtd. Prevista <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">Tempo Previsto <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">TME Apontado <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">Qtd. Executada <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">Qtd. Cancelada <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">Tempo Execução <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n              <th pSortableColumn=\"resumao.servico\">Tempo Deslocamento <p-sortIcon field=\"resumao.servico\"></p-sortIcon></th>\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n            <tr>\r\n                <td *ngFor=\"let col of columns\">\r\n                    {{rowData[col.field]}}\r\n                </td>\r\n            </tr>\r\n        </ng-template>\r\n    </p-table>\r\n    <div class=\"ui-g-12\" style=\"justify-content: center;align-items: center;display: flex;flex-direction: column; margin-top: 10px\">\r\n        <button pButton type=\"button\" style=\"width:30%\"label=\"Detalhar\" (click)=\"detalhe()\" icon=\"ui-icon-find-in-page\" ></button>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<div class=\"card card-w-title\" style=\"width: 99.5%; margin-left: 3px;\" *ngIf=\"detalhar\">\r\n    <h4>Detalhado</h4>\r\n    <p-fieldset legend=\"Quantitativo\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        Aqui irá o Conteúdo...\r\n    </p-fieldset>\r\n    <p-fieldset legend=\"Performance\" [toggleable]=\"true\" [collapsed]=\"true\"> \r\n        Aqui irá o Conteúdo...\r\n    </p-fieldset>\r\n    <p-fieldset legend=\"Produtividade\" [toggleable]=\"true\" [collapsed]=\"true\">\r\n        Aqui irá o Conteúdo... \r\n    </p-fieldset>\r\n</div> \r\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/rpa/rpa.component.html":
 /*!******************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/rpa/rpa.component.html ***!
@@ -1230,6 +1318,10 @@ var AdminService = /** @class */ (function () {
     //LISTAS
     AdminService.prototype.listusers = function () {
         return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/usuarios/page")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    AdminService.prototype.listusers2 = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/usuarios/page2")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
     AdminService.prototype.listgerencias = function () {
@@ -1937,6 +2029,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _app_main_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../app.main.component */ "./src/app/app-main/app.main.component.ts");
 /* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../performance/performance.service */ "./src/app/performance/performance.service.ts");
+/* harmony import */ var src_app_app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/app.component */ "./src/app/app.component.ts");
+
 
 
 
@@ -1945,8 +2039,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppMenuComponent = /** @class */ (function () {
-    function AppMenuComponent(app, performanceService) {
+    function AppMenuComponent(app, component, performanceService) {
         this.app = app;
+        this.component = component;
         this.performanceService = performanceService;
         this.permissoes = [];
         this.usuDesenvolvimento = false;
@@ -1999,9 +2094,13 @@ var AppMenuComponent = /** @class */ (function () {
             else if (permissao === "ROLE_ADMIN_SISPC") {
                 this.admSispc = true;
             }
-            else if (permissao === "ROLE_OPERACIONAL_ESGOTO") {
+            else if (permissao === "ROLE_USER_OPERACIONAL_ESGOTO") {
                 this.usuOperacional = true;
                 this.usuOperacionalEsgoto = true;
+            }
+            else if (permissao === "ROLE_ADMIN_OPERACIONAL_ESGOTO") {
+                this.usuOperacional = true;
+                this.admOperacionalEsgoto = true;
             }
             else if (permissao === "ROLE_OPERACIONAL_AGUA") {
                 this.usuOperacional = true;
@@ -2195,12 +2294,14 @@ var AppMenuComponent = /** @class */ (function () {
             if (_this.usuOperacional === true) {
                 var operesg = _this.usuOperacionalEsgoto === true ?
                     { label: 'Operação Esgoto', icon: 'subject',
-                        items: [
-                            { label: 'Indicadores das ETEs', icon: 'show_chart', routerLink: '/indicEtes' },
-                            { label: 'Aplicativo das ETEs', icon: 'stay_current_portrait', routerLink: '/appEtes' },
-                        ]
+                        items: []
                     }
                     : "";
+                if (_this.admOperacionalEsgoto === true) {
+                    _this.component.AtualizarUsuarios();
+                    operesg["items"].push({ label: 'Administrador', icon: 'show_chart', routerLink: '/adminEtes' });
+                }
+                _this.usuOperacionalEsgoto === true ? operesg["items"].push({ label: 'Preenchimentos', icon: 'stay_current_portrait', routerLink: '/preenchimentoetes' }) : null;
                 var operagu = _this.usuOperacionalAgua === true ?
                     { label: 'Operação Água', icon: 'subject' }
                     : "";
@@ -2228,7 +2329,7 @@ var AppMenuComponent = /** @class */ (function () {
             selector: 'app-menu',
             template: "\n            <div class=\"menu-scroll-content\">\n            <ul app-submenu [item]=\"model\" root=\"true\" class=\"navigation-menu\" visible=\"true\" parentActive=\"true\"></ul>\n            </div>\n            "
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_app_main_component__WEBPACK_IMPORTED_MODULE_5__["AppMainComponent"], _performance_performance_service__WEBPACK_IMPORTED_MODULE_6__["PerformanceService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_app_main_component__WEBPACK_IMPORTED_MODULE_5__["AppMainComponent"], src_app_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _performance_performance_service__WEBPACK_IMPORTED_MODULE_6__["PerformanceService"]])
     ], AppMenuComponent);
     return AppMenuComponent;
 }());
@@ -2857,14 +2958,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
 /* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_admin_Admin_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/admin/Admin.service */ "./src/app/admin/Admin.service.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./performance/performance.service */ "./src/app/performance/performance.service.ts");
+
+
+
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(messageService) {
+    function AppComponent(messageService, perf, adminServ, esg) {
         this.messageService = messageService;
+        this.perf = perf;
+        this.adminServ = adminServ;
+        this.esg = esg;
+        this.Disponiveis = [];
+        this.Unidades = [];
+        this.ListaDeIndicadoresDiarios = [];
+        this.CarregarLista = false;
         this.statusbot = "Pronto";
     }
+    AppComponent.prototype.AtualizarUsuarios = function () {
+        var _this = this;
+        if (this.CarregarLista === false) {
+            this.CarregarLista = true;
+            console.log("Carregando");
+            this.adminServ.listusers2().subscribe(function (resp) {
+                _this.Disponiveis = resp['content'];
+                _this.messageService.add({ severity: 'info', summary: 'info', detail: 'Lista de usuarios carregada' });
+            });
+            this.esg.getunidades().subscribe(function (response) {
+                _this.Unidades = response;
+                _this.messageService.add({ severity: 'info', summary: 'info', detail: 'Lista de unidades carregada' });
+            });
+            this.perf.cadindicadores().subscribe(function (response) {
+                _this.messageService.add({ severity: 'info', summary: 'info', detail: 'Lista de Indicadores carregada' });
+                _this.ListaDeIndicadoresDiarios = response;
+            });
+        }
+    };
     AppComponent.prototype.resolveAfter5Seconds = function () {
         var _this = this;
         return new Promise(function (resolve) {
@@ -2881,7 +3014,7 @@ var AppComponent = /** @class */ (function () {
             selector: 'app-root',
             template: '<router-outlet></router-outlet>',
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"], _performance_performance_service__WEBPACK_IMPORTED_MODULE_5__["PerformanceService"], src_app_admin_Admin_service__WEBPACK_IMPORTED_MODULE_3__["AdminService"], _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_4__["OperacionalEsgotoService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -3076,113 +3209,124 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primeng_treetable__WEBPACK_IMPORTED_MODULE_73___default = /*#__PURE__*/__webpack_require__.n(primeng_treetable__WEBPACK_IMPORTED_MODULE_73__);
 /* harmony import */ var primeng_virtualscroller__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! primeng/virtualscroller */ "./node_modules/primeng/virtualscroller.js");
 /* harmony import */ var primeng_virtualscroller__WEBPACK_IMPORTED_MODULE_74___default = /*#__PURE__*/__webpack_require__.n(primeng_virtualscroller__WEBPACK_IMPORTED_MODULE_74__);
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_main_app_main_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./app-main/app.main.component */ "./src/app/app-main/app.main.component.ts");
-/* harmony import */ var _pages_app_notfound_component__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./pages/app.notfound.component */ "./src/app/pages/app.notfound.component.ts");
-/* harmony import */ var _pages_app_error_component__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./pages/app.error.component */ "./src/app/pages/app.error.component.ts");
-/* harmony import */ var _pages_app_accessdenied_component__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./pages/app.accessdenied.component */ "./src/app/pages/app.accessdenied.component.ts");
-/* harmony import */ var _pages_app_login_component__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./pages/app.login.component */ "./src/app/pages/app.login.component.ts");
-/* harmony import */ var _app_main_menu_app_menu_component__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./app-main/menu/app.menu.component */ "./src/app/app-main/menu/app.menu.component.ts");
-/* harmony import */ var _app_main_menu_app_menu_demo_component__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./app-main/menu/app.menu.demo.component */ "./src/app/app-main/menu/app.menu.demo.component.ts");
-/* harmony import */ var _app_main_menu_sidebar_app_sidebar_component__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./app-main/menu/sidebar/app.sidebar.component */ "./src/app/app-main/menu/sidebar/app.sidebar.component.ts");
-/* harmony import */ var _app_main_menu_sidebar_app_sidebartabcontent_component__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./app-main/menu/sidebar/app.sidebartabcontent.component */ "./src/app/app-main/menu/sidebar/app.sidebartabcontent.component.ts");
-/* harmony import */ var _app_main_menu_topbar_app_topbar_component__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./app-main/menu/topbar/app.topbar.component */ "./src/app/app-main/menu/topbar/app.topbar.component.ts");
-/* harmony import */ var _app_main_app_footer_component__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./app-main/app.footer.component */ "./src/app/app-main/app.footer.component.ts");
-/* harmony import */ var _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./demo/view/dashboarddemo.component */ "./src/app/demo/view/dashboarddemo.component.ts");
-/* harmony import */ var _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_88__ = __webpack_require__(/*! ./demo/view/sampledemo.component */ "./src/app/demo/view/sampledemo.component.ts");
-/* harmony import */ var _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_89__ = __webpack_require__(/*! ./demo/view/formsdemo.component */ "./src/app/demo/view/formsdemo.component.ts");
-/* harmony import */ var _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_90__ = __webpack_require__(/*! ./demo/view/datademo.component */ "./src/app/demo/view/datademo.component.ts");
-/* harmony import */ var _demo_view_panelsdemo_component__WEBPACK_IMPORTED_MODULE_91__ = __webpack_require__(/*! ./demo/view/panelsdemo.component */ "./src/app/demo/view/panelsdemo.component.ts");
-/* harmony import */ var _demo_view_overlaysdemo_component__WEBPACK_IMPORTED_MODULE_92__ = __webpack_require__(/*! ./demo/view/overlaysdemo.component */ "./src/app/demo/view/overlaysdemo.component.ts");
-/* harmony import */ var _demo_view_menusdemo_component__WEBPACK_IMPORTED_MODULE_93__ = __webpack_require__(/*! ./demo/view/menusdemo.component */ "./src/app/demo/view/menusdemo.component.ts");
-/* harmony import */ var _demo_view_messagesdemo_component__WEBPACK_IMPORTED_MODULE_94__ = __webpack_require__(/*! ./demo/view/messagesdemo.component */ "./src/app/demo/view/messagesdemo.component.ts");
-/* harmony import */ var _demo_view_miscdemo_component__WEBPACK_IMPORTED_MODULE_95__ = __webpack_require__(/*! ./demo/view/miscdemo.component */ "./src/app/demo/view/miscdemo.component.ts");
-/* harmony import */ var _demo_view_emptydemo_component__WEBPACK_IMPORTED_MODULE_96__ = __webpack_require__(/*! ./demo/view/emptydemo.component */ "./src/app/demo/view/emptydemo.component.ts");
-/* harmony import */ var _demo_view_chartsdemo_component__WEBPACK_IMPORTED_MODULE_97__ = __webpack_require__(/*! ./demo/view/chartsdemo.component */ "./src/app/demo/view/chartsdemo.component.ts");
-/* harmony import */ var _demo_view_filedemo_component__WEBPACK_IMPORTED_MODULE_98__ = __webpack_require__(/*! ./demo/view/filedemo.component */ "./src/app/demo/view/filedemo.component.ts");
-/* harmony import */ var _demo_view_utilsdemo_component__WEBPACK_IMPORTED_MODULE_99__ = __webpack_require__(/*! ./demo/view/utilsdemo.component */ "./src/app/demo/view/utilsdemo.component.ts");
-/* harmony import */ var _demo_view_documentation_component__WEBPACK_IMPORTED_MODULE_100__ = __webpack_require__(/*! ./demo/view/documentation.component */ "./src/app/demo/view/documentation.component.ts");
-/* harmony import */ var _demo_service_carservice__WEBPACK_IMPORTED_MODULE_101__ = __webpack_require__(/*! ./demo/service/carservice */ "./src/app/demo/service/carservice.ts");
-/* harmony import */ var _demo_service_countryservice__WEBPACK_IMPORTED_MODULE_102__ = __webpack_require__(/*! ./demo/service/countryservice */ "./src/app/demo/service/countryservice.ts");
-/* harmony import */ var _demo_service_eventservice__WEBPACK_IMPORTED_MODULE_103__ = __webpack_require__(/*! ./demo/service/eventservice */ "./src/app/demo/service/eventservice.ts");
-/* harmony import */ var _demo_service_nodeservice__WEBPACK_IMPORTED_MODULE_104__ = __webpack_require__(/*! ./demo/service/nodeservice */ "./src/app/demo/service/nodeservice.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_105__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _performance_inputindicadores_inputindicadores_component__WEBPACK_IMPORTED_MODULE_106__ = __webpack_require__(/*! ./performance/inputindicadores/inputindicadores.component */ "./src/app/performance/inputindicadores/inputindicadores.component.ts");
-/* harmony import */ var _gpp_projetos_projetos_component__WEBPACK_IMPORTED_MODULE_107__ = __webpack_require__(/*! ./gpp/projetos/projetos.component */ "./src/app/gpp/projetos/projetos.component.ts");
-/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_108__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
-/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_108___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_108__);
-/* harmony import */ var _gpp_projetos_pagemain_pagemain_component__WEBPACK_IMPORTED_MODULE_109__ = __webpack_require__(/*! ./gpp/projetos/pagemain/pagemain.component */ "./src/app/gpp/projetos/pagemain/pagemain.component.ts");
-/* harmony import */ var _gpp_projetos_pagestories_pagestories_component__WEBPACK_IMPORTED_MODULE_110__ = __webpack_require__(/*! ./gpp/projetos/pagestories/pagestories.component */ "./src/app/gpp/projetos/pagestories/pagestories.component.ts");
-/* harmony import */ var _tarefas_tarefas_component__WEBPACK_IMPORTED_MODULE_111__ = __webpack_require__(/*! ./tarefas/tarefas.component */ "./src/app/tarefas/tarefas.component.ts");
-/* harmony import */ var _tarefas_shared_tarefa_concluida_directive__WEBPACK_IMPORTED_MODULE_112__ = __webpack_require__(/*! ./tarefas/shared/tarefa-concluida.directive */ "./src/app/tarefas/shared/tarefa-concluida.directive.ts");
-/* harmony import */ var _tarefas_shared_tarefa_service__WEBPACK_IMPORTED_MODULE_113__ = __webpack_require__(/*! ./tarefas/shared/tarefa.service */ "./src/app/tarefas/shared/tarefa.service.ts");
-/* harmony import */ var _gestaodedeliberacao_gestaodeliberacao_service__WEBPACK_IMPORTED_MODULE_114__ = __webpack_require__(/*! ./gestaodedeliberacao/gestaodeliberacao.service */ "./src/app/gestaodedeliberacao/gestaodeliberacao.service.ts");
-/* harmony import */ var _tarefas_listar_listar_component__WEBPACK_IMPORTED_MODULE_115__ = __webpack_require__(/*! ./tarefas/listar/listar.component */ "./src/app/tarefas/listar/listar.component.ts");
-/* harmony import */ var _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_116__ = __webpack_require__(/*! ./tarefas/cadastrar/cadastrar.component */ "./src/app/tarefas/cadastrar/cadastrar.component.ts");
-/* harmony import */ var _tarefas_editar_editar_component__WEBPACK_IMPORTED_MODULE_117__ = __webpack_require__(/*! ./tarefas/editar/editar.component */ "./src/app/tarefas/editar/editar.component.ts");
-/* harmony import */ var _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_118__ = __webpack_require__(/*! ./gpp/projetos/sesuiteproject/sesuiteproject.component */ "./src/app/gpp/projetos/sesuiteproject/sesuiteproject.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_119__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _login_auth_service__WEBPACK_IMPORTED_MODULE_120__ = __webpack_require__(/*! ./login/auth.service */ "./src/app/login/auth.service.ts");
-/* harmony import */ var _guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./guards/auth.guard.service */ "./src/app/guards/auth.guard.service.ts");
-/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_122__ = __webpack_require__(/*! ./performance/performance.service */ "./src/app/performance/performance.service.ts");
-/* harmony import */ var _graficos_graficos_component__WEBPACK_IMPORTED_MODULE_123__ = __webpack_require__(/*! ./graficos/graficos.component */ "./src/app/graficos/graficos.component.ts");
-/* harmony import */ var _app_main_menu_sidebar_menurelatorio_menurelatorio_component__WEBPACK_IMPORTED_MODULE_124__ = __webpack_require__(/*! ./app-main/menu/sidebar/menurelatorio/menurelatorio.component */ "./src/app/app-main/menu/sidebar/menurelatorio/menurelatorio.component.ts");
-/* harmony import */ var _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./performance/relatorioindicadores/relatorioindicadores.component */ "./src/app/performance/relatorioindicadores/relatorioindicadores.component.ts");
-/* harmony import */ var _performance_relatorioindicadores_capa_capa_component__WEBPACK_IMPORTED_MODULE_126__ = __webpack_require__(/*! ./performance/relatorioindicadores/capa/capa.component */ "./src/app/performance/relatorioindicadores/capa/capa.component.ts");
-/* harmony import */ var _performance_relatorioindicadores_indicadores_indicadores_component__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./performance/relatorioindicadores/indicadores/indicadores.component */ "./src/app/performance/relatorioindicadores/indicadores/indicadores.component.ts");
-/* harmony import */ var _performance_relatorioindicadores_capa_resumo_indicadores_resumo_indicadores_component__WEBPACK_IMPORTED_MODULE_128__ = __webpack_require__(/*! ./performance/relatorioindicadores/capa/resumo-indicadores/resumo-indicadores.component */ "./src/app/performance/relatorioindicadores/capa/resumo-indicadores/resumo-indicadores.component.ts");
-/* harmony import */ var _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_129__ = __webpack_require__(/*! ./gestaodedeliberacao/painelprocesso/painelprocesso.component */ "./src/app/gestaodedeliberacao/painelprocesso/painelprocesso.component.ts");
-/* harmony import */ var _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_130__ = __webpack_require__(/*! ./gestaodedeliberacao/printdeliberacao/printdeliberacao.component */ "./src/app/gestaodedeliberacao/printdeliberacao/printdeliberacao.component.ts");
-/* harmony import */ var _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_131__ = __webpack_require__(/*! ./performance/tela-impressao-relatorio/tela-impressao-relatorio.component */ "./src/app/performance/tela-impressao-relatorio/tela-impressao-relatorio.component.ts");
-/* harmony import */ var _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_132__ = __webpack_require__(/*! ./transporte/transporte.component */ "./src/app/transporte/transporte.component.ts");
-/* harmony import */ var _transporte_dashboards_dashboards_component__WEBPACK_IMPORTED_MODULE_133__ = __webpack_require__(/*! ./transporte/dashboards/dashboards.component */ "./src/app/transporte/dashboards/dashboards.component.ts");
-/* harmony import */ var _transporte_agendamentos_agendamentos_component__WEBPACK_IMPORTED_MODULE_134__ = __webpack_require__(/*! ./transporte/agendamentos/agendamentos.component */ "./src/app/transporte/agendamentos/agendamentos.component.ts");
-/* harmony import */ var _transporte_cadastro_cadastro_component__WEBPACK_IMPORTED_MODULE_135__ = __webpack_require__(/*! ./transporte/cadastro/cadastro.component */ "./src/app/transporte/cadastro/cadastro.component.ts");
-/* harmony import */ var _transporte_graficos_transporte_graficos_transporte_component__WEBPACK_IMPORTED_MODULE_136__ = __webpack_require__(/*! ./transporte/graficos-transporte/graficos-transporte.component */ "./src/app/transporte/graficos-transporte/graficos-transporte.component.ts");
-/* harmony import */ var _transporte_agendamentos_aprovar_agendamento_aprovar_agendamento_component__WEBPACK_IMPORTED_MODULE_137__ = __webpack_require__(/*! ./transporte/agendamentos/aprovar-agendamento/aprovar-agendamento.component */ "./src/app/transporte/agendamentos/aprovar-agendamento/aprovar-agendamento.component.ts");
-/* harmony import */ var _transporte_agendamentos_calendario_agendamentos_calendario_agendamentos_component__WEBPACK_IMPORTED_MODULE_138__ = __webpack_require__(/*! ./transporte/agendamentos/calendario-agendamentos/calendario-agendamentos.component */ "./src/app/transporte/agendamentos/calendario-agendamentos/calendario-agendamentos.component.ts");
-/* harmony import */ var _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_139__ = __webpack_require__(/*! ./transporte/agendamentos/agendar-veiculo/agendar-veiculo.component */ "./src/app/transporte/agendamentos/agendar-veiculo/agendar-veiculo.component.ts");
-/* harmony import */ var _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__ = __webpack_require__(/*! ./transporte/transporte.service */ "./src/app/transporte/transporte.service.ts");
-/* harmony import */ var _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_141__ = __webpack_require__(/*! ./rpa/rpa.component */ "./src/app/rpa/rpa.component.ts");
-/* harmony import */ var _transporte_agendamentos_lista_agendamentos_lista_agendamentos_component__WEBPACK_IMPORTED_MODULE_142__ = __webpack_require__(/*! ./transporte/agendamentos/lista-agendamentos/lista-agendamentos.component */ "./src/app/transporte/agendamentos/lista-agendamentos/lista-agendamentos.component.ts");
-/* harmony import */ var _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.component */ "./src/app/performance/admin-indicadores/admin-indicadores.component.ts");
-/* harmony import */ var _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./notificacoessispc/notificacoessispc.component */ "./src/app/notificacoessispc/notificacoessispc.component.ts");
-/* harmony import */ var _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./rpa/rpa.service */ "./src/app/rpa/rpa.service.ts");
-/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_146__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.component */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts");
-/* harmony import */ var _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_147__ = __webpack_require__(/*! ./controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component */ "./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.ts");
-/* harmony import */ var _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__ = __webpack_require__(/*! ./controledepagamentosjuridico/listapendentes/listapendentes.component */ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.ts");
-/* harmony import */ var _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component */ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.ts");
-/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
-/* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! primeng/tristatecheckbox */ "./node_modules/primeng/tristatecheckbox.js");
-/* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151___default = /*#__PURE__*/__webpack_require__.n(primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__);
-/* harmony import */ var _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! ./controledepagamentosjuridico/aprovar/aprovar.component */ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.ts");
-/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_153__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
-/* harmony import */ var _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_154__ = __webpack_require__(/*! ./admin/criacaodeusuario/criacaodeusuario.component */ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.ts");
-/* harmony import */ var _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_155__ = __webpack_require__(/*! ./admin/listadeusuarios/listadeusuarios.component */ "./src/app/admin/listadeusuarios/listadeusuarios.component.ts");
-/* harmony import */ var _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts");
-/* harmony import */ var _performance_admin_indicadores_editarindicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.ts");
-/* harmony import */ var _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__ = __webpack_require__(/*! ./admin/Admin.service */ "./src/app/admin/Admin.service.ts");
-/* harmony import */ var _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
-/* harmony import */ var _performance_admin_indicadores_editarindicadores_editarcadastroindicadores_editarcadastroindicadores_component__WEBPACK_IMPORTED_MODULE_160__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.ts");
-/* harmony import */ var _graficos_indicadores_graficos_indicadores_component__WEBPACK_IMPORTED_MODULE_161__ = __webpack_require__(/*! ./graficos-indicadores/graficos-indicadores.component */ "./src/app/graficos-indicadores/graficos-indicadores.component.ts");
-/* harmony import */ var _performance_admin_indicadores_cadastrarindicador_novo_indicador_novo_indicador_component__WEBPACK_IMPORTED_MODULE_162__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.ts");
-/* harmony import */ var _performance_admin_indicadores_editarindicadores_editarindicadores_component__WEBPACK_IMPORTED_MODULE_163__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editarindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.ts");
-/* harmony import */ var _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_164__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar.component */ "./src/app/performance/admin-indicadores/importar/importar.component.ts");
-/* harmony import */ var _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_165__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-orcados/importar-orcados.component */ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.ts");
-/* harmony import */ var _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_166__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-bots/importar-bots.component */ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.ts");
-/* harmony import */ var _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__ = __webpack_require__(/*! ./notificacoessispc/notificacoes.service */ "./src/app/notificacoessispc/notificacoes.service.ts");
-/* harmony import */ var _energia_energia_component__WEBPACK_IMPORTED_MODULE_168__ = __webpack_require__(/*! ./energia/energia.component */ "./src/app/energia/energia.component.ts");
-/* harmony import */ var _energia_energia_service__WEBPACK_IMPORTED_MODULE_169__ = __webpack_require__(/*! ./energia/energia.service */ "./src/app/energia/energia.service.ts");
-/* harmony import */ var _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_170__ = __webpack_require__(/*! ./energia/equipamentos/equipamentos.component */ "./src/app/energia/equipamentos/equipamentos.component.ts");
-/* harmony import */ var _energia_forecast_forecast_component__WEBPACK_IMPORTED_MODULE_171__ = __webpack_require__(/*! ./energia/forecast/forecast.component */ "./src/app/energia/forecast/forecast.component.ts");
-/* harmony import */ var _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_172__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaagua/forecastenergiaagua.component */ "./src/app/energia/forecast/forecastenergiaagua/forecastenergiaagua.component.ts");
-/* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_173__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
-/* harmony import */ var _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__ = __webpack_require__(/*! ./gpp/projetos/projetos.service */ "./src/app/gpp/projetos/projetos.service.ts");
-/* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_175__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
-/* harmony import */ var _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_176__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.component */ "./src/app/operacional-esgoto/operacional-esgoto.component.ts");
-/* harmony import */ var _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_177__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
-/* harmony import */ var _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_178__ = __webpack_require__(/*! ./operacional-esgoto/aplicativo-etes/aplicativo-etes.component */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts");
-/* harmony import */ var _operacional_esgoto_indicadores_aplicativos_indicadores_aplicativos_component__WEBPACK_IMPORTED_MODULE_179__ = __webpack_require__(/*! ./operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component */ "./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.ts");
+/* harmony import */ var primeng_sidebar__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! primeng/sidebar */ "./node_modules/primeng/sidebar.js");
+/* harmony import */ var primeng_sidebar__WEBPACK_IMPORTED_MODULE_75___default = /*#__PURE__*/__webpack_require__.n(primeng_sidebar__WEBPACK_IMPORTED_MODULE_75__);
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_main_app_main_component__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./app-main/app.main.component */ "./src/app/app-main/app.main.component.ts");
+/* harmony import */ var _pages_app_notfound_component__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./pages/app.notfound.component */ "./src/app/pages/app.notfound.component.ts");
+/* harmony import */ var _pages_app_error_component__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./pages/app.error.component */ "./src/app/pages/app.error.component.ts");
+/* harmony import */ var _pages_app_accessdenied_component__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./pages/app.accessdenied.component */ "./src/app/pages/app.accessdenied.component.ts");
+/* harmony import */ var _pages_app_login_component__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./pages/app.login.component */ "./src/app/pages/app.login.component.ts");
+/* harmony import */ var _app_main_menu_app_menu_component__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./app-main/menu/app.menu.component */ "./src/app/app-main/menu/app.menu.component.ts");
+/* harmony import */ var _app_main_menu_app_menu_demo_component__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./app-main/menu/app.menu.demo.component */ "./src/app/app-main/menu/app.menu.demo.component.ts");
+/* harmony import */ var _app_main_menu_sidebar_app_sidebar_component__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./app-main/menu/sidebar/app.sidebar.component */ "./src/app/app-main/menu/sidebar/app.sidebar.component.ts");
+/* harmony import */ var _app_main_menu_sidebar_app_sidebartabcontent_component__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./app-main/menu/sidebar/app.sidebartabcontent.component */ "./src/app/app-main/menu/sidebar/app.sidebartabcontent.component.ts");
+/* harmony import */ var _app_main_menu_topbar_app_topbar_component__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./app-main/menu/topbar/app.topbar.component */ "./src/app/app-main/menu/topbar/app.topbar.component.ts");
+/* harmony import */ var _app_main_app_footer_component__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./app-main/app.footer.component */ "./src/app/app-main/app.footer.component.ts");
+/* harmony import */ var _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_88__ = __webpack_require__(/*! ./demo/view/dashboarddemo.component */ "./src/app/demo/view/dashboarddemo.component.ts");
+/* harmony import */ var _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_89__ = __webpack_require__(/*! ./demo/view/sampledemo.component */ "./src/app/demo/view/sampledemo.component.ts");
+/* harmony import */ var _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_90__ = __webpack_require__(/*! ./demo/view/formsdemo.component */ "./src/app/demo/view/formsdemo.component.ts");
+/* harmony import */ var _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_91__ = __webpack_require__(/*! ./demo/view/datademo.component */ "./src/app/demo/view/datademo.component.ts");
+/* harmony import */ var _demo_view_panelsdemo_component__WEBPACK_IMPORTED_MODULE_92__ = __webpack_require__(/*! ./demo/view/panelsdemo.component */ "./src/app/demo/view/panelsdemo.component.ts");
+/* harmony import */ var _demo_view_overlaysdemo_component__WEBPACK_IMPORTED_MODULE_93__ = __webpack_require__(/*! ./demo/view/overlaysdemo.component */ "./src/app/demo/view/overlaysdemo.component.ts");
+/* harmony import */ var _demo_view_menusdemo_component__WEBPACK_IMPORTED_MODULE_94__ = __webpack_require__(/*! ./demo/view/menusdemo.component */ "./src/app/demo/view/menusdemo.component.ts");
+/* harmony import */ var _demo_view_messagesdemo_component__WEBPACK_IMPORTED_MODULE_95__ = __webpack_require__(/*! ./demo/view/messagesdemo.component */ "./src/app/demo/view/messagesdemo.component.ts");
+/* harmony import */ var _demo_view_miscdemo_component__WEBPACK_IMPORTED_MODULE_96__ = __webpack_require__(/*! ./demo/view/miscdemo.component */ "./src/app/demo/view/miscdemo.component.ts");
+/* harmony import */ var _demo_view_emptydemo_component__WEBPACK_IMPORTED_MODULE_97__ = __webpack_require__(/*! ./demo/view/emptydemo.component */ "./src/app/demo/view/emptydemo.component.ts");
+/* harmony import */ var _demo_view_chartsdemo_component__WEBPACK_IMPORTED_MODULE_98__ = __webpack_require__(/*! ./demo/view/chartsdemo.component */ "./src/app/demo/view/chartsdemo.component.ts");
+/* harmony import */ var _demo_view_filedemo_component__WEBPACK_IMPORTED_MODULE_99__ = __webpack_require__(/*! ./demo/view/filedemo.component */ "./src/app/demo/view/filedemo.component.ts");
+/* harmony import */ var _demo_view_utilsdemo_component__WEBPACK_IMPORTED_MODULE_100__ = __webpack_require__(/*! ./demo/view/utilsdemo.component */ "./src/app/demo/view/utilsdemo.component.ts");
+/* harmony import */ var _demo_view_documentation_component__WEBPACK_IMPORTED_MODULE_101__ = __webpack_require__(/*! ./demo/view/documentation.component */ "./src/app/demo/view/documentation.component.ts");
+/* harmony import */ var _demo_service_carservice__WEBPACK_IMPORTED_MODULE_102__ = __webpack_require__(/*! ./demo/service/carservice */ "./src/app/demo/service/carservice.ts");
+/* harmony import */ var _demo_service_countryservice__WEBPACK_IMPORTED_MODULE_103__ = __webpack_require__(/*! ./demo/service/countryservice */ "./src/app/demo/service/countryservice.ts");
+/* harmony import */ var _demo_service_eventservice__WEBPACK_IMPORTED_MODULE_104__ = __webpack_require__(/*! ./demo/service/eventservice */ "./src/app/demo/service/eventservice.ts");
+/* harmony import */ var _demo_service_nodeservice__WEBPACK_IMPORTED_MODULE_105__ = __webpack_require__(/*! ./demo/service/nodeservice */ "./src/app/demo/service/nodeservice.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_106__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _performance_inputindicadores_inputindicadores_component__WEBPACK_IMPORTED_MODULE_107__ = __webpack_require__(/*! ./performance/inputindicadores/inputindicadores.component */ "./src/app/performance/inputindicadores/inputindicadores.component.ts");
+/* harmony import */ var _gpp_projetos_projetos_component__WEBPACK_IMPORTED_MODULE_108__ = __webpack_require__(/*! ./gpp/projetos/projetos.component */ "./src/app/gpp/projetos/projetos.component.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_109__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_109___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_109__);
+/* harmony import */ var _gpp_projetos_pagemain_pagemain_component__WEBPACK_IMPORTED_MODULE_110__ = __webpack_require__(/*! ./gpp/projetos/pagemain/pagemain.component */ "./src/app/gpp/projetos/pagemain/pagemain.component.ts");
+/* harmony import */ var _gpp_projetos_pagestories_pagestories_component__WEBPACK_IMPORTED_MODULE_111__ = __webpack_require__(/*! ./gpp/projetos/pagestories/pagestories.component */ "./src/app/gpp/projetos/pagestories/pagestories.component.ts");
+/* harmony import */ var _tarefas_tarefas_component__WEBPACK_IMPORTED_MODULE_112__ = __webpack_require__(/*! ./tarefas/tarefas.component */ "./src/app/tarefas/tarefas.component.ts");
+/* harmony import */ var _tarefas_shared_tarefa_concluida_directive__WEBPACK_IMPORTED_MODULE_113__ = __webpack_require__(/*! ./tarefas/shared/tarefa-concluida.directive */ "./src/app/tarefas/shared/tarefa-concluida.directive.ts");
+/* harmony import */ var _tarefas_shared_tarefa_service__WEBPACK_IMPORTED_MODULE_114__ = __webpack_require__(/*! ./tarefas/shared/tarefa.service */ "./src/app/tarefas/shared/tarefa.service.ts");
+/* harmony import */ var _gestaodedeliberacao_gestaodeliberacao_service__WEBPACK_IMPORTED_MODULE_115__ = __webpack_require__(/*! ./gestaodedeliberacao/gestaodeliberacao.service */ "./src/app/gestaodedeliberacao/gestaodeliberacao.service.ts");
+/* harmony import */ var _tarefas_listar_listar_component__WEBPACK_IMPORTED_MODULE_116__ = __webpack_require__(/*! ./tarefas/listar/listar.component */ "./src/app/tarefas/listar/listar.component.ts");
+/* harmony import */ var _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_117__ = __webpack_require__(/*! ./tarefas/cadastrar/cadastrar.component */ "./src/app/tarefas/cadastrar/cadastrar.component.ts");
+/* harmony import */ var _tarefas_editar_editar_component__WEBPACK_IMPORTED_MODULE_118__ = __webpack_require__(/*! ./tarefas/editar/editar.component */ "./src/app/tarefas/editar/editar.component.ts");
+/* harmony import */ var _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_119__ = __webpack_require__(/*! ./gpp/projetos/sesuiteproject/sesuiteproject.component */ "./src/app/gpp/projetos/sesuiteproject/sesuiteproject.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_120__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _login_auth_service__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./login/auth.service */ "./src/app/login/auth.service.ts");
+/* harmony import */ var _guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_122__ = __webpack_require__(/*! ./guards/auth.guard.service */ "./src/app/guards/auth.guard.service.ts");
+/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_123__ = __webpack_require__(/*! ./performance/performance.service */ "./src/app/performance/performance.service.ts");
+/* harmony import */ var _graficos_graficos_component__WEBPACK_IMPORTED_MODULE_124__ = __webpack_require__(/*! ./graficos/graficos.component */ "./src/app/graficos/graficos.component.ts");
+/* harmony import */ var _app_main_menu_sidebar_menurelatorio_menurelatorio_component__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./app-main/menu/sidebar/menurelatorio/menurelatorio.component */ "./src/app/app-main/menu/sidebar/menurelatorio/menurelatorio.component.ts");
+/* harmony import */ var _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_126__ = __webpack_require__(/*! ./performance/relatorioindicadores/relatorioindicadores.component */ "./src/app/performance/relatorioindicadores/relatorioindicadores.component.ts");
+/* harmony import */ var _performance_relatorioindicadores_capa_capa_component__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./performance/relatorioindicadores/capa/capa.component */ "./src/app/performance/relatorioindicadores/capa/capa.component.ts");
+/* harmony import */ var _performance_relatorioindicadores_indicadores_indicadores_component__WEBPACK_IMPORTED_MODULE_128__ = __webpack_require__(/*! ./performance/relatorioindicadores/indicadores/indicadores.component */ "./src/app/performance/relatorioindicadores/indicadores/indicadores.component.ts");
+/* harmony import */ var _performance_relatorioindicadores_capa_resumo_indicadores_resumo_indicadores_component__WEBPACK_IMPORTED_MODULE_129__ = __webpack_require__(/*! ./performance/relatorioindicadores/capa/resumo-indicadores/resumo-indicadores.component */ "./src/app/performance/relatorioindicadores/capa/resumo-indicadores/resumo-indicadores.component.ts");
+/* harmony import */ var _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_130__ = __webpack_require__(/*! ./gestaodedeliberacao/painelprocesso/painelprocesso.component */ "./src/app/gestaodedeliberacao/painelprocesso/painelprocesso.component.ts");
+/* harmony import */ var _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_131__ = __webpack_require__(/*! ./gestaodedeliberacao/printdeliberacao/printdeliberacao.component */ "./src/app/gestaodedeliberacao/printdeliberacao/printdeliberacao.component.ts");
+/* harmony import */ var _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_132__ = __webpack_require__(/*! ./performance/tela-impressao-relatorio/tela-impressao-relatorio.component */ "./src/app/performance/tela-impressao-relatorio/tela-impressao-relatorio.component.ts");
+/* harmony import */ var _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_133__ = __webpack_require__(/*! ./transporte/transporte.component */ "./src/app/transporte/transporte.component.ts");
+/* harmony import */ var _transporte_dashboards_dashboards_component__WEBPACK_IMPORTED_MODULE_134__ = __webpack_require__(/*! ./transporte/dashboards/dashboards.component */ "./src/app/transporte/dashboards/dashboards.component.ts");
+/* harmony import */ var _transporte_agendamentos_agendamentos_component__WEBPACK_IMPORTED_MODULE_135__ = __webpack_require__(/*! ./transporte/agendamentos/agendamentos.component */ "./src/app/transporte/agendamentos/agendamentos.component.ts");
+/* harmony import */ var _transporte_cadastro_cadastro_component__WEBPACK_IMPORTED_MODULE_136__ = __webpack_require__(/*! ./transporte/cadastro/cadastro.component */ "./src/app/transporte/cadastro/cadastro.component.ts");
+/* harmony import */ var _transporte_graficos_transporte_graficos_transporte_component__WEBPACK_IMPORTED_MODULE_137__ = __webpack_require__(/*! ./transporte/graficos-transporte/graficos-transporte.component */ "./src/app/transporte/graficos-transporte/graficos-transporte.component.ts");
+/* harmony import */ var _transporte_agendamentos_aprovar_agendamento_aprovar_agendamento_component__WEBPACK_IMPORTED_MODULE_138__ = __webpack_require__(/*! ./transporte/agendamentos/aprovar-agendamento/aprovar-agendamento.component */ "./src/app/transporte/agendamentos/aprovar-agendamento/aprovar-agendamento.component.ts");
+/* harmony import */ var _transporte_agendamentos_calendario_agendamentos_calendario_agendamentos_component__WEBPACK_IMPORTED_MODULE_139__ = __webpack_require__(/*! ./transporte/agendamentos/calendario-agendamentos/calendario-agendamentos.component */ "./src/app/transporte/agendamentos/calendario-agendamentos/calendario-agendamentos.component.ts");
+/* harmony import */ var _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_140__ = __webpack_require__(/*! ./transporte/agendamentos/agendar-veiculo/agendar-veiculo.component */ "./src/app/transporte/agendamentos/agendar-veiculo/agendar-veiculo.component.ts");
+/* harmony import */ var _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_141__ = __webpack_require__(/*! ./transporte/transporte.service */ "./src/app/transporte/transporte.service.ts");
+/* harmony import */ var _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_142__ = __webpack_require__(/*! ./rpa/rpa.component */ "./src/app/rpa/rpa.component.ts");
+/* harmony import */ var _transporte_agendamentos_lista_agendamentos_lista_agendamentos_component__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./transporte/agendamentos/lista-agendamentos/lista-agendamentos.component */ "./src/app/transporte/agendamentos/lista-agendamentos/lista-agendamentos.component.ts");
+/* harmony import */ var _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.component */ "./src/app/performance/admin-indicadores/admin-indicadores.component.ts");
+/* harmony import */ var _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./notificacoessispc/notificacoessispc.component */ "./src/app/notificacoessispc/notificacoessispc.component.ts");
+/* harmony import */ var _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_146__ = __webpack_require__(/*! ./rpa/rpa.service */ "./src/app/rpa/rpa.service.ts");
+/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_147__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.component */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_148__ = __webpack_require__(/*! ./controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component */ "./src/app/controledepagamentosjuridico/cadastro-pagamento/cadastro-pagamento.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./controledepagamentosjuridico/listapendentes/listapendentes.component */ "./src/app/controledepagamentosjuridico/listapendentes/listapendentes.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component */ "./src/app/controledepagamentosjuridico/acompanharaprovacao/acompanharaprovacao.component.ts");
+/* harmony import */ var _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! ./controledepagamentosjuridico/controledepagamentosjuridico.service */ "./src/app/controledepagamentosjuridico/controledepagamentosjuridico.service.ts");
+/* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! primeng/tristatecheckbox */ "./node_modules/primeng/tristatecheckbox.js");
+/* harmony import */ var primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_152___default = /*#__PURE__*/__webpack_require__.n(primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_152__);
+/* harmony import */ var _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_153__ = __webpack_require__(/*! ./controledepagamentosjuridico/aprovar/aprovar.component */ "./src/app/controledepagamentosjuridico/aprovar/aprovar.component.ts");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_154__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_155__ = __webpack_require__(/*! ./admin/criacaodeusuario/criacaodeusuario.component */ "./src/app/admin/criacaodeusuario/criacaodeusuario.component.ts");
+/* harmony import */ var _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./admin/listadeusuarios/listadeusuarios.component */ "./src/app/admin/listadeusuarios/listadeusuarios.component.ts");
+/* harmony import */ var _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/cadastrarindicador.component.ts");
+/* harmony import */ var _performance_admin_indicadores_editarindicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_158__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editindicadores/editindicadores.component.ts");
+/* harmony import */ var _admin_Admin_service__WEBPACK_IMPORTED_MODULE_159__ = __webpack_require__(/*! ./admin/Admin.service */ "./src/app/admin/Admin.service.ts");
+/* harmony import */ var _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_160__ = __webpack_require__(/*! ./performance/admin-indicadores/admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
+/* harmony import */ var _performance_admin_indicadores_editarindicadores_editarcadastroindicadores_editarcadastroindicadores_component__WEBPACK_IMPORTED_MODULE_161__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editarcadastroindicadores/editarcadastroindicadores.component.ts");
+/* harmony import */ var _graficos_indicadores_graficos_indicadores_component__WEBPACK_IMPORTED_MODULE_162__ = __webpack_require__(/*! ./graficos-indicadores/graficos-indicadores.component */ "./src/app/graficos-indicadores/graficos-indicadores.component.ts");
+/* harmony import */ var _performance_admin_indicadores_cadastrarindicador_novo_indicador_novo_indicador_component__WEBPACK_IMPORTED_MODULE_163__ = __webpack_require__(/*! ./performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component */ "./src/app/performance/admin-indicadores/cadastrarindicador/novo-indicador/novo-indicador.component.ts");
+/* harmony import */ var _performance_admin_indicadores_editarindicadores_editarindicadores_component__WEBPACK_IMPORTED_MODULE_164__ = __webpack_require__(/*! ./performance/admin-indicadores/editarindicadores/editarindicadores.component */ "./src/app/performance/admin-indicadores/editarindicadores/editarindicadores.component.ts");
+/* harmony import */ var _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_165__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar.component */ "./src/app/performance/admin-indicadores/importar/importar.component.ts");
+/* harmony import */ var _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_166__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-orcados/importar-orcados.component */ "./src/app/performance/admin-indicadores/importar/importar-orcados/importar-orcados.component.ts");
+/* harmony import */ var _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_167__ = __webpack_require__(/*! ./performance/admin-indicadores/importar/importar-bots/importar-bots.component */ "./src/app/performance/admin-indicadores/importar/importar-bots/importar-bots.component.ts");
+/* harmony import */ var _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_168__ = __webpack_require__(/*! ./notificacoessispc/notificacoes.service */ "./src/app/notificacoessispc/notificacoes.service.ts");
+/* harmony import */ var _energia_energia_component__WEBPACK_IMPORTED_MODULE_169__ = __webpack_require__(/*! ./energia/energia.component */ "./src/app/energia/energia.component.ts");
+/* harmony import */ var _energia_energia_service__WEBPACK_IMPORTED_MODULE_170__ = __webpack_require__(/*! ./energia/energia.service */ "./src/app/energia/energia.service.ts");
+/* harmony import */ var _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_171__ = __webpack_require__(/*! ./energia/equipamentos/equipamentos.component */ "./src/app/energia/equipamentos/equipamentos.component.ts");
+/* harmony import */ var _energia_forecast_forecast_component__WEBPACK_IMPORTED_MODULE_172__ = __webpack_require__(/*! ./energia/forecast/forecast.component */ "./src/app/energia/forecast/forecast.component.ts");
+/* harmony import */ var _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_173__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaagua/forecastenergiaagua.component */ "./src/app/energia/forecast/forecastenergiaagua/forecastenergiaagua.component.ts");
+/* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_174__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
+/* harmony import */ var _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_175__ = __webpack_require__(/*! ./gpp/projetos/projetos.service */ "./src/app/gpp/projetos/projetos.service.ts");
+/* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_176__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_177__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.component */ "./src/app/operacional-esgoto/operacional-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_178__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var _operacional_esgoto_preenchimento_etes_preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_179__ = __webpack_require__(/*! ./operacional-esgoto/preenchimento-etes/preenchimento-etes.component */ "./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.ts");
+/* harmony import */ var _operacional_esgoto_preenchimento_etes_preenche_indicadores_preenche_indicadores_component__WEBPACK_IMPORTED_MODULE_180__ = __webpack_require__(/*! ./operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component */ "./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.ts");
+/* harmony import */ var _operacional_esgoto_editar_unidades_editar_unidades_component__WEBPACK_IMPORTED_MODULE_181__ = __webpack_require__(/*! ./operacional-esgoto/editar-unidades/editar-unidades.component */ "./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.ts");
+/* harmony import */ var _operacional_esgoto_editar_indicadores_editar_indicadores_component__WEBPACK_IMPORTED_MODULE_182__ = __webpack_require__(/*! ./operacional-esgoto/editar-indicadores/editar-indicadores.component */ "./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.ts");
+/* harmony import */ var _operacional_esgoto_relatorios_esgoto_relatorios_esgoto_component__WEBPACK_IMPORTED_MODULE_183__ = __webpack_require__(/*! ./operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component */ "./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_produtos_quimicos_produtos_quimicos_component__WEBPACK_IMPORTED_MODULE_184__ = __webpack_require__(/*! ./operacional-esgoto/produtos-quimicos/produtos-quimicos.component */ "./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.ts");
+/* harmony import */ var _operacional_esgoto_indicadores_diarios_indicadores_diarios_component__WEBPACK_IMPORTED_MODULE_185__ = __webpack_require__(/*! ./operacional-esgoto/indicadores-diarios/indicadores-diarios.component */ "./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.ts");
+/* harmony import */ var _operacional_esgoto_produtos_quimicos_graph_graph_component__WEBPACK_IMPORTED_MODULE_186__ = __webpack_require__(/*! ./operacional-esgoto/produtos-quimicos/graph/graph.component */ "./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.ts");
+/* harmony import */ var _operacional_esgoto_indicadores_diarios_consolidado_consolidado_component__WEBPACK_IMPORTED_MODULE_187__ = __webpack_require__(/*! ./operacional-esgoto/indicadores-diarios/consolidado/consolidado.component */ "./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.ts");
+/* harmony import */ var _produtividade_controleprod_controleprod_component__WEBPACK_IMPORTED_MODULE_188__ = __webpack_require__(/*! ./produtividade/controleprod/controleprod.component */ "./src/app/produtividade/controleprod/controleprod.component.ts");
+/* harmony import */ var _produtividade_produtividade_service__WEBPACK_IMPORTED_MODULE_189__ = __webpack_require__(/*! ./produtividade/produtividade.service */ "./src/app/produtividade/produtividade.service.ts");
 
 
 
@@ -3362,6 +3506,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+//import { AplicativoEtesComponent } from './operacional-esgoto/aplicativo-etes/aplicativo-etes.component';
+//import { IndicadoresAplicativosComponent } from './operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component';
 
 
 var AppModule = /** @class */ (function () {
@@ -3443,118 +3599,131 @@ var AppModule = /** @class */ (function () {
                 primeng_tree__WEBPACK_IMPORTED_MODULE_72__["TreeModule"],
                 primeng_treetable__WEBPACK_IMPORTED_MODULE_73__["TreeTableModule"],
                 primeng_virtualscroller__WEBPACK_IMPORTED_MODULE_74__["VirtualScrollerModule"],
-                primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_151__["TriStateCheckboxModule"]
+                primeng_tristatecheckbox__WEBPACK_IMPORTED_MODULE_152__["TriStateCheckboxModule"],
+                primeng_sidebar__WEBPACK_IMPORTED_MODULE_75__["SidebarModule"]
             ],
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"],
-                _app_main_app_main_component__WEBPACK_IMPORTED_MODULE_76__["AppMainComponent"],
-                _app_main_menu_app_menu_component__WEBPACK_IMPORTED_MODULE_81__["AppMenuComponent"],
-                _app_main_menu_app_menu_demo_component__WEBPACK_IMPORTED_MODULE_82__["AppMenuDemoComponent"],
-                _app_main_menu_app_menu_component__WEBPACK_IMPORTED_MODULE_81__["AppSubMenuComponent"],
-                _app_main_menu_app_menu_demo_component__WEBPACK_IMPORTED_MODULE_82__["AppSubMenuDemoComponent"],
-                _app_main_menu_sidebar_app_sidebar_component__WEBPACK_IMPORTED_MODULE_83__["AppSideBarComponent"],
-                _app_main_menu_sidebar_app_sidebartabcontent_component__WEBPACK_IMPORTED_MODULE_84__["AppSidebartabcontentComponent"],
-                _app_main_menu_topbar_app_topbar_component__WEBPACK_IMPORTED_MODULE_85__["AppTopbarComponent"],
-                _app_main_app_footer_component__WEBPACK_IMPORTED_MODULE_86__["AppFooterComponent"],
-                _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_87__["DashboardDemoComponent"],
-                _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_88__["SampleDemoComponent"],
-                _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_89__["FormsDemoComponent"],
-                _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_90__["DataDemoComponent"],
-                _demo_view_panelsdemo_component__WEBPACK_IMPORTED_MODULE_91__["PanelsDemoComponent"],
-                _demo_view_overlaysdemo_component__WEBPACK_IMPORTED_MODULE_92__["OverlaysDemoComponent"],
-                _demo_view_menusdemo_component__WEBPACK_IMPORTED_MODULE_93__["MenusDemoComponent"],
-                _demo_view_messagesdemo_component__WEBPACK_IMPORTED_MODULE_94__["MessagesDemoComponent"],
-                _demo_view_messagesdemo_component__WEBPACK_IMPORTED_MODULE_94__["MessagesDemoComponent"],
-                _demo_view_miscdemo_component__WEBPACK_IMPORTED_MODULE_95__["MiscDemoComponent"],
-                _demo_view_chartsdemo_component__WEBPACK_IMPORTED_MODULE_97__["ChartsDemoComponent"],
-                _demo_view_emptydemo_component__WEBPACK_IMPORTED_MODULE_96__["EmptyDemoComponent"],
-                _demo_view_filedemo_component__WEBPACK_IMPORTED_MODULE_98__["FileDemoComponent"],
-                _demo_view_utilsdemo_component__WEBPACK_IMPORTED_MODULE_99__["UtilsDemoComponent"],
-                _demo_view_documentation_component__WEBPACK_IMPORTED_MODULE_100__["DocumentationComponent"],
-                _pages_app_notfound_component__WEBPACK_IMPORTED_MODULE_77__["AppNotfoundComponent"],
-                _pages_app_error_component__WEBPACK_IMPORTED_MODULE_78__["AppErrorComponent"],
-                _pages_app_accessdenied_component__WEBPACK_IMPORTED_MODULE_79__["AppAccessdeniedComponent"],
-                _pages_app_login_component__WEBPACK_IMPORTED_MODULE_80__["AppLoginComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_105__["HomeComponent"],
-                _performance_inputindicadores_inputindicadores_component__WEBPACK_IMPORTED_MODULE_106__["InputindicadoresComponent"],
-                _gpp_projetos_projetos_component__WEBPACK_IMPORTED_MODULE_107__["ProjetosComponent"],
-                _gpp_projetos_pagemain_pagemain_component__WEBPACK_IMPORTED_MODULE_109__["PagemainComponent"],
-                _gpp_projetos_pagestories_pagestories_component__WEBPACK_IMPORTED_MODULE_110__["PagestoriesComponent"],
-                _tarefas_tarefas_component__WEBPACK_IMPORTED_MODULE_111__["TarefasComponent"],
-                _tarefas_listar_listar_component__WEBPACK_IMPORTED_MODULE_115__["ListarComponent"],
-                _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_116__["CadastrarComponent"],
-                _tarefas_editar_editar_component__WEBPACK_IMPORTED_MODULE_117__["EditarComponent"],
-                _tarefas_shared_tarefa_concluida_directive__WEBPACK_IMPORTED_MODULE_112__["TarefaConcluidaDirective"],
-                _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_118__["SesuiteprojectComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_119__["LoginComponent"],
-                _graficos_graficos_component__WEBPACK_IMPORTED_MODULE_123__["GraficosComponent"],
-                _app_main_menu_sidebar_menurelatorio_menurelatorio_component__WEBPACK_IMPORTED_MODULE_124__["MenurelatorioComponent"],
-                _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_125__["RelatorioindicadoresComponent"],
-                _performance_relatorioindicadores_capa_capa_component__WEBPACK_IMPORTED_MODULE_126__["CapaComponent"],
-                _performance_relatorioindicadores_indicadores_indicadores_component__WEBPACK_IMPORTED_MODULE_127__["IndicadoresComponent"],
-                _performance_relatorioindicadores_capa_resumo_indicadores_resumo_indicadores_component__WEBPACK_IMPORTED_MODULE_128__["ResumoIndicadoresComponent"],
-                _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_129__["PainelprocessoComponent"],
-                _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_130__["PrintdeliberacaoComponent"],
-                _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_131__["TelaImpressaoRelatorioComponent"],
-                _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_132__["TransporteComponent"],
-                _transporte_dashboards_dashboards_component__WEBPACK_IMPORTED_MODULE_133__["DashboardsComponent"],
-                _transporte_agendamentos_agendamentos_component__WEBPACK_IMPORTED_MODULE_134__["AgendamentosComponent"],
-                _transporte_cadastro_cadastro_component__WEBPACK_IMPORTED_MODULE_135__["CadastroComponent"],
-                _transporte_graficos_transporte_graficos_transporte_component__WEBPACK_IMPORTED_MODULE_136__["GraficosTransporteComponent"],
-                _transporte_agendamentos_aprovar_agendamento_aprovar_agendamento_component__WEBPACK_IMPORTED_MODULE_137__["AprovarAgendamentoComponent"],
-                _transporte_agendamentos_calendario_agendamentos_calendario_agendamentos_component__WEBPACK_IMPORTED_MODULE_138__["CalendarioAgendamentosComponent"],
-                _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_139__["AgendarVeiculoComponent"],
-                _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_141__["RpaComponent"],
-                _transporte_agendamentos_lista_agendamentos_lista_agendamentos_component__WEBPACK_IMPORTED_MODULE_142__["ListaAgendamentosComponent"],
-                _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_143__["AdminIndicadoresComponent"],
-                _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_144__["NotificacoessispcComponent"],
-                _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_146__["controledepagamentosjuridicoComponent"],
-                _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_147__["CadastroPagamentoComponent"],
-                _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_148__["ListapendentesComponent"],
-                _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_149__["AcompanharaprovacaoComponent"],
-                _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_152__["AprovarComponent"],
-                _admin_admin_component__WEBPACK_IMPORTED_MODULE_153__["AdminComponent"],
-                _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_154__["CriacaodeusuarioComponent"],
-                _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_155__["ListadeusuariosComponent"],
-                _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_156__["CadastrarindicadorComponent"],
-                _performance_admin_indicadores_editarindicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_157__["EditindicadoresComponent"],
-                _performance_admin_indicadores_editarindicadores_editarcadastroindicadores_editarcadastroindicadores_component__WEBPACK_IMPORTED_MODULE_160__["EditarcadastroindicadoresComponent"],
-                _graficos_indicadores_graficos_indicadores_component__WEBPACK_IMPORTED_MODULE_161__["GraficosIndicadoresComponent"],
-                _performance_admin_indicadores_cadastrarindicador_novo_indicador_novo_indicador_component__WEBPACK_IMPORTED_MODULE_162__["NovoIndicadorComponent"],
-                _performance_admin_indicadores_editarindicadores_editarindicadores_component__WEBPACK_IMPORTED_MODULE_163__["EditarindicadoresComponent"],
-                _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_164__["ImportarComponent"],
-                _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_165__["ImportarOrcadosComponent"],
-                _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_166__["ImportarBotsComponent"],
-                _energia_energia_component__WEBPACK_IMPORTED_MODULE_168__["EnergiaComponent"],
-                _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_170__["EquipamentosComponent"],
-                _energia_forecast_forecast_component__WEBPACK_IMPORTED_MODULE_171__["ForecastComponent"],
-                _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_172__["ForecastenergiaaguaComponent"],
-                _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_173__["ForecastenergiaesgotoComponent"],
-                _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_175__["CenariosComponent"],
-                _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_176__["OperacionalEsgotoComponent"],
-                _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_178__["AplicativoEtesComponent"],
-                _operacional_esgoto_indicadores_aplicativos_indicadores_aplicativos_component__WEBPACK_IMPORTED_MODULE_179__["IndicadoresAplicativosComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_76__["AppComponent"],
+                _app_main_app_main_component__WEBPACK_IMPORTED_MODULE_77__["AppMainComponent"],
+                _app_main_menu_app_menu_component__WEBPACK_IMPORTED_MODULE_82__["AppMenuComponent"],
+                _app_main_menu_app_menu_demo_component__WEBPACK_IMPORTED_MODULE_83__["AppMenuDemoComponent"],
+                _app_main_menu_app_menu_component__WEBPACK_IMPORTED_MODULE_82__["AppSubMenuComponent"],
+                _app_main_menu_app_menu_demo_component__WEBPACK_IMPORTED_MODULE_83__["AppSubMenuDemoComponent"],
+                _app_main_menu_sidebar_app_sidebar_component__WEBPACK_IMPORTED_MODULE_84__["AppSideBarComponent"],
+                _app_main_menu_sidebar_app_sidebartabcontent_component__WEBPACK_IMPORTED_MODULE_85__["AppSidebartabcontentComponent"],
+                _app_main_menu_topbar_app_topbar_component__WEBPACK_IMPORTED_MODULE_86__["AppTopbarComponent"],
+                _app_main_app_footer_component__WEBPACK_IMPORTED_MODULE_87__["AppFooterComponent"],
+                _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_88__["DashboardDemoComponent"],
+                _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_89__["SampleDemoComponent"],
+                _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_90__["FormsDemoComponent"],
+                _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_91__["DataDemoComponent"],
+                _demo_view_panelsdemo_component__WEBPACK_IMPORTED_MODULE_92__["PanelsDemoComponent"],
+                _demo_view_overlaysdemo_component__WEBPACK_IMPORTED_MODULE_93__["OverlaysDemoComponent"],
+                _demo_view_menusdemo_component__WEBPACK_IMPORTED_MODULE_94__["MenusDemoComponent"],
+                _demo_view_messagesdemo_component__WEBPACK_IMPORTED_MODULE_95__["MessagesDemoComponent"],
+                _demo_view_messagesdemo_component__WEBPACK_IMPORTED_MODULE_95__["MessagesDemoComponent"],
+                _demo_view_miscdemo_component__WEBPACK_IMPORTED_MODULE_96__["MiscDemoComponent"],
+                _demo_view_chartsdemo_component__WEBPACK_IMPORTED_MODULE_98__["ChartsDemoComponent"],
+                _demo_view_emptydemo_component__WEBPACK_IMPORTED_MODULE_97__["EmptyDemoComponent"],
+                _demo_view_filedemo_component__WEBPACK_IMPORTED_MODULE_99__["FileDemoComponent"],
+                _demo_view_utilsdemo_component__WEBPACK_IMPORTED_MODULE_100__["UtilsDemoComponent"],
+                _demo_view_documentation_component__WEBPACK_IMPORTED_MODULE_101__["DocumentationComponent"],
+                _pages_app_notfound_component__WEBPACK_IMPORTED_MODULE_78__["AppNotfoundComponent"],
+                _pages_app_error_component__WEBPACK_IMPORTED_MODULE_79__["AppErrorComponent"],
+                _pages_app_accessdenied_component__WEBPACK_IMPORTED_MODULE_80__["AppAccessdeniedComponent"],
+                _pages_app_login_component__WEBPACK_IMPORTED_MODULE_81__["AppLoginComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_106__["HomeComponent"],
+                _performance_inputindicadores_inputindicadores_component__WEBPACK_IMPORTED_MODULE_107__["InputindicadoresComponent"],
+                _gpp_projetos_projetos_component__WEBPACK_IMPORTED_MODULE_108__["ProjetosComponent"],
+                _gpp_projetos_pagemain_pagemain_component__WEBPACK_IMPORTED_MODULE_110__["PagemainComponent"],
+                _gpp_projetos_pagestories_pagestories_component__WEBPACK_IMPORTED_MODULE_111__["PagestoriesComponent"],
+                _tarefas_tarefas_component__WEBPACK_IMPORTED_MODULE_112__["TarefasComponent"],
+                _tarefas_listar_listar_component__WEBPACK_IMPORTED_MODULE_116__["ListarComponent"],
+                _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_117__["CadastrarComponent"],
+                _tarefas_editar_editar_component__WEBPACK_IMPORTED_MODULE_118__["EditarComponent"],
+                _tarefas_shared_tarefa_concluida_directive__WEBPACK_IMPORTED_MODULE_113__["TarefaConcluidaDirective"],
+                _gpp_projetos_sesuiteproject_sesuiteproject_component__WEBPACK_IMPORTED_MODULE_119__["SesuiteprojectComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_120__["LoginComponent"],
+                _graficos_graficos_component__WEBPACK_IMPORTED_MODULE_124__["GraficosComponent"],
+                _app_main_menu_sidebar_menurelatorio_menurelatorio_component__WEBPACK_IMPORTED_MODULE_125__["MenurelatorioComponent"],
+                _performance_relatorioindicadores_relatorioindicadores_component__WEBPACK_IMPORTED_MODULE_126__["RelatorioindicadoresComponent"],
+                _performance_relatorioindicadores_capa_capa_component__WEBPACK_IMPORTED_MODULE_127__["CapaComponent"],
+                _performance_relatorioindicadores_indicadores_indicadores_component__WEBPACK_IMPORTED_MODULE_128__["IndicadoresComponent"],
+                _performance_relatorioindicadores_capa_resumo_indicadores_resumo_indicadores_component__WEBPACK_IMPORTED_MODULE_129__["ResumoIndicadoresComponent"],
+                _gestaodedeliberacao_painelprocesso_painelprocesso_component__WEBPACK_IMPORTED_MODULE_130__["PainelprocessoComponent"],
+                _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_131__["PrintdeliberacaoComponent"],
+                _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_132__["TelaImpressaoRelatorioComponent"],
+                _transporte_transporte_component__WEBPACK_IMPORTED_MODULE_133__["TransporteComponent"],
+                _transporte_dashboards_dashboards_component__WEBPACK_IMPORTED_MODULE_134__["DashboardsComponent"],
+                _transporte_agendamentos_agendamentos_component__WEBPACK_IMPORTED_MODULE_135__["AgendamentosComponent"],
+                _transporte_cadastro_cadastro_component__WEBPACK_IMPORTED_MODULE_136__["CadastroComponent"],
+                _transporte_graficos_transporte_graficos_transporte_component__WEBPACK_IMPORTED_MODULE_137__["GraficosTransporteComponent"],
+                _transporte_agendamentos_aprovar_agendamento_aprovar_agendamento_component__WEBPACK_IMPORTED_MODULE_138__["AprovarAgendamentoComponent"],
+                _transporte_agendamentos_calendario_agendamentos_calendario_agendamentos_component__WEBPACK_IMPORTED_MODULE_139__["CalendarioAgendamentosComponent"],
+                _transporte_agendamentos_agendar_veiculo_agendar_veiculo_component__WEBPACK_IMPORTED_MODULE_140__["AgendarVeiculoComponent"],
+                _rpa_rpa_component__WEBPACK_IMPORTED_MODULE_142__["RpaComponent"],
+                _transporte_agendamentos_lista_agendamentos_lista_agendamentos_component__WEBPACK_IMPORTED_MODULE_143__["ListaAgendamentosComponent"],
+                _performance_admin_indicadores_admin_indicadores_component__WEBPACK_IMPORTED_MODULE_144__["AdminIndicadoresComponent"],
+                _notificacoessispc_notificacoessispc_component__WEBPACK_IMPORTED_MODULE_145__["NotificacoessispcComponent"],
+                _controledepagamentosjuridico_controledepagamentosjuridico_component__WEBPACK_IMPORTED_MODULE_147__["controledepagamentosjuridicoComponent"],
+                _controledepagamentosjuridico_cadastro_pagamento_cadastro_pagamento_component__WEBPACK_IMPORTED_MODULE_148__["CadastroPagamentoComponent"],
+                _controledepagamentosjuridico_listapendentes_listapendentes_component__WEBPACK_IMPORTED_MODULE_149__["ListapendentesComponent"],
+                _controledepagamentosjuridico_acompanharaprovacao_acompanharaprovacao_component__WEBPACK_IMPORTED_MODULE_150__["AcompanharaprovacaoComponent"],
+                _controledepagamentosjuridico_aprovar_aprovar_component__WEBPACK_IMPORTED_MODULE_153__["AprovarComponent"],
+                _admin_admin_component__WEBPACK_IMPORTED_MODULE_154__["AdminComponent"],
+                _admin_criacaodeusuario_criacaodeusuario_component__WEBPACK_IMPORTED_MODULE_155__["CriacaodeusuarioComponent"],
+                _admin_listadeusuarios_listadeusuarios_component__WEBPACK_IMPORTED_MODULE_156__["ListadeusuariosComponent"],
+                _performance_admin_indicadores_cadastrarindicador_cadastrarindicador_component__WEBPACK_IMPORTED_MODULE_157__["CadastrarindicadorComponent"],
+                _performance_admin_indicadores_editarindicadores_editindicadores_editindicadores_component__WEBPACK_IMPORTED_MODULE_158__["EditindicadoresComponent"],
+                _performance_admin_indicadores_editarindicadores_editarcadastroindicadores_editarcadastroindicadores_component__WEBPACK_IMPORTED_MODULE_161__["EditarcadastroindicadoresComponent"],
+                _graficos_indicadores_graficos_indicadores_component__WEBPACK_IMPORTED_MODULE_162__["GraficosIndicadoresComponent"],
+                _performance_admin_indicadores_cadastrarindicador_novo_indicador_novo_indicador_component__WEBPACK_IMPORTED_MODULE_163__["NovoIndicadorComponent"],
+                _performance_admin_indicadores_editarindicadores_editarindicadores_component__WEBPACK_IMPORTED_MODULE_164__["EditarindicadoresComponent"],
+                _performance_admin_indicadores_importar_importar_component__WEBPACK_IMPORTED_MODULE_165__["ImportarComponent"],
+                _performance_admin_indicadores_importar_importar_orcados_importar_orcados_component__WEBPACK_IMPORTED_MODULE_166__["ImportarOrcadosComponent"],
+                _performance_admin_indicadores_importar_importar_bots_importar_bots_component__WEBPACK_IMPORTED_MODULE_167__["ImportarBotsComponent"],
+                _energia_energia_component__WEBPACK_IMPORTED_MODULE_169__["EnergiaComponent"],
+                _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_171__["EquipamentosComponent"],
+                _energia_forecast_forecast_component__WEBPACK_IMPORTED_MODULE_172__["ForecastComponent"],
+                _energia_forecast_forecastenergiaagua_forecastenergiaagua_component__WEBPACK_IMPORTED_MODULE_173__["ForecastenergiaaguaComponent"],
+                _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_174__["ForecastenergiaesgotoComponent"],
+                _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_176__["CenariosComponent"],
+                _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_177__["OperacionalEsgotoComponent"],
+                _operacional_esgoto_preenchimento_etes_preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_179__["PreenchimentoEtesComponent"],
+                _operacional_esgoto_preenchimento_etes_preenche_indicadores_preenche_indicadores_component__WEBPACK_IMPORTED_MODULE_180__["PreencheIndicadoresComponent"],
+                _operacional_esgoto_editar_unidades_editar_unidades_component__WEBPACK_IMPORTED_MODULE_181__["EditarUnidadesComponent"],
+                _operacional_esgoto_editar_indicadores_editar_indicadores_component__WEBPACK_IMPORTED_MODULE_182__["EditarIndicadoresComponent"],
+                _operacional_esgoto_relatorios_esgoto_relatorios_esgoto_component__WEBPACK_IMPORTED_MODULE_183__["RelatoriosEsgotoComponent"],
+                _operacional_esgoto_produtos_quimicos_produtos_quimicos_component__WEBPACK_IMPORTED_MODULE_184__["ProdutosQuimicosComponent"],
+                _operacional_esgoto_indicadores_diarios_indicadores_diarios_component__WEBPACK_IMPORTED_MODULE_185__["IndicadoresDiariosComponent"],
+                _operacional_esgoto_produtos_quimicos_graph_graph_component__WEBPACK_IMPORTED_MODULE_186__["GraphComponent"],
+                _operacional_esgoto_indicadores_diarios_consolidado_consolidado_component__WEBPACK_IMPORTED_MODULE_187__["ConsolidadoComponent"],
+                //AplicativoEtesComponent,
+                //IndicadoresAplicativosComponent,
+                _produtividade_controleprod_controleprod_component__WEBPACK_IMPORTED_MODULE_188__["ControleprodComponent"]
             ],
             providers: [
                 { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] },
-                _demo_service_carservice__WEBPACK_IMPORTED_MODULE_101__["CarService"], _demo_service_countryservice__WEBPACK_IMPORTED_MODULE_102__["CountryService"], _demo_service_eventservice__WEBPACK_IMPORTED_MODULE_103__["EventService"], _demo_service_nodeservice__WEBPACK_IMPORTED_MODULE_104__["NodeService"], primeng_api__WEBPACK_IMPORTED_MODULE_108__["MessageService"], _tarefas_shared_tarefa_service__WEBPACK_IMPORTED_MODULE_113__["TarefaService"],
-                _gestaodedeliberacao_gestaodeliberacao_service__WEBPACK_IMPORTED_MODULE_114__["GestaoDeliberacaoService"],
-                _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_130__["PrintdeliberacaoComponent"],
-                _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_131__["TelaImpressaoRelatorioComponent"],
-                _login_auth_service__WEBPACK_IMPORTED_MODULE_120__["AuthService"],
-                _guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_121__["AuthGuard"],
-                _performance_performance_service__WEBPACK_IMPORTED_MODULE_122__["PerformanceService"],
-                _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_140__["TransporteService"],
-                _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_145__["RpaService"],
-                _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_150__["ControledepagamentosjuridicoService"],
-                _admin_Admin_service__WEBPACK_IMPORTED_MODULE_158__["AdminService"],
-                _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_159__["AdminIndicadoresService"],
-                _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_167__["NotificacoesService"],
-                _energia_energia_service__WEBPACK_IMPORTED_MODULE_169__["EnergiaService"],
-                _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_174__["ProjetosService"],
-                _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_177__["OperacionalEsgotoService"]
+                _demo_service_carservice__WEBPACK_IMPORTED_MODULE_102__["CarService"], _demo_service_countryservice__WEBPACK_IMPORTED_MODULE_103__["CountryService"], _demo_service_eventservice__WEBPACK_IMPORTED_MODULE_104__["EventService"], _demo_service_nodeservice__WEBPACK_IMPORTED_MODULE_105__["NodeService"], primeng_api__WEBPACK_IMPORTED_MODULE_109__["MessageService"], _tarefas_shared_tarefa_service__WEBPACK_IMPORTED_MODULE_114__["TarefaService"],
+                _gestaodedeliberacao_gestaodeliberacao_service__WEBPACK_IMPORTED_MODULE_115__["GestaoDeliberacaoService"],
+                _gestaodedeliberacao_printdeliberacao_printdeliberacao_component__WEBPACK_IMPORTED_MODULE_131__["PrintdeliberacaoComponent"],
+                _performance_tela_impressao_relatorio_tela_impressao_relatorio_component__WEBPACK_IMPORTED_MODULE_132__["TelaImpressaoRelatorioComponent"],
+                _login_auth_service__WEBPACK_IMPORTED_MODULE_121__["AuthService"],
+                _guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_122__["AuthGuard"],
+                _performance_performance_service__WEBPACK_IMPORTED_MODULE_123__["PerformanceService"],
+                _transporte_transporte_service__WEBPACK_IMPORTED_MODULE_141__["TransporteService"],
+                _rpa_rpa_service__WEBPACK_IMPORTED_MODULE_146__["RpaService"],
+                _controledepagamentosjuridico_controledepagamentosjuridico_service__WEBPACK_IMPORTED_MODULE_151__["ControledepagamentosjuridicoService"],
+                _admin_Admin_service__WEBPACK_IMPORTED_MODULE_159__["AdminService"],
+                _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_160__["AdminIndicadoresService"],
+                _notificacoessispc_notificacoes_service__WEBPACK_IMPORTED_MODULE_168__["NotificacoesService"],
+                _energia_energia_service__WEBPACK_IMPORTED_MODULE_170__["EnergiaService"],
+                _gpp_projetos_projetos_service__WEBPACK_IMPORTED_MODULE_175__["ProjetosService"],
+                _operacional_esgoto_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_178__["OperacionalEsgotoService"],
+                _operacional_esgoto_editar_unidades_editar_unidades_component__WEBPACK_IMPORTED_MODULE_181__["EditarUnidadesComponent"],
+                _produtividade_produtividade_service__WEBPACK_IMPORTED_MODULE_189__["ProdutividadeService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_75__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_76__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -3620,9 +3789,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _energia_forecast_forecastenergiaesgoto_forecastenergiaesgoto_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component */ "./src/app/energia/forecast/forecastenergiaesgoto/forecastenergiaesgoto.component.ts");
 /* harmony import */ var _energia_equipamentos_equipamentos_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./energia/equipamentos/equipamentos.component */ "./src/app/energia/equipamentos/equipamentos.component.ts");
 /* harmony import */ var _energia_cenarios_cenarios_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./energia/cenarios/cenarios.component */ "./src/app/energia/cenarios/cenarios.component.ts");
-/* harmony import */ var _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./operacional-esgoto/aplicativo-etes/aplicativo-etes.component */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts");
-/* harmony import */ var _operacional_esgoto_indicadores_aplicativos_indicadores_aplicativos_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component */ "./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.ts");
-/* harmony import */ var _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.component */ "./src/app/operacional-esgoto/operacional-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./operacional-esgoto/operacional-esgoto.component */ "./src/app/operacional-esgoto/operacional-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_preenchimento_etes_preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./operacional-esgoto/preenchimento-etes/preenchimento-etes.component */ "./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.ts");
+/* harmony import */ var _operacional_esgoto_relatorios_esgoto_relatorios_esgoto_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component */ "./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.ts");
+/* harmony import */ var _operacional_esgoto_produtos_quimicos_produtos_quimicos_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./operacional-esgoto/produtos-quimicos/produtos-quimicos.component */ "./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.ts");
+/* harmony import */ var _operacional_esgoto_indicadores_diarios_indicadores_diarios_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./operacional-esgoto/indicadores-diarios/indicadores-diarios.component */ "./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.ts");
+/* harmony import */ var _produtividade_controleprod_controleprod_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./produtividade/controleprod/controleprod.component */ "./src/app/produtividade/controleprod/controleprod.component.ts");
 
 
 
@@ -3670,6 +3842,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+_operacional_esgoto_preenchimento_etes_preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_45__["PreenchimentoEtesComponent"];
 var routes = [
     /*  {
           path: 'tarefas',
@@ -3681,9 +3857,11 @@ var routes = [
         children: [
             { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_21__["HomeComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'dash', component: _demo_view_dashboarddemo_component__WEBPACK_IMPORTED_MODULE_3__["DashboardDemoComponent"] },
-            { path: 'appEtes', component: _operacional_esgoto_aplicativo_etes_aplicativo_etes_component__WEBPACK_IMPORTED_MODULE_44__["AplicativoEtesComponent"] },
-            { path: 'indicEtes', component: _operacional_esgoto_indicadores_aplicativos_indicadores_aplicativos_component__WEBPACK_IMPORTED_MODULE_45__["IndicadoresAplicativosComponent"] },
-            { path: 'unidadesEtes', component: _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_46__["OperacionalEsgotoComponent"] },
+            { path: 'adminEtes', component: _operacional_esgoto_operacional_esgoto_component__WEBPACK_IMPORTED_MODULE_44__["OperacionalEsgotoComponent"] },
+            { path: 'preenchimentoetes', component: _operacional_esgoto_preenchimento_etes_preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_45__["PreenchimentoEtesComponent"] },
+            { path: 'relatoriosetes', component: _operacional_esgoto_relatorios_esgoto_relatorios_esgoto_component__WEBPACK_IMPORTED_MODULE_46__["RelatoriosEsgotoComponent"] },
+            { path: 'produtosquimicosetes', component: _operacional_esgoto_produtos_quimicos_produtos_quimicos_component__WEBPACK_IMPORTED_MODULE_47__["ProdutosQuimicosComponent"] },
+            { path: 'indicadoresdiariosetes', component: _operacional_esgoto_indicadores_diarios_indicadores_diarios_component__WEBPACK_IMPORTED_MODULE_48__["IndicadoresDiariosComponent"] },
             { path: 'sample', component: _demo_view_sampledemo_component__WEBPACK_IMPORTED_MODULE_4__["SampleDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'forms', component: _demo_view_formsdemo_component__WEBPACK_IMPORTED_MODULE_5__["FormsDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'data', component: _demo_view_datademo_component__WEBPACK_IMPORTED_MODULE_6__["DataDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
@@ -3698,6 +3876,7 @@ var routes = [
             { path: 'utils', component: _demo_view_utilsdemo_component__WEBPACK_IMPORTED_MODULE_15__["UtilsDemoComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'documentation', component: _demo_view_documentation_component__WEBPACK_IMPORTED_MODULE_16__["DocumentationComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
             { path: 'inputindicadores', component: _performance_inputindicadores_inputindicadores_component__WEBPACK_IMPORTED_MODULE_22__["InputindicadoresComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
+            { path: 'produtividade', component: _produtividade_controleprod_controleprod_component__WEBPACK_IMPORTED_MODULE_49__["ControleprodComponent"] },
             { path: 'projetos', component: _gpp_projetos_projetos_component__WEBPACK_IMPORTED_MODULE_23__["ProjetosComponent"] },
             { path: 'mainprojeto', component: _gpp_projetos_pagemain_pagemain_component__WEBPACK_IMPORTED_MODULE_24__["PagemainComponent"] },
             { path: 'cadastrar', component: _tarefas_cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_25__["CadastrarComponent"], canActivate: [_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["AuthGuard"]] },
@@ -8343,6 +8522,9 @@ var PagemainComponent = /** @class */ (function () {
         this.fluxos = [];
         this.descrevendo = null;
         this.novaDelib = null;
+        this.novaengenha = null;
+        this.novacomprovacao = null;
+        this.novalicenca = null;
         this.idProjeto = Number.parseInt(sessionStorage.getItem('idProjeto'));
         this.projeto = sessionStorage.getItem('nomeProjeto');
         this.projetosService.getFluxoInvestimento().then(function (data) { return _this.fluxoInvest = data; });
@@ -8391,13 +8573,75 @@ var PagemainComponent = /** @class */ (function () {
             "link": null,
             "regulatorio": { "regulatorioId": null }
         };
+        this.novacomprovacao = {
+            "comprovacaoarquivoId": null,
+            "nomearquivo": null,
+            "caminho": null,
+            "tipoarquivo": null,
+            "envio": null,
+            "comprovacaoId": {
+                "comprovacaoId": this.idProjeto
+            }
+        };
+        this.novaengenha = {
+            "engenhariaId": null,
+            "empresa": null,
+            "tipo": null,
+            "responsavel": null,
+            "representanteempresa": null,
+            "status": null,
+            "previsto": null,
+            "replanejado": null,
+            "realizado": null,
+            "contsistemico": null,
+            "contfisico": null,
+            "link": null,
+            "projetoId": {
+                "projetoId": this.idProjeto
+            }
+        };
+        this.novalicenca = {
+            "licencaId": null,
+            "licenca": null,
+            "descricao": null,
+            "tipo": null,
+            "orgao": null,
+            "status": null,
+            "protocolo": null,
+            "inicio": null,
+            "termino": null,
+            "link": null,
+            "projetoId": { "projetoId": 1 }
+        };
+        this.novacomprovacao = {
+            "comprovacaoarquivoId": null,
+            "nomearquivo": null,
+            "caminho": null,
+            "tipoarquivo": null,
+            "envio": null,
+            "comprovacaoId": {
+                "comprovacaoId": this.idProjeto
+            }
+        };
     }
     PagemainComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.pt = {
+            firstDayOfWeek: 0,
+            dayNames: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+            dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+            dayNamesMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+            monthNames: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            monthNamesShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            today: 'Hoje',
+            clear: 'Limpar',
+            dateFormat: 'dd/mm/yy',
+            weekHeader: 'Wk'
+        };
         this.projetosService.projetosId(this.idProjeto)
             .subscribe(function (res) {
-            //console.log(res)
             _this.arrProjeto = res;
+            console.log(_this.arrProjeto);
             _this.selectedLocal = _this.arrProjeto['localidade'];
             _this.selectedRadar = _this.arrProjeto['radar'];
             _this.selectedStatusGlobal = _this.arrProjeto['statusgloblal'];
@@ -8411,6 +8655,22 @@ var PagemainComponent = /** @class */ (function () {
             _this.terminoreplanejado = _this.parseDate(_this.arrProjeto['terminoreplanejado']);
             _this.terminorealizado = _this.parseDate(_this.arrProjeto['terminorealizado']);
             _this.partesInteressadas = _this.arrProjeto['partestinteressadas'];
+            //em outros forms
+            _this.arrProjeto['comprovacao'].envio = _this.parseDate(_this.arrProjeto['comprovacao'].envio);
+            _this.arrProjeto['comprovacao'].retorno = _this.parseDate(_this.arrProjeto['comprovacao'].retorno);
+            _this.arrProjeto['comprovacao'].moeda = _this.arrProjeto['comprovacao'].moeda === null ? _this.arrProjeto['comprovacao'].moeda : _this.arrProjeto['comprovacao'].moeda.toString();
+            _this.arrProjeto['comissionamento'].inicioprevisto = _this.parseDate(_this.arrProjeto['comissionamento'].inicioprevisto);
+            _this.arrProjeto['comissionamento'].inicioreplanejado = _this.parseDate(_this.arrProjeto['comissionamento'].inicioreplanejado);
+            _this.arrProjeto['comissionamento'].iniciorealizado = _this.parseDate(_this.arrProjeto['comissionamento'].iniciorealizado);
+            _this.arrProjeto['comissionamento'].terminoprevisto = _this.parseDate(_this.arrProjeto['comissionamento'].terminoprevisto);
+            _this.arrProjeto['comissionamento'].terminoreplanejado = _this.parseDate(_this.arrProjeto['comissionamento'].terminoreplanejado);
+            _this.arrProjeto['comissionamento'].terminorealizado = _this.parseDate(_this.arrProjeto['comissionamento'].terminorealizado);
+            _this.arrProjeto['obra'].previsto = _this.parseDate(_this.arrProjeto['obra'].previsto);
+            _this.arrProjeto['obra'].replanejado = _this.parseDate(_this.arrProjeto['obra'].replanejado);
+            _this.arrProjeto['obra'].realizado = _this.parseDate(_this.arrProjeto['obra'].realizado);
+            _this.arrProjeto['obra'].inicioprevisto = _this.parseDate(_this.arrProjeto['obra'].inicioprevisto);
+            _this.arrProjeto['obra'].inicioreplanejado = _this.parseDate(_this.arrProjeto['obra'].inicioreplanejado);
+            _this.arrProjeto['obra'].iniciorealizado = _this.parseDate(_this.arrProjeto['obra'].iniciorealizado);
             _this.projetosService.partesInteressadas()
                 .subscribe(function (response) {
                 _this.partesInt = response;
@@ -8433,10 +8693,6 @@ var PagemainComponent = /** @class */ (function () {
                     });
                     _this.selectedFluxo = res[res.length - 1]['fluxoinvestimento'];
                     _this.idRevisao = res.length - 1;
-                    console.log('capturaando numero da revisao => ' + res[res.length - 1]['regulatorioId']);
-                    _this.projetosService.delibregulatorios(_this.idRevisao)
-                        .subscribe(function (res) { return console.log('tentando aqui ó => ' + res); });
-                    console.log("tentei aqui => " + _this.selectedFluxo);
                     _this.atualizarRevisao(_this.selectedFluxo);
                 });
             }
@@ -8444,9 +8700,32 @@ var PagemainComponent = /** @class */ (function () {
                 _this.atualizarRevisao(_this.attFluxo);
             }
         });
+        this.projetosService.licenciamentos(this.idProjeto)
+            .subscribe(function (response) {
+            _this.licenciamentos = response;
+            _this.licenciamentos.forEach(function (lic) {
+                lic.inicio = _this.parseResumoDate(lic.inicio);
+                lic.termino = _this.parseResumoDate(lic.termino);
+            });
+        });
         this.projetosService.engenharia(this.idProjeto)
-            .subscribe(function (response) { return _this.engenharia = response; });
-        console.log(this.engenharia);
+            .subscribe(function (response) {
+            _this.engenharia = response;
+            //console.log(this.engenharia[0])
+            _this.engenharia.forEach(function (eng) {
+                eng.previsto = _this.parseResumoDate(eng.previsto);
+                eng.replanejado = _this.parseResumoDate(eng.replanejado);
+                eng.realizado = _this.parseResumoDate(eng.realizado);
+            });
+        });
+        this.projetosService.comprovacaoarquivos(this.idProjeto)
+            .subscribe(function (response) {
+            _this.comprovacaoarquivos = response;
+            //console.log(this.comprovacaoarquivos[0])
+            _this.comprovacaoarquivos.forEach(function (arq) {
+                arq.envio = _this.parseResumoDate(arq.envio);
+            });
+        });
         this.indices = [
             { label: '01', value: 1 },
             { label: '02', value: 2 },
@@ -8500,33 +8779,42 @@ var PagemainComponent = /** @class */ (function () {
         ];
         this.cols = [
             { field: 'empresa', header: 'Empresa' },
-            { field: 'responsavel', header: 'Responsável' },
+            { field: 'representanteempresa', header: 'Representante' },
+            { field: 'responsavel', header: 'Responsável Preenchimento' },
+            { field: 'tipo', header: 'Tipo' },
             { field: 'status', header: 'Status' },
-            { field: 'tipo', header: 'Tipo do Projeto' },
             { field: 'previsto', header: 'Previsto' },
             { field: 'replanejado', header: 'Replanejado' },
             { field: 'realizado', header: 'Realizado' },
-            { field: 'contfisico', header: 'Contrato Físico' },
-            { field: 'contsistemico', header: 'Contrato Sistêmico' }
+            { field: 'contfisico', header: 'Contrato Jurídico' },
+            { field: 'contsistemico', header: 'Contrato Sistêmico' },
+            { field: 'link', header: 'Link' }
         ];
         this.cols2 = [
-            { field: 'ndeliberacao', header: 'Cod Deliberacao' },
+            { field: 'ndeliberacao', header: 'Nº Documento' },
             { field: 'assunto', header: 'Assunto' },
             { field: 'tipo', header: 'Tipo' },
             { field: 'envio', header: 'Envio' },
             { field: 'retorno', header: 'Retorno' },
             { field: 'aprovado', header: 'Aprovação' },
-            { field: 'link', header: 'Link SeSuite' }
+            { field: 'link', header: 'Link Documento' }
+        ];
+        this.colsarqcomp = [
+            { field: 'nomearquivo', header: 'Nome do arquivo' },
+            { field: 'tipoarquivo', header: 'Tipo do arquivo' },
+            { field: 'envio', header: 'Data de envio' },
+            { field: 'link', header: 'Link Documento' }
         ];
         this.cols3 = [
-            { field: 'numeroLicenca', header: 'Número' },
-            { field: 'tipoLicenca', header: 'Tipo' },
+            { field: 'licenca', header: 'Licença' },
+            { field: 'tipo', header: 'Tipo' },
             { field: 'status', header: 'Status' },
             { field: 'orgao', header: 'Orgão' },
             { field: 'descricao', header: 'Descrição' },
             { field: 'protocolo', header: 'Protocolo' },
             { field: 'inicio', header: 'Início' },
-            { field: 'termino', header: 'Término' }
+            { field: 'termino', header: 'Término' },
+            { field: 'link', header: 'Link' }
         ];
     };
     PagemainComponent.prototype.aprovarRev = function () {
@@ -8545,9 +8833,12 @@ var PagemainComponent = /** @class */ (function () {
         this.regFimAno = null;
         this.projetosService.regulatorios(this.idProjeto)
             .subscribe(function (res) {
+            //console.log(res)
             var aux = [];
+            //==================================================================//
+            // * Definindo que só apareça revisões cadastradas para o projeto * //
+            //==================================================================//
             res.forEach(function (flu) { return aux.push(flu['fluxoinvestimento']); });
-            //console.log('olhe aqui => '+ aux)
             _this.oFluxo = res[aux.indexOf(fluxo, 0)];
             _this.selectedFluxo = _this.oFluxo['fluxoinvestimento'];
             _this.selectedMoedaReg = _this.oFluxo['moeda'];
@@ -8557,22 +8848,37 @@ var PagemainComponent = /** @class */ (function () {
             else {
                 _this.aprov = true;
             }
-            if (_this.oFluxo.inicio === null) { }
+            //console.log(this.oFluxo)
+            if (_this.oFluxo.inicio === null && _this.oFluxo.termino === null) { }
             else {
+                //console.log(this.oFluxo.inicio)
                 //===============================================================//
                 // * Aqui melhorar esse condicional para as diversas hipóteses * //
                 //===============================================================//
-                if (_this.regFimAno === null) { }
-                else {
+                try {
                     _this.regIniDia = _this.oFluxo.inicio.dayOfMonth < 10 ? "0" + _this.oFluxo.inicio.dayOfMonth : _this.oFluxo.inicio.dayOfMonth.toString();
                     _this.regIniMes = _this.oFluxo.inicio.monthValue < 10 ? "0" + _this.oFluxo.inicio.monthValue : _this.oFluxo.inicio.monthValue.toString();
                     _this.regIniAno = _this.oFluxo.inicio.year.toString();
+                }
+                catch (_a) {
+                    _this.regIniDia = null;
+                    _this.regIniMes = null;
+                    _this.regIniAno = null;
+                }
+                try {
                     _this.regFimDia = _this.oFluxo.termino.dayOfMonth < 10 ? "0" + _this.oFluxo.termino.dayOfMonth : _this.oFluxo.termino.dayOfMonth.toString();
                     _this.regFimMes = _this.oFluxo.termino.monthValue < 10 ? "0" + _this.oFluxo.termino.monthValue : _this.oFluxo.termino.monthValue.toString();
                     _this.regFimAno = _this.oFluxo.termino.year.toString();
                 }
+                catch (_b) {
+                    _this.regFimDia = null;
+                    _this.regFimMes = null;
+                    _this.regFimAno = null;
+                }
             }
-            console.log('capturaando numero da revisao => ' + _this.oFluxo['regulatorioId']);
+            //===============================================================//
+            //============ * chamando endpoint de deliberações * ============//
+            //===============================================================//
             _this.projetosService.delibregulatorios(_this.oFluxo['regulatorioId'])
                 .subscribe(function (res) {
                 //console.log('tentando aqui ó => '+ res)
@@ -8582,20 +8888,109 @@ var PagemainComponent = /** @class */ (function () {
                     dl.aprovado = _this.parseResumoDate(dl.aprovado);
                     dl.retorno = _this.parseResumoDate(dl.retorno);
                 });
-                console.log('mudando data =>' + _this.delib);
+                //console.log('mudando data =>'+this.delib)
             });
         });
     };
     PagemainComponent.prototype.insereDelib = function () {
         var _this = this;
         this.novaDelib.regulatorio['regulatorioId'] = this.oFluxo['regulatorioId'];
-        console.log(this.novaDelib);
+        //console.log(this.novaDelib)
         this.projetosService.delibregulatoriosAdd(this.novaDelib)
             .subscribe(function (response) {
-            if (response === null) {
+            if (response.status === 201) {
                 _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
                     detail: 'Dados enviados com sucesso!' });
                 console.log('Dados enviados com sucesso!');
+                _this.cadDelibVisible = false;
+                _this.projetosService.delibregulatorios(_this.oFluxo['regulatorioId'])
+                    .subscribe(function (res) {
+                    //console.log('tentando aqui ó => '+ res)
+                    _this.delib = res;
+                    _this.delib.forEach(function (dl) {
+                        dl.envio = _this.parseResumoDate(dl.envio);
+                        dl.aprovado = _this.parseResumoDate(dl.aprovado);
+                        dl.retorno = _this.parseResumoDate(dl.retorno);
+                    });
+                    //console.log('mudando data =>'+this.delib)
+                });
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    };
+    PagemainComponent.prototype.insereComprovacaoArq = function () {
+        var _this = this;
+        this.novacomprovacao['comprovacaoId'].comprovacaoId = this.idProjeto;
+        this.projetosService.comprovacaoarquivosAdd(this.novacomprovacao)
+            .subscribe(function (response) {
+            if (response.status === 201) {
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                _this.cadArqComp = false;
+                _this.projetosService.comprovacaoarquivos(_this.idProjeto)
+                    .subscribe(function (response) {
+                    _this.comprovacaoarquivos = response;
+                    _this.comprovacaoarquivos.forEach(function (arq) {
+                        arq.envio = _this.parseResumoDate(arq.envio);
+                    });
+                });
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    };
+    PagemainComponent.prototype.insereLicenciamento = function () {
+        var _this = this;
+        this.novalicenca['projetoId'].projetoId = this.idProjeto;
+        this.projetosService.licenciamentosAdd(this.novalicenca)
+            .subscribe(function (response) {
+            if (response.status === 201) {
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                _this.cadArqComp = false;
+                _this.projetosService.licenciamentos(_this.idProjeto)
+                    .subscribe(function (response) {
+                    _this.licenciamentos = response;
+                    _this.licenciamentos.forEach(function (lic) {
+                        lic.inicio = _this.parseResumoDate(lic.inicio);
+                        lic.termino = _this.parseResumoDate(lic.termino);
+                    });
+                });
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    };
+    PagemainComponent.prototype.insereengenharia = function () {
+        var _this = this;
+        this.novaengenha.projetoId = { "projetoId": this.idProjeto };
+        //console.log(this.novaengenha)
+        this.projetosService.engenhariaAdd(this.novaengenha)
+            .subscribe(function (response) {
+            if (response.status === 201) {
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                _this.cadengenharia = false;
+                _this.projetosService.engenharia(_this.idProjeto)
+                    .subscribe(function (response) {
+                    _this.engenharia = response;
+                    console.log(_this.engenharia[0]);
+                    _this.engenharia.forEach(function (eng) {
+                        eng.previsto = _this.parseResumoDate(eng.previsto);
+                        eng.replanejado = _this.parseResumoDate(eng.replanejado);
+                        eng.realizado = _this.parseResumoDate(eng.realizado);
+                    });
+                });
             }
         }, function (error) {
             _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
@@ -8619,6 +9014,22 @@ var PagemainComponent = /** @class */ (function () {
             }
         };
         this.projetosService.regulatoriosAdd(this.attFluxo)
+            .subscribe(function (response) {
+            if (response.status === 201) {
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+                //this.atualizarRevisao(this.oFluxo)
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    };
+    PagemainComponent.prototype.salvainfoEngenharia = function () {
+        var _this = this;
+        this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
             .subscribe(function (response) {
             if (response === null) {
                 _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
@@ -8660,6 +9071,24 @@ var PagemainComponent = /** @class */ (function () {
             console.log(error);
         });
     };
+    PagemainComponent.prototype.salvainfoLicenca = function () {
+    };
+    PagemainComponent.prototype.salvarComprovacao = function () {
+        var _this = this;
+        this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
+            .subscribe(function (response) {
+            if (response === null) {
+                console.log(_this.arrProjeto);
+                _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
+                    detail: 'Dados enviados com sucesso!' });
+                console.log('Dados enviados com sucesso!');
+            }
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                detail: error.message, life: 5000 });
+            console.log(error);
+        });
+    };
     PagemainComponent.prototype.salvarGerais = function () {
         var _this = this;
         //console.log(this.partes)
@@ -8683,6 +9112,7 @@ var PagemainComponent = /** @class */ (function () {
         this.arrProjeto['terminoreplanejado'] = this.terminoreplanejado;
         this.arrProjeto['terminorealizado'] = this.terminorealizado;
         this.arrProjeto['partestinteressadas'] = this.partesInteressadas;
+        console.log(this.arrProjeto);
         this.projetosService.projetosAtt(this.arrProjeto, this.idProjeto)
             .subscribe(function (response) {
             if (response === null) {
@@ -8698,8 +9128,39 @@ var PagemainComponent = /** @class */ (function () {
         });
     };
     //====================================================================================================//
-    //================================= * Métodos Auxiliares * ===========================================//
+    //================================= * Funções Auxiliares * ===========================================//
     //====================================================================================================//
+    PagemainComponent.prototype.formatoMoeda = function (num) {
+        var numFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(num);
+        console.log(num);
+        console.log(this.verificaDecimal(num));
+        return numFormat;
+    };
+    PagemainComponent.prototype.verificaDecimal = function (num) {
+        var verificar;
+        var verificado = [];
+        verificar = num.toString().split("");
+        verificar = verificar.reverse();
+        for (var value in verificar) {
+            if (verificar.indexOf(value) <= 2) {
+                verificado.push(value);
+            }
+            else {
+                if (value != ".") {
+                    verificado.push(value);
+                    console.log(value);
+                }
+            }
+        }
+        verificado.reverse().toString();
+        /*
+        if(num.toString().indexOf(",") === -1){
+            verificado = num.toString().split("")
+        }else{
+            verificado = "Achei uma vígula aqui!!!!"
+        }*/
+        return verificado;
+    };
     //Método que transforma data formato Json para date
     PagemainComponent.prototype.parseDate = function (value) {
         if (value === null) { }
@@ -8774,52 +9235,166 @@ var PagemainComponent = /** @class */ (function () {
     PagemainComponent.prototype.onRowEditInit = function (dados) {
         this.clonedLines[dados.ndeliberacao] = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, dados);
     };
+    PagemainComponent.prototype.onRowEditInitArq = function (dados) {
+        this.clonedLines[dados.comprovacaoarquivoId] = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, dados);
+    };
+    PagemainComponent.prototype.onRowEditInitLic = function (dados) {
+        this.clonedLines[dados.licencaId] = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, dados);
+    };
+    PagemainComponent.prototype.onRowEditInitEng = function (dados) {
+        this.clonedLines[dados.engenhariaId] = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, dados);
+    };
     PagemainComponent.prototype.onRowEditSave = function (dados) {
         var _this = this;
         if (dados.ndeliberacao != null || dados.ndeliberacao != '') {
             dados.regulatorio = null;
             dados.regulatorio = { regulatorioId: this.oFluxo['regulatorioId'] };
+            dados.tipo = this.selectedTipo;
             try {
                 dados.envio = this.toDate(dados.envio);
                 dados.retorno = this.toDate(dados.retorno);
                 dados.aprovado = this.toDate(dados.aprovado);
-                dados.tipo = this.selectedTipo;
-                console.log(dados);
-                console.log(dados.deliberacaoId);
-                this.projetosService.delibregulatoriosAtt(dados, dados.deliberacaoId)
-                    .subscribe(function (response) {
-                    if (response === null) {
-                        _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
-                            detail: 'Dados enviados com sucesso!' });
-                        console.log('Dados enviados com sucesso!');
-                    }
-                }, function (error) {
-                    _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
-                        detail: error.message, life: 5000 });
-                    console.log(error);
-                });
             }
             catch (_a) {
-                console.log(dados);
-                console.log(dados.deliberacaoId);
-                this.projetosService.delibregulatoriosAtt(dados, dados.deliberacaoId)
-                    .subscribe(function (response) {
-                    if (response === null) {
-                        _this.messageService.add({ sticky: true, severity: 'success', summary: 'Dados Salvos!',
-                            detail: 'Dados enviados com sucesso!' });
-                        console.log('Dados enviados com sucesso!');
-                    }
-                }, function (error) {
-                    _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
-                        detail: error.message, life: 5000 });
-                    console.log(error);
-                });
+                console.log('Data sem alteração pois é nula');
             }
-            delete this.clonedLines[dados.ndeliberacao];
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+            this.projetosService.delibregulatoriosAtt(dados, dados.deliberacaoId)
+                .subscribe(function (response) {
+                if (response === null) {
+                    delete _this.clonedLines[dados.ndeliberacao];
+                    _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    _this.projetosService.delibregulatorios(_this.oFluxo['regulatorioId'])
+                        .subscribe(function (res) {
+                        //console.log('tentando aqui ó => '+ res)
+                        _this.delib = res;
+                        _this.delib.forEach(function (dl) {
+                            dl.envio = _this.parseResumoDate(dl.envio);
+                            dl.aprovado = _this.parseResumoDate(dl.aprovado);
+                            dl.retorno = _this.parseResumoDate(dl.retorno);
+                        });
+                        //console.log('mudando data =>'+this.delib)
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, function (error) {
+                _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
         }
         else {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O código da deliberação é obrigatório!' });
+        }
+    };
+    PagemainComponent.prototype.onRowEditSaveArq = function (dados) {
+        var _this = this;
+        console.log(dados);
+        dados.comprovacaoId = { comprovacaoId: dados['comprovacaoId'].comprovacaoId };
+        if (dados.nomearquivo != null || dados.nomearquivo != '') {
+            try {
+                dados.envio = this.toDate(dados.envio);
+            }
+            catch (_a) {
+                console.log('Data sem alteração pois é nula');
+            }
+            this.projetosService.comprovacaoarquivosAtt(dados, dados.comprovacaoarquivoId)
+                .subscribe(function (response) {
+                if (response === null) {
+                    delete _this.clonedLines[dados.comprovacaoarquivoId];
+                    _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    _this.projetosService.comprovacaoarquivos(_this.idProjeto)
+                        .subscribe(function (response) {
+                        _this.comprovacaoarquivos = response;
+                        _this.comprovacaoarquivos.forEach(function (arq) {
+                            arq.envio = _this.parseResumoDate(arq.envio);
+                        });
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, function (error) {
+                _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
+        }
+        else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O nome do arquivo é obrigatório!' });
+        }
+    };
+    PagemainComponent.prototype.onRowEditSaveLic = function (dados) {
+        var _this = this;
+        console.log(dados);
+        dados.projetoId = { projetoId: dados['projetoId'].projetoId };
+        if (dados.licenca != null || dados.licenca != '') {
+            try {
+                dados.inicio = this.toDate(dados.inicio);
+                dados.termino = this.toDate(dados.termino);
+            }
+            catch (_a) {
+                console.log('Data sem alteração pois é nula');
+            }
+            this.projetosService.licenciamentosAtt(dados, dados.licencaId)
+                .subscribe(function (response) {
+                if (response === null) {
+                    delete _this.clonedLines[dados.licencaId];
+                    _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    _this.projetosService.licenciamentos(_this.idProjeto)
+                        .subscribe(function (response) {
+                        _this.licenciamentos = response;
+                        _this.licenciamentos.forEach(function (lic) {
+                            lic.inicio = _this.parseResumoDate(lic.inicio);
+                            lic.termino = _this.parseResumoDate(lic.termino);
+                        });
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, function (error) {
+                _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
+        }
+        else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O nome do arquivo é obrigatório!' });
+        }
+    };
+    PagemainComponent.prototype.onRowEditSaveEng = function (dados) {
+        var _this = this;
+        console.log(dados);
+        dados.projetoId = { projetoId: dados['projetoId'].projetoId };
+        if (dados.licenca != null || dados.licenca != '') {
+            try {
+                dados.previsto = this.toDate(dados.previsto);
+                dados.replanejado = this.toDate(dados.replanejado);
+                dados.realizado = this.toDate(dados.realizado);
+            }
+            catch (_a) {
+                console.log('Data sem alteração pois é nula');
+            }
+            this.projetosService.engenhariaAtt(dados, dados.engenhariaId)
+                .subscribe(function (response) {
+                if (response === null) {
+                    delete _this.clonedLines[dados.engenhariaId];
+                    _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Os dados foram atualizados!' });
+                    _this.projetosService.engenharia(_this.idProjeto)
+                        .subscribe(function (response) {
+                        _this.engenharia = response;
+                        _this.engenharia.forEach(function (eng) {
+                            eng.previsto = _this.parseResumoDate(eng.previsto);
+                            eng.replanejado = _this.parseResumoDate(eng.replanejado);
+                            eng.realizado = _this.parseResumoDate(eng.realizado);
+                        });
+                    });
+                    console.log('Dados enviados com sucesso!');
+                }
+            }, function (error) {
+                _this.messageService.add({ severity: 'error', summary: "Dados não Enviados!",
+                    detail: error.message, life: 5000 });
+                console.log(error);
+            });
+        }
+        else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'O nome do arquivo é obrigatório!' });
         }
     };
     PagemainComponent.prototype.onRowEditCancel = function (dados, index) {
@@ -9199,8 +9774,16 @@ var ProjetosService = /** @class */ (function () {
         return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/projetos/" + projetosId + "/engenharia")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
+    ProjetosService.prototype.comprovacaoarquivos = function (projetosId) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/projetos/" + projetosId + "/comprovacaoarquivos")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
     ProjetosService.prototype.regulatorios = function (projetosId) {
         return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/projetos/" + projetosId + "/regulatorios")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    ProjetosService.prototype.licenciamentos = function (projetosId) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/projetos/" + projetosId + "/licenciamentos")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
     ProjetosService.prototype.delibregulatorios = function (revisaoId) {
@@ -9259,6 +9842,39 @@ var ProjetosService = /** @class */ (function () {
             statusTexto: response.statusText
         }); }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
+    ProjetosService.prototype.comprovacaoarquivosAdd = function (dados) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/comprovacaoarquivos", dados, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }); }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    ProjetosService.prototype.licenciamentosAdd = function (dados) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/licenciamentos", dados, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }); }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    ProjetosService.prototype.engenhariaAdd = function (dados) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        console.log(dados);
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/engenharia", dados, { observe: 'response' })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) { return ({ data: response.headers,
+            status: response.status,
+            statusTexto: response.statusText
+        }); }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
     ProjetosService.prototype.regulatoriosAtt = function (arrProjeto, id) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
             .set("Content-Type", "application/json");
@@ -9271,6 +9887,27 @@ var ProjetosService = /** @class */ (function () {
             .set("Content-Type", "application/json");
         var bodyObj = arrProjeto;
         return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/delibregulatorios/" + id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    ProjetosService.prototype.licenciamentosAtt = function (arrProjeto, id) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+            .set("Content-Type", "application/json");
+        var bodyObj = arrProjeto;
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/licenciamentos/" + id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    ProjetosService.prototype.engenhariaAtt = function (arrProjeto, id) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+            .set("Content-Type", "application/json");
+        var bodyObj = arrProjeto;
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/engenharia/" + id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    ProjetosService.prototype.comprovacaoarquivosAtt = function (arrProjeto, id) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+            .set("Content-Type", "application/json");
+        var bodyObj = arrProjeto;
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/comprovacaoarquivos/" + id, JSON.stringify(bodyObj), { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
     };
     ProjetosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -10619,367 +11256,630 @@ var NotificacoessispcComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css":
-/*!**********************************************************************************!*\
-  !*** ./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css ***!
-  \**********************************************************************************/
+/***/ "./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.css":
+/*!****************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.css ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9hcGxpY2F0aXZvLWV0ZXMvYXBsaWNhdGl2by1ldGVzLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9lZGl0YXItaW5kaWNhZG9yZXMvZWRpdGFyLWluZGljYWRvcmVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
-/***/ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts":
-/*!*********************************************************************************!*\
-  !*** ./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.ts ***!
-  \*********************************************************************************/
-/*! exports provided: AplicativoEtesComponent */
+/***/ "./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.ts":
+/*!***************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.ts ***!
+  \***************************************************************************************/
+/*! exports provided: EditarIndicadoresComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AplicativoEtesComponent", function() { return AplicativoEtesComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarIndicadoresComponent", function() { return EditarIndicadoresComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
-/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
-/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var src_app_performance_performance_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/performance/performance.service */ "./src/app/performance/performance.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
-var AplicativoEtesComponent = /** @class */ (function () {
-    function AplicativoEtesComponent(esg, messageService) {
+
+var EditarIndicadoresComponent = /** @class */ (function () {
+    function EditarIndicadoresComponent(esg, messageService, perf) {
         this.esg = esg;
         this.messageService = messageService;
-        this.VisibleListaDeUnidades = false;
-        this.ptbr = {
-            firstDayOfWeek: 1,
-            dayNames: ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"],
-            dayNamesShort: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
-            dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S"],
-            monthNames: ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
-            monthNamesShort: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
-            today: 'Hoje',
-            clear: 'Limpar'
-        };
+        this.perf = perf;
+        this.displayDialog = false;
         //===================================================================================================================================
-        //SELECIONAR TIPO DE INDICADOR
-        this.ListaOpcoes = [];
-        this.DATA1 = null;
-        this.DATA2 = null;
-        this.VisibleUnidadeSelecionada = false;
-        this.VisibleListaDeIndicadores = false;
-        this.cols = [
-            { field: 'nome', header: 'nome' },
-            { field: 'tagIndicador', header: 'tagIndicador' },
-            { field: 'usuario', header: 'usuario' },
-            { field: 'dataIndicador', header: 'dataIndicador' },
-            { field: 'valor', header: 'valor' },
-            { field: 'observacao', header: 'observacao' },
+        //Gerenciar Indicadores
+        this.ArrayDeIndicadores = [];
+        this.displayIndicadores = false;
+        this.displayCarregando = null;
+        this.ListaDeIndDiarios = [];
+        this.displayEditarIndicador = false;
+        this.calculos = [
+            { label: "SOMA", value: 1 },
+            { label: "MÉDIA", value: 2 },
+            { label: "ÚLTIMO", value: 3 },
+            { label: "MAIOR", value: 4 },
+            { label: "MENOR", value: 5 },
         ];
-        this.ListaFiltroUsuario = [];
-        this.ListaFiltro2Usuario = [];
-        this.ListaFiltroindicador = [];
-        this.ListaFiltro2indicador = [];
+        this.disabled = true;
     }
-    AplicativoEtesComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.getOpcoes();
-        this.esg.getunidades().subscribe(function (response) {
-            _this.ListaDeUnidades = response;
-            _this.VisibleListaDeUnidades = true;
-            // ===============================
-            // Descomentar depois do teste
-            _this.UnidadeSelecionada = _this.ListaDeUnidades[1];
-            _this.VisibleListaDeUnidades = false;
-            _this.VisibleUnidadeSelecionada = true;
-            _this.DATA1 = new Date(2020, 2, 10);
-            _this.DATA2 = new Date(2020, 2, 14);
-            _this.selecioanarIndicador(_this.ListaOpcoes[0]);
-            // ===============================
-        });
+    EditarIndicadoresComponent.prototype.ngOnInit = function () {
+        this.AtualizarUnidades();
+        this.AtualizarIndDiarios();
     };
-    AplicativoEtesComponent.prototype.voltar = function () {
-        this.VisibleListaDeUnidades = true;
-        this.VisibleUnidadeSelecionada = false;
-        this.VisibleListaDeIndicadores = false;
-        for (var i = 0; i < this.ListaOpcoes.length; i++) {
-            this.ListaOpcoes[i].selected = 0;
-        }
-        this.DATA1 = null;
-        this.DATA2 = null;
-    };
-    AplicativoEtesComponent.prototype.getOpcoes = function () {
+    EditarIndicadoresComponent.prototype.AtualizarUnidades = function () {
         var _this = this;
-        this.ListaOpcoes = [];
         this.esg.getclassificacoes().subscribe(function (response) {
-            _this.ListaOpcoes = response;
-            for (var i = 0; i < response.length; i++) {
-                _this.ListaOpcoes[i].selected = 0;
-            }
+            _this.ListaDeClassificacoes = response;
         });
     };
-    AplicativoEtesComponent.prototype.selectEte = function (ete) {
-        this.UnidadeSelecionada = ete;
-        this.VisibleListaDeUnidades = false;
-        this.VisibleUnidadeSelecionada = true;
-        this.DATA1 = null;
-        this.DATA2 = null;
-    };
-    //===================================================================================================================================
-    //DADOS DO INDICADOR
-    AplicativoEtesComponent.prototype.converterdata = function (date) {
-        var ano = date.getFullYear();
-        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
-        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-        return ano + "-" + mes + "-" + dia;
-    };
-    AplicativoEtesComponent.prototype.selecioanarIndicador = function (indicador) {
+    EditarIndicadoresComponent.prototype.AtualizarIndDiarios = function () {
         var _this = this;
-        this.VisibleListaDeIndicadores = false;
-        for (var i = 0; i < this.ListaOpcoes.length; i++) {
-            this.ListaOpcoes[i].selected = 0;
-        }
-        if (this.DATA1 === null || this.DATA2 === null) {
-            this.messageService.add({ severity: 'info', summary: 'info', detail: 'Preencha as Datas' });
-        }
-        else {
-            indicador.selected = 1;
-            //=======================================================================
-            this.esg.getIndicadoresUnidade(this.UnidadeSelecionada.id, this.converterdata(this.DATA1), this.converterdata(this.DATA2), indicador.id).subscribe(function (response) {
-                console.log(response);
-                _this.ListaDeIndicadores = response;
-                _this.ListaDeIndicadoresImodificada = response;
-                _this.ListaFiltroUsuario = [];
-                _this.ListaFiltro2Usuario = [];
-                _this.ListaFiltroindicador = [];
-                _this.ListaFiltro2indicador = [];
-                for (var i = 0; i < response.length; i++) {
-                    if (_this.ListaFiltro2indicador.indexOf(response[i].indicador.tagIndicador) < 0) {
-                        _this.ListaFiltroindicador.push(response[i].indicador);
-                        _this.ListaFiltro2indicador.push(response[i].indicador.tagIndicador);
-                    }
-                    if (_this.ListaFiltro2Usuario.indexOf(response[i].usuario) < 0) {
-                        _this.ListaFiltroUsuario.push({ label: response[i].usuario, value: response[i].usuario });
-                        _this.ListaFiltro2Usuario.push(response[i].usuario);
-                    }
-                }
-                _this.VisibleListaDeIndicadores = true;
-            });
-        }
-    };
-    AplicativoEtesComponent.prototype.pesquisar = function (ind, coluna) {
-        this.ListaDeIndicadores = this.ListaDeIndicadoresImodificada;
-        this.ListaDeIndicadores = this.ListaDeIndicadores.filter(function (animal) {
-            return animal.indicador[coluna] === ind[coluna];
+        this.perf.cadindicadores().subscribe(function (response) {
+            _this.ListaDeIndDiarios = response;
         });
     };
-    AplicativoEtesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    EditarIndicadoresComponent.prototype.showDialogToAdd = function () {
+        this.ClassificacaoSelected = {
+            id: null,
+            dataDaCriacao: null,
+            icon: null,
+            nome: null
+        };
+        this.novaUnidade = true;
+        this.displayDialog = true;
+    };
+    EditarIndicadoresComponent.prototype.saveClassificacao = function () {
+        var _this = this;
+        var id = this.ClassificacaoSelected.id == null ? 0 : this.ClassificacaoSelected.id;
+        this.esg.EditarClassificacao(this.ClassificacaoSelected, id).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Classificação ' + _this.ClassificacaoSelected['nome'] + ' Alterado' });
+            _this.AtualizarUnidades();
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+        });
+        this.displayDialog = false;
+    };
+    EditarIndicadoresComponent.prototype.onRowSelect = function (event) {
+        this.novaUnidade = false;
+        this.ClassificacaoSelected = event.data;
+        this.displayDialog = true;
+    };
+    EditarIndicadoresComponent.prototype.cloneCar = function (c) {
+        var car = {};
+        for (var prop in c) {
+            car[prop] = c[prop];
+        }
+        return car;
+    };
+    EditarIndicadoresComponent.prototype.deleteClassificacao = function () {
+        var _this = this;
+        this.esg.DeleteClassificacao(this.ClassificacaoSelected.id).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Classificação ' + _this.ClassificacaoSelected['nome'] + ' Deletado' });
+            _this.AtualizarUnidades();
+            _this.displayDialog = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+        });
+    };
+    EditarIndicadoresComponent.prototype.gerenciarIndicadores = function () {
+        var _this = this;
+        this.displayCarregando = true;
+        this.esg.getindicadorporclassificaco(this.ClassificacaoSelected.id).subscribe(function (indicadors) {
+            _this.displayIndicadores = true;
+            _this.ArrayDeIndicadores = indicadors;
+            _this.displayCarregando = null;
+        });
+    };
+    EditarIndicadoresComponent.prototype.onGerenciarIndicadoresHide = function () {
+        this.displayCarregando = null;
+    };
+    EditarIndicadoresComponent.prototype.editarIndicador = function (Linha) {
+        this.IndicadorASerEditado = Linha;
+        this.ClassificacaoSelecionada = this.IndicadorASerEditado.classificacao;
+        this.disabled = Linha.indicadoresDiarios === null ? true : false;
+        for (var i = 0; i < this.ListaDeIndDiarios.length; i++) {
+            if (this.ListaDeIndDiarios[i].id === Linha.indicadoresDiarios) {
+                this.ListaDeIndDiariosSelecionada = this.ListaDeIndDiarios[i];
+                break;
+            }
+        }
+        this.displayEditarIndicador = true;
+    };
+    EditarIndicadoresComponent.prototype.novoIndicador = function (Linha) {
+        this.IndicadorASerEditado = Linha;
+        this.ClassificacaoSelecionada = null;
+        this.displayEditarIndicador = true;
+    };
+    EditarIndicadoresComponent.prototype.saveIndicador = function () {
+        var _this = this;
+        this.IndicadorASerEditado.classificacao = this.ClassificacaoSelecionada;
+        this.IndicadorASerEditado.indicadoresDiarios = this.disabled === true ? null : this.ListaDeIndDiariosSelecionada.indicadorId;
+        this.esg.EditarIndicador(this.IndicadorASerEditado).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + _this.IndicadorASerEditado['nome'] + ' Alterado' });
+            _this.displayEditarIndicador = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+        });
+    };
+    EditarIndicadoresComponent.prototype.delIndicador = function () {
+        var _this = this;
+        this.esg.DeleteIndicador(this.IndicadorASerEditado.id).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + _this.IndicadorASerEditado['nome'] + ' Deletado' });
+            _this.displayEditarIndicador = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+        });
+    };
+    EditarIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-aplicativo-etes',
-            template: __webpack_require__(/*! raw-loader!./aplicativo-etes.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.html"),
-            styles: [__webpack_require__(/*! ./aplicativo-etes.component.css */ "./src/app/operacional-esgoto/aplicativo-etes/aplicativo-etes.component.css")]
+            selector: 'app-editar-indicadores',
+            template: __webpack_require__(/*! raw-loader!./editar-indicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.html"),
+            styles: [__webpack_require__(/*! ./editar-indicadores.component.css */ "./src/app/operacional-esgoto/editar-indicadores/editar-indicadores.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
-    ], AplicativoEtesComponent);
-    return AplicativoEtesComponent;
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], primeng_api__WEBPACK_IMPORTED_MODULE_4__["MessageService"], src_app_performance_performance_service__WEBPACK_IMPORTED_MODULE_3__["PerformanceService"]])
+    ], EditarIndicadoresComponent);
+    return EditarIndicadoresComponent;
 }());
 
 
 
 /***/ }),
 
-/***/ "./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.css":
-/*!**************************************************************************************************!*\
-  !*** ./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.css ***!
-  \**************************************************************************************************/
+/***/ "./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.css":
+/*!**********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.css ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9pbmRpY2Fkb3Jlcy1hcGxpY2F0aXZvcy9pbmRpY2Fkb3Jlcy1hcGxpY2F0aXZvcy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9lZGl0YXItdW5pZGFkZXMvZWRpdGFyLXVuaWRhZGVzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
-/***/ "./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.ts":
-/*!*************************************************************************************************!*\
-  !*** ./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.ts ***!
-  \*************************************************************************************************/
-/*! exports provided: IndicadoresAplicativosComponent */
+/***/ "./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: EditarUnidadesComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndicadoresAplicativosComponent", function() { return IndicadoresAplicativosComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarUnidadesComponent", function() { return EditarUnidadesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
-/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
-/* harmony import */ var _performance_performance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../performance/performance.service */ "./src/app/performance/performance.service.ts");
-/* harmony import */ var _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../performance/admin-indicadores/admin-indicadores.service */ "./src/app/performance/admin-indicadores/admin-indicadores.service.ts");
-/* harmony import */ var src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/csv-data.service */ "./src/app/csv-data.service.ts");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var src_app_app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/app.component */ "./src/app/app.component.ts");
 
 
 
 
 
-
-
-var IndicadoresAplicativosComponent = /** @class */ (function () {
-    function IndicadoresAplicativosComponent(esg, perf, perf2, messageService) {
+var EditarUnidadesComponent = /** @class */ (function () {
+    function EditarUnidadesComponent(esg, adminServ, messageService) {
         this.esg = esg;
-        this.perf = perf;
-        this.perf2 = perf2;
+        this.adminServ = adminServ;
         this.messageService = messageService;
-        //CHAVES DE ATIVAÇÃO
-        this.carregando = false;
-        //==============================================================================================================================================================
-        //LISTAS
-        this.indicadoresVolume = [];
-        this.arrayDePreenchimentos = [];
-        this.arrayZao = [];
-        //==============================================================================================================================================================
         this.displayDialog = false;
-        this.arrayDeUnidade = [];
+        //===================================================================================================================================
+        //Gerenciar Operadores
+        this.displayOperadores = false;
+        this.displayOperadoresCarregando = false;
+        // Disponiveis =[]
+        this.Disponiveis2 = [];
+        this.Operaveis = [];
     }
-    IndicadoresAplicativosComponent.prototype.ngOnInit = function () {
+    EditarUnidadesComponent.prototype.ngOnInit = function () {
+        this.AtualizarUnidades();
+        this.cols = [
+            { field: 'id', header: 'id' },
+            { field: 'dataDaCriacao', header: 'Criacao' },
+            { field: 'unidade', header: 'unidade' },
+            { field: 'tipoDeTratamento', header: 'Tipo de Tratamento' },
+            { field: 'vazao', header: 'Vazão' },
+        ];
+    };
+    EditarUnidadesComponent.prototype.AtualizarUnidades = function () {
+        this.ListaDeUnidades = this.adminServ.Unidades;
+    };
+    EditarUnidadesComponent.prototype.showDialogToAdd = function () {
+        this.UnidadeSelected = {
+            id: null,
+            unidade: null,
+            dataDaCriacao: null,
+            tipoDeTratamento: null,
+            vazao: null,
+            operadores: []
+        };
+        this.novaUnidade = true;
+        this.displayDialog = true;
+    };
+    EditarUnidadesComponent.prototype.save = function () {
         var _this = this;
-        this.esg.getunidades().subscribe(function (response) {
-            _this.ListaDeUnidades = response;
-            _this.UnidadeSelecionada = _this.ListaDeUnidades[1];
+        console.log(this.UnidadeSelected);
+        var id = this.UnidadeSelected.id == null ? 0 : this.UnidadeSelected.id;
+        this.esg.updateunidade(this.UnidadeSelected, id).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + _this.UnidadeSelected['indicador'] + ' Alterado' });
+            _this.Operaveis = [];
+            _this.AtualizarUnidades();
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
         });
-        this.esg.getclassificacoes().subscribe(function (response) {
-            _this.ListaDeClassificacoes = response;
-            _this.ClassificacaoSelecionada = _this.ListaDeClassificacoes[5];
-            _this.referencia = new Date('2020-03-01 00:00:00');
-            _this.consultar();
+        this.displayDialog = false;
+    };
+    EditarUnidadesComponent.prototype.onRowSelect = function (event) {
+        this.novaUnidade = false;
+        this.displayDialog = true;
+    };
+    EditarUnidadesComponent.prototype.cloneCar = function (c) {
+        var car = {};
+        for (var prop in c) {
+            car[prop] = c[prop];
+        }
+        return car;
+    };
+    EditarUnidadesComponent.prototype.deleteUnidade = function () {
+        var _this = this;
+        this.esg.DeleteUnidade(this.UnidadeSelected.id).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Classificação ' + _this.UnidadeSelected['nome'] + ' Deletado' });
+            _this.AtualizarUnidades();
+            _this.displayDialog = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
         });
     };
-    //CHAVES DE ATIVAÇÃO
-    IndicadoresAplicativosComponent.prototype.consultar = function () {
-        var _this = this;
-        this.frozenColumn = [];
-        this.scroolableColumn = [];
-        this.carregando = true;
-        this.arrayZao = [];
-        this.cols = [];
-        this.cols2 = [];
-        if (this.ClassificacaoSelecionada === undefined || this.UnidadeSelecionada == undefined || this.referencia == undefined) {
-            this.messageService.add({ severity: 'info', summary: 'Faltam campos', detail: 'Falta preencher alguns campos' });
+    EditarUnidadesComponent.prototype.gerenciarOperadores = function () {
+        this.Disponiveis2 = this.adminServ.Disponiveis;
+        if (this.adminServ.Disponiveis.length === 0) {
+            this.displayOperadoresCarregando = true;
         }
         else {
-            this.cols2 = [
-                { field: 'data', header: 'data' },
-                { field: 'volOrca', header: 'volOrca' },
-                { field: 'volReal', header: 'volReal' },
-            ];
-            this.esg.getindicadorporclassificaco(this.ClassificacaoSelecionada.id).subscribe(function (resp) {
-                _this.cols = resp;
-                //---------------------------------------------------------------------------------------------------------------
-                _this.perf2.indicadoresByMonth(_this.converterdata(_this.referencia), _this.UnidadeSelecionada.volume).subscribe(function (resp) {
-                    _this.indicadoresVolume = resp;
-                    var datainicio = resp[0].dataindicador;
-                    var datafim = resp[(resp.length - 1)].dataindicador;
-                    _this.esg.getIndicadoresUnidade(_this.UnidadeSelecionada.id, datainicio, datafim, _this.ClassificacaoSelecionada.id).subscribe(function (response) {
-                        _this.arrayDePreenchimentos = response;
-                        for (var i = 0; i < _this.indicadoresVolume.length; i++) {
-                            _this.arrayZao.push({
-                                data: _this.indicadoresVolume[i].dataindicador,
-                                volOrca: _this.indicadoresVolume[i].orcado,
-                                volReal: _this.indicadoresVolume[i].realizado
-                            });
-                            for (var j = 0; j < _this.cols.length; j++) {
-                                var array = _this.filtrararray(response, _this.cols[j].tagIndicador, _this.indicadoresVolume[i].dataindicador);
-                                _this.arrayZao[i][_this.cols[j].tagIndicador] = { valor: _this.filtrarsomatorio(array), array: array };
-                            }
-                        }
-                        for (var j = 0; j < _this.cols.length; j++) {
-                            _this.scroolableColumn.push({ field: _this.cols[j].tagIndicador, header: _this.cols[j].tagIndicador });
-                            _this.cols2.push({ field: _this.cols[j].tagIndicador, header: _this.cols[j].tagIndicador });
-                        }
-                        _this.carregando = false;
-                    });
+            this.displayOperadores = true;
+            this.Disponiveis2 = this.Disponiveis2.map(function (elem) {
+                for (var i = 0; i < this.Operaveis.length; i++) {
+                    if (this.Operaveis[i].nome.equal(elem.nome)) {
+                        console.log(this.Operaveis[i]);
+                        break;
+                    }
+                }
+                return elem;
+            });
+        }
+        this.Operaveis = this.UnidadeSelected.operadores;
+    };
+    EditarUnidadesComponent.prototype.salvarOperadores = function () {
+        var _this = this;
+        this.UnidadeSelected.operadores = this.Operaveis;
+        this.displayOperadoresCarregando = true;
+        this.esg.updateOperadores(this.UnidadeSelected).subscribe(function (indicadors) {
+            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + _this.UnidadeSelected['indicador'] + ' Alterado' });
+            _this.displayOperadores = false;
+            _this.displayOperadoresCarregando = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+            _this.displayOperadoresCarregando = false;
+        });
+    };
+    EditarUnidadesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-editar-unidades',
+            template: __webpack_require__(/*! raw-loader!./editar-unidades.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.html"),
+            styles: [__webpack_require__(/*! ./editar-unidades.component.css */ "./src/app/operacional-esgoto/editar-unidades/editar-unidades.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], src_app_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+    ], EditarUnidadesComponent);
+    return EditarUnidadesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.css":
+/*!**********************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.css ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9pbmRpY2Fkb3Jlcy1kaWFyaW9zL2NvbnNvbGlkYWRvL2NvbnNvbGlkYWRvLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.ts":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.ts ***!
+  \*********************************************************************************************/
+/*! exports provided: ConsolidadoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsolidadoComponent", function() { return ConsolidadoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var src_app_app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/app.component */ "./src/app/app.component.ts");
+
+
+
+
+
+var ConsolidadoComponent = /** @class */ (function () {
+    function ConsolidadoComponent(esg, adminServ, messageService) {
+        this.esg = esg;
+        this.adminServ = adminServ;
+        this.messageService = messageService;
+        this.listaCriada = [];
+        this.checkbotao = true;
+        this.displayIndicador1 = false;
+        this.displayIndicador = false;
+        //===================================================================================================
+        //EDITAR LANCAMENTOS DO OPERADOR
+        this.edicao = false;
+        this.listaDeUnidades = this.adminServ.Unidades;
+    }
+    ConsolidadoComponent.prototype.ngOnInit = function () {
+        this.AtualizarUnidades();
+        this.listaDeUnidades = this.adminServ.Unidades;
+    };
+    //===================================================================================================
+    //ATUALIZAR ARRAYS
+    ConsolidadoComponent.prototype.AtualizarUnidades = function () {
+        var _this = this;
+        this.esg.getclassificacoes().subscribe(function (response) {
+            _this.listaDeClassificacoes = response;
+        });
+    };
+    ConsolidadoComponent.prototype.atualizaIndicadores = function (valor) {
+        var _this = this;
+        this.listaDeIndicadores = null;
+        this.IndicadorSelecionado = null;
+        var classificacao = valor.toElement.innerText;
+        for (var x in this.listaDeClassificacoes) {
+            if (this.listaDeClassificacoes[x].nome.indexOf(classificacao) >= 0) {
+                this.classificacaoSelecionada = this.listaDeClassificacoes[x];
+                this.esg.getindicadorporclassificaco(this.listaDeClassificacoes[x].id).subscribe(function (response) {
+                    _this.listaDeIndicadores = response;
                 });
-                //---------------------------------------------------------------------------------------------------------------
+                break;
+            }
+        }
+        this.checkbotao = true;
+    };
+    //===================================================================================================
+    //HABILITAR OU DESABILITAR BOTÃO DE PESQUISA
+    ConsolidadoComponent.prototype.checarBotao = function () {
+        if (this.classificacaoSelecionada.nome != null && this.IndicadorSelecionado != undefined && this.Data != null) {
+            this.checkbotao = false;
+        }
+    };
+    ConsolidadoComponent.prototype.Escolher = function () {
+        var _this = this;
+        this.IndicadorDiarioSelecionado = null;
+        this.ListaDeIndicadoresDiarios = this.adminServ.ListaDeIndicadoresDiarios;
+        for (var i = 0; i < this.adminServ.ListaDeIndicadoresDiarios.length; i++) {
+            console.log(this.adminServ.ListaDeIndicadoresDiarios[i]);
+            if (this.adminServ.ListaDeIndicadoresDiarios[i].indicadorId === this.IndicadorSelecionado.indicadoresDiarios) {
+                this.IndicadorDiarioSelecionado = this.adminServ.ListaDeIndicadoresDiarios[i];
+                break;
+            }
+        }
+        this.listaCriada = [];
+        var primeirodia = new Date(this.Data.getFullYear(), this.Data.getMonth(), this.Data.getDate());
+        var ultimodia = new Date(primeirodia.getFullYear(), primeirodia.getMonth() + 1, 0);
+        this.esg.PesquisarLancamentoUnidadeIndicador(this.unidadeSelecionada.id, this.IndicadorSelecionado.id, this.converterdata(primeirodia), this.converterdata(ultimodia)).subscribe(function (response) {
+            for (var dia = _this.Data; dia <= ultimodia; dia.setDate(dia.getDate() + 1)) {
+                _this.calculo(_this.IndicadorSelecionado.calculo, response, _this.converterdata(dia));
+            }
+            _this.displayIndicador = true;
+            // console.log(this.listaCriada)
+        });
+    };
+    //===================================================================================================
+    //SEPARAR E CALCULAR ARRAY
+    ConsolidadoComponent.prototype.calculo = function (formadecalculo, array, data) {
+        var calculo = 0;
+        var TipoDecalculo;
+        var arrayfiltrado = array.filter(function (e) {
+            if (e.dataIndicador.indexOf(data) >= 0) {
+                return e;
+            }
+        });
+        calculo = this.calcular(arrayfiltrado, formadecalculo);
+        TipoDecalculo = formadecalculo == 1 ? "SOMA" : formadecalculo == 2 ? "MÉDIA" : formadecalculo == 3 ? "ÚLTIMO" : formadecalculo == 4 ? "MAIOR" : formadecalculo == 5 ? "MENOR" : "";
+        var arrayMontado = {
+            data: data,
+            calculo: calculo,
+            tipoDeCalculo: TipoDecalculo,
+            array: arrayfiltrado
+        };
+        this.listaCriada.push(arrayMontado);
+    };
+    ConsolidadoComponent.prototype.calcular = function (arrayfiltrado, formadecalculo) {
+        var calculo = 0;
+        for (var i = 0; i < arrayfiltrado.length; i++) {
+            //SOMA
+            if (formadecalculo == 1) {
+                calculo = arrayfiltrado[i].valor + calculo;
+                //MÉDIA
+            }
+            else if (formadecalculo == 2) {
+                calculo = calculo == 0 ? arrayfiltrado[i].valor : arrayfiltrado[i].valor + calculo / 2;
+                //ÚLTIMO
+            }
+            else if (formadecalculo == 3) {
+                calculo = arrayfiltrado[i].valor;
+                //MAIOR
+            }
+            else if (formadecalculo == 4) {
+                calculo = arrayfiltrado[i].valor > calculo ? arrayfiltrado[i].valor : calculo;
+                //MENOR
+            }
+            else if (formadecalculo == 5) {
+                calculo = calculo == 0 ? arrayfiltrado[i].valor : arrayfiltrado[i].valor < calculo ? arrayfiltrado[i].valor : calculo;
+            }
+        }
+        return calculo;
+    };
+    ConsolidadoComponent.prototype.selecionar = function (unidade) {
+        this.RegistroSelected = unidade.data.array;
+        this.abrirRegistros = true;
+    };
+    ConsolidadoComponent.prototype.novoregistro = function () {
+        this.edicao = true;
+        this.objetoEditadoValor = 0;
+        this.objetoEditadoId = 0;
+        this.objetoEditadoData = null;
+    };
+    ConsolidadoComponent.prototype.adicionareditarregistros = function (event) {
+        this.edicao = true;
+        this.objetoEditadoId = event.data.id;
+        this.objetoEditadoValor = event.data.valor;
+        this.objetoEditadoData = new Date(event.data.dataIndicador);
+    };
+    ConsolidadoComponent.prototype.salvaAlteracao = function () {
+        var _this = this;
+        var array = {
+            id: this.objetoEditadoId,
+            valor: this.objetoEditadoValor,
+            indicador: this.IndicadorSelecionado.id,
+            unidade: this.unidadeSelecionada.id,
+            data: this.converterdatahora(this.objetoEditadoData),
+            usuario: sessionStorage.getItem('nome'),
+        };
+        this.esg.AlterarLancamento(array, this.objetoEditadoId).subscribe(function (response) {
+            _this.messageService.add({ severity: 'success', summary: 'Salvo com sucesso', detail: 'Salvo com sucesso' });
+            _this.edicao = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Erro ao Salvar", detail: 'Erro ao Salvar' });
+            _this.edicao = false;
+        });
+    };
+    //===================================================================================================
+    // ENVIAR PARA INDICADORES DIÁRIOS
+    ConsolidadoComponent.prototype.enviarparaindicadoresdiarios = function () {
+        var _this = this;
+        var indicadorDiario = this.IndicadorSelecionado.indicadoresDiarios;
+        for (var i = 0; i < this.listaCriada.length; i++) {
+            var array = {
+                indicadordiario: indicadorDiario,
+                datas: this.listaCriada[i].data,
+                valor: this.listaCriada[i].calculo,
+                usuario: sessionStorage.getItem('nome'),
+            };
+            console.log(array);
+            this.esg.EnviarPraIndDiario(array).subscribe(function (response) {
+                _this.messageService.add({ severity: 'success', summary: 'Salvo com sucesso', detail: 'Salvo com sucesso a data ' + array.datas });
+                _this.edicao = false;
+            }, function (error) {
+                _this.messageService.add({ severity: 'error', summary: "Erro ao Salvar", detail: 'Erro ao Salvar' });
+                _this.edicao = false;
             });
         }
     };
-    IndicadoresAplicativosComponent.prototype.filtrararray = function (dados, criterio, data) {
-        // console.log(criterio)
-        // console.log(data)
-        var valor = 0;
-        var paraEstaData = dados.filter(function (unidades) {
-            var dados = unidades.indicador.tagIndicador.includes(criterio);
-            return dados;
-        });
-        paraEstaData = paraEstaData.filter(function (unidades) {
-            var dados = unidades.dataIndicador.includes(data);
-            return dados;
-        });
-        return paraEstaData;
-    };
-    IndicadoresAplicativosComponent.prototype.filtrarsomatorio = function (dados) {
-        var valor = 0;
-        for (var j = 0; j < dados.length; j++) {
-            valor = valor + dados[j].valor;
-        }
-        return valor;
-    };
-    IndicadoresAplicativosComponent.prototype.salvarCSV = function () {
-        this.carregando = true;
-        var array = this.arrayZao;
-        for (var j = 0; j < array.length; j++) {
-            for (var i = 0; i < this.cols2.length; i++) {
-                if (i > 0) {
-                    if (i > 2) {
-                        array[j][this.cols2[i].header] = array[j][this.cols2[i].header].valor;
-                    }
-                    array[j][this.cols2[i].header] = array[j][this.cols2[i].header];
-                }
-            }
-        }
-        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_6__["CsvDataService"].exportToCsv('Dados Esgoto.csv', array);
-        this.carregando = false;
-    };
-    IndicadoresAplicativosComponent.prototype.salvarCSV2 = function () {
-        this.carregando = true;
-        for (var i = 0; i < this.arrayDePreenchimentos.length; i++) {
-            this.arrayDePreenchimentos[i].indicador = this.arrayDePreenchimentos[i].indicador.tagIndicador;
-            this.arrayDePreenchimentos[i].unidade = this.arrayDePreenchimentos[i].indicador.unidade;
-            this.arrayDePreenchimentos[i].valor = this.arrayDePreenchimentos[i].valor;
-        }
-        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_6__["CsvDataService"].exportToCsv('Dados Esgoto Detalhado.csv', this.arrayDePreenchimentos);
-        this.carregando = false;
-    };
-    IndicadoresAplicativosComponent.prototype.onRowSelect = function (event) {
-        this.arrayDeUnidade = [];
-        for (var j = 3; j < this.cols2.length; j++) {
-            var coluna = this.cols2[j].header;
-            var objarr = event.data[coluna].array;
-            for (var k = 0; k < objarr.length; k++) {
-                this.arrayDeUnidade.push(objarr[k]);
-            }
-        }
-        this.displayDialog = true;
-    };
-    //==============================================================================================================================================================
-    IndicadoresAplicativosComponent.prototype.converterdata = function (date) {
+    //===================================================================================================
+    // CONVERTER DATA 
+    ConsolidadoComponent.prototype.converterdata = function (date) {
         var ano = date.getFullYear();
         var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
         var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minuto = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var segundo = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
         return ano + "-" + mes + "-" + dia;
     };
-    IndicadoresAplicativosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    ConsolidadoComponent.prototype.converterdatahora = function (date) {
+        var ano = date.getFullYear();
+        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minuto = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var segundo = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        return ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":" + segundo;
+    };
+    ConsolidadoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-indicadores-aplicativos',
-            template: __webpack_require__(/*! raw-loader!./indicadores-aplicativos.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.html"),
-            styles: [__webpack_require__(/*! ./indicadores-aplicativos.component.css */ "./src/app/operacional-esgoto/indicadores-aplicativos/indicadores-aplicativos.component.css")]
+            selector: 'app-consolidado',
+            template: __webpack_require__(/*! raw-loader!./consolidado.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.html"),
+            styles: [__webpack_require__(/*! ./consolidado.component.css */ "./src/app/operacional-esgoto/indicadores-diarios/consolidado/consolidado.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_3__["OperacionalEsgotoService"], _performance_performance_service__WEBPACK_IMPORTED_MODULE_4__["PerformanceService"], _performance_admin_indicadores_admin_indicadores_service__WEBPACK_IMPORTED_MODULE_5__["AdminIndicadoresService"], primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
-    ], IndicadoresAplicativosComponent);
-    return IndicadoresAplicativosComponent;
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], src_app_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+    ], ConsolidadoComponent);
+    return ConsolidadoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9pbmRpY2Fkb3Jlcy1kaWFyaW9zL2luZGljYWRvcmVzLWRpYXJpb3MuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: IndicadoresDiariosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndicadoresDiariosComponent", function() { return IndicadoresDiariosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var IndicadoresDiariosComponent = /** @class */ (function () {
+    function IndicadoresDiariosComponent() {
+        this.appConsolidado = true;
+    }
+    IndicadoresDiariosComponent.prototype.clickConsolidado = function () {
+        this.appConsolidado = true;
+        this.appLinkIndicadores = false;
+        this.appPreencheIndicadores = false;
+    };
+    IndicadoresDiariosComponent.prototype.clickLinkIndicadores = function () {
+        this.appConsolidado = false;
+        this.appLinkIndicadores = true;
+        this.appPreencheIndicadores = false;
+    };
+    IndicadoresDiariosComponent.prototype.clickPreencheIndicadores = function () {
+        this.appConsolidado = false;
+        this.appLinkIndicadores = false;
+        this.appPreencheIndicadores = true;
+    };
+    IndicadoresDiariosComponent.prototype.ngOnInit = function () {
+    };
+    IndicadoresDiariosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-indicadores-diarios',
+            template: __webpack_require__(/*! raw-loader!./indicadores-diarios.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.html"),
+            styles: [__webpack_require__(/*! ./indicadores-diarios.component.css */ "./src/app/operacional-esgoto/indicadores-diarios/indicadores-diarios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], IndicadoresDiariosComponent);
+    return IndicadoresDiariosComponent;
 }());
 
 
@@ -11023,48 +11923,37 @@ var OperacionalEsgotoComponent = /** @class */ (function () {
         this.esg = esg;
         this.perf = perf;
         this.messageService = messageService;
-        this.displayDialog = false;
+        this.Usuario = sessionStorage.getItem('nome');
     }
     OperacionalEsgotoComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.perf.cadindicadores().subscribe(function (response) {
-            _this.volumes = response;
-        });
-        this.esg.getunidades().subscribe(function (response) {
-            _this.ListaDeUnidades = response;
-        });
-        this.cols = [
-            { field: 'id', header: 'id' },
-            { field: 'dataDaCriacao', header: 'dataDaCriacao' },
-            { field: 'unidade', header: 'unidade' },
-            { field: 'tipoDeTratamento', header: 'tipoDeTratamento' },
-            { field: 'volume', header: 'volume' },
-        ];
+        this.CarregarNotificacoes();
     };
-    OperacionalEsgotoComponent.prototype.showDialogToAdd = function () {
-        this.novaUnidade = true;
-        this.displayDialog = true;
-    };
-    OperacionalEsgotoComponent.prototype.save = function () {
+    OperacionalEsgotoComponent.prototype.CarregarNotificacoes = function () {
         var _this = this;
-        this.UnidadeSelected.volume = this.UnidadeSelected.volume.indicadorId;
-        this.esg.updateunidade(this.UnidadeSelected).subscribe(function (indicadors) {
-            _this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Indicador ' + _this.UnidadeSelected['indicador'] + ' Alterado' });
+        this.esg.getNotificacao().subscribe(function (resp) {
+            _this.ListaDeNotificacoes = resp.map(function (obj) {
+                obj.dataDaCriacao = obj.dataDaCriacao.substr(8, 2) + "/" + obj.dataDaCriacao.substr(5, 2) + "/" + obj.dataDaCriacao.substr(2, 2) + " " + obj.dataDaCriacao.substr(11, 8);
+                return obj;
+            });
+        });
+    };
+    OperacionalEsgotoComponent.prototype.SalvarNotificacao = function () {
+        var _this = this;
+        var novoarray = {
+            id: null,
+            dataDaCriacao: null,
+            unidade: "Administrador",
+            admin: 1,
+            usuario: sessionStorage.getItem('nome'),
+            texto: this.NotificacaoTexto
+        };
+        console.log(novoarray);
+        this.esg.InserirNotificacao(novoarray).subscribe(function (resp) {
+            _this.messageService.add({ severity: 'success', summary: "Salvo", detail: 'Salvo com sucesso' });
+            _this.CarregarNotificacoes();
         }, function (error) {
-            _this.messageService.add({ severity: 'warn', summary: 'Erro', detail: 'Erro' });
+            _this.messageService.add({ severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar' });
         });
-        this.displayDialog = false;
-    };
-    OperacionalEsgotoComponent.prototype.onRowSelect = function (event) {
-        this.novaUnidade = false;
-        this.displayDialog = true;
-    };
-    OperacionalEsgotoComponent.prototype.cloneCar = function (c) {
-        var car = {};
-        for (var prop in c) {
-            car[prop] = c[prop];
-        }
-        return car;
     };
     OperacionalEsgotoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -11107,41 +11996,836 @@ var OperacionalEsgotoService = /** @class */ (function () {
     function OperacionalEsgotoService(http) {
         this.http = http;
     }
-    OperacionalEsgotoService.prototype.getunidades = function () {
-        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto")
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
-    };
+    //===============================================================================================================================
+    //CLASSIFICAÇÕES
     OperacionalEsgotoService.prototype.getclassificacoes = function () {
         return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appclassificacoesesgoto")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.DeleteClassificacao = function (id) {
+        return this.http.delete(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appclassificacoesesgoto/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.EditarClassificacao = function (unidade, id) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+            .set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appclassificacoesesgoto/" + id, JSON.stringify(unidade), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    //===============================================================================================================================
+    //INDICADORES
+    OperacionalEsgotoService.prototype.getindicadorporUnidade = function (id) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appindicadoresesgoto/porunidade/" + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
     OperacionalEsgotoService.prototype.getindicadorporclassificaco = function (id) {
         return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appclassificacoesesgoto/porclassficacao/" + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
-    OperacionalEsgotoService.prototype.getindicadores = function () {
-        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appclassificacoesesgoto")
+    OperacionalEsgotoService.prototype.getIndicadoresNaoAprovados = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/naoaprovados")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
-    OperacionalEsgotoService.prototype.getIndicadoresUnidade = function (Unidade, de, ate, classi) {
-        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/unidades/" + Unidade + "/" + de + "/" + ate + "/" + classi)
+    OperacionalEsgotoService.prototype.getIndicadoresNaoAprovadosUser = function (usuario) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/naoaprovados/" + usuario)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
     };
-    OperacionalEsgotoService.prototype.updateunidade = function (unidade) {
+    OperacionalEsgotoService.prototype.EditarIndicador = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        var id = bodyObj.id === null ? 0 : bodyObj.id;
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appindicadoresesgoto/" + id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    OperacionalEsgotoService.prototype.DeleteIndicador = function (id) {
+        return this.http.delete(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    //===============================================================================================================================
+    //LANÇAMENTOS
+    OperacionalEsgotoService.prototype.PesquisarLancamento = function (unidadeid, de, ate) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/relatorio/" + unidadeid + "/" + de + "/" + ate)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.PesquisarLancamentoUnidadeIndicador = function (unidadeid, indicadorid, de, ate) {
+        console.log(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/relatoriounidadeindicador/" + unidadeid + "/" + indicadorid + "/" + de + "/" + ate);
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/relatoriounidadeindicador/" + unidadeid + "/" + indicadorid + "/" + de + "/" + ate)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.PesquisarLancamentoProdutoQuimico = function (unidadeid) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/produtoquimico/" + unidadeid)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.InserirLancamento = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto", JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    OperacionalEsgotoService.prototype.EditarLancamento = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/" + bodyObj.id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    OperacionalEsgotoService.prototype.DeleteLancamento = function (id) {
+        return this.http.delete(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.AprovarLancamento = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/aprovarLancamento/" + bodyObj.id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    OperacionalEsgotoService.prototype.AlterarLancamento = function (bodyObj, id) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/atualizarvalor/" + id, JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    OperacionalEsgotoService.prototype.EnviarPraIndDiario = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgoto/atualizarIndicadoresDiarios", JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    //===============================================================================================================================
+    //UNIDADES
+    // getIndicadoresUnidade(Unidade, de, ate, usuario:string): Observable<any[]>{
+    //   return  this.http.get(`${API_CONFIG}/appesgoto/unidades/${Unidade}/${de}/${ate}/${usuario}`) 
+    //   .pipe(map((res : any[]) => res, catchError(ErrorHandler.handleError)))
+    // }
+    OperacionalEsgotoService.prototype.getunidades = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.getunidadesporUser = function (email) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto/porusuario/" + email)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.getunidade = function (id) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.updateunidade = function (unidade, id) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
             .set("Content-Type", "application/json");
-        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto/" + unidade.id, JSON.stringify(unidade), { headers: headers })
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto/" + id, JSON.stringify(unidade), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
+    OperacionalEsgotoService.prototype.DeleteUnidade = function (id) {
+        return this.http.delete(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.updateOperadores = function (unidade) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+            .set("Content-Type", "application/json");
+        return this.http.put(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appunidadesesgoto/operadores/" + unidade.id, JSON.stringify(unidade), { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
     };
     OperacionalEsgotoService.prototype.extractData = function (res) {
         var body = res;
         return body;
     };
+    //===========================================================================================================================
+    //NOTIFICAÇÕES
+    OperacionalEsgotoService.prototype.getNotificacaoData = function (de, ate) {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgotoocorrencias/relatorio/" + de + "/" + ate)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.getNotificacao = function () {
+        return this.http.get(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgotoocorrencias/findlimit")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) { return res; }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError)));
+    };
+    OperacionalEsgotoService.prototype.InserirNotificacao = function (bodyObj) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set("Content-Type", "application/json");
+        return this.http.post(_app_api__WEBPACK_IMPORTED_MODULE_2__["API_CONFIG"] + "/appesgotoocorrencias", JSON.stringify(bodyObj), { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(src_app_app_error_handler__WEBPACK_IMPORTED_MODULE_5__["ErrorHandler"].handleError));
+    };
     OperacionalEsgotoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
     ], OperacionalEsgotoService);
     return OperacionalEsgotoService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.css":
+/*!***************************************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.css ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9wcmVlbmNoaW1lbnRvLWV0ZXMvcHJlZW5jaGUtaW5kaWNhZG9yZXMvcHJlZW5jaGUtaW5kaWNhZG9yZXMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.ts":
+/*!**************************************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.ts ***!
+  \**************************************************************************************************************/
+/*! exports provided: PreencheIndicadoresComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PreencheIndicadoresComponent", function() { return PreencheIndicadoresComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var src_app_performance_performance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/performance/performance.service */ "./src/app/performance/performance.service.ts");
+/* harmony import */ var _preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../preenchimento-etes.component */ "./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.ts");
+
+
+
+
+
+
+var PreencheIndicadoresComponent = /** @class */ (function () {
+    function PreencheIndicadoresComponent(esg, perf, messageService, ss) {
+        this.esg = esg;
+        this.perf = perf;
+        this.messageService = messageService;
+        this.ss = ss;
+        this.arrayDeClassificacoes = [];
+        this.visibleSidebar = false;
+        //=====================================================================================================================
+        //enviar notificacoes
+        this.visibleNotificacoes = false;
+    }
+    PreencheIndicadoresComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.esg.getindicadorporUnidade(this.ETE.id).subscribe(function (resp) {
+            // console.log(resp)
+            var indicadores = resp;
+            for (var i = 0; i < indicadores.length; i++) {
+                var qualificador = true;
+                for (var j = 0; j < _this.arrayDeClassificacoes.length; j++) {
+                    if (_this.arrayDeClassificacoes[j].id === indicadores[i].classificacao.id) {
+                        qualificador = false;
+                        break;
+                    }
+                }
+                if (qualificador) {
+                    _this.arrayDeClassificacoes.push(indicadores[i].classificacao);
+                }
+            }
+            for (var i = 0; i < _this.arrayDeClassificacoes.length; i++) {
+                _this.arrayDeClassificacoes[i].indicador = [];
+                for (var j = 0; j < indicadores.length; j++) {
+                    if (indicadores[j].classificacao.id == _this.arrayDeClassificacoes[i].id) {
+                        _this.arrayDeClassificacoes[i].indicador.push(indicadores[j]);
+                    }
+                }
+            }
+        });
+        // console.log(this.arrayDeClassificacoes)
+        //=============================================
+        // this.Classificacao = this.arrayDeClassificacoes[0]  
+        // this.visibleSidebar = true
+        // this.visibleNotificacoes=true
+        //=============================================
+    };
+    PreencheIndicadoresComponent.prototype.voltar = function () {
+        this.ss.voltar();
+        this.ss.Lancamentos();
+    };
+    PreencheIndicadoresComponent.prototype.verIndicadores = function (classificacao) {
+        this.Classificacao = classificacao;
+        // console.log(classificacao)
+        this.visibleSidebar = true;
+    };
+    PreencheIndicadoresComponent.prototype.validarnumero = function (indicador) {
+        // console.log(indicador)
+    };
+    PreencheIndicadoresComponent.prototype.salvar = function (array) {
+        if (this.horario != undefined) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].valor != undefined) {
+                    var valor = array[i].valor;
+                    var maximo = array[i].maximo;
+                    var minimo = array[i].minimo;
+                    if (minimo != 0 && maximo != 0) {
+                        if (valor >= minimo && valor <= maximo) {
+                            this.salvar2(array[i]);
+                            array[i].valor = undefined;
+                        }
+                        else {
+                            this.messageService.add({ severity: 'error', summary: array[i].nome, detail: 'os valores dessa medição devem estar entre ' + minimo + ' e ' + maximo });
+                        }
+                    }
+                    else if (maximo != 0) {
+                        if (valor <= maximo) {
+                            this.salvar2(array[i]);
+                            array[i].valor = undefined;
+                        }
+                        else {
+                            this.messageService.add({ severity: 'error', summary: array[i].nome, detail: 'os valores dessa medição devem ser menor do que ' + maximo });
+                        }
+                    }
+                    else if (minimo != 0) {
+                        if (valor >= minimo) {
+                            this.salvar2(array[i]);
+                            array[i].valor = undefined;
+                        }
+                        else {
+                            this.messageService.add({ severity: 'error', summary: array[i].nome, detail: 'os valores dessa medição devem ser maior do que ' + minimo });
+                        }
+                    }
+                    else {
+                        this.salvar2(array[i]);
+                        array[i].valor = undefined;
+                    }
+                }
+            }
+            this.visibleSidebar = false;
+        }
+        else {
+            this.visibleSidebar = false;
+            this.messageService.add({ severity: 'warn', summary: 'HORÁRIO!!', detail: 'Preencha o campo de Horário' });
+        }
+    };
+    PreencheIndicadoresComponent.prototype.salvar2 = function (array) {
+        var _this = this;
+        var novoarray = {
+            id: null,
+            dataDaImportacao: null,
+            dataIndicador: this.converterdata(this.horario),
+            usuario: sessionStorage.getItem('nome'),
+            valor: array.valor,
+            unidade: {
+                id: this.ETE.id
+            },
+            indicador: {
+                id: array.id,
+            },
+            aprovado: 0
+        };
+        this.esg.InserirLancamento(novoarray).subscribe(function (resp) {
+            _this.messageService.add({ severity: 'success', summary: array.nome, detail: 'Salvo com sucesso' });
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar' });
+        });
+    };
+    PreencheIndicadoresComponent.prototype.converterdata = function (date) {
+        var ano = date.getFullYear();
+        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minuto = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var segundo = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        return ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":" + segundo;
+    };
+    PreencheIndicadoresComponent.prototype.AbrirMural = function () {
+        this.Notificacoes();
+        this.visibleNotificacoes = true;
+        this.NotificacaoTexto = null;
+    };
+    PreencheIndicadoresComponent.prototype.SalvarNotificacao = function () {
+        var _this = this;
+        var novoarray = {
+            id: null,
+            dataDaCriacao: null,
+            unidade: this.ETE.unidade,
+            admin: 0,
+            usuario: sessionStorage.getItem('nome'),
+            texto: this.NotificacaoTexto
+        };
+        // console.log(novoarray)
+        this.esg.InserirNotificacao(novoarray).subscribe(function (resp) {
+            _this.messageService.add({ severity: 'success', summary: "Salvo", detail: 'Salvo com sucesso' });
+            _this.visibleNotificacoes = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar' });
+        });
+    };
+    PreencheIndicadoresComponent.prototype.Notificacoes = function () {
+        var _this = this;
+        this.esg.getNotificacao().subscribe(function (resp) {
+            _this.ListaDeNotificacoes = resp.map(function (obj) {
+                obj.dataDaCriacao = obj.dataDaCriacao.substr(8, 2) + "/" + obj.dataDaCriacao.substr(5, 2) + "/" + obj.dataDaCriacao.substr(2, 2) + " " + obj.dataDaCriacao.substr(11, 8);
+                return obj;
+            });
+        });
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], PreencheIndicadoresComponent.prototype, "ETE", void 0);
+    PreencheIndicadoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-preenche-indicadores',
+            template: __webpack_require__(/*! raw-loader!./preenche-indicadores.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.html"),
+            styles: [__webpack_require__(/*! ./preenche-indicadores.component.css */ "./src/app/operacional-esgoto/preenchimento-etes/preenche-indicadores/preenche-indicadores.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_3__["OperacionalEsgotoService"], src_app_performance_performance_service__WEBPACK_IMPORTED_MODULE_4__["PerformanceService"], primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"], _preenchimento_etes_component__WEBPACK_IMPORTED_MODULE_5__["PreenchimentoEtesComponent"]])
+    ], PreencheIndicadoresComponent);
+    return PreencheIndicadoresComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.css":
+/*!****************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.css ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9wcmVlbmNoaW1lbnRvLWV0ZXMvcHJlZW5jaGltZW50by1ldGVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.ts":
+/*!***************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.ts ***!
+  \***************************************************************************************/
+/*! exports provided: PreenchimentoEtesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PreenchimentoEtesComponent", function() { return PreenchimentoEtesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var src_app_performance_performance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/performance/performance.service */ "./src/app/performance/performance.service.ts");
+
+
+
+
+
+var PreenchimentoEtesComponent = /** @class */ (function () {
+    function PreenchimentoEtesComponent(esg, perf, messageService) {
+        this.esg = esg;
+        this.perf = perf;
+        this.messageService = messageService;
+        this.VisibleListaDeUnidades = true;
+        this.VisibleListaDeIndicadores = false;
+        this.visibleCrud = false;
+        this.carregando = false;
+    }
+    PreenchimentoEtesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.Lancamentos();
+        this.esg.getunidadesporUser(sessionStorage.getItem('email')).subscribe(function (response) {
+            _this.ListaDeUnidades = response;
+            _this.VisibleListaDeUnidades = true;
+            //=============================================
+            // this.Ete = response[0]
+            // this.VisibleListaDeUnidades = false
+            // this.VisibleListaDeIndicadores = true
+            //=============================================
+        });
+    };
+    PreenchimentoEtesComponent.prototype.selectEte = function (linha) {
+        this.VisibleListaDeUnidades = false;
+        this.Ete = linha;
+        this.VisibleListaDeIndicadores = true;
+        // this.esg.getunidade(linha.id).subscribe(
+        // response=>{
+        // this.Ete = response;
+        // this.VisibleListaDeIndicadores = true
+        // }
+        // )
+    };
+    PreenchimentoEtesComponent.prototype.voltar = function () {
+        this.VisibleListaDeUnidades = true;
+        this.VisibleListaDeIndicadores = false;
+    };
+    PreenchimentoEtesComponent.prototype.Lancamentos = function () {
+        var _this = this;
+        this.carregando = true;
+        this.listaDeLancamentos = null;
+        this.esg.getIndicadoresNaoAprovadosUser(sessionStorage.getItem('nome')).subscribe(function (resp) {
+            _this.listaDeLancamentos = resp.map(function (obj) {
+                obj.dataDaImportacao = obj.dataDaImportacao.substr(8, 2) + "/" + obj.dataDaImportacao.substr(5, 2) + "/" + obj.dataDaImportacao.substr(0, 4) + " " + obj.dataDaImportacao.substr(11, 8);
+                obj.dataIndicador = obj.dataIndicador.substr(8, 2) + "/" + obj.dataIndicador.substr(5, 2) + "/" + obj.dataIndicador.substr(0, 4) + " " + obj.dataIndicador.substr(11, 8);
+                return obj;
+            });
+            _this.carregando = false;
+        });
+    };
+    PreenchimentoEtesComponent.prototype.Deletar = function (lanc) {
+        var _this = this;
+        this.carregando = true;
+        this.esg.DeleteLancamento(lanc.id).subscribe(function (resp) {
+            _this.Lancamentos();
+            _this.messageService.add({ severity: 'success', summary: 'Deletado com sucesso', detail: 'Deletado com sucesso o id ' + lanc.id });
+            _this.visibleCrud = false;
+            _this.Lancamento = null;
+            _this.carregando = false;
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Erro ao Deletar", detail: 'Erro ao deletar o registro ' + lanc.id });
+            _this.carregando = false;
+        });
+    };
+    PreenchimentoEtesComponent.prototype.OpenEditar = function (lanc) {
+        this.Lancamento = lanc;
+        this.visibleCrud = true;
+    };
+    PreenchimentoEtesComponent.prototype.Editar = function (lanc) {
+        this.carregando = true;
+        if (lanc.valor != undefined) {
+            var valor = lanc.valor;
+            var maximo = lanc.indicador.maximo;
+            var minimo = lanc.indicador.minimo;
+            if (minimo != 0 && maximo != 0) {
+                if (valor >= minimo && valor <= maximo) {
+                    this.salvar1(lanc);
+                    this.salvar2(lanc);
+                }
+                else {
+                    this.messageService.add({ severity: 'error', summary: lanc.nome, detail: 'os valores dessa medição devem estar entre ' + minimo + ' e ' + maximo });
+                }
+            }
+            else if (maximo != 0) {
+                if (valor <= maximo) {
+                    this.salvar1(lanc);
+                    this.salvar2(lanc);
+                }
+                else {
+                    this.messageService.add({ severity: 'error', summary: lanc.nome, detail: 'os valores dessa medição devem ser menor do que ' + maximo });
+                }
+            }
+            else if (minimo != 0) {
+                if (valor >= minimo) {
+                    this.salvar1(lanc);
+                    this.salvar2(lanc);
+                }
+                else {
+                    this.messageService.add({ severity: 'error', summary: lanc.nome, detail: 'os valores dessa medição devem ser maior do que ' + minimo });
+                }
+            }
+            else {
+                this.salvar1(lanc);
+                this.salvar2(lanc);
+            }
+        }
+    };
+    PreenchimentoEtesComponent.prototype.salvar1 = function (lanc) {
+        this.visibleCrud = false;
+        lanc.dataDaImportacao = lanc.dataDaImportacao.substr(6, 4) + "-" + lanc.dataDaImportacao.substr(3, 2) + "-" + lanc.dataDaImportacao.substr(0, 2) + " " + lanc.dataDaImportacao.substr(11, 8);
+        lanc.dataIndicador = lanc.dataIndicador.substr(6, 4) + "-" + lanc.dataIndicador.substr(3, 2) + "-" + lanc.dataIndicador.substr(0, 2) + " " + lanc.dataIndicador.substr(11, 8);
+    };
+    PreenchimentoEtesComponent.prototype.salvar2 = function (novoarray) {
+        var _this = this;
+        this.esg.EditarLancamento(novoarray).subscribe(function (resp) {
+            _this.Lancamentos();
+            _this.messageService.add({ severity: 'success', summary: novoarray.nome, detail: 'Salvo com sucesso' });
+            _this.Lancamento = null;
+        }, function (error) {
+            _this.messageService.add({ severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar' });
+            _this.carregando = false;
+        });
+    };
+    PreenchimentoEtesComponent.prototype.EnviarLancamentos = function () {
+        var _this = this;
+        for (var i = 0; i < this.listaDeLancamentos.length; i++) {
+            var lanc = this.listaDeLancamentos[i];
+            lanc.dataDaImportacao = lanc.dataDaImportacao.substr(6, 4) + "-" + lanc.dataDaImportacao.substr(3, 2) + "-" + lanc.dataDaImportacao.substr(0, 2) + " " + lanc.dataDaImportacao.substr(11, 8);
+            lanc.dataIndicador = lanc.dataIndicador.substr(6, 4) + "-" + lanc.dataIndicador.substr(3, 2) + "-" + lanc.dataIndicador.substr(0, 2) + " " + lanc.dataIndicador.substr(11, 8);
+            // console.log(lanc)
+            this.esg.AprovarLancamento(lanc).subscribe(function (resp) {
+                _this.messageService.add({ severity: 'success', summary: lanc.nome, detail: 'Salvo com sucesso' });
+                _this.Lancamento = null;
+                _this.Lancamentos();
+            }, function (error) {
+                _this.messageService.add({ severity: 'error', summary: "Erro ao enviar", detail: 'Erro ao enviar' });
+                _this.carregando = false;
+            });
+        }
+    };
+    PreenchimentoEtesComponent.prototype.converterdata = function (date) {
+        var ano = date.getFullYear();
+        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minuto = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var segundo = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        return ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":" + segundo;
+    };
+    PreenchimentoEtesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-preenchimento-etes',
+            template: __webpack_require__(/*! raw-loader!./preenchimento-etes.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.html"),
+            styles: [__webpack_require__(/*! ./preenchimento-etes.component.css */ "./src/app/operacional-esgoto/preenchimento-etes/preenchimento-etes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_3__["OperacionalEsgotoService"], src_app_performance_performance_service__WEBPACK_IMPORTED_MODULE_4__["PerformanceService"], primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+    ], PreenchimentoEtesComponent);
+    return PreenchimentoEtesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.css":
+/*!********************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.css ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9wcm9kdXRvcy1xdWltaWNvcy9ncmFwaC9ncmFwaC5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.ts ***!
+  \*******************************************************************************/
+/*! exports provided: GraphComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphComponent", function() { return GraphComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var src_app_app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/app.component */ "./src/app/app.component.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+var GraphComponent = /** @class */ (function () {
+    function GraphComponent(esg, adminServ, messageService) {
+        this.esg = esg;
+        this.adminServ = adminServ;
+        this.messageService = messageService;
+    }
+    GraphComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.esg.PesquisarLancamentoProdutoQuimico(this.unidade.id).subscribe(function (resp) {
+            _this.messageService.add({ severity: 'info', summary: "Carregado", detail: resp[0].unidade.unidade + ' carregado com sucesso' });
+            _this.ProdutosQuimicos = resp.map(function (e) {
+                var porcentagem = e.valor / e.indicador.maximo;
+                console.log(e);
+                if (porcentagem === 0) {
+                    e.porcentagem = "0";
+                }
+                else if (porcentagem <= 0.25) {
+                    e.porcentagem = "25";
+                }
+                else if (porcentagem <= 0.5) {
+                    e.porcentagem = "50";
+                }
+                else if (porcentagem <= 0.75) {
+                    e.porcentagem = "75";
+                }
+                else {
+                    e.porcentagem = "100";
+                }
+                return e;
+            });
+        });
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], GraphComponent.prototype, "unidade", void 0);
+    GraphComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-graph',
+            template: __webpack_require__(/*! raw-loader!./graph.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.html"),
+            styles: [__webpack_require__(/*! ./graph.component.css */ "./src/app/operacional-esgoto/produtos-quimicos/graph/graph.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], src_app_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], primeng_api__WEBPACK_IMPORTED_MODULE_4__["MessageService"]])
+    ], GraphComponent);
+    return GraphComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.css":
+/*!**************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9wcm9kdXRvcy1xdWltaWNvcy9wcm9kdXRvcy1xdWltaWNvcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.ts ***!
+  \*************************************************************************************/
+/*! exports provided: ProdutosQuimicosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProdutosQuimicosComponent", function() { return ProdutosQuimicosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var src_app_app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/app.component */ "./src/app/app.component.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+var ProdutosQuimicosComponent = /** @class */ (function () {
+    function ProdutosQuimicosComponent(esg, adminServ, messageService) {
+        this.esg = esg;
+        this.adminServ = adminServ;
+        this.messageService = messageService;
+    }
+    ProdutosQuimicosComponent.prototype.ngOnInit = function () {
+        this.AtualizarUnidades();
+    };
+    ProdutosQuimicosComponent.prototype.AtualizarUnidades = function () {
+        this.Unidades = this.adminServ.Unidades;
+    };
+    ProdutosQuimicosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-produtos-quimicos',
+            template: __webpack_require__(/*! raw-loader!./produtos-quimicos.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.html"),
+            styles: [__webpack_require__(/*! ./produtos-quimicos.component.css */ "./src/app/operacional-esgoto/produtos-quimicos/produtos-quimicos.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], src_app_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], primeng_api__WEBPACK_IMPORTED_MODULE_4__["MessageService"]])
+    ], ProdutosQuimicosComponent);
+    return ProdutosQuimicosComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.css":
+/*!**************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29wZXJhY2lvbmFsLWVzZ290by9yZWxhdG9yaW9zLWVzZ290by9yZWxhdG9yaW9zLWVzZ290by5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.ts ***!
+  \*************************************************************************************/
+/*! exports provided: RelatoriosEsgotoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RelatoriosEsgotoComponent", function() { return RelatoriosEsgotoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../operacional-esgoto.service */ "./src/app/operacional-esgoto/operacional-esgoto.service.ts");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
+/* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/csv-data.service */ "./src/app/csv-data.service.ts");
+
+
+
+
+
+var RelatoriosEsgotoComponent = /** @class */ (function () {
+    function RelatoriosEsgotoComponent(esg, messageService) {
+        this.esg = esg;
+        this.messageService = messageService;
+        //===========================================================================================
+        //UTILIZAÇÃO
+        this.Data1 = null;
+        this.Data2 = null;
+        this.DataMax = null;
+        this.carregarutilizacao = false;
+        //===========================================================================================
+        //LIVRO DE OCORRÊNCIAS
+        this.Data11 = null;
+        this.Data21 = null;
+        this.DataMax1 = null;
+        this.carregarocorrencia = false;
+    }
+    RelatoriosEsgotoComponent.prototype.ngOnInit = function () {
+        this.AtualizarUnidades();
+    };
+    RelatoriosEsgotoComponent.prototype.AtualizarUnidades = function () {
+        var _this = this;
+        this.esg.getunidades().subscribe(function (response) {
+            _this.Unidades = response;
+        });
+    };
+    RelatoriosEsgotoComponent.prototype.datamax = function () {
+        if (this.Data1 !== null) {
+            this.DataMax = new Date();
+            this.DataMax.setDate(this.Data1.getDate());
+            this.DataMax.setMonth(this.Data1.getMonth() + 1);
+            this.DataMax.setFullYear(this.Data1.getFullYear());
+        }
+    };
+    RelatoriosEsgotoComponent.prototype.pesquisarUtilizacao = function () {
+        var _this = this;
+        this.carregarutilizacao = true;
+        this.unidadeSelecionadaUtilizacao;
+        this.esg.PesquisarLancamento(this.unidadeSelecionadaUtilizacao.id, this.converterdata(this.Data1), this.converterdata(this.Data2)).subscribe(function (response) {
+            var array = response;
+            array = array.map(function (e) {
+                e.indicador = e.indicador.nome;
+                e.unidade = e.unidade.unidade;
+                return e;
+            });
+            _this.carregarutilizacao = false;
+            _this.salvarCSV(response, 'Relatório de Utilização Esgoto.csv');
+        });
+    };
+    RelatoriosEsgotoComponent.prototype.datamax2 = function () {
+        if (this.Data11 !== null) {
+            this.DataMax1 = new Date();
+            this.DataMax1.setDate(this.Data11.getDate());
+            this.DataMax1.setMonth(this.Data11.getMonth() + 1);
+            this.DataMax1.setFullYear(this.Data11.getFullYear());
+        }
+    };
+    RelatoriosEsgotoComponent.prototype.pesquisarOcorrencia = function () {
+        var _this = this;
+        this.carregarocorrencia = true;
+        this.esg.getNotificacaoData(this.converterdata(this.Data11), this.converterdata(this.Data21)).subscribe(function (response) {
+            _this.carregarocorrencia = false;
+            _this.salvarCSV(response, 'Relatorio de Ocorrencias.csv');
+        });
+    };
+    //===========================================================================================
+    RelatoriosEsgotoComponent.prototype.salvarCSV = function (ArrayGigante, relatorio) {
+        src_app_csv_data_service__WEBPACK_IMPORTED_MODULE_4__["CsvDataService"].exportToCsv(relatorio, ArrayGigante);
+    };
+    RelatoriosEsgotoComponent.prototype.converterdata = function (date) {
+        var ano = date.getFullYear();
+        var mes = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dia = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hora = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minuto = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var segundo = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        return ano + "-" + mes + "-" + dia;
+    };
+    RelatoriosEsgotoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-relatorios-esgoto',
+            template: __webpack_require__(/*! raw-loader!./relatorios-esgoto.component.html */ "./node_modules/raw-loader/index.js!./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.html"),
+            styles: [__webpack_require__(/*! ./relatorios-esgoto.component.css */ "./src/app/operacional-esgoto/relatorios-esgoto/relatorios-esgoto.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_operacional_esgoto_service__WEBPACK_IMPORTED_MODULE_2__["OperacionalEsgotoService"], primeng_api__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+    ], RelatoriosEsgotoComponent);
+    return RelatoriosEsgotoComponent;
 }());
 
 
@@ -13778,6 +15462,110 @@ var TelaImpressaoRelatorioComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/produtividade/controleprod/controleprod.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/produtividade/controleprod/controleprod.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Byb2R1dGl2aWRhZGUvY29udHJvbGVwcm9kL2NvbnRyb2xlcHJvZC5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/produtividade/controleprod/controleprod.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/produtividade/controleprod/controleprod.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: ControleprodComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ControleprodComponent", function() { return ControleprodComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _produtividade_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../produtividade.service */ "./src/app/produtividade/produtividade.service.ts");
+
+
+
+var ControleprodComponent = /** @class */ (function () {
+    function ControleprodComponent(produtividadeService) {
+        this.produtividadeService = produtividadeService;
+        this.detalhar = false;
+    }
+    ControleprodComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.colsresumo = [
+            { field: 'servico', header: 'Nº Documento' },
+            { field: 'tmerenoir', header: 'Assunto' },
+            { field: 'qtdprevista', header: 'Tipo' },
+            { field: 'tempoprevisto', header: 'Envio' },
+            { field: 'tmeapont', header: 'Retorno' },
+            { field: 'exec', header: 'Aprovação' },
+            { field: 'exoc', header: 'Link Documento' },
+            { field: 'tempexec', header: 'Link Documento' },
+            { field: 'tempdesloc', header: 'Link Documento' }
+        ];
+        this.produtividadeService.getResumao().then(function (data) { return _this.resumao = data; }); //this.resumao = data
+    };
+    ControleprodComponent.prototype.onChange = function ($event) {
+    };
+    ControleprodComponent.prototype.detalhe = function () {
+        this.detalhar = !this.detalhar;
+    };
+    ControleprodComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-controleprod',
+            template: __webpack_require__(/*! raw-loader!./controleprod.component.html */ "./node_modules/raw-loader/index.js!./src/app/produtividade/controleprod/controleprod.component.html"),
+            styles: [__webpack_require__(/*! ./controleprod.component.css */ "./src/app/produtividade/controleprod/controleprod.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_produtividade_service__WEBPACK_IMPORTED_MODULE_2__["ProdutividadeService"]])
+    ], ControleprodComponent);
+    return ControleprodComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/produtividade/produtividade.service.ts":
+/*!********************************************************!*\
+  !*** ./src/app/produtividade/produtividade.service.ts ***!
+  \********************************************************/
+/*! exports provided: ProdutividadeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProdutividadeService", function() { return ProdutividadeService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var ProdutividadeService = /** @class */ (function () {
+    function ProdutividadeService(http) {
+        this.http = http;
+    }
+    ProdutividadeService.prototype.getResumao = function () {
+        return this.http.get('assets/data/dados-modulo-produtividade.json')
+            .toPromise()
+            .then(function (res) { return res.resumao; })
+            .then(function (data) { return data; });
+    };
+    ProdutividadeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ProdutividadeService);
+    return ProdutividadeService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/rpa/rpa.component.css":
 /*!***************************************!*\
   !*** ./src/app/rpa/rpa.component.css ***!
@@ -14561,7 +16349,10 @@ var AgendarVeiculoComponent = /** @class */ (function () {
             { label: 'NITERÓI', value: 'NITERÓI' },
             { label: 'RIO DE JANEIRO', value: 'RIO DE JANEIRO' },
             { label: 'RIO DAS OSTRAS', value: 'RIO DAS OSTRAS' },
-            { label: 'IGUABA GRANDE', value: 'IGUABA GRANDE' }
+            { label: 'IGUABA GRANDE', value: 'IGUABA GRANDE' },
+            { label: 'SÃO PAULO', value: 'SÃO PAULO' },
+            { label: 'CAMPINAS', value: 'CAMPINAS' },
+            { label: 'SERRA', value: 'SERRA' }
         ];
         this.menorData();
     };
@@ -16006,7 +17797,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\vitor.heser\Documents\AngularProjects - PULL\Sispc2.0\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Users\juliano.simas\Documents\AngularProjects\Sispc2.0\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -81,7 +81,10 @@ export class AgendarVeiculoComponent implements OnInit {
       {label: 'NITERÓI', value:'NITERÓI'},
       {label: 'RIO DE JANEIRO', value:'RIO DE JANEIRO'},
       {label: 'RIO DAS OSTRAS', value:'RIO DAS OSTRAS'},
-      {label: 'IGUABA GRANDE', value:'IGUABA GRANDE'}
+      {label: 'IGUABA GRANDE', value:'IGUABA GRANDE'},
+      {label: 'SÃO PAULO', value:'SÃO PAULO'},
+      {label: 'CAMPINAS', value:'CAMPINAS'},
+      {label: 'SERRA', value:'SERRA'}
     ]
     
     this.menorData()
